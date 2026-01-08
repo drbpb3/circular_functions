@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solving Circular Functions Equations - Teacher Version</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <style>
+        :root { --primary: #2c3e50; --accent: #3498db; }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.8;
+            color: #333;
+            background: #fafafa;
+            margin: 0;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .title-page { background: linear-gradient(135deg, var(--primary), #1a252f); color: white; padding: 80px 40px; text-align: center; border-radius: 8px; margin-top: 40px; }
+        .title-page h1 { font-size: 2.5em; margin: 0 0 10px; font-weight: normal; }
+        .title-page .subtitle { font-size: 1.2em; opacity: 0.9; }
+        .title-page .author { margin-top: 30px; opacity: 0.8; }
+        .title-page a { color: #87ceeb; }
+        h2.chapter { font-size: 1.8em; color: var(--primary); margin: 50px 0 20px; padding-bottom: 10px; border-bottom: 3px solid var(--accent); }
+        h3.section { font-size: 1.4em; color: var(--primary); margin: 40px 0 15px; font-style: normal; }
+        p { margin: 15px 0; }
+        .intro { font-style: normal; color: #555; background: #f5f5f5; padding: 15px 20px; border-radius: 5px; border-left: 4px solid var(--accent); margin: 20px 0; }
+        .key-concept { background: linear-gradient(135deg, #e8f4f8, #d1e8f0); padding: 20px 25px; border-radius: 8px; margin: 25px 0; border-left: 5px solid var(--accent); }
+        .exercise { background: #fff9e6; padding: 15px 20px; border-radius: 5px; margin: 20px 0; border: 1px solid #f0e0a0; border-left: 4px solid #d4a000; }
+        .answer { background: #e8f8e8; padding: 12px 20px; border-radius: 5px; margin: 15px 0; border-left: 4px solid #4a4; }
+        .teacher-note { background: #e8f0ff; padding: 15px 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #0066cc; color: #0066cc; }
+        .math-block { text-align: center; margin: 20px 0; padding: 15px; font-size: 1.1em; }
+        figure { margin: 30px 0; text-align: center; }
+        figure img { max-width: 72%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        footer { text-align: center; padding: 40px 20px; margin-top: 60px; background: var(--primary); color: white; }
+        footer a { color: #87ceeb; }
+
+        /* Reader-specific styles */
+        .page {
+            display: none;
+            min-height: 60vh;
+            padding-bottom: 100px;
+        }
+        .page.active {
+            display: block;
+        }
+        .navigation {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .navigation.visible {
+            transform: translateY(0);
+        }
+        .nav-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: Georgia, serif;
+        }
+        .nav-btn:hover:not(:disabled) {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        .nav-btn:disabled {
+            background: #555;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        .page-indicator {
+            color: white;
+            font-size: 1.1em;
+            min-width: 150px;
+            text-align: center;
+        }
+        #pageInput {
+            width: 50px;
+            padding: 5px;
+            font-size: 1em;
+            font-family: Georgia, serif;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+        }
+        #pageInput:focus {
+            outline: 2px solid var(--accent);
+        }
+        #pageInput::-webkit-outer-spin-button,
+        #pageInput::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        #pageInput {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+
+        img {
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+
+        .answer-options {
+            margin: 20px 0;
+            padding-left: 40px;
+        }
+        .answer-options p {
+            margin: 10px 0;
+        }
+        .correct-answer {
+            color: #2a7a2a;
+            font-weight: bold;
+        }
+
+        .two-column {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            gap: 20px;
+        }
+        .two-column figure {
+            flex: 1;
+            margin: 0;
+        }
+        .two-column figure img {
+            max-width: 100%;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        td {
+            padding: 12px 10px;
+            vertical-align: middle;
+        }
+        tr:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        .toc-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            padding: 10px 0;
+            border-bottom: 1px dotted #ccc;
+        }
+        .toc-item .topic {
+            flex: 1;
+        }
+        .toc-item .description {
+            text-align: right;
+            color: #666;
+            font-style: italic;
+        }
+        .toc-highlight {
+            font-weight: bold;
+            background: #fff9e6;
+            padding: 10px;
+            border-radius: 5px;
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+<div class="container">
+    <!-- Page 1: Title Page -->
+    <div class="page" id="page-1">
+        <div class="title-page">
+            <h1>Circular Functions 2</h1>
+            <div class="subtitle">Solving circular functions equations</div>
+            <div class="author">teacher version</div>
+        </div>
+    </div>
+
+    <!-- Page 2: Contents -->
+    <div class="page" id="page-2">
+        <h2 class="chapter">Circular functions</h2>
+
+        <div class="toc-item">
+            <span class="topic">Defining the circular functions</span>
+            <span class="description">sin, cos, tan and the unit circle</span>
+        </div>
+
+        <div class="toc-item toc-highlight">
+            <span class="topic">Solving circular function equations</span>
+            <span class="description">like \(\sin\theta = 0.4\)</span>
+        </div>
+
+        <div class="toc-item">
+            <span class="topic">Graphing the circular functions</span>
+            <span class="description">graphs \(y = \cos x\) and the like</span>
+        </div>
+
+        <div class="toc-item">
+            <span class="topic">Relationships between circular functions</span>
+            <span class="description">\(\sin(90° - x) = \cos x\) and the like</span>
+        </div>
+
+        <div class="toc-item">
+            <span class="topic">More circular functions</span>
+            <span class="description">\(\sec x = \dfrac{1}{\cos x}\) and so on</span>
+        </div>
+
+        <div class="toc-item">
+            <span class="topic">Circular functions of sums</span>
+            <span class="description">\(\sin(A + B) = \sin A \cos B + \cos A \sin B\)</span>
+        </div>
+
+        <div class="toc-item">
+            <span class="topic">Transforming and adding circular functions</span>
+            <span class="description">\(\sin x + \cos x = \sqrt{2}\sin(x + 45°)\)</span>
+        </div>
+
+        <div class="toc-item">
+            <span class="topic">Differentiating circular functions</span>
+            <span class="description">radians, and tangents to graphs</span>
+        </div>
+
+        <div class="toc-item">
+            <span class="topic">Integrating circular functions</span>
+            <span class="description">areas</span>
+        </div>
+
+        <div class="toc-item">
+            <span class="topic">Inverses of circular functions</span>
+            <span class="description">\(\arcsin x\), \(\cos^{-1} x\), \(\cot^{-1} x\) and the like</span>
+        </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page" id="page-3">
+        <h2 class="chapter">Solving equations with circular functions</h2>
+
+        <div class="exercise">Use your calculator to find the angle \(\theta\).</div>
+
+        <figure>
+            <img src="images/image_633.png" alt="Right triangle with hypotenuse 1, opposite 0.4, angle θ">
+        </figure>
+
+        <div class="intro">
+            <p>There are an infinite number of solutions to an equation like \(\sin\theta = 0.4\), and this is only the smallest positive solution. It's worth spending the time on this sheet, as this is the next step in the process of divorcing the circular functions from triangles.</p>
+            <p>Trigonometry means "measurement of three-sided shapes", but sin, cos, tan and so on are really functions rather than ratios of sides of "trigons", and their power is far greater than that needed for the measurement of three-sided shapes.</p>
+        </div>
+
+        <div class="intro">
+            <p>Finding other solutions is a question of symmetry, and you can either use this unit circle to do your visualisation or you can use graphs. I am a great believer in the advantages of the unit circle over graphs, and that is the approach I take here.</p>
+        </div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="page" id="page-4">
+        <div class="exercise">If the \(y\) coordinate of the blue point is 0.4, find the angle \(\theta\).</div>
+
+        <figure>
+            <img src="images/image_499.png" alt="Unit circle with point at angle θ showing y-coordinate 0.4">
+        </figure>
+
+        <div class="exercise">What other point on the circle has the same \(y\) coordinate as the blue point?</div>
+
+        <div class="teacher-note">
+            <p>If you have always taught your students to use graphs to find solutions to equations like this, I strongly recommend that you give this way a go. It has many advantages: for example, the unit circle is easy to sketch when solving a problem, and easy to visualise without sketching. It's easy to remember that the coordinates of a point are \((\cos\theta, \sin\theta)\) and that the gradient of the radius is \(\tan\theta\). On the other hand, for graphs, you have to remember quite a bit of detail about three different graphs, and then it's much harder to use symmetry to read off the solutions.</p>
+            <p>You might find it takes some getting used to, but I don't think you will ever look back!</p>
+        </div>
+    </div>
+
+    <!-- Page 5 -->
+    <div class="page" id="page-5">
+        <div class="exercise">What other positive angle between \(0°\) and \(360°\) is a solution of \(\sin\theta = 0.4\)?</div>
+
+        <figure>
+            <img src="images/image_511.png" alt="Unit circle showing θ = 23.58° and symmetric point">
+        </figure>
+
+        <div class="answer">
+            <p>Symmetry is the key (as it is with graphs), so</p>
+            <p>\(180 - 23.58 = 156.42°\) is another solution of \(\sin\theta = 0.4\)</p>
+        </div>
+    </div>
+
+    <!-- Page 6 -->
+    <div class="page" id="page-6">
+        <div class="exercise">What negative angles between \(-360°\) and \(0°\) are solutions of \(\sin\theta = 0.4\)?</div>
+
+        <figure>
+            <img src="images/image_511.png" alt="Unit circle showing angles 156.42° and 23.58°">
+        </figure>
+
+        <div class="answer">
+            <p>To find the size of the angles, subtract the positive angles from \(360°\).</p>
+            <p>But they are measured clockwise from the positive \(x\) axis, so they are negative.</p>
+        </div>
+    </div>
+
+    <!-- Page 7 -->
+    <div class="page" id="page-7">
+        <div class="exercise">Solve the equation \(\sin\theta = 0.4\)</div>
+
+        <figure>
+            <img src="images/image_511.png" alt="Unit circle showing angles 156.42° and 23.58°">
+        </figure>
+
+        <div class="answer">
+            <p>\(\theta = 23.58°, 156.42°, 383.58°, 516.42° \ldots\)</p>
+            <p style="padding-left: 30px;">\(-203.58°, -336.42°, -563.58°, -696.42° \ldots\)</p>
+            <p>Keep adding or subtracting \(360°\) as often as you like.</p>
+        </div>
+    </div>
+
+    <!-- Page 8 -->
+    <div class="page" id="page-8">
+        <div class="exercise">If \(\alpha\) is any solution of the equation \(\sin\theta = k\), which of the following are also solutions of the equation:</div>
+
+        <div class="answer-options">
+            <p>\(180 - \alpha\)</p>
+            <p>\(180 + \alpha\)</p>
+            <p>\(-\alpha\)</p>
+            <p>\(\alpha + 360\)</p>
+            <p>\(\alpha - 360\)</p>
+        </div>
+
+        <div class="answer" style="margin-top: 40px;">
+            <p><span class="correct-answer">\(180 - \alpha\)</span></p>
+            <p><span class="correct-answer">\(\alpha + 360\)</span></p>
+            <p><span class="correct-answer">\(\alpha - 360\)</span></p>
+        </div>
+
+        <div class="teacher-note" style="margin-top: 40px;">
+            <p>The point of asking this question is to get to some easy rules for solving sin, cos, and tan equations that don't even need the unit circle, let alone graphs.</p>
+            <p>Here is the first easy rule to remember:</p>
+            <ul>
+                <li>for sin, take your answer from \(180\).</li>
+                <li>then keep adding or subtracting \(360°\) as often as you like to each of your solutions.</li>
+            </ul>
+            <p>Later, we will see that \(180 + \alpha\) works for tan and \(-\alpha\) works for cos.</p>
+            <p>The last two options, \(\alpha \pm 360\), work for sin, cos, and tan.</p>
+        </div>
+    </div>
+
+    <!-- Page 9 -->
+    <div class="page" id="page-9">
+        <div class="exercise">Adapt the previous method to solve the equation \(\cos\theta = -0.7\).</div>
+
+        <figure>
+            <img src="images/image_574.png" alt="Unit circle with x = -0.7 line">
+        </figure>
+
+        <div class="teacher-note">
+            <p>This may seem like a bit leap, but it's just the same method, using \(x\) instead of \(y\) coordinates. Give your students plenty of time to figure this out by working together, rather than pointing the way. If they have had that time, then your help later will make far more sense.</p>
+        </div>
+
+        <div class="answer">
+            <p>\(\theta = 134.43°, 225.57°, 494.43°, 585.57° \ldots\)</p>
+            <p style="padding-left: 30px;">\(-134.43°, -225.57°, -494.43°, -585.57° \ldots\)</p>
+        </div>
+    </div>
+
+    <!-- Page 10 -->
+    <div class="page" id="page-10">
+        <div class="exercise">If \(\alpha\) is any solution of the equation \(\cos\theta = k\), which of the following are also solutions of the equation:</div>
+
+        <div class="answer-options">
+            <p>\(180 - \alpha\)</p>
+            <p>\(180 + \alpha\)</p>
+            <p>\(-\alpha\)</p>
+            <p>\(\alpha + 360\)</p>
+            <p>\(\alpha - 360\)</p>
+        </div>
+
+        <div class="answer" style="margin-top: 40px;">
+            <p><span class="correct-answer">\(-\alpha\)</span></p>
+            <p><span class="correct-answer">\(\alpha + 360\)</span></p>
+            <p><span class="correct-answer">\(\alpha - 360\)</span></p>
+        </div>
+
+        <div class="teacher-note" style="margin-top: 40px;">
+            <p>This is the second easy rule to remember:</p>
+            <ul>
+                <li>for cos, take the negative of your answer.</li>
+                <li>then keep adding or subtracting \(360°\) as often as you like to each of your solutions.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Page 11 -->
+    <div class="page" id="page-11">
+        <div class="exercise">
+            <p>Use this diagram and a calculator to solve the equation</p>
+            <p style="text-align: center; font-size: 1.2em;">\(\tan\theta = 2\)</p>
+        </div>
+
+        <figure>
+            <img src="images/image_558.png" alt="Unit circle with line y = 2x">
+        </figure>
+
+        <div class="answer">
+            <p>\(\theta = 63.43°, 243.43°, 423.43°, 603.43° \ldots\)</p>
+            <p style="padding-left: 30px;">\(-116.57°, -296.57°, -476.57°, -656.57° \ldots\)</p>
+        </div>
+    </div>
+
+    <!-- Page 12 -->
+    <div class="page" id="page-12">
+        <div class="exercise">If \(\alpha\) is any solution of the equation \(\tan\theta = k\), which of the following are also solutions of the equation:</div>
+
+        <div class="answer-options">
+            <p>\(180 - \alpha\)</p>
+            <p>\(180 + \alpha\)</p>
+            <p>\(-\alpha\)</p>
+            <p>\(\alpha + 360\)</p>
+            <p>\(\alpha - 360\)</p>
+        </div>
+
+        <div class="answer" style="margin-top: 40px;">
+            <p><span class="correct-answer">\(180 + \alpha\)</span></p>
+            <p><span class="correct-answer">\(\alpha + 360\)</span></p>
+            <p><span class="correct-answer">\(\alpha - 360\)</span></p>
+        </div>
+
+        <div class="teacher-note" style="margin-top: 40px;">
+            <p>Here is the third easy rule to remember:</p>
+            <ul>
+                <li>for tan, add \(180\) to your answer.</li>
+                <li>then keep adding or subtracting \(360°\) as often as you like to each of your solutions.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Page 13 -->
+    <div class="page" id="page-13">
+        <div class="key-concept">
+            <p><strong>Now recap the three rules:</strong></p>
+            <ul>
+                <li><strong>sin:</strong> find one solution, take it away from \(180\), and then repeatedly \(\pm 360\).</li>
+                <li><strong>cos:</strong> find one solution, take its negative, and then repeatedly \(\pm 360\).</li>
+                <li><strong>tan:</strong> find one solution, add it to \(180\), and then repeatedly \(\pm 360\).</li>
+            </ul>
+        </div>
+
+        <div class="teacher-note" style="margin-top: 40px;">
+            <p>At this point, your students will need plenty of basic practice. When they first encounter an equation like \(\sin(2\theta) = 0.4\), they will probably find \(\sin^{-1} 0.4\), then divide this by two, and then use the \(\pm 180 \pm 360\) rule to find what they think are the other solutions.</p>
+            <p>I like to let them do this once, use their calculator to find sine of one of their non-solutions, see that it is not \(0.4\) and ask them to figure out what went wrong.</p>
+            <p>They will still need a bit of prompting to get the right method, which is to find all the possible values of \(2\theta\) and then divide these all by \(2\).</p>
+        </div>
+    </div>
+
+    <!-- Page 14 -->
+    <div class="page" id="page-14">
+        <div class="exercise">If \(\tan\theta = \dfrac{3}{2}\), find \(\sin\theta\) and \(\cos\theta\).</div>
+
+        <figure>
+            <img src="images/image_487.png" alt="Right triangle with opposite 3, adjacent 2, angle θ">
+        </figure>
+
+        <div class="answer">
+            <p>This is a right-angled triangle question.</p>
+            <p>\[\sin\theta = \frac{3}{\sqrt{13}} \qquad \cos\theta = \frac{2}{\sqrt{13}}\]</p>
+        </div>
+
+        <div class="teacher-note">
+            <p>Here is a very useful non-calculator technique that tends to get overlooked. Of course, you can use the calculator to find \(\theta\) and then find sin and cos. This, however, teaches you nothing about the circular functions, how they work, and how they relate to each other.</p>
+            <p>So don't let your students use their calculators for these!</p>
+        </div>
+    </div>
+
+    <!-- Page 15 -->
+    <div class="page" id="page-15">
+        <div class="exercise">If \(\tan\theta = \dfrac{3}{2}\), and \(\theta\) is reflex, find \(\sin\theta\) and \(\cos\theta\).</div>
+
+        <figure>
+            <img src="images/image_529.png" alt="Unit circle showing reflex angle with point at (-2,-3)">
+        </figure>
+
+        <div class="teacher-note">
+            <p>Here, I am using a circle that no longer has radius \(1\). However, all the same considerations from earlier apply. In this case, the whole unit-circle diagram has been enlarged by scale factor \(\sqrt{13}\).</p>
+            <p>We could redraw the diagram with radius \(1\), but it's really more trouble than it's worth.</p>
+            <p>Here, \(\tan\theta\) is still \(\dfrac{3}{2}\), but</p>
+        </div>
+
+        <div class="answer">
+            <p>\[\sin\theta = -\frac{3}{\sqrt{13}} \qquad \cos\theta = -\frac{2}{\sqrt{13}}\]</p>
+        </div>
+    </div>
+
+    <!-- Page 16 -->
+    <div class="page" id="page-16">
+        <div class="exercise">If \(\tan\theta = -\dfrac{3}{2}\), and \(\theta\) is obtuse, find \(\sin\theta\) and \(\cos\theta\).</div>
+
+        <figure>
+            <img src="images/image_514.png" alt="Unit circle showing obtuse angle with point at (-2,3)">
+        </figure>
+
+        <div class="answer">
+            <p>Now we need the point where the tan of the angle is the same size as before, but negative.</p>
+            <p>Here, \(\tan\theta = -\dfrac{3}{2}\) and</p>
+            <p>\[\sin\theta = \frac{3}{\sqrt{13}} \qquad \cos\theta = -\frac{2}{\sqrt{13}}\]</p>
+        </div>
+    </div>
+
+    <!-- Page 17 -->
+    <div class="page" id="page-17">
+        <div class="exercise">If \(\tan\theta = -\dfrac{3}{2}\), and \(\theta\) is reflex, find \(\sin\theta\) and \(\cos\theta\).</div>
+
+        <figure>
+            <img src="images/image_499.png" alt="Unit circle showing reflex angle with point at (2,-3)">
+        </figure>
+
+        <div class="answer">
+            <p>Here,</p>
+            <p>\(\tan\theta = -\dfrac{3}{2}\) and \(\sin\theta = -\dfrac{3}{\sqrt{13}} \qquad \cos\theta = \dfrac{2}{\sqrt{13}}\)</p>
+        </div>
+
+        <div class="two-column">
+            <figure>
+                <img src="images/image_502.png" alt="Four quadrant coordinates with (±2, ±3)">
+            </figure>
+            <figure>
+                <img src="images/image_505.png" alt="Four quadrant coordinates with √13 fractions">
+            </figure>
+        </div>
+    </div>
+
+    <!-- Page 18 -->
+    <div class="page" id="page-18">
+        <div class="exercise">If \(\cos\theta = \dfrac{2}{3}\), find \(\tan\theta\) and \(\sin\theta\).</div>
+
+        <figure>
+            <img src="images/image_535.png" alt="Right triangle with adjacent 2, hypotenuse 3, angle θ">
+        </figure>
+
+        <div class="answer">
+            <p>\[\tan\theta = \frac{\sqrt{5}}{2} \qquad \sin\theta = \frac{\sqrt{5}}{3}\]</p>
+        </div>
+    </div>
+
+    <!-- Page 19 -->
+    <div class="page" id="page-19">
+        <div class="exercise">Find \(\tan\theta\) and \(\sin\theta\) when:</div>
+
+        <div class="exercise" style="margin-top: 30px;">\(\cos\theta = \dfrac{2}{3}\), and \(\theta\) is between \(270°\) and \(360°\)</div>
+        <div class="answer">
+            <p>\[\tan\theta = -\frac{\sqrt{5}}{2} \qquad \sin\theta = -\frac{\sqrt{5}}{3}\]</p>
+        </div>
+
+        <div class="exercise" style="margin-top: 30px;">\(\cos\theta = -\dfrac{2}{3}\), and \(\theta\) is between \(180°\) and \(270°\)</div>
+        <div class="answer">
+            <p>\[\tan\theta = \frac{\sqrt{5}}{2} \qquad \sin\theta = -\frac{\sqrt{5}}{3}\]</p>
+        </div>
+
+        <div class="exercise" style="margin-top: 30px;">\(\cos\theta = -\dfrac{2}{3}\), and \(\theta\) is obtuse.</div>
+        <div class="answer">
+            <p>\[\tan\theta = -\frac{\sqrt{5}}{2} \qquad \sin\theta = \frac{\sqrt{5}}{3}\]</p>
+        </div>
+
+        <div class="two-column" style="margin-top: 30px;">
+            <figure>
+                <img src="images/image_479.png" alt="Unit circle with all four quadrant coordinates">
+            </figure>
+            <figure>
+                <img src="images/image_517.png" alt="Circle with triangle showing 2,3 sides">
+            </figure>
+        </div>
+    </div>
+
+    <!-- Page 20 -->
+    <div class="page" id="page-20">
+        <div class="exercise">Find \(\tan\theta\) and \(\cos\theta\) when \(\sin\theta = \pm\dfrac{2}{3}\) for the various possible values of \(\theta\).</div>
+
+        <figure>
+            <img src="images/image_454.png" alt="Unit circle with triangle showing sin = 2/3">
+        </figure>
+
+        <table style="margin-top: 20px;">
+            <tr>
+                <td style="width: 25%;">\(0 < \theta < 90°\)</td>
+                <td style="width: 25%;">\(\sin\theta = \dfrac{2}{3}\)</td>
+                <td style="width: 25%;">\(\tan\theta = \dfrac{2}{\sqrt{5}}\)</td>
+                <td style="width: 25%; color: #2a7a2a; font-weight: bold;">\(\cos\theta = \dfrac{\sqrt{5}}{3}\)</td>
+            </tr>
+            <tr>
+                <td>\(90° < \theta < 180°\)</td>
+                <td>\(\sin\theta = \dfrac{2}{3}\)</td>
+                <td>\(\tan\theta = -\dfrac{2}{\sqrt{5}}\)</td>
+                <td style="color: #2a7a2a; font-weight: bold;">\(\cos\theta = -\dfrac{\sqrt{5}}{3}\)</td>
+            </tr>
+            <tr>
+                <td>\(180° < \theta < 270°\)</td>
+                <td>\(\sin\theta = -\dfrac{2}{3}\)</td>
+                <td>\(\tan\theta = \dfrac{2}{\sqrt{5}}\)</td>
+                <td style="color: #2a7a2a; font-weight: bold;">\(\cos\theta = -\dfrac{\sqrt{5}}{3}\)</td>
+            </tr>
+            <tr>
+                <td>\(270° < \theta < 360°\)</td>
+                <td>\(\sin\theta = -\dfrac{2}{3}\)</td>
+                <td>\(\tan\theta = -\dfrac{2}{\sqrt{5}}\)</td>
+                <td style="color: #2a7a2a; font-weight: bold;">\(\cos\theta = \dfrac{\sqrt{5}}{3}\)</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="navigation">
+    <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+    <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+    <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="20" onchange="goToPage(this.value)"> of 20
+    </span>
+    <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+    <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+</div>
+
+<script>
+    let currentPage = 1;
+    const totalPages = 20;
+
+    function showPage(pageNum) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+        const page = document.getElementById('page-' + pageNum);
+        if (page) {
+            page.classList.add('active');
+            currentPage = pageNum;
+
+            document.getElementById('pageInput').value = currentPage;
+
+            document.getElementById('firstBtn').disabled = (currentPage === 1);
+            document.getElementById('prevBtn').disabled = (currentPage === 1);
+            document.getElementById('nextBtn').disabled = (currentPage === totalPages);
+            document.getElementById('lastBtn').disabled = (currentPage === totalPages);
+
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise([page]);
+            }
+
+            window.scrollTo(0, 0);
+        }
+    }
+
+    function changePage(delta) {
+        const newPage = currentPage + delta;
+        if (newPage >= 1 && newPage <= totalPages) {
+            showPage(newPage);
+        }
+    }
+
+    function goToPage(pageNum) {
+        const num = parseInt(pageNum);
+        if (num >= 1 && num <= totalPages) {
+            showPage(num);
+        } else {
+            document.getElementById('pageInput').value = currentPage;
+        }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            changePage(1);
+        } else if (e.key === 'ArrowLeft') {
+            changePage(-1);
+        }
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        showPage(1);
+    });
+
+    // Show/hide navigation on mouse proximity
+    const nav = document.querySelector('.navigation');
+    document.addEventListener('mousemove', function(e) {
+        const threshold = 100;
+        const distanceFromBottom = window.innerHeight - e.clientY;
+        if (distanceFromBottom < threshold) {
+            nav.classList.add('visible');
+        } else {
+            nav.classList.remove('visible');
+        }
+    });
+
+    nav.addEventListener('mouseenter', function() {
+        nav.classList.add('visible');
+    });
+
+    // Disable keyboard shortcuts for saving/printing
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+</script>
+
+</body>
+</html>
