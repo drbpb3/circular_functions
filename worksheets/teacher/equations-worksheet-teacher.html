@@ -22,12 +22,15 @@
         .container { max-width: 800px; margin: 0 auto; padding: 20px; }
         .title-page { background: linear-gradient(135deg, var(--primary), #1a252f); color: white; padding: 80px 40px; text-align: center; border-radius: 8px; margin-top: 40px; }
         .title-page h1 { font-size: 2.5em; margin: 0 0 10px; font-weight: normal; }
-        .title-page .subtitle { font-size: 1.2em; opacity: 0.9; }
-        .title-page .author { margin-top: 30px; opacity: 0.8; }
+        .title-page .subtitle { font-size: 1.8em; opacity: 0.9; }
+        .title-page .author {text-align: right; margin-top: 30px; opacity: 0.8; font-size: 1.2em}
         .title-page a { color: #87ceeb; }
         h2.chapter { font-size: 1.8em; color: var(--primary); margin: 50px 0 20px; padding-bottom: 10px; border-bottom: 3px solid var(--accent); }
         h3.section { font-size: 1.4em; color: var(--primary); margin: 40px 0 15px; font-style: normal; }
         p { margin: 15px 0; }
+        p.small {
+            line-height: 0.7;
+        }
         .intro { font-style: normal; color: #555; background: #f5f5f5; padding: 15px 20px; border-radius: 5px; border-left: 4px solid var(--accent); margin: 20px 0; }
         .key-concept { background: linear-gradient(135deg, #e8f4f8, #d1e8f0); padding: 20px 25px; border-radius: 8px; margin: 25px 0; border-left: 5px solid var(--accent); }
         .exercise { background: #fff9e6; padding: 15px 20px; border-radius: 5px; margin: 20px 0; border: 1px solid #f0e0a0; border-left: 4px solid #d4a000; }
@@ -35,7 +38,7 @@
         .teacher-note { background: #e8f0ff; padding: 15px 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #0066cc; color: #0066cc; }
         .math-block { text-align: center; margin: 20px 0; padding: 15px; font-size: 1.1em; }
         figure { margin: 30px 0; text-align: center; }
-        figure img { max-width: 72%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        figure img { max-width: 52%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         footer { text-align: center; padding: 40px 20px; margin-top: 60px; background: var(--primary); color: white; }
         footer a { color: #87ceeb; }
 
@@ -195,9 +198,12 @@
     <!-- Page 1: Title Page -->
     <div class="page" id="page-1">
         <div class="title-page">
-            <h1>Circular Functions 2</h1>
-            <div class="subtitle">Solving circular functions equations</div>
-            <div class="author">teacher version</div>
+            <h1>circular functions 2</h1>
+            <div class="subtitle">solving circular functions equations</div>
+            <div class="author">
+                <p class="small">Dr Brian Brooks</p>
+                <p class="small">Insight Mathematics</p>
+            </div>
         </div>
     </div>
 
@@ -263,7 +269,7 @@
         <div class="exercise">Use your calculator to find the angle \(\theta\).</div>
 
         <figure>
-            <img src="images/image_633.png" alt="Right triangle with hypotenuse 1, opposite 0.4, angle θ">
+            <img src="images/image0.png" alt="Right triangle with hypotenuse 1, opposite 0.4, angle θ">
         </figure>
 
         <div class="intro">
@@ -281,7 +287,7 @@
         <div class="exercise">If the \(y\) coordinate of the blue point is 0.4, find the angle \(\theta\).</div>
 
         <figure>
-            <img src="images/image_499.png" alt="Unit circle with point at angle θ showing y-coordinate 0.4">
+            <img src="images/image1.png" alt="Unit circle with point at angle θ showing y-coordinate 0.4">
         </figure>
 
         <div class="exercise">What other point on the circle has the same \(y\) coordinate as the blue point?</div>
@@ -297,7 +303,7 @@
         <div class="exercise">What other positive angle between \(0°\) and \(360°\) is a solution of \(\sin\theta = 0.4\)?</div>
 
         <figure>
-            <img src="images/image_511.png" alt="Unit circle showing θ = 23.58° and symmetric point">
+            <img src="images/image2.png" alt="Unit circle showing θ = 23.58° and symmetric point">
         </figure>
 
         <div class="answer">
@@ -311,7 +317,7 @@
         <div class="exercise">What negative angles between \(-360°\) and \(0°\) are solutions of \(\sin\theta = 0.4\)?</div>
 
         <figure>
-            <img src="images/image_511.png" alt="Unit circle showing angles 156.42° and 23.58°">
+            <img src="images/image3.png" alt="Unit circle showing angles 156.42° and 23.58°">
         </figure>
 
         <div class="answer">
@@ -325,7 +331,7 @@
         <div class="exercise">Solve the equation \(\sin\theta = 0.4\)</div>
 
         <figure>
-            <img src="images/image_511.png" alt="Unit circle showing angles 156.42° and 23.58°">
+            <img src="images/image4.png" alt="Unit circle showing angles 156.42° and 23.58°">
         </figure>
 
         <div class="answer">
@@ -370,7 +376,7 @@
         <div class="exercise">Adapt the previous method to solve the equation \(\cos\theta = -0.7\).</div>
 
         <figure>
-            <img src="images/image_574.png" alt="Unit circle with x = -0.7 line">
+            <img src="images/image7.png" alt="Unit circle with x = -0.7 line">
         </figure>
 
         <div class="teacher-note">
@@ -418,7 +424,7 @@
         </div>
 
         <figure>
-            <img src="images/image_558.png" alt="Unit circle with line y = 2x">
+            <img src="images/image10.png" alt="Unit circle with line y = 2x">
         </figure>
 
         <div class="answer">
@@ -477,7 +483,7 @@
         <div class="exercise">If \(\tan\theta = \dfrac{3}{2}\), find \(\sin\theta\) and \(\cos\theta\).</div>
 
         <figure>
-            <img src="images/image_487.png" alt="Right triangle with opposite 3, adjacent 2, angle θ">
+            <img src="images/image13.png" alt="Right triangle with opposite 3, adjacent 2, angle θ">
         </figure>
 
         <div class="answer">
@@ -496,7 +502,7 @@
         <div class="exercise">If \(\tan\theta = \dfrac{3}{2}\), and \(\theta\) is reflex, find \(\sin\theta\) and \(\cos\theta\).</div>
 
         <figure>
-            <img src="images/image_529.png" alt="Unit circle showing reflex angle with point at (-2,-3)">
+            <img src="images/image16.png" alt="Unit circle showing reflex angle with point at (-2,-3)">
         </figure>
 
         <div class="teacher-note">
@@ -515,7 +521,7 @@
         <div class="exercise">If \(\tan\theta = -\dfrac{3}{2}\), and \(\theta\) is obtuse, find \(\sin\theta\) and \(\cos\theta\).</div>
 
         <figure>
-            <img src="images/image_514.png" alt="Unit circle showing obtuse angle with point at (-2,3)">
+            <img src="images/image17.png" alt="Unit circle showing obtuse angle with point at (-2,3)">
         </figure>
 
         <div class="answer">
@@ -530,7 +536,7 @@
         <div class="exercise">If \(\tan\theta = -\dfrac{3}{2}\), and \(\theta\) is reflex, find \(\sin\theta\) and \(\cos\theta\).</div>
 
         <figure>
-            <img src="images/image_499.png" alt="Unit circle showing reflex angle with point at (2,-3)">
+            <img src="images/image18.png" alt="Unit circle showing reflex angle with point at (2,-3)">
         </figure>
 
         <div class="answer">
@@ -540,10 +546,10 @@
 
         <div class="two-column">
             <figure>
-                <img src="images/image_502.png" alt="Four quadrant coordinates with (±2, ±3)">
+                <img src="images/image19.png" alt="Four quadrant coordinates with (±2, ±3)">
             </figure>
             <figure>
-                <img src="images/image_505.png" alt="Four quadrant coordinates with √13 fractions">
+                <img src="images/image_20.png" alt="Four quadrant coordinates with √13 fractions">
             </figure>
         </div>
     </div>
@@ -553,7 +559,7 @@
         <div class="exercise">If \(\cos\theta = \dfrac{2}{3}\), find \(\tan\theta\) and \(\sin\theta\).</div>
 
         <figure>
-            <img src="images/image_535.png" alt="Right triangle with adjacent 2, hypotenuse 3, angle θ">
+            <img src="images/image23.png" alt="Right triangle with adjacent 2, hypotenuse 3, angle θ">
         </figure>
 
         <div class="answer">
@@ -582,7 +588,7 @@
 
         <div class="two-column" style="margin-top: 30px;">
             <figure>
-                <img src="images/image_479.png" alt="Unit circle with all four quadrant coordinates">
+                <img src="images/image_24.png" alt="Unit circle with all four quadrant coordinates">
             </figure>
             <figure>
                 <img src="images/image_517.png" alt="Circle with triangle showing 2,3 sides">
@@ -595,7 +601,7 @@
         <div class="exercise">Find \(\tan\theta\) and \(\cos\theta\) when \(\sin\theta = \pm\dfrac{2}{3}\) for the various possible values of \(\theta\).</div>
 
         <figure>
-            <img src="images/image_454.png" alt="Unit circle with triangle showing sin = 2/3">
+            <img src="images/image25.png" alt="Unit circle with triangle showing sin = 2/3">
         </figure>
 
         <table style="margin-top: 20px;">
