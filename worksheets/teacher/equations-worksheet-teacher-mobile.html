@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Equations">
+    <meta name="theme-color" content="#2c3e50">
+    <title>Solving Circular Functions Equations - Teacher Version</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #3498db;
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            touch-action: pan-y;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Georgia, serif;
+            line-height: 1.7;
+            color: #333;
+            background: #fafafa;
+            -webkit-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* App container */
+        .app-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding-top: var(--safe-top);
+            padding-bottom: var(--safe-bottom);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+        .header-title {
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        .page-indicator {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+
+        /* Content area */
+        .content-wrapper {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+        .pages-container {
+            display: flex;
+            height: 100%;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .page {
+            min-width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 20px;
+            padding-bottom: 100px;
+        }
+
+        /* Typography */
+        .container { max-width: 100%; }
+        .title-page {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            color: white;
+            padding: 60px 30px;
+            text-align: center;
+            border-radius: 12px;
+            margin-top: 20px;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .title-page h1 {
+            font-size: 1.8em;
+            margin: 0 0 15px;
+            font-weight: 500;
+        }
+        .title-page .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .title-page .author {
+            margin-top: 30px;
+            opacity: 0.8;
+            font-size: 0.95em;
+        }
+        .title-page a { color: #87ceeb; }
+
+        h2.chapter {
+            font-size: 1.5em;
+            color: var(--primary);
+            margin: 30px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--accent);
+        }
+        h3.section, h2.section {
+            font-size: 1.25em;
+            color: var(--primary);
+            margin: 25px 0 12px;
+        }
+        p { margin: 12px 0; }
+        p.small { line-height: 1.2; margin: 5px 0; }
+
+        .intro {
+            color: #555;
+            background: #f5f5f5;
+            padding: 15px 18px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            margin: 18px 0;
+            font-size: 0.95em;
+        }
+        .key-concept {
+            background: linear-gradient(135deg, #e8f4f8, #d1e8f0);
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid var(--accent);
+        }
+        .exercise {
+            background: #fff9e6;
+            padding: 15px 18px;
+            border-radius: 8px;
+            margin: 18px 0;
+            border: 1px solid #f0e0a0;
+            border-left: 4px solid #d4a000;
+        }
+        .answer {
+            background: #e8f8e8;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #4a4;
+        }
+        .teacher-note {
+            background: #e8f0ff;
+            padding: 15px 18px;
+            border-radius: 8px;
+            margin: 18px 0;
+            border-left: 4px solid #0066cc;
+            color: #0066cc;
+        }
+        .math-block {
+            text-align: center;
+            margin: 18px 0;
+            padding: 12px;
+            font-size: 1em;
+            overflow-x: auto;
+        }
+
+        figure {
+            margin: 25px 0;
+            text-align: center;
+        }
+        figure img {
+            max-width: 70%;
+            max-height: 45vh;
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            pointer-events: none;
+            object-fit: contain;
+        }
+        @media (max-width: 600px) {
+            figure img {
+                max-width: 90%;
+                max-height: 40vh;
+            }
+        }
+
+        .two-column {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+        .two-column figure {
+            flex: 1;
+            margin: 0;
+        }
+        .two-column figure img {
+            max-width: 100%;
+            max-height: 35vh;
+        }
+
+        .answer-options {
+            margin: 15px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-around;
+        }
+        .answer-options span {
+            flex: 1;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .toc-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 12px 0;
+            padding: 10px 0;
+            border-bottom: 1px dotted #ccc;
+        }
+        .toc-item .topic { flex: 1; }
+        .toc-item .description {
+            text-align: right;
+            color: #666;
+            font-size: 0.9em;
+        }
+        .toc-highlight {
+            font-weight: bold;
+            background: #fff9e6;
+            border-radius: 5px;
+            padding: 10px;
+            border-bottom: none;
+        }
+
+        /* Bottom navigation */
+        .navigation {
+            background: linear-gradient(135deg, var(--primary), #1a252f);
+            padding: 15px 20px;
+            padding-bottom: calc(15px + var(--safe-bottom));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+        .nav-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            font-size: 1em;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            min-width: 100px;
+            transition: opacity 0.2s, transform 0.1s;
+        }
+        .nav-btn:active {
+            transform: scale(0.95);
+        }
+        .nav-btn:disabled {
+            background: #555;
+            opacity: 0.4;
+        }
+        .nav-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 50%;
+        }
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transition: all 0.3s;
+        }
+        .nav-dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+
+        /* Swipe indicator */
+        .swipe-hint {
+            position: fixed;
+            bottom: 50%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            font-size: 1.1em;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .swipe-hint.visible {
+            opacity: 1;
+        }
+
+        /* Page turn animation overlay */
+        .page-turn-indicator {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3em;
+            color: rgba(255,255,255,0.8);
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+            z-index: 500;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .page-turn-indicator.left { left: 20px; }
+        .page-turn-indicator.right { right: 20px; }
+        .page-turn-indicator.visible { opacity: 1; }
+
+        /* Table of contents button */
+        .toc-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Table of contents overlay */
+        .toc-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            padding: var(--safe-top) 20px var(--safe-bottom);
+        }
+        .toc-overlay.visible {
+            display: flex;
+        }
+        .toc-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        .toc-header h2 {
+            color: white;
+            font-size: 1.3em;
+            font-weight: 500;
+        }
+        .toc-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        .toc-list {
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 15px 0;
+        }
+        .toc-list .toc-item {
+            padding: 15px 10px;
+            color: white;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: background 0.2s;
+            display: block;
+        }
+        .toc-list .toc-item:active {
+            background: rgba(255,255,255,0.1);
+        }
+        .toc-list .toc-item.current {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* MathJax overflow handling */
+        mjx-container {
+            overflow-x: auto;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+<div class="app-container">
+    <!-- Header -->
+    <div class="header">
+        <button class="toc-btn" onclick="toggleTOC()">&#9776;</button>
+        <span class="header-title">Equations</span>
+        <span class="page-indicator"><span id="currentPageNum">1</span> / 21</span>
+    </div>
+
+    <!-- Content -->
+    <div class="content-wrapper">
+        <div class="pages-container" id="pagesContainer">
+
+            <!-- Page 1: Title page -->
+            <div class="page" data-page="1">
+                <div class="title-page">
+                    <h1>circular functions 2</h1>
+                    <div class="subtitle">solving circular functions equations</div>
+                    <div class="author">
+                        <p class="small">Dr Brian Brooks</p>
+                        <p class="small">Insight Mathematics</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page 2: Contents -->
+            <div class="page" data-page="2">
+                <h2 class="chapter">Circular functions</h2>
+
+                <div class="toc-item">
+                    <span class="topic">Defining the circular functions</span>
+                    <span class="description">sin, cos, tan and the unit circle</span>
+                </div>
+
+                <div class="toc-item toc-highlight">
+                    <span class="topic">Solving circular function equations</span>
+                    <span class="description">like \(\boldsymbol{\sin\theta = 0.4}\)</span>
+                </div>
+
+                <div class="toc-item">
+                    <span class="topic">Graphing the circular functions</span>
+                    <span class="description">graphs \(y = \cos x\) and the like</span>
+                </div>
+
+                <div class="toc-item">
+                    <span class="topic">Relationships between circular functions</span>
+                    <span class="description">\(\sin(90° - x) = \cos x\) and the like</span>
+                </div>
+
+                <div class="toc-item">
+                    <span class="topic">More circular functions</span>
+                    <span class="description">\(\sec x = \dfrac{1}{\cos x}\) and so on</span>
+                </div>
+
+                <div class="toc-item">
+                    <span class="topic">Circular functions of sums</span>
+                    <span class="description">\(\sin(A + B) = \sin A \cos B + \cos A \sin B\)</span>
+                </div>
+
+                <div class="toc-item">
+                    <span class="topic">Transforming and adding circular functions</span>
+                    <span class="description">\(\sin x + \cos x = \sqrt{2}\sin(x + 45°)\)</span>
+                </div>
+
+                <div class="toc-item">
+                    <span class="topic">Differentiating circular functions</span>
+                    <span class="description">radians, and tangents to graphs</span>
+                </div>
+
+                <div class="toc-item">
+                    <span class="topic">Integrating circular functions</span>
+                    <span class="description">areas</span>
+                </div>
+
+                <div class="toc-item">
+                    <span class="topic">Inverses of circular functions</span>
+                    <span class="description">\(\arcsin x\), \(\cos^{-1} x\), \(\cot^{-1} x\) and the like</span>
+                </div>
+            </div>
+
+            <!-- Page 3 -->
+            <div class="page" data-page="3">
+                <h2 class="chapter">Solving equations with circular functions</h2>
+                <div class="exercise">Use your calculator to find the angle \(\theta\).</div>
+                <figure>
+                    <img src="images/image0.png" alt="Right triangle with hypotenuse 1, opposite 0.4, angle θ">
+                </figure>
+            </div>
+
+            <!-- Page 4 -->
+            <div class="page" data-page="4">
+                <div class="exercise">Use your calculator to find the angle \(\theta\).</div>
+                <figure>
+                    <img src="images/image0.png" alt="Right triangle with hypotenuse 1, opposite 0.4, angle θ">
+                </figure>
+                <div class="answer">
+                    <p>\(\theta = \sin^{-1}0.4 = 23.58°\)</p>
+                </div>
+                <div class="intro">
+                    <p>There are an infinite number of solutions to an equation like \(\sin\theta = 0.4\), and this is only the smallest positive solution. This page is all about finding those other solutions.</p>
+                    <p>Finding them is a question of symmetry, and you can either use this unit circle to do your visualisation or you can use graphs. I am a great believer in the advantages of the unit circle over graphs, and that is the approach I take here.</p>
+                </div>
+            </div>
+
+            <!-- Page 5 -->
+            <div class="page" data-page="5">
+                <div class="exercise">
+                    <p>If the \(y\) coordinate of the blue point is \(0.4\), find the angle \(\theta\).</p>
+                    <p>What other point on the circle has the same \(y\) coordinate as the blue point?</p>
+                </div>
+                <figure>
+                    <img src="images/image1.png" alt="Unit circle with point at angle θ showing y-coordinate 0.4">
+                </figure>
+            </div>
+
+            <!-- Page 6 -->
+            <div class="page" data-page="6">
+                <figure>
+                    <img src="images/image2.png" alt="Unit circle showing θ = 23.58° and symmetric point">
+                </figure>
+                <div class="exercise">What other positive angle between \(0°\) and \(360°\) is a solution of \(\sin\theta = 0.4\)?</div>
+            </div>
+
+            <!-- Page 7 -->
+            <div class="page" data-page="7">
+                <div class="exercise">What other positive angle between \(0°\) and \(360°\) is a solution of \(\sin\theta = 0.4\)?</div>
+                <div class="answer">
+                    <p>Symmetry is the key (as it is with graphs), so</p>
+                    <p>\(180 - 23.58 = 156.42°\) is another solution of \(\sin\theta = 0.4\)</p>
+                </div>
+                <figure>
+                    <img src="images/image3.png" alt="Unit circle showing angles 156.42° and 23.58°">
+                </figure>
+                <div class="exercise">What negative angles between \(-360°\) and \(0°\) are solutions of \(\sin\theta = 0.4\)?</div>
+            </div>
+
+            <!-- Page 8 -->
+            <div class="page" data-page="8">
+                <div class="exercise">What negative angles between \(-360°\) and \(0°\) are solutions of \(\sin\theta = 0.4\)?</div>
+                <figure>
+                    <img src="images/image4.png" alt="Unit circle showing angles 156.42° and 23.58°">
+                </figure>
+            </div>
+
+            <!-- Page 9 -->
+            <div class="page" data-page="9">
+                <div class="exercise">What negative angles between \(-360°\) and \(0°\) are solutions of \(\sin\theta = 0.4\)?</div>
+                <div class="two-column">
+                    <figure>
+                        <img src="images/image5.png" alt="Unit circle showing angles">
+                    </figure>
+                    <figure>
+                        <img src="images/image6.png" alt="Unit circle showing angles">
+                    </figure>
+                </div>
+                <div class="answer">
+                    <p>\(-203.58°\) and \(-336.42°\) are also solutions of \(\sin\theta = 0.4\)</p>
+                </div>
+                <div class="exercise">Solve the equation \(\sin\theta = 0.4\)</div>
+            </div>
+
+            <!-- Page 10 -->
+            <div class="page" data-page="10">
+                <div class="exercise">Solve the equation \(\sin\theta = 0.4\)</div>
+                <figure>
+                    <img src="images/image2.png" alt="Unit circle showing angles">
+                </figure>
+                <div class="answer">
+                    <p>\(\theta = 23.58°, 156.42°, 383.58°, 516.42° \ldots\)</p>
+                    <p style="padding-left: 20px;">\(-203.58°, -336.42°, -563.58°, -696.42° \ldots\)</p>
+                    <p>The dots ... mean "keep adding or subtracting \(360°\) as often as you like."</p>
+                </div>
+            </div>
+
+            <!-- Page 11 -->
+            <div class="page" data-page="11">
+                <div class="exercise">If \(\alpha\) is any solution of the equation \(\sin\theta = k\), which of the following are also solutions of the equation:
+                <div class="answer-options">
+                    <span>\(180 - \alpha\)</span>
+                    <span>\(180 + \alpha\)</span>
+                    <span>\(-\alpha\)</span>
+                    <span>\(\alpha + 360\)</span>
+                    <span>\(\alpha - 360\)</span>
+                </div>
+                </div>
+            </div>
+
+            <!-- Page 12 -->
+            <div class="page" data-page="12">
+                <div class="exercise">If \(\alpha\) is any solution of the equation \(\sin\theta = k\), which of the following are also solutions of the equation:
+                <div class="answer-options">
+                    <span>\(180 - \alpha\)</span>
+                    <span>\(180 + \alpha\)</span>
+                    <span>\(-\alpha\)</span>
+                    <span>\(\alpha + 360\)</span>
+                    <span>\(\alpha - 360\)</span>
+                </div>
+                </div>
+                <div class="answer" style="margin-top: 30px;">
+                    <p>Play around with the various solutions we have already found, and you will soon see that only the following produce other solutions:</p>
+                    <div class="answer-options">
+                        <span>\(180 - \alpha\)</span>
+                        <span></span>
+                        <span></span>
+                        <span>\(\alpha + 360\)</span>
+                        <span>\(\alpha - 360\)</span>
+                    </div>
+                </div>
+                <div class="intro" style="margin-top: 30px;">
+                    <p>The point of asking this question is to get to some easy rules for solving sin, cos, and tan equations that don't even need the unit circle, let alone graphs.</p>
+                    <p>Here is the first easy rule to remember:</p>
+                    <ul>
+                        <li>for equations with sin, take your answer from \(180\).</li>
+                        <li>then keep adding or subtracting \(360°\) as often as you like to each of your solutions.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Page 13 -->
+            <div class="page" data-page="13">
+                <div class="exercise">
+                    <p>Next, we will adapt the previous method to solve the equation \(\cos\theta = -0.7\).</p>
+                    <p>First, find another point on the circle with the same \(x\) coordinate as the blue point.</p>
+                </div>
+                <figure>
+                    <img src="images/image7.png" alt="Unit circle with x = -0.7 line">
+                </figure>
+            </div>
+
+            <!-- Page 14 -->
+            <div class="page" data-page="14">
+                <figure>
+                    <img src="images/image26.png" alt="Unit circle with x = -0.7 line">
+                </figure>
+                <div class="exercise">Use this to find other solutions of \(\cos\theta = -0.7\)?</div>
+            </div>
+
+            <!-- Page 15 -->
+            <div class="page" data-page="15">
+                <div class="exercise">Use this to find other solutions of \(\cos\theta = -0.7\)?</div>
+                <div class="two-column">
+                    <figure>
+                        <img src="images/image8.png" alt="Unit circle">
+                    </figure>
+                    <figure>
+                        <img src="images/image9.png" alt="Unit circle">
+                    </figure>
+                </div>
+                <div class="answer">
+                    <p>\(\theta = 134.43°, 225.57°, 494.43°, 585.57° \ldots\)</p>
+                    <p style="padding-left: 20px;">\(-134.43°, -225.57°, -494.43°, -585.57° \ldots\)</p>
+                </div>
+            </div>
+
+            <!-- Page 16 -->
+            <div class="page" data-page="16">
+                <div class="exercise">If \(\alpha\) is any solution of the equation \(\cos\theta = k\), which of the following are also solutions of the equation:
+                <div class="answer-options">
+                    <span>\(180 - \alpha\)</span>
+                    <span>\(180 + \alpha\)</span>
+                    <span>\(-\alpha\)</span>
+                    <span>\(\alpha + 360\)</span>
+                    <span>\(\alpha - 360\)</span>
+                </div>
+                </div>
+            </div>
+
+            <!-- Page 17 -->
+            <div class="page" data-page="17">
+                <div class="exercise">If \(\alpha\) is any solution of the equation \(\cos\theta = k\), which of the following are also solutions of the equation:
+                <div class="answer-options">
+                    <span>\(180 - \alpha\)</span>
+                    <span>\(180 + \alpha\)</span>
+                    <span>\(-\alpha\)</span>
+                    <span>\(\alpha + 360\)</span>
+                    <span>\(\alpha - 360\)</span>
+                </div>
+                </div>
+                <div class="answer" style="margin-top: 30px;">
+                    <p>Play around with the various solutions we have already found, and you will soon see that only the following produce other solutions:</p>
+                    <div class="answer-options">
+                        <span></span>
+                        <span></span>
+                        <span>\(-\alpha\)</span>
+                        <span>\(\alpha + 360\)</span>
+                        <span>\(\alpha - 360\)</span>
+                    </div>
+                </div>
+                <div class="intro" style="margin-top: 30px;">
+                    <p>This is the second easy rule to remember:</p>
+                    <ul>
+                        <li>for cos, take the negative of your answer.</li>
+                        <li>then keep adding or subtracting \(360°\) as often as you like to each of your solutions.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Page 18 -->
+            <div class="page" data-page="18">
+                <div class="exercise">
+                    <p>Use this diagram and a calculator to solve the equation</p>
+                    <p style="text-align: center; font-size: 1.2em;">\(\tan\theta = 2\)</p>
+                </div>
+                <figure>
+                    <img src="images/image10.png" alt="Unit circle with line y = 2x">
+                </figure>
+            </div>
+
+            <!-- Page 19 -->
+            <div class="page" data-page="19">
+                <div class="exercise">
+                    <p>Use this diagram and a calculator to solve the equation</p>
+                    <p style="text-align: center; font-size: 1.2em;">\(\tan\theta = 2\)</p>
+                </div>
+                <div class="two-column">
+                    <figure>
+                        <img src="images/image11.png" alt="Unit circle">
+                    </figure>
+                    <figure>
+                        <img src="images/image12.png" alt="Unit circle">
+                    </figure>
+                </div>
+                <div class="answer">
+                    <p>\(\theta = 63.43°, 243.43°, 423.43°, 603.43° \ldots\)</p>
+                    <p style="padding-left: 20px;">\(-116.57°, -296.57°, -476.57°, -656.57° \ldots\)</p>
+                </div>
+            </div>
+
+            <!-- Page 20 -->
+            <div class="page" data-page="20">
+                <div class="exercise">If \(\alpha\) is any solution of the equation \(\tan\theta = k\), which of the following are also solutions of the equation:
+                <div class="answer-options">
+                    <span>\(180 - \alpha\)</span>
+                    <span>\(180 + \alpha\)</span>
+                    <span>\(-\alpha\)</span>
+                    <span>\(\alpha + 360\)</span>
+                    <span>\(\alpha - 360\)</span>
+                </div>
+                </div>
+            </div>
+
+            <!-- Page 21 -->
+            <div class="page" data-page="21">
+                <div class="exercise">If \(\alpha\) is any solution of the equation \(\tan\theta = k\), which of the following are also solutions of the equation:
+                <div class="answer-options">
+                    <span>\(180 - \alpha\)</span>
+                    <span>\(180 + \alpha\)</span>
+                    <span>\(-\alpha\)</span>
+                    <span>\(\alpha + 360\)</span>
+                    <span>\(\alpha - 360\)</span>
+                </div>
+                </div>
+                <div class="answer" style="margin-top: 30px;">
+                    <p>Play around with the various solutions we have already found, and you will soon see that only the following produce other solutions:</p>
+                    <div class="answer-options">
+                        <span></span>
+                        <span>\(180 + \alpha\)</span>
+                        <span></span>
+                        <span>\(\alpha + 360\)</span>
+                        <span>\(\alpha - 360\)</span>
+                    </div>
+                </div>
+                <div class="intro" style="margin-top: 30px;">
+                    <p>Here is the third easy rule to remember:</p>
+                    <ul>
+                        <li>for tan, add \(180\) to your answer.</li>
+                        <li>then keep adding or subtracting \(360°\) as often as you like to each of your solutions.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+        <div class="nav-dots" id="navDots"></div>
+        <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+    </div>
+</div>
+
+<!-- Swipe hint -->
+<div class="swipe-hint" id="swipeHint">Swipe to navigate</div>
+
+<!-- Page turn indicators -->
+<div class="page-turn-indicator left" id="leftIndicator">&#x276E;</div>
+<div class="page-turn-indicator right" id="rightIndicator">&#x276F;</div>
+
+<!-- Table of Contents Overlay -->
+<div class="toc-overlay" id="tocOverlay">
+    <div class="toc-header">
+        <h2>Contents</h2>
+        <button class="toc-close" onclick="toggleTOC()">&times;</button>
+    </div>
+    <div class="toc-list" id="tocList">
+        <div class="toc-item" onclick="goToPage(1)">1. Title</div>
+        <div class="toc-item" onclick="goToPage(2)">2. Contents</div>
+        <div class="toc-item" onclick="goToPage(3)">3. Finding angle θ</div>
+        <div class="toc-item" onclick="goToPage(4)">4. Introduction</div>
+        <div class="toc-item" onclick="goToPage(5)">5. Unit circle - sin</div>
+        <div class="toc-item" onclick="goToPage(6)">6. Symmetric point</div>
+        <div class="toc-item" onclick="goToPage(7)">7. Other solutions</div>
+        <div class="toc-item" onclick="goToPage(8)">8. Negative angles</div>
+        <div class="toc-item" onclick="goToPage(9)">9. All solutions</div>
+        <div class="toc-item" onclick="goToPage(10)">10. Complete solution</div>
+        <div class="toc-item" onclick="goToPage(11)">11. Sin rule question</div>
+        <div class="toc-item" onclick="goToPage(12)">12. Sin rule answer</div>
+        <div class="toc-item" onclick="goToPage(13)">13. Cos equation</div>
+        <div class="toc-item" onclick="goToPage(14)">14. Cos solutions</div>
+        <div class="toc-item" onclick="goToPage(15)">15. Cos answer</div>
+        <div class="toc-item" onclick="goToPage(16)">16. Cos rule question</div>
+        <div class="toc-item" onclick="goToPage(17)">17. Cos rule answer</div>
+        <div class="toc-item" onclick="goToPage(18)">18. Tan equation</div>
+        <div class="toc-item" onclick="goToPage(19)">19. Tan answer</div>
+        <div class="toc-item" onclick="goToPage(20)">20. Tan rule question</div>
+        <div class="toc-item" onclick="goToPage(21)">21. Tan rule answer</div>
+    </div>
+</div>
+
+<script>
+    let currentPage = 1;
+    const totalPages = 21;
+    const pagesContainer = document.getElementById('pagesContainer');
+
+    // Touch handling
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let isSwiping = false;
+    let startTranslate = 0;
+
+    // Create navigation dots
+    function createDots() {
+        const dotsContainer = document.getElementById('navDots');
+        const maxDots = 10;
+        const step = Math.ceil(totalPages / maxDots);
+
+        for (let i = 1; i <= totalPages; i += step) {
+            const dot = document.createElement('div');
+            dot.className = 'nav-dot';
+            dot.dataset.page = i;
+            dot.onclick = () => goToPage(i);
+            dotsContainer.appendChild(dot);
+        }
+        updateDots();
+    }
+
+    function updateDots() {
+        const dots = document.querySelectorAll('.nav-dot');
+        dots.forEach(dot => {
+            const page = parseInt(dot.dataset.page);
+            const step = Math.ceil(totalPages / 10);
+            if (currentPage >= page && currentPage < page + step) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function showPage(pageNum, animate = true) {
+        if (pageNum < 1 || pageNum > totalPages) return;
+
+        currentPage = pageNum;
+        const offset = -(pageNum - 1) * 100;
+
+        pagesContainer.style.transition = animate ? 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
+        pagesContainer.style.transform = `translateX(${offset}%)`;
+
+        // Update UI
+        document.getElementById('currentPageNum').textContent = currentPage;
+        document.getElementById('prevBtn').disabled = (currentPage === 1);
+        document.getElementById('nextBtn').disabled = (currentPage === totalPages);
+        updateDots();
+        updateTOC();
+
+        // Typeset MathJax for current and adjacent pages
+        if (window.MathJax && window.MathJax.typesetPromise) {
+            const pages = document.querySelectorAll('.page');
+            const pagesToTypeset = [];
+            for (let i = Math.max(0, pageNum - 2); i < Math.min(totalPages, pageNum + 2); i++) {
+                pagesToTypeset.push(pages[i]);
+            }
+            MathJax.typesetPromise(pagesToTypeset);
+        }
+
+        // Save progress
+        localStorage.setItem('equations_page', pageNum);
+    }
+
+    function changePage(delta) {
+        showPage(currentPage + delta);
+    }
+
+    function goToPage(pageNum) {
+        showPage(pageNum);
+        toggleTOC(false);
+    }
+
+    function toggleTOC(show) {
+        const overlay = document.getElementById('tocOverlay');
+        if (show === undefined) {
+            overlay.classList.toggle('visible');
+        } else if (show) {
+            overlay.classList.add('visible');
+        } else {
+            overlay.classList.remove('visible');
+        }
+    }
+
+    function updateTOC() {
+        const items = document.querySelectorAll('.toc-list .toc-item');
+        items.forEach((item, index) => {
+            if (index + 1 === currentPage) {
+                item.classList.add('current');
+            } else {
+                item.classList.remove('current');
+            }
+        });
+    }
+
+    // Touch event handlers
+    pagesContainer.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        isSwiping = false;
+        startTranslate = -(currentPage - 1) * 100;
+        pagesContainer.style.transition = 'none';
+    }, { passive: true });
+
+    pagesContainer.addEventListener('touchmove', function(e) {
+        const deltaX = e.touches[0].clientX - touchStartX;
+        const deltaY = e.touches[0].clientY - touchStartY;
+
+        // Determine if horizontal swipe
+        if (!isSwiping && Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+            isSwiping = true;
+        }
+
+        if (isSwiping) {
+            const containerWidth = pagesContainer.parentElement.offsetWidth;
+            const percentMove = (deltaX / containerWidth) * 100;
+            let newTranslate = startTranslate + percentMove;
+
+            // Add resistance at edges
+            if (newTranslate > 0) {
+                newTranslate = newTranslate * 0.3;
+            } else if (newTranslate < -(totalPages - 1) * 100) {
+                const overflow = newTranslate + (totalPages - 1) * 100;
+                newTranslate = -(totalPages - 1) * 100 + overflow * 0.3;
+            }
+
+            pagesContainer.style.transform = `translateX(${newTranslate}%)`;
+
+            // Show direction indicators
+            if (deltaX > 50 && currentPage > 1) {
+                document.getElementById('leftIndicator').classList.add('visible');
+            } else {
+                document.getElementById('leftIndicator').classList.remove('visible');
+            }
+            if (deltaX < -50 && currentPage < totalPages) {
+                document.getElementById('rightIndicator').classList.add('visible');
+            } else {
+                document.getElementById('rightIndicator').classList.remove('visible');
+            }
+        }
+    }, { passive: true });
+
+    pagesContainer.addEventListener('touchend', function(e) {
+        document.getElementById('leftIndicator').classList.remove('visible');
+        document.getElementById('rightIndicator').classList.remove('visible');
+
+        if (!isSwiping) return;
+
+        touchEndX = e.changedTouches[0].clientX;
+        const deltaX = touchEndX - touchStartX;
+        const threshold = 50;
+
+        if (deltaX > threshold && currentPage > 1) {
+            showPage(currentPage - 1);
+        } else if (deltaX < -threshold && currentPage < totalPages) {
+            showPage(currentPage + 1);
+        } else {
+            showPage(currentPage);
+        }
+    }, { passive: true });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+            e.preventDefault();
+            changePage(1);
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            changePage(-1);
+        } else if (e.key === 'Escape') {
+            toggleTOC(false);
+        }
+    });
+
+    // Show swipe hint for first-time users
+    function showSwipeHint() {
+        if (!localStorage.getItem('equations_hint_shown')) {
+            const hint = document.getElementById('swipeHint');
+            hint.classList.add('visible');
+            setTimeout(() => {
+                hint.classList.remove('visible');
+                localStorage.setItem('equations_hint_shown', 'true');
+            }, 2500);
+        }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        createDots();
+
+        // Restore last page
+        const savedPage = localStorage.getItem('equations_page');
+        if (savedPage) {
+            showPage(parseInt(savedPage), false);
+        } else {
+            showPage(1, false);
+        }
+
+        setTimeout(showSwipeHint, 1000);
+    });
+
+    // Disable context menu and copy protection
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p' || e.key === 'c')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+</script>
+
+</body>
+</html>
