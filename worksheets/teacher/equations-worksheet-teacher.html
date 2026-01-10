@@ -181,12 +181,11 @@
         .toc-item .description {
             text-align: right;
             color: #666;
-            font-style: italic;
+            font-style: normal;
         }
         .toc-highlight {
             font-weight: bold;
             background: #fff9e6;
-            padding: 10px;
             border-radius: 5px;
             border-bottom: none;
         }
@@ -218,7 +217,7 @@
 
         <div class="toc-item toc-highlight">
             <span class="topic">Solving circular function equations</span>
-            <span class="description">like \(\sin\theta = 0.4\)</span>
+            <span class="description">like \(\boldsymbol{\sin\theta = 0.4}\)</span>
         </div>
 
         <div class="toc-item">
@@ -283,42 +282,37 @@
         <div class="answer">
 
 
-            <p>\(\theta = \sin^{-1}(0.4) = 23.58°\)</p>
+            <p>\(\theta = \sin^{-1}0.4 = 23.58°\)</p>
         </div>
         <div class="intro">
-            <p>There are an infinite number of solutions to an equation like \(\sin\theta = 0.4\), and this is only the smallest positive solution. It's worth spending the time on this sheet, as this is the next step in the process of divorcing the circular functions from triangles.</p>
-            <p>Trigonometry means "measurement of three-sided shapes", but sin, cos, tan and so on are really functions rather than ratios of sides of "trigons", and their power is far greater than that needed for the measurement of three-sided shapes.</p>
-        </div>
-
-        <div class="intro">
-            <p>Finding other solutions is a question of symmetry, and you can either use this unit circle to do your visualisation or you can use graphs. I am a great believer in the advantages of the unit circle over graphs, and that is the approach I take here.</p>
-        </div>
-    </div>
-
-    <!-- Page 5 -->
-    <div class="page" id="page-5">
-                <div class="exercise"><p>What other point on the circle has the same \(y\) coordinate as the blue point?</p>
-                    <p>If the \(y\) coordinate of the blue point is 0.4, find the angle \(\theta\).</p>
-                </div>
-                
-        <figure>
-            <img src="images/image1.png" alt="Unit circle with point at angle θ showing y-coordinate 0.4">
-        </figure>
-        <div class="intro">
+            <p>There are an infinite number of solutions to an equation like \(\sin\theta = 0.4\), 
+                and this is only the smallest positive solution. This page is all about finding those
+                other solutions.</p>
+            <p>Finding them is a question of symmetry, and you can either use this unit circle to do your visualisation or you can use graphs. I am a great believer in the advantages of the unit circle over graphs, and that is the approach I take here.</p>
             <p>If you have always used graphs to find solutions to equations like this, I strongly recommend that you give this way a go. It has many advantages: for example, the unit circle is easy to sketch when solving a problem, and easy to visualise without sketching. It's easy to remember that the coordinates of a point are \((\cos\theta, \sin\theta)\) and that the gradient of the radius is \(\tan\theta\). On the other hand, for graphs, you have to remember quite a bit of detail about three different graphs, and then it's much harder to use symmetry to read off the solutions.</p>
             <p>You might find it takes some getting used to, but I don't think you will ever look back!</p>
         </div>
     </div>
 
+    <!-- Page 5 -->
+    <div class="page" id="page-5">
+                <div class="exercise">                    
+                    <p>If the \(y\) coordinate of the blue point is \(0.4\), find the angle \(\theta\).</p>
+                    <p>What other point on the circle has the same \(y\) coordinate as the blue point?</p>
+                </div>
+                
+        <figure>
+            <img src="images/image1.png" alt="Unit circle with point at angle θ showing y-coordinate 0.4">
+        </figure>
+    </div>
+
     <!-- Page 6 -->
     <div class="page" id="page-6">
-        <div class="exercise">What other positive angle between \(0°\) and \(360°\) is a solution of \(\sin\theta = 0.4\)?</div>
 
         <figure>
             <img src="images/image2.png" alt="Unit circle showing θ = 23.58° and symmetric point">
         </figure>
-
-        
+        <div class="exercise">What other positive angle between \(0°\) and \(360°\) is a solution of \(\sin\theta = 0.4\)?</div>
     </div>
 
     <!-- Page 7 -->
@@ -379,40 +373,54 @@
 
     <!-- Page 11 -->
     <div class="page" id="page-11">
-        <div class="exercise">If \(\alpha\) is any solution of the equation \(\sin\theta = k\), which of the following are also solutions of the equation:</div>
+        <div class="exercise">If \(\alpha\) is any solution of the equation \(\sin\theta = k\), 
+            which of the following are also solutions of the equation:
 
-        <div class="answer-options">
-            <p>\(180 - \alpha\)</p>
-            <p>\(180 + \alpha\)</p>
-            <p>\(-\alpha\)</p>
-            <p>\(\alpha + 360\)</p>
-            <p>\(\alpha - 360\)</p>
+        <div class="answer-options" style="display: flex; justify-content: space-between;">
+            <span>\(180 - \alpha\)</span>
+            <span>\(180 + \alpha\)</span>
+            <span>\(-\alpha\)</span>
+            <span>\(\alpha + 360\)</span>
+            <span>\(\alpha - 360\)</span>
+        </div>
         </div>
     </div>
 
     <!-- Page 12 -->
     <div class="page" id="page-12">
-        <div class="exercise">If \(\alpha\) is any solution of the equation \(\sin\theta = k\), which of the following are also solutions of the equation:</div>
-
-        <div class="answer-options">
-            <p>\(180 - \alpha\)</p>
-            <p>\(180 + \alpha\)</p>
-            <p>\(-\alpha\)</p>
-            <p>\(\alpha + 360\)</p>
-            <p>\(\alpha - 360\)</p>
+        <div class="exercise">If \(\alpha\) is any solution of 
+            the equation \(\sin\theta = k\), 
+            which of the following are also solutions of the equation:
+        <div class="answer-options" style="display: flex;">
+            <span style="flex: 1; text-align: center;">\(180 - \alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(180 + \alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(-\alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha + 360\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha - 360\)</span>
+        </div>
         </div>
 
+
+
         <div class="answer" style="margin-top: 40px;">
-            <p><span class="correct-answer">\(180 - \alpha\)</span></p>
-            <p><span class="correct-answer">\(\alpha + 360\)</span></p>
-            <p><span class="correct-answer">\(\alpha - 360\)</span></p>
+            <p>Play around with the various solutions we have
+                already found, and you will soon see that only
+                the following produce other solutions:
+            </p>
+            <div class="answer-options" style="display: flex;">
+            <span style="flex: 1; text-align: center;">\(180 - \alpha\)</span>
+            <span style="flex: 1; text-align: center;"></span>
+            <span style="flex: 1; text-align: center;"></span>
+            <span style="flex: 1; text-align: center;">\(\alpha + 360\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha - 360\)</span>
+        </div>
         </div>
 
         <div class="intro" style="margin-top: 40px;">
             <p>The point of asking this question is to get to some easy rules for solving sin, cos, and tan equations that don't even need the unit circle, let alone graphs.</p>
             <p>Here is the first easy rule to remember:</p>
             <ul>
-                <li>for sin, take your answer from \(180\).</li>
+                <li>for equations with sin, take your answer from \(180\).</li>
                 <li>then keep adding or subtracting \(360°\) as often as you like to each of your solutions.</li>
             </ul>
             <p>Later, we will see that \(180 + \alpha\) works for tan and \(-\alpha\) works for cos.</p>
@@ -422,41 +430,91 @@
 
     <!-- Page 13 -->
     <div class="page" id="page-13">
-        <div class="exercise">Adapt the previous method to solve the equation \(\cos\theta = -0.7\).</div>
+        <div class="exercise">
+            <p>Next, we will adapt the previous 
+            method to solve the equation \(\cos\theta = -0.7\).</p>
+            <p>First, find another point on the circle with the same
+                \(x\) coordinate as the blue point.</p>
+            </p>
+        </div>
 
         <figure>
             <img src="images/image7.png" alt="Unit circle with x = -0.7 line">
         </figure>
 
-        <div class="teacher-note">
-            <p>This may seem like a bit leap, but it's just the same method, using \(x\) instead of \(y\) coordinates. Give your students plenty of time to figure this out by working together, rather than pointing the way. If they have had that time, then your help later will make far more sense.</p>
-        </div>
+        
+    </div>
 
+    <!-- Page 14 -->
+    <div class="page" id="page-14">
+        <figure>
+            <img src="images/image26.png" alt="Unit circle with x = -0.7 line">
+        </figure>
+        <div class="exercise">Use this to find other solutions of \(\cos\theta = -0.7\)?</div>
+    </div>
+
+    <!-- Page 15 -->
+    <div class="page" id="page-15">
+        <div class="exercise">Use this to find other
+            solutions of \(\cos\theta = -0.7\)?</div>
+        <div style="display: flex; justify-content: space-between;">
+            <figure style="flex: 1; margin: 0 10px;">
+                <img src="images/image8.png" alt="Unit circle with x = -0.7 line" style="max-width: 100%;">
+            </figure>
+            <figure style="flex: 1; margin: 0 10px;">
+                <img src="images/image9.png" alt="Unit circle with x = -0.7 line" style="max-width: 100%;">
+            </figure>
+        </div>
         <div class="answer">
             <p>\(\theta = 134.43°, 225.57°, 494.43°, 585.57° \ldots\)</p>
             <p style="padding-left: 30px;">\(-134.43°, -225.57°, -494.43°, -585.57° \ldots\)</p>
         </div>
     </div>
 
-    <!-- Page 14 -->
-    <div class="page" id="page-14">
-        <div class="exercise">If \(\alpha\) is any solution of the equation \(\cos\theta = k\), which of the following are also solutions of the equation:</div>
+    <!-- Page 16 -->
+    <div class="page" id="page-16">
+        <div class="exercise">If \(\alpha\) is any solution of the equation \(\cos\theta = k\), which of the following are also solutions of the equation:
 
-        <div class="answer-options">
-            <p>\(180 - \alpha\)</p>
-            <p>\(180 + \alpha\)</p>
-            <p>\(-\alpha\)</p>
-            <p>\(\alpha + 360\)</p>
-            <p>\(\alpha - 360\)</p>
+        <div class="answer-options" style="display: flex;">
+            <span style="flex: 1; text-align: center;">\(180 - \alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(180 + \alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(-\alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha + 360\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha - 360\)</span>
         </div>
+        </div>
+    </div>
 
+    <!-- Page 17 -->
+    <div class="page" id="page-17">
+        <div class="exercise">If \(\alpha\) is any solution of the equation \(\cos\theta = k\), which of the following are also solutions of the equation:
+
+        <div class="answer-options" style="display: flex;">
+            <span style="flex: 1; text-align: center;">\(180 - \alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(180 + \alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(-\alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha + 360\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha - 360\)</span>
+        </div>
+        </div>
         <div class="answer" style="margin-top: 40px;">
-            <p><span class="correct-answer">\(-\alpha\)</span></p>
-            <p><span class="correct-answer">\(\alpha + 360\)</span></p>
-            <p><span class="correct-answer">\(\alpha - 360\)</span></p>
-        </div>
 
-        <div class="teacher-note" style="margin-top: 40px;">
+
+        <p>Play around with the various solutions we have
+                already found, and you will soon see that only
+                the following produce other solutions:
+            </p>
+            <div class="answer-options" style="display: flex;">
+            <span style="flex: 1; text-align: center;"></span>
+            <span style="flex: 1; text-align: center;"></span>
+            <span style="flex: 1; text-align: center;">\(- \alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha + 360\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha - 360\)</span>
+            </div>
+          </div>
+
+
+        <div class="intro" style="margin-top: 40px;">
             <p>This is the second easy rule to remember:</p>
             <ul>
                 <li>for cos, take the negative of your answer.</li>
@@ -465,8 +523,8 @@
         </div>
     </div>
 
-    <!-- Page 15 -->
-    <div class="page" id="page-15">
+    <!-- Page 18 -->
+    <div class="page" id="page-18">
         <div class="exercise">
             <p>Use this diagram and a calculator to solve the equation</p>
             <p style="text-align: center; font-size: 1.2em;">\(\tan\theta = 2\)</p>
@@ -475,6 +533,23 @@
         <figure>
             <img src="images/image10.png" alt="Unit circle with line y = 2x">
         </figure>
+    </div>
+
+    <!-- Page 19 -->
+    <div class="page" id="page-19">
+        <div class="exercise">
+            <p>Use this diagram and a calculator to solve the equation</p>
+            <p style="text-align: center; font-size: 1.2em;">\(\tan\theta = 2\)</p>
+        </div>
+
+        <div style="display: flex; justify-content: space-between;">
+            <figure style="flex: 1; margin: 0 10px;">
+                <img src="images/image11.png" alt="Unit circle with x = -0.7 line" style="max-width: 100%;">
+            </figure>
+            <figure style="flex: 1; margin: 0 10px;">
+                <img src="images/image12.png" alt="Unit circle with x = -0.7 line" style="max-width: 100%;">
+            </figure>
+        </div>
 
         <div class="answer">
             <p>\(\theta = 63.43°, 243.43°, 423.43°, 603.43° \ldots\)</p>
@@ -482,25 +557,52 @@
         </div>
     </div>
 
-    <!-- Page 16 -->
-    <div class="page" id="page-16">
-        <div class="exercise">If \(\alpha\) is any solution of the equation \(\tan\theta = k\), which of the following are also solutions of the equation:</div>
+    <!-- Page 20 -->
+    <div class="page" id="page-20">
+        <div class="exercise">If \(\alpha\) is any solution of the equation \(\tan\theta = k\), which of the 
+            following are also solutions of the equation:
 
-        <div class="answer-options">
-            <p>\(180 - \alpha\)</p>
-            <p>\(180 + \alpha\)</p>
-            <p>\(-\alpha\)</p>
-            <p>\(\alpha + 360\)</p>
-            <p>\(\alpha - 360\)</p>
+        <div class="answer-options" style="display: flex;">
+            <span style="flex: 1; text-align: center;">\(180 - \alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(180 + \alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(-\alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha + 360\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha - 360\)</span>
         </div>
+        </div>
+    </div>
 
+    <!-- Page 21 -->
+    <div class="page" id="page-21">
+        <div class="exercise">If \(\alpha\) is any solution of the equation \(\tan\theta = k\), which of the 
+            following are also solutions of the equation:
+
+        <div class="answer-options" style="display: flex;">
+            <span style="flex: 1; text-align: center;">\(180 - \alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(180 + \alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(-\alpha\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha + 360\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha - 360\)</span>
+        </div>
+        </div>
+        
         <div class="answer" style="margin-top: 40px;">
-            <p><span class="correct-answer">\(180 + \alpha\)</span></p>
-            <p><span class="correct-answer">\(\alpha + 360\)</span></p>
-            <p><span class="correct-answer">\(\alpha - 360\)</span></p>
-        </div>
 
-        <div class="teacher-note" style="margin-top: 40px;">
+
+        <p>Play around with the various solutions we have
+                already found, and you will soon see that only
+                the following produce other solutions:
+            </p>
+            <div class="answer-options" style="display: flex;">
+            <span style="flex: 1; text-align: center;"></span>
+            <span style="flex: 1; text-align: center;">\(180+ \alpha\)</span>
+
+            <span style="flex: 1; text-align: center;"></span>
+            <span style="flex: 1; text-align: center;">\(\alpha + 360\)</span>
+            <span style="flex: 1; text-align: center;">\(\alpha - 360\)</span>
+            </div>
+          </div>
+          <div class="intro" style="margin-top: 40px;">
             <p>Here is the third easy rule to remember:</p>
             <ul>
                 <li>for tan, add \(180\) to your answer.</li>
@@ -509,8 +611,9 @@
         </div>
     </div>
 
-    <!-- Page 17 -->
-    <div class="page" id="page-17">
+<!-- COMMENTED OUT PAGES 20-27
+    == Page 20 ==
+    <div class="page" id="page-20">
         <div class="key-concept">
             <p><strong>Now recap the three rules:</strong></p>
             <ul>
@@ -527,8 +630,8 @@
         </div>
     </div>
 
-    <!-- Page 18 -->
-    <div class="page" id="page-18">
+    == Page 21 ==
+    <div class="page" id="page-21">
         <div class="exercise">If \(\tan\theta = \dfrac{3}{2}\), find \(\sin\theta\) and \(\cos\theta\).</div>
 
         <figure>
@@ -546,8 +649,8 @@
         </div>
     </div>
 
-    <!-- Page 19 -->
-    <div class="page" id="page-19">
+    == Page 22 ==
+    <div class="page" id="page-22">
         <div class="exercise">If \(\tan\theta = \dfrac{3}{2}\), and \(\theta\) is reflex, find \(\sin\theta\) and \(\cos\theta\).</div>
 
         <figure>
@@ -565,8 +668,8 @@
         </div>
     </div>
 
-    <!-- Page 20 -->
-    <div class="page" id="page-20">
+    == Page 23 ==
+    <div class="page" id="page-23">
         <div class="exercise">If \(\tan\theta = -\dfrac{3}{2}\), and \(\theta\) is obtuse, find \(\sin\theta\) and \(\cos\theta\).</div>
 
         <figure>
@@ -580,8 +683,8 @@
         </div>
     </div>
 
-    <!-- Page 21 -->
-    <div class="page" id="page-21">
+    == Page 24 ==
+    <div class="page" id="page-24">
         <div class="exercise">If \(\tan\theta = -\dfrac{3}{2}\), and \(\theta\) is reflex, find \(\sin\theta\) and \(\cos\theta\).</div>
 
         <figure>
@@ -603,8 +706,8 @@
         </div>
     </div>
 
-    <!-- Page 22 -->
-    <div class="page" id="page-22">
+    == Page 25 ==
+    <div class="page" id="page-25">
         <div class="exercise">If \(\cos\theta = \dfrac{2}{3}\), find \(\tan\theta\) and \(\sin\theta\).</div>
 
         <figure>
@@ -616,8 +719,8 @@
         </div>
     </div>
 
-    <!-- Page 23 -->
-    <div class="page" id="page-23">
+    == Page 26 ==
+    <div class="page" id="page-26">
         <div class="exercise">Find \(\tan\theta\) and \(\sin\theta\) when:</div>
 
         <div class="exercise" style="margin-top: 30px;">\(\cos\theta = \dfrac{2}{3}\), and \(\theta\) is between \(270°\) and \(360°\)</div>
@@ -645,8 +748,8 @@
         </div>
     </div>
 
-    <!-- Page 24 -->
-    <div class="page" id="page-24">
+    == Page 27 ==
+    <div class="page" id="page-27">
         <div class="exercise">Find \(\tan\theta\) and \(\cos\theta\) when \(\sin\theta = \pm\dfrac{2}{3}\) for the various possible values of \(\theta\).</div>
 
         <figure>
@@ -680,13 +783,14 @@
             </tr>
         </table>
     </div>
+END COMMENTED OUT PAGES -->
 </div>
 
 <div class="navigation">
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="24" onchange="goToPage(this.value)"> of 24
+        Page <input type="number" id="pageInput" value="1" min="1" max="21" onchange="goToPage(this.value)"> of 21
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -694,7 +798,7 @@
 
 <script>
     let currentPage = 1;
-    const totalPages = 24;
+    const totalPages = 21;
 
     function showPage(pageNum) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
