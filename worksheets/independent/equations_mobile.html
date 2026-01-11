@@ -79,7 +79,7 @@
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
             padding: 20px;
-            padding-bottom: 100px;
+            padding-bottom: calc(20px + var(--safe-bottom));
         }
 
         /* Typography */
@@ -245,54 +245,38 @@
             border-bottom: none;
         }
 
-        /* Bottom navigation */
-        .navigation {
-            background: linear-gradient(135deg, var(--primary), #1a252f);
-            padding: 15px 20px;
-            padding-bottom: calc(15px + var(--safe-bottom));
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-shrink: 0;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-            z-index: 100;
-        }
-        .nav-btn {
-            background: var(--accent);
+        /* Side navigation arrows */
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(44, 62, 80, 0.7);
             color: white;
             border: none;
-            padding: 14px 24px;
-            font-size: 1em;
-            border-radius: 8px;
+            width: 44px;
+            height: 80px;
+            font-size: 1.5em;
             cursor: pointer;
-            font-family: inherit;
-            min-width: 100px;
-            transition: opacity 0.2s, transform 0.1s;
-        }
-        .nav-btn:active {
-            transform: scale(0.95);
-        }
-        .nav-btn:disabled {
-            background: #555;
-            opacity: 0.4;
-        }
-        .nav-dots {
+            z-index: 200;
             display: flex;
-            gap: 8px;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            max-width: 50%;
+            transition: background 0.2s, opacity 0.2s;
         }
-        .nav-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.3);
-            transition: all 0.3s;
+        .nav-arrow:active {
+            background: rgba(44, 62, 80, 0.9);
         }
-        .nav-dot.active {
-            background: white;
-            transform: scale(1.3);
+        .nav-arrow:disabled {
+            opacity: 0.2;
+            cursor: default;
+        }
+        .nav-arrow.left {
+            left: 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .nav-arrow.right {
+            right: 0;
+            border-radius: 8px 0 0 8px;
         }
 
         /* Swipe indicator */
@@ -782,13 +766,11 @@
         </div>
     </div>
 
-    <!-- Navigation -->
-    <div class="navigation">
-        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
-        <div class="nav-dots" id="navDots"></div>
-        <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
-    </div>
 </div>
+
+<!-- Side navigation arrows -->
+<button class="nav-arrow left" id="prevBtn" onclick="changePage(-1)">&#x276E;</button>
+<button class="nav-arrow right" id="nextBtn" onclick="changePage(1)">&#x276F;</button>
 
 <!-- Swipe hint -->
 <div class="swipe-hint" id="swipeHint">Swipe to navigate</div>
@@ -833,41 +815,10 @@
     const totalPages = 21;
     const pagesContainer = document.getElementById('pagesContainer');
 
-    // Touch handling
+    // Touch handling - simple swipe detection
     let touchStartX = 0;
     let touchStartY = 0;
-    let touchEndX = 0;
-    let isSwiping = false;
-    let startTranslate = 0;
-
-    // Create navigation dots
-    function createDots() {
-        const dotsContainer = document.getElementById('navDots');
-        const maxDots = 10;
-        const step = Math.ceil(totalPages / maxDots);
-
-        for (let i = 1; i <= totalPages; i += step) {
-            const dot = document.createElement('div');
-            dot.className = 'nav-dot';
-            dot.dataset.page = i;
-            dot.onclick = () => goToPage(i);
-            dotsContainer.appendChild(dot);
-        }
-        updateDots();
-    }
-
-    function updateDots() {
-        const dots = document.querySelectorAll('.nav-dot');
-        dots.forEach(dot => {
-            const page = parseInt(dot.dataset.page);
-            const step = Math.ceil(totalPages / 10);
-            if (currentPage >= page && currentPage < page + step) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
-        });
-    }
+    let touchStartTime = 0;
 
     function showPage(pageNum, animate = true) {
         if (pageNum < 1 || pageNum > totalPages) return;
@@ -882,7 +833,6 @@
         document.getElementById('currentPageNum').textContent = currentPage;
         document.getElementById('prevBtn').disabled = (currentPage === 1);
         document.getElementById('nextBtn').disabled = (currentPage === totalPages);
-        updateDots();
         updateTOC();
 
         // Typeset MathJax for current and adjacent pages
@@ -930,69 +880,30 @@
         });
     }
 
-    // Touch event handlers
-    pagesContainer.addEventListener('touchstart', function(e) {
+    // Touch event handlers - simple swipe detection on document
+    document.addEventListener('touchstart', function(e) {
         touchStartX = e.touches[0].clientX;
         touchStartY = e.touches[0].clientY;
-        isSwiping = false;
-        startTranslate = -(currentPage - 1) * 100;
-        pagesContainer.style.transition = 'none';
+        touchStartTime = Date.now();
     }, { passive: true });
 
-    pagesContainer.addEventListener('touchmove', function(e) {
-        const deltaX = e.touches[0].clientX - touchStartX;
-        const deltaY = e.touches[0].clientY - touchStartY;
-
-        // Determine if horizontal swipe
-        if (!isSwiping && Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
-            isSwiping = true;
-        }
-
-        if (isSwiping) {
-            const containerWidth = pagesContainer.parentElement.offsetWidth;
-            const percentMove = (deltaX / containerWidth) * 100;
-            let newTranslate = startTranslate + percentMove;
-
-            // Add resistance at edges
-            if (newTranslate > 0) {
-                newTranslate = newTranslate * 0.3;
-            } else if (newTranslate < -(totalPages - 1) * 100) {
-                const overflow = newTranslate + (totalPages - 1) * 100;
-                newTranslate = -(totalPages - 1) * 100 + overflow * 0.3;
-            }
-
-            pagesContainer.style.transform = `translateX(${newTranslate}%)`;
-
-            // Show direction indicators
-            if (deltaX > 50 && currentPage > 1) {
-                document.getElementById('leftIndicator').classList.add('visible');
-            } else {
-                document.getElementById('leftIndicator').classList.remove('visible');
-            }
-            if (deltaX < -50 && currentPage < totalPages) {
-                document.getElementById('rightIndicator').classList.add('visible');
-            } else {
-                document.getElementById('rightIndicator').classList.remove('visible');
-            }
-        }
-    }, { passive: true });
-
-    pagesContainer.addEventListener('touchend', function(e) {
-        document.getElementById('leftIndicator').classList.remove('visible');
-        document.getElementById('rightIndicator').classList.remove('visible');
-
-        if (!isSwiping) return;
-
-        touchEndX = e.changedTouches[0].clientX;
+    document.addEventListener('touchend', function(e) {
+        const touchEndX = e.changedTouches[0].clientX;
+        const touchEndY = e.changedTouches[0].clientY;
         const deltaX = touchEndX - touchStartX;
-        const threshold = 50;
+        const deltaY = touchEndY - touchStartY;
+        const deltaTime = Date.now() - touchStartTime;
 
-        if (deltaX > threshold && currentPage > 1) {
-            showPage(currentPage - 1);
-        } else if (deltaX < -threshold && currentPage < totalPages) {
-            showPage(currentPage + 1);
-        } else {
-            showPage(currentPage);
+        // Only register as swipe if:
+        // - Horizontal movement > 60px
+        // - Horizontal movement > vertical movement * 1.5 (clearly horizontal)
+        // - Swipe completed within 500ms
+        if (Math.abs(deltaX) > 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5 && deltaTime < 500) {
+            if (deltaX > 0 && currentPage > 1) {
+                showPage(currentPage - 1);
+            } else if (deltaX < 0 && currentPage < totalPages) {
+                showPage(currentPage + 1);
+            }
         }
     }, { passive: true });
 
@@ -1023,8 +934,6 @@
 
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
-        createDots();
-
         // Restore last page
         const savedPage = localStorage.getItem('equations_page');
         if (savedPage) {
