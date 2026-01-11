@@ -107,6 +107,7 @@
                 padding: 0;
                 overflow: hidden;
                 transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                height: 100%;
             }
         }
 
@@ -124,6 +125,7 @@
         @media (max-width: 768px) {
             .page {
                 display: block;
+                width: 100%;
                 min-width: 100%;
                 height: 100%;
                 overflow-y: auto;
@@ -131,9 +133,6 @@
                 padding: 20px;
                 padding-bottom: calc(20px + var(--safe-bottom));
                 flex-shrink: 0;
-            }
-            .page.active {
-                display: block;
             }
         }
 
