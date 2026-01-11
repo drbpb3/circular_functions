@@ -111,7 +111,7 @@
             }
         }
 
-        /* Pages */
+        /* Desktop pages - show/hide with active class */
         .page {
             display: none;
             min-height: 60vh;
@@ -121,17 +121,18 @@
             display: block;
         }
 
-        /* Mobile pages */
+        /* Mobile pages - all visible in flex row */
         @media (max-width: 768px) {
             .page {
-                display: block;
-                width: 100%;
-                min-width: 100%;
+                display: flex !important;
+                flex-direction: column;
+                width: 100vw;
+                min-width: 100vw;
                 height: 100%;
                 overflow-y: auto;
                 -webkit-overflow-scrolling: touch;
                 padding: 20px;
-                padding-bottom: calc(20px + var(--safe-bottom));
+                padding-bottom: calc(100px + var(--safe-bottom));
                 flex-shrink: 0;
             }
         }
