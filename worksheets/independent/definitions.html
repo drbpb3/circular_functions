@@ -35,10 +35,11 @@
         .key-concept { background: linear-gradient(135deg, #e8f4f8, #d1e8f0); padding: 20px 25px; border-radius: 8px; margin: 25px 0; border-left: 5px solid var(--accent); }
         .exercise { background: #fff9e6; padding: 15px 20px; border-radius: 5px; margin: 20px 0; border: 1px solid #f0e0a0; border-left: 4px solid #d4a000; }
         .answer { background: #e8f8e8; padding: 12px 20px; border-radius: 5px; margin: 15px 0; border-left: 4px solid #4a4; }
-        .teacher-note { background: #e8f0ff; padding: 15px 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #0066cc; color: #0066cc; }
+        .teacher-note { display: none; background: #e8f0ff; padding: 15px 20px; border-radius: 5px; margin: 20px 0; border-left: 4px solid #0066cc; color: #0066cc; }
         .math-block { text-align: center; margin: 20px 0; padding: 15px; font-size: 1.1em; }
         figure { margin: 30px 0; text-align: center; }
         figure img { max-width: 60%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        figure video { max-width: 72%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         footer { text-align: center; padding: 40px 20px; margin-top: 60px; background: var(--primary); color: white; }
         footer a { color: #87ceeb; }
 
@@ -198,6 +199,9 @@
             padding: 8px 20px;
             text-align: center;
         }
+        .math-table tr:nth-child(even) {
+            background: transparent;
+        }
 
         ul {
             margin: 15px 0;
@@ -238,6 +242,26 @@
 
             <p>These sheets are not in any way a complete course: they provide a context within which to develop insight and understanding by encouraging self-reliance and curiosity. They will not replace more traditional resources; in particular, you will need both routine exercises and more challenging sets of problems both for fluency and for creative problem-solving.</p>
         </div>
+        <div class="intro">Work on the question in yellow.
+                    When you are ready, navigate to the next page using arrow keys,
+                    swiping, or hovering near the bottom of the page.
+                    Compare your work to the answer in green.
+                    Don't go to the page too soon!
+                    Work your way through the whole document this way,
+                    but take your time!
+                </div>
+        <div class="intro">
+            <p>First, let's think about the name for this topic. It's 
+                usually called "trigonomery". However, "trigon" is Greek for a 
+                three-sided shape, and "metry" is to do with 
+                measurement, so "trigonometry" means "measurement 
+                of triangles". Here, however, we are trying to 
+                decouple the functions from the triangles, 
+                so the name "circular functions" makes far more sense. 
+                </p>
+        </div>
+
+        
     </div>
 
     <!-- Page 3: 60° and 30° -->
@@ -271,6 +295,18 @@
             <p>The temptation for the teacher will always be to help out, to give a hint, to answer a request for help, or to show them how to do it. Resisting this temptation takes considerable patience, sometimes in the face of strongly expressed frustration. But by giving your students the space to try out ideas, you allow them to gain greatly in terms of confidence in their own abilities, and to experience the satisfaction of having figured out something significant.</p>
 
             <p>It is tremendously important that they tackle this page, and indeed most if not all of this lesson, without a calculator. I want them to be comfortable with exact values (rather than decimal approximations) and with fractions that include square roots. It is also important to me that they understand why, for example, \(\dfrac{1}{\sqrt{3}} = \dfrac{\sqrt{3}}{3}\), and are able to use both forms later in calculations if necessary.</p>
+        </div>
+        <div class="exercise">
+            <p>Use this diagram to find sin, cos, and tan of \(60°\) and \(30°\).</p>
+        </div>
+        <div style="display: flex;
+                    justify-content: center;">
+        <figure style="max-width:72%">
+            <img src="definitions_images/image1.png" 
+            alt="Equilateral triangle"
+            margin: auto;
+            >
+        </figure>
         </div>
 
         <div class="answer">
@@ -315,6 +351,15 @@
 
     <!-- Page 6: Answer for 45° -->
     <div class="page" id="page-6">
+        <div class="exercise">
+            <p>Use this diagram to find sin, cos, and tan of \(45°\).</p>
+        </div>
+    <div style="display: flex;
+                    justify-content: center;">
+        <figure style="max-width:72%">
+            <img src="definitions_images/image2.png" alt="Right-angled triangle with 45° angle and base 1">
+        </figure>
+    </div>
         <div class="answer">
             <table class="math-table">
                 <tr>
@@ -346,13 +391,21 @@
     <!-- Page 8: 120° on unit circle -->
     <div class="page" id="page-8">
         <div class="exercise">
+            <p>What are the coordinates of the pink point and the gradient of the pink radius?</p>
+        </div>
+        <div style="display: flex;
+                    justify-content: center;">
+        <figure style="max-width:72%">
+            <img src="definitions_images/image4.png" alt="Right-angled triangle with 45° angle and base 1">
+        </figure>
+        
+    </div>
+        <div class="exercise">
             <p>What are the coordinates of the green point and the gradient of the green radius?</p>
             <p>Suggest values for sin, cos, and tan of \(120°\).</p>
         </div>
 
-        <figure>
-            <img src="definitions_images/image4.png" alt="Unit circle with 120° angle marked, showing green point and coordinates">
-        </figure>
+        
 
         <div class="teacher-note">
             <p>Again, resist the temptation to help by pointing out the symmetry and what this might mean for the coordinates and gradient. They can do this without you, and will benefit far more from doing so.</p>
@@ -369,7 +422,16 @@
 
             <p>Again, following your class discussion of this page, your students should have a diagram that has both the exact values of the coordinates and gradient, and the values in terms of cos, sin, and tan.</p>
         </div>
-
+        <div class="exercise">
+            <p>What are the coordinates of the green point and the gradient of the green radius?</p>
+            <p>Suggest values for sin, cos, and tan of \(120°\).</p>
+        </div>
+        <div style="display: flex;
+                    justify-content: center;">
+        <figure style="max-width:74%">
+            <img src="definitions_images/image4a.png" alt="Right-angled triangle with 45° angle and base 1">
+        </figure>
+        </div>
         <div class="answer">
             <table class="math-table">
                 <tr>
@@ -394,10 +456,23 @@
 
     <!-- Page 11: Answer for 240° and 300° -->
     <div class="page" id="page-11">
+        <div class="exercise">
+            <p>Suggest values for sin, cos, and tan of \(240°\) and \(300°\).</p>
+        </div>
+
+        <div style="display: flex;
+                    justify-content: center;">
+        
+        </div>
+        <figure>
+            <img src="definitions_images/image13a.png" alt="Right-angled triangle with 45° angle and base 1">
+        </figure>
         <div class="answer">
             <p>\((\cos 240°, \sin 240°) = \left(-\dfrac{1}{2}, -\dfrac{\sqrt{3}}{2}\right)\), gradient \(= \tan 240° = \sqrt{3}\)</p>
             <p>\((\cos 300°, \sin 300°) = \left(\dfrac{1}{2}, -\dfrac{\sqrt{3}}{2}\right)\), gradient \(= \tan 300° = -\sqrt{3}\)</p>
         </div>
+
+        
 
         <div class="teacher-note">
             <p>Now we can build on this to extend our definitions to angles between \(0°\) and \(360°\), but your students have to figure out each step: what are the coordinates and gradients, and what are the angles, all using symmetry? This way, they become more familiar with the unit circle diagram and with its value for defining trigonometric functions.</p>
@@ -412,9 +487,7 @@
             <p>What are sin, cos, tan of \(420°\), \(780°\), \(1140°\), \(1500°\)?</p>
         </div>
 
-        <figure>
-            <img src="definitions_images/image6.png" alt="Unit circle with spiral showing multiple rotations">
-        </figure>
+        
 
         <div class="teacher-note">
             <p>What about angles bigger than \(360°\) and negative angles?</p>
@@ -425,6 +498,9 @@
 
             <p>Each of these "angles" has the same sin, cos, and tan as \(60°\).</p>
         </div>
+        <figure>
+                    <video autoplay loop muted playsinline><source src="definitions_images/circular1.mp4" alt="Diagram"></video>
+                </figure>
     </div>
 
     <!-- Page 13: Negative angles -60° -->
@@ -464,7 +540,9 @@
         <div class="exercise">
             <p>Suggest values for sin, cos, tan of \(-120°\), \(-240°\), \(-300°\).</p>
         </div>
-
+                <figure>
+                    <video autoplay loop muted playsinline><source src="definitions_images/circular2.mp4" alt="Diagram"></video>
+                </figure>
         <figure>
             <img src="definitions_images/image8.png" alt="Unit circle showing negative angles -60°, -120°, -240°, -300°">
         </figure>
