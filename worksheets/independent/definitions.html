@@ -302,7 +302,7 @@
         <div style="display: flex;
                     justify-content: center;">
         <figure style="max-width:72%">
-            <img src="definitions_images/image1.png" 
+            <img src="definitions_images/image14.png" 
             alt="Equilateral triangle"
             margin: auto;
             >
@@ -357,7 +357,7 @@
     <div style="display: flex;
                     justify-content: center;">
         <figure style="max-width:72%">
-            <img src="definitions_images/image2.png" alt="Right-angled triangle with 45° angle and base 1">
+            <img src="definitions_images/image15.png" alt="Right-angled triangle with 45° angle and base 1">
         </figure>
     </div>
         <div class="answer">
@@ -393,13 +393,14 @@
         <div class="exercise">
             <p>What are the coordinates of the pink point and the gradient of the pink radius?</p>
         </div>
-        <div style="display: flex;
-                    justify-content: center;">
-        <figure style="max-width:72%">
-            <img src="definitions_images/image4.png" alt="Right-angled triangle with 45° angle and base 1">
-        </figure>
-        
-    </div>
+        <div style="display: flex; justify-content: center; align-items: center; margin: 0 -40px;">
+            <figure style="margin: 0; flex: 1; margin-right: -80px;">
+                <img src="definitions_images/image16.png" alt="Unit circle with 60° angle marked and pink point on circle" style="width: 100%;">
+            </figure>
+            <figure style="margin: 0; flex: 1; margin-left: -80px;">
+                <img src="definitions_images/image4.png" alt="Right-angled triangle with 45° angle and base 1" style="width: 100%;">
+            </figure>
+        </div>
         <div class="exercise">
             <p>What are the coordinates of the green point and the gradient of the green radius?</p>
             <p>Suggest values for sin, cos, and tan of \(120°\).</p>
@@ -433,6 +434,10 @@
         </figure>
         </div>
         <div class="answer">
+            <p>For the pink angle, cos is the \(x\) coordinate, sin is the 
+                \(y\) coordinate, and tan is the gradient. So the sensible
+                option is to use the same definitions for the green angle to get:
+            </p>
             <table class="math-table">
                 <tr>
                     <td>\(\cos 120° = -\dfrac{1}{2}\)</td>
@@ -485,6 +490,7 @@
     <div class="page" id="page-12">
         <div class="exercise">
             <p>What are sin, cos, tan of \(420°\), \(780°\), \(1140°\), \(1500°\)?</p>
+            <p>This video should help.</p>
         </div>
 
         
@@ -503,8 +509,23 @@
                 </figure>
     </div>
 
-    <!-- Page 13: Negative angles -60° -->
+
+    <!-- Page 13: New page -->
     <div class="page" id="page-13">
+        <div class="exercise">
+            <p>What are sin, cos, tan of \(420°\), \(780°\), \(1140°\), \(1500°\)?</p>
+        </div>
+        <figure>
+                    <video autoplay loop muted playsinline><source src="definitions_images/circular1.mp4" alt="Diagram"></video>
+        </figure>
+        <div class="answer">
+            <p>They are all \(60^\circ+\) multiples of \(360^\circ\), so sin, cos, and tan are all 
+                the same as sin, cos, tan of \(60°\).</p>
+        </div>
+    </div>
+
+    <!-- Page 14: Negative angles -60° -->
+    <div class="page" id="page-14">
         <div class="exercise">
             <p>Suggest values for sin, cos, tan of \(-60°\).</p>
         </div>
@@ -514,16 +535,34 @@
         </figure>
     </div>
 
-    <!-- Page 14: Answer for -60° -->
-    <div class="page" id="page-14">
-        <div class="answer">
-            <table class="math-table">
-                <tr>
-                    <td>\(\cos(-60°) = \dfrac{1}{2}\)</td>
-                    <td>\(\sin(-60°) = -\dfrac{\sqrt{3}}{2}\)</td>
-                    <td>\(\tan(-60°) = -\sqrt{3}\)</td>
-                </tr>
-            </table>
+    <!-- Page 15: Answer for -60° -->
+    <div class="page" id="page-15">
+        <div class="exercise">
+            <p>Suggest values for sin, cos, tan of \(-60°\).</p>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <figure style="margin: 0; flex-shrink: 0;">
+                <img src="definitions_images/image17.png" alt="Unit circle showing -60° angle measured clockwise" style="max-width: 250px;">
+            </figure>
+            <div class="answer" style="flex: 1;">
+                <p>Angles are measured from the positive \(x\) axis in the anticlockwise direction,
+                    so it makes sense to count angles measured in the clockwise direction as positive.
+                    From the geometrical point of view, the angle size is still positive,
+                    but from the functional point of view, the angle counts as a negative.
+                </p>
+                <table class="math-table">
+                    <tr>
+                        <td>\(\cos(-60°) = \dfrac{1}{2}\)</td>
+                        <td>\(\sin(-60°) = -\dfrac{\sqrt{3}}{2}\)</td>
+                        <td>\(\tan(-60°) = -\sqrt{3}\)</td>
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+        <div class="exercise">
+            <p>Suggest values for sin, cos, tan of \(-120°\), \(-240°\), \(-300°\).</p>
         </div>
 
         <div class="teacher-note">
@@ -535,22 +574,24 @@
         </div>
     </div>
 
-    <!-- Page 15: -120°, -240°, -300° -->
-    <div class="page" id="page-15">
+    <!-- Page 16: -120°, -240°, -300° -->
+    <div class="page" id="page-16">
         <div class="exercise">
             <p>Suggest values for sin, cos, tan of \(-120°\), \(-240°\), \(-300°\).</p>
         </div>
-                <figure>
-                    <video autoplay loop muted playsinline><source src="definitions_images/circular2.mp4" alt="Diagram"></video>
-                </figure>
+                
         <figure>
-            <img src="definitions_images/image8.png" alt="Unit circle showing negative angles -60°, -120°, -240°, -300°">
+            <img src="definitions_images/image17.png" alt="Unit circle showing negative angles -60°, -120°, -240°, -300°">
         </figure>
     </div>
 
-    <!-- Page 16: Answer for negative angles -->
-    <div class="page" id="page-16">
+    <!-- Page 17: Answer for negative angles -->
+    <div class="page" id="page-17">
+        <figure>
+            <img style="max-width: 40%" src="definitions_images/image18.png" alt="Unit circle showing negative angles -60°, -120°, -240°, -300°">
+        </figure>
         <div class="answer">
+        
             <table class="math-table">
                 <tr>
                     <td>\(\cos(-60°) = \dfrac{1}{2}\)</td>
@@ -576,23 +617,21 @@
         </div>
     </div>
 
-    <!-- Page 17: Large negative angles -->
-    <div class="page" id="page-17">
+    <!-- Page 18: Large negative angles -->
+    <div class="page" id="page-18">
         <div class="exercise">
             <p>Suggest values for sin, cos, tan of \(-660°\), \(-1020°\), \(-1380°\), \(-1740°\).</p>
         </div>
-
         <figure>
-            <img src="definitions_images/image9.png" alt="Unit circle with spiral showing multiple clockwise rotations">
+            <video autoplay loop muted playsinline><source src="definitions_images/circular2.mp4" alt="Diagram"></video>
         </figure>
-
         <div class="answer">
             <p>Each of these "angles" has the same sin, cos, and tan as \(-60°\).</p>
         </div>
     </div>
 
-    <!-- Page 18: Definition diagrams -->
-    <div class="page" id="page-18">
+    <!-- Page 19: Definition diagrams -->
+    <div class="page" id="page-19">
         <div class="key-concept">
             <p>These diagrams essentially form definitions of sin, cos, and tan of any number (angle).</p>
             <p>There are other ways to define these functions using, for example, graphs or power series, but this one makes intuitive sense and forms a reliable foundation for what is to come.</p>
@@ -608,8 +647,8 @@
         </div>
     </div>
 
-    <!-- Page 19: Complete the diagram exercise -->
-    <div class="page" id="page-19">
+    <!-- Page 20: Complete the diagram exercise -->
+    <div class="page" id="page-20">
         <div class="exercise">
             <p>Complete this diagram.</p>
         </div>
@@ -624,44 +663,12 @@
         </div>
     </div>
 
-    <!-- Page 20: Complete diagram answer -->
-    <div class="page" id="page-20">
-        <div class="answer">
-            <table style="width: 100%; font-size: 0.85em;">
-                <tr>
-                    <td>\(0°\): \((1, 0)\), tan \(= 0\)</td>
-                    <td>\(90°\): \((0, 1)\), tan undefined</td>
-                </tr>
-                <tr>
-                    <td>\(180°\): \((-1, 0)\), tan \(= 0\)</td>
-                    <td>\(270°\): \((0, -1)\), tan undefined</td>
-                </tr>
-                <tr>
-                    <td>\(30°\): \(\left(\dfrac{\sqrt{3}}{2}, \dfrac{1}{2}\right)\), tan \(= \dfrac{\sqrt{3}}{3}\)</td>
-                    <td>\(60°\): \(\left(\dfrac{1}{2}, \dfrac{\sqrt{3}}{2}\right)\), tan \(= \sqrt{3}\)</td>
-                </tr>
-                <tr>
-                    <td>\(120°\): \(\left(-\dfrac{1}{2}, \dfrac{\sqrt{3}}{2}\right)\), tan \(= -\sqrt{3}\)</td>
-                    <td>\(150°\): \(\left(-\dfrac{\sqrt{3}}{2}, \dfrac{1}{2}\right)\), tan \(= -\dfrac{\sqrt{3}}{3}\)</td>
-                </tr>
-                <tr>
-                    <td>\(210°\): \(\left(-\dfrac{\sqrt{3}}{2}, -\dfrac{1}{2}\right)\), tan \(= \dfrac{\sqrt{3}}{3}\)</td>
-                    <td>\(240°\): \(\left(-\dfrac{1}{2}, -\dfrac{\sqrt{3}}{2}\right)\), tan \(= \sqrt{3}\)</td>
-                </tr>
-                <tr>
-                    <td>\(300°\): \(\left(\dfrac{1}{2}, -\dfrac{\sqrt{3}}{2}\right)\), tan \(= -\sqrt{3}\)</td>
-                    <td>\(330°\): \(\left(\dfrac{\sqrt{3}}{2}, -\dfrac{1}{2}\right)\), tan \(= -\dfrac{\sqrt{3}}{3}\)</td>
-                </tr>
-                <tr>
-                    <td>\(45°\): \(\left(\dfrac{\sqrt{2}}{2}, \dfrac{\sqrt{2}}{2}\right)\), tan \(= 1\)</td>
-                    <td>\(135°\): \(\left(-\dfrac{\sqrt{2}}{2}, \dfrac{\sqrt{2}}{2}\right)\), tan \(= -1\)</td>
-                </tr>
-                <tr>
-                    <td>\(225°\): \(\left(-\dfrac{\sqrt{2}}{2}, -\dfrac{\sqrt{2}}{2}\right)\), tan \(= 1\)</td>
-                    <td>\(315°\): \(\left(\dfrac{\sqrt{2}}{2}, -\dfrac{\sqrt{2}}{2}\right)\), tan \(= -1\)</td>
-                </tr>
-            </table>
-        </div>
+    <!-- Page 21: Complete diagram answer -->
+    <div class="page" id="page-21">
+        <figure>
+            <img style="max-width: 80%"; src="definitions_images/image19.png" alt="Unit circle showing negative angles -60°, -120°, -240°, -300°">
+        </figure>
+        
     </div>
 
 </div>
@@ -670,7 +677,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="20" onchange="goToPage(this.value)"> of 20
+        Page <input type="number" id="pageInput" value="1" min="1" max="21" onchange="goToPage(this.value)"> of 21
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -678,7 +685,7 @@
 
 <script>
     let currentPage = 1;
-    const totalPages = 20;
+    const totalPages = 21;
 
     function showPage(pageNum) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
