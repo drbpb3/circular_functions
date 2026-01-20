@@ -641,9 +641,44 @@
             color: white;
         }
         footer a { color: #87ceeb; }
+
+        /* Back button */
+        .back-nav {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+        }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(44, 62, 80, 0.85);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.2em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .back-btn:hover {
+            background: rgba(44, 62, 80, 1);
+            transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+            .back-nav {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+    <span class="back-btn">←</span>
+</a>
 
 <div class="app-container">
     <!-- Header - mobile only -->
