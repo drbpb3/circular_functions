@@ -706,6 +706,12 @@
                 MathJax.typesetPromise([page]);
             }
 
+            // Reset any videos on this page to the beginning
+            const videos = page.querySelectorAll('video');
+            videos.forEach(video => {
+                video.currentTime = 0;
+            });
+
             window.scrollTo(0, 0);
         }
     }
