@@ -505,7 +505,7 @@
             <p>Each of these "angles" has the same sin, cos, and tan as \(60°\).</p>
         </div>
         <figure>
-                    <video autoplay loop muted playsinline><source src="definitions_images/circular1.mp4" alt="Diagram"></video>
+                    <video id="video-page12" autoplay loop muted playsinline><source src="definitions_images/circular1.mp4" alt="Diagram"></video>
                 </figure>
     </div>
 
@@ -516,10 +516,10 @@
             <p>What are sin, cos, tan of \(420°\), \(780°\), \(1140°\), \(1500°\)?</p>
         </div>
         <figure>
-                    <video autoplay loop muted playsinline><source src="definitions_images/circular1.mp4" alt="Diagram"></video>
+                    <video id="video-page13" autoplay loop muted playsinline><source src="definitions_images/circular1.mp4" alt="Diagram"></video>
         </figure>
         <div class="answer">
-            <p>They are all \(60^\circ+\) multiples of \(360^\circ\), so sin, cos, and tan are all 
+            <p>They are all \(60^\circ+\) multiples of \(360^\circ\), so sin, cos, and tan are all
                 the same as sin, cos, tan of \(60°\).</p>
         </div>
     </div>
@@ -654,7 +654,7 @@
         </div>
 
         <figure>
-            <img src="definitions_images/image12.png" alt="Unit circle with 16 points marked, partially labelled with angles and coordinates">
+            <img style="max-width: 80%"; src="definitions_images/image12.png" alt="Unit circle with 16 points marked, partially labelled with angles and coordinates">
         </figure>
 
         <div class="teacher-note">
@@ -706,15 +706,41 @@
                 MathJax.typesetPromise([page]);
             }
 
-            // Reset any videos on this page to the beginning
+            // Reset any videos on this page to the beginning (or custom start time)
             const videos = page.querySelectorAll('video');
             videos.forEach(video => {
-                video.currentTime = 0;
+                if (video.id === 'video-page12' || video.id === 'video-page13') {
+                    video.currentTime = 11;
+                } else {
+                    video.currentTime = 0;
+                }
             });
 
             window.scrollTo(0, 0);
         }
     }
+
+    // Handle video-page12 and video-page13 looping back to 11s instead of 0
+    document.addEventListener('DOMContentLoaded', function() {
+        const videoPage12 = document.getElementById('video-page12');
+        const videoPage13 = document.getElementById('video-page13');
+
+        if (videoPage12) {
+            videoPage12.addEventListener('timeupdate', function() {
+                if (this.currentTime < 11) {
+                    this.currentTime = 11;
+                }
+            });
+        }
+
+        if (videoPage13) {
+            videoPage13.addEventListener('timeupdate', function() {
+                if (this.currentTime < 11) {
+                    this.currentTime = 11;
+                }
+            });
+        }
+    });
 
     function changePage(delta) {
         const newPage = currentPage + delta;
