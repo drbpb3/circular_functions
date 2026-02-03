@@ -12,6 +12,9 @@ function showPage(pageNum) {
         page.classList.add('active');
         currentPage = pageNum;
 
+        // Save current page to localStorage
+        localStorage.setItem('currentPage', currentPage);
+
         document.getElementById('pageInput').value = currentPage;
 
         document.getElementById('firstBtn').disabled = (currentPage === 1);
@@ -74,8 +77,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initialize first page
-    showPage(1);
+    // Initialize page from localStorage or default to page 1
+    const savedPage = localStorage.getItem('currentPage');
+    const startPage = savedPage ? parseInt(savedPage) : 1;
+    showPage(startPage);
 });
 
 function changePage(delta) {

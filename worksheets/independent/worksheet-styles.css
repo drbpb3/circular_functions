@@ -397,3 +397,16 @@ li {
     background: rgba(44, 62, 80, 1);
     transform: scale(1.05);
 }
+
+/* Matrix row styling for inverse functions worksheet */
+.matrix-row {
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.matrix-row.exercise,
+.matrix-row.answer {
+    padding: 15px 20px;
+}
