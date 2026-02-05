@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrals of Circular Functions - Teacher Version</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+    <span class="back-btn">←</span>
+</a>
+
+<div class="container">
+    <!-- Page 1: Title Page -->
+    <div class="page" id="page-1">
+        <div class="title-page">
+            <h1>integrals of circular functions</h1>
+            <div class="author">
+                <p class="small">Dr Brian Brooks</p>
+                <p class="small">Insight Mathematics</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: y = sin x -->
+    <div class="page" id="page-2">
+        <h2 class="chapter"><center>Integrals of circular functions</center></h2>
+
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y=\sin x\).</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image1.png" alt="Graph of y = sin x showing shaded region from 0 to π">
+        </figure>
+
+        <div class="intro">Work on the question in yellow.
+            When you are ready, navigate to the next page using arrow keys,
+            swiping, or hovering near the bottom of the page.
+            Compare your work to the answer in green.
+            Don't go to the page too soon!
+            Work your way through the whole document this way,
+            but take your time!
+        </div>
+    </div>
+
+    <!-- Page 3: Answer for y = sin x -->
+    <div class="page" id="page-3">
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y=\sin x\).</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image1.png" alt="Graph of y = sin x showing shaded region from 0 to π">
+        </figure>
+        <div class="teacher-note">
+            <p>Please don't let your students use their calculators for any steps such as</p>
+            <ul>
+                <li>putting the integral into the calculator</li>
+                <li>finding \(\cos 0\) or \(\cos \pi\)</li>
+            </ul>
+
+            <p>Of course they may be able to do so in an exam, but if they do so now, they will learn nothing.</p>
+        </div>
+
+        <div class="answer">
+            <p>Since the differential of cos is \(−\sin\), and since integration is the opposite of differentiation, it must be the case that the integral of sin is \(−\cos\).</p>
+            \[\begin{aligned}
+                \text{area} &= \int_0^\pi \sin x \, \mathrm{d}x\\[12pt]
+                &= \Big[- \cos x\Big]_0^\pi\\[12pt]
+                &= - \cos \pi - (-\cos 0)\\[12pt]
+                &= 1 + 1 = 2
+                \end{aligned}\]
+        </div>
+    </div>
+
+    <!-- Page 4: y = cos x -->
+    <div class="page" id="page-4">
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y=\cos x\).</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image2.png" alt="Graph of y = cos x showing shaded region from -π/2 to π/2">
+        </figure>
+    </div>
+
+    <!-- Page 5: Answer for y = cos x -->
+    <div class="page" id="page-5">
+        <div class="teacher-note">
+            <p>No calculators!</p>
+        </div>
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y=\cos x\).</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image2.png" alt="Graph of y = cos x showing shaded region from -π/2 to π/2">
+        </figure>
+        <div class="answer">
+            \[\begin{aligned}
+                \text{area} &= \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \cos x \, \mathrm{d}x\\[12pt]
+                &= \Big[\sin x\Big]_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\\[12pt]
+                &= \sin \frac{\pi}{2} - \sin\left(-\frac{\pi}{2}\right)\\[12pt]
+                &= 1 + 1 = 2
+                \end{aligned}\]
+        </div>
+    </div>
+
+    <!-- Page 6: Differentiation of ln|cos x| -->
+    <div class="page" id="page-6">
+        <div class="exercise">
+            <p>Before we try to integrate \(\tan x\), find \(\dfrac{\mathrm{d}}{\mathrm{d}x} \ln|\cos x|\)</p>
+        </div>
+
+        <div class="teacher-note">
+            <p>Integrating \(\tan x\) needs integration by substitution, with which your students may not yet be familiar. However, they will surely know the chain rule, so if necessary, this page will provide a fix for this.</p>
+        </div>
+    </div>
+
+    <!-- Page 7: Answer for ln|cos x| -->
+    <div class="page" id="page-7">
+        <div class="exercise">
+            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x} \ln|\cos x|\)</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+                w &= \ln|\cos x| \qquad u = \cos x\\[12pt]
+                w &= \ln|u|\\[12pt]
+                \frac{\mathrm{d}w}{\mathrm{d}u} &= \frac{1}{u} = \frac{1}{\cos x} \qquad \frac{\mathrm{d}u}{\mathrm{d}x} = -\sin x\\[12pt]
+                \frac{\mathrm{d}w}{\mathrm{d}x} &= \frac{\mathrm{d}w}{\mathrm{d}u} \times \frac{\mathrm{d}u}{\mathrm{d}x} = -\frac{1}{\cos x} \sin x = -\tan x
+                \end{aligned}\]
+        </div>
+    </div>
+
+    <!-- Page 8: y = tan x -->
+    <div class="page" id="page-8">
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y=\tan x\).</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image3.png" alt="Graph of y = tan x showing shaded region from 0 to π/4">
+        </figure>
+    </div>
+
+    <!-- Page 9: Answer for y = tan x (method) -->
+    <div class="page" id="page-9">
+        <div class="teacher-note">
+            <p>For the integral of tan, either use the result on the previous page, or use the substitution \(u = \cos x\). Or they might remember the rule for \(\int \frac{f'}{f}\), but even so, it's a good idea to do the substitution to remind themselves why this rule works.</p>
+
+            <p>Often, students will get the final version from the formula book without noticing that \(-\ln|\cos x|\) and \(\ln|\sec x|\) are the same thing, so it's a good moment to emphasise this.</p>
+        </div>
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y=\tan x\).</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image3.png" alt="Graph of y = tan x showing shaded region from 0 to π/4">
+        </figure>
+
+        <div class="answer">
+            <p>You can use the result from the previous page to see that \[\int \tan x \, \mathrm{d}x=-\ln|\cos x|=\ln\left|(\cos x)^{-1}\right|=\ln|\sec x|\] or you could integrate \(\tan x\) with a substitution:
+                \[\int \tan x \, \mathrm{d}x = \int \frac{\sin x}{\cos x} \, \mathrm{d}x \qquad u = \cos x \quad \frac{\mathrm{d}u}{\mathrm{d}x} = -\sin x\]</p>
+            \[\begin{aligned}
+                &= -\int \frac{\sin x}{\cos x} \frac{1}{\sin x} \, \mathrm{d}u\\[12pt]
+                &= -\int \frac{1}{u} \, \mathrm{d}u\\[12pt]
+                &= -\ln|u|\\[12pt]
+                &= -\ln|\cos x|\\[12pt]
+                &= \ln|\sec x|
+                \end{aligned}\]
+        </div>
+        <div class="teacher-note">
+            <p>For the area, we can use either form of the integral of tan, but please, no calculators, even for the manipulation of logs.</p>
+        </div>
+
+        <div class="answer">
+            <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center;">
+                <div>
+                    \[\begin{aligned}
+                        \text{area} &= \int_0^{\frac{\pi}{4}} \tan x \, \mathrm{d}x\\[12pt]
+                        &= \Big[-\ln(\cos x)\Big]_0^{\frac{\pi}{4}}\\[12pt]
+                        &= -\ln\left(\cos \frac{\pi}{4}\right) - (-\ln(\cos 0))\\[12pt]
+                        &= -\ln \frac{1}{\sqrt{2}} + \ln 1\\[12pt]
+                        &= \ln \sqrt{2}\\[12pt]
+                        &= \frac{1}{2}\ln 2
+                        \end{aligned}\]
+                </div>
+
+                <div style="text-align: center;">
+                    <p>or</p>
+                </div>
+
+                <div>
+                    \[\begin{aligned}
+                        \text{area} &= \int_0^{\frac{\pi}{4}} \tan x \, \mathrm{d}x\\[12pt]
+                        &= \Big[\ln(\sec x)\Big]_0^{\frac{\pi}{4}}\\[12pt]
+                        &= \ln\left(\sec \frac{\pi}{4}\right) - \ln(\sec 0)\\[12pt]
+                        &= \ln \sqrt{2} - \ln 1\\[12pt]
+                        &= \frac{1}{2}\ln 2
+                        \end{aligned}\]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 10: Answer for y = tan x (area) -->
+    <div class="page" id="page-10">
+        
+    </div>
+
+    <!-- Page 11: y = sin²x -->
+    <div class="page" id="page-11">
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y = \sin^2 x\).</p>
+
+            <p>Compare your answer with \(\displaystyle\int_0^\pi \sin x \, \mathrm{d}x\). Which is bigger? Explain your answer in terms of the graphs.</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image4.png" alt="Graph of y = sin²x showing shaded region from 0 to π">
+        </figure>
+    </div>
+
+    <!-- Page 12: Answer for y = sin²x -->
+    <div class="page" id="page-12">
+        <div class="teacher-note">
+            <p>Here is the most straightforward method, but even once they have seen this idea and used it a few times, students often need reminding to use a double angle formula for \(\cos 2x\) to integrate \(\sin^2 x\) or \(\cos^2 x\).</p>
+        </div>
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y = \sin^2 x\).</p>
+
+            <p>Compare your answer with \(\displaystyle\int_0^\pi \sin x \, \mathrm{d}x\). Which is bigger? Explain your answer in terms of the graphs.</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image4.png" alt="Graph of y = sin²x showing shaded region from 0 to π">
+        </figure>
+        <div class="answer">
+            <p>Probably the easiest method is to rearrange one of the formulas for \(\cos 2x\):</p>
+            \[\begin{aligned}
+                \text{area} &= \int_0^\pi \sin^2 x \, \mathrm{d}x\\[12pt]
+                &= \int_0^\pi \frac{1 - \cos 2x}{2} \, \mathrm{d}x\\[12pt]
+                &= \Big[\frac{x}{2} - \frac{\sin 2x}{4}\Big]_0^\pi\\[12pt]
+                &= \frac{\pi}{2}
+                \end{aligned}\]
+            <br>
+            <p>\[\int_0^\pi \sin^2 x \, \mathrm{d}x=\frac{\pi}{2} < 2=\int_0^\pi \sin x \, \mathrm{d}x\] When \(0 < x < \pi,\quad 0 < \sin x < 1 \quad \Rightarrow \sin^2 x < \sin x\),</p> 
+            <p>so the area on the \(\sin^2\) graph must be less than the area on the \(\sin\) graph.</p>
+        </div>
+        <div class="answer">
+            <p>You might be tempted to integrate by parts if you are familiar with this technique. If so, don't let me stop you! But the first method is surely easier. Here is the "by parts" method:</p>
+            <p>\[u = \sin x \quad \frac{\mathrm{d}v}{\mathrm{d}x} = \sin x\]</p>
+            <p>\[\frac{\mathrm{d}u}{\mathrm{d}x} = \cos x \quad v = -\cos x\]</p>
+
+            \[\begin{aligned}
+                \int \sin^2 x \, \mathrm{d}x &= -\sin x \cos x + \int \cos x \cos x \, \mathrm{d}x\\[12pt]
+                &= -\frac{1}{2}\sin 2x + \int \cos^2 x \, \mathrm{d}x\\[12pt]
+                &= -\frac{1}{2}\sin 2x + \int 1 - \sin^2 x \, \mathrm{d}x\\[12pt]
+                &= -\frac{1}{2}\sin 2x + x - \int \sin^2 x \, \mathrm{d}x\\[12pt]
+                \Rightarrow 2\int \sin^2 x \, \mathrm{d}x &= x - \frac{1}{2}\sin 2x+c\\[12pt]
+                \Rightarrow \int \sin^2 x \, \mathrm{d}x &= \frac{x}{2} - \frac{1}{4}\sin 2x+c'
+                \end{aligned}\]
+        </div>
+
+    </div>
+
+    <!-- Page 13: y = sec²x -->
+    <div class="page" id="page-13">
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y = \sec^2 x\)</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image5.png" alt="Graph of y = sec²x showing shaded region from 0 to π/4">
+        </figure>
+    </div>
+
+    <!-- Page 14: Answer for y = sec²x -->
+    <div class="page" id="page-14">
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y = \sec^2 x\)</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image5.png" alt="Graph of y = sec²x showing shaded region from 0 to π/4">
+        </figure>
+        <div class="answer">
+            <p>Remember that the differential of tan is \(\sec^2\), so</p>
+            \[\begin{aligned}
+                \text{area} &= \int_0^{\frac{\pi}{4}} \sec^2 x \, \mathrm{d}x\\[12pt]
+                &= \Big[\tan x\Big]_0^{\frac{\pi}{4}}\\[12pt]
+                &= \tan \frac{\pi}{4} - \tan 0\\[12pt]
+                &= 1
+                \end{aligned}\]
+        </div>
+    </div>
+
+    <!-- Page 15: y = sin x cos²x -->
+    <div class="page" id="page-15">
+        <div class="intro">
+            <p>Now for some sightly more exotic integrals.</p>
+        </div>
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y = \sin x \cos^2 x\).</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image6.png" alt="Graph of y = sin x cos²x showing shaded region from 0 to π/2">
+        </figure>
+    </div>
+
+    <!-- Page 16: Answer for y = sin x cos²x -->
+    <div class="page" id="page-16">
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y = \sin x \cos^2 x\).</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image6.png" alt="Graph of y = sin x cos²x showing shaded region from 0 to π/2">
+        </figure>
+        <div class="answer">
+            <p>Some integrals look terrifying but actually turn out to be pretty simple. Here, perhaps you can see straight away that</p>
+            <p>\[\frac{\mathrm{d}}{\mathrm{d}x}\cos^3 x = -3\sin x \cos^2 x\]</p>
+            <p>so that the integral is \(-\frac{1}{3}\cos^3 x\).</p>
+            <p>This kind of "integrating by looking" is always something to be on the alert for.</p>
+            <p>If not, there is always substitution:</p>
+            <p>\[u = \cos x \Rightarrow \frac{\mathrm{d}u}{\mathrm{d}x} = -\sin x\]</p>
+
+            \[\begin{aligned}
+                \int_0^{\frac{\pi}{2}} \sin x \cos^2 x \, \mathrm{d}x &= \int_1^0 \sin x \cos^2 x \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\\[12pt]
+                &= -\int_1^0 \frac{u^2 \sin x}{\sin x} \, \mathrm{d}u\\[12pt]
+                &= \int_0^1 u^2 \, \mathrm{d}u = \Bigg[\frac{u^3}{3}\Bigg]_0^1\\[12pt]
+                &= \frac{1}{3}
+                \end{aligned}\]
+
+            <p>Did you notice the change of order of the limits in the last line to change the sign?</p>
+        </div>
+    </div>
+
+    <!-- Page 17: y = sin³x -->
+    <div class="page" id="page-17">
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y = \sin^3 x\), and compare this with the areas under \(y = \sin x\) and \(y = \sin^2 x\) from earlier.</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image7.png" alt="Graph of y = sin³x showing shaded region from 0 to π">
+        </figure>
+    </div>
+
+    <!-- Page 18: Answer for y = sin³x -->
+    <div class="page" id="page-18">
+        <div class="teacher-note">
+            <p>Here, I've used two results from earlier in the sheet (but doubled one of them)</p>
+        </div>
+        <div class="exercise">
+            <p>Find the shaded area under the graph \(y = \sin^3 x\).</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image7.png" alt="Graph of y = sin³x showing shaded region from 0 to π">
+        </figure>
+        <div class="answer">
+            <p>Again, this one is easier than it looks, and it uses two previous results.</p>
+            \[\begin{aligned}
+                \int_0^\pi \sin^3 x \, \mathrm{d}x &= \int_0^\pi \sin x (1 - \cos^2 x) \, \mathrm{d}x\\[12pt]
+                &= \int_0^\pi \sin x - \sin x \cos^2 x \, \mathrm{d}x\\[12pt]
+                &= 2 - \frac{2}{3}\\[12pt]
+                &= \frac{4}{3}
+                \end{aligned}\]
+        </div>
+        <div class="answer">
+
+            <p>When \(0 < x < \pi\),</p>
+            <p>\[0 < \sin x < 1 \quad \Rightarrow \sin^3 x < \sin^2 x < \sin x\] which explains why</p>
+            <p>\[\int_0^\pi \sin^3 x \, \mathrm{d}x < \int_0^\pi \sin^2 x \, \mathrm{d}x < \int_0^\pi \sin x \, \mathrm{d}x\]</p>
+        </div>
+    </div>
+
+    <!-- Page 19: y = sin x / cos³x -->
+    <div class="page" id="page-19">
+        <div class="exercise">
+            <p>Here's another crazy looking example that, surprisingly, you can do just by looking at it!</p>
+            <p>Find the shaded area under the graph \(y = \frac{\sin x}{\cos^3 x}\).</p>
+        </div>
+
+        <figure>
+            <img src="integration_images/image8.png" alt="Graph of y = sin x / cos³x showing shaded region from 0 to π/4">
+        </figure>
+    </div>
+
+    <!-- Page 20: Answer for y = sin x / cos³x -->
+    <div class="page" id="page-20">
+        <div class="teacher-note">
+            <p>\[\frac{\mathrm{d}}{\mathrm{d}x}\cos^{-2} x = 2\cos^{-3} x \sin x\]</p>
+        </div>
+
+        <div class="answer">
+            <div>
+                <p>\[\frac{\mathrm{d}}{\mathrm{d}x}\cos^{-2} x = 2\cos^{-3} x \sin x\]</p>
+                <p>so that</p>
+                \[\begin{aligned}
+                    \int_0^{\frac{\pi}{4}} \frac{\sin x}{\cos^3 x} \, \mathrm{d}x &= \Bigg[\frac{1}{2\cos^2 x}\Bigg]_0^{\frac{\pi}{4}}\\[12pt]
+                    &= 1 - \frac{1}{2}= \frac{1}{2}
+                    \end{aligned}\]
+            </div>
+            <p>There is another great option:</p>
+            \[\begin{aligned}
+                \frac{\mathrm{d}}{\mathrm{d}x}\tan^2 x&=2\tan x\sec^2 x\text{ so that}\\[12pt]
+                \int_0^{\frac{\pi}{4}} \frac{\sin x}{\cos^3 x} \, \mathrm{d}x &=\int_0^{\frac{\pi}{4}} \tan x\sec^2 x \, \mathrm{d}x  \\[12pt]
+                &=\Bigg[\frac{1}{2}\sec^2 x\Bigg]_0^{\frac{\pi}{4}}\\[12pt]
+                &= 1 - \frac{1}{2}= \frac{1}{2}
+                \end{aligned}\]
+            <div>
+                <p class="teacher-note">Notice, though, that \(\sec^2 x = 1 + \tan^2 x\), so</p>
+                <p class="teacher-note">\[\int \frac{\sin x}{\cos^3 x} \, \mathrm{d}x = \frac{\tan^2 x}{2} + c'\]</p>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 21: Multiple substitutions -->
+    <div class="page" id="page-21">
+        <div class="teacher-note">
+            <p>If you like your substitutions, there are  at least three substitutions that will work:</p>
+            <p>\[u = \cos x \qquad u = \sec x \qquad u = \tan x\]</p>
+            <p>Give them a go if you feel like it.</p>
+            <p>Here's one:</p>
+        </div>
+
+        <div class="exercise">
+            <p>If you like your substitutions, there are  at least three substitutions that will work:</p>
+            <p>\[u = \cos x \qquad u = \sec x \qquad u = \tan x\]</p>
+            <p>Give them a go if you feel like it.</p>
+        </div>
+        <div class="answer">
+            \[u = \cos x \quad \frac{\mathrm{d}u}{\mathrm{d}x} = -\sin x \]
+                \[\begin{aligned}
+                \int \frac{\sin x}{\cos^3 x} \,\mathrm{d}x&=\int \frac{\sin x}{\cos^3 x} \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u \\[12pt]
+                    &= -\int \frac{1}{u^3} \, \mathrm{d}u\\[12pt]
+                    &= \frac{1}{2u^2} + c\\[12pt]
+                    &= \frac{1}{2\cos^2 x} + c\\[12pt]
+                    &= \frac{\sec^2 x}{2} + c
+                    \end{aligned}\]
+        </div>
+        <div class="answer">
+            <p>\[u = \sec x \quad \frac{\mathrm{d}u}{\mathrm{d}x} = \sec x \tan x\]</p>
+
+            \[\begin{aligned}
+                \int \tan x\sec^2 x \,\mathrm{d}x
+                &= \int \tan x\sec^2 x \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\\[12pt]
+                &= \int \tan x\sec^2 x \frac{1}{\sec x \tan x} \, \mathrm{d}u\\[12pt]
+                &= \int \sec x \, \mathrm{d}u\\[12pt]
+                &= \int u \, \mathrm{d}u\\[12pt]
+                &= \frac{u^2}{2} + c\\[12pt]
+                &= \frac{\sec^2 x}{2} + c
+                \end{aligned}\]
+        </div>
+        <div class="answer">
+            <p>\[u = \tan x \quad \frac{\mathrm{d}u}{\mathrm{d}x} = \sec^2 x\]</p>
+
+            \[\begin{aligned}
+                \int \tan x\sec^2 x \,\mathrm{d}x
+                &= \int \tan x\sec^2 x \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\\[12pt]
+                &= \int \tan x\sec^2 x \frac{1}{\sec^2 x } \, \mathrm{d}u\\[12pt]
+                &= \int \tan x \, \mathrm{d}u\\[12pt]
+                &= \int u \, \mathrm{d}u\\[12pt]
+                &= \frac{u^2}{2} + c'\\[12pt]
+                &= \frac{\tan^2 x}{2} + c'
+            \end{aligned}\]
+        </div>
+        <div class="exercise">
+            <p>Why is the last one the same as the other two?</p>
+        </div>
+
+    </div>
+
+    <!-- Page 22: Another substitution (sec x) -->
+    <div class="page" id="page-22">
+        <div class="exercise">
+            <p>Why is \(\displaystyle{\frac{\tan^2 x}{2} + c'}\) the same as \(\displaystyle{\frac{\sec^2 x}{2} + c}\) ?
+        </div>
+
+        <div class="answer">
+            <p>Because \(1+\tan^2x=\sec^2 x\), so the two versions differ only by a constant</p>
+        </div>
+    </div>
+
+    <!-- Page 23: ∫ sec x dx (introduction) -->
+    <div class="page" id="page-23">
+        <div class="intro">
+            <p>Here's a classic tricky integral.</p>
+        </div>
+        <div class="exercise">
+            <p>Find \(\displaystyle\int \sec x \, \mathrm{d}x\) using the substitution \(u = \sin x\).</p>
+        </div>
+
+        
+        
+    </div>
+
+    <!-- Page 24: Answer for ∫ sec x dx (first method) -->
+    <div class="page" id="page-24">
+        <div class="exercise">
+            <p>Find \(\displaystyle\int \sec x \, \mathrm{d}x\) using the substitution \(u = \sin x\).</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+                u &= \sin x\\[12pt]
+                \Rightarrow \frac{\mathrm{d}u}{\mathrm{d}x} &= \cos x
+                \end{aligned}\]
+
+            \[\begin{aligned}
+                \int \sec x \, \mathrm{d}x &= \int \frac{1}{\cos x} \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\\[12pt]
+                &= \int \frac{1}{\cos^2 x} \, \mathrm{d}u\\[12pt]
+                &= \int \frac{1}{1 - \sin^2 x} \, \mathrm{d}u\\[12pt]
+                &= \int \frac{1}{1 - u^2} \, \mathrm{d}u\\[12pt]
+                &= \frac{1}{2}\int \frac{1}{1 - u} + \frac{1}{1 + u} \, \mathrm{d}u\\[12pt]
+                &= \frac{1}{2}[-\ln|1 - u| + \ln|1 + u|]\\[12pt]
+                &= \frac{1}{2}\ln\left|\frac{1 + u}{1 - u}\right|\\[12pt]
+                &= \frac{1}{2}\ln\left|\frac{1 + \sin x}{1 - \sin x}\right| + c
+                \end{aligned}\]
+        </div>
+        
+    </div>
+
+    <!-- Page 25: ∫ sec x dx (u = sin x) -->
+    <div class="page" id="page-25">
+        <div class="intro">
+            <p>Here is another substitution that will work, but it yields a rather different looking solution.</p>
+        </div>
+
+        <div class="exercise">
+            <p>Find \(\displaystyle\int \sec x \, \mathrm{d}x\) using the substitution \(u = \sec x + \tan x\).</p>
+        </div>
+
+        <div class="teacher-note">
+            <p>This is only for very strong students!</p>
+            <p>There are a number of substitutions that will work.</p>
+            <p>First, the standard substitution method; this suffers from the fact that it more or less relies on your knowing the answer in advance.</p>
+        </div>
+        
+    </div>
+
+    <!-- Page 26: Answer for ∫ sec x dx (u = sin x) -->
+    <div class="page" id="page-26">
+        <div class="exercise">
+            <p>Find \(\displaystyle\int \sec x \, dx\) using the substitution \(u = \sec x + \tan x\).</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+                u &= \sec x + \tan x\\[12pt]
+                \Rightarrow \frac{\mathrm{d}u}{\mathrm{d}x} &= \sec x \tan x + \sec^2 x\\[12pt]
+                &= u \sec x
+                \end{aligned}\]
+
+            \[\begin{aligned}
+                \int \sec x \, \mathrm{d}x &= \int \sec x \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\\[12pt]
+                &= \int \frac{\sec x}{u \sec x} \, \mathrm{d}u\\[12pt]
+                &= \int \frac{1}{u} \, \mathrm{d}u\\[12pt]
+                &= \ln|u| + c\\[12pt]
+                &= \ln|\sec x + \tan x| + c\\[12pt]
+                &= \ln\left|\frac{1 + \sin x}{\cos x}\right| + c
+                \end{aligned}\]
+        </div>
+    </div>
+
+    <!-- Page 27: Showing equivalence -->
+    <div class="page" id="page-27">
+        <div class="intro">
+            <p>You now have two versions of the integral that look very different.</p>
+        </div>
+
+        <div class="exercise">
+            <p>Show that \( \displaystyle{\ln\left|\frac{1 + \sin x}{\cos x}\right| + c}\) and \(\displaystyle{\frac{1}{2}\ln\left|\frac{1 + \sin x}{1 - \sin x}\right| + c}\) are equivalent versions of \(\displaystyle{\int \sec x \, \mathrm{d}x }\)</p>
+        </div>
+    </div>
+
+    <!-- Page 28: Answer showing equivalence -->
+    <div class="page" id="page-28">
+        <div class="exercise">
+            <p>Show that \( \displaystyle{\ln\left|\frac{1 + \sin x}{\cos x}\right| + c}\) and \(\displaystyle{\frac{1}{2}\ln\left|\frac{1 + \sin x}{1 - \sin x}\right| + c}\) are equivalent versions of \(\displaystyle{\int \sec x \, \mathrm{d}x }\)</p>
+        </div>
+
+        <div class="answer">
+            \[\begin{aligned}
+                \left(\frac{1 + \sin x}{\cos x}\right)^2 &= \frac{(1 + \sin x)^2}{1 - \sin^2 x}\\[12pt]
+                &= \frac{(1 + \sin x)^2}{(1 + \sin x)(1 - \sin x)}\\[12pt]
+                &= \frac{1 + \sin x}{1 - \sin x}\\[12pt]
+                \Rightarrow 2\ln\left|\frac{1 + \sin x}{\cos x}\right| &= \ln\left|\frac{1 + \sin x}{1 - \sin x}\right|
+                \end{aligned}\]
+
+            <p class="teacher-note">Yes, they are!</p>
+        </div>
+    </div>
+
+    <!--
+    ========== PAGES 29-33 COMMENTED OUT ==========
+    Page 29: ∫ sec x dx (t = tan x/2)
+    <div class="page" id="page-29">
+        <div class="teacher-note">
+            <p>Strictly for extension only, the next bit!</p>
+            <p>Here is a standard substitution that is often useful for integration of awkward circular functions, but that your students may well not have come across. You will find two articles on this substitution on my website. Again, the answer looks quite different to the previous two, and again they all turn out to be equivalent.</p>
+        </div>
+
+        <div class="answer">
+            \[\begin{aligned}
+                t &= \tan \frac{x}{2}\\[12pt]
+                \Rightarrow \tan x &= \frac{2\tan \frac{x}{2}}{1 - \tan^2 \frac{x}{2}} = \frac{2t}{1 - t^2}\\[12pt]
+                \Rightarrow \cos x &= \frac{1 - t^2}{1 + t^2} \quad \text{and} \quad \sin x = \frac{2t}{1 + t^2}\\[12pt]
+                \frac{\mathrm{d}t}{\mathrm{d}x} &= \frac{1}{2}\sec^2 \frac{x}{2} = \frac{1 + t^2}{2}\\[12pt]
+                \Rightarrow \frac{\mathrm{d}x}{\mathrm{d}t} &= \frac{2}{1 + t^2}
+                \end{aligned}\]
+        </div>
+    </div>
+
+    Page 30: Continuing t = tan x/2 substitution
+    <div class="page" id="page-30">
+        <div class="answer">
+            \[\begin{aligned}
+                \int \sec x \, \mathrm{d}x &= \int \sec x \frac{\mathrm{d}x}{\mathrm{d}t} \, \mathrm{d}t\\[12pt]
+                &= \int \frac{1 + t^2}{1 - t^2} \times \frac{2}{1 + t^2} \, \mathrm{d}t\\[12pt]
+                &= \int \frac{2}{1 - t^2} \, \mathrm{d}t\\[12pt]
+                &= \int \frac{1}{1 - t} + \frac{1}{1 + t} \, \mathrm{d}t\\[12pt]
+                &= -\ln(1 - t) + \ln(1 + t) + c\\[12pt]
+                &= \ln\left|\frac{1 + t}{1 - t}\right| + c\\[12pt]
+                &= \ln\left|\frac{1 + \tan \frac{x}{2}}{1 - \tan \frac{x}{2}}\right| + c
+                \end{aligned}\]
+        </div>
+    </div>
+
+    Page 31: Showing equivalence (t substitution)
+    <div class="page" id="page-31">
+        <div class="teacher-note">
+            <p>This expression is also equivalent to the other versions:</p>
+        </div>
+
+        <div class="answer">
+            \[\begin{aligned}
+                \sec x + \tan x &= \frac{1 + t^2}{1 - t^2} + \frac{2t}{1 - t^2}\\[12pt]
+                &= \frac{1 + 2t + t^2}{1 - t^2}\\[12pt]
+                &= \frac{(1 + t)^2}{(1 - t)(1 + t)}\\[12pt]
+                &= \frac{1 + t}{1 - t}\\[12pt]
+                \Rightarrow \ln|\sec x + \tan x| &= \ln\left|\frac{1 + t}{1 - t}\right|
+                \end{aligned}\]
+        </div>
+    </div>
+
+    Page 32: Alternative form with tan(π/4 + x/2)
+    <div class="page" id="page-32">
+        <div class="teacher-note">
+            <p>There are a few other variations of the result. For example:</p>
+        </div>
+
+        <div class="answer">
+            \[\begin{aligned}
+                \tan\left(\frac{\pi}{4} + \frac{x}{2}\right) &= \frac{\tan \frac{\pi}{4} + \tan \frac{x}{2}}{1 - \tan \frac{\pi}{4} \tan \frac{x}{2}}\\[12pt]
+                &= \frac{1 + \tan \frac{x}{2}}{1 - \tan \frac{x}{2}}
+                \end{aligned}\]
+
+            <p>so we can also write this as</p>
+
+            <p>\[\int \sec x \, \mathrm{d}x = \ln\left|\tan\left(\frac{\pi}{4} + \frac{x}{2}\right)\right|\]</p>
+        </div>
+    </div>
+
+    Page 33: Final variations
+    <div class="page" id="page-33">
+        <div class="teacher-note">
+            <p>And here are a couple of other versions that I've included just for fun!</p>
+        </div>
+
+        <div class="answer">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div>
+                    \[\begin{aligned}
+                        \ln\frac{1 + \tan \frac{x}{2}}{1 - \tan \frac{x}{2}} &= \ln\frac{1 + \frac{\sin x}{1 + \cos x}}{1 - \frac{\sin x}{1 + \cos x}}\\[12pt]
+                        &= \ln\frac{1 + \cos x + \sin x}{1 + \cos x - \sin x}
+                        \end{aligned}\]
+
+                    <p class="teacher-note">\[\frac{\sin x}{1 + \cos x} = \frac{\frac{2t}{1+t^2}}{1 + \frac{1-t^2}{1+t^2}} = t\]</p>
+                </div>
+
+                <div>
+                    \[\begin{aligned}
+                        \ln\frac{1 + \tan \frac{x}{2}}{1 - \tan \frac{x}{2}} &= \ln\frac{1 + \frac{1 - \cos x}{\sin x}}{1 - \frac{1 - \cos x}{\sin x}}\\[12pt]
+                        &= \ln\frac{\sin x - \cos x + 1}{\sin x + \cos x - 1}
+                        \end{aligned}\]
+                </div>
+            </div>
+        </div>
+    </div>
+    ========== END COMMENTED SECTION ==========
+    -->
+
+</div>
+
+<div class="navigation">
+    <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+    <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+    <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="33" onchange="goToPage(this.value)"> of 33
+    </span>
+    <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+    <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+</div>
+
+<script src="navigation.js"></script>
+
+</body>
+</html>
