@@ -13,7 +13,8 @@ function showPage(pageNum) {
         currentPage = pageNum;
 
         // Save current page to localStorage
-        localStorage.setItem('currentPage', currentPage);
+        // Disabled: don't save page position
+        // localStorage.setItem('currentPage', currentPage);
 
         document.getElementById('pageInput').value = currentPage;
 
@@ -78,7 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Initialize page from localStorage or default to page 1
-    const savedPage = localStorage.getItem('currentPage');
+    // Disabled: always start at page 1 for fresh viewing experience
+    // const savedPage = localStorage.getItem('currentPage');
+    const savedPage = null;
     const startPage = savedPage ? parseInt(savedPage) : 1;
     showPage(startPage);
 });
