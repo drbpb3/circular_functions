@@ -4,6 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Integrals of Circular Functions - Teacher Version</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        },
+        options: {
+            enableMenu: false,
+            renderActions: {
+                addMenu: []
+            }
+        }
+    };
+    </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <link rel="stylesheet" href="worksheet-styles.css">
 </head>
