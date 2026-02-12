@@ -14,13 +14,31 @@
 </a>
 
 <div class="container">
+    <!-- Page 1: Welcome Page -->
     <div class="page" id="page-1">
-        <div class="title-page">
-            <h1>circular functions 10</h1>
-            <div class="subtitle">inverse circular functions</div>
-            <div class="author">
-                <p>Dr Brian Brooks</p>
-                <p>Insight Mathematics</p>
+        <div class="welcome-page">
+            <img src="/darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Welcome to inverse circular functions</h1>
+            <div class="welcome-content">
+                <p>This stage explores the inverse functions of sine, cosine, and tangent—arcsin, arccos, and arctan. You'll discover how to define these functions properly, understand their domains and ranges, and see why they're crucial for solving equations and understanding the deeper properties of circular functions.</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                        <li>Click <strong>Previous</strong> or <strong>Next</strong> buttons when they appear</li>
+                        <li>Jump to a specific page using the page number input</li>
+                    </ul>
+                </div>
+
+                <p class="welcome-tip">Think carefully about domains and ranges—they're crucial for inverse functions!</p>
+
+                <p class="welcome-author">
+                    Dr Brian Brooks<br>
+                    Mathematics InSight
+                </p>
             </div>
         </div>
     </div>
@@ -370,10 +388,10 @@
         }
         }
 
-        // Keyboard navigation for matrix rows (left/right arrows when on page 2)
+        // Keyboard navigation for matrix rows (left/right arrows when on page 3)
         document.addEventListener('keydown', function(e) {
-        // Only handle arrow keys on page 2
-        if (currentPage === 2) {
+        // Only handle arrow keys on page 3
+        if (currentPage === 3) {
         if (e.key === 'ArrowLeft') {
         e.preventDefault();
         changeMatrixRow(-1);
@@ -919,10 +937,28 @@
 
     </div>
 
+    <!-- Page 43: Congratulations Page -->
+    <div class="page" id="page-43">
+        <div class="welcome-page">
+            <img src="/darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Congratulations on completing this stage!</h1>
+            <div class="welcome-content">
+                <p>You've now mastered inverse circular functions! You understand how to define arcsin, arccos, and arctan properly, know their domains and ranges, and can work with them both algebraically and graphically. You've explored their derivatives and integrals, and seen how they relate to each other through beautiful identities.</p>
+
+                <p class="welcome-tip">Keep practising with inverse functions—they're essential tools for solving equations and understanding circular functions at a deeper level!</p>
+
+                <p class="welcome-author">
+                    Dr Brian Brooks<br>
+                    Mathematics InSight
+                </p>
+            </div>
+        </div>
+    </div>
+
 <!--
-        
-        
-        
+
+
+
         <p>What is <span class="math inline">\(\sin\left( \cos^{- 1}x \right)\)</span> in terms of <span class="math inline">\(x\)</span> when <span class="math inline">\(x &lt; 0,y &gt; 0\)</span>?</p>
         <p>What is <span class="math inline">\(\cos\left( \sin^{- 1}y \right)\)</span> in terms of <span class="math inline">\(y\)</span> when <span class="math inline">\(x &lt; 0,y &gt; 0\)</span>?</p>
         <p><span class="math display">\[\begin{matrix}
@@ -1045,7 +1081,7 @@
         </figure>
     </div>
 
-    <div class="page" id="page-41">
+    <div class="page" id="page-40">
 
         <p>Since we want <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\sin^{- 1}\)</span> are inverses of each other, we would like</p>
         <p><span class="math inline">\(\sin\left( \sin^{- 1}x \right) = x\)</span> and <span class="math inline">\(\sin^{- 1}\left( \sin x \right) = x\)</span></p>
@@ -1066,7 +1102,7 @@
         </figure>
     </div>
 
-    <div class="page" id="page-42">
+    <div class="page" id="page-41">
 
         <p>What are <span class="math inline">\(\cos\left( \cos^{- 1}x \right)\)</span> and <span class="math inline">\(\cos^{- 1}(\cos x)\)</span> ?</p>
         <div class="answer">
@@ -1108,7 +1144,7 @@
         <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
         <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="33" onchange="goToPage(this.value)"> of 33
+        Page <input type="number" id="pageInput" value="1" min="1" max="43" onchange="goToPage(this.value)"> of 43
         </span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
         <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>

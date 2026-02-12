@@ -28,13 +28,141 @@ body {
     padding: 20px; 
 }
 
-.title-page { 
-    background: linear-gradient(135deg, var(--primary), #1a252f); 
-    color: white; 
-    padding: 80px 40px; 
-    text-align: center; 
-    border-radius: 8px; 
-    margin-top: 40px; 
+.welcome-page {
+    background: linear-gradient(135deg, #2d5a27, #1e3d1a);
+    color: white;
+    padding: 30px 30px;
+    text-align: left;
+    border-radius: 8px;
+    margin-top: 10px;
+    position: relative;
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+}
+
+.welcome-page h1 {
+    font-size: 2em;
+    margin: 0 0 20px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.welcome-page h2 {
+    font-size: 1.3em;
+    margin: 20px 0 10px;
+    color: white;
+    border: none;
+    padding: 0;
+}
+
+.welcome-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.welcome-content p {
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.navigation-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    border-radius: 5px;
+    border-left: 4px solid rgba(255, 255, 255, 0.5);
+    margin: 15px 0;
+}
+
+.navigation-box h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.welcome-content .navigation-box ul {
+    margin: 0;
+    padding: 0 0 0 20px;
+    background: transparent;
+}
+
+.welcome-content ul {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px 25px 15px 40px;
+    border-radius: 5px;
+    margin: 15px 0;
+}
+
+.welcome-content li {
+    margin: 8px 0;
+    line-height: 1.5;
+    font-size: 0.95em;
+}
+
+.welcome-tip {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 12px 15px;
+    border-radius: 5px;
+    border-left: 4px solid rgba(255, 255, 255, 0.5);
+    margin: 15px 0;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.welcome-author {
+    text-align: right;
+    margin-top: 20px;
+    opacity: 0.9;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.welcome-logo {
+    position: absolute;
+    bottom: 35px;
+    left: 30px;
+    width: 50px;
+    height: 50px;
+    opacity: 0.7;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .welcome-page {
+        padding: 20px 20px;
+        margin-top: 5px;
+    }
+
+    .welcome-page h1 {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+    }
+
+    .welcome-page h2 {
+        font-size: 1.1em;
+    }
+
+    .welcome-content p {
+        font-size: 0.95em;
+    }
+
+    .welcome-content li {
+        font-size: 0.9em;
+        margin: 6px 0;
+    }
+
+    .welcome-logo {
+        width: 40px;
+        height: 40px;
+        bottom: 25px;
+    }
+}
+
+.title-page {
+    background: linear-gradient(135deg, var(--primary), #1a252f);
+    color: white;
+    padding: 80px 40px;
+    text-align: center;
+    border-radius: 8px;
+    margin-top: 40px;
 }
 
 .title-page h1 { 

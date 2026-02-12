@@ -14,14 +14,31 @@
 </a>
 
 <div class="container">
-    <!-- Page 1: Title Page -->
+    <!-- Page 1: Welcome Page -->
     <div class="page" id="page-1">
-        <div class="title-page">
-            <h1>circular functions 1</h1>
-            <div class="subtitle">defining the circular functions</div>
-            <div class="author">
-                <p class="small">Dr Brian Brooks</p>
-                <p class="small">Insight Mathematics</p>
+        <div class="welcome-page">
+            <img src="/darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Welcome to the start of your circular functions insight journey</h1>
+            <div class="welcome-content">
+                <p>The circular functions are extensions of the trigonometry functions that you know from right-angled triangles. Often, the word trigonometry is used for these more general functions, but I prefer to use the term "circular functions"<span>&#8212; </span> and you are about to find out why! </p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                        <li>Click <strong>Previous</strong> or <strong>Next</strong> buttons when they appear</li>
+                        <li>Jump to a specific page using the page number input</li>
+                    </ul>
+                </div>
+
+                <p class="welcome-tip">Take your time with each page. Work on the questions before moving to the answers!</p>
+
+                <p class="welcome-author">
+                    Dr Brian Brooks<br>
+                    Mathematics InSight
+                </p>
             </div>
         </div>
     </div>
@@ -45,18 +62,17 @@
                     When you are ready, navigate to the next page using arrow keys,
                     swiping, or hovering near the bottom of the page.
                     Compare your work to the answer in green.
-                    Don't go to the page too soon!
+                    Don't go to the answer too soon!
                     Work your way through the whole document this way,
                     but take your time!
                 </div>
         <div class="intro">
             <p>First, let's think about the name for this topic. It's 
-                usually called "trigonomery". However, "trigon" is Greek for a 
+                usually called "trigonometry". However, "trigon" is Greek for a 
                 three-sided shape, and "metry" is to do with 
                 measurement, so "trigonometry" means "measurement 
                 of triangles". Here, however, we are trying to 
-                decouple the functions from the triangles, 
-                so the name "circular functions" makes far more sense. 
+                decouple the functions from the triangles, and in a few minutes, you will see why the name "circular functions" makes far more sense. 
                 </p>
         </div>
 
@@ -467,13 +483,41 @@
         <figure>
             <img style="max-width: 80%"; src="definitions_images/image19.png" alt="Unit circle showing negative angles -60°, -120°, -240°, -300°">
         </figure>
-        <div class="key-concept">My top tip: make sure you can complete a blank version 
+        <div class="key-concept">My top tip: make sure you can complete a blank version
             of this diagram in 5 minutes or less. If you can do this, you will find
             all the rest of your work on this topic goes much more smoothly. And you
             will feel so good about not having to rely on your calculator.
                 </div>
     </div>
-    
+
+    <!-- Page 22: Congratulations Page -->
+    <div class="page" id="page-22">
+        <div class="welcome-page">
+            <img src="/darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Congratulations on completing the first stage!</h1>
+            <div class="welcome-content">
+                <p>You've now explored the foundations of circular functions and seen how they extend beyond the trigonometry of right-angled triangles. By understanding the unit circle and working through these definitions, you've built a solid foundation for everything that follows.</p>
+
+                <div class="navigation-box">
+                    <h2>What's Next:</h2>
+                    <ul>
+                        <li>The next stage focuses on <strong>solving equations</strong> involving circular functions</li>
+                        <li>You'll apply your understanding of the unit circle to find solutions</li>
+                        <li>Multiple solutions and general solutions will become clear and intuitive</li>
+                        <li>Your work with exact values will pay off as you solve equations without a calculator</li>
+                    </ul>
+                </div>
+
+                <p class="welcome-tip">Keep practising that unit circle diagram—it's the key to mastering circular functions!</p>
+
+                <p class="welcome-author">
+                    Dr Brian Brooks<br>
+                    Mathematics InSight
+                </p>
+            </div>
+        </div>
+    </div>
+
 
 </div>
 
@@ -481,7 +525,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="21" onchange="goToPage(this.value)"> of 21
+        Page <input type="number" id="pageInput" value="1" min="1" max="22" onchange="goToPage(this.value)"> of 22
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
