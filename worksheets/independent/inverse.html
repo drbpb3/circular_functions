@@ -391,6 +391,29 @@
     let currentMatrixRow = 0;
     const totalMatrixRows = 44;
 
+    // Function to reset matrix to beginning
+    function resetMatrix() {
+        // Clear any old localStorage value
+        localStorage.removeItem('currentMatrixRow');
+
+        // Reset to row 0
+        currentMatrixRow = 0;
+
+        // Hide all matrix rows except row 0
+        for (let i = 0; i < totalMatrixRows; i++) {
+            const row = document.getElementById('matrix-row-' + i);
+            if (row) {
+                row.style.display = (i === 0) ? 'block' : 'none';
+            }
+        }
+
+        // Reset the indicator to 'a'
+        const indicator = document.getElementById('current-matrix-part');
+        if (indicator) {
+            indicator.textContent = 'a';
+        }
+    }
+
     function changeMatrixRow(direction) {
     // Calculate new index
     const newRow = currentMatrixRow + direction;
@@ -420,10 +443,10 @@
         }
         }
 
-        // Keyboard navigation for matrix rows (left/right arrows when on page 3)
+        // Keyboard navigation for matrix rows (left/right arrows when on page 4)
         document.addEventListener('keydown', function(e) {
-        // Only handle arrow keys on page 3
-        if (currentPage === 3) {
+        // Only handle arrow keys on page 4
+        if (currentPage === 4) {
         if (e.key === 'ArrowLeft') {
         e.preventDefault();
         changeMatrixRow(-1);
@@ -434,26 +457,25 @@
         }
         });
 
-        // Reset matrix to beginning on page load
+        // Reset matrix on page load
         document.addEventListener('DOMContentLoaded', function() {
-        // Clear any old localStorage value
-        localStorage.removeItem('currentMatrixRow');
+        resetMatrix();
 
-        // Ensure we start at row 0
-        currentMatrixRow = 0;
+        // Watch for page 4 becoming visible and reset matrix
+        const page4 = document.getElementById('page-4');
+        if (page4) {
+            // Use MutationObserver to detect when page 4 becomes active
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        if (page4.classList.contains('active')) {
+                            resetMatrix();
+                        }
+                    }
+                });
+            });
 
-        // Hide all matrix rows except row 0
-        for (let i = 0; i < totalMatrixRows; i++) {
-            const row = document.getElementById('matrix-row-' + i);
-            if (row) {
-                row.style.display = (i === 0) ? 'block' : 'none';
-            }
-        }
-
-        // Reset the indicator to 'a'
-        const indicator = document.getElementById('current-matrix-part');
-        if (indicator) {
-            indicator.textContent = 'a';
+            observer.observe(page4, { attributes: true });
         }
         });
         </script>
