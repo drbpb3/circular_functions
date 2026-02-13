@@ -433,6 +433,29 @@
         }
         }
         });
+
+        // Reset matrix to beginning on page load
+        document.addEventListener('DOMContentLoaded', function() {
+        // Clear any old localStorage value
+        localStorage.removeItem('currentMatrixRow');
+
+        // Ensure we start at row 0
+        currentMatrixRow = 0;
+
+        // Hide all matrix rows except row 0
+        for (let i = 0; i < totalMatrixRows; i++) {
+            const row = document.getElementById('matrix-row-' + i);
+            if (row) {
+                row.style.display = (i === 0) ? 'block' : 'none';
+            }
+        }
+
+        // Reset the indicator to 'a'
+        const indicator = document.getElementById('current-matrix-part');
+        if (indicator) {
+            indicator.textContent = 'a';
+        }
+        });
         </script>
 
     </div>
