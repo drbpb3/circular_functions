@@ -543,6 +543,11 @@ li {
     color: rgba(44, 62, 80, 0.8);
 }
 
+/* Prevent ◀◀ / ▶▶ from rendering as emoji (grey box) on mobile */
+#firstBtn, #lastBtn {
+    font-variant-emoji: text;
+}
+
 /* Mobile nav bar: lighter background, hide prev/next (side arrows cover those) */
 .touch-device .navigation {
     background: rgba(44, 62, 80, 0.75);
