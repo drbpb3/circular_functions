@@ -507,26 +507,25 @@ li {
     transform: translateY(-50%);
     width: 44px;
     height: 72px;
-    background: rgba(44, 62, 80, 0.55);
-    color: white;
+    background: transparent;
+    color: rgba(44, 62, 80, 0.4);
     border: none;
-    font-size: 1.6em;
+    font-size: 2em;
     cursor: pointer;
     z-index: 999;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s, opacity 0.2s;
+    transition: color 0.2s, opacity 0.2s;
     -webkit-tap-highlight-color: transparent;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
 }
 
 .side-nav-prev {
     left: 0;
-    border-radius: 0 6px 6px 0;
 }
 
 .side-nav-next {
     right: 0;
-    border-radius: 6px 0 0 6px;
 }
 
 .touch-device .side-nav-prev,
@@ -536,12 +535,40 @@ li {
 
 .side-nav-prev:disabled,
 .side-nav-next:disabled {
-    opacity: 0.15;
+    opacity: 0.12;
 }
 
 .side-nav-prev:active:not(:disabled),
 .side-nav-next:active:not(:disabled) {
-    background: rgba(44, 62, 80, 0.9);
+    color: rgba(44, 62, 80, 0.8);
+}
+
+/* Scroll-down indicator for touch devices */
+@keyframes bounce-down {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+}
+
+.scroll-down-indicator {
+    display: none;
+    position: fixed;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(44, 62, 80, 0.35);
+    font-size: 1.8em;
+    z-index: 998;
+    pointer-events: none;
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+    animation: bounce-down 1.6s ease-in-out infinite;
+}
+
+.touch-device .scroll-down-indicator {
+    display: block;
+}
+
+.touch-device .scroll-down-indicator.hidden {
+    display: none;
 }
 
 /* Back button */

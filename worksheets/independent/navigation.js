@@ -43,6 +43,19 @@ function showPage(pageNum) {
         });
 
         window.scrollTo(0, 0);
+        updateScrollIndicator();
+    }
+}
+
+function updateScrollIndicator() {
+    const indicator = document.querySelector('.scroll-down-indicator');
+    if (!indicator) return;
+    const canScroll = document.body.scrollHeight > window.innerHeight + 20;
+    const atBottom = (window.scrollY + window.innerHeight) >= document.body.scrollHeight - 20;
+    if (canScroll && !atBottom) {
+        indicator.classList.remove('hidden');
+    } else {
+        indicator.classList.add('hidden');
     }
 }
 
@@ -157,6 +170,13 @@ if (nav) {
 
     document.body.appendChild(prevArrow);
     document.body.appendChild(nextArrow);
+
+    const scrollIndicator = document.createElement('div');
+    scrollIndicator.className = 'scroll-down-indicator';
+    scrollIndicator.innerHTML = '&#x25BE;';
+    document.body.appendChild(scrollIndicator);
+
+    window.addEventListener('scroll', updateScrollIndicator, { passive: true });
 
     // Swipe gesture detection
     let touchStartX = 0;
