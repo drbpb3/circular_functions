@@ -23,6 +23,11 @@ function showPage(pageNum) {
         document.getElementById('nextBtn').disabled = (currentPage === totalPages);
         document.getElementById('lastBtn').disabled = (currentPage === totalPages);
 
+        const sidePrev = document.querySelector('.side-nav-prev');
+        const sideNext = document.querySelector('.side-nav-next');
+        if (sidePrev) sidePrev.disabled = (currentPage === 1);
+        if (sideNext) sideNext.disabled = (currentPage === totalPages);
+
         if (window.MathJax && window.MathJax.typesetPromise) {
             MathJax.typesetPromise([page]);
         }
@@ -130,6 +135,52 @@ if (nav) {
         nav.classList.add('visible');
     });
 }
+
+// Touch device: side arrow buttons and swipe navigation
+(function() {
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+    if (!isTouchDevice) return;
+
+    document.body.classList.add('touch-device');
+
+    const prevArrow = document.createElement('button');
+    prevArrow.className = 'side-nav-prev';
+    prevArrow.innerHTML = '&#x25C4;';
+    prevArrow.setAttribute('aria-label', 'Previous page');
+    prevArrow.addEventListener('click', function() { changePage(-1); });
+
+    const nextArrow = document.createElement('button');
+    nextArrow.className = 'side-nav-next';
+    nextArrow.innerHTML = '&#x25BA;';
+    nextArrow.setAttribute('aria-label', 'Next page');
+    nextArrow.addEventListener('click', function() { changePage(1); });
+
+    document.body.appendChild(prevArrow);
+    document.body.appendChild(nextArrow);
+
+    // Swipe gesture detection
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    document.addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].clientX;
+        touchStartY = e.changedTouches[0].clientY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', function(e) {
+        const deltaX = e.changedTouches[0].clientX - touchStartX;
+        const deltaY = e.changedTouches[0].clientY - touchStartY;
+        const minSwipeDistance = 50;
+
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+            if (deltaX < 0) {
+                changePage(1);   // Swipe left → next page
+            } else {
+                changePage(-1);  // Swipe right → previous page
+            }
+        }
+    }, { passive: true });
+})();
 
 // Disable keyboard shortcuts for saving/printing
 document.addEventListener('keydown', function(e) {

@@ -498,6 +498,52 @@ li {
     margin: 8px 0;
 }
 
+/* Side navigation arrows for touch devices */
+.side-nav-prev,
+.side-nav-next {
+    display: none;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 72px;
+    background: rgba(44, 62, 80, 0.55);
+    color: white;
+    border: none;
+    font-size: 1.6em;
+    cursor: pointer;
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, opacity 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.side-nav-prev {
+    left: 0;
+    border-radius: 0 6px 6px 0;
+}
+
+.side-nav-next {
+    right: 0;
+    border-radius: 6px 0 0 6px;
+}
+
+.touch-device .side-nav-prev,
+.touch-device .side-nav-next {
+    display: flex;
+}
+
+.side-nav-prev:disabled,
+.side-nav-next:disabled {
+    opacity: 0.15;
+}
+
+.side-nav-prev:active:not(:disabled),
+.side-nav-next:active:not(:disabled) {
+    background: rgba(44, 62, 80, 0.9);
+}
+
 /* Back button */
 .back-nav {
     position: fixed;
