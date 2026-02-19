@@ -543,6 +543,16 @@ li {
     color: rgba(44, 62, 80, 0.8);
 }
 
+/* Mobile nav bar: lighter background, hide prev/next (side arrows cover those) */
+.touch-device .navigation {
+    background: rgba(44, 62, 80, 0.75);
+}
+
+.touch-device #prevBtn,
+.touch-device #nextBtn {
+    display: none;
+}
+
 /* Scroll-down indicator for touch devices */
 @keyframes bounce-down {
     0%, 100% { transform: translateX(-50%) translateY(0); }
