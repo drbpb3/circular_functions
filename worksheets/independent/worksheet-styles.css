@@ -553,10 +553,10 @@ li {
     display: none;
 }
 
-/* Grey first/last buttons on mobile so emoji box blends in */
+/* First/last buttons transparent on mobile so emoji box blends into nav bar */
 .touch-device #firstBtn,
 .touch-device #lastBtn {
-    background: rgba(255, 255, 255, 0.15);
+    background: transparent;
 }
 
 /* Scroll-down indicator for touch devices */
