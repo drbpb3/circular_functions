@@ -76,34 +76,34 @@
 
     <div class="page" id="page-2">
         <div class="teacher-note">
-            <p>Early in your students’ mathematical careers, they will have happily use the <span class="math inline">\(\sin^{- 1}\)</span> key on their calculators to find angles in right-angled triangles when they know side lengths. This is probably one of their earliest encounters with the idea of the inverse of a function, although of course it is not framed this way.</p>
+            <p>Early in your students’ mathematical careers, they will have happily use the <span class="math inline">\(\arcsin\)</span> key on their calculators to find angles in right-angled triangles when they know side lengths. This is probably one of their earliest encounters with the idea of the inverse of a function, although of course it is not framed this way.</p>
             <p>At the start of our work on circular functions, we spent plenty of time separating these functions from right-angled triangles using the unit circle. From there, we generated graphs of the circular functions. It’s time to look at a similar process for their inverses. In right-angled triangles, we are only dealing with angles between <span class="math inline">\(0\)</span> and <span class="math inline">\(\frac{\pi}{2}\)</span>. For each ratio of two sides, there is only one possible angle, so in this range, the inverse functions are well defined. However, when we look at angles outside this range, it is not immediately clear what the inverses of the functions might be. For example:</p>
             <p><span class="math inline">\(\sin\frac{\pi}{6} = \sin\frac{5\pi}{6} = \sin\frac{13\pi}{6} = \sin\frac{17\pi}{6} = \ldots = \frac{1}{2}\)</span>.</p>
-            <p>So is <span class="math inline">\(\sin^{- 1}\frac{1}{2} = \frac{\pi}{6}\text{or}\frac{5\pi}{6}\text{or}\frac{13\pi}{6}\text{or}\frac{17\pi}{6}\text{or}\ldots\)</span> ?</p>
-            <p>and is <span class="math inline">\(\sin^{- 1}\left( - \frac{1}{2} \right) = - \frac{\pi}{6}\text{or}\frac{11\pi}{6}\text{or} - \frac{5\pi}{6}\text{or}\frac{7\pi}{6}\text{or}\ldots\)</span> ?</p>
+            <p>So is <span class="math inline">\(\arcsin\frac{1}{2} = \frac{\pi}{6}\text{or}\frac{5\pi}{6}\text{or}\frac{13\pi}{6}\text{or}\frac{17\pi}{6}\text{or}\ldots\)</span> ?</p>
+            <p>and is <span class="math inline">\(\arcsin\left( - \frac{1}{2} \right) = - \frac{\pi}{6}\text{or}\frac{11\pi}{6}\text{or} - \frac{5\pi}{6}\text{or}\frac{7\pi}{6}\text{or}\ldots\)</span> ?</p>
             <p>Similar questions arise for the inverses of the other circular functions.</p>
             <p>The answer is, in general, that we make the simplest possible choice, so, for example:</p>
             <p><span class="math display">\[\begin{matrix}
-            &amp; \sin^{- 1}\frac{1}{2} = \frac{\pi}{6} &amp; \sin^{- 1}\left( - \frac{1}{2} \right) = - \frac{\pi}{6} \\
+            &amp; \arcsin\frac{1}{2} = \frac{\pi}{6} &amp; \arcsin\left( - \frac{1}{2} \right) = - \frac{\pi}{6} \\
             \phantom{-} &amp; &amp; \\
-            &amp; \cos^{- 1}\frac{1}{2} = \frac{\pi}{3} &amp; \cos^{- 1}\left( - \frac{1}{2} \right) = \frac{2\pi}{3} \\
+            &amp; \arccos\frac{1}{2} = \frac{\pi}{3} &amp; \arccos\left( - \frac{1}{2} \right) = \frac{2\pi}{3} \\
             \phantom{-} &amp; &amp; \\
-            &amp; \tan^{- 1}\frac{\sqrt{3}}{3} = \frac{\pi}{6} &amp; \tan^{- 1}\left( - \frac{\sqrt{3}}{3} \right) = - \frac{\pi}{6} \\
+            &amp; \arctan\frac{\sqrt{3}}{3} = \frac{\pi}{6} &amp; \arctan\left( - \frac{\sqrt{3}}{3} \right) = - \frac{\pi}{6} \\
             \phantom{-} &amp; &amp;
             \end{matrix}\]</span></p>
-            <p>In other words, for <span class="math inline">\(\sin^{- 1}\)</span> and <span class="math inline">\(\tan^{- 1}\)</span> we will always choose a value between <span class="math inline">\(- \frac{\pi}{2}\)</span> and <span class="math inline">\(\frac{\pi}{2}\)</span> , whereas for <span class="math inline">\(\cos^{- 1}\)</span> we will choose a value between <span class="math inline">\(0\)</span> and <span class="math inline">\(\pi\)</span>.</p>
+            <p>In other words, for <span class="math inline">\(\arcsin\)</span> and <span class="math inline">\(\arctan\)</span> we will always choose a value between <span class="math inline">\(- \frac{\pi}{2}\)</span> and <span class="math inline">\(\frac{\pi}{2}\)</span> , whereas for <span class="math inline">\(\arccos\)</span> we will choose a value between <span class="math inline">\(0\)</span> and <span class="math inline">\(\pi\)</span>.</p>
             <p>In the language of functions, we can say:</p>
             <p><span class="math display">\[\begin{array}{r}
-            \sin^{- 1}:\{ x| - 1 \leq x \leq 1\} \rightarrow \{ y| - \frac{\pi}{2} \leq y \leq \frac{\pi}{2}\}
+            \arcsin:\{ x| - 1 \leq x \leq 1\} \rightarrow \{ y| - \frac{\pi}{2} \leq y \leq \frac{\pi}{2}\}
             \end{array}\]</span></p>
             <p><span class="math display">\[\begin{array}{r}
-            \tan^{- 1}:\mathbb{R} \rightarrow \{ y| - \frac{\pi}{2} \leq y \leq \frac{\pi}{2}\}
+            \arctan:\mathbb{R} \rightarrow \{ y| - \frac{\pi}{2} \leq y \leq \frac{\pi}{2}\}
             \end{array}\]</span></p>
             <p><span class="math display">\[\begin{array}{r}
-            \cos^{- 1}:\{ x| - 1 \leq x \leq 1\} \rightarrow \{ y|0 \leq y \leq \pi\}
+            \arccos:\{ x| - 1 \leq x \leq 1\} \rightarrow \{ y|0 \leq y \leq \pi\}
             \end{array}\]</span></p>
             <div class="teacher-note">
-                <p>Actually, for <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\sin^{- 1}\)</span> to be inverses of each other, the domain of each has to be the range of the other. This means that the inverse of <span class="math inline">\(\sin^{- 1}\)</span> is not <span class="math inline">\(\sin\)</span>, but the restriction of <span class="math inline">\(\sin\)</span> to the domain <span class="math inline">\(\left\{ x| - \frac{\pi}{2} \leq x \leq \frac{\pi}{2} \right\}\)</span>. This is really a technicality too far at this stage in your students mathematical careers, but it could possibly come up in questions!</p>
+                <p>Actually, for <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\arcsin\)</span> to be inverses of each other, the domain of each has to be the range of the other. This means that the inverse of <span class="math inline">\(\arcsin\)</span> is not <span class="math inline">\(\sin\)</span>, but the restriction of <span class="math inline">\(\sin\)</span> to the domain <span class="math inline">\(\left\{ x| - \frac{\pi}{2} \leq x \leq \frac{\pi}{2} \right\}\)</span>. This is really a technicality too far at this stage in your students mathematical careers, but it could possibly come up in questions!</p>
             </div>
             <p>One way to approach this with your class would be to tell them all this, and then move on to some questions. But if you want your class to have a deeper insight into the inner workings of these inverse functions, you might consider thinking about them from the point of view of unit circles (the first part of this worksheet) or of graphs (the second part). Or even both!</p>
             <p>Whatever you decide, there is still plenty in this worksheet to explore once you have your definitions in place.</p>
@@ -137,11 +137,11 @@
             <p><span class="math display">\[\begin{aligned}
             &amp; \cos\theta = x\qquad\sin\theta = y\qquad\tan\theta = \frac{y}{x} \\
             \phantom{-} &amp; \\
-            &amp; \Rightarrow \theta = \cos^{- 1}x = \sin^{- 1}y = \tan^{- 1}\frac{y}{x}
+            &amp; \Rightarrow \theta = \arccos x = \arcsin y = \arctan\frac{y}{x}
             \end{aligned}\]</span></p>
         </div>
         <div class="intro">
-            <p>So long as <span class="math inline">\(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\)</span>, there is only one value of <span class="math inline">\(\theta\)</span> that makes <span class="math inline">\(x = \cos\theta\)</span>, <span class="math inline">\(\;y = \sin\theta\)</span>, and <span class="math inline">\(\;\displaystyle\frac{y}{x} = \tan\theta\)</span>. So we know exactly what angle we mean by <span class="math inline">\(\cos^{- 1}x\)</span>, <span class="math inline">\(\sin^{- 1}y\)</span>, or <span class="math inline">\(\tan^{- 1}\displaystyle\frac{y}{x}\)</span>.</p>
+            <p>So long as <span class="math inline">\(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\)</span>, there is only one value of <span class="math inline">\(\theta\)</span> that makes <span class="math inline">\(x = \cos\theta\)</span>, <span class="math inline">\(\;y = \sin\theta\)</span>, and <span class="math inline">\(\;\displaystyle\frac{y}{x} = \tan\theta\)</span>. So we know exactly what angle we mean by <span class="math inline">\(\arccos x\)</span>, <span class="math inline">\(\arcsin y\)</span>, or <span class="math inline">\(\arctan\displaystyle\frac{y}{x}\)</span>.</p>
         </div>
     </div>
 
@@ -156,228 +156,228 @@
     <div id="matrix-container" style="position: relative; min-height: 80px; text-align: center;">
         <div class="matrix-row exercise" id="matrix-row-0" style="display: block;">
             <p><span class="math display">\[\begin{matrix}
-            \sin\displaystyle\frac{\pi}{3} & & & & & & & & & & & & \sin^{- 1}\displaystyle\frac{\sqrt{3}}{2} \\
+            \sin\displaystyle\frac{\pi}{3} & & & & & & & & & & & & \arcsin\displaystyle\frac{\sqrt{3}}{2} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-1" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin\displaystyle\frac{\pi}{3} = \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \sin^{- 1}\displaystyle\frac{\sqrt{3}}{2} = \displaystyle\frac{\pi}{3} \\
+            \sin\displaystyle\frac{\pi}{3} = \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \arcsin\displaystyle\frac{\sqrt{3}}{2} = \displaystyle\frac{\pi}{3} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-2" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos\displaystyle\frac{\pi}{3} & & & & & & & & & & & & \cos^{- 1}\displaystyle\frac{1}{2} \\
+            \cos\displaystyle\frac{\pi}{3} & & & & & & & & & & & & \arccos\displaystyle\frac{1}{2} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-3" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos\displaystyle\frac{\pi}{3} = \displaystyle\frac{1}{2} & & & & & & & & & & & & \cos^{- 1}\displaystyle\frac{1}{2} = \displaystyle\frac{\pi}{3} \\
+            \cos\displaystyle\frac{\pi}{3} = \displaystyle\frac{1}{2} & & & & & & & & & & & & \arccos\displaystyle\frac{1}{2} = \displaystyle\frac{\pi}{3} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-4" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \tan\displaystyle\frac{\pi}{3} & & & & & & & & & & & & \tan^{- 1}\sqrt{3} \\
+            \tan\displaystyle\frac{\pi}{3} & & & & & & & & & & & & \arctan\sqrt{3} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-5" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \tan\displaystyle\frac{\pi}{3} = \sqrt{3} & & & & & & & & & & & & \tan^{- 1}\sqrt{3} = \displaystyle\frac{\pi}{3} \\
+            \tan\displaystyle\frac{\pi}{3} = \sqrt{3} & & & & & & & & & & & & \arctan\sqrt{3} = \displaystyle\frac{\pi}{3} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-6" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin\left( - \displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \sin^{- 1}\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \\
+            \sin\left( - \displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-7" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin\left( - \displaystyle\frac{\pi}{3} \right) = - \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \sin^{- 1}\left( - \displaystyle\frac{\sqrt{3}}{2} \right) = - \displaystyle\frac{\pi}{3} \\
+            \sin\left( - \displaystyle\frac{\pi}{3} \right) = - \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) = - \displaystyle\frac{\pi}{3} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-8" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos\left( - \displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \cos^{- 1}\displaystyle\frac{1}{2} \\
+            \cos\left( - \displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \arccos\displaystyle\frac{1}{2} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-9" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos\left( - \displaystyle\frac{\pi}{3} \right) = \displaystyle\frac{1}{2} & & & & & & & & & & & & \cos^{- 1}\displaystyle\frac{1}{2} = \displaystyle\frac{\pi}{3} \\
+            \cos\left( - \displaystyle\frac{\pi}{3} \right) = \displaystyle\frac{1}{2} & & & & & & & & & & & & \arccos\displaystyle\frac{1}{2} = \displaystyle\frac{\pi}{3} \\
             \end{matrix}\]</span></p>
-            <p>The cosines of both \(\displaystyle\frac{\pi}{3}\) and \(-\displaystyle\frac{\pi}{3}\) are \(\displaystyle\frac{1}{2}\), but only one of those angles can be \(\cos^{-1}\displaystyle\frac{1}{2}\), and we choose the simpler one; that is, the positive angle.</p>
+            <p>The cosines of both \(\displaystyle\frac{\pi}{3}\) and \(-\displaystyle\frac{\pi}{3}\) are \(\displaystyle\frac{1}{2}\), but only one of those angles can be \(\arccos\displaystyle\frac{1}{2}\), and we choose the simpler one; that is, the positive angle.</p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-10" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \tan\left( - \displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \tan^{- 1}\left( - \sqrt{3} \right) \\
+            \tan\left( - \displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \arctan\left( - \sqrt{3} \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-11" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \tan\left( - \displaystyle\frac{\pi}{3} \right) = - \sqrt{3} & & & & & & & & & & & & \tan^{- 1}\left( - \sqrt{3} \right) = - \displaystyle\frac{\pi}{3} \\
+            \tan\left( - \displaystyle\frac{\pi}{3} \right) = - \sqrt{3} & & & & & & & & & & & & \arctan\left( - \sqrt{3} \right) = - \displaystyle\frac{\pi}{3} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-12" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin\displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \sin^{- 1}\displaystyle\frac{\sqrt{3}}{2} \\
+            \sin\displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \arcsin\displaystyle\frac{\sqrt{3}}{2} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-13" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin\displaystyle\frac{2\pi}{3} = \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \sin^{- 1}\displaystyle\frac{\sqrt{3}}{2} = \displaystyle\frac{\pi}{3} \\
+            \sin\displaystyle\frac{2\pi}{3} = \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \arcsin\displaystyle\frac{\sqrt{3}}{2} = \displaystyle\frac{\pi}{3} \\
             \end{matrix}\]</span></p>
-            <p>The sines of both \(\displaystyle\frac{\pi}{3}\) and \(\displaystyle\frac{2\pi}{3}\) are \(\displaystyle\frac{1}{2}\), but only one of those angles can be \(\sin^{-1}\displaystyle\frac{1}{2}\), and we choose the simpler one; that is, \(\displaystyle\frac{\pi}{3}\).</p>
+            <p>The sines of both \(\displaystyle\frac{\pi}{3}\) and \(\displaystyle\frac{2\pi}{3}\) are \(\displaystyle\frac{1}{2}\), but only one of those angles can be \(\arcsin\displaystyle\frac{1}{2}\), and we choose the simpler one; that is, \(\displaystyle\frac{\pi}{3}\).</p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-14" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos\displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \cos^{- 1}\left( - \displaystyle\frac{1}{2} \right) \\
+            \cos\displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \arccos\left( - \displaystyle\frac{1}{2} \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-15" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos\displaystyle\frac{2\pi}{3} = - \displaystyle\frac{1}{2} & & & & & & & & & & & & \cos^{- 1}\left( - \displaystyle\frac{1}{2} \right) = \displaystyle\frac{2\pi}{3} \\
+            \cos\displaystyle\frac{2\pi}{3} = - \displaystyle\frac{1}{2} & & & & & & & & & & & & \arccos\left( - \displaystyle\frac{1}{2} \right) = \displaystyle\frac{2\pi}{3} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-16" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \tan\displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \tan^{- 1}\left( - \sqrt{3} \right) \\
+            \tan\displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \arctan\left( - \sqrt{3} \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-17" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \tan\displaystyle\frac{2\pi}{3} = - \sqrt{3} & & & & & & & & & & & & \tan^{- 1}\left( - \sqrt{3} \right) = - \displaystyle\frac{\pi}{3} \\
+            \tan\displaystyle\frac{2\pi}{3} = - \sqrt{3} & & & & & & & & & & & & \arctan\left( - \sqrt{3} \right) = - \displaystyle\frac{\pi}{3} \\
             \end{matrix}\]</span></p>
-            <p>The tans of both \(\displaystyle\frac{2\pi}{3}\) and \(-\displaystyle\frac{\pi}{3}\) are \(-\sqrt{3}\), but only one of those angles can be \(\tan^{-1}(-\sqrt{3})\), and we choose the one between \(-\displaystyle\frac{\pi}{2}\) and \(\displaystyle\frac{\pi}{2}\).</p>
+            <p>The tans of both \(\displaystyle\frac{2\pi}{3}\) and \(-\displaystyle\frac{\pi}{3}\) are \(-\sqrt{3}\), but only one of those angles can be \(\arctan(-\sqrt{3})\), and we choose the one between \(-\displaystyle\frac{\pi}{2}\) and \(\displaystyle\frac{\pi}{2}\).</p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-18" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin\displaystyle\frac{4\pi}{3} & & & & & & & & & & & & \sin^{- 1}\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \\
+            \sin\displaystyle\frac{4\pi}{3} & & & & & & & & & & & & \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-19" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin\displaystyle\frac{4\pi}{3} = - \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \sin^{- 1}\left( - \displaystyle\frac{\sqrt{3}}{2} \right) = - \displaystyle\frac{\pi}{3} \\
+            \sin\displaystyle\frac{4\pi}{3} = - \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) = - \displaystyle\frac{\pi}{3} \\
             \end{matrix}\]</span></p>
-            <p>For \(\sin^{-1}\), we choose the angle between \(-\displaystyle\frac{\pi}{2}\) and \(\displaystyle\frac{\pi}{2}\).</p>
+            <p>For \(\arcsin\), we choose the angle between \(-\displaystyle\frac{\pi}{2}\) and \(\displaystyle\frac{\pi}{2}\).</p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-20" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos\displaystyle\frac{4\pi}{3} & & & & & & & & & & & & \cos^{- 1}\left( - \displaystyle\frac{1}{2} \right) \\
+            \cos\displaystyle\frac{4\pi}{3} & & & & & & & & & & & & \arccos\left( - \displaystyle\frac{1}{2} \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-21" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos\displaystyle\frac{4\pi}{3} = - \displaystyle\frac{1}{2} & & & & & & & & & & & & \cos^{- 1}\left( - \displaystyle\frac{1}{2} \right) = \displaystyle\frac{2\pi}{3} \\
+            \cos\displaystyle\frac{4\pi}{3} = - \displaystyle\frac{1}{2} & & & & & & & & & & & & \arccos\left( - \displaystyle\frac{1}{2} \right) = \displaystyle\frac{2\pi}{3} \\
             \end{matrix}\]</span></p>
-            <p>For \(\cos^{-1}\), we choose the angle between \(0\) and \(\pi\).</p>
+            <p>For \(\arccos\), we choose the angle between \(0\) and \(\pi\).</p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-22" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \tan\displaystyle\frac{4\pi}{3} & & & & & & & & & & & & \tan^{- 1}\sqrt{3} \\
+            \tan\displaystyle\frac{4\pi}{3} & & & & & & & & & & & & \arctan\sqrt{3} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-23" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \tan\displaystyle\frac{4\pi}{3} = \sqrt{3} & & & & & & & & & & & & \tan^{- 1}\sqrt{3} = \displaystyle\frac{\pi}{3} \\
+            \tan\displaystyle\frac{4\pi}{3} = \sqrt{3} & & & & & & & & & & & & \arctan\sqrt{3} = \displaystyle\frac{\pi}{3} \\
             \end{matrix}\]</span></p>
-            <p>For \(\tan^{-1}\), we choose the angle between \(-\displaystyle\frac{\pi}{2}\) and \(\displaystyle\frac{\pi}{2}\).</p>
+            <p>For \(\arctan\), we choose the angle between \(-\displaystyle\frac{\pi}{2}\) and \(\displaystyle\frac{\pi}{2}\).</p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-24" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin\displaystyle\frac{5\pi}{3} & & & & & & & & & & & & \sin^{- 1}\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \\
+            \sin\displaystyle\frac{5\pi}{3} & & & & & & & & & & & & \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-25" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin\displaystyle\frac{5\pi}{3} = - \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \sin^{- 1}\left( - \displaystyle\frac{\sqrt{3}}{2} \right) = - \displaystyle\frac{\pi}{3} \\
+            \sin\displaystyle\frac{5\pi}{3} = - \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) = - \displaystyle\frac{\pi}{3} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-26" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos\displaystyle\frac{5\pi}{3} & & & & & & & & & & & & \cos^{- 1}\displaystyle\frac{1}{2} \\
+            \cos\displaystyle\frac{5\pi}{3} & & & & & & & & & & & & \arccos\displaystyle\frac{1}{2} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-27" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos\displaystyle\frac{5\pi}{3} = \displaystyle\frac{1}{2} & & & & & & & & & & & & \cos^{- 1}\displaystyle\frac{1}{2} = \displaystyle\frac{\pi}{3} \\
+            \cos\displaystyle\frac{5\pi}{3} = \displaystyle\frac{1}{2} & & & & & & & & & & & & \arccos\displaystyle\frac{1}{2} = \displaystyle\frac{\pi}{3} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-28" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \tan\displaystyle\frac{5\pi}{3} & & & & & & & & & & & & \tan^{- 1}\left( - \sqrt{3} \right) \\
+            \tan\displaystyle\frac{5\pi}{3} & & & & & & & & & & & & \arctan\left( - \sqrt{3} \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-29" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \tan\displaystyle\frac{5\pi}{3} = - \sqrt{3} & & & & & & & & & & & & \tan^{- 1}\left( - \sqrt{3} \right) = - \displaystyle\frac{\pi}{3} \\
+            \tan\displaystyle\frac{5\pi}{3} = - \sqrt{3} & & & & & & & & & & & & \arctan\left( - \sqrt{3} \right) = - \displaystyle\frac{\pi}{3} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-30" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin^{- 1}\left( \sin\displaystyle\frac{2\pi}{3} \right) & & & & & & & & & & & & \sin\left( \sin^{- 1}\displaystyle\frac{\sqrt{3}}{2} \right) \\
+            \arcsin\left( \sin\displaystyle\frac{2\pi}{3} \right) & & & & & & & & & & & & \sin\left( \arcsin\displaystyle\frac{\sqrt{3}}{2} \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-31" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin^{- 1}\left( \sin\displaystyle\frac{2\pi}{3} \right) = \sin^{- 1}\displaystyle\frac{\sqrt{3}}{2}=\displaystyle\frac{\pi}{3}  & & & & & \sin\left( \sin^{- 1}\displaystyle\frac{\sqrt{3}}{2} \right) = \displaystyle\frac{\sqrt{3}}{2} \\
+            \arcsin\left( \sin\displaystyle\frac{2\pi}{3} \right) = \arcsin\displaystyle\frac{\sqrt{3}}{2}=\displaystyle\frac{\pi}{3}  & & & & & \sin\left( \arcsin\displaystyle\frac{\sqrt{3}}{2} \right) = \displaystyle\frac{\sqrt{3}}{2} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-32" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos^{- 1}\left( \cos\displaystyle\frac{2\pi}{3} \right) & & & & & & & & & & & & \cos\left( \cos^{- 1}\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) \\
+            \arccos\left( \cos\displaystyle\frac{2\pi}{3} \right) & & & & & & & & & & & & \cos\left( \arccos\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-33" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos^{- 1}\left( \cos\displaystyle\frac{2\pi}{3} \right) = \displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \cos\left( \cos^{- 1}\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) = - \displaystyle\frac{\sqrt{3}}{2} \\
+            \arccos\left( \cos\displaystyle\frac{2\pi}{3} \right) = \displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \cos\left( \arccos\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) = - \displaystyle\frac{\sqrt{3}}{2} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-34" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \tan^{- 1}\left( \tan\displaystyle\frac{2\pi}{3} \right) & & & & & & & & & & & & \tan\left( \tan^{- 1}\left( - \sqrt{3} \right) \right) \\
+            \arctan\left( \tan\displaystyle\frac{2\pi}{3} \right) & & & & & & & & & & & & \tan\left( \arctan\left( - \sqrt{3} \right) \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-35" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \tan^{- 1}\left( \tan\displaystyle\frac{2\pi}{3} \right)= \tan^{-1}\left(-\sqrt 3\right)= - \displaystyle\frac{\pi}{3} & & & & & & & & \tan\left( \tan^{- 1}\left( - \sqrt{3} \right) \right) = - \sqrt{3} \\
+            \arctan\left( \tan\displaystyle\frac{2\pi}{3} \right)= \arctan\left(-\sqrt 3\right)= - \displaystyle\frac{\pi}{3} & & & & & & & & \tan\left( \arctan\left( - \sqrt{3} \right) \right) = - \sqrt{3} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-36" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin^{- 1}\left( \cos\displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \cos\left( \sin^{- 1}\displaystyle\frac{\sqrt{3}}{2} \right) \\
+            \arcsin\left( \cos\displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \cos\left( \arcsin\displaystyle\frac{\sqrt{3}}{2} \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-37" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin^{- 1}\left( \cos\displaystyle\frac{\pi}{3} \right)=\sin^{-1}\displaystyle\frac{1}{2}=\displaystyle\frac{\pi}{6} & & & & \cos\left( \sin^{- 1}\displaystyle\frac{\sqrt{3}}{2} \right) = \cos \displaystyle\frac{\pi}{3}= \displaystyle\frac{1}{2} \\
+            \arcsin\left( \cos\displaystyle\frac{\pi}{3} \right)=\arcsin\displaystyle\frac{1}{2}=\displaystyle\frac{\pi}{6} & & & & \cos\left( \arcsin\displaystyle\frac{\sqrt{3}}{2} \right) = \cos \displaystyle\frac{\pi}{3}= \displaystyle\frac{1}{2} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-38" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin^{- 1}\left( \cos\displaystyle\frac{4\pi}{3} \right) & & & & & & & & & & & & \cos\left( \sin^{- 1}\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) \\
+            \arcsin\left( \cos\displaystyle\frac{4\pi}{3} \right) & & & & & & & & & & & & \cos\left( \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-39" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \sin^{- 1}\left( \cos\displaystyle\frac{4\pi}{3} \right) = - \displaystyle\frac{\pi}{6} & & & & & & & & & & & & \cos\left( \sin^{- 1}\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) = \displaystyle\frac{1}{2} \\
+            \arcsin\left( \cos\displaystyle\frac{4\pi}{3} \right) = - \displaystyle\frac{\pi}{6} & & & & & & & & & & & & \cos\left( \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) = \displaystyle\frac{1}{2} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-40" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos^{- 1}\left( \sin\displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \sin\left( \cos^{- 1}\displaystyle\frac{\sqrt{3}}{2} \right) \\
+            \arccos\left( \sin\displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \sin\left( \arccos\displaystyle\frac{\sqrt{3}}{2} \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-41" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos^{- 1}\left( \sin\displaystyle\frac{\pi}{3} \right) = \displaystyle\frac{\pi}{3} & & & & & & & & & & & & \sin\left( \cos^{- 1}\displaystyle\frac{\sqrt{3}}{2} \right) = \displaystyle\frac{\sqrt{3}}{2} \\
+            \arccos\left( \sin\displaystyle\frac{\pi}{3} \right) = \displaystyle\frac{\pi}{3} & & & & & & & & & & & & \sin\left( \arccos\displaystyle\frac{\sqrt{3}}{2} \right) = \displaystyle\frac{\sqrt{3}}{2} \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row exercise" id="matrix-row-42" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos^{- 1}\left( \sin\displaystyle\frac{4\pi}{3} \right) & & & & & & & & & & & & \sin\left( \cos^{- 1}\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) \\
+            \arccos\left( \sin\displaystyle\frac{4\pi}{3} \right) & & & & & & & & & & & & \sin\left( \arccos\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) \\
             \end{matrix}\]</span></p>
         </div>
         <div class="matrix-row answer" id="matrix-row-43" style="display: none;">
             <p><span class="math display">\[\begin{matrix}
-            \cos^{- 1}\left( \sin\displaystyle\frac{4\pi}{3} \right) = \displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \sin\left( \cos^{- 1}\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) = - \displaystyle\frac{\sqrt{3}}{2} \\
+            \arccos\left( \sin\displaystyle\frac{4\pi}{3} \right) = \displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \sin\left( \arccos\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) = - \displaystyle\frac{\sqrt{3}}{2} \\
             \end{matrix}\]</span></p>
         </div>
         <div style="margin-top: 20px; text-align: center;">
@@ -499,7 +499,7 @@
             <video autoplay loop muted playsinline><source src="inverse_images/video1.mp4" alt="Graph showing intersections"></video>
         </figure>
         <div class="exercise">
-            <p>Can you explain why the graph \(y=\sin^{-1}x\) is not the same as the graph \(x=\sin y\) ? The video might help you to see why this should be.</p>
+            <p>Can you explain why the graph \(y=\arcsin x\) is not the same as the graph \(x=\sin y\) ? The video might help you to see why this should be.</p>
         </div>
     </div>
 
@@ -526,15 +526,15 @@
         </div>
 
         <div class="exercise">
-            <p>How many values do you want for <span class="math inline">\(\sin^{- 1}\frac{1}{2}\)</span> ?</p>
-            <p>How many times do you want the line <span class="math inline">\(x = \frac{1}{2}\)</span> to intersect with the graph <span class="math inline">\(y = \sin^{- 1}x\)</span> ?</p>
+            <p>How many values do you want for <span class="math inline">\(\arcsin\frac{1}{2}\)</span> ?</p>
+            <p>How many times do you want the line <span class="math inline">\(x = \frac{1}{2}\)</span> to intersect with the graph <span class="math inline">\(y = \arcsin x\)</span> ?</p>
         </div>
     </div>
 
     <div class="page" id="page-9">
         <div class="answer">
-            <p>Like any function, the function <span class="math inline">\(y = \sin^{- 1}x\)</span> must be well-defined (that is, uniquely defined) for all values of <span class="math inline">\(x\)</span> in its domain.</p>
-            <p>That means that the line <span class="math inline">\(x = \frac{1}{2}\)</span> must intersect with the graph <span class="math inline">\(y = \sin^{- 1}x\)</span> exactly once.</p>
+            <p>Like any function, the function <span class="math inline">\(y = \arcsin x\)</span> must be well-defined (that is, uniquely defined) for all values of <span class="math inline">\(x\)</span> in its domain.</p>
+            <p>That means that the line <span class="math inline">\(x = \frac{1}{2}\)</span> must intersect with the graph <span class="math inline">\(y = \arcsin x\)</span> exactly once.</p>
         </div>
         <div class="exercise">
             <p>How can you adapt the graph <span class="math inline">\(x = \sin y\)</span> to ensure that any vertical line between <span class="math inline">\(x = - 1\)</span> and <span class="math inline">\(x = 1\)</span> intersects it exactly once?</p>
@@ -564,10 +564,10 @@
             <img src="inverse_images/image5.png" alt="Graph showing segment choices">
         </figure>
         <div class="intro">
-            <p>We could choose any coloured section of the graph <span class="math inline">\(x = \sin y\)</span>, but it would be strange (though not impossible) to choose any segment other than the one that would mean <span class="math inline">\(\sin^{- 1}0 = 0\)</span>.</p>
+            <p>We could choose any coloured section of the graph <span class="math inline">\(x = \sin y\)</span>, but it would be strange (though not impossible) to choose any segment other than the one that would mean <span class="math inline">\(\arcsin0 = 0\)</span>.</p>
         </div>
         <div class="exercise">
-            <p>Which of these pink or green segments on the curve would correspond to the most sensible definition of the function <span class="math inline">\(\sin^{- 1}x\)</span> ?</p>
+            <p>Which of these pink or green segments on the curve would correspond to the most sensible definition of the function <span class="math inline">\(\arcsin x\)</span> ?</p>
         </div>
     </div>
 
@@ -576,17 +576,17 @@
             <img src="inverse_images/image6.png" alt="Graph showing different segments">
         </figure>
         <div class="answer">
-            <p>Only the pink segment here is the graph \(y = \sin^{- 1}x\). 
+            <p>Only the pink segment here is the graph \(y = \arcsin x\). 
             </p>
         </div>
         <div class="exercise">
-            <p>What are the domain and range of the function \(f(x)=\sin^{-1}x\)?</p>
+            <p>What are the domain and range of the function \(f(x)=\arcsin x\)?</p>
         </div>
     </div>
 
     <div class="page" id="page-13">
         <div class="exercise">
-            <p>What are the domain and range of the function \(f(x)=\sin^{-1}x\)?</p>
+            <p>What are the domain and range of the function \(f(x)=\arcsin x\)?</p>
         </div>
         <div class="answer">
             <p>The easiest way to see this is to look at the graph:</p>
@@ -619,13 +619,13 @@
             <video autoplay loop muted playsinline><source src="inverse_images/video3.mp4" alt="Graph showing intersections"></video>
         </figure>
         <div class="exercise"
-        <p>How can we adapt the graph \(x=\cos y\) to get the graph \(y=\cos^{-1}x\) ?</p>
+        <p>How can we adapt the graph \(x=\cos y\) to get the graph \(y=\arccos x\) ?</p>
         </div>
     </div>
 
     <div class="page" id="page-16">
         <div class="exercise"
-            <p>How can we adapt the graph \(x=\cos y\) to get the graph \(y=\cos^{-1}x\) ?</p>
+            <p>How can we adapt the graph \(x=\cos y\) to get the graph \(y=\arccos x\) ?</p>
         </div>
             <<figure>
                 <video autoplay loop muted playsinline><source src="inverse_images/video4.mp4" alt="Graph showing intersections"></video>
@@ -634,7 +634,7 @@
             <p>As before, any of the coloured segments will ensure that the vertical line cuts the graph exactly once at all times.</p>
         </div>
         <div class="exercise">
-            <p>Which segment shall we choose for the graph \(y=\cos^{-1}x\) ?</p>
+            <p>Which segment shall we choose for the graph \(y=\arccos x\) ?</p>
         </div>
     </div>
 
@@ -652,7 +652,7 @@
 
     <div class="page" id="page-18">
         <div class="exercise"
-            <p>What are the domain and range of the function <span class="math inline">\(f(x) = \tan^{- 1}x\)</span></p>
+            <p>What are the domain and range of the function <span class="math inline">\(f(x) = \arctan x\)</span></p>
         </div>
         <div class="answer">
             <p>domain:</p>
@@ -668,27 +668,27 @@
     <div class="page" id="page-19">
         <div class="exercise">
             <p>What are</p>
-            <p><span class="math display">\[\sin^{- 1}x + \cos^{- 1}x\]</span></p>
+            <p><span class="math display">\[\arcsin x + \arccos x\]</span></p>
             <p>when</p>
             <p><span class="math display">\[x=0,\;x=\pm\frac{1}{2},\;\pm\frac{\sqrt 2}{2},\;\pm\frac{\sqrt 3}{2},\;\pm 1\]</span></p>
 
         </div>
         <div class="answer">
 
-            <p><span class="math display">\[\sin^{- 1}\frac{\sqrt{2}}{2} + \cos^{- 1}\frac{\sqrt{2}}{2} = \frac{\pi}{4} + \frac{\pi}{4} = \frac{\pi}{2}\]</span></p>
-            <p><span class="math display">\[\sin^{- 1}0 + \cos^{- 1}0 = 0 + \frac{\pi}{2} = \frac{\pi}{2}\]</span></p>
-            <p><span class="math display">\[\sin^{- 1}1 + \cos^{- 1}1 = \frac{\pi}{2} + 0 = \frac{\pi}{2}\]</span></p>
-            <p><span class="math display">\[\sin^{- 1}( - 1) + \cos^{- 1}( - 1) = - \frac{\pi}{2} + \pi = \frac{\pi}{2}\]</span></p>
-            <p><span class="math display">\[\sin^{- 1}\left(-\frac{\sqrt{2}}{2}\right) + \cos^{- 1}\left(-\frac{\sqrt{2}}{2}\right) = -\frac{\pi}{4} + \frac{3\pi}{4} = \frac{\pi}{2}\]</span></p>
-            <p><span class="math display">\[\sin^{- 1}\frac{1}{2} + \cos^{- 1}\frac{1}{2} = \frac{\pi}{6} + \frac{\pi}{3} = \frac{\pi}{2}\]</span></p>
-            <p><span class="math display">\[\sin^{- 1}\left(-\frac{\sqrt{3}}{2}\right) + \cos^{- 1}\left(-\frac{\sqrt{3}}{2}\right) = -\frac{\pi}{3} + \frac{5\pi}{6} = \frac{\pi}{2}\]</span></p>
+            <p><span class="math display">\[\arcsin\frac{\sqrt{2}}{2} + \arccos\frac{\sqrt{2}}{2} = \frac{\pi}{4} + \frac{\pi}{4} = \frac{\pi}{2}\]</span></p>
+            <p><span class="math display">\[\arcsin0 + \arccos0 = 0 + \frac{\pi}{2} = \frac{\pi}{2}\]</span></p>
+            <p><span class="math display">\[\arcsin1 + \arccos1 = \frac{\pi}{2} + 0 = \frac{\pi}{2}\]</span></p>
+            <p><span class="math display">\[\arcsin( - 1) + \arccos( - 1) = - \frac{\pi}{2} + \pi = \frac{\pi}{2}\]</span></p>
+            <p><span class="math display">\[\arcsin\left(-\frac{\sqrt{2}}{2}\right) + \arccos\left(-\frac{\sqrt{2}}{2}\right) = -\frac{\pi}{4} + \frac{3\pi}{4} = \frac{\pi}{2}\]</span></p>
+            <p><span class="math display">\[\arcsin\frac{1}{2} + \arccos\frac{1}{2} = \frac{\pi}{6} + \frac{\pi}{3} = \frac{\pi}{2}\]</span></p>
+            <p><span class="math display">\[\arcsin\left(-\frac{\sqrt{3}}{2}\right) + \arccos\left(-\frac{\sqrt{3}}{2}\right) = -\frac{\pi}{3} + \frac{5\pi}{6} = \frac{\pi}{2}\]</span></p>
             
         </div>
     </div>
 
     <div class="page" id="page-20">
         <div class="exercise">
-            When \(x\) is positive, what is \(\sin^{- 1}x + \cos^{- 1}x\)?
+            When \(x\) is positive, what is \(\arcsin x + \arccos x\)?
         </div>
         <figure>
             <img src="inverse_images/image2.png" alt="diagram" style="max-width: 40%;">
@@ -700,13 +700,13 @@
     <div class="page" id="page-21">
 
         <div class="exercise">
-            When \(x\) is positive, what is \(\sin^{- 1}x + \cos^{- 1}x\)?
+            When \(x\) is positive, what is \(\arcsin x + \arccos x\)?
         </div>
         <figure>
             <img src="inverse_images/image2.png" alt="diagram" style="max-width: 40%;">
         </figure>
         <div class="answer">
-            <p><span class="math inline">\(\sin^{- 1}x + \cos^{- 1}x = \theta + \varphi = \frac{\pi}{2}\)</span> when <span class="math inline">\(x\)</span> is positive.</p>
+            <p><span class="math inline">\(\arcsin x + \arccos x = \theta + \varphi = \frac{\pi}{2}\)</span> when <span class="math inline">\(x\)</span> is positive.</p>
         </div>
     </div>
 
@@ -715,12 +715,12 @@
             <p>We can also look at graphs for this, which will enable us to deal with negative values of \(x\).</p>
         </div>
         <div class="exercise">
-            <p>On the same set of axes, draw the graphs <span class="math inline">\(y = \sin^{- 1}x\)</span> and <span class="math inline">\(y = \cos^{- 1}x\)</span></p>
+            <p>On the same set of axes, draw the graphs <span class="math inline">\(y = \arcsin x\)</span> and <span class="math inline">\(y = \arccos x\)</span></p>
         </div>
     </div>
 <div class="page" id="page-23">
         <div class="answer">
-            <p>Here are the graphs <span class="math inline">\(y = \sin^{- 1}x\)</span> and <span class="math inline">\(y = \cos^{- 1}x\)</span>.</p>
+            <p>Here are the graphs <span class="math inline">\(y = \arcsin x\)</span> and <span class="math inline">\(y = \arccos x\)</span>.</p>
         </div>
             <figure>
                 <img src="inverse_images/image3.png" alt="Graphs of y = sin^-1 x and y = cos^-1 x" style="max-width: 32%;">
@@ -745,7 +745,7 @@
 
     <div class="page" id="page-25">
         <div class="exercise">
-            <p>Use the graph to find<span class="math inline">\(\sin^{- 1}x + \cos^{- 1}x\)</span> for any value of \(x\).</p>
+            <p>Use the graph to find<span class="math inline">\(\arcsin x + \arccos x\)</span> for any value of \(x\).</p>
         </div>
         
             <figure>
@@ -754,7 +754,7 @@
         </div>
     <div class="page" id="page-26">
         <div class="exercise">
-            <p>Use the graph to find<span class="math inline">\(\sin^{- 1}x + \cos^{- 1}x\)</span> for any value of \(x\).</p>
+            <p>Use the graph to find<span class="math inline">\(\arcsin x + \arccos x\)</span> for any value of \(x\).</p>
         </div>
 
         <figure>
@@ -771,7 +771,7 @@
 
         <div class="answer">
             <p>Symmetry shows easily that their average is <span class="math inline">\(\frac{\pi}{4}\)</span>, so their sum is <span class="math inline">\(\frac{\pi}{2}\)</span>, which means</p>
-            <p><span class="math inline">\(\sin^{- 1}x + \cos^{- 1}x = \frac{\pi}{2}\)</span> for any <span class="math inline">\(x\)</span> between <span class="math inline">\(- 1\)</span> and <span class="math inline">\(1\)</span>.</p>
+            <p><span class="math inline">\(\arcsin x + \arccos x = \frac{\pi}{2}\)</span> for any <span class="math inline">\(x\)</span> between <span class="math inline">\(- 1\)</span> and <span class="math inline">\(1\)</span>.</p>
         </div>
         
         <figure>
@@ -784,66 +784,66 @@
 
 
 
-        <p>What is <span class="math inline">\(\sin\left( \cos^{- 1}x \right)\)</span> in terms of <span class="math inline">\(x\)</span> when <span class="math inline">\(x &lt; 0,y &gt; 0\)</span>?</p>
-        <p>What is <span class="math inline">\(\cos\left( \sin^{- 1}y \right)\)</span> in terms of <span class="math inline">\(y\)</span> when <span class="math inline">\(x &lt; 0,y &gt; 0\)</span>?</p>
+        <p>What is <span class="math inline">\(\sin\left( \arccos x \right)\)</span> in terms of <span class="math inline">\(x\)</span> when <span class="math inline">\(x &lt; 0,y &gt; 0\)</span>?</p>
+        <p>What is <span class="math inline">\(\cos\left( \arcsin y \right)\)</span> in terms of <span class="math inline">\(y\)</span> when <span class="math inline">\(x &lt; 0,y &gt; 0\)</span>?</p>
         <p><span class="math display">\[\begin{matrix}
         &amp; x = \cos\theta y = \sin\theta \\
-        \Rightarrow &amp; \theta = \cos^{- 1}x = \sin^{- 1}y \\
-        &amp; \sin\left( \cos^{- 1}x \right) = \sin\theta = y = \sqrt{1 - x^{2}} \\
-        &amp; \cos\left( \sin^{- 1}y \right) = \cos\theta = x = \sqrt{1 - y^{2}}
+        \Rightarrow &amp; \theta = \arccos x = \arcsin y \\
+        &amp; \sin\left( \arccos x \right) = \sin\theta = y = \sqrt{1 - x^{2}} \\
+        &amp; \cos\left( \arcsin y \right) = \cos\theta = x = \sqrt{1 - y^{2}}
         \end{matrix}\]</span></p>
-        <p>What is <span class="math inline">\(\sin\left( \cos^{- 1}x \right)\)</span> in terms of <span class="math inline">\(x\)</span> when <span class="math inline">\(x &gt; 0,y &lt; 0\)</span>?</p>
-        <p>What is <span class="math inline">\(\cos\left( \sin^{- 1}y \right)\)</span> in terms of <span class="math inline">\(y\)</span> when <span class="math inline">\(x &gt; 0,y &lt; 0\)</span>?</p>
+        <p>What is <span class="math inline">\(\sin\left( \arccos x \right)\)</span> in terms of <span class="math inline">\(x\)</span> when <span class="math inline">\(x &gt; 0,y &lt; 0\)</span>?</p>
+        <p>What is <span class="math inline">\(\cos\left( \arcsin y \right)\)</span> in terms of <span class="math inline">\(y\)</span> when <span class="math inline">\(x &gt; 0,y &lt; 0\)</span>?</p>
         <p><span class="math display">\[\begin{matrix}
         &amp; x = \cos\theta y = \sin\theta \\
-        \Rightarrow &amp; \theta = \cos^{- 1}x = \sin^{- 1}y \\
-        &amp; \sin\left( \cos^{- 1}x \right) = \sin\theta = y = \sqrt{1 - x^{2}} \\
-        &amp; \cos\left( \sin^{- 1}y \right) = \cos\theta = x = \sqrt{1 - y^{2}}
+        \Rightarrow &amp; \theta = \arccos x = \arcsin y \\
+        &amp; \sin\left( \arccos x \right) = \sin\theta = y = \sqrt{1 - x^{2}} \\
+        &amp; \cos\left( \arcsin y \right) = \cos\theta = x = \sqrt{1 - y^{2}}
         \end{matrix}\]</span></p>
-        <p>What is <span class="math inline">\(\sin\left( \cos^{- 1}x \right)\)</span> in terms of <span class="math inline">\(x\)</span> when <span class="math inline">\(x &lt; 0,y &lt; 0\)</span>?</p>
-        <p>What is <span class="math inline">\(\cos\left( \sin^{- 1}y \right)\)</span> in terms of <span class="math inline">\(y\)</span> when <span class="math inline">\(x &lt; 0,y &lt; 0\)</span>?</p>
+        <p>What is <span class="math inline">\(\sin\left( \arccos x \right)\)</span> in terms of <span class="math inline">\(x\)</span> when <span class="math inline">\(x &lt; 0,y &lt; 0\)</span>?</p>
+        <p>What is <span class="math inline">\(\cos\left( \arcsin y \right)\)</span> in terms of <span class="math inline">\(y\)</span> when <span class="math inline">\(x &lt; 0,y &lt; 0\)</span>?</p>
         <p><span class="math display">\[\begin{matrix}
         &amp; x = \cos\theta y = \sin\theta \\
-        \Rightarrow &amp; \theta = \cos^{- 1}x = \sin^{- 1}y \\
-        &amp; \sin\left( \cos^{- 1}x \right) = \sin\theta = y = \sqrt{1 - x^{2}} \\
-        &amp; \cos\left( \sin^{- 1}y \right) = \cos\theta = x = \sqrt{1 - y^{2}}
+        \Rightarrow &amp; \theta = \arccos x = \arcsin y \\
+        &amp; \sin\left( \arccos x \right) = \sin\theta = y = \sqrt{1 - x^{2}} \\
+        &amp; \cos\left( \arcsin y \right) = \cos\theta = x = \sqrt{1 - y^{2}}
         \end{matrix}\]</span></p>
-        <p>What is <span class="math inline">\(\sin^{- 1}x\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\sin^{- 1}\left( \cos\theta \right)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\cos^{- 1}y\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\cos^{- 1}(\sin\theta)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arcsin x\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arcsin\left( \cos\theta \right)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arccosy\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arccos(\sin\theta)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
         <p><span class="math display">\[\begin{array}{r}
-        \sin^{- 1}(\cos\theta) = \sin^{- 1}x = \frac{\pi}{2} - \theta\cos^{- 1}(\sin\theta) = \sin^{- 1}y = \frac{\pi}{2} - \theta
+        \arcsin(\cos\theta) = \arcsin x = \frac{\pi}{2} - \theta\arccos(\sin\theta) = \arcsin y = \frac{\pi}{2} - \theta
         \end{array}\]</span></p>
         <p>When <span class="math inline">\(\frac{\pi}{2} &lt; \theta \leq \pi\)</span></p>
-        <p>What is <span class="math inline">\(\sin^{- 1}x\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\sin^{- 1}\left( \cos\theta \right)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\cos^{- 1}y\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\cos^{- 1}(\sin\theta)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arcsin x\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arcsin\left( \cos\theta \right)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arccosy\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arccos(\sin\theta)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
         <p><span class="math display">\[\begin{array}{r}
-        \sin^{- 1}(\cos\theta) = \sin^{- 1}x = \frac{\pi}{2} - \theta\cos^{- 1}(\sin\theta) = \sin^{- 1}y = \frac{\pi}{2} - \theta
+        \arcsin(\cos\theta) = \arcsin x = \frac{\pi}{2} - \theta\arccos(\sin\theta) = \arcsin y = \frac{\pi}{2} - \theta
         \end{array}\]</span></p>
         <p>When <span class="math inline">\(\pi \leq \theta &lt; \frac{3\pi}{2}\)</span></p>
-        <p>What is <span class="math inline">\(\sin^{- 1}x\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\sin^{- 1}\left( \cos\theta \right)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\cos^{- 1}y\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\cos^{- 1}(\sin\theta)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arcsin x\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arcsin\left( \cos\theta \right)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arccosy\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arccos(\sin\theta)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
         <p><span class="math display">\[\begin{array}{r}
-        \sin^{- 1}(\cos\theta) = \sin^{- 1}x = \frac{\pi}{2} - \theta\cos^{- 1}(\sin\theta) = \sin^{- 1}y = \frac{\pi}{2} - \theta
+        \arcsin(\cos\theta) = \arcsin x = \frac{\pi}{2} - \theta\arccos(\sin\theta) = \arcsin y = \frac{\pi}{2} - \theta
         \end{array}\]</span></p>
         <p>When <span class="math inline">\(- \frac{\pi}{2} \leq \theta &lt; 0\)</span></p>
-        <p>What is <span class="math inline">\(\sin^{- 1}x\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\sin^{- 1}\left( \cos\theta \right)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\cos^{- 1}y\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\cos^{- 1}(\sin\theta)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arcsin x\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arcsin\left( \cos\theta \right)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arccosy\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arccos(\sin\theta)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
         <p>What is <span class="math inline">\(\tan\theta\)</span> in terms of <span class="math inline">\(x\)</span> ?</p>
-        <p>What is <span class="math inline">\(\tan\left( \cos^{- 1}x \right)\)</span> in terms of <span class="math inline">\(x\)</span> ?</p>
+        <p>What is <span class="math inline">\(\tan\left( \arccos x \right)\)</span> in terms of <span class="math inline">\(x\)</span> ?</p>
         <p>What is <span class="math inline">\(\tan\theta\)</span> in terms of <span class="math inline">\(y\)</span> ?</p>
-        <p>What is <span class="math inline">\(\tan\left( \sin^{- 1}y \right)\)</span> in terms of <span class="math inline">\(y\)</span> ?</p>
+        <p>What is <span class="math inline">\(\tan\left( \arcsin y \right)\)</span> in terms of <span class="math inline">\(y\)</span> ?</p>
         <p><span class="math display">\[\begin{matrix}
         &amp; \tan\theta = \frac{y}{x} = \frac{\sqrt{1 - x^{2}}}{x} = \frac{y}{\sqrt{1 - y^{2}}} \\
-        \Rightarrow &amp; \tan\left( \cos^{- 1}x \right) = \frac{\sqrt{1 - x^{2}}}{x} \\
-        &amp; \tan\left( \sin^{- 1}y \right) = \frac{y}{\sqrt{1 - y^{2}}}
+        \Rightarrow &amp; \tan\left( \arccos x \right) = \frac{\sqrt{1 - x^{2}}}{x} \\
+        &amp; \tan\left( \arcsin y \right) = \frac{y}{\sqrt{1 - y^{2}}}
         \end{matrix}\]</span></p>   
         </div>
 <!--
@@ -853,7 +853,7 @@
 
     <div class="page" id="page-39">
         <div class="exercise">
-            <p>What is <span class="math inline">\(\cos\left( \sin^{- 1}y \right)\)</span> in terms of <span class="math inline">\(y\)</span> ?</p>
+            <p>What is <span class="math inline">\(\cos\left( \arcsin y \right)\)</span> in terms of <span class="math inline">\(y\)</span> ?</p>
         </div>
     </div>
 
@@ -862,13 +862,13 @@
             <p>What happens when <span class="math inline">\(x\)</span> or <span class="math inline">\(y\)</span> is negative?</p>
         </div>
         <div class="answer">
-            <p><span class="math display">\[0 &lt; \cos^{- 1}x &lt; \pi \Rightarrow \sin\left( \cos^{- 1}x \right) &gt; 0\]</span></p>
-            <p><span class="math display">\[- \frac{\pi}{2} &lt; \sin^{- 1}x &lt; \frac{\pi}{2} \Rightarrow \cos\left( \sin^{- 1}x \right) &gt; 0\]</span></p>
+            <p><span class="math display">\[0 &lt; \arccos x &lt; \pi \Rightarrow \sin\left( \arccos x \right) &gt; 0\]</span></p>
+            <p><span class="math display">\[- \frac{\pi}{2} &lt; \arcsin x &lt; \frac{\pi}{2} \Rightarrow \cos\left( \arcsin x \right) &gt; 0\]</span></p>
             <p><span class="math display">\[\begin{matrix}
             &amp; x = \cos\theta y = \sin\theta \\
-            \Rightarrow &amp; \theta = \cos^{- 1}x = \sin^{- 1}y \\
-            &amp; \sin\left( \cos^{- 1}x \right) = \sin\theta = y = \sqrt{1 - x^{2}} \\
-            &amp; \cos\left( \sin^{- 1}y \right) = \cos\theta = x = \sqrt{1 - y^{2}}
+            \Rightarrow &amp; \theta = \arccos x = \arcsin y \\
+            &amp; \sin\left( \arccos x \right) = \sin\theta = y = \sqrt{1 - x^{2}} \\
+            &amp; \cos\left( \arcsin y \right) = \cos\theta = x = \sqrt{1 - y^{2}}
             \end{matrix}\]</span></p>
             <figure>
                 <img src="inverse_images/image3.png" alt="Unit circle diagram">
@@ -878,13 +878,13 @@
 
     <div class="page" id="page-41">
 
-        <p>What is <span class="math inline">\(\sin^{- 1}x\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\sin^{- 1}\left( \cos\theta \right)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\cos^{- 1}y\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
-        <p>What is <span class="math inline">\(\cos^{- 1}(\sin\theta)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arcsin x\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arcsin\left( \cos\theta \right)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arccosy\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
+        <p>What is <span class="math inline">\(\arccos(\sin\theta)\)</span> in terms of <span class="math inline">\(\theta\)</span> ?</p>
         <p>What happens when <span class="math inline">\(x\)</span> or <span class="math inline">\(y\)</span> is negative?</p>
         <p><span class="math display">\[\begin{array}{r}
-        \sin^{- 1}(\cos\theta) = \sin^{- 1}x = \frac{\pi}{2} - \theta\cos^{- 1}(\sin\theta) = \sin^{- 1}y = \frac{\pi}{2} - \theta
+        \arcsin(\cos\theta) = \arcsin x = \frac{\pi}{2} - \theta\arccos(\sin\theta) = \arcsin y = \frac{\pi}{2} - \theta
         \end{array}\]</span></p>
 
 
@@ -900,7 +900,7 @@
             <p><span class="math display">\[\left\{ y: - \frac{\pi}{2} \leq y \leq \frac{\pi}{2} \right\}\]</span></p>
         </div>
         <p>Since these are sets, there is no particular reason to choose the letters <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>. Any letters would do. But using <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> help me to keep things straight in my mind, and may help your students, too.</p>
-        <p><span class="math inline">\(\sin\left( \sin^{- 1}\frac{1}{2} \right) = \sin\frac{\pi}{6} = \frac{1}{2}\)</span> and <span class="math inline">\(\sin^{- 1}\left( \sin\frac{\pi}{6} \right) = \sin^{- 1}\frac{1}{2} = \frac{\pi}{6}\)</span></p>
+        <p><span class="math inline">\(\sin\left( \arcsin\frac{1}{2} \right) = \sin\frac{\pi}{6} = \frac{1}{2}\)</span> and <span class="math inline">\(\arcsin\left( \sin\frac{\pi}{6} \right) = \arcsin\frac{1}{2} = \frac{\pi}{6}\)</span></p>
         <figure>
             <img src="inverse_images/image10.png" alt="Diagram">
         </figure>
@@ -908,20 +908,20 @@
 
     <div class="page" id="page-42">
 
-        <p>Since we want <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\sin^{- 1}\)</span> are inverses of each other, we would like</p>
-        <p><span class="math inline">\(\sin\left( \sin^{- 1}x \right) = x\)</span> and <span class="math inline">\(\sin^{- 1}\left( \sin x \right) = x\)</span></p>
-        <p>for every value of <span class="math inline">\(x\)</span>. And this is true, so long as the domain of one is the range of the other, and vice versa. The range of <span class="math inline">\(\sin\)</span> is <span class="math inline">\(\{ y: - 1 \leq y \leq 1\}\)</span> which is also the domain of <span class="math inline">\(\sin^{- 1}\)</span>.</p>
-        <p>However, the sin has domain <span class="math inline">\(\mathbb{R}\)</span> whereas <span class="math inline">\(\sin^{- 1}\)</span> has range <span class="math inline">\(\left\{ y: - \frac{\pi}{2} \leq y \leq \frac{\pi}{2} \right\}\)</span>.</p>
+        <p>Since we want <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\arcsin\)</span> are inverses of each other, we would like</p>
+        <p><span class="math inline">\(\sin\left( \arcsin x \right) = x\)</span> and <span class="math inline">\(\arcsin\left( \sin x \right) = x\)</span></p>
+        <p>for every value of <span class="math inline">\(x\)</span>. And this is true, so long as the domain of one is the range of the other, and vice versa. The range of <span class="math inline">\(\sin\)</span> is <span class="math inline">\(\{ y: - 1 \leq y \leq 1\}\)</span> which is also the domain of <span class="math inline">\(\arcsin\)</span>.</p>
+        <p>However, the sin has domain <span class="math inline">\(\mathbb{R}\)</span> whereas <span class="math inline">\(\arcsin\)</span> has range <span class="math inline">\(\left\{ y: - \frac{\pi}{2} \leq y \leq \frac{\pi}{2} \right\}\)</span>.</p>
         <p>So for the two functions to be inverses of each other, we would technically need to restrict the function sin to the domain <span class="math inline">\(\left\{ x: - \frac{\pi}{2} \leq x \leq \frac{\pi}{2} \right\}\)</span>.</p>
-        <p>What are <span class="math inline">\(\sin\left( \sin^{- 1}\frac{1}{2} \right)\)</span> and <span class="math inline">\(\sin^{- 1}\left( \sin\frac{\pi}{6} \right)\)</span> ?</p>
-        <p>What are <span class="math inline">\(\sin\left( \sin^{- 1}( - 1) \right)\)</span> and <span class="math inline">\(\sin^{- 1}\left( \sin\frac{3\pi}{2} \right)\)</span> ?</p>
-        <p><span class="math inline">\(\sin\left( \sin^{- 1}( - 1) \right) = \sin\left( - \frac{\pi}{2} \right) = - 1\)</span> as expected, but</p>
-        <p><span class="math display">\[\sin^{- 1}\left( \sin\frac{3\pi}{2} \right) = \sin^{- 1}( - 1) = - \frac{\pi}{2}\]</span></p>
+        <p>What are <span class="math inline">\(\sin\left( \arcsin\frac{1}{2} \right)\)</span> and <span class="math inline">\(\arcsin\left( \sin\frac{\pi}{6} \right)\)</span> ?</p>
+        <p>What are <span class="math inline">\(\sin\left( \arcsin( - 1) \right)\)</span> and <span class="math inline">\(\arcsin\left( \sin\frac{3\pi}{2} \right)\)</span> ?</p>
+        <p><span class="math inline">\(\sin\left( \arcsin( - 1) \right) = \sin\left( - \frac{\pi}{2} \right) = - 1\)</span> as expected, but</p>
+        <p><span class="math display">\[\arcsin\left( \sin\frac{3\pi}{2} \right) = \arcsin( - 1) = - \frac{\pi}{2}\]</span></p>
         <p>Remember that the equation <span class="math inline">\(\sin\theta = - 1\)</span> has multiple solutions, and we need the one that is in</p>
         <p><span class="math inline">\(\left\{ \theta: - \frac{\pi}{2} \leq \theta \leq \frac{\pi}{2} \right\}\)</span>.</p>
-        <p><span class="math inline">\(\sin\left( \sin^{- 1}x \right) = x\)</span>, but</p>
-        <p><span class="math inline">\(\sin^{- 1}\left( \sin x \right) = x + \text{an integer multiple of}2\pi\)</span> where the multiple (possibly negative) is chosen to get a value in the range <span class="math inline">\(\left\lbrack - \frac{\pi}{2},\frac{\pi}{2} \right\rbrack\)</span>.</p>
-        <p>What are <span class="math inline">\(\sin\left( \sin^{- 1}x \right)\)</span> and <span class="math inline">\(\sin^{- 1}\left( \sin x \right)\)</span> ?</p>
+        <p><span class="math inline">\(\sin\left( \arcsin x \right) = x\)</span>, but</p>
+        <p><span class="math inline">\(\arcsin\left( \sin x \right) = x + \text{an integer multiple of}2\pi\)</span> where the multiple (possibly negative) is chosen to get a value in the range <span class="math inline">\(\left\lbrack - \frac{\pi}{2},\frac{\pi}{2} \right\rbrack\)</span>.</p>
+        <p>What are <span class="math inline">\(\sin\left( \arcsin x \right)\)</span> and <span class="math inline">\(\arcsin\left( \sin x \right)\)</span> ?</p>
         <figure>
             <img src="inverse_images/image11.png" alt="Previous diagram">
         </figure>
@@ -929,18 +929,18 @@
 
     <div class="page" id="page-43">
 
-        <p>What are <span class="math inline">\(\cos\left( \cos^{- 1}x \right)\)</span> and <span class="math inline">\(\cos^{- 1}(\cos x)\)</span> ?</p>
+        <p>What are <span class="math inline">\(\cos\left( \arccos x \right)\)</span> and <span class="math inline">\(\arccos(\cos x)\)</span> ?</p>
         <div class="answer">
-            <p>Similar considerations apply here to those from <span class="math inline">\(\sin^{- 1}\)</span>.</p>
+            <p>Similar considerations apply here to those from <span class="math inline">\(\arcsin\)</span>.</p>
         </div>
         <div class="answer">
-            <p>From the graph, it's pretty clear that <span class="math inline">\(\cos\left( \cos^{- 1}x \right) = x\)</span>.</p>
+            <p>From the graph, it's pretty clear that <span class="math inline">\(\cos\left( \arccos x \right) = x\)</span>.</p>
         </div>
         <p>But, for example, if <span class="math inline">\(x = - 3\pi\)</span>, then</p>
-        <p><span class="math inline">\(\cos^{- 1}(\cos x) = \cos^{- 1}( - 1) = \pi = x + 4\pi\)</span>.</p>
-        <p>So <span class="math inline">\(\cos\left( \cos^{- 1}x \right) = x + 2n\pi\)</span> where <span class="math inline">\(n \in \mathbb{Z}\)</span> is chosen to get a value in the range <span class="math inline">\(\lbrack 0,\pi\rbrack\)</span>.</p>
+        <p><span class="math inline">\(\arccos(\cos x) = \arccos( - 1) = \pi = x + 4\pi\)</span>.</p>
+        <p>So <span class="math inline">\(\cos\left( \arccos x \right) = x + 2n\pi\)</span> where <span class="math inline">\(n \in \mathbb{Z}\)</span> is chosen to get a value in the range <span class="math inline">\(\lbrack 0,\pi\rbrack\)</span>.</p>
         <p>Draw the graph <span class="math inline">\(x = \tan y\)</span>.</p>
-        <p>On the same axes, draw the graph <span class="math inline">\(y = \tan^{- 1}x\)</span>.</p>
+        <p>On the same axes, draw the graph <span class="math inline">\(y = \arctan x\)</span>.</p>
         <figure>
             <img src="inverse_images/image14.png" alt="Graphs of x = tan y and y = tan^-1 x">
         </figure>
@@ -948,10 +948,10 @@
 
     <div class="page" id="page-45">
 
-        <p>What are <span class="math inline">\(\tan\left( \tan^{- 1}x \right)\)</span> and <span class="math inline">\(\tan^{- 1}(\tan x)\)</span> ?</p>
-        <p><span class="math inline">\(\tan\left( \tan^{- 1}x \right) = x\)</span>.</p>
-        <p><span class="math inline">\(\tan^{- 1}\left( \tan x \right) = x + 2n\pi\)</span> where <span class="math inline">\(n \in \mathbb{Z}\)</span> is chosen to get a value in the range<span class="math inline">\(\left\lbrack - \frac{\pi}{2},\frac{\pi}{2} \right\rbrack\)</span>.</p>
-        <p>What is <span class="math inline">\(\sin^{- 1}x + \cos^{- 1}x\)</span> ?</p>
+        <p>What are <span class="math inline">\(\tan\left( \arctan x \right)\)</span> and <span class="math inline">\(\arctan(\tan x)\)</span> ?</p>
+        <p><span class="math inline">\(\tan\left( \arctan x \right) = x\)</span>.</p>
+        <p><span class="math inline">\(\arctan\left( \tan x \right) = x + 2n\pi\)</span> where <span class="math inline">\(n \in \mathbb{Z}\)</span> is chosen to get a value in the range<span class="math inline">\(\left\lbrack - \frac{\pi}{2},\frac{\pi}{2} \right\rbrack\)</span>.</p>
+        <p>What is <span class="math inline">\(\arcsin x + \arccos x\)</span> ?</p>
         <p>From the diagram:</p>
         <figure>
             <img src="inverse_images/image33.png" alt="Diagram showing sin^-1 x + cos^-1 x">
@@ -969,13 +969,13 @@
             <img src="/darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
             <h1>Well done on completing Part 1!</h1>
             <div class="welcome-content">
-                <p>You've explored inverse circular functions in depth&#8212;defining arcsin, arccos, and arctan, understanding their domains and ranges, drawing and interpreting their graphs, and discovering beautiful identities such as \(\sin^{-1}x + \cos^{-1}x = \frac{\pi}{2}\).</p>
+                <p>You've explored inverse circular functions in depth&#8212;defining arcsin, arccos, and arctan, understanding their domains and ranges, drawing and interpreting their graphs, and discovering beautiful identities such as \(\arcsin x + \arccos x = \frac{\pi}{2}\).</p>
 
                 <div class="navigation-box">
                     <h2>What's Next:</h2>
                     <ul>
                         <li>Part 2 explores the <strong>derivatives</strong> of the inverse circular functions</li>
-                        <li>You'll derive \(\frac{\mathrm{d}}{\mathrm{d}x}\sin^{-1}x\), \(\frac{\mathrm{d}}{\mathrm{d}x}\cos^{-1}x\), and \(\frac{\mathrm{d}}{\mathrm{d}x}\tan^{-1}x\)</li>
+                        <li>You'll derive \(\frac{\mathrm{d}}{\mathrm{d}x}\arcsin x\), \(\frac{\mathrm{d}}{\mathrm{d}x}\arccos x\), and \(\frac{\mathrm{d}}{\mathrm{d}x}\arctan x\)</li>
                         <li>You'll then use these results to evaluate integrals involving inverse circular functions</li>
                     </ul>
                 </div>
