@@ -36,7 +36,7 @@ body {
     border-radius: 8px;
     margin-top: 10px;
     position: relative;
-    max-height: calc(100vh - 180px);
+    max-height: calc(100vh - 100px);
     overflow-y: auto;
 }
 
@@ -108,17 +108,18 @@ body {
 }
 
 .welcome-author {
-    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
     margin-top: 20px;
     opacity: 0.9;
     font-size: 1em;
     line-height: 1.6;
+    text-align: right;
 }
 
 .welcome-logo {
-    position: absolute;
-    bottom: 35px;
-    left: 30px;
     width: 50px;
     height: 50px;
     opacity: 0.7;
@@ -152,7 +153,6 @@ body {
     .welcome-logo {
         width: 40px;
         height: 40px;
-        bottom: 25px;
     }
 }
 
@@ -613,6 +613,23 @@ li {
 .back-btn:hover {
     background: rgba(44, 62, 80, 1);
     transform: scale(1.05);
+}
+
+/* Typewriter continuation prompt */
+.typewriter-prompt {
+    text-align: center;
+    color: var(--accent);
+    font-style: italic;
+    margin: 20px 0;
+    padding: 8px;
+    cursor: pointer;
+    user-select: none;
+    animation: typewriter-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes typewriter-pulse {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 1; }
 }
 
 /* Matrix row styling for inverse functions worksheet */

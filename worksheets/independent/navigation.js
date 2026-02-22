@@ -4,7 +4,269 @@
 let currentPage = 1;
 let totalPages = 21; // Will be set dynamically for each worksheet
 
+// Typewriter effect for page 2
+let typewriterTimeout = null;
+let typewriterWaiting = false;
+let typewriterWaitCallback = null; // if set, spacebar calls this instead of resuming queue
+let typewriterQueue = [];
+let page2Originals = null;
+
+// Answer div animation — add page numbers here to opt in
+const answerAnimatedPages = new Set([4, 6, 9, 11, 13, 15, 16, 17, 18, 20]);
+const answerOriginals = {};
+let answerAnimationId = 0;
+
+function stopTypewriter() {
+    if (typewriterTimeout !== null) {
+        clearTimeout(typewriterTimeout);
+        typewriterTimeout = null;
+    }
+    typewriterWaiting = false;
+    typewriterWaitCallback = null;
+    hideTypewriterPrompt();
+    answerAnimationId++; // cancel any pending answer animation
+}
+
+function showTypewriterPrompt(beforeEl) {
+    let prompt = document.getElementById('typewriter-prompt');
+    if (!prompt) {
+        prompt = document.createElement('div');
+        prompt.id = 'typewriter-prompt';
+        prompt.className = 'typewriter-prompt';
+        prompt.textContent = '— press spacebar to continue —';
+        prompt.addEventListener('click', continueTypewriter);
+    }
+    // Move prompt to the correct position (insertBefore moves if already in DOM)
+    beforeEl.parentNode.insertBefore(prompt, beforeEl);
+    prompt.style.display = 'block';
+}
+
+function hideTypewriterPrompt() {
+    const prompt = document.getElementById('typewriter-prompt');
+    if (prompt) prompt.style.display = 'none';
+}
+
+function continueTypewriter() {
+    if (!typewriterWaiting) return;
+    typewriterWaiting = false;
+    hideTypewriterPrompt();
+
+    if (typewriterWaitCallback) {
+        const cb = typewriterWaitCallback;
+        typewriterWaitCallback = null;
+        cb();
+        return;
+    }
+
+    // Default: page 2 phase 2 — resume from typewriterQueue
+    const items = typewriterQueue;
+    typewriterQueue = [];
+
+    let idx = 0;
+    function tick() {
+        if (idx >= items.length) { typewriterTimeout = null; return; }
+        const item = items[idx++];
+        item.node.textContent += item.char;
+        const delay = /\S/.test(item.char) ? 25 : 0;
+        typewriterTimeout = setTimeout(tick, delay);
+    }
+    tick();
+}
+
+function startTypewriterPage2() {
+    const page = document.getElementById('page-2');
+    if (!page) return;
+
+    stopTypewriter();
+
+    // Only animate the visible intro paragraphs (teacher-note is display:none; h2 is not animated)
+    const elements = Array.from(page.querySelectorAll('.intro p'));
+
+    // Save original HTML on first visit; restore it on subsequent visits
+    if (page2Originals === null) {
+        page2Originals = elements.map(el => el.innerHTML);
+    } else {
+        elements.forEach((el, i) => { el.innerHTML = page2Originals[i]; });
+    }
+
+    // Collect character items for each element separately
+    const groups = elements.map(el => {
+        const items = [];
+        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+        let node;
+        while ((node = walker.nextNode())) {
+            const text = node.textContent;
+            node.textContent = '';
+            for (let i = 0; i < text.length; i++) {
+                items.push({ node, char: text[i] });
+            }
+        }
+        return items;
+    });
+
+    // Phase 1: first intro p
+    const phase1 = [...(groups[0] || [])];
+
+    // Phase 2: second intro p — waits for spacebar before revealing
+    typewriterQueue = groups[1] || [];
+    typewriterWaiting = false;
+
+    let idx = 0;
+    function tick() {
+        if (idx >= phase1.length) {
+            showTypewriterPrompt(page.querySelectorAll('.intro')[1]);
+            typewriterWaiting = true;
+            typewriterTimeout = null;
+            return;
+        }
+        const item = phase1[idx++];
+        let delay;
+        if (item.pause) {
+            delay = item.pause;
+        } else {
+            item.node.textContent += item.char;
+            delay = /\S/.test(item.char) ? 25 : 0;
+        }
+        typewriterTimeout = setTimeout(tick, delay);
+    }
+    tick();
+}
+
+function startAnswerAnimation(pageNum, mjPromise) {
+    const page = document.getElementById('page-' + pageNum);
+    const answer = page ? page.querySelector('.answer, .key-concept') : null;
+    if (!answer) return;
+
+    // Save the original rendered HTML on first visit; restore it on subsequent visits
+    if (!answerOriginals[pageNum]) {
+        answerOriginals[pageNum] = answer.innerHTML;
+        answer.style.visibility = 'hidden';
+    } else {
+        answer.style.visibility = 'hidden';
+        answer.innerHTML = answerOriginals[pageNum];
+    }
+
+    const myId = ++answerAnimationId;
+
+    // Wait for MathJax, then show the spacebar prompt before the answer div
+    (mjPromise || Promise.resolve()).then(() => {
+        if (myId !== answerAnimationId) return;
+        typewriterWaitCallback = () => {
+            if (myId !== answerAnimationId) return;
+            answer.style.visibility = '';
+            runAnswerAnimation(answer, myId);
+        };
+        typewriterWaiting = true;
+        showTypewriterPrompt(answer);
+    });
+}
+
+function runAnswerAnimation(answer, myId) {
+    const paras = Array.from(answer.querySelectorAll('p'));
+    const cells = Array.from(answer.querySelectorAll('td'));
+
+    // Walk paragraph child nodes: text chars typed one-by-one, inline math appears
+    // atomically, display math (\[...\]) added to wipe list.
+    // If there are no <p> elements, walk the container's own child nodes directly.
+    const units = [];
+    const displayMath = [];
+
+    function collectChildNodes(parent) {
+        Array.from(parent.childNodes).forEach(child => {
+            if (child.nodeType === Node.TEXT_NODE) {
+                const text = child.textContent;
+                child.textContent = '';
+                for (let i = 0; i < text.length; i++) {
+                    units.push({ type: 'char', node: child, char: text[i] });
+                }
+            } else if (child.nodeType === Node.ELEMENT_NODE) {
+                // Display math containers (<mjx-container display="true">) wipe in
+                if (child.hasAttribute('display')) {
+                    displayMath.push(child);
+                } else {
+                    child.style.visibility = 'hidden';
+                    units.push({ type: 'element', node: child });
+                }
+            }
+        });
+    }
+
+    if (paras.length > 0) {
+        paras.forEach((para, paraIdx) => {
+            if (paraIdx > 0) {
+                units.push({ type: 'pause', duration: 400 });
+            }
+            collectChildNodes(para);
+        });
+    } else {
+        // No <p> elements — walk container's own children (e.g. plain-text key-concept)
+        Array.from(answer.childNodes).forEach(child => {
+            if (child.nodeType === Node.TEXT_NODE) {
+                const text = child.textContent;
+                child.textContent = '';
+                for (let i = 0; i < text.length; i++) {
+                    units.push({ type: 'char', node: child, char: text[i] });
+                }
+            } else if (child.nodeType === Node.ELEMENT_NODE && child.tagName !== 'TABLE') {
+                child.style.visibility = 'hidden';
+                units.push({ type: 'element', node: child });
+            }
+        });
+    }
+
+    // Wipe targets: display math blocks (slower) first, then table cells (faster)
+    const wipes = [
+        ...displayMath.map(el => ({ el, gap: 3500, transition: 'clip-path 2.5s ease-out' })),
+        ...cells.map(el =>      ({ el, gap: 900,  transition: 'clip-path 0.75s ease-out' })),
+    ];
+    wipes.forEach(({ el, transition }) => {
+        el.style.clipPath = 'inset(0 100% 0 0)';
+        el.style.transition = transition;
+    });
+
+    let unitIdx = 0;
+    let wipeIdx = 0;
+
+    // Pause before wipes only if something visible was typed
+    const hasTypedContent = units.some(
+        u => (u.type === 'char' && /\S/.test(u.char)) || u.type === 'element'
+    );
+
+    function animatePara() {
+        if (myId !== answerAnimationId) return;
+        if (unitIdx >= units.length) {
+            typewriterTimeout = setTimeout(animateWipes, hasTypedContent ? 400 : 0);
+            return;
+        }
+        const unit = units[unitIdx++];
+        let delay;
+        if (unit.type === 'char') {
+            unit.node.textContent += unit.char;
+            delay = /\S/.test(unit.char) ? 25 : 0;
+        } else if (unit.type === 'element') {
+            unit.node.style.visibility = '';
+            delay = 60;
+        } else {
+            // pause between paragraphs
+            delay = unit.duration;
+        }
+        typewriterTimeout = setTimeout(animatePara, delay);
+    }
+
+    function animateWipes() {
+        if (myId !== answerAnimationId) return;
+        if (wipeIdx >= wipes.length) { typewriterTimeout = null; return; }
+        const { el, gap } = wipes[wipeIdx++];
+        el.style.clipPath = 'inset(0 0% 0 0)';
+        typewriterTimeout = setTimeout(animateWipes, gap);
+    }
+
+    animatePara();
+}
+
 function showPage(pageNum) {
+    stopTypewriter();
+
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
 
     const page = document.getElementById('page-' + pageNum);
@@ -28,19 +290,48 @@ function showPage(pageNum) {
         if (sidePrev) sidePrev.disabled = (currentPage === 1);
         if (sideNext) sideNext.disabled = (currentPage === totalPages);
 
+        let mjPromise = Promise.resolve();
         if (window.MathJax && window.MathJax.typesetPromise) {
-            MathJax.typesetPromise([page]);
+            mjPromise = MathJax.typesetPromise([page]);
         }
 
         // Reset any videos on this page to the beginning (or custom start time)
         const videos = page.querySelectorAll('video');
         videos.forEach(video => {
-            if (video.id === 'video-page12' || video.id === 'video-page13') {
-                video.currentTime = 11;
+            let source = video.querySelector('source');
+            const dataSrc = video.getAttribute('data-src');
+
+            if (!source && dataSrc) {
+                // Lazy-loaded video: inject source element now so the browser
+                // never pre-buffers stale content from the initial HTML parse.
+                source = document.createElement('source');
+                source.type = 'video/mp4';
+                video.appendChild(source);
+            }
+
+            if (source) {
+                const rawSrc = dataSrc || (source.getAttribute('src') || '').replace(/[?#].*$/, '');
+                source.setAttribute('src', rawSrc + '?cb=' + Date.now());
+                const isCustomStart = video.id === 'video-page12' || video.id === 'video-page13';
+                video.addEventListener('loadedmetadata', function() {
+                    video.currentTime = isCustomStart ? 11 : 0;
+                }, { once: true });
+                video.load();
+                video.play().catch(() => {});
             } else {
-                video.currentTime = 0;
+                if (video.id === 'video-page12' || video.id === 'video-page13') {
+                    video.currentTime = 11;
+                } else {
+                    video.currentTime = 0;
+                }
             }
         });
+
+        if (pageNum === 2) {
+            startTypewriterPage2();
+        } else if (answerAnimatedPages.has(pageNum)) {
+            startAnswerAnimation(pageNum, mjPromise);
+        }
 
         window.scrollTo(0, 0);
         updateScrollIndicator();
@@ -122,7 +413,14 @@ function goToPage(pageNum) {
 
 // Keyboard navigation
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'ArrowRight' || e.key === ' ') {
+    if (e.key === ' ') {
+        e.preventDefault();
+        if (typewriterWaiting) {
+            continueTypewriter();
+        } else {
+            changePage(1);
+        }
+    } else if (e.key === 'ArrowRight') {
         e.preventDefault();
         changePage(1);
     } else if (e.key === 'ArrowLeft') {
