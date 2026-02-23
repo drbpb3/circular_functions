@@ -12,7 +12,7 @@ let typewriterQueue = [];
 let page2Originals = null;
 
 // Answer div animation — add page numbers here to opt in
-const answerAnimatedPages = new Set([3, 4, 6, 8, 9, 11, 13, 15, 16, 17, 18, 20]);
+const answerAnimatedPages = new Set([3, 4, 6, 8, 9, 11, 13, 14, 15, 16, 17, 18, 20]);
 const answerOriginals = {};
 let answerAnimationId = 0;
 
@@ -20,8 +20,9 @@ let answerAnimationId = 0;
 const introAnimatedPages = new Set([7]);
 const introOriginals = {};
 
-// Pages where the intro div auto-animates after the answer animation completes
-const introChainPages = new Set([3]);
+// Pages where the intro div auto-animates alongside/after the answer animation.
+// Map: pageNum → delay ms after click (null = fire via onComplete, i.e. after all wipes)
+const introChainPages = new Map([[3, 2000], [11, null]]);
 
 function stopTypewriter() {
     if (typewriterTimeout !== null) {
@@ -156,8 +157,9 @@ function startAnswerAnimation(pageNum, mjPromise) {
     const afterAnswerEls = Array.from(page.querySelectorAll('.after-answer'));
     afterAnswerEls.forEach(el => { el.style.display = 'none'; });
 
-    // Check if this page also chains an intro animation after the answer
-    const introEl = introChainPages.has(pageNum) ? page.querySelector('.intro') : null;
+    // Check if this page also chains an intro animation after/alongside the answer
+    const introDelay = introChainPages.has(pageNum) ? introChainPages.get(pageNum) : undefined;
+    const introEl = introDelay !== undefined ? page.querySelector('.intro') : null;
     if (introEl) introEl.style.display = 'none';
 
     // Save the original (pre-MathJax) HTML on first visit; restore it on subsequent visits
@@ -192,19 +194,25 @@ function startAnswerAnimation(pageNum, mjPromise) {
             if (myId !== answerAnimationId) return;
             // Restore rendered content; runAnswerAnimation will immediately blank it synchronously
             answer.innerHTML = rendered;
-            const onComplete = afterAnswerEls.length > 0 ? () => {
+            const needsOnComplete = afterAnswerEls.length > 0 || (introEl && introDelay === null);
+            const onComplete = needsOnComplete ? () => {
                 if (myId !== answerAnimationId) return;
                 afterAnswerEls.forEach(el => { el.style.display = ''; });
+                if (introEl && introDelay === null && renderedIntro !== null) {
+                    introEl.innerHTML = renderedIntro;
+                    introEl.style.display = '';
+                    runAnswerAnimation(introEl, myId, null);
+                }
             } : null;
             runAnswerAnimation(answer, myId, onComplete);
-            // For chain pages: reveal and animate intro just as the answer wipe nears its end
-            if (introEl && renderedIntro !== null) {
+            // Fixed-delay chain: start intro at specified time after click
+            if (introEl && introDelay !== null && renderedIntro !== null) {
                 setTimeout(() => {
                     if (myId !== answerAnimationId) return;
                     introEl.innerHTML = renderedIntro;
                     introEl.style.display = '';
                     runAnswerAnimation(introEl, myId, null);
-                }, 2000);
+                }, introDelay);
             }
         };
         typewriterWaiting = true;
