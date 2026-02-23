@@ -197,11 +197,14 @@ function startAnswerAnimation(pageNum, mjPromise) {
                 afterAnswerEls.forEach(el => { el.style.display = ''; });
             } : null;
             runAnswerAnimation(answer, myId, onComplete);
-            // For chain pages: reveal and animate intro simultaneously with the answer wipe
+            // For chain pages: reveal and animate intro just as the answer wipe nears its end
             if (introEl && renderedIntro !== null) {
-                introEl.innerHTML = renderedIntro;
-                introEl.style.display = '';
-                runAnswerAnimation(introEl, myId, null);
+                setTimeout(() => {
+                    if (myId !== answerAnimationId) return;
+                    introEl.innerHTML = renderedIntro;
+                    introEl.style.display = '';
+                    runAnswerAnimation(introEl, myId, null);
+                }, 2000);
             }
         };
         typewriterWaiting = true;
