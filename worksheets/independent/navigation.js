@@ -22,10 +22,13 @@ const introOriginals = {};
 
 // Pages where the intro div auto-animates alongside/after the answer animation.
 // Map: pageNum → delay ms after click (null = fire via onComplete, i.e. after all wipes)
-const introChainPages = new Map([[3, 2000], [11, null], [16, null]]);
+const introChainPages = new Map([[3, 2000], [11, null], [16, null], [20, null]]);
 
 // Per-page override for the gap (ms) between display math wipes (default: 3500)
-const displayGapOverrides = new Map([[14, 1500]]);
+const displayGapOverrides = new Map([[9, 1500], [14, 1500], [18, 1500], [20, 1500]]);
+
+// Pages where wipes happen first, then text types (default: text types first, then wipes)
+const wipesFirstPages = new Set([9]);
 
 function stopTypewriter() {
     if (typewriterTimeout !== null) {
@@ -208,6 +211,7 @@ function startAnswerAnimation(pageNum, mjPromise) {
                 }
             } : null;
             const runOptions = displayGapOverrides.has(pageNum) ? { displayGap: displayGapOverrides.get(pageNum) } : {};
+            if (wipesFirstPages.has(pageNum)) runOptions.wipesFirst = true;
             runAnswerAnimation(answer, myId, onComplete, runOptions);
             // Fixed-delay chain: start intro at specified time after click
             if (introEl && introDelay !== null && renderedIntro !== null) {
@@ -285,6 +289,7 @@ function runAnswerAnimation(answer, myId, onComplete, options) {
 
     // Wipe targets: display math blocks (slower) first, then table cells (faster)
     const displayGap = (options && options.displayGap != null) ? options.displayGap : 3500;
+    const wipesFirst = options && options.wipesFirst;
     const wipes = [
         ...displayMath.map(el => ({ el, gap: displayGap, transition: 'clip-path 2.5s ease-out' })),
         ...cells.map(el =>      ({ el, gap: 900,  transition: 'clip-path 0.75s ease-out' })),
@@ -293,6 +298,10 @@ function runAnswerAnimation(answer, myId, onComplete, options) {
         el.style.clipPath = 'inset(0 100% 0 0)';
         el.style.transition = transition;
     });
+    // Force a reflow so the browser commits the initial clip-path state before
+    // we start animating — prevents the transition being skipped when there is
+    // no typed text (i.e. animateWipes fires almost immediately after setup).
+    if (wipes.length > 0) wipes[0].el.getBoundingClientRect();
 
     let unitIdx = 0;
     let wipeIdx = 0;
@@ -305,7 +314,13 @@ function runAnswerAnimation(answer, myId, onComplete, options) {
     function animatePara() {
         if (myId !== answerAnimationId) return;
         if (unitIdx >= units.length) {
-            typewriterTimeout = setTimeout(animateWipes, hasTypedContent ? 400 : 0);
+            if (wipesFirst) {
+                // Wipes already done; text just finished — call onComplete
+                typewriterTimeout = null;
+                if (onComplete) onComplete();
+            } else {
+                typewriterTimeout = setTimeout(animateWipes, hasTypedContent ? 400 : 0);
+            }
             return;
         }
         const unit = units[unitIdx++];
@@ -325,13 +340,26 @@ function runAnswerAnimation(answer, myId, onComplete, options) {
 
     function animateWipes() {
         if (myId !== answerAnimationId) return;
-        if (wipeIdx >= wipes.length) { typewriterTimeout = null; if (onComplete) onComplete(); return; }
+        if (wipeIdx >= wipes.length) {
+            if (wipesFirst && units.length > 0) {
+                // Wipes done; now type the text
+                typewriterTimeout = setTimeout(animatePara, 400);
+            } else {
+                typewriterTimeout = null;
+                if (onComplete) onComplete();
+            }
+            return;
+        }
         const { el, gap } = wipes[wipeIdx++];
         el.style.clipPath = 'inset(0 0% 0 0)';
         typewriterTimeout = setTimeout(animateWipes, gap);
     }
 
-    animatePara();
+    if (wipesFirst) {
+        animateWipes();
+    } else {
+        animatePara();
+    }
 }
 
 function startIntroAnimation(pageNum, mjPromise) {
