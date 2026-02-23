@@ -192,16 +192,17 @@ function startAnswerAnimation(pageNum, mjPromise) {
             if (myId !== answerAnimationId) return;
             // Restore rendered content; runAnswerAnimation will immediately blank it synchronously
             answer.innerHTML = rendered;
-            const onComplete = (afterAnswerEls.length > 0 || introEl) ? () => {
+            const onComplete = afterAnswerEls.length > 0 ? () => {
                 if (myId !== answerAnimationId) return;
                 afterAnswerEls.forEach(el => { el.style.display = ''; });
-                if (introEl && renderedIntro !== null) {
-                    introEl.innerHTML = renderedIntro;
-                    introEl.style.display = '';
-                    runAnswerAnimation(introEl, myId, null);
-                }
             } : null;
             runAnswerAnimation(answer, myId, onComplete);
+            // For chain pages: reveal and animate intro simultaneously with the answer wipe
+            if (introEl && renderedIntro !== null) {
+                introEl.innerHTML = renderedIntro;
+                introEl.style.display = '';
+                runAnswerAnimation(introEl, myId, null);
+            }
         };
         typewriterWaiting = true;
         showTypewriterPrompt(answer, true); // prompt goes inside the green box
@@ -260,6 +261,12 @@ function runAnswerAnimation(answer, myId, onComplete) {
             }
         });
     }
+
+    // Browsers eject block elements (display math) out of <p> tags, so they become
+    // siblings of the <p> elements rather than children. Catch them here.
+    answer.querySelectorAll('mjx-container[display]').forEach(el => {
+        if (!displayMath.includes(el)) displayMath.push(el);
+    });
 
     // Wipe targets: display math blocks (slower) first, then table cells (faster)
     const wipes = [
