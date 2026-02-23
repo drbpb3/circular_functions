@@ -298,6 +298,10 @@ function startIntroAnimation(pageNum, mjPromise) {
     const intro = page.querySelector('.intro');
     if (!intro) return;
 
+    // Hide elements that should appear only after the intro animation completes
+    const afterIntroEls = Array.from(page.querySelectorAll('.after-intro'));
+    afterIntroEls.forEach(el => { el.style.display = 'none'; });
+
     // Save the original (pre-MathJax) HTML on first visit; restore it on subsequent visits
     if (!introOriginals[pageNum]) {
         introOriginals[pageNum] = intro.innerHTML;
@@ -313,7 +317,11 @@ function startIntroAnimation(pageNum, mjPromise) {
     (mjPromise || Promise.resolve()).then(() => {
         if (myId !== answerAnimationId) return;
         intro.style.visibility = '';
-        runAnswerAnimation(intro, myId);
+        const onComplete = afterIntroEls.length > 0 ? () => {
+            if (myId !== answerAnimationId) return;
+            afterIntroEls.forEach(el => { el.style.display = ''; });
+        } : null;
+        runAnswerAnimation(intro, myId, onComplete);
     });
 }
 
@@ -490,7 +498,9 @@ if (nav) {
     document.addEventListener('mousemove', function(e) {
         const threshold = 100;
         const distanceFromBottom = window.innerHeight - e.clientY;
-        if (distanceFromBottom < threshold) {
+        const canScroll = document.body.scrollHeight > window.innerHeight + 20;
+        const atBottom = (window.scrollY + window.innerHeight) >= document.body.scrollHeight - 20;
+        if (distanceFromBottom < threshold && (!canScroll || atBottom)) {
             nav.classList.add('visible');
         } else {
             nav.classList.remove('visible');
