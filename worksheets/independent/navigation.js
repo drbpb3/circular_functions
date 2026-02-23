@@ -22,7 +22,7 @@ const introOriginals = {};
 
 // Pages where the intro div auto-animates alongside/after the answer animation.
 // Map: pageNum → delay ms after click (null = fire via onComplete, i.e. after all wipes)
-const introChainPages = new Map([[3, 2000], [11, null]]);
+const introChainPages = new Map([[3, 2000], [11, null], [16, null]]);
 
 // Per-page override for the gap (ms) between display math wipes (default: 3500)
 const displayGapOverrides = new Map([[14, 1500]]);
