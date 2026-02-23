@@ -25,7 +25,7 @@ const introOriginals = {};
 const introChainPages = new Map([[3, 2000], [11, null], [16, null], [20, null]]);
 
 // Per-page override for the gap (ms) between display math wipes (default: 3500)
-const displayGapOverrides = new Map([[9, 1500], [14, 1500], [18, 1500]]);
+const displayGapOverrides = new Map([[3, 4000], [9, 1500], [14, 1500], [18, 1500]]);
 
 // Pages where wipes happen first, then text types (default: text types first, then wipes)
 const wipesFirstPages = new Set([9]);
