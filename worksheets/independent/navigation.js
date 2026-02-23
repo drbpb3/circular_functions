@@ -24,6 +24,9 @@ const introOriginals = {};
 // Map: pageNum → delay ms after click (null = fire via onComplete, i.e. after all wipes)
 const introChainPages = new Map([[3, 2000], [11, null]]);
 
+// Per-page override for the gap (ms) between display math wipes (default: 3500)
+const displayGapOverrides = new Map([[14, 1500]]);
+
 function stopTypewriter() {
     if (typewriterTimeout !== null) {
         clearTimeout(typewriterTimeout);
@@ -204,7 +207,8 @@ function startAnswerAnimation(pageNum, mjPromise) {
                     runAnswerAnimation(introEl, myId, null);
                 }
             } : null;
-            runAnswerAnimation(answer, myId, onComplete);
+            const runOptions = displayGapOverrides.has(pageNum) ? { displayGap: displayGapOverrides.get(pageNum) } : {};
+            runAnswerAnimation(answer, myId, onComplete, runOptions);
             // Fixed-delay chain: start intro at specified time after click
             if (introEl && introDelay !== null && renderedIntro !== null) {
                 setTimeout(() => {
@@ -220,7 +224,7 @@ function startAnswerAnimation(pageNum, mjPromise) {
     });
 }
 
-function runAnswerAnimation(answer, myId, onComplete) {
+function runAnswerAnimation(answer, myId, onComplete, options) {
     const paras = Array.from(answer.querySelectorAll('p'));
     const cells = Array.from(answer.querySelectorAll('td'));
 
@@ -280,8 +284,9 @@ function runAnswerAnimation(answer, myId, onComplete) {
     });
 
     // Wipe targets: display math blocks (slower) first, then table cells (faster)
+    const displayGap = (options && options.displayGap != null) ? options.displayGap : 3500;
     const wipes = [
-        ...displayMath.map(el => ({ el, gap: 3500, transition: 'clip-path 2.5s ease-out' })),
+        ...displayMath.map(el => ({ el, gap: displayGap, transition: 'clip-path 2.5s ease-out' })),
         ...cells.map(el =>      ({ el, gap: 900,  transition: 'clip-path 0.75s ease-out' })),
     ];
     wipes.forEach(({ el, transition }) => {
