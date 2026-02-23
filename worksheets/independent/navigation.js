@@ -12,13 +12,16 @@ let typewriterQueue = [];
 let page2Originals = null;
 
 // Answer div animation — add page numbers here to opt in
-const answerAnimatedPages = new Set([4, 6, 9, 11, 13, 15, 16, 17, 18, 20]);
+const answerAnimatedPages = new Set([3, 4, 6, 9, 11, 13, 15, 16, 17, 18, 20]);
 const answerOriginals = {};
 let answerAnimationId = 0;
 
 // Intro div animation — add page numbers here to opt in
 const introAnimatedPages = new Set([7]);
 const introOriginals = {};
+
+// Pages where the intro div auto-animates after the answer animation completes
+const introChainPages = new Set([3]);
 
 function stopTypewriter() {
     if (typewriterTimeout !== null) {
@@ -153,11 +156,22 @@ function startAnswerAnimation(pageNum, mjPromise) {
     const afterAnswerEls = Array.from(page.querySelectorAll('.after-answer'));
     afterAnswerEls.forEach(el => { el.style.display = 'none'; });
 
+    // Check if this page also chains an intro animation after the answer
+    const introEl = introChainPages.has(pageNum) ? page.querySelector('.intro') : null;
+    if (introEl) introEl.style.display = 'none';
+
     // Save the original (pre-MathJax) HTML on first visit; restore it on subsequent visits
     if (!answerOriginals[pageNum]) {
         answerOriginals[pageNum] = answer.innerHTML;
     } else {
         answer.innerHTML = answerOriginals[pageNum];
+    }
+    if (introEl) {
+        if (!introOriginals[pageNum]) {
+            introOriginals[pageNum] = introEl.innerHTML;
+        } else {
+            introEl.innerHTML = introOriginals[pageNum];
+        }
     }
 
     // Hide the box while MathJax renders to avoid a flash of raw LaTeX
@@ -170,6 +184,7 @@ function startAnswerAnimation(pageNum, mjPromise) {
         if (myId !== answerAnimationId) return;
         // Save the MathJax-rendered HTML for the animation to use
         const rendered = answer.innerHTML;
+        const renderedIntro = introEl ? introEl.innerHTML : null;
         // Blank the content and reveal the (now empty) green box
         answer.innerHTML = '';
         answer.style.visibility = '';
@@ -177,9 +192,14 @@ function startAnswerAnimation(pageNum, mjPromise) {
             if (myId !== answerAnimationId) return;
             // Restore rendered content; runAnswerAnimation will immediately blank it synchronously
             answer.innerHTML = rendered;
-            const onComplete = afterAnswerEls.length > 0 ? () => {
+            const onComplete = (afterAnswerEls.length > 0 || introEl) ? () => {
                 if (myId !== answerAnimationId) return;
                 afterAnswerEls.forEach(el => { el.style.display = ''; });
+                if (introEl && renderedIntro !== null) {
+                    introEl.innerHTML = renderedIntro;
+                    introEl.style.display = '';
+                    runAnswerAnimation(introEl, myId, null);
+                }
             } : null;
             runAnswerAnimation(answer, myId, onComplete);
         };
