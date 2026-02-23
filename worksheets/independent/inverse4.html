@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverse Circular Functions: Differentiation from the Definition</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        },
+        options: {
+            enableMenu: false,
+            renderActions: {
+                addMenu: []
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+<span class="back-btn">&#x2190;</span>
+</a>
+
+<div class="container">
+
+    <!-- Page 1: Welcome -->
+    <div class="page" id="page-1">
+        <div class="welcome-page">
+            <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Welcome to inverse circular functions: differentiation from the definition</h1>
+            <div class="welcome-content">
+                <p>We can differentiate \(\arcsin x\) using implicit differentiation. Here we take a different approach &#8212; working directly from the definition of the derivative and using the sine addition formula to handle the limit.</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                        <li>Click <strong>Previous</strong> or <strong>Next</strong> buttons when they appear</li>
+                        <li>Jump to a specific page using the page number input</li>
+                    </ul>
+                </div>
+
+                <p class="welcome-tip">The key idea is to use the sine addition formula to turn a difference of \(\arcsin\) values into something whose limit you can compute.</p>
+
+                <p class="welcome-author">
+                    Dr Brian Brooks<br>
+                    Mathematics InSight
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Exercise 1 — sin addition formula -->
+    <div class="page" id="page-2">
+        <p class="intro">We can also differentiate the inverse circular functions more directly using the definition of a differential.</p>
+        <div class="exercise">
+            <p>Using the fact that</p>
+            \[\sin(A + B) = \sin A\cos B + \cos A\sin B\]
+            <p>and putting \(A = \arcsin a\) and \(B = \arcsin b\), find \(\sin\left(\arcsin a + \arcsin b\right)\) in terms of \(a\) and \(b\), without using \(\sin\) or \(\cos\) in your expression.</p>
+            <p>Hence find \(\arcsin a + \arcsin b\).</p>
+        </div>
+    </div>
+
+    <!-- Page 3: Answer to Exercise 1 + arccos question -->
+    <div class="page" id="page-3">
+        <div class="exercise">
+            <p>Find \(\sin\left(\arcsin a + \arcsin b\right)\) and hence \(\arcsin a + \arcsin b\).</p>
+        </div>
+        <p style="text-align:center; font-size:0.85em; color:#888; margin:4px 0;">Press <kbd>Space</kbd> to reveal each step</p>
+        <div class="answer" id="arcsin-sum">
+            \[\begin{aligned}
+            \sin(A + B) &= \sin A\cos B + \cos A\sin B \\[6pt]
+            A=\arcsin& \,a\quad\text{and}\quad B=\arcsin b\\[6pt]
+            \Rightarrow\quad\sin(\arcsin a + \arcsin b)
+                &= \sin(\arcsin a)\cos(\arcsin b) + \cos(\arcsin a)\sin(\arcsin b) \\[6pt]
+                &= a\sqrt{1 - b^{2}} + b\sqrt{1 - a^{2}} \\[10pt]
+            \Rightarrow\quad\arcsin a + \arcsin b
+                &= \arcsin\left(a\sqrt{1 - b^{2}} + b\sqrt{1 - a^{2}}\right)
+            \end{aligned}\]
+            <p>although this isn't quite right if \(\arcsin a+\arcsin b\gt\frac{\pi}{2}\) or \(\le-\frac{\pi}{2}\)</p>
+            <p>In these cases, we have
+            \[\begin{aligned}
+            \arcsin a + \arcsin b&=\pm\pi- \arcsin\left(a\sqrt{1 - b^{2}} + b\sqrt{1 - a^{2}}\right)
+            \end{aligned}\]</p>
+        </div>
+        <div class="exercise">
+            <p>Find \(\cos\left(\arcsin a + \arcsin b\right)\) and hence \(\arccos a + \arccos b\).</p>
+            
+
+        </div>
+    </div>
+
+    <!-- Page 4: arccos (sin form) answer + arccos (cos form) question -->
+    <div class="page" id="page-4">
+        <div class="exercise">
+            <p>Find \(\cos\left(\arcsin a + \arcsin b\right)\) and hence \(\arccos a + \arccos b\).</p>
+        </div>
+        <p style="text-align:center; font-size:0.85em; color:#888; margin:4px 0;">Press <kbd>Space</kbd> to reveal each step</p>
+        <div class="answer" id="arccos-sum-sin">
+            \[\begin{aligned}
+            \cos(A+B)&=\cos(\arcsin a)\cos(\arcsin b)-ab\\[12pt]
+            &=\sqrt{1-a^2}\sqrt{1-b^2}-ab\\[12pt]
+            \Rightarrow \arccos a+\arccos b&=\arccos\left(\sqrt{(1-a^2)(1-b^2)}-ab\right)\\[12pt]
+            \end{aligned}\]
+        </div>
+        <div class="exercise">
+            <p>Putting \(c=\cos A\) and \(d=\cos B\), find \(\cos (A+B)\) and hence find \(\arccos c + \arccos d\).</p>
+        </div>
+    </div>
+
+    <!-- Page 5: arccos (cos form) answer + arctan question -->
+    <div class="page" id="page-5">
+        <div class="exercise">
+            <p>Putting \(c=\cos A\) and \(d=\cos B\), find \(\cos (A+B)\) and hence find \(\arccos c + \arccos d\).</p>
+        </div>
+        <p style="text-align:center; font-size:0.85em; color:#888; margin:4px 0;">Press <kbd>Space</kbd> to reveal each step</p>
+        <div class="answer" id="arccos-sum-cos">
+            \[\begin{aligned}
+            \cos(A+B)&=cd-\sin(\arccos c)\sin(\arccos d)\\[12pt]
+            &=cd-\sqrt{1-c^2}\sqrt{1-d^2}\\[12pt]
+            \Rightarrow \arccos c+\arccos d&=\arccos\left(cd-\sqrt{(1-c^2)(1-d^2)}\right)\\[12pt]
+            \end{aligned}\]
+        </div>
+        <div class="exercise">
+            <p>Putting \(u=\tan A\) and \(v=\tan B\), find \(\tan (A+B)\) and hence find \(\arctan u + \arctan v\).</p>
+        </div>
+    </div>
+
+    <!-- Page 6: arctan answer -->
+    <div class="page" id="page-6">
+        <div class="exercise">
+            <p>Putting \(u=\tan A\) and \(v=\tan B\), find \(\tan (A+B)\) and hence find \(\arctan u + \arctan v\).</p>
+        </div>
+        <p style="text-align:center; font-size:0.85em; color:#888; margin:4px 0;">Press <kbd>Space</kbd> to reveal each step</p>
+        <div class="answer" id="arctan-sum">
+            \[\begin{aligned}
+            \tan(A+B)&=\frac{\tan A+\tan B}{1-\tan A\tan B}=\frac{u+v}{1-uv}\\[12pt]
+            \Rightarrow \arctan u+\arctan v&=\arctan\frac{u+v}{1-uv}
+            \end{aligned}\]
+        </div>
+    </div>
+
+    <!-- Page 7: Exercise 2 — differentiation from the definition -->
+    <div class="page" id="page-7">
+            <p style="text-align: center;"><strong>differentiating \(\boldsymbol{\arcsin x}\) from the definition</strong></p>
+            <div class="exercise">
+                <p>(a) &nbsp; Use the identity above to find \(\sin\left(\arcsin(x + h) - \arcsin x\right)\) in terms of \(x\) and \(h\), without \(\sin\) or \(\cos\).</p>
+                <p>(b) &nbsp; Put \(\theta(h) = \sin\left(\arcsin(x + h) - \arcsin x\right)\). Find</p>
+                \[\lim_{h \to 0}\frac{\theta(h)}{h}\]
+                <p>(c) &nbsp; Find</p>
+                \[\lim_{h \to 0}\frac{\arcsin\,\theta(h)}{\theta(h)}\]
+                <p>(d) &nbsp; Hence find</p>
+                \[\lim_{h \to 0}\frac{\arcsin\,\theta(h)}{h}\]
+                <p>(e) &nbsp; Now let \(f(x) = \arcsin x\). Explain why \(\arcsin(x+h) - \arcsin x = \arcsin\,\theta(h)\), and hence find \(f'(x)\) and \(\dfrac{\mathrm{d}}{\mathrm{d}x}\arcsin x\).</p>
+            </div>
+    </div>
+    
+    
+
+    <!-- Page 8: Answer (a) and (b) -->
+    <div class="page" id="page-8">
+        <div class="exercise">
+            <p>(a) Find \(\theta(h)\). &nbsp;&nbsp; (b) Find \(\displaystyle\lim_{h\to 0}\dfrac{\theta(h)}{h}\).</p>
+        </div>
+        <div class="answer">
+            <p>(a) &nbsp; Applying the subtraction formula with \(A = \arcsin(x+h)\) and \(B = \arcsin x\):</p>
+            \[\theta(h) = (x+h)\sqrt{1-x^{2}} - x\sqrt{1-(x+h)^{2}}\]
+            <p>(b)</p>
+            \[\begin{aligned}
+            \frac{(x+h)\sqrt{1-x^{2}} - x\sqrt{1-(x+h)^{2}}}{h}
+                &= \sqrt{1-x^{2}} + x\cdot\frac{\sqrt{1-x^{2}} - \sqrt{1-(x+h)^{2}}}{h} \\[6pt]
+                &= \sqrt{1-x^{2}} + x\cdot\frac{1-x^{2}-\bigl(1-(x+h)^{2}\bigr)}{h\bigl(\sqrt{1-x^{2}}+\sqrt{1-(x+h)^{2}}\bigr)} \\[6pt]
+                &= \sqrt{1-x^{2}} + x\cdot\frac{2xh+h^{2}}{h\bigl(\sqrt{1-x^{2}}+\sqrt{1-(x+h)^{2}}\bigr)} \\[6pt]
+                &\to \sqrt{1-x^{2}} + x\cdot\frac{2x}{2\sqrt{1-x^{2}}} \quad\text{as }h\to 0 \\[6pt]
+                &= \sqrt{1-x^{2}} + \frac{x^{2}}{\sqrt{1-x^{2}}} = \frac{1}{\sqrt{1-x^{2}}}
+            \end{aligned}\]
+        </div>
+    </div>
+
+    <!-- Page 9: Answer (c), (d), (e) -->
+    <div class="page" id="page-9">
+        <div class="exercise">
+            <p>(c) Find \(\displaystyle\lim_{h\to 0}\dfrac{\arcsin\,\theta(h)}{\theta(h)}\). &nbsp;&nbsp;
+               (d) Hence find \(\displaystyle\lim_{h\to 0}\dfrac{\arcsin\,\theta(h)}{h}\). &nbsp;&nbsp;
+               (e) Find \(f'(x)\) where \(f(x) = \arcsin x\).</p>
+        </div>
+        <div class="answer">
+            <p>(c) &nbsp; As \(h\to 0\), \(\theta(h)\to 0\). Since \(\displaystyle\lim_{u\to 0}\frac{\arcsin u}{u} = 1\):</p>
+            \[\lim_{h\to 0}\frac{\arcsin\,\theta(h)}{\theta(h)} = 1\]
+            <p>(d)</p>
+            \[\lim_{h\to 0}\frac{\arcsin\,\theta(h)}{h}
+                = \lim_{h\to 0}\frac{\theta(h)}{h}\times\lim_{h\to 0}\frac{\arcsin\,\theta(h)}{\theta(h)}
+                = \frac{1}{\sqrt{1-x^{2}}}\times 1
+                = \frac{1}{\sqrt{1-x^{2}}}\]
+            <p>(e) &nbsp; Since \(\theta(h) = \sin\left(\arcsin(x+h)-\arcsin x\right)\), applying \(\arcsin\) to both sides gives \(\arcsin\,\theta(h) = \arcsin(x+h) - \arcsin x\) (the principal values agree for small \(h\)). Therefore:</p>
+            \[\begin{aligned}
+            f'(x) &= \lim_{h\to 0}\frac{\arcsin(x+h)-\arcsin x}{h}
+                   = \lim_{h\to 0}\frac{\arcsin\,\theta(h)}{h}
+                   = \frac{1}{\sqrt{1-x^{2}}}
+            \end{aligned}\]
+            \[\boxed{\dfrac{\mathrm{d}}{\mathrm{d}x}\arcsin x = \dfrac{1}{\sqrt{1-x^{2}}}}\]
+        </div>
+    </div>
+
+    <!-- Page 10: Congratulations -->
+    <div class="page" id="page-10">
+        <div class="welcome-page">
+            <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Congratulations!</h1>
+            <div class="welcome-content">
+                <p>You have differentiated \(\arcsin x\) directly from the definition of the derivative, without using implicit differentiation. The sine addition formula was the key &#8212; it let you rewrite \(\arcsin(x+h) - \arcsin x\) as \(\arcsin\,\theta(h)\), where \(\theta(h)\) is an expression whose limit you could compute directly.</p>
+
+                <p>The result \(\dfrac{\mathrm{d}}{\mathrm{d}x}\arcsin x = \dfrac{1}{\sqrt{1-x^{2}}}\) emerges cleanly once the right substitution is in place.</p>
+
+                <p class="welcome-author">
+                    Dr Brian Brooks<br>
+                    Mathematics InSight
+                </p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; text-align: left;">
+            <a href="inverse3.html" style="color: #2d6a4f; text-decoration: underline;">← Exploration 3</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="navigation">
+    <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+    <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+    <span class="page-indicator">
+    Page <input type="number" id="pageInput" value="1" min="1" max="10" onchange="goToPage(this.value)"> of 10
+    </span>
+    <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+    <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+</div>
+
+<script src="navigation.js"></script>
+
+<script>
+(function () {
+    // Speed of the wipe in SVG user-space units per millisecond.
+    var WIPE_SPEED = 6;
+
+    // ── Audio ────────────────────────────────────────────────────────────────
+    // Voiceovers use <audio> elements (work on file:// and http:// alike).
+    // Clips live in  inverse_audio/<answer-div-id>/1.mp3, 2.mp3, …
+    // Firefox whitelists spacebar for media autoplay; the on-page "Press Space"
+    // instruction means audio works in all browsers without an unlock mechanism.
+    var activeAudio = null;
+    var voiceSrcs   = [];
+
+    function stopActiveVoice() {
+        if (activeAudio) { activeAudio.pause(); activeAudio = null; }
+    }
+
+    function playVoice(index) {
+        stopActiveVoice();
+        var src = voiceSrcs[index];
+        if (!src) return;
+        activeAudio = new Audio(src);
+        activeAudio.play().catch(function () {});
+    }
+
+    // ── Animation state ──────────────────────────────────────────────────────
+    // Single state object reused across all animated pages.
+    // S.steps is an array of {type: 'mtr'|'element', el: Element}:
+    //   'mtr'     — a MathJax aligned row, revealed with a left-to-right wipe
+    //   'element' — a <p> or other direct child, revealed with a fade
+    var S = {
+        pageNum:           0,
+        steps:             [],
+        revealedCount:     0,
+        ready:             false,
+        animVersion:       0,
+        followingExercise: null,
+        exerciseRevealed:  false
+    };
+
+    function setupAnimatedAnswer(pageNum) {
+        S.animVersion++;
+        stopActiveVoice();
+        S.ready   = false;
+        S.pageNum = pageNum;
+
+        var pageEl    = document.getElementById('page-' + pageNum);
+        var answerDiv = pageEl && pageEl.querySelector('.answer[id]');
+        if (!answerDiv) return;
+
+        // Collect reveal steps in document order.
+        // Direct child <p> elements fade in as a unit.
+        // Other direct children (mjx-container / display math) have their
+        // aligned rows expanded one at a time with a wipe.
+        S.steps = [];
+        Array.from(answerDiv.children).forEach(function (child) {
+            if (child.tagName === 'P') {
+                S.steps.push({ type: 'element', el: child });
+            } else {
+                var rows = Array.from(child.querySelectorAll('g[data-mml-node="mtr"]'));
+                if (rows.length > 0) {
+                    rows.forEach(function (row) { S.steps.push({ type: 'mtr', el: row }); });
+                } else {
+                    S.steps.push({ type: 'element', el: child });
+                }
+            }
+        });
+
+        // Audio: one clip per step
+        voiceSrcs = answerDiv.id
+            ? S.steps.map(function (_, i) { return 'inverse_audio/' + answerDiv.id + '/' + (i + 1) + '.mp3'; })
+            : [];
+
+        // Find and hide the .exercise div that follows the answer (if any)
+        S.followingExercise = null;
+        var sib = answerDiv.nextElementSibling;
+        while (sib) {
+            if (sib.classList.contains('exercise')) { S.followingExercise = sib; break; }
+            sib = sib.nextElementSibling;
+        }
+        if (S.followingExercise) {
+            S.followingExercise.style.transition = 'none';
+            S.followingExercise.style.opacity    = '0';
+        }
+        S.exerciseRevealed = false;
+
+        // Remove any clip-paths left over from an interrupted animation
+        var prefix = 'wipe-p' + pageNum + '-';
+        Array.from(answerDiv.querySelectorAll('defs')).forEach(function (defs) {
+            Array.from(defs.querySelectorAll('[id^="' + prefix + '"]'))
+                .forEach(function (el) { defs.removeChild(el); });
+        });
+
+        // Hide all steps
+        S.steps.forEach(function (s) {
+            if (s.type === 'element') { s.el.style.transition = 'none'; }
+            s.el.removeAttribute('clip-path');
+            s.el.style.opacity = '0';
+        });
+
+        S.revealedCount = 0;
+        S.ready         = true;
+    }
+
+    function revealNextStep() {
+        if (S.revealedCount >= S.steps.length) return false;
+        var step    = S.steps[S.revealedCount];
+        var index   = S.revealedCount;
+        var version = S.animVersion;
+        S.revealedCount++;
+
+        playVoice(index);
+
+        if (step.type === 'element') {
+            // Plain-text paragraph (may contain inline math): simple fade-in
+            step.el.style.transition = 'opacity 0.4s ease';
+            step.el.style.opacity    = '1';
+            return true;
+        }
+
+        // MathJax aligned row: left-to-right wipe
+        var row = step.el;
+        var svg = row.closest('svg');
+        if (!svg) { row.style.opacity = '1'; return true; }
+
+        var defs = svg.querySelector('defs');
+        if (!defs) {
+            defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+            svg.insertBefore(defs, svg.firstChild);
+        }
+
+        var bbox;
+        try { bbox = row.getBBox(); } catch (e) { row.style.opacity = '1'; return true; }
+        if (!bbox.width) { row.style.opacity = '1'; return true; }
+
+        var clipId   = 'wipe-p' + S.pageNum + '-' + index;
+        var clipPath = document.createElementNS('http://www.w3.org/2000/svg', 'clipPath');
+        clipPath.setAttribute('id', clipId);
+
+        var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('x',      bbox.x);
+        rect.setAttribute('y',      bbox.y - 5);
+        rect.setAttribute('height', bbox.height + 10);
+        rect.setAttribute('width',  '0');
+        clipPath.appendChild(rect);
+        defs.appendChild(clipPath);
+
+        row.setAttribute('clip-path', 'url(#' + clipId + ')');
+        row.style.opacity = '1';
+
+        var targetWidth = bbox.width;
+        var duration    = targetWidth / WIPE_SPEED;
+        var startTime   = null;
+
+        function stepFn(ts) {
+            if (version !== S.animVersion) return;
+            if (!startTime) startTime = ts;
+            var t = Math.min((ts - startTime) / duration, 1);
+            rect.setAttribute('width', targetWidth * t);
+            if (t < 1) {
+                requestAnimationFrame(stepFn);
+            } else {
+                row.removeAttribute('clip-path');
+                if (clipPath.parentNode) clipPath.parentNode.removeChild(clipPath);
+            }
+        }
+        requestAnimationFrame(stepFn);
+        return true;
+    }
+
+    function revealExercise() {
+        S.exerciseRevealed = true;
+        if (!S.followingExercise) return;
+        S.followingExercise.style.transition = 'opacity 0.5s ease';
+        S.followingExercise.style.opacity    = '1';
+    }
+
+    // ── showPage wrapper ─────────────────────────────────────────────────────
+    // Automatically detects any page with a .answer[id] and sets up the animation.
+    var _origShowPage = window.showPage;
+    window.showPage = function (pageNum) {
+        _origShowPage(pageNum);
+        var pageEl = document.getElementById('page-' + pageNum);
+        if (pageEl && pageEl.querySelector('.answer[id]')) {
+            S.ready = false;
+            var p = (window.MathJax && MathJax.typesetPromise)
+                ? MathJax.typesetPromise([pageEl])
+                : Promise.resolve();
+            p.then(function () { setupAnimatedAnswer(pageNum); });
+        }
+    };
+
+    // ── changePage wrapper ───────────────────────────────────────────────────
+    // Forward presses on an animated page step through rows/paragraphs, then
+    // reveal the following exercise div, then navigate.
+    // Backward presses always navigate.
+    var _origChangePage = window.changePage;
+    window.changePage = function (delta) {
+        var activeEl  = document.querySelector('.page.active');
+        var activeNum = activeEl ? parseInt(activeEl.id.replace('page-', ''), 10) : 0;
+        if (delta === 1 && S.ready && S.pageNum === activeNum) {
+            if (S.revealedCount < S.steps.length)              { revealNextStep();   return; }
+            if (!S.exerciseRevealed && S.followingExercise)    { revealExercise();   return; }
+        }
+        _origChangePage(delta);
+    };
+}());
+</script>
+
+</body>
+</html>

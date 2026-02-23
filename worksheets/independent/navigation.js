@@ -16,6 +16,10 @@ const answerAnimatedPages = new Set([4, 6, 9, 11, 13, 15, 16, 17, 18, 20]);
 const answerOriginals = {};
 let answerAnimationId = 0;
 
+// Intro div animation — add page numbers here to opt in
+const introAnimatedPages = new Set([7]);
+const introOriginals = {};
+
 function stopTypewriter() {
     if (typewriterTimeout !== null) {
         clearTimeout(typewriterTimeout);
@@ -27,18 +31,26 @@ function stopTypewriter() {
     answerAnimationId++; // cancel any pending answer animation
 }
 
-function showTypewriterPrompt(beforeEl) {
+function showTypewriterPrompt(el, inside) {
     let prompt = document.getElementById('typewriter-prompt');
     if (!prompt) {
         prompt = document.createElement('div');
         prompt.id = 'typewriter-prompt';
         prompt.className = 'typewriter-prompt';
-        prompt.textContent = '— press spacebar to continue —';
+        const promptImg = document.createElement('img');
+        promptImg.src = '../../../darklogo_circle.png';
+        promptImg.alt = '';
+        prompt.appendChild(promptImg);
+        prompt.appendChild(document.createTextNode('click here to continue'));
         prompt.addEventListener('click', continueTypewriter);
     }
-    // Move prompt to the correct position (insertBefore moves if already in DOM)
-    beforeEl.parentNode.insertBefore(prompt, beforeEl);
-    prompt.style.display = 'block';
+    if (inside) {
+        el.appendChild(prompt);
+    } else {
+        // Move prompt to the correct position (insertBefore moves if already in DOM)
+        el.parentNode.insertBefore(prompt, el);
+    }
+    prompt.style.display = 'flex';
 }
 
 function hideTypewriterPrompt() {
@@ -114,7 +126,7 @@ function startTypewriterPage2() {
     let idx = 0;
     function tick() {
         if (idx >= phase1.length) {
-            showTypewriterPrompt(page.querySelectorAll('.intro')[1]);
+            showTypewriterPrompt(page.querySelectorAll('.intro')[1], true);
             typewriterWaiting = true;
             typewriterTimeout = null;
             return;
@@ -137,31 +149,46 @@ function startAnswerAnimation(pageNum, mjPromise) {
     const answer = page ? page.querySelector('.answer, .key-concept') : null;
     if (!answer) return;
 
-    // Save the original rendered HTML on first visit; restore it on subsequent visits
+    // Hide any elements that should appear only after the answer animation completes
+    const afterAnswerEls = Array.from(page.querySelectorAll('.after-answer'));
+    afterAnswerEls.forEach(el => { el.style.display = 'none'; });
+
+    // Save the original (pre-MathJax) HTML on first visit; restore it on subsequent visits
     if (!answerOriginals[pageNum]) {
         answerOriginals[pageNum] = answer.innerHTML;
-        answer.style.visibility = 'hidden';
     } else {
-        answer.style.visibility = 'hidden';
         answer.innerHTML = answerOriginals[pageNum];
     }
 
+    // Hide the box while MathJax renders to avoid a flash of raw LaTeX
+    answer.style.visibility = 'hidden';
+
     const myId = ++answerAnimationId;
 
-    // Wait for MathJax, then show the spacebar prompt before the answer div
+    // Wait for MathJax, then blank the content and show the prompt inside the green box
     (mjPromise || Promise.resolve()).then(() => {
         if (myId !== answerAnimationId) return;
+        // Save the MathJax-rendered HTML for the animation to use
+        const rendered = answer.innerHTML;
+        // Blank the content and reveal the (now empty) green box
+        answer.innerHTML = '';
+        answer.style.visibility = '';
         typewriterWaitCallback = () => {
             if (myId !== answerAnimationId) return;
-            answer.style.visibility = '';
-            runAnswerAnimation(answer, myId);
+            // Restore rendered content; runAnswerAnimation will immediately blank it synchronously
+            answer.innerHTML = rendered;
+            const onComplete = afterAnswerEls.length > 0 ? () => {
+                if (myId !== answerAnimationId) return;
+                afterAnswerEls.forEach(el => { el.style.display = ''; });
+            } : null;
+            runAnswerAnimation(answer, myId, onComplete);
         };
         typewriterWaiting = true;
-        showTypewriterPrompt(answer);
+        showTypewriterPrompt(answer, true); // prompt goes inside the green box
     });
 }
 
-function runAnswerAnimation(answer, myId) {
+function runAnswerAnimation(answer, myId, onComplete) {
     const paras = Array.from(answer.querySelectorAll('p'));
     const cells = Array.from(answer.querySelectorAll('td'));
 
@@ -255,13 +282,39 @@ function runAnswerAnimation(answer, myId) {
 
     function animateWipes() {
         if (myId !== answerAnimationId) return;
-        if (wipeIdx >= wipes.length) { typewriterTimeout = null; return; }
+        if (wipeIdx >= wipes.length) { typewriterTimeout = null; if (onComplete) onComplete(); return; }
         const { el, gap } = wipes[wipeIdx++];
         el.style.clipPath = 'inset(0 0% 0 0)';
         typewriterTimeout = setTimeout(animateWipes, gap);
     }
 
     animatePara();
+}
+
+function startIntroAnimation(pageNum, mjPromise) {
+    const page = document.getElementById('page-' + pageNum);
+    if (!page) return;
+
+    const intro = page.querySelector('.intro');
+    if (!intro) return;
+
+    // Save the original (pre-MathJax) HTML on first visit; restore it on subsequent visits
+    if (!introOriginals[pageNum]) {
+        introOriginals[pageNum] = intro.innerHTML;
+    } else {
+        intro.innerHTML = introOriginals[pageNum];
+    }
+
+    // Hide while MathJax renders to avoid a flash of raw LaTeX
+    intro.style.visibility = 'hidden';
+
+    const myId = ++answerAnimationId;
+
+    (mjPromise || Promise.resolve()).then(() => {
+        if (myId !== answerAnimationId) return;
+        intro.style.visibility = '';
+        runAnswerAnimation(intro, myId);
+    });
 }
 
 function showPage(pageNum) {
@@ -329,6 +382,8 @@ function showPage(pageNum) {
 
         if (pageNum === 2) {
             startTypewriterPage2();
+        } else if (introAnimatedPages.has(pageNum)) {
+            startIntroAnimation(pageNum, mjPromise);
         } else if (answerAnimatedPages.has(pageNum)) {
             startAnswerAnimation(pageNum, mjPromise);
         }
