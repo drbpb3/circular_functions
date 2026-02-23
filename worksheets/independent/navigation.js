@@ -12,7 +12,7 @@ let typewriterQueue = [];
 let page2Originals = null;
 
 // Answer div animation — add page numbers here to opt in
-const answerAnimatedPages = new Set([3, 4, 6, 9, 11, 13, 15, 16, 17, 18, 20]);
+const answerAnimatedPages = new Set([3, 4, 6, 8, 9, 11, 13, 15, 16, 17, 18, 20]);
 const answerOriginals = {};
 let answerAnimationId = 0;
 
