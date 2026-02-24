@@ -12,7 +12,7 @@ let typewriterQueue = [];
 let page2Originals = null;
 
 // Answer div animation — add page numbers here to opt in
-const answerAnimatedPages = new Set([3, 4, 6, 8, 9, 11, 13, 14, 15, 16, 17, 18, 20]);
+const answerAnimatedPages = new Set([3, 4, 5, 6, 7, 8, 9, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 27]);
 const answerOriginals = {};
 let answerAnimationId = 0;
 
@@ -26,6 +26,9 @@ const introChainPages = new Map([[3, 2000], [11, null], [16, null], [20, null]])
 
 // Per-page override for the gap (ms) between display math wipes (default: 3500)
 const displayGapOverrides = new Map([[3, 4000], [9, 1500], [14, 1500], [18, 1500]]);
+
+// Per-page override for display math wipe speed in px/s (default: 75)
+const displaySpeedOverrides = new Map();
 
 // Pages where wipes happen first, then text types (default: text types first, then wipes)
 const wipesFirstPages = new Set([9]);
@@ -212,6 +215,7 @@ function startAnswerAnimation(pageNum, mjPromise) {
             } : null;
             const runOptions = displayGapOverrides.has(pageNum) ? { displayGap: displayGapOverrides.get(pageNum) } : {};
             if (wipesFirstPages.has(pageNum)) runOptions.wipesFirst = true;
+            if (displaySpeedOverrides.has(pageNum)) runOptions.displaySpeedPxSec = displaySpeedOverrides.get(pageNum);
             runAnswerAnimation(answer, myId, onComplete, runOptions);
             // Fixed-delay chain: start intro at specified time after click
             if (introEl && introDelay !== null && renderedIntro !== null) {
@@ -290,18 +294,32 @@ function runAnswerAnimation(answer, myId, onComplete, options) {
     // Wipe targets: display math blocks (slower) first, then table cells (faster)
     const displayGap = (options && options.displayGap != null) ? options.displayGap : 3500;
     const wipesFirst = options && options.wipesFirst;
+    const displaySpeedPxSec = (options && options.displaySpeedPxSec != null) ? options.displaySpeedPxSec : 75;
     const wipes = [
-        ...displayMath.map(el => ({ el, gap: displayGap, transition: 'clip-path 2.5s ease-out' })),
+        ...displayMath.map(el => ({ el, gap: displayGap, isDisplay: true })),
         ...cells.map(el =>      ({ el, gap: 900,  transition: 'clip-path 0.75s ease-out' })),
     ];
-    wipes.forEach(({ el, transition }) => {
+    // Set initial clip-path on all wipe targets (suppress transition during setup)
+    wipes.forEach(({ el }) => {
         el.style.clipPath = 'inset(0 100% 0 0)';
-        el.style.transition = transition;
+        el.style.transition = 'none';
     });
     // Force a reflow so the browser commits the initial clip-path state before
     // we start animating — prevents the transition being skipped when there is
     // no typed text (i.e. animateWipes fires almost immediately after setup).
+    // After this reflow, SVG widths are available for constant-speed calculation.
     if (wipes.length > 0) wipes[0].el.getBoundingClientRect();
+    // Set per-element transitions: display math uses measured SVG width for constant speed
+    wipes.forEach(({ el, isDisplay, transition }) => {
+        if (isDisplay) {
+            const svgEl = el.querySelector('svg');
+            const svgWidth = svgEl ? svgEl.getBoundingClientRect().width : el.getBoundingClientRect().width;
+            const ms = Math.max(500, (svgWidth / displaySpeedPxSec) * 1000);
+            el.style.transition = `clip-path ${ms / 1000}s ease-out`;
+        } else {
+            el.style.transition = transition;
+        }
+    });
 
     let unitIdx = 0;
     let wipeIdx = 0;

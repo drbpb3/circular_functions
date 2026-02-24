@@ -37,6 +37,16 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+        /* Centre the working-block as a group; left-align equations inside so = signs align */
+        .working-block {
+            width: fit-content;
+            margin: 0 auto;
+        }
+        .working-block mjx-container[display] {
+            text-align: left !important;
+        }
+    </style>
 </head>
 <body oncontextmenu="return false;">
 
@@ -118,10 +128,12 @@
 
         <div class="answer">
             <p>Since the differential of cos is \(−\sin\), and since integration is the opposite of differentiation, it must be the case that the integral of sin is \(−\cos\).</p>
-            <p>\[\text{area} = \int_0^\pi \sin x \, \mathrm{d}x\]</p>
-            <p>\[= \Big[-\cos x\Big]_0^\pi\]</p>
-            <p>\[= -\cos\pi - (-\cos 0)\]</p>
-            <p>\[= 1 + 1 = 2\]</p>
+            <div class="working-block">
+                <p>\[\begin{aligned}\text{area} &= \int_0^\pi \sin x \, \mathrm{d}x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\text{area}} &= \Big[-\cos x\Big]_0^\pi\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\text{area}} &= -\cos\pi - (-\cos 0)\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\text{area}} &= 1 + 1 = 2\end{aligned}\]</p>
+            </div>
         </div>
     </div>
 
@@ -149,12 +161,12 @@
             <img src="integration_images/image2.png" alt="Graph of y = cos x showing shaded region from -π/2 to π/2">
         </figure>
         <div class="answer">
-            \[\begin{aligned}
-                \text{area} &= \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \cos x \, \mathrm{d}x\\[12pt]
-                &= \Big[\sin x\Big]_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\\[12pt]
-                &= \sin \frac{\pi}{2} - \sin\left(-\frac{\pi}{2}\right)\\[12pt]
-                &= 1 + 1 = 2
-                \end{aligned}\]
+            <div class="working-block">
+                <p>\[\begin{aligned}\text{area} &= \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} \cos x \, \mathrm{d}x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\text{area}} &= \Big[\sin x\Big]_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\text{area}} &= \sin \frac{\pi}{2} - \sin\left(-\frac{\pi}{2}\right)\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\text{area}} &= 1 + 1 = 2\end{aligned}\]</p>
+            </div>
         </div>
     </div>
 
@@ -175,12 +187,12 @@
             <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x} \ln|\cos x|\)</p>
         </div>
         <div class="answer">
-            \[\begin{aligned}
-                w &= \ln|\cos x| \qquad u = \cos x\\[12pt]
-                w &= \ln|u|\\[12pt]
-                \frac{\mathrm{d}w}{\mathrm{d}u} &= \frac{1}{u} = \frac{1}{\cos x} \qquad \frac{\mathrm{d}u}{\mathrm{d}x} = -\sin x\\[12pt]
-                \frac{\mathrm{d}w}{\mathrm{d}x} &= \frac{\mathrm{d}w}{\mathrm{d}u} \times \frac{\mathrm{d}u}{\mathrm{d}x} = -\frac{1}{\cos x} \sin x = -\tan x
-                \end{aligned}\]
+            <div class="working-block">
+                <p>\[\begin{aligned}w &= \ln|\cos x| \qquad u = \cos x\end{aligned}\]</p>
+                <p>\[\begin{aligned}w &= \ln|u|\end{aligned}\]</p>
+                <p>\[\begin{aligned}\frac{\mathrm{d}w}{\mathrm{d}u} &= \frac{1}{u} = \frac{1}{\cos x} \qquad \frac{\mathrm{d}u}{\mathrm{d}x} = -\sin x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\frac{\mathrm{d}w}{\mathrm{d}x} &= \frac{\mathrm{d}w}{\mathrm{d}u} \times \frac{\mathrm{d}u}{\mathrm{d}x} = -\frac{1}{\cos x} \sin x = -\tan x\end{aligned}\]</p>
+            </div>
         </div>
     </div>
 
@@ -213,43 +225,39 @@
         <div class="answer">
             <p>You can use the result from the previous page to see that \[\int \tan x \, \mathrm{d}x=-\ln|\cos x|=\ln\left|(\cos x)^{-1}\right|=\ln|\sec x|\] or you could integrate \(\tan x\) with a substitution:
                 \[\int \tan x \, \mathrm{d}x = \int \frac{\sin x}{\cos x} \, \mathrm{d}x \qquad u = \cos x \quad \frac{\mathrm{d}u}{\mathrm{d}x} = -\sin x\]</p>
-            \[\begin{aligned}
-                &= -\int \frac{\sin x}{\cos x} \frac{1}{\sin x} \, \mathrm{d}u\\[12pt]
-                &= -\int \frac{1}{u} \, \mathrm{d}u\\[12pt]
-                &= -\ln|u|\\[12pt]
-                &= -\ln|\cos x|\\[12pt]
-                &= \ln|\sec x|
-                \end{aligned}\]
+            <div class="working-block">
+                <p>\[\begin{aligned}&= -\int \frac{\sin x}{\cos x} \frac{1}{\sin x} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}&= -\int \frac{1}{u} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}&= -\ln|u|\end{aligned}\]</p>
+                <p>\[\begin{aligned}&= -\ln|\cos x|\end{aligned}\]</p>
+                <p>\[\begin{aligned}&= \ln|\sec x|\end{aligned}\]</p>
+            </div>
         </div>
         <div class="teacher-note">
             <p>For the area, we can use either form of the integral of tan, but please, no calculators, even for the manipulation of logs.</p>
         </div>
 
         <div class="answer">
-            <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center;">
-                <div>
-                    \[\begin{aligned}
-                        \text{area} &= \int_0^{\frac{\pi}{4}} \tan x \, \mathrm{d}x\\[12pt]
-                        &= \Big[-\ln(\cos x)\Big]_0^{\frac{\pi}{4}}\\[12pt]
-                        &= -\ln\left(\cos \frac{\pi}{4}\right) - (-\ln(\cos 0))\\[12pt]
-                        &= -\ln \frac{1}{\sqrt{2}} + \ln 1\\[12pt]
-                        &= \ln \sqrt{2}\\[12pt]
-                        &= \frac{1}{2}\ln 2
-                        \end{aligned}\]
+            <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: start;">
+                <div class="working-block">
+                    <p>\[\begin{aligned}\text{area} &= \int_0^{\frac{\pi}{4}} \tan x \, \mathrm{d}x\end{aligned}\]</p>
+                    <p>\[\begin{aligned}\phantom{\text{area}} &= \Big[-\ln(\cos x)\Big]_0^{\frac{\pi}{4}}\end{aligned}\]</p>
+                    <p>\[\begin{aligned}\phantom{\text{area}} &= -\ln\left(\cos \frac{\pi}{4}\right) - (-\ln(\cos 0))\end{aligned}\]</p>
+                    <p>\[\begin{aligned}\phantom{\text{area}} &= -\ln \frac{1}{\sqrt{2}} + \ln 1\end{aligned}\]</p>
+                    <p>\[\begin{aligned}\phantom{\text{area}} &= \ln \sqrt{2}\end{aligned}\]</p>
+                    <p>\[\begin{aligned}\phantom{\text{area}} &= \frac{1}{2}\ln 2\end{aligned}\]</p>
                 </div>
 
                 <div style="text-align: center;">
                     <p>or</p>
                 </div>
 
-                <div>
-                    \[\begin{aligned}
-                        \text{area} &= \int_0^{\frac{\pi}{4}} \tan x \, \mathrm{d}x\\[12pt]
-                        &= \Big[\ln(\sec x)\Big]_0^{\frac{\pi}{4}}\\[12pt]
-                        &= \ln\left(\sec \frac{\pi}{4}\right) - \ln(\sec 0)\\[12pt]
-                        &= \ln \sqrt{2} - \ln 1\\[12pt]
-                        &= \frac{1}{2}\ln 2
-                        \end{aligned}\]
+                <div class="working-block">
+                    <p>\[\begin{aligned}\text{area} &= \int_0^{\frac{\pi}{4}} \tan x \, \mathrm{d}x\end{aligned}\]</p>
+                    <p>\[\begin{aligned}\phantom{\text{area}} &= \Big[\ln(\sec x)\Big]_0^{\frac{\pi}{4}}\end{aligned}\]</p>
+                    <p>\[\begin{aligned}\phantom{\text{area}} &= \ln\left(\sec \frac{\pi}{4}\right) - \ln(\sec 0)\end{aligned}\]</p>
+                    <p>\[\begin{aligned}\phantom{\text{area}} &= \ln \sqrt{2} - \ln 1\end{aligned}\]</p>
+                    <p>\[\begin{aligned}\phantom{\text{area}} &= \frac{1}{2}\ln 2\end{aligned}\]</p>
                 </div>
             </div>
         </div>
@@ -284,29 +292,27 @@
         </figure>
         <div class="answer">
             <p>Probably the easiest method is to rearrange one of the formulas for \(\cos 2x\):</p>
-            \[\begin{aligned}
-                \text{area} &= \int_0^\pi \sin^2 x \, \mathrm{d}x\\[12pt]
-                &= \int_0^\pi \frac{1 - \cos 2x}{2} \, \mathrm{d}x\\[12pt]
-                &= \Big[\frac{x}{2} - \frac{\sin 2x}{4}\Big]_0^\pi\\[12pt]
-                &= \frac{\pi}{2}
-                \end{aligned}\]
-            <br>
-            <p>\[\int_0^\pi \sin^2 x \, \mathrm{d}x=\frac{\pi}{2} < 2=\int_0^\pi \sin x \, \mathrm{d}x\] When \(0 < x < \pi,\quad 0 < \sin x < 1 \quad \Rightarrow \sin^2 x < \sin x\),</p> 
+            <div class="working-block">
+                <p>\[\begin{aligned}\text{area} &= \int_0^\pi \sin^2 x \, \mathrm{d}x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\text{area}} &= \int_0^\pi \frac{1 - \cos 2x}{2} \, \mathrm{d}x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\text{area}} &= \Big[\frac{x}{2} - \frac{\sin 2x}{4}\Big]_0^\pi\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\text{area}} &= \frac{\pi}{2}\end{aligned}\]</p>
+            </div>
+            <p>\[\int_0^\pi \sin^2 x \, \mathrm{d}x=\frac{\pi}{2} < 2=\int_0^\pi \sin x \, \mathrm{d}x\] When \(0 < x < \pi,\quad 0 < \sin x < 1 \quad \Rightarrow \sin^2 x < \sin x\),</p>
             <p>so the area on the \(\sin^2\) graph must be less than the area on the \(\sin\) graph.</p>
         </div>
         <div class="answer">
             <p>You might be tempted to integrate by parts if you are familiar with this technique. If so, don't let me stop you! But the first method is surely easier. Here is the "by parts" method in case you are interested:</p>
             <p>\[u = \sin x \quad \frac{\mathrm{d}v}{\mathrm{d}x} = \sin x\]</p>
             <p>\[\frac{\mathrm{d}u}{\mathrm{d}x} = \cos x \quad v = -\cos x\]</p>
-
-            \[\begin{aligned}
-                \int \sin^2 x \, \mathrm{d}x &= -\sin x \cos x + \int \cos x \cos x \, \mathrm{d}x\\[12pt]
-                &= -\frac{1}{2}\sin 2x + \int \cos^2 x \, \mathrm{d}x\\[12pt]
-                &= -\frac{1}{2}\sin 2x + \int 1 - \sin^2 x \, \mathrm{d}x\\[12pt]
-                &= -\frac{1}{2}\sin 2x + x - \int \sin^2 x \, \mathrm{d}x\\[12pt]
-                \Rightarrow 2\int \sin^2 x \, \mathrm{d}x &= x - \frac{1}{2}\sin 2x+c\\[12pt]
-                \Rightarrow \int \sin^2 x \, \mathrm{d}x &= \frac{x}{2} - \frac{1}{4}\sin 2x+c'
-                \end{aligned}\]
+            <div class="working-block">
+                <p>\[\begin{aligned}\int \sin^2 x \, \mathrm{d}x &= -\sin x \cos x + \int \cos x \cos x \, \mathrm{d}x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\Rightarrow 2\int \sin^2 x \, \mathrm{d}x} &= -\frac{1}{2}\sin 2x + \int \cos^2 x \, \mathrm{d}x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\Rightarrow 2\int \sin^2 x \, \mathrm{d}x} &= -\frac{1}{2}\sin 2x + \int 1 - \sin^2 x \, \mathrm{d}x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\Rightarrow 2\int \sin^2 x \, \mathrm{d}x} &= -\frac{1}{2}\sin 2x + x - \int \sin^2 x \, \mathrm{d}x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\Rightarrow 2\int \sin^2 x \, \mathrm{d}x &= x - \frac{1}{2}\sin 2x+c\end{aligned}\]</p>
+                <p>\[\begin{aligned}\Rightarrow \int \sin^2 x \, \mathrm{d}x &= \frac{x}{2} - \frac{1}{4}\sin 2x+c'\end{aligned}\]</p>
+            </div>
         </div>
 
     </div>
@@ -333,12 +339,12 @@
         </figure>
         <div class="answer">
             <p>Remember that the differential of tan is \(\sec^2\), so</p>
-            \[\begin{aligned}
-                \text{area} &= \int_0^{\frac{\pi}{4}} \sec^2 x \, \mathrm{d}x\\[12pt]
-                &= \Big[\tan x\Big]_0^{\frac{\pi}{4}}\\[12pt]
-                &= \tan \frac{\pi}{4} - \tan 0\\[12pt]
-                &= 1
-                \end{aligned}\]
+            <div class="working-block">
+                <p>\[\begin{aligned}\text{area} &= \int_0^{\frac{\pi}{4}} \sec^2 x \, \mathrm{d}x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\text{area}} &= \Big[\tan x\Big]_0^{\frac{\pi}{4}}\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\text{area}} &= \tan \frac{\pi}{4} - \tan 0\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\text{area}} &= 1\end{aligned}\]</p>
+            </div>
         </div>
     </div>
 
@@ -373,12 +379,12 @@
             <p>If not, there is always substitution:</p>
             <p>\[u = \cos x \Rightarrow \frac{\mathrm{d}u}{\mathrm{d}x} = -\sin x\]</p>
 
-            \[\begin{aligned}
-                \int_0^{\frac{\pi}{2}} \sin x \cos^2 x \, \mathrm{d}x &= \int_1^0 \sin x \cos^2 x \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\\[12pt]
-                &= -\int_1^0 \frac{u^2 \sin x}{\sin x} \, \mathrm{d}u\\[12pt]
-                &= \int_0^1 u^2 \, \mathrm{d}u = \Bigg[\frac{u^3}{3}\Bigg]_0^1\\[12pt]
-                &= \frac{1}{3}
-                \end{aligned}\]
+            <div class="working-block">
+                <p>\[\begin{aligned}\int_0^{\frac{\pi}{2}} \sin x \cos^2 x \, \mathrm{d}x &= \int_1^0 \sin x \cos^2 x \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int_0^{\frac{\pi}{2}} \sin x \cos^2 x \, \mathrm{d}x} &= -\int_1^0 \frac{u^2 \sin x}{\sin x} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int_0^{\frac{\pi}{2}} \sin x \cos^2 x \, \mathrm{d}x} &= \int_0^1 u^2 \, \mathrm{d}u = \Bigg[\frac{u^3}{3}\Bigg]_0^1\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int_0^{\frac{\pi}{2}} \sin x \cos^2 x \, \mathrm{d}x} &= \frac{1}{3}\end{aligned}\]</p>
+            </div>
 
             <p>Did you notice the change of order of the limits in the last line to change the sign?</p>
         </div>
@@ -409,12 +415,12 @@
         </figure>
         <div class="answer">
             <p>Again, this one is easier than it looks, and it uses two previous results.</p>
-            \[\begin{aligned}
-                \int_0^\pi \sin^3 x \, \mathrm{d}x &= \int_0^\pi \sin x (1 - \cos^2 x) \, \mathrm{d}x\\[12pt]
-                &= \int_0^\pi \sin x - \sin x \cos^2 x \, \mathrm{d}x\\[12pt]
-                &= 2 - \frac{2}{3}\\[12pt]
-                &= \frac{4}{3}
-                \end{aligned}\]
+            <div class="working-block">
+                <p>\[\begin{aligned}\int_0^\pi \sin^3 x \, \mathrm{d}x &= \int_0^\pi \sin x (1 - \cos^2 x) \, \mathrm{d}x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int_0^\pi \sin^3 x \, \mathrm{d}x} &= \int_0^\pi \sin x - \sin x \cos^2 x \, \mathrm{d}x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int_0^\pi \sin^3 x \, \mathrm{d}x} &= 2 - \frac{2}{3}\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int_0^\pi \sin^3 x \, \mathrm{d}x} &= \frac{4}{3}\end{aligned}\]</p>
+            </div>
         </div>
         <div class="answer">
 
@@ -443,25 +449,20 @@
         </div>
 
         <div class="answer">
-            <div>
-                <p>\[\frac{\mathrm{d}}{\mathrm{d}x}\cos^{-2} x = 2\cos^{-3} x \sin x\]</p>
-                <p>so that</p>
-                \[\begin{aligned}
-                    \int_0^{\frac{\pi}{4}} \frac{\sin x}{\cos^3 x} \, \mathrm{d}x &= \Bigg[\frac{1}{2\cos^2 x}\Bigg]_0^{\frac{\pi}{4}}\\[12pt]
-                    &= 1 - \frac{1}{2}= \frac{1}{2}
-                    \end{aligned}\]
+            <p>\[\frac{\mathrm{d}}{\mathrm{d}x}\cos^{-2} x = 2\cos^{-3} x \sin x\]</p>
+            <p>so that</p>
+            <div class="working-block">
+                <p>\[\begin{aligned}\int_0^{\frac{\pi}{4}} \frac{\sin x}{\cos^3 x} \, \mathrm{d}x &= \Bigg[\frac{1}{2\cos^2 x}\Bigg]_0^{\frac{\pi}{4}}\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int_0^{\frac{\pi}{4}} \frac{\sin x}{\cos^3 x} \, \mathrm{d}x} &= 1 - \frac{1}{2} = \frac{1}{2}\end{aligned}\]</p>
             </div>
             <p>There is another great option:</p>
-            \[\begin{aligned}
-                \frac{\mathrm{d}}{\mathrm{d}x}\tan^2 x&=2\tan x\sec^2 x\text{ so that}\\[12pt]
-                \int_0^{\frac{\pi}{4}} \frac{\sin x}{\cos^3 x} \, \mathrm{d}x &=\int_0^{\frac{\pi}{4}} \tan x\sec^2 x \, \mathrm{d}x  \\[12pt]
-                &=\Bigg[\frac{1}{2}\sec^2 x\Bigg]_0^{\frac{\pi}{4}}\\[12pt]
-                &= 1 - \frac{1}{2}= \frac{1}{2}
-                \end{aligned}\]
-            <div>
-                <p class="teacher-note">Notice, though, that \(\sec^2 x = 1 + \tan^2 x\), so</p>
-                <p class="teacher-note">\[\int \frac{\sin x}{\cos^3 x} \, \mathrm{d}x = \frac{\tan^2 x}{2} + c'\]</p>
+            <div class="working-block">
+                <p>\[\begin{aligned}\frac{\mathrm{d}}{\mathrm{d}x}\tan^2 x &= 2\tan x\sec^2 x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\int_0^{\frac{\pi}{4}} \frac{\sin x}{\cos^3 x} \, \mathrm{d}x &= \int_0^{\frac{\pi}{4}} \tan x\sec^2 x \, \mathrm{d}x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int_0^{\frac{\pi}{4}} \frac{\sin x}{\cos^3 x} \, \mathrm{d}x} &= \Bigg[\frac{1}{2}\sec^2 x\Bigg]_0^{\frac{\pi}{4}}\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int_0^{\frac{\pi}{4}} \frac{\sin x}{\cos^3 x} \, \mathrm{d}x} &= 1 - \frac{1}{2} = \frac{1}{2}\end{aligned}\]</p>
             </div>
+            <p class="teacher-note">Notice, though, that \(\sec^2 x = 1 + \tan^2 x\), so \[\int \frac{\sin x}{\cos^3 x} \, \mathrm{d}x = \frac{\tan^2 x}{2} + c'\]</p>
         </div>
     </div>
 
@@ -480,40 +481,36 @@
             <p>Give them a go if you feel like it.</p>
         </div>
         <div class="answer">
-            \[u = \cos x \quad \frac{\mathrm{d}u}{\mathrm{d}x} = -\sin x \]
-                \[\begin{aligned}
-                \int \frac{\sin x}{\cos^3 x} \,\mathrm{d}x&=\int \frac{\sin x}{\cos^3 x} \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u \\[12pt]
-                    &= -\int \frac{1}{u^3} \, \mathrm{d}u\\[12pt]
-                    &= \frac{1}{2u^2} + c\\[12pt]
-                    &= \frac{1}{2\cos^2 x} + c\\[12pt]
-                    &= \frac{\sec^2 x}{2} + c
-                    \end{aligned}\]
+            <p>\[u = \cos x \quad \frac{\mathrm{d}u}{\mathrm{d}x} = -\sin x\]</p>
+            <div class="working-block">
+                <p>\[\begin{aligned}\int \frac{\sin x}{\cos^3 x} \,\mathrm{d}x &= \int \frac{\sin x}{\cos^3 x} \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \frac{\sin x}{\cos^3 x} \,\mathrm{d}x} &= -\int \frac{1}{u^3} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \frac{\sin x}{\cos^3 x} \,\mathrm{d}x} &= \frac{1}{2u^2} + c\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \frac{\sin x}{\cos^3 x} \,\mathrm{d}x} &= \frac{1}{2\cos^2 x} + c\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \frac{\sin x}{\cos^3 x} \,\mathrm{d}x} &= \frac{\sec^2 x}{2} + c\end{aligned}\]</p>
+            </div>
         </div>
         <div class="answer">
             <p>\[u = \sec x \quad \frac{\mathrm{d}u}{\mathrm{d}x} = \sec x \tan x\]</p>
-
-            \[\begin{aligned}
-                \int \tan x\sec^2 x \,\mathrm{d}x
-                &= \int \tan x\sec^2 x \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\\[12pt]
-                &= \int \tan x\sec^2 x \frac{1}{\sec x \tan x} \, \mathrm{d}u\\[12pt]
-                &= \int \sec x \, \mathrm{d}u\\[12pt]
-                &= \int u \, \mathrm{d}u\\[12pt]
-                &= \frac{u^2}{2} + c\\[12pt]
-                &= \frac{\sec^2 x}{2} + c
-                \end{aligned}\]
+            <div class="working-block">
+                <p>\[\begin{aligned}\int \tan x\sec^2 x \,\mathrm{d}x &= \int \tan x\sec^2 x \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \tan x\sec^2 x \,\mathrm{d}x} &= \int \tan x\sec^2 x \frac{1}{\sec x \tan x} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \tan x\sec^2 x \,\mathrm{d}x} &= \int \sec x \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \tan x\sec^2 x \,\mathrm{d}x} &= \int u \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \tan x\sec^2 x \,\mathrm{d}x} &= \frac{u^2}{2} + c\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \tan x\sec^2 x \,\mathrm{d}x} &= \frac{\sec^2 x}{2} + c\end{aligned}\]</p>
+            </div>
         </div>
         <div class="answer">
             <p>\[u = \tan x \quad \frac{\mathrm{d}u}{\mathrm{d}x} = \sec^2 x\]</p>
-
-            \[\begin{aligned}
-                \int \tan x\sec^2 x \,\mathrm{d}x
-                &= \int \tan x\sec^2 x \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\\[12pt]
-                &= \int \tan x\sec^2 x \frac{1}{\sec^2 x } \, \mathrm{d}u\\[12pt]
-                &= \int \tan x \, \mathrm{d}u\\[12pt]
-                &= \int u \, \mathrm{d}u\\[12pt]
-                &= \frac{u^2}{2} + c'\\[12pt]
-                &= \frac{\tan^2 x}{2} + c'
-            \end{aligned}\]
+            <div class="working-block">
+                <p>\[\begin{aligned}\int \tan x\sec^2 x \,\mathrm{d}x &= \int \tan x\sec^2 x \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \tan x\sec^2 x \,\mathrm{d}x} &= \int \tan x\sec^2 x \frac{1}{\sec^2 x} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \tan x\sec^2 x \,\mathrm{d}x} &= \int \tan x \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \tan x\sec^2 x \,\mathrm{d}x} &= \int u \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \tan x\sec^2 x \,\mathrm{d}x} &= \frac{u^2}{2} + c'\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \tan x\sec^2 x \,\mathrm{d}x} &= \frac{\tan^2 x}{2} + c'\end{aligned}\]</p>
+            </div>
         </div>
         <div class="exercise">
             <p>Why is the last one the same as the other two?</p>
@@ -551,21 +548,20 @@
             <p>Find \(\displaystyle\int \sec x \, \mathrm{d}x\) using the substitution \(u = \sin x\).</p>
         </div>
         <div class="answer">
-            \[\begin{aligned}
-                u &= \sin x\\[12pt]
-                \Rightarrow \frac{\mathrm{d}u}{\mathrm{d}x} &= \cos x
-                \end{aligned}\]
-
-            \[\begin{aligned}
-                \int \sec x \, \mathrm{d}x &= \int \frac{1}{\cos x} \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\\[12pt]
-                &= \int \frac{1}{\cos^2 x} \, \mathrm{d}u\\[12pt]
-                &= \int \frac{1}{1 - \sin^2 x} \, \mathrm{d}u\\[12pt]
-                &= \int \frac{1}{1 - u^2} \, \mathrm{d}u\\[12pt]
-                &= \frac{1}{2}\int \frac{1}{1 - u} + \frac{1}{1 + u} \, \mathrm{d}u\\[12pt]
-                &= \frac{1}{2}[-\ln|1 - u| + \ln|1 + u|]\\[12pt]
-                &= \frac{1}{2}\ln\left|\frac{1 + u}{1 - u}\right|\\[12pt]
-                &= \frac{1}{2}\ln\left|\frac{1 + \sin x}{1 - \sin x}\right| + c
-                \end{aligned}\]
+            <div class="working-block">
+                <p>\[\begin{aligned}u &= \sin x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\Rightarrow \frac{\mathrm{d}u}{\mathrm{d}x} &= \cos x\end{aligned}\]</p>
+            </div>
+            <div class="working-block">
+                <p>\[\begin{aligned}\int \sec x \, \mathrm{d}x &= \int \frac{1}{\cos x} \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \sec x \, \mathrm{d}x} &= \int \frac{1}{\cos^2 x} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \sec x \, \mathrm{d}x} &= \int \frac{1}{1 - \sin^2 x} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \sec x \, \mathrm{d}x} &= \int \frac{1}{1 - u^2} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \sec x \, \mathrm{d}x} &= \frac{1}{2}\int \frac{1}{1 - u} + \frac{1}{1 + u} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \sec x \, \mathrm{d}x} &= \frac{1}{2}[-\ln|1 - u| + \ln|1 + u|]\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \sec x \, \mathrm{d}x} &= \frac{1}{2}\ln\left|\frac{1 + u}{1 - u}\right|\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \sec x \, \mathrm{d}x} &= \frac{1}{2}\ln\left|\frac{1 + \sin x}{1 - \sin x}\right| + c\end{aligned}\]</p>
+            </div>
         </div>
         
     </div>
@@ -594,20 +590,19 @@
             <p>Find \(\displaystyle\int \sec x \, dx\) using the substitution \(u = \sec x + \tan x\).</p>
         </div>
         <div class="answer">
-            \[\begin{aligned}
-                u &= \sec x + \tan x\\[12pt]
-                \Rightarrow \frac{\mathrm{d}u}{\mathrm{d}x} &= \sec x \tan x + \sec^2 x\\[12pt]
-                &= u \sec x
-                \end{aligned}\]
-
-            \[\begin{aligned}
-                \int \sec x \, \mathrm{d}x &= \int \sec x \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\\[12pt]
-                &= \int \frac{\sec x}{u \sec x} \, \mathrm{d}u\\[12pt]
-                &= \int \frac{1}{u} \, \mathrm{d}u\\[12pt]
-                &= \ln|u| + c\\[12pt]
-                &= \ln|\sec x + \tan x| + c\\[12pt]
-                &= \ln\left|\frac{1 + \sin x}{\cos x}\right| + c
-                \end{aligned}\]
+            <div class="working-block">
+                <p>\[\begin{aligned}u &= \sec x + \tan x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\Rightarrow \frac{\mathrm{d}u}{\mathrm{d}x} &= \sec x \tan x + \sec^2 x\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\Rightarrow \frac{\mathrm{d}u}{\mathrm{d}x}} &= u \sec x\end{aligned}\]</p>
+            </div>
+            <div class="working-block">
+                <p>\[\begin{aligned}\int \sec x \, \mathrm{d}x &= \int \sec x \frac{\mathrm{d}x}{\mathrm{d}u} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \sec x \, \mathrm{d}x} &= \int \frac{\sec x}{u \sec x} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \sec x \, \mathrm{d}x} &= \int \frac{1}{u} \, \mathrm{d}u\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \sec x \, \mathrm{d}x} &= \ln|u| + c\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \sec x \, \mathrm{d}x} &= \ln|\sec x + \tan x| + c\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\int \sec x \, \mathrm{d}x} &= \ln\left|\frac{1 + \sin x}{\cos x}\right| + c\end{aligned}\]</p>
+            </div>
         </div>
     </div>
 
@@ -629,14 +624,13 @@
         </div>
 
         <div class="answer">
-            \[\begin{aligned}
-                \left(\frac{1 + \sin x}{\cos x}\right)^2 &= \frac{(1 + \sin x)^2}{1 - \sin^2 x}\\[12pt]
-                &= \frac{(1 + \sin x)^2}{(1 + \sin x)(1 - \sin x)}\\[12pt]
-                &= \frac{1 + \sin x}{1 - \sin x}\\[12pt]
-                \Rightarrow \ln\left|\frac{1 + \sin x}{\cos x}\right|^2 &= \ln\left|\frac{1 + \sin x}{1 - \sin x}\right|\\[12pt]
-                \Rightarrow 2\ln\left|\frac{1 + \sin x}{\cos x}\right| &= \ln\left|\frac{1 + \sin x}{1 - \sin x}\right|
-                \end{aligned}\]
-
+            <div class="working-block">
+                <p>\[\begin{aligned}\left(\frac{1 + \sin x}{\cos x}\right)^2 &= \frac{(1 + \sin x)^2}{1 - \sin^2 x}\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\left(\frac{1 + \sin x}{\cos x}\right)^2} &= \frac{(1 + \sin x)^2}{(1 + \sin x)(1 - \sin x)}\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\left(\frac{1 + \sin x}{\cos x}\right)^2} &= \frac{1 + \sin x}{1 - \sin x}\end{aligned}\]</p>
+                <p>\[\begin{aligned}\Rightarrow \ln\left|\frac{1 + \sin x}{\cos x}\right|^2 &= \ln\left|\frac{1 + \sin x}{1 - \sin x}\right|\end{aligned}\]</p>
+                <p>\[\begin{aligned}\Rightarrow 2\ln\left|\frac{1 + \sin x}{\cos x}\right| &= \ln\left|\frac{1 + \sin x}{1 - \sin x}\right|\end{aligned}\]</p>
+            </div>
             <p class="teacher-note">Yes, they are!</p>
         </div>
     </div>
