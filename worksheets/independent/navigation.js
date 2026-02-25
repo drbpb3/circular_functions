@@ -12,12 +12,12 @@ let typewriterQueue = [];
 let page2Originals = null;
 
 // Answer div animation — add page numbers here to opt in
-const answerAnimatedPages = new Set([3, 4, 5, 6, 7, 8, 9, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23, 25, 27]);
+const answerAnimatedPages = new Set([3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29]);
 const answerOriginals = {};
 let answerAnimationId = 0;
 
 // Intro div animation — add page numbers here to opt in
-const introAnimatedPages = new Set([7]);
+const introAnimatedPages = new Set([]);
 const introOriginals = {};
 
 // Pages where the intro div auto-animates alongside/after the answer animation.
@@ -25,7 +25,7 @@ const introOriginals = {};
 const introChainPages = new Map([[3, 2000], [11, null], [16, null], [20, null]]);
 
 // Per-page override for the gap (ms) between display math wipes (default: 3500)
-const displayGapOverrides = new Map([[3, 4000], [9, 1500], [14, 1500], [18, 1500]]);
+const displayGapOverrides = new Map([[3, 4000], [7, 1500], [9, 1500], [14, 1500], [18, 1500]]);
 
 // Per-page override for display math wipe speed in px/s (default: 75)
 const displaySpeedOverrides = new Map();
@@ -92,91 +92,82 @@ function continueTypewriter() {
         if (idx >= items.length) { typewriterTimeout = null; return; }
         const item = items[idx++];
         item.node.textContent += item.char;
-        const delay = /\S/.test(item.char) ? 25 : 0;
+        const delay = /\S/.test(item.char) ? 50 : 0;
         typewriterTimeout = setTimeout(tick, delay);
     }
     tick();
 }
 
-function startTypewriterPage2() {
+function startTypewriterPage2(mjPromise) {
     const page = document.getElementById('page-2');
     if (!page) return;
 
     stopTypewriter();
 
-    // Only animate the visible intro paragraphs (teacher-note is display:none; h2 is not animated)
-    const elements = Array.from(page.querySelectorAll('.intro p'));
+    const introEl = page.querySelector('.intro');
+    if (!introEl) return;
 
-    // Save original HTML on first visit; restore it on subsequent visits
+    // Hide exercise initially; reveal when intro animation completes
+    const exerciseEl = page.querySelector('.exercise');
+    if (exerciseEl) exerciseEl.style.display = 'none';
+
+    // Save pre-MathJax HTML on first visit; restore it on subsequent visits
     if (page2Originals === null) {
-        page2Originals = elements.map(el => el.innerHTML);
+        page2Originals = introEl.innerHTML;
     } else {
-        elements.forEach((el, i) => { el.innerHTML = page2Originals[i]; });
+        introEl.innerHTML = page2Originals;
     }
 
-    // Collect character items for each element separately
-    const groups = elements.map(el => {
-        const items = [];
-        const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
-        let node;
-        while ((node = walker.nextNode())) {
-            const text = node.textContent;
-            node.textContent = '';
-            for (let i = 0; i < text.length; i++) {
-                items.push({ node, char: text[i] });
-            }
-        }
-        return items;
+    // Hide intro while MathJax renders to avoid a flash of raw LaTeX
+    introEl.style.visibility = 'hidden';
+
+    const myId = ++answerAnimationId;
+
+    (mjPromise || Promise.resolve()).then(() => {
+        if (myId !== answerAnimationId) return;
+        introEl.style.visibility = '';
+        const onComplete = () => {
+            if (myId !== answerAnimationId) return;
+            if (exerciseEl) exerciseEl.style.display = '';
+        };
+        runAnswerAnimation(introEl, myId, onComplete);
     });
-
-    // Phase 1: first intro p
-    const phase1 = [...(groups[0] || [])];
-
-    // Phase 2: second intro p — waits for spacebar before revealing
-    typewriterQueue = groups[1] || [];
-    typewriterWaiting = false;
-
-    let idx = 0;
-    function tick() {
-        if (idx >= phase1.length) {
-            showTypewriterPrompt(page.querySelectorAll('.intro')[1], true);
-            typewriterWaiting = true;
-            typewriterTimeout = null;
-            return;
-        }
-        const item = phase1[idx++];
-        let delay;
-        if (item.pause) {
-            delay = item.pause;
-        } else {
-            item.node.textContent += item.char;
-            delay = /\S/.test(item.char) ? 25 : 0;
-        }
-        typewriterTimeout = setTimeout(tick, delay);
-    }
-    tick();
 }
 
 function startAnswerAnimation(pageNum, mjPromise) {
     const page = document.getElementById('page-' + pageNum);
-    const answer = page ? page.querySelector('.answer, .key-concept') : null;
-    if (!answer) return;
-
-    // Hide any elements that should appear only after the answer animation completes
-    const afterAnswerEls = Array.from(page.querySelectorAll('.after-answer'));
-    afterAnswerEls.forEach(el => { el.style.display = 'none'; });
+    const answers = page ? Array.from(page.querySelectorAll('.answer, .key-concept')) : [];
+    if (answers.length === 0) return;
 
     // Check if this page also chains an intro animation after/alongside the answer
     const introDelay = introChainPages.has(pageNum) ? introChainPages.get(pageNum) : undefined;
     const introEl = introDelay !== undefined ? page.querySelector('.intro') : null;
     if (introEl) introEl.style.display = 'none';
 
+    // Hide elements that should appear only after the answer animation completes.
+    // Includes explicitly marked .after-answer elements, plus any .exercise or .intro
+    // that follows the last answer in document order (excluding intros already managed
+    // by introChainPages, which have their own timing).
+    const lastAnswer = answers[answers.length - 1];
+    const afterAnswerEls = [
+        ...Array.from(page.querySelectorAll('.after-answer')),
+        ...Array.from(page.querySelectorAll('.exercise, .intro')).filter(el =>
+            el !== introEl &&
+            !lastAnswer.contains(el) &&
+            (lastAnswer.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING)
+        ),
+    ];
+    afterAnswerEls.forEach(el => { el.style.display = 'none'; });
+
     // Save the original (pre-MathJax) HTML on first visit; restore it on subsequent visits
-    if (!answerOriginals[pageNum]) {
-        answerOriginals[pageNum] = answer.innerHTML;
-    } else {
-        answer.innerHTML = answerOriginals[pageNum];
-    }
+    answers.forEach((answer, i) => {
+        const key = pageNum + '.' + i;
+        if (!answerOriginals[key]) {
+            answerOriginals[key] = answer.innerHTML;
+        } else {
+            answer.innerHTML = answerOriginals[key];
+        }
+    });
     if (introEl) {
         if (!introOriginals[pageNum]) {
             introOriginals[pageNum] = introEl.innerHTML;
@@ -185,26 +176,31 @@ function startAnswerAnimation(pageNum, mjPromise) {
         }
     }
 
-    // Hide the box while MathJax renders to avoid a flash of raw LaTeX
-    answer.style.visibility = 'hidden';
+    // Hide all boxes while MathJax renders to avoid a flash of raw LaTeX
+    answers.forEach(answer => { answer.style.visibility = 'hidden'; });
 
     const myId = ++answerAnimationId;
 
-    // Wait for MathJax, then blank the content and show the prompt inside the green box
+    // Wait for MathJax, then blank the content and show the prompt inside the first green box
     (mjPromise || Promise.resolve()).then(() => {
         if (myId !== answerAnimationId) return;
-        // Save the MathJax-rendered HTML for the animation to use
-        const rendered = answer.innerHTML;
+        // Save the MathJax-rendered HTML for each answer
+        const renderedList = answers.map(answer => answer.innerHTML);
         const renderedIntro = introEl ? introEl.innerHTML : null;
-        // Blank the content and reveal the (now empty) green box
-        answer.innerHTML = '';
-        answer.style.visibility = '';
-        typewriterWaitCallback = () => {
+        // Blank all answers and reveal the (now empty) first box
+        answers.forEach(answer => { answer.innerHTML = ''; answer.style.visibility = ''; });
+
+        const runOptions = displayGapOverrides.has(pageNum) ? { displayGap: displayGapOverrides.get(pageNum) } : {};
+        if (wipesFirstPages.has(pageNum) && !page.hasAttribute('data-no-wipes-first')) runOptions.wipesFirst = true;
+        if (displaySpeedOverrides.has(pageNum)) runOptions.displaySpeedPxSec = displaySpeedOverrides.get(pageNum);
+
+        function animateFrom(idx) {
             if (myId !== answerAnimationId) return;
-            // Restore rendered content; runAnswerAnimation will immediately blank it synchronously
+            const answer = answers[idx];
+            const rendered = renderedList[idx];
+            const isLast = idx === answers.length - 1;
             answer.innerHTML = rendered;
-            const needsOnComplete = afterAnswerEls.length > 0 || (introEl && introDelay === null);
-            const onComplete = needsOnComplete ? () => {
+            const onComplete = isLast ? (() => {
                 if (myId !== answerAnimationId) return;
                 afterAnswerEls.forEach(el => { el.style.display = ''; });
                 if (introEl && introDelay === null && renderedIntro !== null) {
@@ -212,13 +208,12 @@ function startAnswerAnimation(pageNum, mjPromise) {
                     introEl.style.display = '';
                     runAnswerAnimation(introEl, myId, null);
                 }
-            } : null;
-            const runOptions = displayGapOverrides.has(pageNum) ? { displayGap: displayGapOverrides.get(pageNum) } : {};
-            if (wipesFirstPages.has(pageNum)) runOptions.wipesFirst = true;
-            if (displaySpeedOverrides.has(pageNum)) runOptions.displaySpeedPxSec = displaySpeedOverrides.get(pageNum);
+            }) : (() => {
+                setTimeout(() => animateFrom(idx + 1), 400);
+            });
             runAnswerAnimation(answer, myId, onComplete, runOptions);
-            // Fixed-delay chain: start intro at specified time after click
-            if (introEl && introDelay !== null && renderedIntro !== null) {
+            // Fixed-delay chain: start intro at specified time after first answer starts
+            if (idx === 0 && introEl && introDelay !== null && renderedIntro !== null) {
                 setTimeout(() => {
                     if (myId !== answerAnimationId) return;
                     introEl.innerHTML = renderedIntro;
@@ -226,129 +221,230 @@ function startAnswerAnimation(pageNum, mjPromise) {
                     runAnswerAnimation(introEl, myId, null);
                 }, introDelay);
             }
-        };
-        typewriterWaiting = true;
-        showTypewriterPrompt(answer, true); // prompt goes inside the green box
+        }
+
+        // Auto-start: always animate immediately without waiting for user click
+        animateFrom(0);
     });
 }
 
 function runAnswerAnimation(answer, myId, onComplete, options) {
-    const paras = Array.from(answer.querySelectorAll('p'));
     const cells = Array.from(answer.querySelectorAll('td'));
 
-    // Walk paragraph child nodes: text chars typed one-by-one, inline math appears
-    // atomically, display math (\[...\]) added to wipe list.
-    // If there are no <p> elements, walk the container's own child nodes directly.
-    const units = [];
-    const displayMath = [];
-
-    function collectChildNodes(parent) {
-        Array.from(parent.childNodes).forEach(child => {
-            if (child.nodeType === Node.TEXT_NODE) {
-                const text = child.textContent;
-                child.textContent = '';
-                for (let i = 0; i < text.length; i++) {
-                    units.push({ type: 'char', node: child, char: text[i] });
-                }
-            } else if (child.nodeType === Node.ELEMENT_NODE) {
-                // Display math containers (<mjx-container display="true">) wipe in
-                if (child.hasAttribute('display')) {
-                    displayMath.push(child);
-                } else {
-                    child.style.visibility = 'hidden';
-                    units.push({ type: 'element', node: child });
-                }
-            }
-        });
-    }
-
-    if (paras.length > 0) {
-        paras.forEach((para, paraIdx) => {
-            if (paraIdx > 0) {
-                units.push({ type: 'pause', duration: 400 });
-            }
-            collectChildNodes(para);
-        });
-    } else {
-        // No <p> elements — walk container's own children (e.g. plain-text key-concept)
-        Array.from(answer.childNodes).forEach(child => {
-            if (child.nodeType === Node.TEXT_NODE) {
-                const text = child.textContent;
-                child.textContent = '';
-                for (let i = 0; i < text.length; i++) {
-                    units.push({ type: 'char', node: child, char: text[i] });
-                }
-            } else if (child.nodeType === Node.ELEMENT_NODE && child.tagName !== 'TABLE') {
-                child.style.visibility = 'hidden';
-                units.push({ type: 'element', node: child });
-            }
-        });
-    }
-
-    // Browsers eject block elements (display math) out of <p> tags, so they become
-    // siblings of the <p> elements rather than children. Catch them here.
-    answer.querySelectorAll('mjx-container[display]').forEach(el => {
-        if (!displayMath.includes(el)) displayMath.push(el);
-    });
-
-    // Wipe targets: display math blocks (slower) first, then table cells (faster)
     const displayGap = (options && options.displayGap != null) ? options.displayGap : 3500;
     const wipesFirst = options && options.wipesFirst;
     const displaySpeedPxSec = (options && options.displaySpeedPxSec != null) ? options.displaySpeedPxSec : 75;
-    const wipes = [
-        ...displayMath.map(el => ({ el, gap: displayGap, isDisplay: true })),
-        ...cells.map(el =>      ({ el, gap: 900,  transition: 'clip-path 0.75s ease-out' })),
+
+    // Walk all nodes in document order, building animation units.
+    // MathJax moves display math (\[...\]) outside <p> elements to make it block-level,
+    // so we must traverse the full tree rather than only <p> children, otherwise all
+    // equations end up batched after all text.
+    //   - text nodes           → char units (typed one by one)
+    //   - mjx-container[display] → display wipe unit (left-to-right, with post-gap)
+    //   - mjx-container (inline) → inline wipe unit (left-to-right, no post-gap)
+    //   - block elements       → recurse; add a pause before if not already after a wipe
+    //   - table / script / svg → skip (tables handled by animateCells)
+    const units = [];
+
+    const BLOCK_TAGS = new Set(['p','div','section','article','blockquote',
+        'h1','h2','h3','h4','h5','h6','li','ul','ol','figure','figcaption']);
+    const SKIP_TAGS  = new Set(['table','script','style','svg','mjx-assistive-mml']);
+
+    function addPauseIfNeeded() {
+        const last = units[units.length - 1];
+        if (last && last.type !== 'wipe' && last.type !== 'pause') {
+            units.push({ type: 'pause', duration: 400 });
+        }
+    }
+
+    function walkNodes(nodeList) {
+        Array.from(nodeList).forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                const text = node.textContent;
+                node.textContent = '';
+                for (let i = 0; i < text.length; i++) {
+                    units.push({ type: 'char', node, char: text[i] });
+                }
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                const tag = node.tagName.toLowerCase();
+                if (SKIP_TAGS.has(tag)) {
+                    return;
+                } else if (tag === 'mjx-container' && node.hasAttribute('display')) {
+                    // Display math: wipe in at document position; post-gap separates it from
+                    // whatever follows.
+                    if (units.length > 0) addPauseIfNeeded();
+                    const mtrRows = Array.from(node.querySelectorAll('g[data-mml-node="mtr"]'));
+                    if (mtrRows.length > 1) {
+                        // Multi-row aligned environment: wipe each row individually in sequence
+                        // using SVG clip-path (same technique as the wipe animation).
+                        const svgEl = node.querySelector('svg');
+                        mtrRows.forEach((row, i) => {
+                            units.push({ type: 'mtr-row', row, svgEl, rowIdx: i,
+                                         gap: i < mtrRows.length - 1 ? 600 : displayGap });
+                        });
+                    } else {
+                        units.push({ type: 'wipe', el: node, gap: displayGap, isInline: false });
+                    }
+                } else if (tag === 'mjx-container') {
+                    // Inline math: wipe in seamlessly (gap = 0 so next char starts when
+                    // the wipe finishes). Apply clip-path to the inner SVG (which is sized
+                    // to the full formula bounds) rather than mjx-container (whose declared
+                    // border-box may not include formula depth below the baseline).
+                    const svgEl = node.querySelector('svg');
+                    units.push({ type: 'wipe', el: svgEl || node, gap: 0, isInline: true });
+                } else if (BLOCK_TAGS.has(tag)) {
+                    // Block element: pause before (if needed), then recurse into children.
+                    if (units.length > 0) addPauseIfNeeded();
+                    walkNodes(node.childNodes);
+                } else {
+                    // Other inline elements (span, strong, em, …): if the element contains
+                    // MathJax output (mjx-container), recurse into it so the math wipes
+                    // correctly (e.g. <span class="math display"> wrappers from pandoc HTML).
+                    // Otherwise reveal the element atomically.
+                    if (node.querySelector('mjx-container')) {
+                        walkNodes(node.childNodes);
+                    } else {
+                        node.style.visibility = 'hidden';
+                        units.push({ type: 'element', node });
+                    }
+                }
+            }
+        });
+    }
+
+    walkNodes(answer.childNodes);
+
+    // Hide mtr-row rows initially (via opacity so SVG geometry is preserved for getBBox).
+    units.filter(u => u.type === 'mtr-row').forEach(u => { u.row.style.opacity = '0'; });
+
+    // Set initial clip-path on all wipe units (display + inline math) and table cells.
+    const wipeUnits = units.filter(u => u.type === 'wipe');
+    const allWipeTargets = [
+        ...wipeUnits.map(u => ({ el: u.el, isInline: u.isInline })),
+        ...cells.map(el => ({ el, isInline: null })), // null = table cell
     ];
-    // Set initial clip-path on all wipe targets (suppress transition during setup)
-    wipes.forEach(({ el }) => {
+    allWipeTargets.forEach(({ el }) => {
         el.style.clipPath = 'inset(0 100% 0 0)';
         el.style.transition = 'none';
     });
-    // Force a reflow so the browser commits the initial clip-path state before
-    // we start animating — prevents the transition being skipped when there is
-    // no typed text (i.e. animateWipes fires almost immediately after setup).
-    // After this reflow, SVG widths are available for constant-speed calculation.
-    if (wipes.length > 0) wipes[0].el.getBoundingClientRect();
-    // Set per-element transitions: display math uses measured SVG width for constant speed
-    wipes.forEach(({ el, isDisplay, transition }) => {
-        if (isDisplay) {
+    // Force reflow so the browser commits the initial clip-path before animating.
+    // SVG widths are also available after this reflow.
+    if (allWipeTargets.length > 0) allWipeTargets[0].el.getBoundingClientRect();
+    // Set per-element transitions using measured SVG width for constant wipe speed.
+    // Record each duration so delays can wait for the animation to finish.
+    const wipeElDuration = new Map();
+    allWipeTargets.forEach(({ el, isInline }) => {
+        if (isInline === null) {
+            // Table cell
+            el.style.transition = 'clip-path 0.75s ease-out';
+            wipeElDuration.set(el, 750);
+        } else {
+            // Math (display or inline): constant speed based on SVG width.
+            // Inline math uses a lower minimum (narrower equations).
             const svgEl = el.querySelector('svg');
             const svgWidth = svgEl ? svgEl.getBoundingClientRect().width : el.getBoundingClientRect().width;
-            const ms = Math.max(500, (svgWidth / displaySpeedPxSec) * 1000);
+            const minMs = isInline ? 300 : 500;
+            const ms = Math.max(minMs, (svgWidth / displaySpeedPxSec) * 1000);
             el.style.transition = `clip-path ${ms / 1000}s ease-out`;
-        } else {
-            el.style.transition = transition;
+            wipeElDuration.set(el, ms);
         }
     });
 
     let unitIdx = 0;
-    let wipeIdx = 0;
+    let cellIdx = 0;
 
-    // Pause before wipes only if something visible was typed
+    // Pause before cells only if something visible was typed/wiped
     const hasTypedContent = units.some(
-        u => (u.type === 'char' && /\S/.test(u.char)) || u.type === 'element'
+        u => (u.type === 'char' && /\S/.test(u.char)) || u.type === 'element' ||
+             (u.type === 'wipe' && u.isInline)
     );
+
+    function animateMtrRow(unit, onDone) {
+        if (myId !== answerAnimationId) return;
+        const { row, svgEl, rowIdx } = unit;
+        let bbox;
+        try { bbox = row.getBBox(); } catch(e) { row.style.opacity = '1'; onDone(); return; }
+        if (!bbox.width) { row.style.opacity = '1'; onDone(); return; }
+        let defs = svgEl ? svgEl.querySelector('defs') : null;
+        if (svgEl && !defs) {
+            defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+            svgEl.insertBefore(defs, svgEl.firstChild);
+        }
+        if (!defs) { row.style.opacity = '1'; onDone(); return; }
+        const clipId = 'mtr-wipe-' + myId + '-' + rowIdx;
+        const clipPath = document.createElementNS('http://www.w3.org/2000/svg', 'clipPath');
+        clipPath.setAttribute('id', clipId);
+        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('x', bbox.x);
+        rect.setAttribute('y', bbox.y - 5);
+        rect.setAttribute('height', bbox.height + 10);
+        rect.setAttribute('width', '0');
+        clipPath.appendChild(rect);
+        defs.appendChild(clipPath);
+        row.setAttribute('clip-path', 'url(#' + clipId + ')');
+        row.style.opacity = '1';
+        const targetWidth = bbox.width;
+        // Convert SVG user units → CSS pixels for speed calculation (matching the
+        // clip-path wipe which uses getBoundingClientRect on the svg element).
+        const svgRect = svgEl.getBoundingClientRect();
+        const svgVB = svgEl.viewBox ? svgEl.viewBox.baseVal : null;
+        const scale = (svgVB && svgVB.width) ? svgRect.width / svgVB.width : 1;
+        const ms = Math.max(500, (targetWidth * scale / displaySpeedPxSec) * 1000);
+        let startTime = null;
+        function step(ts) {
+            if (myId !== answerAnimationId) return;
+            if (!startTime) startTime = ts;
+            const t = Math.min((ts - startTime) / ms, 1);
+            rect.setAttribute('width', targetWidth * t);
+            if (t < 1) {
+                requestAnimationFrame(step);
+            } else {
+                row.removeAttribute('clip-path');
+                if (clipPath.parentNode) clipPath.parentNode.removeChild(clipPath);
+                onDone();
+            }
+        }
+        requestAnimationFrame(step);
+    }
 
     function animatePara() {
         if (myId !== answerAnimationId) return;
         if (unitIdx >= units.length) {
-            if (wipesFirst) {
-                // Wipes already done; text just finished — call onComplete
-                typewriterTimeout = null;
-                if (onComplete) onComplete();
-            } else {
-                typewriterTimeout = setTimeout(animateWipes, hasTypedContent ? 400 : 0);
-            }
+            typewriterTimeout = setTimeout(animateCells, hasTypedContent ? 400 : 0);
             return;
         }
         const unit = units[unitIdx++];
+        if (unit.type === 'mtr-row') {
+            // SVG row wipe — async, takes control of continuation
+            animateMtrRow(unit, () => {
+                typewriterTimeout = setTimeout(animatePara, unit.gap);
+            });
+            return;
+        }
         let delay;
         if (unit.type === 'char') {
             unit.node.textContent += unit.char;
-            delay = /\S/.test(unit.char) ? 25 : 0;
+            delay = /\S/.test(unit.char) ? 50 : 0;
         } else if (unit.type === 'element') {
             unit.node.style.visibility = '';
             delay = 60;
+        } else if (unit.type === 'wipe') {
+            if (!wipesFirst || unit.isInline) {
+                // Inline wipes always fire here (in document order).
+                // Display wipes fire here in normal mode; in wipesFirst mode they were
+                // already animated by doWipesFirst so we just skip them.
+                unit.el.style.clipPath = 'inset(0 0% 0 0)';
+                const wipeDuration = wipeElDuration.get(unit.el) || 0;
+                if (unit.isInline) {
+                    // Remove clip-path after transition so SVG overflow (formula depth
+                    // extending beyond the element's border box) is not permanently cropped.
+                    const el = unit.el;
+                    setTimeout(() => { el.style.clipPath = ''; el.style.transition = ''; }, wipeDuration + 100);
+                }
+                delay = Math.max(unit.gap, wipeDuration);
+            } else {
+                delay = 0; // display wipe already done in wipesFirst phase
+            }
         } else {
             // pause between paragraphs
             delay = unit.duration;
@@ -356,25 +452,47 @@ function runAnswerAnimation(answer, myId, onComplete, options) {
         typewriterTimeout = setTimeout(animatePara, delay);
     }
 
-    function animateWipes() {
+    function animateCells() {
         if (myId !== answerAnimationId) return;
-        if (wipeIdx >= wipes.length) {
-            if (wipesFirst && units.length > 0) {
-                // Wipes done; now type the text
-                typewriterTimeout = setTimeout(animatePara, 400);
-            } else {
-                typewriterTimeout = null;
-                if (onComplete) onComplete();
-            }
+        if (cellIdx >= cells.length) {
+            typewriterTimeout = null;
+            if (onComplete) onComplete();
             return;
         }
-        const { el, gap } = wipes[wipeIdx++];
+        const el = cells[cellIdx++];
         el.style.clipPath = 'inset(0 0% 0 0)';
-        typewriterTimeout = setTimeout(animateWipes, gap);
+        typewriterTimeout = setTimeout(animateCells, 900);
     }
 
     if (wipesFirst) {
-        animateWipes();
+        // Wipe all DISPLAY math first (in document order), then table cells, then type text.
+        // Inline math is excluded here — it wipes in document order during animatePara.
+        const wipesInOrder = wipeUnits.filter(u => !u.isInline).map(u => ({ el: u.el, gap: u.gap }));
+        const allWipesFirst = [
+            ...wipesInOrder,
+            ...cells.map(el => ({ el, gap: 900 })),
+        ];
+        let wfIdx = 0;
+        function doWipesFirst() {
+            if (myId !== answerAnimationId) return;
+            if (wfIdx >= allWipesFirst.length) {
+                // All display wipes done; now type the text (if any), which also handles
+                // inline math wipes in document order.
+                const hasText = units.some(u => u.type === 'char' || u.type === 'element' ||
+                    (u.type === 'wipe' && u.isInline) || u.type === 'mtr-row');
+                if (hasText) {
+                    typewriterTimeout = setTimeout(animatePara, 400);
+                } else {
+                    typewriterTimeout = null;
+                    if (onComplete) onComplete();
+                }
+                return;
+            }
+            const { el, gap } = allWipesFirst[wfIdx++];
+            el.style.clipPath = 'inset(0 0% 0 0)';
+            typewriterTimeout = setTimeout(doWipesFirst, Math.max(gap, wipeElDuration.get(el) || 0));
+        }
+        doWipesFirst();
     } else {
         animatePara();
     }
@@ -478,7 +596,7 @@ function showPage(pageNum) {
         });
 
         if (pageNum === 2) {
-            startTypewriterPage2();
+            startTypewriterPage2(mjPromise);
         } else if (introAnimatedPages.has(pageNum)) {
             startIntroAnimation(pageNum, mjPromise);
         } else if (answerAnimatedPages.has(pageNum)) {
