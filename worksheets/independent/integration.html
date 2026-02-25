@@ -127,7 +127,7 @@
         </div>
 
         <div class="answer">
-            <p>Since the differential of cos is \(−\sin\), and since integration is the opposite of differentiation, it must be the case that the integral of sin is \(−\cos\).</p>
+            <p>Since the differential of \(-\cos\) is \(\sin\), and since integration is the opposite of differentiation, it must be the case that the integral of sin is \(−\cos\). This means that</p>
             <div class="working-block">
                 <p>\[\begin{aligned}\text{area} &= \int_0^\pi \sin x \, \mathrm{d}x\end{aligned}\]</p>
                 <p>\[\begin{aligned}\phantom{\text{area}} &= \Big[-\cos x\Big]_0^\pi\end{aligned}\]</p>
@@ -208,7 +208,7 @@
     </div>
 
     <!-- Page 9: Answer for y = tan x (method) -->
-    <div class="page" id="page-9">
+    <div class="page" id="page-9" data-no-wipes-first>
         <div class="teacher-note">
             <p>For the integral of tan, either use the result on the previous page, or use the substitution \(u = \cos x\). Or they might remember the rule for \(\int \frac{f'}{f}\), but even so, it's a good idea to do the substitution to remind themselves why this rule works.</p>
 
@@ -295,7 +295,7 @@
             <div class="working-block">
                 <p>\[\begin{aligned}\text{area} &= \int_0^\pi \sin^2 x \, \mathrm{d}x\end{aligned}\]</p>
                 <p>\[\begin{aligned}\phantom{\text{area}} &= \int_0^\pi \frac{1 - \cos 2x}{2} \, \mathrm{d}x\end{aligned}\]</p>
-                <p>\[\begin{aligned}\phantom{\text{area}} &= \Big[\frac{x}{2} - \frac{\sin 2x}{4}\Big]_0^\pi\end{aligned}\]</p>
+                <p>\[\begin{aligned}\phantom{\text{area}} &= \Bigg[\frac{x}{2} - \frac{\sin 2x}{4}\Bigg]_0^\pi\end{aligned}\]</p>
                 <p>\[\begin{aligned}\phantom{\text{area}} &= \frac{\pi}{2}\end{aligned}\]</p>
             </div>
             <p>\[\int_0^\pi \sin^2 x \, \mathrm{d}x=\frac{\pi}{2} < 2=\int_0^\pi \sin x \, \mathrm{d}x\] When \(0 < x < \pi,\quad 0 < \sin x < 1 \quad \Rightarrow \sin^2 x < \sin x\),</p>
@@ -587,7 +587,7 @@
     <!-- Page 25: Answer for ∫ sec x dx (u = sin x) -->
     <div class="page" id="page-25">
         <div class="exercise">
-            <p>Find \(\displaystyle\int \sec x \, dx\) using the substitution \(u = \sec x + \tan x\).</p>
+            <p>Find \(\displaystyle\int \sec x \, \mathrm{d}x\) using the substitution \(u = \sec x + \tan x\).</p>
         </div>
         <div class="answer">
             <div class="working-block">
