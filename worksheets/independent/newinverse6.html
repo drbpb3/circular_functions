@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverse Circular Functions Extension 2</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        },
+        options: {
+            enableMenu: false,
+            renderActions: {
+                addMenu: []
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+<span class="back-btn">←</span>
+</a>
+
+<div class="container">
+    <!-- Page 1: Welcome -->
+    <div class="page" id="page-1">
+        <div class="welcome-page">
+            <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Welcome to Inverse Circular Functions: Extension 2</h1>
+            <div class="welcome-content">
+                <p>This extension stage covers the derivatives of arcsec, arccosec, and arccot — \(\frac{\mathrm{d}}{\mathrm{d}x}\mathrm{arcsec}\,x\), etc. — derived using implicit differentiation.</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                        <li>Click <strong>Previous</strong> or <strong>Next</strong> buttons when they appear</li>
+                        <li>Jump to a specific page using the page number input</li>
+
+                    </ul>
+                </div>
+
+                <p class="welcome-tip">The same implicit differentiation technique from Part 3 applies here!</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+<div class="page" id="page-2">
+        <p style="text-align: center;"><strong>differentials of \(\boldsymbol{\operatorname{arcsec} x}\), \(\boldsymbol{\operatorname{arccosec} x}\), and \(\boldsymbol{\operatorname{arccot} x}\)</strong></p>
+        <div class="exercise">
+            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arcsec} x\) by two methods.</p>
+            <p><strong>Method 1 &#8212; implicit differentiation</strong></p>
+            <p>Let \(y = \operatorname{arcsec} x\), so \(x = \sec y\) with \(y \in [0,\pi]\setminus\{\tfrac{\pi}{2}\}\).</p>
+            <p>(a) &nbsp; Find \(\dfrac{\mathrm{d}x}{\mathrm{d}y}\) in terms of \(y\).</p>
+            <p>(b) &nbsp; Use the identity \(\sec^2 y - \tan^2 y = 1\) to express \(\tan^2 y\) in terms of \(x\). For \(y \in [0, \tfrac{\pi}{2})\), is \(\tan y\) positive or negative?</p>
+            <p>(c) &nbsp; Hence find \(\dfrac{\mathrm{d}y}{\mathrm{d}x}\) in terms of \(x\).</p>
+            <p><strong>Method 2 &#8212; using \(\boldsymbol{\operatorname{arcsec} x = \arccos\!\left(\dfrac{1}{x}\right)}\)</strong></p>
+            <p>(d) &nbsp; Differentiate using the chain rule to confirm your answer.</p>
+        </div>
+    </div>
+<div class="page" id="page-3">
+        <div class="exercise">
+            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arcsec} x\) by two methods.</p>
+        </div>
+        <div class="answer">
+            <p><strong>Method 1:</strong></p>
+            \[\begin{aligned}
+            &x = \sec y \;\Rightarrow\; \frac{\mathrm{d}x}{\mathrm{d}y} = \sec y\tan y\\[8pt]
+            &\tan^2 y = \sec^2 y - 1 = x^2-1\\[6pt]
+            &\text{For } y\in\bigl[0,\tfrac{\pi}{2}\bigr)\!:\; \tan y \geq 0,\;\text{so } \tan y = \sqrt{x^2-1}\\[8pt]
+            &\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{1}{\sec y\tan y} = \frac{1}{x\sqrt{x^2-1}}
+            \end{aligned}\]
+            <p><strong>Method 2:</strong></p>
+            \[\frac{\mathrm{d}}{\mathrm{d}x}\arccos\left(\frac{1}{x}\right)
+            = \frac{-1}{\sqrt{1-\tfrac{1}{x^2}}}\cdot\left(-\frac{1}{x^2}\right)
+            = \frac{1}{x^2\sqrt{\tfrac{x^2-1}{x^2}}}
+            = \frac{1}{x\sqrt{x^2-1}}\]
+            \[\boxed{\frac{\mathrm{d}}{\mathrm{d}x}\operatorname{arcsec} x = \frac{1}{x\sqrt{x^2-1}}, \quad x > 1}\]
+        </div>
+        <figure>
+            <img src="inverse_images/image53.png" alt="Graph illustrating the gradient of sec inverse x">
+        </figure>
+    </div>
+<div class="page" id="page-4">
+        <div class="exercise">
+            <p>Use a similar approach to find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccosec} x\).</p>
+            <p><strong>Method 1:</strong> Let \(y = \operatorname{arccosec} x\), so \(x = \operatorname{cosec}\, y\). Find \(\dfrac{\mathrm{d}x}{\mathrm{d}y}\) and use \(\cot^2 y = \operatorname{cosec}^2 y - 1\).</p>
+            <p><strong>Method 2:</strong> Use \(\operatorname{arccosec} x = \arcsin\left(\dfrac{1}{x}\right)\) and differentiate by the chain rule.</p>
+        </div>
+    </div>
+<div class="page" id="page-5">
+        <div class="exercise">
+            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccosec} x\).</p>
+        </div>
+        <div class="answer">
+            <p><strong>Method 1:</strong></p>
+            \[\begin{aligned}
+            &x = \operatorname{cosec}\, y \;\Rightarrow\; \frac{\mathrm{d}x}{\mathrm{d}y} = -\operatorname{cosec}\, y\cot y\\[8pt]
+            &\cot^2 y = \operatorname{cosec}^2 y - 1 = x^2-1\\[6pt]
+            &\text{For } y\in\bigl(0,\tfrac{\pi}{2}\bigr]\!:\; \cot y \geq 0,\;\text{so } \cot y = \sqrt{x^2-1}\\[8pt]
+            &\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{-1}{x\sqrt{x^2-1}}
+            \end{aligned}\]
+            \[\boxed{\frac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccosec} x = \frac{-1}{x\sqrt{x^2-1}}, \quad x > 1}\]
+        </div>
+        <div class="exercise">
+            <p>Now find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccot} x\) by two methods.</p>
+            <p><strong>Method 1:</strong> Let \(y = \operatorname{arccot} x\), so \(x = \cot y\). Find \(\dfrac{\mathrm{d}x}{\mathrm{d}y}\) and use a Pythagorean identity.</p>
+            <p><strong>Method 2:</strong> Differentiate both sides of \(\operatorname{arccot} x + \arctan x = \dfrac{\pi}{2}\).</p>
+        </div>
+    </div>
+<div class="page" id="page-6">
+        <div class="exercise">
+            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccot} x\).</p>
+        </div>
+        <div class="answer">
+            <p><strong>Method 1:</strong></p>
+            \[\begin{aligned}
+            &x = \cot y \;\Rightarrow\; \frac{\mathrm{d}x}{\mathrm{d}y} = -\operatorname{cosec}^2 y\\[8pt]
+            &\operatorname{cosec}^2 y = 1 + \cot^2 y = 1 + x^2\\[8pt]
+            &\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{-1}{1+x^2}
+            \end{aligned}\]
+            <p><strong>Method 2:</strong></p>
+            \[\frac{\mathrm{d}}{\mathrm{d}x}\!\left(\operatorname{arccot} x + \arctan x\right) = 0
+            \;\Rightarrow\; \frac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccot} x = -\frac{1}{1+x^2}\]
+            \[\boxed{\frac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccot} x = \frac{-1}{1+x^2}}\]
+        </div>
+    </div>
+    <!-- Page 7: Congratulations -->
+    <div class="page" id="page-7">
+        <div class="welcome-page">
+            <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Well done on completing Extension 2!</h1>
+            <div class="welcome-content">
+                <p>You have derived the derivatives of arcsec, arccosec, and arccot using implicit differentiation.</p>
+                <p>Continue to the additional material in Part 7.</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between;"><a href="newinverse5.html" style="color: #2d6a4f; text-decoration: underline;">← Extension 1</a><a href="newinverse7.html" style="color: #2d6a4f; text-decoration: underline;">Additional material →</a></div>
+    </div>
+
+</div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+        <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="7" onchange="goToPage(this.value)"> of 7
+        </span>
+        <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+        <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+    </div>
+
+    <script src="navigation.js"></script>
+    <script>
+    (function() {
+        for (var p = 2; p <= 6; p++) {
+            answerAnimatedPages.add(p);
+            introChainPages.set(p, null);
+        }
+    }());
+    </script>
+    <script>
+    // Disable keyboard shortcuts for saving/printing
+    document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p')) {
+    e.preventDefault();
+    return false;
+    }
+    });
+</script>
+
+</body>
+</html>

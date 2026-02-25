@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverse Circular Functions Part 2</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        },
+        options: {
+            enableMenu: false,
+            renderActions: {
+                addMenu: []
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+<span class="back-btn">←</span>
+</a>
+
+<div class="container">
+    <!-- Page 1: Welcome -->
+    <div class="page" id="page-1">
+        <div class="welcome-page">
+            <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Welcome to Inverse Circular Functions: Part 2</h1>
+            <div class="welcome-content">
+                <p>This stage covers identities such as \(\arcsin x + \arccos x = \frac{\pi}{2}\), compositions of inverse circular functions, and sum formulas for arcsin, arccos, and arctan.</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                        <li>Click <strong>Previous</strong> or <strong>Next</strong> buttons when they appear</li>
+                        <li>Jump to a specific page using the page number input</li>
+
+                    </ul>
+                </div>
+
+                <p class="welcome-tip">Keep the domain restrictions in mind when working with compositions and identities!</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+<div class="page" id="page-2">
+        <div class="exercise">
+            <p>What are</p>
+            <p><span class="math display">\[\arcsin x + \arccos x\]</span></p>
+            <p>when</p>
+            <p><span class="math display">\[x=0,\;x=\pm\frac{1}{2},\;\pm\frac{\sqrt 2}{2},\;\pm\frac{\sqrt 3}{2},\;\pm 1\]</span></p>
+
+        </div>
+        <div class="answer">
+
+            <p>For example: <span class="math display">\[\arcsin\frac{\sqrt{2}}{2} + \arccos\frac{\sqrt{2}}{2} = \frac{\pi}{4} + \frac{\pi}{4} = \frac{\pi}{2}\]</span></p>
+            <p><span class="math display">\[\arcsin0 + \arccos0 = 0 + \frac{\pi}{2} = \frac{\pi}{2}\]</span></p>
+            <p><span class="math display">\[\arcsin1 + \arccos1 = \frac{\pi}{2} + 0 = \frac{\pi}{2}\]</span></p>
+            <p><span class="math display">\[\arcsin( - 1) + \arccos( - 1) = - \frac{\pi}{2} + \pi = \frac{\pi}{2}\]</span></p>
+            <p><span class="math display">\[\arcsin\left(-\frac{\sqrt{2}}{2}\right) + \arccos\left(-\frac{\sqrt{2}}{2}\right) = -\frac{\pi}{4} + \frac{3\pi}{4} = \frac{\pi}{2}\]</span></p>
+            <p><span class="math display">\[\arcsin\frac{1}{2} + \arccos\frac{1}{2} = \frac{\pi}{6} + \frac{\pi}{3} = \frac{\pi}{2}\]</span></p>
+            <p><span class="math display">\[\arcsin\left(-\frac{\sqrt{3}}{2}\right) + \arccos\left(-\frac{\sqrt{3}}{2}\right) = -\frac{\pi}{3} + \frac{5\pi}{6} = \frac{\pi}{2}\]</span></p>
+            
+        </div>
+    </div>
+<div class="page" id="page-3">
+        <div class="exercise">
+            When \(x\) is positive, what is \(\arcsin x + \arccos x\)?
+        </div>
+        <figure>
+            <img src="inverse_images/image2.png" alt="diagram" style="max-width: 40%;">
+        </figure>
+        
+    </div>
+<div class="page" id="page-4">
+
+        <div class="exercise">
+            When \(x\) is positive, what is \(\arcsin x + \arccos x\)?
+        </div>
+        <figure>
+            <img src="inverse_images/image2.png" alt="diagram" style="max-width: 40%;">
+        </figure>
+        <div class="answer">
+            <p><span class="math inline">\(\arcsin x + \arccos x = \theta + \varphi = \frac{\pi}{2}\)</span> when <span class="math inline">\(x\)</span> is positive.</p>
+        </div>
+    </div>
+<div class="page" id="page-5">
+        <div class="intro">
+            <p>When \(x\) is positive, we can easily see this from the right-angled triangle. The triangle doesn't really help so much for negative values of \(x\), but we can look at graphs for this.</p>
+        </div>
+        <div class="exercise">
+            <p>On the same set of axes, draw the graphs <span class="math inline">\(y = \arcsin x\)</span> and <span class="math inline">\(y = \arccos x\)</span></p>
+        </div>
+    </div>
+<div class="page" id="page-6">
+        <div class="answer">
+            <p>Here are the graphs <span class="math inline">\(y = \arcsin x\)</span> and <span class="math inline">\(y = \arccos x\)</span>.</p>
+        </div>
+            <figure>
+                <img src="inverse_images/image3.png" alt="Graphs of y = sin^-1 x and y = cos^-1 x" style="max-width: 32%;">
+            </figure>
+        <div class="exercise">
+            <p>Where do they cross?</p>
+        </div>
+    </div>
+<div class="page" id="page-7">
+
+        <figure>
+            <img src="inverse_images/image3.png" alt="Graphs of y = sin^-1 x and y = cos^-1 x" style="max-width: 32%;">
+        </figure>
+        <div class="answer">
+            <p>They cross at <span class="math inline">\(\left( \frac{\sqrt{2}}{2},\frac{\pi}{4} \right)\)</span>. The easiest way to see this is by looking at the symmetry of the diagram.</p>
+            
+            <p>Alternatively, note that
+            \[\sin y = \cos y \Rightarrow \tan y = 1 \Rightarrow y = \frac{\pi}{4}\].</p>
+        </div>
+    </div>
+<div class="page" id="page-8">
+        <div class="exercise">
+            <p>What are the vertical distances of the pink and green points from the horizontal line of symmetry?</p>
+        </div>
+        
+            <figure>
+                <img src="inverse_images/image54.png" alt="Graphs of y = sin^-1 x and y = cos^-1 x" style="max-width: 32%;">
+            </figure>
+        </div>
+<div class="page" id="page-9">
+        <div class="exercise">
+            <p>What are the vertical distances of the pink and green points from the horizontal line of symmetry?</p>
+        </div>
+
+        <figure>
+            <img src="inverse_images/image54.png" alt="Graphs of y = sin^-1 x and y = cos^-1 x" style="max-width: 32%;">
+        </figure>
+        <div class="answer">
+            <p>The vertical distances are \[\arccos x-\frac{\pi}{4}\quad\text{and}\quad \frac{\pi}{4}-\arcsin x\]</p>
+        </div>
+        <div class="exercise">
+            <p>Now use the symmetry of the diagram to find \[\arccos x+\arcsin x\]</p>
+        </div>
+    </div>
+<div class="page" id="page-10">
+
+        <div class="answer">
+            <p>Symmetry shows that these two distances are equal, which means</p>
+            \[\begin{aligned}
+            &\arccos x-\frac{\pi}{4}=\frac{\pi}{4}-\arcsin x\\[12pt]
+            \Rightarrow &\arccos x+\arcsin x=\frac{\pi}{2}
+            \end{aligned}
+            \]
+        </div>
+        
+        <figure>
+            <img src="inverse_images/image3.png" alt="Graphs of y = sin^-1 x and y = cos^-1 x" style="max-width: 32%;">
+        </figure>
+    </div>
+<div class="page" id="page-11">
+        <p style="text-align: center;"><strong>compositions of inverse circular functions</strong></p>
+        <div class="exercise">
+            <p>The right-angled triangle below shows the relationships when \(\theta = \arcsin x\), so \(\sin\theta = x\) and the hypotenuse is 1.</p>
+            <figure>
+                <img src="inverse_images/image43.png" alt="Right triangle with angle theta where sin theta = x">
+            </figure>
+            <p>Use the triangle to find \(\cos(\arcsin x)\). State any necessary restriction on \(x\).</p>
+        </div>
+    </div>
+<div class="page" id="page-12">
+        <div class="exercise">
+            <p>Find \(\cos(\arcsin x)\).</p>
+        </div>
+        <div class="answer">
+            \[\cos(\arcsin x) = \sqrt{1-x^2}, \quad |x| \leq 1\]
+            <p>Since \(\arcsin x \in \bigl[-\tfrac{\pi}{2}, \tfrac{\pi}{2}\bigr]\), the cosine is non-negative, so we take the positive square root.</p>
+        </div>
+        <div class="exercise">
+            <p>The right-angled triangle below illustrates the angle \(\phi = \arccos(\sin\theta)\) for \(\theta \in \bigl[-\tfrac{\pi}{2}, \tfrac{\pi}{2}\bigr]\).</p>
+            <figure>
+                <img src="inverse_images/image44.png" alt="Right triangle showing cos inverse of sin theta">
+            </figure>
+            <p>Find \(\arccos(\sin\theta)\) in terms of \(\theta\).</p>
+        </div>
+    </div>
+<div class="page" id="page-13">
+        <div class="exercise">
+            <p>Find \(\arccos(\sin\theta)\) for \(\theta \in \bigl[-\tfrac{\pi}{2},\tfrac{\pi}{2}\bigr]\).</p>
+        </div>
+        <div class="answer">
+            \[\arccos(\sin\theta) = \frac{\pi}{2} - \theta\]
+            <p>Because \(\cos\bigl(\tfrac{\pi}{2}-\theta\bigr) = \sin\theta\), and \(\tfrac{\pi}{2}-\theta \in [0,\pi]\) for \(\theta \in \bigl[-\tfrac{\pi}{2},\tfrac{\pi}{2}\bigr]\), so the principal value condition is satisfied.</p>
+        </div>
+        <div class="exercise">
+            <p>Use the right-angled triangle shown to find:</p>
+            <figure>
+                <img src="inverse_images/image45.png" alt="Right triangle with angle phi where cos phi = x">
+            </figure>
+            <p>(a) &nbsp; \(\sin(\arccos x)\)</p>
+            <p>(b) &nbsp; \(\arcsin(\cos\phi)\) for \(\phi \in [0, \pi]\)</p>
+        </div>
+    </div>
+<div class="page" id="page-14">
+        <div class="exercise">
+            <p>(a) &nbsp; \(\sin(\arccos x)\)</p>
+            <p>(b) &nbsp; \(\arcsin(\cos\phi)\) for \(\phi \in [0, \pi]\)</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            &\text{(a) } \sin(\arccos x) = \sqrt{1-x^2}, \quad |x| \leq 1\\[10pt]
+            &\text{(b) } \arcsin(\cos\phi) = \frac{\pi}{2} - \phi
+            \end{aligned}\]
+            <p>For (b): \(\sin\bigl(\tfrac{\pi}{2}-\phi\bigr)=\cos\phi\) and \(\tfrac{\pi}{2}-\phi\in\bigl[-\tfrac{\pi}{2},\tfrac{\pi}{2}\bigr]\) for \(\phi\in[0,\pi]\). &#10003;</p>
+        </div>
+        <div class="exercise">
+            <p>Use the right-angled triangle shown to find \(\tan(\arcsin x)\) and \(\tan(\arccos x)\).</p>
+            <figure>
+                <img src="inverse_images/image46.png" alt="Right triangle for tan of inverse trig expressions">
+            </figure>
+        </div>
+    </div>
+<div class="page" id="page-15">
+        <div class="exercise">
+            <p>Find \(\tan(\arcsin x)\) and \(\tan(\arccos x)\).</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            &\tan(\arcsin x) = \frac{x}{\sqrt{1-x^2}}, \quad |x| < 1\\[10pt]
+            &\tan(\arccos x) = \frac{\sqrt{1-x^2}}{x}, \quad 0 < |x| \leq 1
+            \end{aligned}\]
+        </div>
+        <div class="exercise">
+            <p>Use the right-angled triangle shown to find \(\sin(\arctan x)\) and \(\cos(\arctan x)\).</p>
+            <figure>
+                <img src="inverse_images/image47.png" alt="Right triangle for sin and cos of tan inverse x">
+            </figure>
+        </div>
+    </div>
+<div class="page" id="page-16">
+        <div class="exercise">
+            <p>Find \(\sin(\arctan x)\) and \(\cos(\arctan x)\).</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            &\sin(\arctan x) = \frac{x}{\sqrt{1+x^2}}\\[10pt]
+            &\cos(\arctan x) = \frac{1}{\sqrt{1+x^2}}
+            \end{aligned}\]
+            <p>Since \(\arctan x \in \bigl(-\tfrac{\pi}{2}, \tfrac{\pi}{2}\bigr)\), the cosine is always positive.</p>
+        </div>
+    </div>
+<div class="page" id="page-17">
+        <p class="intro">We can also differentiate the inverse circular functions more directly using the definition of a differential.</p>
+        <div class="exercise">
+            <p>Using the fact that</p>
+            \[\sin(A + B) = \sin A\cos B + \cos A\sin B\]
+            <p>and putting \(A = \arcsin a\) and \(B = \arcsin b\), find \(\sin\left(\arcsin a + \arcsin b\right)\) in terms of \(a\) and \(b\), without using \(\sin\) or \(\cos\) in your expression.</p>
+            <p>Hence find \(\arcsin a + \arcsin b\).</p>
+        </div>
+    </div>
+<div class="page" id="page-18">
+        <div class="exercise">
+            <p>Find \(\sin\left(\arcsin a + \arcsin b\right)\) and hence \(\arcsin a + \arcsin b\).</p>
+        </div>
+        <div class="answer" id="arcsin-sum">
+            \[\begin{aligned}
+            \sin(A + B) &= \sin A\cos B + \cos A\sin B \\[6pt]
+            A=\arcsin& \,a\quad\text{and}\quad B=\arcsin b\\[6pt]
+            \Rightarrow\quad\sin(\arcsin a + \arcsin b)
+                &= \sin(\arcsin a)\cos(\arcsin b) + \cos(\arcsin a)\sin(\arcsin b) \\[6pt]
+                &= a\sqrt{1 - b^{2}} + b\sqrt{1 - a^{2}} \\[10pt]
+            \Rightarrow\quad\arcsin a + \arcsin b
+                &= \arcsin\left(a\sqrt{1 - b^{2}} + b\sqrt{1 - a^{2}}\right)
+            \end{aligned}\]
+            <p>although this isn't quite right if \(\arcsin a+\arcsin b\gt\frac{\pi}{2}\) or \(\le-\frac{\pi}{2}\)</p>
+            <p>In these cases, we have
+            \[\begin{aligned}
+            \arcsin a + \arcsin b&=\pm\pi- \arcsin\left(a\sqrt{1 - b^{2}} + b\sqrt{1 - a^{2}}\right)
+            \end{aligned}\]</p>
+        </div>
+        <div class="exercise">
+            <p>Find \(\cos\left(\arcsin a + \arcsin b\right)\) and hence \(\arccos a + \arccos b\).</p>
+            
+
+        </div>
+    </div>
+<div class="page" id="page-19">
+        <div class="exercise">
+            <p>Find \(\cos\left(\arcsin a + \arcsin b\right)\) and hence \(\arccos a + \arccos b\).</p>
+        </div>
+        <div class="answer" id="arccos-sum-sin">
+            \[\begin{aligned}
+            \cos(A+B)&=\cos(\arcsin a)\cos(\arcsin b)-ab\\[12pt]
+            &=\sqrt{1-a^2}\sqrt{1-b^2}-ab\\[12pt]
+            \Rightarrow \arccos a+\arccos b&=\arccos\left(\sqrt{(1-a^2)(1-b^2)}-ab\right)\\[12pt]
+            \end{aligned}\]
+        </div>
+        <div class="exercise">
+            <p>Putting \(c=\cos A\) and \(d=\cos B\), find \(\cos (A+B)\) and hence find \(\arccos c + \arccos d\).</p>
+        </div>
+    </div>
+<div class="page" id="page-20">
+        <div class="exercise">
+            <p>Putting \(c=\cos A\) and \(d=\cos B\), find \(\cos (A+B)\) and hence find \(\arccos c + \arccos d\).</p>
+        </div>
+        <div class="answer" id="arccos-sum-cos">
+            \[\begin{aligned}
+            \cos(A+B)&=cd-\sin(\arccos c)\sin(\arccos d)\\[12pt]
+            &=cd-\sqrt{1-c^2}\sqrt{1-d^2}\\[12pt]
+            \Rightarrow \arccos c+\arccos d&=\arccos\left(cd-\sqrt{(1-c^2)(1-d^2)}\right)\\[12pt]
+            \end{aligned}\]
+        </div>
+        <div class="exercise">
+            <p>Putting \(u=\tan A\) and \(v=\tan B\), find \(\tan (A+B)\) and hence find \(\arctan u + \arctan v\).</p>
+        </div>
+    </div>
+<div class="page" id="page-21">
+        <div class="exercise">
+            <p>Putting \(u=\tan A\) and \(v=\tan B\), find \(\tan (A+B)\) and hence find \(\arctan u + \arctan v\).</p>
+        </div>
+        <div class="answer" id="arctan-sum">
+            \[\begin{aligned}
+            \tan(A+B)&=\frac{\tan A+\tan B}{1-\tan A\tan B}=\frac{u+v}{1-uv}\\[12pt]
+            \Rightarrow \arctan u+\arctan v&=\arctan\frac{u+v}{1-uv}
+            \end{aligned}\]
+        </div>
+    </div>
+    <!-- Page 22: Congratulations -->
+    <div class="page" id="page-22">
+        <div class="welcome-page">
+            <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Well done on completing Part 2!</h1>
+            <div class="welcome-content">
+                <p>You have explored identities, compositions, and sum formulas for the inverse circular functions —
+                including the beautiful result that \(\arcsin x + \arccos x = \frac{\pi}{2}\).</p>
+                <p>Part 3 continues with derivatives and integrals of the inverse circular functions.</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between;"><a href="newinverse1.html" style="color: #2d6a4f; text-decoration: underline;">← Part 1</a><a href="newinverse3.html" style="color: #2d6a4f; text-decoration: underline;">Part 3 →</a></div>
+    </div>
+
+</div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+        <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="22" onchange="goToPage(this.value)"> of 22
+        </span>
+        <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+        <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+    </div>
+
+    <script src="navigation.js"></script>
+    <script>
+    (function() {
+        for (var p = 2; p <= 21; p++) {
+            answerAnimatedPages.add(p);
+            introChainPages.set(p, null);
+        }
+    }());
+    </script>
+    <script>
+    // Disable keyboard shortcuts for saving/printing
+    document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p')) {
+    e.preventDefault();
+    return false;
+    }
+    });
+</script>
+
+</body>
+</html>

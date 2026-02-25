@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverse Circular Functions Part 1</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        },
+        options: {
+            enableMenu: false,
+            renderActions: {
+                addMenu: []
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+<span class="back-btn">←</span>
+</a>
+
+<div class="container">
+    <!-- Page 1: Welcome -->
+    <div class="page" id="page-1">
+        <div class="welcome-page">
+            <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Welcome to Inverse Circular Functions: Part 1</h1>
+            <div class="welcome-content">
+                <p>This stage introduces the inverse circular functions — arcsin, arccos, and arctan. You'll discover how to define these functions carefully using graphs, and understand their domains and ranges.</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                        <li>Click <strong>Previous</strong> or <strong>Next</strong> buttons when they appear</li>
+                        <li>Jump to a specific page using the page number input</li>
+
+                    </ul>
+                </div>
+
+                <p class="welcome-tip">Think carefully about domains and ranges — they are essential for defining inverse functions!</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+<div class="page" id="page-2">
+        <div class="teacher-note">
+            <p>Early in your students’ mathematical careers, they will have happily use the <span class="math inline">\(\arcsin\)</span> key on their calculators to find angles in right-angled triangles when they know side lengths. This is probably one of their earliest encounters with the idea of the inverse of a function, although of course it is not framed this way.</p>
+            <p>At the start of our work on circular functions, we spent plenty of time separating these functions from right-angled triangles using the unit circle. From there, we generated graphs of the circular functions. It’s time to look at a similar process for their inverses. In right-angled triangles, we are only dealing with angles between <span class="math inline">\(0\)</span> and <span class="math inline">\(\frac{\pi}{2}\)</span>. For each ratio of two sides, there is only one possible angle, so in this range, the inverse functions are well defined. However, when we look at angles outside this range, it is not immediately clear what the inverses of the functions might be. For example:</p>
+            <p><span class="math inline">\(\sin\frac{\pi}{6} = \sin\frac{5\pi}{6} = \sin\frac{13\pi}{6} = \sin\frac{17\pi}{6} = \ldots = \frac{1}{2}\)</span>.</p>
+            <p>So is <span class="math inline">\(\arcsin\frac{1}{2} = \frac{\pi}{6}\text{or}\frac{5\pi}{6}\text{or}\frac{13\pi}{6}\text{or}\frac{17\pi}{6}\text{or}\ldots\)</span> ?</p>
+            <p>and is <span class="math inline">\(\arcsin\left( - \frac{1}{2} \right) = - \frac{\pi}{6}\text{or}\frac{11\pi}{6}\text{or} - \frac{5\pi}{6}\text{or}\frac{7\pi}{6}\text{or}\ldots\)</span> ?</p>
+            <p>Similar questions arise for the inverses of the other circular functions.</p>
+            <p>The answer is, in general, that we make the simplest possible choice, so, for example:</p>
+            <p><span class="math display">\[\begin{matrix}
+            &amp; \arcsin\frac{1}{2} = \frac{\pi}{6} &amp; \arcsin\left( - \frac{1}{2} \right) = - \frac{\pi}{6} \\
+            \phantom{-} &amp; &amp; \\
+            &amp; \arccos\frac{1}{2} = \frac{\pi}{3} &amp; \arccos\left( - \frac{1}{2} \right) = \frac{2\pi}{3} \\
+            \phantom{-} &amp; &amp; \\
+            &amp; \arctan\frac{\sqrt{3}}{3} = \frac{\pi}{6} &amp; \arctan\left( - \frac{\sqrt{3}}{3} \right) = - \frac{\pi}{6} \\
+            \phantom{-} &amp; &amp;
+            \end{matrix}\]</span></p>
+            <p>In other words, for <span class="math inline">\(\arcsin\)</span> and <span class="math inline">\(\arctan\)</span> we will always choose a value between <span class="math inline">\(- \frac{\pi}{2}\)</span> and <span class="math inline">\(\frac{\pi}{2}\)</span> , whereas for <span class="math inline">\(\arccos\)</span> we will choose a value between <span class="math inline">\(0\)</span> and <span class="math inline">\(\pi\)</span>.</p>
+            <p>In the language of functions, we can say:</p>
+            <p><span class="math display">\[\begin{array}{r}
+            \arcsin:\{ x| - 1 \leq x \leq 1\} \rightarrow \{ y| - \frac{\pi}{2} \leq y \leq \frac{\pi}{2}\}
+            \end{array}\]</span></p>
+            <p><span class="math display">\[\begin{array}{r}
+            \arctan:\mathbb{R} \rightarrow \{ y| - \frac{\pi}{2} \leq y \leq \frac{\pi}{2}\}
+            \end{array}\]</span></p>
+            <p><span class="math display">\[\begin{array}{r}
+            \arccos:\{ x| - 1 \leq x \leq 1\} \rightarrow \{ y|0 \leq y \leq \pi\}
+            \end{array}\]</span></p>
+            <div class="teacher-note">
+                <p>Actually, for <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\arcsin\)</span> to be inverses of each other, the domain of each has to be the range of the other. This means that the inverse of <span class="math inline">\(\arcsin\)</span> is not <span class="math inline">\(\sin\)</span>, but the restriction of <span class="math inline">\(\sin\)</span> to the domain <span class="math inline">\(\left\{ x| - \frac{\pi}{2} \leq x \leq \frac{\pi}{2} \right\}\)</span>. This is really a technicality too far at this stage in your students mathematical careers, but it could possibly come up in questions!</p>
+            </div>
+            <p>One way to approach this with your class would be to tell them all this, and then move on to some questions. But if you want your class to have a deeper insight into the inner workings of these inverse functions, you might consider thinking about them from the point of view of unit circles (the first part of this worksheet) or of graphs (the second part). Or even both!</p>
+            <p>Whatever you decide, there is still plenty in this worksheet to explore once you have your definitions in place.</p>
+        </div>
+        <div class="exercise">
+            <p>When <span class="math inline">\(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\):</span></p>
+            <ul>
+            <p>What is <span class="math inline">\(\theta\)</span> in terms of <span class="math inline">\(x\)</span>?</p>
+            <p>What is <span class="math inline">\(\theta\)</span> in terms of <span class="math inline">\(y\)</span>?</p>
+            <p>What is <span class="math inline">\(\theta\)</span> in terms of <span class="math inline">\(\displaystyle{\frac{y}{x}}\)</span> ?</p>
+            </ul>
+        </div>
+        <figure>
+            <img src="inverse_images/image1.png" alt="Unit circle diagram">
+        </figure>
+    </div>
+<div class="page" id="page-3">
+        <div class="exercise">
+            <p>When <span class="math inline">\(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\):</span></p>
+            <ul>
+                <p>What is <span class="math inline">\(\theta\)</span> in terms of <span class="math inline">\(x\)</span>?</p>
+                <p>What is <span class="math inline">\(\theta\)</span> in terms of <span class="math inline">\(y\)</span>?</p>
+                <p>What is <span class="math inline">\(\theta\)</span> in terms of <span class="math inline">\(\displaystyle{\frac{y}{x}}\)</span> ?</p>
+                </ul>
+        </div>
+        <figure>
+            <img src="inverse_images/image1.png" alt="Unit circle diagram">
+        </figure>
+        <div class="answer">
+            <p><span class="math display">\[\begin{aligned}
+            &amp; \cos\theta = x\qquad\sin\theta = y\qquad\tan\theta = \frac{y}{x} \\
+            \phantom{-} &amp; \\
+            &amp; \Rightarrow \theta = \arccos x = \arcsin y = \arctan\frac{y}{x}
+            \end{aligned}\]</span></p>
+        </div>
+        <div class="intro">
+            <p>So long as <span class="math inline">\(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\)</span>, there is only one value of <span class="math inline">\(\theta\)</span> that makes <span class="math inline">\(x = \cos\theta\)</span>, <span class="math inline">\(\;y = \sin\theta\)</span>, and <span class="math inline">\(\;\displaystyle\frac{y}{x} = \tan\theta\)</span>. So we know exactly what angle we mean by <span class="math inline">\(\arccos x\)</span>, <span class="math inline">\(\arcsin y\)</span>, or <span class="math inline">\(\arctan\displaystyle\frac{y}{x}\)</span>.</p>
+        </div>
+    </div>
+<div class="page" id="page-4">
+        <div class="exercise">
+            <p>Use this diagram to find the values below (no calculator, of course):</p>
+    </div>
+    <figure>
+        <img src="inverse_images/image8.png" alt="Unit circle diagram" style="max-width: 44%;">
+    </figure>
+
+    <div id="matrix-container" style="position: relative; min-height: 80px; text-align: center;">
+        <div class="matrix-row exercise" id="matrix-row-0" style="display: block;">
+            <p><span class="math display">\[\begin{matrix}
+            \sin\displaystyle\frac{\pi}{3} & & & & & & & & & & & & \arcsin\displaystyle\frac{\sqrt{3}}{2} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-1" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \sin\displaystyle\frac{\pi}{3} = \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \arcsin\displaystyle\frac{\sqrt{3}}{2} = \displaystyle\frac{\pi}{3} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-2" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \cos\displaystyle\frac{\pi}{3} & & & & & & & & & & & & \arccos\displaystyle\frac{1}{2} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-3" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \cos\displaystyle\frac{\pi}{3} = \displaystyle\frac{1}{2} & & & & & & & & & & & & \arccos\displaystyle\frac{1}{2} = \displaystyle\frac{\pi}{3} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-4" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \tan\displaystyle\frac{\pi}{3} & & & & & & & & & & & & \arctan\sqrt{3} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-5" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \tan\displaystyle\frac{\pi}{3} = \sqrt{3} & & & & & & & & & & & & \arctan\sqrt{3} = \displaystyle\frac{\pi}{3} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-6" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \sin\left( - \displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-7" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \sin\left( - \displaystyle\frac{\pi}{3} \right) = - \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) = - \displaystyle\frac{\pi}{3} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-8" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \cos\left( - \displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \arccos\displaystyle\frac{1}{2} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-9" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \cos\left( - \displaystyle\frac{\pi}{3} \right) = \displaystyle\frac{1}{2} & & & & & & & & & & & & \arccos\displaystyle\frac{1}{2} = \displaystyle\frac{\pi}{3} \\
+            \end{matrix}\]</span></p>
+            <p>The cosines of both \(\displaystyle\frac{\pi}{3}\) and \(-\displaystyle\frac{\pi}{3}\) are \(\displaystyle\frac{1}{2}\), but only one of those angles can be \(\arccos\displaystyle\frac{1}{2}\), and we choose the simpler one; that is, the positive angle.</p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-10" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \tan\left( - \displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \arctan\left( - \sqrt{3} \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-11" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \tan\left( - \displaystyle\frac{\pi}{3} \right) = - \sqrt{3} & & & & & & & & & & & & \arctan\left( - \sqrt{3} \right) = - \displaystyle\frac{\pi}{3} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-12" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \sin\displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \arcsin\displaystyle\frac{\sqrt{3}}{2} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-13" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \sin\displaystyle\frac{2\pi}{3} = \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \arcsin\displaystyle\frac{\sqrt{3}}{2} = \displaystyle\frac{\pi}{3} \\
+            \end{matrix}\]</span></p>
+            <p>The sines of both \(\displaystyle\frac{\pi}{3}\) and \(\displaystyle\frac{2\pi}{3}\) are \(\displaystyle\frac{1}{2}\), but only one of those angles can be \(\arcsin\displaystyle\frac{1}{2}\), and we choose the simpler one; that is, \(\displaystyle\frac{\pi}{3}\).</p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-14" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \cos\displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \arccos\left( - \displaystyle\frac{1}{2} \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-15" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \cos\displaystyle\frac{2\pi}{3} = - \displaystyle\frac{1}{2} & & & & & & & & & & & & \arccos\left( - \displaystyle\frac{1}{2} \right) = \displaystyle\frac{2\pi}{3} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-16" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \tan\displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \arctan\left( - \sqrt{3} \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-17" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \tan\displaystyle\frac{2\pi}{3} = - \sqrt{3} & & & & & & & & & & & & \arctan\left( - \sqrt{3} \right) = - \displaystyle\frac{\pi}{3} \\
+            \end{matrix}\]</span></p>
+            <p>The tans of both \(\displaystyle\frac{2\pi}{3}\) and \(-\displaystyle\frac{\pi}{3}\) are \(-\sqrt{3}\), but only one of those angles can be \(\arctan(-\sqrt{3})\), and we choose the one between \(-\displaystyle\frac{\pi}{2}\) and \(\displaystyle\frac{\pi}{2}\).</p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-18" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \sin\displaystyle\frac{4\pi}{3} & & & & & & & & & & & & \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-19" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \sin\displaystyle\frac{4\pi}{3} = - \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) = - \displaystyle\frac{\pi}{3} \\
+            \end{matrix}\]</span></p>
+            <p>For \(\arcsin\), we choose the angle between \(-\displaystyle\frac{\pi}{2}\) and \(\displaystyle\frac{\pi}{2}\).</p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-20" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \cos\displaystyle\frac{4\pi}{3} & & & & & & & & & & & & \arccos\left( - \displaystyle\frac{1}{2} \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-21" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \cos\displaystyle\frac{4\pi}{3} = - \displaystyle\frac{1}{2} & & & & & & & & & & & & \arccos\left( - \displaystyle\frac{1}{2} \right) = \displaystyle\frac{2\pi}{3} \\
+            \end{matrix}\]</span></p>
+            <p>For \(\arccos\), we choose the angle between \(0\) and \(\pi\).</p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-22" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \tan\displaystyle\frac{4\pi}{3} & & & & & & & & & & & & \arctan\sqrt{3} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-23" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \tan\displaystyle\frac{4\pi}{3} = \sqrt{3} & & & & & & & & & & & & \arctan\sqrt{3} = \displaystyle\frac{\pi}{3} \\
+            \end{matrix}\]</span></p>
+            <p>For \(\arctan\), we choose the angle between \(-\displaystyle\frac{\pi}{2}\) and \(\displaystyle\frac{\pi}{2}\).</p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-24" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \sin\displaystyle\frac{5\pi}{3} & & & & & & & & & & & & \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-25" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \sin\displaystyle\frac{5\pi}{3} = - \displaystyle\frac{\sqrt{3}}{2} & & & & & & & & & & & & \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) = - \displaystyle\frac{\pi}{3} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-26" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \cos\displaystyle\frac{5\pi}{3} & & & & & & & & & & & & \arccos\displaystyle\frac{1}{2} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-27" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \cos\displaystyle\frac{5\pi}{3} = \displaystyle\frac{1}{2} & & & & & & & & & & & & \arccos\displaystyle\frac{1}{2} = \displaystyle\frac{\pi}{3} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-28" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \tan\displaystyle\frac{5\pi}{3} & & & & & & & & & & & & \arctan\left( - \sqrt{3} \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-29" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \tan\displaystyle\frac{5\pi}{3} = - \sqrt{3} & & & & & & & & & & & & \arctan\left( - \sqrt{3} \right) = - \displaystyle\frac{\pi}{3} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-30" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arcsin\left( \sin\displaystyle\frac{2\pi}{3} \right) & & & & & & & & & & & & \sin\left( \arcsin\displaystyle\frac{\sqrt{3}}{2} \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-31" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arcsin\left( \sin\displaystyle\frac{2\pi}{3} \right) = \arcsin\displaystyle\frac{\sqrt{3}}{2}=\displaystyle\frac{\pi}{3}  & & & & & \sin\left( \arcsin\displaystyle\frac{\sqrt{3}}{2} \right) = \displaystyle\frac{\sqrt{3}}{2} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-32" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arccos\left( \cos\displaystyle\frac{2\pi}{3} \right) & & & & & & & & & & & & \cos\left( \arccos\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-33" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arccos\left( \cos\displaystyle\frac{2\pi}{3} \right) = \displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \cos\left( \arccos\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) = - \displaystyle\frac{\sqrt{3}}{2} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-34" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arctan\left( \tan\displaystyle\frac{2\pi}{3} \right) & & & & & & & & & & & & \tan\left( \arctan\left( - \sqrt{3} \right) \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-35" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arctan\left( \tan\displaystyle\frac{2\pi}{3} \right)= \arctan\left(-\sqrt 3\right)= - \displaystyle\frac{\pi}{3} & & & & & & & & \tan\left( \arctan\left( - \sqrt{3} \right) \right) = - \sqrt{3} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-36" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arcsin\left( \cos\displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \cos\left( \arcsin\displaystyle\frac{\sqrt{3}}{2} \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-37" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arcsin\left( \cos\displaystyle\frac{\pi}{3} \right)=\arcsin\displaystyle\frac{1}{2}=\displaystyle\frac{\pi}{6} & & & & \cos\left( \arcsin\displaystyle\frac{\sqrt{3}}{2} \right) = \cos \displaystyle\frac{\pi}{3}= \displaystyle\frac{1}{2} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-38" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arcsin\left( \cos\displaystyle\frac{4\pi}{3} \right) & & & & & & & & & & & & \cos\left( \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-39" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arcsin\left( \cos\displaystyle\frac{4\pi}{3} \right) = - \displaystyle\frac{\pi}{6} & & & & & & & & & & & & \cos\left( \arcsin\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) = \displaystyle\frac{1}{2} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-40" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arccos\left( \sin\displaystyle\frac{\pi}{3} \right) & & & & & & & & & & & & \sin\left( \arccos\displaystyle\frac{\sqrt{3}}{2} \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-41" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arccos\left( \sin\displaystyle\frac{\pi}{3} \right) = \displaystyle\frac{\pi}{3} & & & & & & & & & & & & \sin\left( \arccos\displaystyle\frac{\sqrt{3}}{2} \right) = \displaystyle\frac{\sqrt{3}}{2} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row exercise" id="matrix-row-42" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arccos\left( \sin\displaystyle\frac{4\pi}{3} \right) & & & & & & & & & & & & \sin\left( \arccos\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div class="matrix-row answer" id="matrix-row-43" style="display: none;">
+            <p><span class="math display">\[\begin{matrix}
+            \arccos\left( \sin\displaystyle\frac{4\pi}{3} \right) = \displaystyle\frac{2\pi}{3} & & & & & & & & & & & & \sin\left( \arccos\left( - \displaystyle\frac{\sqrt{3}}{2} \right) \right) = - \displaystyle\frac{\sqrt{3}}{2} \\
+            \end{matrix}\]</span></p>
+        </div>
+        <div style="margin-top: 20px; text-align: center;">
+            <button id="matrix-prev" onclick="changeMatrixRow(-1)" style="padding: 5px 10px; margin: 5px; font-size: 12px; cursor: pointer; background: #e0e0e0; border: 1px solid #999; color: #666;">← Prev</button>
+            <span id="matrix-indicator" style="margin: 0 15px; font-size: 13px; color: #666;">part <span id="current-matrix-part">a</span></span>
+            <button id="matrix-next" onclick="changeMatrixRow(1)" style="padding: 5px 10px; margin: 5px; font-size: 12px; cursor: pointer; background: #e0e0e0; border: 1px solid #999; color: #666;">Next →</button>
+        </div>
+    </div>
+
+    <script>
+    let currentMatrixRow = 0;
+    const totalMatrixRows = 44;
+
+    // Function to reset matrix to beginning
+    function resetMatrix() {
+        // Clear any old localStorage value
+        localStorage.removeItem('currentMatrixRow');
+
+        // Reset to row 0
+        currentMatrixRow = 0;
+
+        // Hide all matrix rows except row 0
+        for (let i = 0; i < totalMatrixRows; i++) {
+            const row = document.getElementById('matrix-row-' + i);
+            if (row) {
+                row.style.display = (i === 0) ? 'block' : 'none';
+            }
+        }
+
+        // Reset the indicator to 'a'
+        const indicator = document.getElementById('current-matrix-part');
+        if (indicator) {
+            indicator.textContent = 'a';
+        }
+    }
+
+    function changeMatrixRow(direction) {
+    // Calculate new index
+    const newRow = currentMatrixRow + direction;
+
+    // Check bounds - don't change if out of range
+    if (newRow < 0 || newRow >= totalMatrixRows) {
+        return;
+        }
+
+        // Hide current row
+        document.getElementById('matrix-row-' + currentMatrixRow).style.display = 'none';
+
+        // Update index
+        currentMatrixRow = newRow;
+
+        // Show new row
+        document.getElementById('matrix-row-' + currentMatrixRow).style.display = 'block';
+
+        // Update indicator - each pair of rows gets the same letter
+        const pairIndex = Math.floor(currentMatrixRow / 2);
+        const letter = String.fromCharCode(97 + pairIndex); // 97 is 'a'
+        document.getElementById('current-matrix-part').textContent = letter;
+
+        // Re-render MathJax for the new row
+        if (window.MathJax && window.MathJax.typesetPromise) {
+        MathJax.typesetPromise([document.getElementById('matrix-row-' + currentMatrixRow)]);
+        }
+        }
+
+        // Keyboard navigation for matrix rows (left/right arrows when on page 4)
+        document.addEventListener('keydown', function(e) {
+        // Only handle arrow keys on page 4
+        if (currentPage === 4) {
+        if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        changeMatrixRow(-1);
+        } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        changeMatrixRow(1);
+        }
+        }
+        });
+
+        // Reset matrix on page load
+        document.addEventListener('DOMContentLoaded', function() {
+        resetMatrix();
+
+        // Watch for page 4 becoming visible and reset matrix
+        const page4 = document.getElementById('page-4');
+        if (page4) {
+            // Use MutationObserver to detect when page 4 becomes active
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                        if (page4.classList.contains('active')) {
+                            resetMatrix();
+                        }
+                    }
+                });
+            });
+
+            observer.observe(page4, { attributes: true });
+        }
+        });
+        </script>
+
+    </div>
+<div class="page" id="page-5">
+        <div class="intro">
+            <p>Next, we'll look at the whole thing again from the point of view of graphs.</p>
+        </div>
+        <div class="exercise">
+            <p>On the same set of axes, draw the graphs \(y=\sin x\) and \(x=\sin y\)</p>
+        </div>
+    </div>
+<div class="page" id="page-6">
+        <div class="exercise">
+            <p>On the same set of axes, draw the graphs \(y=\sin x\) and \(x=\sin y\)</p>
+        </div>
+        <figure>
+            <video autoplay loop muted playsinline><source src="inverse_images/video1.mp4" alt="Graph showing intersections"></video>
+        </figure>
+        <div class="exercise">
+            <p>Can you explain why the graph \(y=\arcsin x\) is not the same as the graph \(x=\sin y\) ? The video might help you to see why this should be.</p>
+        </div>
+    </div>
+<div class="page" id="page-7">
+        <div class="exercise">
+            <p>To see this, first solve the equation \(\sin y = \frac{1}{2}\) and explain how your answer relates to the graphs.</p>
+        </div>
+        <figure>
+            <img src="inverse_images/image4.png" alt="Graph showing intersections">
+        </figure>
+    </div>
+<div class="page" id="page-8">
+        <div class="exercise">
+            <p>Solve the equation \(\sin y = \frac{1}{2}\) and explain how your answer relates to the graphs.</p>
+        </div>
+        <figure>
+            <img src="inverse_images/image4.png" alt="Graph showing intersections">
+        </figure>
+        <div class="answer">
+            <p><span class="math inline">\(\sin y = \frac{1}{2}\)</span> has solutions</p>
+            <p><span class="math display">\[y = \frac{\pi}{6},\frac{5\pi}{6},\frac{13\pi}{6},\ldots - \frac{7\pi}{6}, - \frac{11\pi}{6}, - \frac{19\pi}{6},\ldots\]</span></p>
+            <p>and these values are where the graphs <span class="math inline">\(x = \sin y\)</span> and <span class="math inline">\(x = \frac{1}{2}\)</span> intersect.</p>
+        </div>
+
+        <div class="exercise">
+            <p>How many values do you want for <span class="math inline">\(\arcsin\frac{1}{2}\)</span> ?</p>
+            <p>How many times do you want the line <span class="math inline">\(x = \frac{1}{2}\)</span> to intersect with the graph <span class="math inline">\(y = \arcsin x\)</span> ?</p>
+        </div>
+    </div>
+<div class="page" id="page-9">
+        <div class="answer">
+            <p>Like any function, the function <span class="math inline">\(y = \arcsin x\)</span> must be well-defined (that is, uniquely defined) for all values of <span class="math inline">\(x\)</span> in its domain.</p>
+            <p>That means that the line <span class="math inline">\(x = \frac{1}{2}\)</span> must intersect with the graph <span class="math inline">\(y = \arcsin x\)</span> exactly once.</p>
+        </div>
+        <div class="exercise">
+            <p>How can you adapt the graph <span class="math inline">\(x = \sin y\)</span> to ensure that any vertical line between <span class="math inline">\(x = - 1\)</span> and <span class="math inline">\(x = 1\)</span> intersects it exactly once?</p>
+        </div>
+        <figure>
+            <video autoplay loop muted playsinline><source src="inverse_images/video1.mp4" alt="Graph showing intersections"></video>
+        </figure>
+    </div>
+<div class="page" id="page-10">
+
+        <figure>
+            <video autoplay loop muted playsinline><source src="inverse_images/video2.mp4" alt="Graph showing intersections"></video>
+        </figure>
+        <div class="answer">
+            <p>We need to choose just a small part of the curve <span class="math inline">\(x = \sin y\)</span>, making sure that it is big enough to intersect every vertical line between <span class="math inline">\(x = - 1\)</span> and <span class="math inline">\(x = 1\)</span>, but small enough to make sure that no such vertical line intersects this section of the curve more than once.</p>
+        </div>
+        <div class="intro">
+            <p>There are many such segments . . . an infinite number, in fact.Some of the possibilities are coloured pink and green in this diagram.</p>
+        </div>
+
+    </div>
+<div class="page" id="page-11">
+
+        <figure>
+            <img src="inverse_images/image5.png" alt="Graph showing segment choices">
+        </figure>
+        <div class="intro">
+            <p>We could choose any coloured section of the graph <span class="math inline">\(x = \sin y\)</span>, but it would be strange (though not impossible) to choose any segment other than the one that would mean <span class="math inline">\(\arcsin0 = 0\)</span>.</p>
+        </div>
+        <div class="exercise">
+            <p>Which of these pink or green segments on the curve would correspond to the most sensible definition of the function <span class="math inline">\(\arcsin x\)</span> ?</p>
+        </div>
+    </div>
+<div class="page" id="page-12">
+        <figure>
+            <img src="inverse_images/image6.png" alt="Graph showing different segments">
+        </figure>
+        <div class="answer">
+            <p>Only the pink segment here is the graph \(y = \arcsin x\). 
+            </p>
+        </div>
+        <div class="exercise">
+            <p>What are the domain and range of the function \(f(x)=\arcsin x\)?</p>
+        </div>
+    </div>
+<div class="page" id="page-13">
+        <div class="exercise">
+            <p>What are the domain and range of the function \(f(x)=\arcsin x\)?</p>
+        </div>
+        <div class="answer">
+            <p>The easiest way to see this is to look at the graph:</p>
+            <p>\(\text{domain}=\big\{x|-1\leq x\leq 1\big\}\)</p>
+            <p>\(\text{range}=\Big\{y\Big |-\displaystyle\frac{\pi}{2}\leq x\leq \displaystyle\frac{\pi}{2}\Big\}\)</p>
+        </div>
+        <figure>
+            <img src="inverse_images/image6.png" alt="Graph showing different segments">
+        </figure>
+    </div>
+<div class="page" id="page-14">
+        <div class="exercise">
+            <p>Draw the graph <span class="math inline">\(y = \cos x\)</span>.</p>
+            <p>On the same axes, draw the graph <span class="math inline">\(x=\cos y\)</span>.</p>
+        </div>
+        <figure>
+            <img src="inverse_images/image29.png" alt="Graphs of x = cos y and y = cos^-1 x">
+        </figure>
+    </div>
+<div class="page" id="page-15">
+        
+        <div class="exercise">
+            <p>Draw the graph <span class="math inline">\(y = \cos x\)</span>.</p>
+            <p>On the same axes, draw the graph <span class="math inline">\(x=\cos y\)</span>.</p>
+        </div>
+        
+        <figure>
+            <video autoplay loop muted playsinline><source src="inverse_images/video3.mp4" alt="Graph showing intersections"></video>
+        </figure>
+        <div class="exercise"
+        <p>How can we adapt the graph \(x=\cos y\) to get the graph \(y=\arccos x\) ?</p>
+        </div>
+    </div>
+<div class="page" id="page-16">
+        <div class="exercise"
+            <p>How can we adapt the graph \(x=\cos y\) to get the graph \(y=\arccos x\) ?</p>
+        </div>
+            <figure>
+                <video autoplay loop muted playsinline><source src="inverse_images/video4.mp4" alt="Graph showing intersections"></video>
+            </figure>
+        <div class="answer">
+            <p>As before, any of the coloured segments will ensure that the vertical line cuts the graph exactly once at all times.</p>
+        </div>
+        <div class="exercise">
+            <p>Which segment shall we choose for the graph \(y=\arccos x\) ?</p>
+        </div>
+    </div>
+<div class="page" id="page-17">
+        <figure>
+            <img src="inverse_images/image35.png" alt="Graph showing different segments">
+        </figure>
+        <div class="answer">
+            <p>domain:</p>
+            <p><span class="math display">\[\{ x: - 1 \leq x \leq 1\}\]</span></p>
+            <p>range:</p>
+            <p><span class="math display">\[\left\{ y:0 \leq y \leq \pi \right\}\]</span></p>
+        </div>
+    </div>
+<div class="page" id="page-18">
+        <div class="exercise"
+            <p>Draw the graphs \(y=\tan x\) and \(x=\tan y\) on the same set of axes.</p>
+        </div>
+        
+        <figure>
+            <img src="inverse_images/image56.png" alt="Diagram">
+        </figure>
+    </div>
+<div class="page" id="page-19">
+        <div class="exercise">
+            <p>Draw the graphs \(y=\tan x\) and \(x=\tan y\) on the same set of axes.</p>
+        </div>
+        
+        <figure>
+            <img src="inverse_images/image55.png" alt="Diagram">
+        </figure>
+        <div class="exercise">
+            <p>What are the domain and range of the function \(y=\arctan x\)?</p>
+        </div>
+    </div>
+<div class="page" id="page-20">
+        <div class="exercise">
+            <p>What are the domain and range of the function \(y=\arctan x\)?</p>
+        </div>
+        <figure>
+            <img src="inverse_images/image55.png" alt="Diagram">
+        </figure>
+        <div class="answer">
+            <p>The red graph is the graph \(y=\arctan x\), giving</p>
+            <p>domain:</p>
+            <p><span class="math display">\[\mathbb{R}\]</span></p>
+            <p>range:</p>
+            <p><span class="math display">\[\left\{ y: - \frac{\pi}{2} &lt; y &lt; \frac{\pi}{2} \right\}\]</span></p>
+        </div>
+    </div>
+    <!-- Page 21: Congratulations -->
+    <div class="page" id="page-21">
+        <div class="welcome-page">
+            <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Well done on completing Part 1!</h1>
+            <div class="welcome-content">
+                <p>You have explored the inverse circular functions in depth — defining arcsin, arccos, and arctan,
+                understanding their domains and ranges, drawing and interpreting their graphs.</p>
+                <p>Part 2 continues with identities, compositions, and sum formulas.</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; text-align: right;"><a href="newinverse2.html" style="color: #2d6a4f; text-decoration: underline;">Part 2 →</a></div>
+    </div>
+
+</div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+        <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="21" onchange="goToPage(this.value)"> of 21
+        </span>
+        <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+        <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+    </div>
+
+    <script src="navigation.js"></script>
+    <script>
+    (function() {
+        var noAnim = new Set([4]);
+        for (var p = 2; p <= 20; p++) {
+            if (!noAnim.has(p)) { answerAnimatedPages.add(p); introChainPages.set(p, null); }
+        }
+        // Explicitly remove excluded pages from the default set in navigation.js
+        noAnim.forEach(function(p) { answerAnimatedPages.delete(p); introChainPages.delete(p); });
+    }());
+    </script>
+    <script>
+    // Disable keyboard shortcuts for saving/printing
+    document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p')) {
+    e.preventDefault();
+    return false;
+    }
+    });
+</script>
+
+</body>
+</html>

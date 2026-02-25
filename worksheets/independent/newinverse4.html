@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverse Circular Functions Part 4</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        },
+        options: {
+            enableMenu: false,
+            renderActions: {
+                addMenu: []
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+<span class="back-btn">←</span>
+</a>
+
+<div class="container">
+    <!-- Page 1: Welcome -->
+    <div class="page" id="page-1">
+        <div class="welcome-page">
+            <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Welcome to Inverse Circular Functions: Part 4</h1>
+            <div class="welcome-content">
+                <p>This stage explores integrals of the inverse circular functions — \(\int \arcsin x\,\mathrm{d}x\), \(\int \arccos x\,\mathrm{d}x\), and \(\int \arctan x\,\mathrm{d}x\) — using geometric area arguments and integration by parts.</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                        <li>Click <strong>Previous</strong> or <strong>Next</strong> buttons when they appear</li>
+                        <li>Jump to a specific page using the page number input</li>
+
+                    </ul>
+                </div>
+
+                <p class="welcome-tip">The area argument gives geometric insight; IBP then confirms the result algebraically!</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+<div class="page" id="page-2">
+        <p style="text-align: center;"><strong>integrals of inverse circular functions</strong></p>
+        <p class="intro">We can find \(\int \arcsin x\,\mathrm{d}x\) using an area argument. The region under \(y = \arcsin x\) from \(x=0\) to \(x=a\) can be related to the area of a rectangle minus a complementary curved region.</p>
+        <div class="exercise">
+            <p>Consider the rectangle with corners \((0,0)\) and \((a,\, \arcsin a)\).</p>
+            <p>(a) &nbsp; What is its area?</p>
+            <p>(b) &nbsp; The complementary region (to the left of the curve from \(y=0\) to \(y=\arcsin a\)) has area \(\displaystyle\int_0^{\arcsin a} \sin y\,\mathrm{d}y\). Evaluate this.</p>
+            <p>(c) &nbsp; Hence find \(\displaystyle\int_0^a \arcsin x\,\mathrm{d}x\).</p>
+        </div>
+    </div>
+<div class="page" id="page-3">
+        <div class="exercise">
+            <p>Find \(\displaystyle\int_0^a \arcsin x\,\mathrm{d}x\) and deduce \(\displaystyle\int \arcsin x\,\mathrm{d}x\).</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            &\text{(a) Rectangle area} = a\arcsin a\\[8pt]
+            &\text{(b) Complementary area} = \int_0^{\arcsin a}\!\sin y\,\mathrm{d}y = \Big[-\cos y\Big]_0^{\arcsin a}\\[6pt]
+            &\quad = -\cos(\arcsin a) + 1 = 1 - \sqrt{1-a^2}\\[10pt]
+            &\text{(c) } \int_0^a \arcsin x\,\mathrm{d}x = a\arcsin a - \left(1 - \sqrt{1-a^2}\right)
+            \end{aligned}\]
+            \[\boxed{\int \arcsin x\,\mathrm{d}x = x\arcsin x + \sqrt{1-x^2} + C}\]
+        </div>
+    </div>
+<div class="page" id="page-4">
+        <div class="exercise">
+            <p>Use a similar area argument to find \(\displaystyle\int \arccos x\,\mathrm{d}x\).</p>
+            <p>Consider the region under \(y = \arccos x\) from \(x=0\) to \(x=a\) (where \(0 < a < 1\)).</p>
+            <p>(a) &nbsp; The rectangle with height \(\arccos(0) = \dfrac{\pi}{2}\) and width \(a\) covers the region plus some extra. What is its area?</p>
+            <p>(b) &nbsp; The complementary curved region (to the left of \(y = \arccos x\)) has area \(\displaystyle\int_{\arccos a}^{\pi/2}\!\cos y\,\mathrm{d}y\). Evaluate this.</p>
+            <p>(c) &nbsp; Hence find \(\displaystyle\int_0^a \arccos x\,\mathrm{d}x\) and deduce \(\displaystyle\int \arccos x\,\mathrm{d}x\).</p>
+        </div>
+    </div>
+<div class="page" id="page-5">
+        <div class="exercise">
+            <p>Find \(\displaystyle\int \arccos x\,\mathrm{d}x\) using the area argument.</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            &\text{(a) Rectangle: } \frac{\pi a}{2}\\[8pt]
+            &\text{(b) } \int_{\arccos a}^{\pi/2}\!\cos y\,\mathrm{d}y = \Big[\sin y\Big]_{\arccos a}^{\pi/2} = 1 - \sin(\arccos a) = 1 - \sqrt{1-a^2}\\[10pt]
+            &\text{(c) } \int_0^a \arccos x\,\mathrm{d}x = \frac{\pi a}{2} - \left(1 - \sqrt{1-a^2}\right)\\[6pt]
+            &\quad\text{which also equals } a\arccos a - \sqrt{1-a^2} + 1
+            \end{aligned}\]
+            \[\boxed{\int \arccos x\,\mathrm{d}x = x\arccos x - \sqrt{1-x^2} + C}\]
+        </div>
+    </div>
+<div class="page" id="page-6">
+        <div class="exercise">
+            <p>Use the area argument to find \(\displaystyle\int \arctan x\,\mathrm{d}x\).</p>
+            <p>Consider the region under \(y = \arctan x\) from \(x=0\) to \(x=a\). The complementary region (below the curve) has area \(\displaystyle\int_0^{\arctan a}\!\tan y\,\mathrm{d}y\).</p>
+            <p>(a) &nbsp; What is the area of the rectangle with corners \((0,0)\) and \((a,\,\arctan a)\)?</p>
+            <p>(b) &nbsp; Evaluate \(\displaystyle\int_0^{\arctan a}\!\tan y\,\mathrm{d}y\). (Recall \(\displaystyle\int\tan y\,\mathrm{d}y = \ln\sec y + C\).)</p>
+            <p>(c) &nbsp; Hence deduce \(\displaystyle\int \arctan x\,\mathrm{d}x\).</p>
+        </div>
+    </div>
+<div class="page" id="page-7">
+        <div class="exercise">
+            <p>Find \(\displaystyle\int \arctan x\,\mathrm{d}x\).</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            &\text{(a) Rectangle: } a\arctan a\\[8pt]
+            &\text{(b) } \int_0^{\arctan a}\!\tan y\,\mathrm{d}y = \Big[\ln\sec y\Big]_0^{\arctan a} = \ln\sec(\arctan a)\\[6pt]
+            &\quad\sec(\arctan a) = \sqrt{1+a^2}, \;\text{so } \ln\sec(\arctan a) = \tfrac{1}{2}\ln(1+a^2)\\[8pt]
+            &\text{(c) } \int_0^a \arctan x\,\mathrm{d}x = a\arctan a - \tfrac{1}{2}\ln(1+a^2)
+            \end{aligned}\]
+            \[\boxed{\int \arctan x\,\mathrm{d}x = x\arctan x - \tfrac{1}{2}\ln(1+x^2) + C}\]
+        </div>
+        <div class="exercise">
+            <p>Verify the results for \(\displaystyle\int\arcsin x\,\mathrm{d}x\) and \(\displaystyle\int\arccos x\,\mathrm{d}x\) using integration by parts with \(u = \arcsin x\) (or \(\arccos x\)) and \(\mathrm{d}v = \mathrm{d}x\).</p>
+        </div>
+    </div>
+<div class="page" id="page-8">
+        <div class="exercise">
+            <p>Verify \(\displaystyle\int\arcsin x\,\mathrm{d}x = x\arcsin x + \sqrt{1-x^2} + C\) and \(\displaystyle\int\arccos x\,\mathrm{d}x = x\arccos x - \sqrt{1-x^2} + C\) by integration by parts.</p>
+        </div>
+        <div class="answer">
+            <p>For \(\arcsin x\): let \(u = \arcsin x\), \(\mathrm{d}v = \mathrm{d}x\):</p>
+            \[\int\arcsin x\,\mathrm{d}x = x\arcsin x - \int\frac{x}{\sqrt{1-x^2}}\,\mathrm{d}x = x\arcsin x + \sqrt{1-x^2} + C \;\checkmark\]
+            <p>For \(\arccos x\): let \(u = \arccos x\), \(\mathrm{d}v = \mathrm{d}x\):</p>
+            \[\int\arccos x\,\mathrm{d}x = x\arccos x - \int\frac{-x}{\sqrt{1-x^2}}\,\mathrm{d}x = x\arccos x - \sqrt{1-x^2} + C \;\checkmark\]
+        </div>
+        <div class="exercise">
+            <p>The area under \(y = \sqrt{1-x^2}\) (the upper unit semicircle) from \(x=0\) to \(x=a\) (where \(0 < a < 1\)) can be split into a circular sector and a right-angled triangle.</p>
+            <p>Let \(\theta = \arcsin a\). Show geometrically that</p>
+            \[\int_0^a\!\sqrt{1-x^2}\,\mathrm{d}x = \frac{1}{2}\arcsin a + \frac{1}{2}a\sqrt{1-a^2}\]
+            <p>and hence write down \(\displaystyle\int\sqrt{1-x^2}\,\mathrm{d}x\).</p>
+        </div>
+    </div>
+<div class="page" id="page-9">
+        <div class="exercise">
+            <p>Find \(\displaystyle\int\sqrt{1-x^2}\,\mathrm{d}x\) geometrically, then verify using the substitution \(x = \sin u\).</p>
+        </div>
+        <div class="answer">
+            <p><strong>Geometric argument:</strong></p>
+            <p>The region is composed of a circular sector (radius 1, angle \(\theta = \arcsin a\)) with area \(\tfrac{1}{2}\theta\), and a right-angled triangle (base \(a\), height \(\sqrt{1-a^2}\)) with area \(\tfrac{1}{2}a\sqrt{1-a^2}\).</p>
+            \[\int_0^a\!\sqrt{1-x^2}\,\mathrm{d}x = \frac{\arcsin a}{2} + \frac{a\sqrt{1-a^2}}{2}\]
+            \[\boxed{\int\sqrt{1-x^2}\,\mathrm{d}x = \frac{1}{2}\arcsin x + \frac{1}{2}x\sqrt{1-x^2} + C}\]
+            <p><strong>Verification by substitution \(x = \sin u\):</strong></p>
+            \[\begin{aligned}
+            &\mathrm{d}x = \cos u\,\mathrm{d}u, \quad \sqrt{1-x^2} = \cos u\\[6pt]
+            &\int\sqrt{1-x^2}\,\mathrm{d}x = \int\cos^2 u\,\mathrm{d}u = \int\frac{1+\cos 2u}{2}\,\mathrm{d}u\\[6pt]
+            &= \frac{u}{2} + \frac{\sin 2u}{4} + C = \frac{\arcsin x}{2} + \frac{x\sqrt{1-x^2}}{2} + C \;\checkmark
+            \end{aligned}\]
+        </div>
+    </div>
+    <!-- Page 10: Congratulations -->
+    <div class="page" id="page-10">
+        <div class="welcome-page">
+            <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Well done on completing Part 4!</h1>
+            <div class="welcome-content">
+                <p>You have evaluated \(\int \arcsin x\,\mathrm{d}x\), \(\int \arccos x\,\mathrm{d}x\),
+                and \(\int \arctan x\,\mathrm{d}x\) using geometric arguments and integration by parts.</p>
+                <p>Continue to the extension material in Part 5 (graphs of arcsec, arccosec, arccot).</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between;"><a href="newinverse3.html" style="color: #2d6a4f; text-decoration: underline;">← Part 3</a><a href="newinverse5.html" style="color: #2d6a4f; text-decoration: underline;">Part 5 →</a></div>
+    </div>
+
+</div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+        <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="10" onchange="goToPage(this.value)"> of 10
+        </span>
+        <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+        <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+    </div>
+
+    <script src="navigation.js"></script>
+    <script>
+    (function() {
+        for (var p = 2; p <= 9; p++) {
+            answerAnimatedPages.add(p);
+            introChainPages.set(p, null);
+        }
+    }());
+    </script>
+    <script>
+    // Disable keyboard shortcuts for saving/printing
+    document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p')) {
+    e.preventDefault();
+    return false;
+    }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverse Circular Functions Extension 1</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        },
+        options: {
+            enableMenu: false,
+            renderActions: {
+                addMenu: []
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+<span class="back-btn">←</span>
+</a>
+
+<div class="container">
+    <!-- Page 1: Welcome -->
+    <div class="page" id="page-1">
+        <div class="welcome-page">
+            <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Welcome to Inverse Circular Functions: Extension 1</h1>
+            <div class="welcome-content">
+                <p>This extension stage covers the graphs, domains, and ranges of arcsec, arccosec, and arccot, followed by compositions and identities involving these functions.</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                        <li>Click <strong>Previous</strong> or <strong>Next</strong> buttons when they appear</li>
+                        <li>Jump to a specific page using the page number input</li>
+
+                    </ul>
+                </div>
+
+                <p class="welcome-tip">These extension functions build directly on arcsin, arccos, and arctan — keep those graphs in mind!</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+<div class="page" id="page-2">
+        <p style="text-align: center;"><strong>graphs of \(\boldsymbol{\operatorname{arcsec} x}\), \(\boldsymbol{\operatorname{arccosec} x}\), and \(\boldsymbol{\operatorname{arccot} x}\)</strong></p>
+        <p class="intro">The graph of \(y = \arccos x\) is shown as a reminder. Its domain is \([-1, 1]\) and its range is \([0, \pi]\).</p>
+        <figure>
+            <img src="inverse_images/image36.png" alt="Graph of cos inverse x">
+        </figure>
+        <div class="exercise">
+            <p>The function \(\sec x\) is the reciprocal of \(\cos x\). Using the domain and range of \(\arccos x\) as a guide:</p>
+            <p>(a) &nbsp; What should the range of \(\operatorname{arcsec} x\) be?</p>
+            <p>(b) &nbsp; What value must be excluded from this range? (Hint: when is \(\sec x\) undefined?)</p>
+            <p>(c) &nbsp; What is the domain of \(\operatorname{arcsec} x\)?</p>
+        </div>
+    </div>
+<div class="page" id="page-3">
+        <div class="exercise">
+            <p>(a) &nbsp; What should the range of \(\operatorname{arcsec} x\) be?</p>
+            <p>(b) &nbsp; What value must be excluded from this range?</p>
+            <p>(c) &nbsp; What is the domain of \(\operatorname{arcsec} x\)?</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            &\text{(a) Range: } [0,\pi]\\[6pt]
+            &\text{(b) Exclude } \tfrac{\pi}{2}, \text{ since } \sec\tfrac{\pi}{2} \text{ is undefined (}\cos\tfrac{\pi}{2}=0\text{)}\\[6pt]
+            &\quad\Rightarrow \text{Range: } \left[0,\pi\right]\setminus\!\left\{\tfrac{\pi}{2}\right\}\\[6pt]
+            &\text{(c) Domain: } \{x : |x| \geq 1\} = (-\infty,-1]\cup[1,\infty)
+            \end{aligned}\]
+        </div>
+        <div class="exercise">
+            <p>The graph of \(y = \sec x\), with the relevant branch highlighted, is shown below. Add the graph of \(y = \operatorname{arcsec} x\) by reflecting in the line \(y = x\).</p>
+            <figure>
+                <img src="inverse_images/image37.png" alt="Graph of sec x for drawing sec inverse x">
+            </figure>
+        </div>
+    </div>
+<div class="page" id="page-4">
+        <figure>
+            <img src="inverse_images/image38.png" alt="Graphs of sec x and sec inverse x">
+        </figure>
+    </div>
+<div class="page" id="page-5">
+        <div class="exercise">
+            <p>The graph of \(y = \operatorname{cosec}\, x\), with the relevant branch highlighted, is shown below.</p>
+            <figure>
+                <img src="inverse_images/image39.png" alt="Graph of cosec x for drawing cosec inverse x">
+            </figure>
+            <p>(a) &nbsp; Write down the domain and range of \(\operatorname{arccosec} x\).</p>
+            <p>(b) &nbsp; Add the graph of \(y = \operatorname{arccosec} x\) to the diagram.</p>
+        </div>
+    </div>
+<div class="page" id="page-6">
+        <div class="answer">
+            \[\begin{aligned}
+            &\text{Domain: } (-\infty,-1]\cup[1,\infty)\\[6pt]
+            &\text{Range: } \left[-\tfrac{\pi}{2},\, \tfrac{\pi}{2}\right]\setminus\{0\}
+            \end{aligned}\]
+        </div>
+        <figure>
+            <img src="inverse_images/image40.png" alt="Graphs of cosec x and cosec inverse x">
+        </figure>
+    </div>
+<div class="page" id="page-7">
+        <div class="exercise">
+            <p>The graph of \(y = \cot x\), with the relevant branch highlighted, is shown below.</p>
+            <figure>
+                <img src="inverse_images/image41.png" alt="Graph of cot x for drawing cot inverse x">
+            </figure>
+            <p>(a) &nbsp; Unlike \(\sec x\) and \(\operatorname{cosec}\, x\), the range of \(\cot x\) on its principal branch is all of \(\mathbb{R}\). What are the domain and range of \(\operatorname{arccot} x\)?</p>
+            <p>(b) &nbsp; Add the graph of \(y = \operatorname{arccot} x\) to the diagram.</p>
+        </div>
+    </div>
+<div class="page" id="page-8">
+        <div class="answer">
+            \[\begin{aligned}
+            &\text{Domain: } \mathbb{R}\\[6pt]
+            &\text{Range: } (0,\,\pi)
+            \end{aligned}\]
+        </div>
+        <figure>
+            <img src="inverse_images/image42.png" alt="Graphs of cot x and cot inverse x">
+        </figure>
+    </div>
+<div class="page" id="page-9">
+        <div class="exercise">
+            <p>Use the two right-angled triangles shown to simplify each expression.</p>
+            <div class="two-column">
+                <figure>
+                    <img src="inverse_images/image48.png" alt="Right triangle for cosec and sin expressions">
+                </figure>
+                <figure>
+                    <img src="inverse_images/image49.png" alt="Right triangle for sec and cos expressions">
+                </figure>
+            </div>
+            <p>(a) &nbsp; \(\sin(\operatorname{arccosec} x)\)</p>
+            <p>(b) &nbsp; \(\operatorname{cosec}(\arcsin x)\)</p>
+            <p>(c) &nbsp; \(\cos(\operatorname{arcsec} x)\)</p>
+            <p>(d) &nbsp; \(\sec(\arccos x)\)</p>
+        </div>
+    </div>
+<div class="page" id="page-10">
+        <div class="exercise">
+            <p>(a) &nbsp; \(\sin(\operatorname{arccosec} x)\) &nbsp;&nbsp; (b) &nbsp; \(\operatorname{cosec}(\arcsin x)\) &nbsp;&nbsp; (c) &nbsp; \(\cos(\operatorname{arcsec} x)\) &nbsp;&nbsp; (d) &nbsp; \(\sec(\arccos x)\)</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            &\text{(a) } \sin(\operatorname{arccosec} x) = \frac{1}{x}\\[8pt]
+            &\text{(b) } \operatorname{cosec}(\arcsin x) = \frac{1}{x}\\[8pt]
+            &\text{(c) } \cos(\operatorname{arcsec} x) = \frac{1}{x}\\[8pt]
+            &\text{(d) } \sec(\arccos x) = \frac{1}{x}
+            \end{aligned}\]
+        </div>
+        <div class="exercise">
+            <p>Use the right-angled triangle shown to simplify \(\tan(\operatorname{arccot} x)\) and \(\cot(\arctan x)\).</p>
+            <figure>
+                <img src="inverse_images/image50.png" alt="Right triangle for tan cot inverse x expressions">
+            </figure>
+        </div>
+    </div>
+<div class="page" id="page-11">
+        <div class="exercise">
+            <p>Simplify \(\tan(\operatorname{arccot} x)\) and \(\cot(\arctan x)\).</p>
+        </div>
+        <div class="answer">
+            \[\tan(\operatorname{arccot} x) = \frac{1}{x}, \qquad \cot(\arctan x) = \frac{1}{x}\]
+        </div>
+        <div class="exercise">
+            <p>Since \(\tan(\operatorname{arccot} x) = \dfrac{1}{x}\), what does this tell us about the relationship between \(\operatorname{arccot} x\) and \(\arctan x\)? Is it true that \(\operatorname{arccot} x = \arctan\left(\dfrac{1}{x}\right)\) for all \(x \neq 0\)?</p>
+        </div>
+        <div class="answer">
+            <p>For \(x > 0\): both \(\operatorname{arccot} x\) and \(\arctan(1/x)\) lie in \(\bigl(0, \tfrac{\pi}{2}\bigr)\), so</p>
+            \[\operatorname{arccot} x = \arctan\left(\frac{1}{x}\right) \quad \text{for } x > 0.\]
+            <p>For \(x < 0\): \(\operatorname{arccot} x \in \bigl(\tfrac{\pi}{2}, \pi\bigr)\) but \(\arctan(1/x) \in \bigl(-\tfrac{\pi}{2}, 0\bigr)\), so</p>
+            \[\operatorname{arccot} x = \pi + \arctan\left(\frac{1}{x}\right) \quad \text{for } x < 0.\]
+        </div>
+    </div>
+<div class="page" id="page-12">
+        <div class="exercise">
+            <p>The graphs of \(y = \operatorname{arccot} x\) and \(y = \arctan x\) are shown together below.</p>
+            <figure>
+                <img src="inverse_images/image51.png" alt="Graphs of cot inverse x and tan inverse x">
+            </figure>
+            <p>What symmetry do you observe? Use it to state the value of \(\operatorname{arccot} x + \arctan x\).</p>
+        </div>
+        <div class="exercise">
+            <p>The graphs of \(y = \operatorname{arcsec} x\) and \(y = \operatorname{arccosec} x\) are shown together below.</p>
+            <figure>
+                <img src="inverse_images/image52.png" alt="Graphs of sec inverse x and cosec inverse x">
+            </figure>
+            <p>What symmetry do you observe? Use it to state the value of \(\operatorname{arcsec} x + \operatorname{arccosec} x\).</p>
+        </div>
+    </div>
+<div class="page" id="page-13">
+        <div class="exercise">
+            <p>Find \(\operatorname{arccot} x + \arctan x\) and \(\operatorname{arcsec} x + \operatorname{arccosec} x\).</p>
+        </div>
+        <div class="answer">
+            \[\operatorname{arccot} x + \arctan x = \frac{\pi}{2} \quad \text{for all } x\]
+            \[\operatorname{arcsec} x + \operatorname{arccosec} x = \frac{\pi}{2} \quad \text{for } |x| \geq 1\]
+            <p>In each case the two graphs are reflections of one another in the horizontal line \(y = \tfrac{\pi}{4}\), so their sum is always \(\tfrac{\pi}{2}\). This mirrors the familiar identity \(\arcsin x + \arccos x = \tfrac{\pi}{2}\).</p>
+        </div>
+    </div>
+    <!-- Page 14: Congratulations -->
+    <div class="page" id="page-14">
+        <div class="welcome-page">
+            <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Well done on completing Extension 1!</h1>
+            <div class="welcome-content">
+                <p>You have explored the graphs, domains, and ranges of arcsec, arccosec, and arccot,
+                and worked with compositions and identities involving these functions.</p>
+                <p>Continue to Extension 2 for derivatives of arcsec, arccosec, and arccot.</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between;"><a href="newinverse4.html" style="color: #2d6a4f; text-decoration: underline;">← Part 4</a><a href="newinverse6.html" style="color: #2d6a4f; text-decoration: underline;">Extension 2 →</a></div>
+    </div>
+
+</div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+        <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="14" onchange="goToPage(this.value)"> of 14
+        </span>
+        <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+        <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+    </div>
+
+    <script src="navigation.js"></script>
+    <script>
+    (function() {
+        for (var p = 2; p <= 13; p++) {
+            answerAnimatedPages.add(p);
+            introChainPages.set(p, null);
+        }
+    }());
+    </script>
+    <script>
+    // Disable keyboard shortcuts for saving/printing
+    document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p')) {
+    e.preventDefault();
+    return false;
+    }
+    });
+</script>
+
+</body>
+</html>

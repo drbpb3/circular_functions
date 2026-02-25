@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverse Circular Functions Part 3</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        },
+        options: {
+            enableMenu: false,
+            renderActions: {
+                addMenu: []
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+<span class="back-btn">←</span>
+</a>
+
+<div class="container">
+    <!-- Page 1: Welcome -->
+    <div class="page" id="page-1">
+        <div class="welcome-page">
+            <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Welcome to Inverse Circular Functions: Part 3</h1>
+            <div class="welcome-content">
+                <p>This stage covers the derivatives of arcsin, arccos, and arctan, and how to use these results to evaluate integrals involving inverse circular functions. It concludes with a deeper look at differentiating arcsin directly from the definition of the derivative.</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                        <li>Click <strong>Previous</strong> or <strong>Next</strong> buttons when they appear</li>
+                        <li>Jump to a specific page using the page number input</li>
+
+                    </ul>
+                </div>
+
+                <p class="welcome-tip">Pay close attention to the substitution technique — it unlocks both derivatives and integrals!</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+<div class="page" id="page-2">
+        <p style="text-align: center;"><strong>differentials of inverse circular functions</strong></p>
+        <div class="exercise">
+            <p>If <span class="math inline">\(y=\arcsin x\)</span>, what is <span class="math inline">\(\frac{\mathrm{d}x}{\mathrm{d}y}\)</span> in terms of <span class="math inline">\(y\)</span> ?</p>
+        </div>
+    </div>
+<div class="page" id="page-3">
+            <div class="exercise">
+                <p>If <span class="math inline">\(y=\arcsin x\)</span>, what is <span class="math inline">\(\frac{\mathrm{d}x}{\mathrm{d}y}\)</span> in terms of <span class="math inline">\(y\)</span> ?</p>
+            </div>
+            <div class="answer">
+                \[x=\sin y\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}=\cos y\]
+            </div>
+            <div class="exercise">
+                <p>If \(y=\arcsin x\), what is \(\cos y\)?</p>
+            </div>
+    </div>
+<div class="page" id="page-4">
+            <div class="exercise">
+                <p>If \(y=\arcsin x\), what is \(\cos y\)?</p>
+            </div>
+            <div class="answer">
+                \[\begin{aligned}
+                &\sin^2y+\cos^2y=1\\[6pt]
+                \Rightarrow &\cos^2y=1-x^2\\[12pt]
+                &-\frac{\pi}{2}\leq \sin y\leq \frac{\pi}{2}\\[6pt]
+                \Rightarrow &\cos y\geq 0\\[12pt]
+                \Rightarrow &\cos y=\sqrt{1-x^2}
+
+                \end{aligned}\]
+            </div>
+            <div class="exercise">
+                <p>What are <span class="math inline">\(\frac{\mathrm{d}x}{\mathrm{d}y}\text{ and }\frac{\mathrm{d}y}{\mathrm{d}x}\)</span> in terms of <span class="math inline">\(x\)</span> ?</p>
+            </div>
+    </div>
+<div class="page" id="page-5">
+            <div class="exercise">
+                <p>What are <span class="math inline">\(\frac{\mathrm{d}x}{\mathrm{d}y}\text{ and }\frac{\mathrm{d}y}{\mathrm{d}x}\)</span> in terms of <span class="math inline">\(x\)</span> ?</p>
+            </div>
+            <div class="answer">
+                \[\begin{aligned}
+                &\frac{\mathrm{d}x}{\mathrm{d}y}=\cos y=\sqrt{1-x^2}\\[6pt]
+                \Rightarrow &\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{\sqrt{1-x^2}}\\
+                \end{aligned}\]
+            </div> 
+    </div>
+<div class="page" id="page-6">
+        <div class="exercise">
+            <p>Follow the same method to find \[\frac{\mathrm{d}}{\mathrm{d}y}\arccos x\]</p>
+        </div>
+    </div>
+<div class="page" id="page-7">
+    <div class="exercise">
+        <p>Follow the same method to find \[\frac{\mathrm{d}}{\mathrm{d}y}\arccos x\]</p>
+    </div>
+    <div class="answer">
+        \[\begin{aligned}
+        y=\arccos x\Rightarrow &x=\cos y\\[6pt]
+        \Rightarrow &\frac{\mathrm{d}x}{\mathrm{d}y}=-\sin y\\[12pt]
+        &\sin^2y+\cos^2y=1\\[6pt]
+        \Rightarrow &\sin^2y=1-x^2\\[12pt]
+        &0\leq \cos y\leq \pi\\[6pt]
+        \Rightarrow &\sin y\geq 0\\[12pt]
+        \Rightarrow &\sin y=\sqrt{1-x^2}\\[6pt]
+        \Rightarrow &\frac{\mathrm{d}x}{\mathrm{d}y}=-\sqrt{1-x^2}\\[6pt]
+        \Rightarrow &\frac{\mathrm{d}y}{\mathrm{d}x}=-\frac{1}{\sqrt{1-x^2}}\\
+        \end{aligned}\]
+    </div>
+    </div>
+<div class="page" id="page-8">
+        <div class="exercise">
+            <p>Follow the same method to find \[\frac{\mathrm{d}}{\mathrm{d}y}\arctan x\]</p>
+        </div>
+    </div>
+<div class="page" id="page-9">
+    <div class="exercise">
+        <p>Follow the same method to find \[\frac{\mathrm{d}}{\mathrm{d}y}\arctan x\]</p>
+    </div>
+    <div class="answer">
+        \[\begin{aligned}
+        y=\arctan x\Rightarrow &x=\tan y\\[6pt]
+        \Rightarrow &\frac{\mathrm{d}x}{\mathrm{d}y}=\sec^2 y=1+\tan^2y=1+x^2\\[12pt]
+        \Rightarrow &\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{1+x^2}\\
+        \end{aligned}\]
+    </div>
+    </div>
+<div class="page" id="page-10">
+            <p><strong><center>integrals using inverse circular functions</center></strong></p>
+        <div class="exercise">
+            <p>Use the substitution <span class="math inline">\(u = \arcsin x\)</span> for the integral \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\]</p>
+        </div>
+    </div>
+<div class="page" id="page-11">
+        <div class="exercise">
+            <p>Use the substitution <span class="math inline">\(u = \arcsin x\)</span> for the integral \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\]</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            u = \arcsin x \Rightarrow \frac{\mathrm{d}u}{\mathrm{d}x} &amp; = \frac{1}{\sqrt{1 - x^{2}}}
+            \end{aligned}\]</span></p>
+            <p><span class="math display">\[\begin{aligned}
+            \int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x &amp; = \int\frac{1}{\sqrt{1 - x^{2}}}\,\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u \\
+            &amp; = \int\frac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u \\
+            &amp; = \int \mathrm{d}u \\
+            &amp; = u + c \\
+            &amp; = \arcsin x + c
+            \end{aligned}\]</span></p>
+        </div>
+
+
+    </div>
+<div class="page" id="page-12">
+        <div class="exercise">
+            <p>In practice, you might write the subsitution as \(x=\sin u\). Try it this way.</p>
+        </div>
+    </div>
+<div class="page" id="page-13">
+        <div class="exercise">
+            <p>Use the subsitution \(x=\sin u\) for the integral
+                \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\]
+            </p>
+
+        </div>
+        <div class="answer">
+            <p><span class="math display">\[\begin{aligned}
+            x = \sin u \Rightarrow \frac{\mathrm{d}x}{\mathrm{d}u} &amp; = \cos u \\
+            &amp; = \pm \sqrt{1 - \sin^{2}u} \\
+            &amp; = \pm \sqrt{1 - x^{2}}
+            \end{aligned}\]</span></p>
+            <p>At this point, it is really important to remember that the actual substitution is \(u=\arcsin x\) so that \(\frac{\mathrm{d}x}{\mathrm{d}u}>0\)</p>
+            <p><span class="math display">\[\begin{aligned}
+            \int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x &amp; = \int\frac{1}{\sqrt{1 - x^{2}}}\;\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u \\
+            &amp; =  \int\frac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u \\
+            &amp; =  \int \mathrm{d}u \\
+            &amp; =  u + c \\
+            &amp; = \arcsin x + c
+            \end{aligned}\]</span></p>
+        </div>
+    </div>
+<div class="page" id="page-14">
+        
+        <div class="exercise">
+            <p>Use the subsitution \(x=\cos u\) for the integral
+                \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\]
+            </p>
+
+        </div>
+        <div class="answer">
+            <p><span class="math display">\[\begin{aligned}
+            x = \cos u \Rightarrow \frac{\mathrm{d}x}{\mathrm{d}u} &amp; = -\sin u \\
+            &amp; = \pm \sqrt{1 - \cos^{2}u} \\
+            &amp; = \pm \sqrt{1 - x^{2}}
+            \end{aligned}\]</span></p>
+            <p>At this point, it is really important to remember that the actual substitution is \(u=\arccos x\) so that \(\frac{\mathrm{d}x}{\mathrm{d}u}<0\)</p>
+            <p><span class="math display">\[\begin{aligned}
+            \int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x &amp; = \int\frac{1}{\sqrt{1 - x^{2}}}\;\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u \\
+            &amp; = -\int\frac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u \\
+            &amp; = -\int \mathrm{d}u \\
+            &amp; =  -u + c \\
+            &amp; = -\arccos x + c
+            \end{aligned}\]</span></p>
+        </div>
+    </div>
+<div class="page" id="page-15">
+        <div class="exercise">
+            <p>Explain why it is possible that <em>both</em></p>
+            \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x=\arcsin x+c\]
+            <p><em>and</em> </p>
+            \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x=-\arccos x+c\]
+        </div>
+    </div>
+<div class="page" id="page-16">
+        <div class="exercise">
+            <p>Explain why it is possible that <em>both</em></p>
+            \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x=\arcsin x+c\]
+            <p><em>and</em> </p>
+            \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x=-\arccos x+c\]
+        </div>
+        <div class="answer">
+            <p>Remember that</p>
+            \[\arcsin x+\arccos x=\frac{\pi}{2}\]
+            <p>so the two integrals differ by \(\frac{\pi}{2}\). That is, the "c" is different in each case.</p>
+        </div>
+    </div>
+<div class="page" id="page-17">
+        <div class="exercise">
+            <p>Use the substitution <span class="math inline">\(x = \tan u\)</span> for the integral:</p>
+            <p><span class="math display">\[\begin{aligned}
+            \int\frac{1}{1 + x^{2}}\;\mathrm{d}x
+            \end{aligned}\]</span></p>
+        </div>
+    </div>
+<div class="page" id="page-18">
+        <div class="exercise">
+            <p>Use the substitution <span class="math inline">\(x = \tan u\)</span> for the integral:</p>
+            <p><span class="math display">\[\begin{aligned}
+            \int\frac{1}{1 + x^{2}}\;\mathrm{d}x
+            \end{aligned}\]</span></p>
+        </div>
+        <div class="answer">
+            <p><span class="math display">\[\begin{aligned}
+            x = \tan u \Rightarrow \frac{\mathrm{d}x}{\mathrm{d}u} &amp; = \sec^{2}u \\
+            &amp; = 1 + \tan^{2}u \\
+            &amp; = 1 + x^{2}
+            \end{aligned}\]</span></p>
+            <p><span class="math display">\[\begin{aligned}
+            \int\frac{1}{1 + x^{2}}\;\mathrm{d}x &amp; = \int\frac{1}{1 + x^{2}}\;\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u \\
+            &amp; = \int\frac{1}{1 + x^{2}}\left( 1 + x^{2} \right)\;\mathrm{d}u \\
+            &amp; = \int \mathrm{d}u \\
+            &amp; = u + c \\
+            &amp; = \arctan x + c
+            \end{aligned}\]</span></p>
+        </div>
+        <div class="intro">
+            <p>Here, although the substitution is actually \(u=\arctan x\), there is no difficulty with the signs as there was before.</p>
+        </div>
+
+
+    </div>
+<div class="page" id="page-19">
+            <p style="text-align: center;"><strong>differentiating \(\boldsymbol{\arcsin x}\) from the definition</strong></p>
+            <div class="exercise">
+                <p>(a) &nbsp; Use the identity above to find \(\sin\left(\arcsin(x + h) - \arcsin x\right)\) in terms of \(x\) and \(h\), without \(\sin\) or \(\cos\).</p>
+                <p>(b) &nbsp; Put \(\theta(h) = \sin\left(\arcsin(x + h) - \arcsin x\right)\). Find</p>
+                \[\lim_{h \to 0}\frac{\theta(h)}{h}\]
+                <p>(c) &nbsp; Find</p>
+                \[\lim_{h \to 0}\frac{\arcsin\,\theta(h)}{\theta(h)}\]
+                <p>(d) &nbsp; Hence find</p>
+                \[\lim_{h \to 0}\frac{\arcsin\,\theta(h)}{h}\]
+                <p>(e) &nbsp; Now let \(f(x) = \arcsin x\). Explain why \(\arcsin(x+h) - \arcsin x = \arcsin\,\theta(h)\), and hence find \(f'(x)\) and \(\dfrac{\mathrm{d}}{\mathrm{d}x}\arcsin x\).</p>
+            </div>
+    </div>
+<div class="page" id="page-20">
+        <div class="exercise">
+            <p>(a) Find \(\theta(h)\). &nbsp;&nbsp; (b) Find \(\displaystyle\lim_{h\to 0}\dfrac{\theta(h)}{h}\).</p>
+        </div>
+        <div class="answer">
+            <p>(a) &nbsp; Applying the subtraction formula with \(A = \arcsin(x+h)\) and \(B = \arcsin x\):</p>
+            \[\theta(h) = (x+h)\sqrt{1-x^{2}} - x\sqrt{1-(x+h)^{2}}\]
+            <p>(b)</p>
+            \[\begin{aligned}
+            \frac{(x+h)\sqrt{1-x^{2}} - x\sqrt{1-(x+h)^{2}}}{h}
+                &= \sqrt{1-x^{2}} + x\cdot\frac{\sqrt{1-x^{2}} - \sqrt{1-(x+h)^{2}}}{h} \\[6pt]
+                &= \sqrt{1-x^{2}} + x\cdot\frac{1-x^{2}-\bigl(1-(x+h)^{2}\bigr)}{h\bigl(\sqrt{1-x^{2}}+\sqrt{1-(x+h)^{2}}\bigr)} \\[6pt]
+                &= \sqrt{1-x^{2}} + x\cdot\frac{2xh+h^{2}}{h\bigl(\sqrt{1-x^{2}}+\sqrt{1-(x+h)^{2}}\bigr)} \\[6pt]
+                &\to \sqrt{1-x^{2}} + x\cdot\frac{2x}{2\sqrt{1-x^{2}}} \quad\text{as }h\to 0 \\[6pt]
+                &= \sqrt{1-x^{2}} + \frac{x^{2}}{\sqrt{1-x^{2}}} = \frac{1}{\sqrt{1-x^{2}}}
+            \end{aligned}\]
+        </div>
+    </div>
+<div class="page" id="page-21">
+        <div class="exercise">
+            <p>(c) Find \(\displaystyle\lim_{h\to 0}\dfrac{\arcsin\,\theta(h)}{\theta(h)}\). &nbsp;&nbsp;
+               (d) Hence find \(\displaystyle\lim_{h\to 0}\dfrac{\arcsin\,\theta(h)}{h}\). &nbsp;&nbsp;
+               (e) Find \(f'(x)\) where \(f(x) = \arcsin x\).</p>
+        </div>
+        <div class="answer">
+            <p>(c) &nbsp; As \(h\to 0\), \(\theta(h)\to 0\). Since \(\displaystyle\lim_{u\to 0}\frac{\arcsin u}{u} = 1\):</p>
+            \[\lim_{h\to 0}\frac{\arcsin\,\theta(h)}{\theta(h)} = 1\]
+            <p>(d)</p>
+            \[\lim_{h\to 0}\frac{\arcsin\,\theta(h)}{h}
+                = \lim_{h\to 0}\frac{\theta(h)}{h}\times\lim_{h\to 0}\frac{\arcsin\,\theta(h)}{\theta(h)}
+                = \frac{1}{\sqrt{1-x^{2}}}\times 1
+                = \frac{1}{\sqrt{1-x^{2}}}\]
+            <p>(e) &nbsp; Since \(\theta(h) = \sin\left(\arcsin(x+h)-\arcsin x\right)\), applying \(\arcsin\) to both sides gives \(\arcsin\,\theta(h) = \arcsin(x+h) - \arcsin x\) (the principal values agree for small \(h\)). Therefore:</p>
+            \[\begin{aligned}
+            f'(x) &= \lim_{h\to 0}\frac{\arcsin(x+h)-\arcsin x}{h}
+                   = \lim_{h\to 0}\frac{\arcsin\,\theta(h)}{h}
+                   = \frac{1}{\sqrt{1-x^{2}}}
+            \end{aligned}\]
+            \[\boxed{\dfrac{\mathrm{d}}{\mathrm{d}x}\arcsin x = \dfrac{1}{\sqrt{1-x^{2}}}}\]
+        </div>
+    </div>
+    <!-- Page 22: Congratulations -->
+    <div class="page" id="page-22">
+        <div class="welcome-page">
+            <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+            <h1>Well done on completing Part 3!</h1>
+            <div class="welcome-content">
+                <p>You have derived the derivatives of arcsin, arccos, and arctan, used them to evaluate
+                integrals, and differentiated arcsin directly from the definition of the derivative.</p>
+                <p>Continue to Part 4 for integrals of inverse circular functions.</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; display: flex; justify-content: space-between;"><a href="newinverse2.html" style="color: #2d6a4f; text-decoration: underline;">← Part 2</a><a href="newinverse4.html" style="color: #2d6a4f; text-decoration: underline;">Part 4 →</a></div>
+    </div>
+
+</div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+        <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+        <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="22" onchange="goToPage(this.value)"> of 22
+        </span>
+        <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+        <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+    </div>
+
+    <script src="navigation.js"></script>
+    <script>
+    (function() {
+        for (var p = 2; p <= 21; p++) {
+            answerAnimatedPages.add(p);
+            introChainPages.set(p, null);
+        }
+    }());
+    </script>
+    <script>
+    // Disable keyboard shortcuts for saving/printing
+    document.addEventListener('keydown', function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p')) {
+    e.preventDefault();
+    return false;
+    }
+    });
+</script>
+
+</body>
+</html>
