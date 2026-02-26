@@ -12,9 +12,10 @@ let typewriterQueue = [];
 let page2Originals = null;
 
 // Answer div animation — add page numbers here to opt in
-const answerAnimatedPages = new Set([3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 29]);
+const answerAnimatedPages = new Set([3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29]);
 const answerOriginals = {};
 let answerAnimationId = 0;
+let pendingRevealFn = null;
 
 // Intro div animation — add page numbers here to opt in
 const introAnimatedPages = new Set([]);
@@ -42,6 +43,7 @@ function stopTypewriter() {
     typewriterWaitCallback = null;
     hideTypewriterPrompt();
     answerAnimationId++; // cancel any pending answer animation
+    pendingRevealFn = null;
 }
 
 function showTypewriterPrompt(el, inside) {
@@ -134,7 +136,7 @@ function startTypewriterPage2(mjPromise) {
     });
 }
 
-function startAnswerAnimation(pageNum, mjPromise) {
+function startAnswerAnimation(pageNum, mjPromise, deferred) {
     const page = document.getElementById('page-' + pageNum);
     const answers = page ? Array.from(page.querySelectorAll('.answer, .key-concept')) : [];
     if (answers.length === 0) return;
@@ -223,8 +225,18 @@ function startAnswerAnimation(pageNum, mjPromise) {
             }
         }
 
-        // Auto-start: always animate immediately without waiting for user click
-        animateFrom(0);
+        if (deferred) {
+            // Hide the (now-blank) answer boxes until forward navigation is pressed
+            answers.forEach(a => { a.style.display = 'none'; });
+            pendingRevealFn = () => {
+                if (myId !== answerAnimationId) return;
+                answers.forEach(a => { a.style.display = ''; });
+                animateFrom(0);
+            };
+        } else {
+            // Auto-start: always animate immediately without waiting for user click
+            animateFrom(0);
+        }
     });
 }
 
@@ -509,6 +521,12 @@ function startIntroAnimation(pageNum, mjPromise) {
     const afterIntroEls = Array.from(page.querySelectorAll('.after-intro'));
     afterIntroEls.forEach(el => { el.style.display = 'none'; });
 
+    // If the page has answer divs, hide them while the intro plays (using visibility so
+    // MathJax can still typeset them). After the intro+afterIntro sequence they are handed
+    // off to startAnswerAnimation for deferred reveal on the next forward keypress.
+    const answerEls = Array.from(page.querySelectorAll('.answer, .key-concept'));
+    answerEls.forEach(a => { a.style.visibility = 'hidden'; });
+
     // Save the original (pre-MathJax) HTML on first visit; restore it on subsequent visits
     if (!introOriginals[pageNum]) {
         introOriginals[pageNum] = intro.innerHTML;
@@ -524,10 +542,16 @@ function startIntroAnimation(pageNum, mjPromise) {
     (mjPromise || Promise.resolve()).then(() => {
         if (myId !== answerAnimationId) return;
         intro.style.visibility = '';
-        const onComplete = afterIntroEls.length > 0 ? () => {
+        const onComplete = () => {
             if (myId !== answerAnimationId) return;
             afterIntroEls.forEach(el => { el.style.display = ''; });
-        } : null;
+            if (answerEls.length > 0) {
+                // Un-hide answers so startAnswerAnimation can capture their MathJax-rendered
+                // content, then re-hide them and set pendingRevealFn for the next forward key.
+                answerEls.forEach(a => { a.style.visibility = ''; });
+                startAnswerAnimation(pageNum, null, true);
+            }
+        };
         runAnswerAnimation(intro, myId, onComplete);
     });
 }
@@ -600,7 +624,7 @@ function showPage(pageNum) {
         } else if (introAnimatedPages.has(pageNum)) {
             startIntroAnimation(pageNum, mjPromise);
         } else if (answerAnimatedPages.has(pageNum)) {
-            startAnswerAnimation(pageNum, mjPromise);
+            startAnswerAnimation(pageNum, mjPromise, true);
         }
 
         window.scrollTo(0, 0);
@@ -666,6 +690,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function changePage(delta) {
+    if (delta > 0 && pendingRevealFn) {
+        const fn = pendingRevealFn;
+        pendingRevealFn = null;
+        fn();
+        return;
+    }
     const newPage = currentPage + delta;
     if (newPage >= 1 && newPage <= totalPages) {
         showPage(newPage);
