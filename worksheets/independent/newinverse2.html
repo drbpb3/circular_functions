@@ -82,7 +82,7 @@
         <p>You already know that \(\cos(-x)=\cos x\) and that \(\sin(-x)=-\sin x\).</p>
         <p>Let's see what the relationship is between  \(\arccos(-x)\) and \(\arccos x\), and between \(\arcsin(-x)\) and \(\arcsin x\).</p>
     </div>
-    <div class="exercise after-intro">
+    <div class="exercise">
         <p>Test out some standard values of arccos and arcsin with positive and negative arguments to find a relationship between  \(\arccos(-x)\) and \(\arccos x\), and between \(\arcsin(-x)\) and \(\arcsin x\).</p>
     </div>
     <div class="answer">
@@ -95,7 +95,7 @@
     <div class="intro">
         <p>Firstly, I want to show you a generalization of the fact that angles in a triangle add up to \(180^\circ\) using arcsin and arccos functions.</p>
     </div>
-        <div class="exercise after-intro">
+        <div class="exercise">
             <p>What are</p>
             <p><span class="math display">\[\arcsin x + \arccos x\]</span></p>
             <p>when</p>
@@ -147,7 +147,7 @@
         <div class="intro">
             <p>When \(x\) is positive, we can easily see this from the right-angled triangle. The triangle doesn't really help so much for negative values of \(x\), but we can use the identities from the start of this journey or we can look at graphs for this.</p>
         </div>
-        <div class="exercise after-intro">
+        <div class="exercise">
             <p>Use the identities</p>
             \[\arccos x+\arccos(-x)=\pi\]
             \[\arcsin x+\arcsin(-x)=0\]
@@ -552,26 +552,6 @@
     </div>
 
     <script src="navigation.js"></script>
-    <script>
-    (function() {
-        for (var p = 4; p <= 24; p++) {
-            answerAnimatedPages.add(p);
-            introChainPages.set(p, null);
-        }
-        introAnimatedPages.add(3);
-        introAnimatedPages.add(4);
-        introAnimatedPages.add(8);
-    }());
-    </script>
-    <script>
-    // Disable keyboard shortcuts for saving/printing
-    document.addEventListener('keydown', function(e) {
-    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p')) {
-    e.preventDefault();
-    return false;
-    }
-    });
-</script>
 
 </body>
 </html>
