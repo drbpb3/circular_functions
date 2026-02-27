@@ -3,8 +3,18 @@
 
 let currentPage = 1;
 let totalPages = 21; // Will be set dynamically for each worksheet
+let currentAudio = null;
+let audioSessionPrimed = false;
+let audioEnabled = false;
 
 function showPage(pageNum) {
+    // Stop audio from the previous page
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+        currentAudio = null;
+    }
+
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
 
     const page = document.getElementById('page-' + pageNum);
@@ -59,6 +69,28 @@ function showPage(pageNum) {
                 }
             }
         });
+
+        // Play audio on this page if present.
+        // Safari/Chrome: audio.play() works from any user gesture in the call stack.
+        // Firefox: only whitelists spacebar as a media trigger on first interaction.
+        // Fallback: if play() is blocked, intercept the next spacebar in capture phase
+        // to unlock audio without advancing the page; subsequent gestures then work freely.
+        const audio = page.querySelector('audio');
+        if (audio && audioEnabled) {
+            currentAudio = audio;
+            audio.play().catch(() => {
+                let unlockHandler = null;
+                unlockHandler = function(e) {
+                    if (e.key === ' ') {
+                        e.stopImmediatePropagation();
+                        e.preventDefault();
+                        audio.play().catch(() => {});
+                        document.removeEventListener('keydown', unlockHandler, true);
+                    }
+                };
+                document.addEventListener('keydown', unlockHandler, true);
+            });
+        }
 
         window.scrollTo(0, 0);
         updateScrollIndicator();
@@ -117,7 +149,58 @@ document.addEventListener('DOMContentLoaded', function() {
     showPage(1);
 });
 
+function toggleAudio(btn) {
+    audioEnabled = !audioEnabled;
+    if (audioEnabled) {
+        // Prime Firefox's autoplay gate on this click gesture if not already done
+        if (!audioSessionPrimed) {
+            const firstAudio = document.querySelector('audio');
+            if (firstAudio) {
+                const primer = new Audio(firstAudio.src);
+                primer.volume = 0;
+                primer.play().then(() => { primer.pause(); audioSessionPrimed = true; }).catch(() => {});
+            }
+        }
+        // Play audio on the current page if it has one
+        const page = document.getElementById('page-' + currentPage);
+        if (page) {
+            const audio = page.querySelector('audio');
+            if (audio) {
+                currentAudio = audio;
+                audio.currentTime = 0;
+                audio.play().catch(() => {});
+            }
+        }
+        if (btn) {
+            btn.textContent = '🔊 Audio on';
+            btn.classList.add('audio-on');
+        }
+    } else {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+            currentAudio = null;
+        }
+        if (btn) {
+            btn.textContent = '🔇 Audio off';
+            btn.classList.remove('audio-on');
+        }
+    }
+}
+
 function changePage(delta) {
+    // On first forward navigation away from page 1, prime Firefox's audio autoplay gate.
+    // A throwaway Audio object (not in the DOM) primes the session without touching the
+    // real audio elements, so there is no volume/timing conflict.
+    if (delta > 0 && currentPage === 1 && !audioSessionPrimed) {
+        audioSessionPrimed = true;
+        const firstAudio = document.querySelector('audio');
+        if (firstAudio) {
+            const primer = new Audio(firstAudio.src);
+            primer.volume = 0;
+            primer.play().then(() => primer.pause()).catch(() => {});
+        }
+    }
     const newPage = currentPage + delta;
     if (newPage >= 1 && newPage <= totalPages) {
         showPage(newPage);

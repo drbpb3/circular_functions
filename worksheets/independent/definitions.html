@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Defining the Circular Functions - Teacher Version</title>
+    <title>Defining the Circular Functions</title>
     <script>
     window.MathJax = {
         tex: {
@@ -63,6 +63,8 @@
                     </ul>
                 </div>
 
+                <button id="audio-enable-btn" onclick="toggleAudio(this)">🔇 Enable audio</button>
+
                 <p class="welcome-tip">Take your time with each page. Work on the questions before moving to the answers!</p>
 
                 <p class="welcome-author">
@@ -101,7 +103,7 @@
         <div class="intro">
             <p>First, let's think about the name for this topic. It's 
                 usually called "trigonometry". "Trigonon" is Greek for a 
-                three-sided shape while "metron" means measure, so "trigonometry" means "measurement of triangles". Here, however, we are moving on from triangles to something far more general. In a few minutes, you will see why the name "circular functions" makes far more sense. 
+                three-sided shape while "metron" means measure, so "trigonometry" means "measurement of triangles". Here, however, we are moving on from triangles to something far more general. In a few minutes, you will see why the name "circular functions" makes far more sense. We'll start with some familiar right-angled triangles and gradually see how to extend the definitions of sin cos and tan using a circle radius \(1\).
                 </p>
         </div>
 
@@ -129,6 +131,7 @@
             </ul>
             <p>and these are all steps they can take without the help of their teacher.</p>
         </div>
+        <audio src="definitions_audio/audio1.mp3"></audio>
     </div>
 
     <!-- Page 4: Answer for 60° and 30° -->
@@ -168,6 +171,7 @@
                 </tr>
             </table>
         </div>
+        <audio src="definitions_audio/audio2.mp3"></audio>
     </div>
 
     <!-- Page 5: 45° -->
@@ -192,6 +196,7 @@
             </ul>
             <p>These are all things that they can figure out for themselves, or at least by working with others: there is really no need for you to help at all!</p>
         </div>
+        <audio src="definitions_audio/audio3.mp3"></audio>
     </div>
 
     <!-- Page 6: Answer for 45° -->
@@ -214,26 +219,29 @@
                 </tr>
             </table>
         </div>
+        <audio src="definitions_audio/audio4.mp3"></audio>
     </div>
 
     <!-- Page 7: Unit circle introduction -->
     <div class="page" id="page-7">
         <div class="intro">
-            <p>Now we can start thinking about new definitions of sin, cos, and tan. Our new definition of \(\cos 60^\circ\) is the \(x\) coordinate of the pink point; our new definition of \(\sin 60^\circ\) is the \(y\) coordinate of the pink point;  and our new definition of \(\tan 60^\circ\) is the gradient of the pink radius.</p>
+            <p>Now let's see how right-angled triangles relate to the coordinates of points on a circle radius \(1\) with centre at the origin.</p>
+        </div>
+        <div class="exercise after-intro">
+            <p>In this diagram, what are the coordinates of the pink point and the gradient of the pink radius?</p>
         </div>
         <figure>
             <img src="definitions_images/image3.png" alt="Unit circle with 60° angle marked and pink point on circle" style="max-width:64%">
         </figure>
 
-        <div class="exercise after-intro">
-            <p>What are the coordinates of the pink point and the gradient of the pink radius?</p>
-        </div>
+        
 
         <div class="teacher-note">
             <p>Putting what they have just done into the context of a unit circle is the first step towards generalising the trigonometric ratios in right-angled triangles to circular functions of any real number (whether or not that number corresponds to an angle). It might take a while before your students figure out that they are dealing with exactly the same problem as before, but they will, if given the time, the space, the encouragement, and the confidence to do so.</p>
 
             <p>Some might have the coordinates and the gradient as \((\cos 60°, \sin 60°)\) and \(\tan 60°\), others as \(\left(\dfrac{1}{2}, \dfrac{\sqrt{3}}{2}\right)\) and \(\sqrt{3}\), but in discussion, it is really important to be sure that all your students understand both ways of writing the coordinates and gradient as this is the clue to extending the domains of the circular (trigonometric) functions.</p>
         </div>
+        <audio src="definitions_audio/audio5.mp3"></audio>
     </div>
 
     <!-- Page 8: 120° on unit circle -->
@@ -242,30 +250,28 @@
         <div class="exercise">
             <p>What are the coordinates of the pink point and the gradient of the pink radius?</p>
         </div>
-        <div style="display: flex; justify-content: center; align-items: stretch; gap: 40px;">
-            <figure style="margin: 0; flex: 0 0 48%; background-color: white; padding: 0; display: flex; flex-direction: column; justify-content: flex-end; border-radius: 12px; overflow: hidden; box-shadow: none; border: none;">
-                <img src="definitions_images/image20.png" alt="Unit circle with 60° angle marked and pink point on circle" style="width: 100%; height: auto; display: block; max-width: none; border-radius: 0; box-shadow: none; border: none;">
-            </figure>
-            <figure style="margin: 0; flex: 0 0 48%; background-color: white; padding: 0; border-radius: 12px; overflow: hidden;">
-                <img src="definitions_images/image4.png" alt="Right-angled triangle with 45° angle and base 1" style="width: 100%; height: auto; display: block; max-width: none; border-radius: 0;">
-            </figure>
-        </div>
         
+            <figure>
+                <img src="definitions_images/image20.png" alt="Unit circle with 60° angle marked and pink point on circle" style="max-width:64%">
+            </figure>
+        <div class="answer">
+            <p>We know the base and the height of the triangle are cos and sin of \(60^\circ\) and these give us the coordinates of the pink point right away. The gradient is the height over the width, which is also \(\tan 60^\circ\).</p>
+        </div>
+    </div>
+    <!-- Page 9: 120° green point question -->
+    <div class="page" id="page-9">
         <div class="exercise">
             <p>What are the coordinates of the green point and the gradient of the green radius?</p>
             <p>Suggest values for sin, cos, and tan of \(120°\).</p>
         </div>
-
+            <figure>
+                <img src="definitions_images/image4.png" alt="Right-angled triangle with 45° angle and base 1" style="max-width:64%">
+            </figure>
+    </div>
         
 
-        <div class="teacher-note">
-            <p>Again, resist the temptation to help by pointing out the symmetry and what this might mean for the coordinates and gradient. They can do this without you, and will benefit far more from doing so.</p>
-            <p>This is where they begin to see the relationship between coordinates and gradients on the one hand, and the circular functions sin, cos, and tan on the other.</p>
-        </div>
-    </div>
-
-    <!-- Page 9: Answer for 120° -->
-    <div class="page" id="page-9">
+    <!-- Page 10: Answer for 120° -->
+    <div class="page" id="page-10">
         <div class="teacher-note">
             <p>The key word here is symmetry. It is the symmetry of the diagram that allows us to see right away that the coordinates of the green point are \(\left(-\dfrac{1}{2}, \dfrac{\sqrt{3}}{2}\right)\) and that the gradient is \(-\sqrt{3}\).</p>
 
@@ -279,7 +285,7 @@
         </div>
         <div style="display: flex;
                     justify-content: center;">
-        <figure style="max-width:74%">
+        <figure style="max-width:64%">
             <img src="definitions_images/image4a.png" alt="Right-angled triangle with 45° angle and base 1">
         </figure>
         </div>
@@ -298,10 +304,10 @@
         </div>
     </div>
 
-    <!-- Page 10: 240° and 300° -->
-    <div class="page" id="page-10">
+    <!-- Page 11: 240° and 300° -->
+    <div class="page" id="page-11">
         <div class="exercise">
-            <p>Suggest values for sin, cos, and tan of \(240°\) and \(300°\).</p>
+            <p>Find the coordinates of the orange and blue points and the gradients of the two radiuses, and use these to suggest values for sin, cos, and tan of \(240°\) and \(300°\).</p>
         </div>
 
         <figure>
@@ -310,7 +316,7 @@
     </div>
 
     <!-- Page 11: Answer for 240° and 300° -->
-    <div class="page" id="page-11">
+    <div class="page" id="page-12">
         <div class="exercise">
             <p>Suggest values for sin, cos, and tan of \(240°\) and \(300°\).</p>
         </div>
@@ -336,8 +342,11 @@
         </div>
     </div>
 
-    <!-- Page 12: Angles > 360° -->
-    <div class="page" id="page-12">
+    <!-- Page 13: Angles > 360° -->
+    <div class="page" id="page-13">
+        <div class="intro">
+            <p>We can extend our definitions of sin cos and tan to angles greater than \(360^\circ\).</p>
+        </div>
         <div class="exercise">
             <p>What are sin, cos, tan of \(420°\), \(780°\), \(1140°\), \(1500°\)?</p>
             <p>This video should help.</p>
@@ -361,7 +370,7 @@
 
 
     <!-- Page 13: New page -->
-    <div class="page" id="page-13">
+    <div class="page" id="page-14">
         <div class="exercise">
             <p>What are sin, cos, tan of \(420°\), \(780°\), \(1140°\), \(1500°\)?</p>
         </div>
@@ -375,7 +384,10 @@
     </div>
 
     <!-- Page 14: Negative angles -60° -->
-    <div class="page" id="page-14">
+    <div class="page" id="page-15">
+        <div class="intro">
+            <p>We can even extend our definitions of sin cos and tan to "negative" angles.</p>
+        </div>
         <div class="exercise">
             <p>Suggest values for sin, cos, tan of \(-60°\).</p>
         </div>
@@ -386,7 +398,7 @@
     </div>
 
     <!-- Page 15: Answer for -60° -->
-    <div class="page" id="page-15">
+    <div class="page" id="page-16">
         <div class="exercise">
             <p>Suggest values for sin, cos, tan of \(-60°\).</p>
         </div>
@@ -395,12 +407,14 @@
         <figure>
             <img style="max-width: 50%" src="definitions_images/image17.png" alt="Unit circle showing -60° angle measured clockwise">
         </figure>
-        <div class="answer">
+        <div class="key-concept">
             <p>Angles are measured from the positive \(x\) axis in the anticlockwise direction,
                 so it makes sense to count angles measured in the clockwise direction as negative.
                 From the geometrical point of view, the angle size is still positive,
                 but from the functional point of view, the angle counts as a negative.
             </p>
+        </div>
+            <div class="answer">
                 <table class="math-table">
                     <tr>
                         <td>\(\cos(-60°) = \dfrac{1}{2}\)</td>
@@ -425,7 +439,7 @@
     </div>
 
     <!-- Page 16: Answer for negative angles -->
-    <div class="page" id="page-16">
+    <div class="page" id="page-17">
         <div class="exercise">
             <p>Suggest values for sin, cos, tan of \(-120°\), \(-240°\), \(-300°\).</p>
         </div>
@@ -461,12 +475,12 @@
     </div>
 
     <!-- Page 17: Large negative angles -->
-    <div class="page" id="page-17">
+    <div class="page" id="page-18">
         <div class="exercise">
             <p>Suggest values for sin, cos, tan of \(-660°\), \(-1020°\), \(-1380°\), \(-1740°\).</p>
         </div>
         <figure>
-            <video loop muted playsinline src="definitions_images/circular3.mp4"></video>
+            <video autoplay loop muted playsinline src="definitions_images/circular3.mp4"></video>
         </figure>
         <div class="answer">
             <p>Each of these "angles" has the same sin, cos, and tan as \(-300°\).</p>
@@ -474,7 +488,7 @@
     </div>
 
     <!-- Page 18: Definition diagrams -->
-    <div class="page" id="page-18">
+    <div class="page" id="page-19">
         <div class="key-concept">
             <p>These diagrams essentially form definitions of sin, cos, and tan of any number (angle).</p>
             <p>There are other ways to define these functions using, for example, graphs or power series, but this one makes intuitive sense and forms a reliable foundation for what is to come.</p>
@@ -491,7 +505,7 @@
     </div>
 
     <!-- Page 19: Complete the diagram exercise -->
-    <div class="page" id="page-19">
+    <div class="page" id="page-20">
         <div class="exercise">
             <p>Complete this diagram.</p>
         </div>
@@ -507,7 +521,7 @@
     </div>
 
     <!-- Page 20: Complete diagram answer -->
-    <div class="page" id="page-20">
+    <div class="page" id="page-21">
         <figure>
             <img style="max-width: 80%"; src="definitions_images/image19.png" alt="Unit circle showing negative angles -60°, -120°, -240°, -300°">
         </figure>
@@ -519,7 +533,7 @@
     </div>
 
     <!-- Page 21: Congratulations Page -->
-    <div class="page" id="page-21">
+    <div class="page" id="page-22">
         <div class="welcome-page">
             <h1>Congratulations on completing the first stage!</h1>
             <div class="welcome-content">
@@ -553,7 +567,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="21" onchange="goToPage(this.value)"> of 21
+        Page <input type="number" id="pageInput" value="1" min="1" max="22" onchange="goToPage(this.value)"> of 22
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
