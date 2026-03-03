@@ -46,6 +46,12 @@
         .working-block mjx-container[display] {
             text-align: left !important;
         }
+        .div-hidden { display: none; }
+        @keyframes divReveal {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .div-revealed { animation: divReveal 0.35s ease; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -60,8 +66,7 @@
         <div class="welcome-page">
             <h1>Welcome to integration with circular functions</h1>
             <div class="welcome-content">
-                <p>This stage explores integration techniques involving circular functions. You'll discover how to find integrals of sine, cosine, tangent, and their powers, using substitution, identities, and pattern recognition.</p>
-
+                <p>This stage explores areas on graphs of circular functions. It will draw on your understanding of integration as the reverse of differentiation, and of integration techniques like substitution.</p>
                 <div class="navigation-box">
                     <h2>How to Navigate:</h2>
                     <ul>
@@ -756,15 +761,13 @@
         <div class="welcome-page">
             <h1>Congratulations on completing your circular functions journey!</h1>
             <div class="welcome-content">
-                <p>You've now mastered integration with circular functions, completing the entire series from definitions through differentiation and equations to integration. You've developed powerful techniques including substitution, using identities, and recognizing patterns in complex integrals.</p>
+                <p>At this point, your understanding of circular functions, their graphs, differentials, and integrals is strong. With this foundation, you are extremely well positioned to apply your skills to the solution of problems that you encounter in both mathematics and physics.</p>
 
                 <div class="navigation-box">
                     <h2>What's Next:</h2>
                     <ul>
                         <li>The next stage focuses on <strong>inverse circular functions</strong></li>
-                        <li>You'll explore \(\arcsin x\), \(\cos^{-1} x\), and \(\tan^{-1} x\)</li>
-                        <li>Understanding how to reverse the circular functions opens up new problem-solving techniques</li>
-                        <li>Remember that mastery comes from regular practise and application</li>
+                        <li>You already know how to find angles in right-angled triangles, and this stage explores how to extend this understanding to the far more general circular functions.</li>
                     </ul>
                 </div>
 
@@ -792,6 +795,63 @@
 </div>
 
 <script src="navigation.js"></script>
+<script>
+(function () {
+    'use strict';
+    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept';
+    let revealQueue = [];
+    let goingBackward = false;
+
+    function initPageReveal(page, revealAll) {
+        revealQueue = [];
+        if (page.hasAttribute('data-no-reveal')) { return; }
+        const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
+            .filter(div => !div.classList.contains('reveal-instant'));
+        animatable.forEach(div => div.classList.add('div-hidden'));
+        if (revealAll) {
+            animatable.forEach(div => div.classList.remove('div-hidden'));
+            return;
+        }
+        if (animatable.length > 0) {
+            animatable[0].classList.remove('div-hidden');
+            revealQueue = animatable.slice(1);
+        }
+    }
+
+    const _origShowPage   = window.showPage;
+    const _origChangePage = window.changePage;
+
+    function revealNextOrAdvance() {
+        if (revealQueue.length > 0) {
+            const next = revealQueue.shift();
+            next.classList.remove('div-hidden');
+            next.classList.add('div-revealed');
+            setTimeout(() => next.classList.remove('div-revealed'), 400);
+            next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+            _origChangePage(1);
+        }
+    }
+
+    window.showPage = function (pageNum, revealAll) {
+        _origShowPage(pageNum);
+        const page = document.getElementById('page-' + pageNum);
+        if (page) {
+            initPageReveal(page, revealAll || goingBackward);
+        }
+        goingBackward = false;
+    };
+
+    window.changePage = function (delta) {
+        if (delta > 0) {
+            revealNextOrAdvance();
+        } else {
+            goingBackward = true;
+            _origChangePage(delta);
+        }
+    };
+}());
+</script>
 
 </body>
 </html>

@@ -37,6 +37,14 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+        .div-hidden { display: none; }
+        @keyframes divReveal {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .div-revealed { animation: divReveal 0.35s ease; }
+    </style>
 </head>
 <body oncontextmenu="return false;">
 
@@ -143,7 +151,7 @@
             <p>So long as <span class="math inline">\(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\)</span>, there is only one value of <span class="math inline">\(\theta\)</span> that makes <span class="math inline">\(x = \cos\theta\)</span>, <span class="math inline">\(\;y = \sin\theta\)</span>, and <span class="math inline">\(\;\displaystyle\frac{y}{x} = \tan\theta\)</span>. So we know exactly what angle we mean by <span class="math inline">\(\arccos x\)</span>, <span class="math inline">\(\arcsin y\)</span>, or <span class="math inline">\(\arctan\displaystyle\frac{y}{x}\)</span>.</p>
         </div>
     </div>
-<div class="page" id="page-4">
+<div class="page" id="page-4" data-no-reveal>
         <div class="exercise">
             <p>Use this diagram to find the values below (no calculator, of course):</p>
     </div>
@@ -703,13 +711,60 @@
 
     <script src="navigation.js"></script>
     <script>
-    (function() {
-        var noAnim = new Set([4]);
-        for (var p = 2; p <= 20; p++) {
-            if (!noAnim.has(p)) { answerAnimatedPages.add(p); introChainPages.set(p, null); }
+    (function () {
+        'use strict';
+        const ANIMATABLE = 'div.exercise, div.intro, div.key-concept';
+        let revealQueue = [];
+        let goingBackward = false;
+
+        function initPageReveal(page, revealAll) {
+            revealQueue = [];
+            if (page.hasAttribute('data-no-reveal')) { return; }
+            const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
+                .filter(div => !div.classList.contains('reveal-instant'));
+            animatable.forEach(div => div.classList.add('div-hidden'));
+            if (revealAll) {
+                animatable.forEach(div => div.classList.remove('div-hidden'));
+                return;
+            }
+            if (animatable.length > 0) {
+                animatable[0].classList.remove('div-hidden');
+                revealQueue = animatable.slice(1);
+            }
         }
-        // Explicitly remove excluded pages from the default set in navigation.js
-        noAnim.forEach(function(p) { answerAnimatedPages.delete(p); introChainPages.delete(p); });
+
+        const _origShowPage   = window.showPage;
+        const _origChangePage = window.changePage;
+
+        function revealNextOrAdvance() {
+            if (revealQueue.length > 0) {
+                const next = revealQueue.shift();
+                next.classList.remove('div-hidden');
+                next.classList.add('div-revealed');
+                setTimeout(() => next.classList.remove('div-revealed'), 400);
+                next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                _origChangePage(1);
+            }
+        }
+
+        window.showPage = function (pageNum, revealAll) {
+            _origShowPage(pageNum);
+            const page = document.getElementById('page-' + pageNum);
+            if (page) {
+                initPageReveal(page, revealAll || goingBackward);
+            }
+            goingBackward = false;
+        };
+
+        window.changePage = function (delta) {
+            if (delta > 0) {
+                revealNextOrAdvance();
+            } else {
+                goingBackward = true;
+                _origChangePage(delta);
+            }
+        };
     }());
     </script>
     <script>

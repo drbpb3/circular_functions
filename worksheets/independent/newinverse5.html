@@ -50,7 +50,7 @@
         <div class="welcome-page">
             <h1>Welcome to Inverse Circular Functions: Part 5</h1>
             <div class="welcome-content">
-                <p>This extension stage covers the graphs, domains, and ranges of arcsec, arccosec, and arccot, followed by compositions and identities involving these functions.</p>
+                <p>This extension stage covers the graphs, domains, ranges, and derivatives of arcsec, arccosec, and arccot, together with compositions and identities involving these functions.</p>
 
                 <div class="navigation-box">
                     <h2>How to Navigate:</h2>
@@ -64,7 +64,7 @@
                     </ul>
                 </div>
 
-                <p class="welcome-tip">These extension functions build directly on arcsin, arccos, and arctan — keep those graphs in mind!</p>
+                <p class="welcome-tip">These extension functions build directly on arcsin, arccos, and arctan — and the same implicit differentiation technique from Part 3 applies to their derivatives!</p>
 
                 <p class="welcome-author">
                     <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
@@ -75,10 +75,16 @@
         </div>
     </div>
 <div class="page" id="page-2">
-        <p style="text-align: center;"><strong>graphs of \(\boldsymbol{\operatorname{arcsec} x}\), \(\boldsymbol{\operatorname{arccosec} x}\), and \(\boldsymbol{\operatorname{arccot} x}\)</strong></p>
+    <div class="exercise">
+        Here is the graph \(y=\sec x\). Draw this graph, and, on the same set of axes, draw the graph \(x=\sec y\).
+    </div>
+    <figure>
+        <img src="inverse_images/image102.png" alt="Graph of sec x">
+    </figure>
+        <!--<p style="text-align: center;"><strong>graphs of \(\boldsymbol{\operatorname{arcsec} x}\), \(\boldsymbol{\operatorname{arccosec} x}\), and \(\boldsymbol{\operatorname{arccot} x}\)</strong></p>
         <p class="intro">The graph of \(y = \arccos x\) is shown as a reminder. Its domain is \([-1, 1]\) and its range is \([0, \pi]\).</p>
         <figure>
-            <img src="inverse_images/image36.png" alt="Graph of cos inverse x">
+            <img src="inverse_images/image42.png" alt="Graph of cos inverse x">
         </figure>
         <div class="exercise">
             <p>The function \(\sec x\) is the reciprocal of \(\cos x\). Using the domain and range of \(\arccos x\) as a guide:</p>
@@ -86,42 +92,31 @@
             <p>(b) &nbsp; What value must be excluded from this range? (Hint: when is \(\sec x\) undefined?)</p>
             <p>(c) &nbsp; What is the domain of \(\operatorname{arcsec} x\)?</p>
         </div>
+    </div>-->
     </div>
 <div class="page" id="page-3">
-        <div class="exercise">
-            <p>(a) &nbsp; What should the range of \(\operatorname{arcsec} x\) be?</p>
-            <p>(b) &nbsp; What value must be excluded from this range?</p>
-            <p>(c) &nbsp; What is the domain of \(\operatorname{arcsec} x\)?</p>
-        </div>
-        <div class="answer">
-            \[\begin{aligned}
-            &\text{(a) Range: } [0,\pi]\\[6pt]
-            &\text{(b) Exclude } \tfrac{\pi}{2}, \text{ since } \sec\tfrac{\pi}{2} \text{ is undefined (}\cos\tfrac{\pi}{2}=0\text{)}\\[6pt]
-            &\quad\Rightarrow \text{Range: } \left[0,\pi\right]\setminus\!\left\{\tfrac{\pi}{2}\right\}\\[6pt]
-            &\text{(c) Domain: } \{x : |x| \geq 1\} = (-\infty,-1]\cup[1,\infty)
-            \end{aligned}\]
-        </div>
-        <div class="exercise">
-            <p>The graph of \(y = \sec x\), with the relevant branch highlighted, is shown below. Add the graph of \(y = \operatorname{arcsec} x\) by reflecting in the line \(y = x\).</p>
-            <figure>
-                <img src="inverse_images/image37.png" alt="Graph of sec x for drawing sec inverse x">
-            </figure>
-        </div>
+    <figure style="max-width: 72%; margin: 30px auto;">
+        <video autoplay loop muted playsinline style="max-width: 100%;"><source src="inverse_images/video5.mp4" alt="Graph showing intersections with sec"></video>
+    </figure>
+-->
     </div>
 <div class="page" id="page-4">
         <figure>
-            <img src="inverse_images/image38.png" alt="Graphs of sec x and sec inverse x">
+            <img src="inverse_images/image103.png" alt="Graphs of sec x and sec inverse x">
         </figure>
     </div>
 <div class="page" id="page-5">
-        <div class="exercise">
+    <figure>
+        <img src="inverse_images/image104.png" alt="Graphs of sec x and sec inverse x">
+    </figure>
+        <!--<div class="exercise">
             <p>The graph of \(y = \operatorname{cosec}\, x\), with the relevant branch highlighted, is shown below.</p>
             <figure>
                 <img src="inverse_images/image39.png" alt="Graph of cosec x for drawing cosec inverse x">
             </figure>
             <p>(a) &nbsp; Write down the domain and range of \(\operatorname{arccosec} x\).</p>
             <p>(b) &nbsp; Add the graph of \(y = \operatorname{arccosec} x\) to the diagram.</p>
-        </div>
+        </div>-->
     </div>
 <div class="page" id="page-6">
         <div class="answer">
@@ -234,14 +229,92 @@
             <p>In each case the two graphs are reflections of one another in the horizontal line \(y = \tfrac{\pi}{4}\), so their sum is always \(\tfrac{\pi}{2}\). This mirrors the familiar identity \(\arcsin x + \arccos x = \tfrac{\pi}{2}\).</p>
         </div>
     </div>
-    <!-- Page 14: Congratulations -->
-    <div class="page" id="page-14">
+<div class="page" id="page-14">
+        <p style="text-align: center;"><strong>differentials of \(\boldsymbol{\operatorname{arcsec} x}\), \(\boldsymbol{\operatorname{arccosec} x}\), and \(\boldsymbol{\operatorname{arccot} x}\)</strong></p>
+        <div class="exercise">
+            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arcsec} x\) by two methods.</p>
+            <p><strong>Method 1 &#8212; implicit differentiation</strong></p>
+            <p>Let \(y = \operatorname{arcsec} x\), so \(x = \sec y\) with \(y \in [0,\pi]\setminus\{\tfrac{\pi}{2}\}\).</p>
+            <p>(a) &nbsp; Find \(\dfrac{\mathrm{d}x}{\mathrm{d}y}\) in terms of \(y\).</p>
+            <p>(b) &nbsp; Use the identity \(\sec^2 y - \tan^2 y = 1\) to express \(\tan^2 y\) in terms of \(x\). For \(y \in [0, \tfrac{\pi}{2})\), is \(\tan y\) positive or negative?</p>
+            <p>(c) &nbsp; Hence find \(\dfrac{\mathrm{d}y}{\mathrm{d}x}\) in terms of \(x\).</p>
+            <p><strong>Method 2 &#8212; using \(\boldsymbol{\operatorname{arcsec} x = \arccos\!\left(\dfrac{1}{x}\right)}\)</strong></p>
+            <p>(d) &nbsp; Differentiate using the chain rule to confirm your answer.</p>
+        </div>
+    </div>
+<div class="page" id="page-15">
+        <div class="exercise">
+            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arcsec} x\) by two methods.</p>
+        </div>
+        <div class="answer">
+            <p><strong>Method 1:</strong></p>
+            \[\begin{aligned}
+            &x = \sec y \;\Rightarrow\; \frac{\mathrm{d}x}{\mathrm{d}y} = \sec y\tan y\\[8pt]
+            &\tan^2 y = \sec^2 y - 1 = x^2-1\\[6pt]
+            &\text{For } y\in\bigl[0,\tfrac{\pi}{2}\bigr)\!:\; \tan y \geq 0,\;\text{so } \tan y = \sqrt{x^2-1}\\[8pt]
+            &\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{1}{\sec y\tan y} = \frac{1}{x\sqrt{x^2-1}}
+            \end{aligned}\]
+            <p><strong>Method 2:</strong></p>
+            \[\frac{\mathrm{d}}{\mathrm{d}x}\arccos\left(\frac{1}{x}\right)
+            = \frac{-1}{\sqrt{1-\tfrac{1}{x^2}}}\cdot\left(-\frac{1}{x^2}\right)
+            = \frac{1}{x^2\sqrt{\tfrac{x^2-1}{x^2}}}
+            = \frac{1}{x\sqrt{x^2-1}}\]
+            \[\boxed{\frac{\mathrm{d}}{\mathrm{d}x}\operatorname{arcsec} x = \frac{1}{x\sqrt{x^2-1}}, \quad x > 1}\]
+        </div>
+        <figure>
+            <img src="inverse_images/image53.png" alt="Graph illustrating the gradient of sec inverse x">
+        </figure>
+    </div>
+<div class="page" id="page-16">
+        <div class="exercise">
+            <p>Use a similar approach to find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccosec} x\).</p>
+            <p><strong>Method 1:</strong> Let \(y = \operatorname{arccosec} x\), so \(x = \operatorname{cosec}\, y\). Find \(\dfrac{\mathrm{d}x}{\mathrm{d}y}\) and use \(\cot^2 y = \operatorname{cosec}^2 y - 1\).</p>
+            <p><strong>Method 2:</strong> Use \(\operatorname{arccosec} x = \arcsin\left(\dfrac{1}{x}\right)\) and differentiate by the chain rule.</p>
+        </div>
+    </div>
+<div class="page" id="page-17">
+        <div class="exercise">
+            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccosec} x\).</p>
+        </div>
+        <div class="answer">
+            <p><strong>Method 1:</strong></p>
+            \[\begin{aligned}
+            &x = \operatorname{cosec}\, y \;\Rightarrow\; \frac{\mathrm{d}x}{\mathrm{d}y} = -\operatorname{cosec}\, y\cot y\\[8pt]
+            &\cot^2 y = \operatorname{cosec}^2 y - 1 = x^2-1\\[6pt]
+            &\text{For } y\in\bigl(0,\tfrac{\pi}{2}\bigr]\!:\; \cot y \geq 0,\;\text{so } \cot y = \sqrt{x^2-1}\\[8pt]
+            &\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{-1}{x\sqrt{x^2-1}}
+            \end{aligned}\]
+            \[\boxed{\frac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccosec} x = \frac{-1}{x\sqrt{x^2-1}}, \quad x > 1}\]
+        </div>
+        <div class="exercise">
+            <p>Now find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccot} x\) by two methods.</p>
+            <p><strong>Method 1:</strong> Let \(y = \operatorname{arccot} x\), so \(x = \cot y\). Find \(\dfrac{\mathrm{d}x}{\mathrm{d}y}\) and use a Pythagorean identity.</p>
+            <p><strong>Method 2:</strong> Differentiate both sides of \(\operatorname{arccot} x + \arctan x = \dfrac{\pi}{2}\).</p>
+        </div>
+    </div>
+<div class="page" id="page-18">
+        <div class="exercise">
+            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccot} x\).</p>
+        </div>
+        <div class="answer">
+            <p><strong>Method 1:</strong></p>
+            \[\begin{aligned}
+            &x = \cot y \;\Rightarrow\; \frac{\mathrm{d}x}{\mathrm{d}y} = -\operatorname{cosec}^2 y\\[8pt]
+            &\operatorname{cosec}^2 y = 1 + \cot^2 y = 1 + x^2\\[8pt]
+            &\frac{\mathrm{d}y}{\mathrm{d}x} = \frac{-1}{1+x^2}
+            \end{aligned}\]
+            <p><strong>Method 2:</strong></p>
+            \[\frac{\mathrm{d}}{\mathrm{d}x}\!\left(\operatorname{arccot} x + \arctan x\right) = 0
+            \;\Rightarrow\; \frac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccot} x = -\frac{1}{1+x^2}\]
+            \[\boxed{\frac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccot} x = \frac{-1}{1+x^2}}\]
+        </div>
+    </div>
+    <!-- Page 19: Congratulations -->
+    <div class="page" id="page-19">
         <div class="welcome-page">
             <h1>Well done on completing Part 5!</h1>
             <div class="welcome-content">
-                <p>You have explored the graphs, domains, and ranges of arcsec, arccosec, and arccot,
-                and worked with compositions and identities involving these functions.</p>
-                <p>Continue to Part 6 for derivatives of arcsec, arccosec, and arccot.</p>
+                <p>You have explored the graphs, domains, ranges, and compositions of arcsec, arccosec, and arccot, and derived their derivatives using implicit differentiation.</p>
 
                 <p class="welcome-author">
                     <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
@@ -250,7 +323,7 @@
                 </p>
             </div>
         </div>
-        <div style="margin-top: 1rem; display: flex; justify-content: space-between;"><a href="newinverse4.html" style="color: #2d6a4f; text-decoration: underline;">← Part 4</a><a href="newinverse6.html" style="color: #2d6a4f; text-decoration: underline;">Part 6 →</a></div>
+        <div style="margin-top: 1rem; text-align: left;"><a href="newinverse4.html" style="color: #2d6a4f; text-decoration: underline;">← Part 4</a></div>
     </div>
 
 </div>
@@ -259,7 +332,7 @@
         <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
         <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="14" onchange="goToPage(this.value)"> of 14
+        Page <input type="number" id="pageInput" value="1" min="1" max="19" onchange="goToPage(this.value)"> of 19
         </span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
         <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -268,7 +341,7 @@
     <script src="navigation.js"></script>
     <script>
     (function() {
-        for (var p = 2; p <= 13; p++) {
+        for (var p = 2; p <= 18; p++) {
             answerAnimatedPages.add(p);
             introChainPages.set(p, null);
         }

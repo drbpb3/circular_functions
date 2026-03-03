@@ -37,6 +37,14 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+        .div-hidden { display: none; }
+        @keyframes divReveal {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .div-revealed { animation: divReveal 0.35s ease; }
+    </style>
 </head>
 <body oncontextmenu="return false;">
 
@@ -407,7 +415,7 @@
         <figure>
             <img style="max-width: 50%" src="definitions_images/image17.png" alt="Unit circle showing -60° angle measured clockwise">
         </figure>
-        <div class="key-concept">
+        <div class="key-concept reveal-instant">
             <p>Angles are measured from the positive \(x\) axis in the anticlockwise direction,
                 so it makes sense to count angles measured in the clockwise direction as negative.
                 From the geometrical point of view, the angle size is still positive,
@@ -474,8 +482,18 @@
         </div>
     </div>
 
-    <!-- Page 17: Large negative angles -->
+    <!-- Page 18: Large negative angles -->
     <div class="page" id="page-18">
+        <div class="exercise">
+            <p>Suggest values for sin, cos, tan of \(-660°\), \(-1020°\), \(-1380°\), \(-1740°\).</p>
+        </div>
+        <figure>
+            <video autoplay loop muted playsinline src="definitions_images/circular3.mp4"></video>
+        </figure>
+    </div>
+
+    <!-- Page 19: Large negative angles answer -->
+    <div class="page" id="page-19">
         <div class="exercise">
             <p>Suggest values for sin, cos, tan of \(-660°\), \(-1020°\), \(-1380°\), \(-1740°\).</p>
         </div>
@@ -487,8 +505,8 @@
         </div>
     </div>
 
-    <!-- Page 18: Definition diagrams -->
-    <div class="page" id="page-19">
+    <!-- Page 20: Definition diagrams -->
+    <div class="page" id="page-20">
         <div class="key-concept">
             <p>These diagrams essentially form definitions of sin, cos, and tan of any number (angle).</p>
             <p>There are other ways to define these functions using, for example, graphs or power series, but this one makes intuitive sense and forms a reliable foundation for what is to come.</p>
@@ -504,8 +522,8 @@
         </div>
     </div>
 
-    <!-- Page 19: Complete the diagram exercise -->
-    <div class="page" id="page-20">
+    <!-- Page 21: Complete the diagram exercise -->
+    <div class="page" id="page-21">
         <div class="exercise">
             <p>Complete this diagram.</p>
         </div>
@@ -520,8 +538,8 @@
         </div>
     </div>
 
-    <!-- Page 20: Complete diagram answer -->
-    <div class="page" id="page-21">
+    <!-- Page 22: Complete diagram answer -->
+    <div class="page" id="page-22">
         <figure>
             <img style="max-width: 80%"; src="definitions_images/image19.png" alt="Unit circle showing negative angles -60°, -120°, -240°, -300°">
         </figure>
@@ -532,8 +550,8 @@
                 </div>
     </div>
 
-    <!-- Page 21: Congratulations Page -->
-    <div class="page" id="page-22">
+    <!-- Page 23: Congratulations Page -->
+    <div class="page" id="page-23">
         <div class="welcome-page">
             <h1>Congratulations on completing the first stage!</h1>
             <div class="welcome-content">
@@ -567,13 +585,76 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="22" onchange="goToPage(this.value)"> of 22
+        Page <input type="number" id="pageInput" value="1" min="1" max="23" onchange="goToPage(this.value)"> of 23
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
 </div>
 
 <script src="navigation.js"></script>
+<script>
+(function () {
+    'use strict';
+
+    // Div types that are revealed one by one. Figures, headers, and audio
+    // are always visible. Teacher notes remain hidden via their CSS rule.
+    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept';
+
+    let revealQueue = [];
+    let goingBackward = false;
+
+    function initPageReveal(page, revealAll) {
+        revealQueue = [];
+        const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
+            .filter(div => !div.classList.contains('reveal-instant'));
+        // Hide all animatable divs first
+        animatable.forEach(div => div.classList.add('div-hidden'));
+        if (revealAll) {
+            // Backward navigation: show everything immediately
+            animatable.forEach(div => div.classList.remove('div-hidden'));
+            return;
+        }
+        // Show only the first animatable div; queue the rest
+        if (animatable.length > 0) {
+            animatable[0].classList.remove('div-hidden');
+            revealQueue = animatable.slice(1);
+        }
+    }
+
+    const _origShowPage    = window.showPage;
+    const _origChangePage  = window.changePage;
+
+    function revealNextOrAdvance() {
+        if (revealQueue.length > 0) {
+            const next = revealQueue.shift();
+            next.classList.remove('div-hidden');
+            next.classList.add('div-revealed');
+            setTimeout(() => next.classList.remove('div-revealed'), 400);
+            next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+            _origChangePage(1);
+        }
+    }
+
+    window.showPage = function (pageNum, revealAll) {
+        _origShowPage(pageNum);
+        const page = document.getElementById('page-' + pageNum);
+        if (page) {
+            initPageReveal(page, revealAll || goingBackward);
+        }
+        goingBackward = false;
+    };
+
+    window.changePage = function (delta) {
+        if (delta > 0) {
+            revealNextOrAdvance();
+        } else {
+            goingBackward = true;
+            _origChangePage(delta);
+        }
+    };
+}());
+</script>
 
 </body>
 </html>

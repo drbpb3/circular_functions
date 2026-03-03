@@ -37,6 +37,14 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+        .div-hidden { display: none; }
+        @keyframes divReveal {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .div-revealed { animation: divReveal 0.35s ease; }
+    </style>
 </head>
 <body oncontextmenu="return false;">
 
@@ -280,9 +288,7 @@
         </div>
         <div class="exercise">
             <p>Find \(\cos(\arcsin x)\) when \(x\) is positive.</p>
-            <p>Find \(\cos(\arcsin x)\) when \(x\) is negative.</p>
             <p>Find \(\sin(\arccos x)\) when \(x\) is positive.</p>
-            <p>Find \(\sin(\arccos x)\) when \(x\) is negative.</p>       
         </div>
         <figure>
             <img src="inverse_images/image57.png" alt="Right triangle with angle theta where sin theta = x" style="max-width:48%">
@@ -292,8 +298,7 @@
 <div class="page" id="page-18">
         <div class="exercise">
             <p>Find \(\cos(\arcsin x)\) when \(x\) is positive.</p>
-            <p>Find \(\cos(\arcsin x)\) when \(x\) is negative.</p>
-        </div>
+            <p>Find \(\sin(\arccos x)\) when \(x\) is positive.</p>        </div>
         <figure>
             <img src="inverse_images/image58.png" alt="Right triangle with angle theta where sin theta = x" style="max-width:48%">
         </figure>
@@ -301,16 +306,38 @@
             <p>From the diagram</p>
             \[\begin{aligned}
             &x>0\Rightarrow\cos(\arcsin x) = \cos\theta=\sqrt{1-x^2}\\[6pt]
-            &x<0\Rightarrow -x> 0 \Rightarrow \cos(\arcsin x) = \cos(-\arcsin(-x)=\cos(\arcsin(-x)=\sqrt{1-x^2}\\
             &x>0\Rightarrow\sin(\arccos x) = \cos\varphi=\sqrt{1-x^2}\\
-            &x<0\Rightarrow -x> 0 \Rightarrow \sin(\arccos x) = \sin(\pi-\arccos(-x)=\sin(\arccos(-x)=\sqrt{1-x^2}
             \end{aligned}\]
         </div>
         <div class="exercise">
-        <p>Find \(\arccos(\sin\theta)\) in terms of \(\theta\) when \(0\le\theta\le\frac{\pi}{2}\).</p>
+            <p>Remembering that 
+                \[\begin{aligned}
+                &\arcsin x+\arcsin(-x)=0 \text{ and}\\[6pt]
+                &\arccos x+\arccos(-x)=\pi
+                \end{aligned}\]
+            </p>
+            <p>find \(\cos(\arcsin x)\) and \(\sin(\arccos x)\) when \(x\) is negative.</p>
         </div>
     </div>
 <div class="page" id="page-19">
+        <div class="exercise">
+            <p>Remembering that 
+                \[\begin{aligned}
+                &\arcsin x+\arcsin(-x)=0 \text{ and}\\[6pt]
+                &\arccos x+\arccos(-x)=\pi
+                \end{aligned}\]
+            </p>
+            <p>find \(\cos(\arcsin x)\) and \(\sin(\arccos x)\) when \(x\) is negative.</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            &x<0\Rightarrow -x> 0 \Rightarrow \cos(\arcsin x) = \cos(-\arcsin(-x))=\cos(\arcsin(-x))=\sqrt{1-x^2}\\
+            &x<0\Rightarrow -x> 0 \Rightarrow \sin(\arccos x) = \sin(\pi-\arccos(-x))=\sin(\arccos(-x))=\sqrt{1-x^2}
+            \end{aligned}\]
+        </div>
+        
+    </div>
+<div class="page" id="page-20">
     <div class="exercise">
         <p>Find</p>
             \[\begin{aligned}
@@ -321,7 +348,7 @@
             \end{aligned}\]
         </div>
     </div>
-<div class="page" id="page-20">
+<div class="page" id="page-21">
         <div class="exercise">
             <p>Find</p>
                 \[\begin{aligned}
@@ -340,7 +367,7 @@
         \end{aligned}\]
     </div>
 </div>
-<div class="page" id="page-21">
+<div class="page" id="page-22">
 <div class="exercise">
     <p>Find \(\arccos(\sin\theta)\) in terms of \(\theta\) when </p>
     \[\begin{aligned}
@@ -354,7 +381,7 @@
     <img src="inverse_images/image58.png" alt="Right triangle with angle theta where sin theta = x" style="max-width:48%">
 </figure>
 </div>
-<div class="page" id="page-22">
+<div class="page" id="page-23">
     <div class="exercise">
         <p>Find \(\arccos(\sin\theta)\) in terms of \(\theta\) when </p>
             \[\begin{aligned}
@@ -369,14 +396,20 @@
     </figure>
     <div class="answer">
         \[\begin{aligned}
-        &0\le\theta\le\frac{\pi}{2}\Rightarrow \arccos(\sin\theta) =\arccos x= \varphi=\frac{\pi}{2} - \theta\\
-        &\frac{\pi}{2}\le\theta\le\pi\Rightarrow \arccos(\sin\theta)=\arccos(\sin(\pi-\theta))=\frac{\pi}{2}-(\pi-\theta)=\theta-\frac{\pi}{2}\\
-        &-\frac{\pi}{2}\le\theta\le 0\Rightarrow \arccos(\sin\theta)=\arccos(\sin(-\theta))=\frac{\pi}{2}+\theta\\
-        &-\pi\le\theta\le-\frac{\pi}{2}\Rightarrow \arccos(-\sin(\pi+\theta))=\frac{\pi}{2}-\pi-\theta=-\theta-\frac{\pi}{2}
+        &0\le\theta\le\frac{\pi}{2}\Rightarrow \arccos(\sin\theta) =\arccos x= \varphi=\frac{\pi}{2} - \theta\\[24pt]
+        &\frac{\pi}{2}\le\theta\le\pi\Rightarrow \sin \theta=\sin(\pi-\theta)\\[6pt]
+        &\phantom{\frac{\pi}{2}\le\theta\le\pi}\Rightarrow \arcsin(\sin\theta)=\arcsin(\sin(\pi-\theta))=\pi-\theta\\
+&\phantom{\frac{\pi}{2}\le\theta\le\pi}\Rightarrow \arccos(\sin\theta)=\frac{\pi}{2}-\arcsin(\sin(\pi-\theta))=\frac{\pi}{2}-(\pi-\theta)=\theta-\frac{\pi}{2}\\[24pt]
+        &-\frac{\pi}{2}\le\theta\le 0\Rightarrow \arccos(\sin\theta)=\frac{\pi}{2}-\arcsin(\sin\theta)\\[6pt]
+&\phantom{-\frac{\pi}{2}\le\theta\le 0\Rightarrow \arccos(\sin\theta)}=\frac{\pi}{2}-\theta\\[24pt]
+&-\pi\le\theta\le-\frac{\pi}{2}\Rightarrow 0\le \pi+\theta\le \frac{\pi}{2}\text{ and }\sin\theta=-\sin\left(\pi+\theta\right)\\[6pt]
+&\phantom{-\pi\le\theta\le-\frac{\pi}{2}}\Rightarrow \arccos(\sin\theta)=\frac{\pi}{2}-\arcsin\left(-\sin\left(\pi+\theta\right)\right)\\[6pt]
+&\phantom{-\pi\le\theta\le-\frac{\pi}{2} \Rightarrow\arccos(\sin\theta)}=\frac{\pi}{2}+\pi+\theta\\[6pt]
+&\phantom{-\pi\le\theta\le-\frac{\pi}{2}\Rightarrow\arccos(\sin\theta)}=\theta+\frac{3\pi}{2}\\[24pt]
         \end{aligned}\]
     </div>
 </div>
-<div class="page" id="page-23">
+<div class="page" id="page-24">
         <div class="exercise">
             <p>Find</p>
             <p>(a) &nbsp; \(\sin(\arccos x)\)</p>
@@ -386,7 +419,7 @@
             <img src="inverse_images/image58.png" alt="Right triangle with angle phi where cos phi = x" style="max-width:48%">
         </figure>
     </div>
-<div class="page" id="page-24">
+<div class="page" id="page-25">
         <div class="exercise">
             <p>Find</p>
             <p>(a) &nbsp; \(\sin(\arccos x)\)</p>
@@ -406,7 +439,7 @@
             <p>Find \(\tan(\arcsin x)\) and \(\tan(\arccos x)\).</p>
         </div>
     </div>
-<div class="page" id="page-25">
+<div class="page" id="page-26">
         <div class="exercise">
             <p>Find \(\tan(\arcsin x)\) and \(\tan(\arccos x)\).</p>
         </div>
@@ -421,7 +454,7 @@
         </div>
 
     </div>
-<div class="page" id="page-26">
+<div class="page" id="page-27">
         <div class="exercise">
             <p>Find \(\sin(\arctan x)\) and \(\cos(\arctan x)\).</p>
         </div>
@@ -430,7 +463,7 @@
         </figure>
     </div>
 
-<div class="page" id="page-27">
+<div class="page" id="page-28">
         <div class="exercise">
             <p>Find \(\sin(\arctan x)\) and \(\cos(\arctan x)\).</p>
         </div>
@@ -445,7 +478,7 @@
             <p>Since \(\arctan x \in \bigl(-\tfrac{\pi}{2}, \tfrac{\pi}{2}\bigr)\), the cosine is always positive.</p>
         </div>
     </div>
-<div class="page" id="page-28">
+<div class="page" id="page-29">
         <div class="exercise">
             <p>Using the fact that</p>
             \[\sin(A + B) = \sin A\cos B + \cos A\sin B\]
@@ -453,7 +486,7 @@
             <p>Hence find \(\arcsin a + \arcsin b\).</p>
         </div>
     </div>
-<div class="page" id="page-29">
+<div class="page" id="page-30">
         <div class="exercise">
             <p>Find \(\sin\left(\arcsin a + \arcsin b\right)\) and hence \(\arcsin a + \arcsin b\).</p>
         </div>
@@ -479,7 +512,7 @@
 
         </div>
     </div>
-<div class="page" id="page-30">
+<div class="page" id="page-31">
         <div class="exercise">
             <p>Find \(\cos\left(\arcsin a + \arcsin b\right)\) and hence \(\arccos a + \arccos b\).</p>
         </div>
@@ -494,7 +527,7 @@
             <p>Putting \(c=\cos A\) and \(d=\cos B\), find \(\cos (A+B)\) and hence find \(\arccos c + \arccos d\).</p>
         </div>
     </div>
-<div class="page" id="page-31">
+<div class="page" id="page-32">
         <div class="exercise">
             <p>Putting \(c=\cos A\) and \(d=\cos B\), find \(\cos (A+B)\) and hence find \(\arccos c + \arccos d\).</p>
         </div>
@@ -509,7 +542,7 @@
             <p>Putting \(u=\tan A\) and \(v=\tan B\), find \(\tan (A+B)\) and hence find \(\arctan u + \arctan v\).</p>
         </div>
     </div>
-<div class="page" id="page-32">
+<div class="page" id="page-33">
         <div class="exercise">
             <p>Putting \(u=\tan A\) and \(v=\tan B\), find \(\tan (A+B)\) and hence find \(\arctan u + \arctan v\).</p>
         </div>
@@ -521,7 +554,7 @@
         </div>
     </div>
     <!-- Page 33: Congratulations -->
-    <div class="page" id="page-33">
+    <div class="page" id="page-34">
         <div class="welcome-page">
             <h1>Well done on completing Part 2!</h1>
             <div class="welcome-content">
@@ -545,13 +578,70 @@
         <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
         <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="33" onchange="goToPage(this.value)"> of 33
+        Page <input type="number" id="pageInput" value="1" min="1" max="34" onchange="goToPage(this.value)"> of 34
         </span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
         <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
     </div>
 
     <script src="navigation.js"></script>
+    <script>
+    (function () {
+        'use strict';
+        const ANIMATABLE = 'div.exercise, div.intro, div.key-concept';
+        let revealQueue = [];
+        let goingBackward = false;
+
+        function initPageReveal(page, revealAll) {
+            revealQueue = [];
+            if (page.hasAttribute('data-no-reveal')) { return; }
+            const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
+                .filter(div => !div.classList.contains('reveal-instant'));
+            animatable.forEach(div => div.classList.add('div-hidden'));
+            if (revealAll) {
+                animatable.forEach(div => div.classList.remove('div-hidden'));
+                return;
+            }
+            if (animatable.length > 0) {
+                animatable[0].classList.remove('div-hidden');
+                revealQueue = animatable.slice(1);
+            }
+        }
+
+        const _origShowPage   = window.showPage;
+        const _origChangePage = window.changePage;
+
+        function revealNextOrAdvance() {
+            if (revealQueue.length > 0) {
+                const next = revealQueue.shift();
+                next.classList.remove('div-hidden');
+                next.classList.add('div-revealed');
+                setTimeout(() => next.classList.remove('div-revealed'), 400);
+                next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                _origChangePage(1);
+            }
+        }
+
+        window.showPage = function (pageNum, revealAll) {
+            _origShowPage(pageNum);
+            const page = document.getElementById('page-' + pageNum);
+            if (page) {
+                initPageReveal(page, revealAll || goingBackward);
+            }
+            goingBackward = false;
+        };
+
+        window.changePage = function (delta) {
+            if (delta > 0) {
+                revealNextOrAdvance();
+            } else {
+                goingBackward = true;
+                _origChangePage(delta);
+            }
+        };
+    }());
+    </script>
 
 </body>
 </html>
