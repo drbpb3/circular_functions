@@ -1,9 +1,9 @@
 /* Insight Mathematics Worksheet Styles */
 /* Shared styles for circular functions worksheets */
 
-:root { 
-    --primary: #2c3e50; 
-    --accent: #3498db; 
+:root {
+    --primary: #2c3e50;
+    --accent: #2d5a27;
 }
 
 * { 
@@ -29,15 +29,17 @@ body {
 }
 
 .welcome-page {
-    background: linear-gradient(135deg, #2d5a27, #1e3d1a);
-    color: white;
+    background: white;
+    color: #2c3e50;
     padding: 30px 30px;
     text-align: left;
     border-radius: 8px;
+    border: 2px solid #2d5a27;
     margin-top: 10px;
     position: relative;
     max-height: calc(100vh - 100px);
     overflow-y: auto;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 
 .welcome-page h1 {
@@ -50,7 +52,7 @@ body {
 .welcome-page h2 {
     font-size: 1.3em;
     margin: 20px 0 10px;
-    color: white;
+    color: #2c3e50;
     border: none;
     padding: 0;
 }
@@ -66,10 +68,10 @@ body {
 }
 
 .navigation-box {
-    background: rgba(255, 255, 255, 0.1);
+    background: #f4f9f4;
     padding: 15px 25px;
     border-radius: 5px;
-    border-left: 4px solid rgba(255, 255, 255, 0.5);
+    border-left: 4px solid #2d5a27;
     margin: 15px 0;
 }
 
@@ -85,7 +87,7 @@ body {
 }
 
 .welcome-content ul {
-    background: rgba(255, 255, 255, 0.1);
+    background: transparent;
     padding: 15px 25px 15px 40px;
     border-radius: 5px;
     margin: 15px 0;
@@ -98,10 +100,10 @@ body {
 }
 
 .welcome-tip {
-    background: rgba(255, 255, 255, 0.15);
+    background: #f4f9f4;
     padding: 12px 15px;
     border-radius: 5px;
-    border-left: 4px solid rgba(255, 255, 255, 0.5);
+    border-left: 4px solid #2d5a27;
     margin: 15px 0;
     font-weight: bold;
     font-size: 1em;
@@ -234,12 +236,12 @@ p.small {
     margin: 20px 0; 
 }
 
-.key-concept { 
-    background: linear-gradient(135deg, #e8f4f8, #d1e8f0); 
-    padding: 20px 25px; 
-    border-radius: 8px; 
-    margin: 25px 0; 
-    border-left: 5px solid var(--accent); 
+.key-concept {
+    background: linear-gradient(135deg, #e8f4e8, #d1ecd1);
+    padding: 20px 25px;
+    border-radius: 8px;
+    margin: 25px 0;
+    border-left: 5px solid var(--accent);
 }
 
 .exercise { 
@@ -284,15 +286,21 @@ figure {
 figure img {
     max-width: 85%;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    border: 4px solid #2d5a27;
+    padding: 10px;
+    background: white;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
 }
 
-figure video { 
-    max-width: 72%; 
-    height: auto; 
-    border-radius: 8px; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+figure video {
+    max-width: 72%;
+    height: auto;
+    border-radius: 10px;
+    border: 4px solid #2d5a27;
+    padding: 10px;
+    background: white;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
 }
 
 footer { 
@@ -352,7 +360,7 @@ footer a {
 }
 
 .nav-btn:hover:not(:disabled) {
-    background: #2980b9;
+    background: #1e3d1a;
     transform: translateY(-2px);
 }
 
@@ -658,19 +666,18 @@ li {
 #audio-enable-btn {
     display: inline-block;
     margin-top: 15px;
-    background: rgba(255, 255, 255, 0.12);
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    color: #2c3e50 !important;
+    border: none;
     padding: 9px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    transition: background 0.2s, border-color 0.2s;
+    transition: background 0.2s;
 }
 #audio-enable-btn:hover {
-    background: rgba(255, 255, 255, 0.22);
+    background: #f4f9f4;
 }
 #audio-enable-btn.audio-on {
-    background: rgba(255, 255, 255, 0.22);
-    border-color: rgba(255, 255, 255, 0.85);
+    background: #f4f9f4;
 }
