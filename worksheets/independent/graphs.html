@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphs of the Circular Functions</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        },
+        options: {
+            enableMenu: false,
+            renderActions: {
+                addMenu: []
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+        .div-hidden { display: none; }
+        @keyframes divReveal {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .div-revealed { animation: divReveal 0.35s ease; }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+    <span class="back-btn">←</span>
+</a>
+
+<div class="container">
+
+    <!-- Page 1: Welcome Page -->
+    <div class="page" id="page-1">
+        <div class="welcome-page">
+            <h1>Graphs of the circular functions</h1>
+            <div class="welcome-content">
+                <p>So far, we have explored circular functions through their representations on a unit circle. Now we turn to their graphs. The question is: what is the relationship between these two representations?</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                        <li>Click <strong>Previous</strong> or <strong>Next</strong> buttons when they appear</li>
+                        <li>Jump to a specific page using the page number input</li>
+                    </ul>
+                </div>
+
+                <p class="welcome-tip">Take your time with each video. Pause, rewind, and think before moving on!</p>
+
+                <p class="welcome-author">
+                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Overview animation -->
+    <div class="page" id="page-2">
+        <h2 class="chapter">Graphs of the circular functions</h2>
+
+        <div class="intro">
+            <p>You know only too well that we can draw graphs like \(y=\sin x\), \(y=\cos x\), and \(y=\tan x\). The question is, what is the relationship between these graphs and the unit circle? You can watch a fancy animation like this</p>
+        </div>
+
+        <figure>
+            <video src="graphs_images/graphsfromcircle.mp4" controls playsinline style="width:100%;"></video>
+        </figure>
+
+        <div class="intro">
+            <p>and it looks very convincing, but it's easy to miss the details. The next few pages build up each graph very gradually to make the relationship crystal clear.</p>
+        </div>
+    </div>
+
+    <!-- Page 3: sin graph -->
+    <div class="page" id="page-3">
+        <div class="intro">
+            <p>This video builds up the relationship between the unit circle and the graph \(y=\sin x\) very gradually.</p>
+        </div>
+
+        <figure>
+            <video src="graphs_images/singraph.mp4" controls playsinline style="width:100%;"></video>
+        </figure>
+    </div>
+
+    <!-- Page 4: cos graph -->
+    <div class="page" id="page-4">
+        <div class="intro">
+            <p>The relationship between the unit circle and the graph \(y=\cos x\) is slightly harder to visualize, but this video builds it up in exactly the same way.</p>
+        </div>
+
+        <figure>
+            <video src="graphs_images/cosgraph.mp4" controls playsinline style="width:100%;"></video>
+        </figure>
+    </div>
+
+    <!-- Page 5: tan graph -->
+    <div class="page" id="page-5">
+        <div class="intro">
+            <p>Tan is even harder, because now we are mapping a gradient to a point on the \(y\) axis. However, try this:</p>
+        </div>
+
+        <figure>
+            <video src="graphs_images/tangraph.mp4" controls playsinline style="width:100%;"></video>
+        </figure>
+    </div>
+
+    <!-- Page 6: Congratulations Page -->
+    <div class="page" id="page-6">
+        <div class="welcome-page">
+            <h1>Well done!</h1>
+            <div class="welcome-content">
+                <p>You've now seen how the graphs of \(y=\sin x\), \(y=\cos x\), and \(y=\tan x\) arise directly from the unit circle. This connection is fundamental to everything that follows.</p>
+
+                <div class="navigation-box">
+                    <h2>What's Next:</h2>
+                    <ul>
+                        <li>The next stage looks at <strong>transformations</strong> of the circular functions</li>
+                        <li>You'll see how changes to the equation affect the shape and position of the graph</li>
+                        <li>Keep the unit circle picture in mind — it will continue to guide your intuition</li>
+                    </ul>
+                </div>
+
+                <p class="welcome-author">
+                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="navigation">
+    <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+    <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+    <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="6" onchange="goToPage(this.value)"> of 6
+    </span>
+    <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+    <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+</div>
+
+<script src="navigation.js"></script>
+<script>
+(function () {
+    'use strict';
+
+    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept';
+
+    let revealQueue = [];
+    let goingBackward = false;
+
+    function initPageReveal(page, revealAll) {
+        revealQueue = [];
+        const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
+            .filter(div => !div.classList.contains('reveal-instant'));
+        animatable.forEach(div => div.classList.add('div-hidden'));
+        if (revealAll) {
+            animatable.forEach(div => div.classList.remove('div-hidden'));
+            return;
+        }
+        if (animatable.length > 0) {
+            animatable[0].classList.remove('div-hidden');
+            revealQueue = animatable.slice(1);
+        }
+    }
+
+    const _origShowPage   = window.showPage;
+    const _origChangePage = window.changePage;
+
+    function revealNextOrAdvance() {
+        if (revealQueue.length > 0) {
+            const next = revealQueue.shift();
+            next.classList.remove('div-hidden');
+            next.classList.add('div-revealed');
+            setTimeout(() => next.classList.remove('div-revealed'), 400);
+            next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+            _origChangePage(1);
+        }
+    }
+
+    window.showPage = function (pageNum, revealAll) {
+        _origShowPage(pageNum);
+        const page = document.getElementById('page-' + pageNum);
+        if (page) {
+            initPageReveal(page, revealAll || goingBackward);
+        }
+        goingBackward = false;
+    };
+
+    window.changePage = function (delta) {
+        if (delta > 0) {
+            revealNextOrAdvance();
+        } else {
+            goingBackward = true;
+            _origChangePage(delta);
+        }
+    };
+}());
+</script>
+
+</body>
+</html>
