@@ -44,6 +44,7 @@
             to   { opacity: 1; transform: translateY(0); }
         }
         .div-revealed { animation: divReveal 0.35s ease; }
+        video { cursor: pointer; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -92,7 +93,7 @@
         </div>
 
         <figure>
-            <video src="graphs_images/graphsfromcircle.mp4" controls playsinline style="width:100%;"></video>
+            <video src="graphs_images/graphsfromcircle.mp4" autoplay playsinline style="width:100%;"></video>
         </figure>
 
         <div class="intro">
@@ -107,7 +108,7 @@
         </div>
 
         <figure>
-            <video src="graphs_images/singraph.mp4" controls playsinline style="width:100%;"></video>
+            <video src="graphs_images/singraph.mp4" autoplay playsinline style="width:100%;"></video>
         </figure>
     </div>
 
@@ -118,7 +119,7 @@
         </div>
 
         <figure>
-            <video src="graphs_images/cosgraph.mp4" controls playsinline style="width:100%;"></video>
+            <video src="graphs_images/cosgraph.mp4" autoplay playsinline style="width:100%;"></video>
         </figure>
     </div>
 
@@ -129,12 +130,179 @@
         </div>
 
         <figure>
-            <video src="graphs_images/tangraph.mp4" controls playsinline style="width:100%;"></video>
+            <video src="graphs_images/tangraph.mp4" autoplay playsinline style="width:100%;"></video>
         </figure>
     </div>
 
-    <!-- Page 6: Congratulations Page -->
+    <!-- Page 6: sin symmetry -->
     <div class="page" id="page-6">
+        <div class="exercise">
+            <p>Draw the graph \(y=\sin x\) on a set of axes marked in degrees from \(-540^\circ\) to \(540^\circ\).</p>
+        </div>
+    </div>
+
+    <!-- Page 7: sin symmetry -->
+    <div class="page" id="page-7">
+        <div class="exercise">
+            <p>Draw the graph \(y=\sin x\) on a set of axes marked in degrees from \(-540^\circ\) to \(540^\circ\).</p>
+        </div>
+        <figure>
+            <video src="graphs_images/singraph2.mp4" autoplay playsinline style="width:100%;"></video>
+        </figure>
+        <div class="exercise">
+            <p>On the same axes, draw the graphs \(y=\sin (-x)\) and \(y=-\sin x\).</p>
+        </div>
+    </div>
+    
+    <!-- Page 8: sin symmetry -->
+    <div class="page" id="page-8">
+        <div class="exercise">
+            <p>On the same axes, draw the graphs \(y=\sin (-x)\) and \(y=-\sin x\).</p>
+        </div>
+        <figure>
+            <video id="singraph3" src="graphs_images/singraph3.mp4" autoplay playsinline style="width:100%;"></video>
+        </figure>
+        <figure>
+            <video id="singraph4" src="graphs_images/singraph4.mp4" playsinline style="width:100%;"></video>
+        </figure>
+        <div class="answer">
+            <p>Really, we only need one well-chosen point on the new graphs to see immediately what they will look like. For example, when \(x=90^\circ\) on the graph \(y=\sin(-x)\), then \(y=\sin(-90^\circ)=-1\). With this information, you can probably draw the graph \(y=\sin(-x)\) straight away. You might like to check a few other points just to be sure.</p>
+            <p>You can also draw \(y=-\sin x\) the same way. And yes, it turns out to be the same as \(y=\sin(-x)\).</p>
+        </div>
+        
+        <script>
+        document.getElementById('singraph3').addEventListener('ended', function () {
+            document.getElementById('singraph4').play();
+        });
+        </script>
+        <div class="exercise">
+            <p>Describe the transformation of the graph \(y=\sin x\) to the graph \(y=\sin (-x)\) or \(y=-\sin x\) in as many ways as you can. Remember you can use reflections or translations!</p>
+        </div>
+    </div>
+
+    <!-- Page 9: sin symmetry -->
+    <div class="page" id="page-9">
+        <div class="exercise">
+            <p>Describe the transformation of the graph \(y=\sin x\) to the graph \(y=\sin (-x)\) or \(y=-\sin x\) in as many ways as you can. Remember you can use reflections or translations!</p>
+        </div>
+    </div>
+
+    <!-- Page 10: sin symmetry -->
+    <div class="page" id="page-10">
+        <div class="exercise">
+            <p>Describe the transformation of the graph \(y=\sin x\) to the graph \(y=\sin (-x)\) or \(y=-\sin x\) in as many ways as you can. Remember you can use reflections or translations!</p>
+        </div>
+        <figure>
+            <video src="graphs_images/sintransformations.mp4" autoplay playsinline style="width:100%;"></video>
+        </figure>
+        <div class="answer">
+            <p>We can reflect in the \(x\) axis, reflect in the \(y\) axis, translate left or right by \(180^\circ\) or \(540^\circ\) or add multiples of \(360^\circ\) to either of these.</p>
+        </div>
+    </div>
+
+    <!-- Page 11: cos symmetry -->
+    <div class="page" id="page-11">
+        <div class="exercise">
+            <p>Draw the graph \(y=\cos x\) on a set of axes marked in degrees from \(-540^\circ\) to \(540^\circ\).</p>
+        </div>
+    </div>
+
+    <!-- Page 12: cos symmetry -->
+    <div class="page" id="page-12">
+        <div class="exercise">
+            <p>Draw the graph \(y=\cos x\) on a set of axes marked in degrees from \(-540^\circ\) to \(540^\circ\).</p>
+        </div>
+        <figure>
+            <video src="graphs_images/cosgraph2.mp4" autoplay playsinline style="width:100%;"></video>
+        </figure>
+
+        <div class="exercise">
+            <p>On the same axes, draw the graphs \(y=\cos (-x)\) and \(y=-\cos x\).</p>
+        </div>
+
+    </div>
+
+    <!-- Page 13: cos symmetry -->
+    <div class="page" id="page-13">
+        <div class="exercise">
+            <p>On the same axes, draw the graphs \(y=\cos (-x)\) and \(y=-\cos x\).</p>
+        </div>
+
+        <figure>
+            <video id="cosgraph3" src="graphs_images/cosgraph3.mp4" autoplay playsinline style="width:100%;"></video>
+        </figure>
+        <figure>
+            <video id="cosgraph4" src="graphs_images/cosgraph4.mp4" playsinline style="width:100%;"></video>
+        </figure>
+        <script>
+        document.getElementById('cosgraph3').addEventListener('ended', function () {
+            var v = document.getElementById('cosgraph4');
+            v.play();
+        });
+        </script>
+        <div class="answer">
+            <p>Really, we only need one well-chosen point on the new graphs to see immediately what they will look like. For example, when \(x=180^\circ\) on the graph \(y=\cos(-x)\), then \(y=\cos(-180^\circ)=-1\). With this information, you can probably draw the graph \(y=\cos(-x)\) straight away. You might like to check a few other points just to be sure.</p>
+            <p>You can also draw \(y=-\cos x\) the same way.</p>
+        </div>
+        <div class="exercise">
+            <p>Describe the transformation of the graph \(y=\sin x\) to the graph \(y=\cos (-x)\) or \(y=-\cos x\) in as many ways as you can. Remember you can use reflections or translations!</p>
+        </div>
+    </div>
+
+    <!-- Page 14: cos symmetry -->
+    <div class="page" id="page-14">
+        <div class="exercise">
+            <p>Describe the transformation of the graph \(y=\cos x\) to the graph \(y=\cos (-x)\) or \(y=-\cos x\) in as many ways as you can. Remember you can use reflections or translations!</p>
+        </div>
+    </div>
+
+    <!-- Page 15: cos symmetry -->
+    <div class="page" id="page-15">
+        <div class="exercise">
+            <p>Describe the transformation of the graph \(y=\cos x\) to the graph \(y=\cos (-x)\) or \(y=-\cos x\) in as many ways as you can. Remember you can use reflections or translations!</p>
+        </div>
+
+    </div>
+
+    <!-- Page 16: cos symmetry -->
+    <div class="page" id="page-16">
+        <div class="exercise">
+            <p>Describe the transformation of the graph \(y=\cos x\) to the graph \(y=\cos (-x)\) or \(y=-\cos x\) in as many ways as you can. Remember you can use reflections or translations!</p>
+        </div>
+        <figure>
+            <video src="graphs_images/costransformations.mp4" autoplay playsinline style="width:100%;"></video>
+        </figure>
+    </div>
+
+    <!-- Page 17: tan symmetry -->
+    <div class="page" id="page-17">
+        <div class="exercise">
+            <p>Draw the graph \(y=\tan x\) on a set of axes marked in degrees from \(-540^\circ\) to \(540^\circ\).</p>
+        </div>
+    </div>
+
+    <!-- Page 18: tan symmetry -->
+    <div class="page" id="page-18">
+        <div class="exercise">
+            <p>On the same axes, draw the graphs \(y=\tan (-x)\) and \(y=-\tan x\).</p>
+        </div>
+        <figure>
+            <video src="graphs_images/tantransformations.mp4" autoplay playsinline style="width:100%;"></video>
+        </figure>
+    </div>
+
+    <!-- Page 19: sin to cos -->
+    <div class="page" id="page-19">
+        <div class="exercise">
+            <p>On the same axes, draw the graphs \(y=\sin x\) and \(y=\cos x\).</p>
+            <p>Describe in as many ways as you can the transformations that take one graph to the other.</p>
+        </div>
+        <figure>
+            <video src="graphs_images/sintocos.mp4" autoplay playsinline style="width:100%;"></video>
+        </figure>
+    </div>
+    <!-- Page 20: Congratulations Page -->
+    <div class="page" id="page-20">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
@@ -164,7 +332,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="6" onchange="goToPage(this.value)"> of 6
+        Page <input type="number" id="pageInput" value="1" min="1" max="20" onchange="goToPage(this.value)"> of 20
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -172,10 +340,18 @@
 
 <script src="navigation.js"></script>
 <script>
+document.querySelectorAll('video').forEach(function (v) {
+    v.addEventListener('click', function () {
+        v.controls = true;
+        v.play();
+    }, { once: true });
+});
+</script>
+<script>
 (function () {
     'use strict';
 
-    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept';
+    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer';
 
     let revealQueue = [];
     let goingBackward = false;
@@ -215,6 +391,9 @@
         const page = document.getElementById('page-' + pageNum);
         if (page) {
             initPageReveal(page, revealAll || goingBackward);
+            const videos = Array.from(page.querySelectorAll('video'));
+            videos.forEach(v => { v.pause(); v.currentTime = 0; });
+            if (videos.length > 0) videos[0].play();
         }
         goingBackward = false;
     };
