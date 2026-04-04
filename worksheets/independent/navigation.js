@@ -7,6 +7,9 @@ let currentAudio = null;
 let audioSessionPrimed = false;
 let audioEnabled = false;
 
+const FADE = 180; // ms for each half of the page transition (fade-out, then fade-in)
+let transitioning = false;
+
 function showPage(pageNum) {
     // Stop audio from the previous page
     if (currentAudio) {
@@ -19,6 +22,9 @@ function showPage(pageNum) {
 
     const page = document.getElementById('page-' + pageNum);
     if (page) {
+        // Start at opacity 0 before making the page visible, so the fade-in begins cleanly
+        page.style.opacity = '0';
+        page.style.transition = 'none';
         page.classList.add('active');
         currentPage = pageNum;
 
@@ -75,7 +81,7 @@ function showPage(pageNum) {
         // Firefox: only whitelists spacebar as a media trigger on first interaction.
         // Fallback: if play() is blocked, intercept the next spacebar in capture phase
         // to unlock audio without advancing the page; subsequent gestures then work freely.
-        const audio = page.querySelector('audio');
+        const audio = page.querySelector('audio:not([data-trigger])');
         if (audio && audioEnabled) {
             currentAudio = audio;
             audio.play().catch(() => {
@@ -94,6 +100,12 @@ function showPage(pageNum) {
 
         window.scrollTo(0, 0);
         updateScrollIndicator();
+
+        // Fade in: force a reflow so the browser paints opacity:0 before the transition starts
+        page.offsetHeight;
+        page.style.transition = 'opacity ' + FADE + 'ms ease';
+        page.style.opacity = '1';
+        setTimeout(function () { page.style.transition = ''; page.style.opacity = ''; }, FADE + 50);
     }
 }
 
@@ -164,7 +176,7 @@ function toggleAudio(btn) {
         // Play audio on the current page if it has one
         const page = document.getElementById('page-' + currentPage);
         if (page) {
-            const audio = page.querySelector('audio');
+            const audio = page.querySelector('audio:not([data-trigger])');
             if (audio) {
                 currentAudio = audio;
                 audio.currentTime = 0;
@@ -203,7 +215,15 @@ function changePage(delta) {
     }
     const newPage = currentPage + delta;
     if (newPage >= 1 && newPage <= totalPages) {
-        showPage(newPage);
+        const fromEl = document.querySelector('.page.active');
+        if (fromEl && !transitioning) {
+            transitioning = true;
+            fromEl.style.transition = 'opacity ' + FADE + 'ms ease';
+            fromEl.style.opacity = '0';
+            setTimeout(function () { transitioning = false; showPage(newPage); }, FADE);
+        } else if (!transitioning) {
+            showPage(newPage);
+        }
     }
 }
 
