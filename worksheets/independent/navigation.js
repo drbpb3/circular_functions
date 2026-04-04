@@ -61,14 +61,14 @@ function showPage(pageNum) {
             if (source) {
                 const rawSrc = dataSrc || (source.getAttribute('src') || '').replace(/[?#].*$/, '');
                 source.setAttribute('src', rawSrc + '?cb=' + Date.now());
-                const isCustomStart = video.id === 'video-page12' || video.id === 'video-page13';
+                const isCustomStart = video.id === 'video-page9' || video.id === 'video-page10';
                 video.addEventListener('loadedmetadata', function() {
                     video.currentTime = isCustomStart ? 11 : 0;
                 }, { once: true });
                 video.load();
                 video.play().catch(() => {});
             } else {
-                if (video.id === 'video-page12' || video.id === 'video-page13') {
+                if (video.id === 'video-page9' || video.id === 'video-page10') {
                     video.currentTime = 11;
                 } else {
                     video.currentTime = 0;
@@ -121,7 +121,7 @@ function updateScrollIndicator() {
     }
 }
 
-// Handle video-page12 and video-page13 looping back to 11s instead of 0
+// Handle video-page9 and video-page10 looping back to 11s instead of 0
 document.addEventListener('DOMContentLoaded', function() {
     // Set total pages based on actual page count
     const pages = document.querySelectorAll('.page');
@@ -139,19 +139,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    const videoPage12 = document.getElementById('video-page12');
-    const videoPage13 = document.getElementById('video-page13');
+    const videoPage9 = document.getElementById('video-page9');
+    const videoPage10 = document.getElementById('video-page10');
 
-    if (videoPage12) {
-        videoPage12.addEventListener('timeupdate', function() {
+    if (videoPage9) {
+        videoPage9.addEventListener('timeupdate', function() {
             if (this.currentTime < 11) {
                 this.currentTime = 11;
             }
         });
     }
 
-    if (videoPage13) {
-        videoPage13.addEventListener('timeupdate', function() {
+    if (videoPage10) {
+        videoPage10.addEventListener('timeupdate', function() {
             if (this.currentTime < 11) {
                 this.currentTime = 11;
             }
