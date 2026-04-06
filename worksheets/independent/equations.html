@@ -48,6 +48,24 @@
             to   { opacity: 1; transform: translateY(0); }
         }
         .div-revealed { animation: divReveal 0.35s ease; }
+        .image-stack {
+            display: grid;
+            max-width: 65%;
+            margin: 20px auto;
+            border-radius: 10px;
+            border: 4px solid #2d5a27;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+        }
+        .image-stack .stack-img {
+            grid-area: 1 / 1;
+            width: 100%;
+            max-width: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+        }
+        .image-stack .stack-img.stack-img--active { opacity: 1; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -88,24 +106,15 @@
     <!-- Page 2 -->
     <div class="page" id="page-2">
         <h2 class="chapter">Solving equations with circular functions</h2>
-        <div class="intro"
+        <div class="intro" data-reveal-group="1">
             <p>Again, we'll start with something very familiar from right-angled triangles and then see how to extend the idea of solving equations to our new more general circular functions.</p>
         </div>
-        <div class="exercise">Use your calculator to find the angle \(\theta\).</div>
+        <div class="exercise" data-reveal-group="2">Use your calculator to find the angle \(\theta\).</div>
 
-        <figure>
+        <figure data-reveal-group="2">
             <img src="equations_images/image0.png" alt="Right triangle with hypotenuse 1, opposite 0.4, angle θ">
         </figure>
-    </div>
-
-    <!-- Page 3 -->
-    <div class="page" id="page-3">
-        <div class="exercise">Use your calculator to find the angle \(\theta\).</div>
-
-        <figure>
-            <img src="equations_images/image0.png" alt="Right triangle with hypotenuse 1, opposite 0.4, angle θ">
-        </figure>
-        <div class="answer">
+        <div class="answer" data-reveal-group="3">
             <p>\[\theta = \sin^{-1}0.4 = 23.58°\]</p>
         </div>
         <div class="teacher-note">
@@ -118,51 +127,43 @@
         </div>
     </div>
 
-    <!-- Page 4 -->
-    <div class="page" id="page-4">
+    <!-- Page 3 -->
+    <div class="page" id="page-3">
         <div class="exercise">
             <p>If the \(y\) coordinate of the blue point is \(0.4\), find the angle \(\theta\).</p>
             <p>What other point on the circle has the same \(y\) coordinate as the blue point?</p>
         </div>
-
-        <figure>
-            <img src="equations_images/image1.png" alt="Unit circle with point at angle θ showing y-coordinate 0.4">
-        </figure>
-    </div>
-
-    <!-- Page 5 -->
-    <div class="page" id="page-5">
-        <figure>
-            <img src="equations_images/image2.png" alt="Unit circle showing θ = 23.58° and symmetric point">
-        </figure>
+        <div class="image-stack">
+            <img src="equations_images/image1.png" class="stack-img stack-img--active" alt="Unit circle with point at angle θ showing y-coordinate 0.4">
+            <img src="equations_images/image2.png" class="stack-img" alt="Unit circle showing θ = 23.58° and symmetric point">
+            <img src="equations_images/image3.png" class="stack-img" alt="Unit circle showing angles 156.42° and 23.58°">
+        </div>
         <div class="exercise">What other positive angle between \(0°\) and \(360°\) is a solution of \(\sin\theta = 0.4\)?</div>
-    </div>
-
-    <!-- Page 6 -->
-    <div class="page" id="page-6">
-        <div class="exercise">What other positive angle between \(0°\) and \(360°\) is a solution of \(\sin\theta = 0.4\)?</div>
+        <div class="crossfade-next"></div>
         <div class="answer">
             <p>Symmetry is the key (as it is with graphs), so</p>
             <p>\(180 - 23.58 = 156.42°\) is another solution of \(\sin\theta = 0.4\)</p>
         </div>
-        <figure>
-            <img src="equations_images/image3.png" alt="Unit circle showing angles 156.42° and 23.58°" style="max-width:60%">
-        </figure>
-        <div class="exercise after-answer">What negative angles between \(-360°\) and \(0°\) are solutions of \(\sin\theta = 0.4\)?</div>
     </div>
 
-    <!-- Page 7 -->
-    <div class="page" id="page-7">
+    <!-- Page 4 -->
+    <div class="page" id="page-4">
         <div class="exercise">What negative angles between \(-360°\) and \(0°\) are solutions of \(\sin\theta = 0.4\)?</div>
 
-        <figure>
-            <img src="equations_images/image4.png" alt="Unit circle showing angles 156.42° and 23.58°" style="max-width:80%">
-        </figure>
+        <div class="image-stack">
+            <img src="equations_images/image4.png" class="stack-img stack-img--active" alt="Unit circle showing angles 156.42° and 23.58°">
+            <img src="equations_images/image5.png" class="stack-img" alt="Unit circle showing negative angle -203.58°">
+            <img src="equations_images/image6.png" class="stack-img" alt="Unit circle showing negative angle -336.42°">
+        </div>
+        <div class="crossfade-next"></div>
+        <div class="answer">
+            <p>\[-203.58° \text{ and } -336.42° \text{ are also solutions of } \sin\theta = 0.4\]</p>
+        </div>
     </div>
+    <!-- Page 5 -->
+    <div class="page" id="page-5">
+        <div class="exercise">Solve the equation \(\sin\theta = 0.4\)</div>
 
-    <!-- Page 8 -->
-    <div class="page" id="page-8">
-        <div class="exercise">What negative angles between \(-360°\) and \(0°\) are solutions of \(\sin\theta = 0.4\)?</div>
         <div class="two-column">
             <figure>
                 <img src="equations_images/image5.png" alt="Unit circle showing angles 156.42° and 23.58°">
@@ -173,43 +174,14 @@
         </div>
 
         <div class="answer">
-            <p>\[-203.58° \text{ and } -336.42° \text{ are also solutions of } \sin\theta = 0.4\]</p>
-        </div>
-        <div class="exercise after-answer">Solve the equation \(\sin\theta = 0.4\)</div>
-    </div>
-
-    <!-- Page 9 -->
-    <div class="page" id="page-9">
-        <div class="exercise">Solve the equation \(\sin\theta = 0.4\)</div>
-
-        <figure>
-            <img src="equations_images/image2.png" alt="Unit circle showing angles 156.42° and 23.58°">
-        </figure>
-
-        <div class="answer">
             <p>\[\theta = 23.58°, 156.42°, 383.58°, 516.42° \ldots\]</p>
             <p>\[-203.58°, -336.42°, -563.58°, -696.42° \ldots\]</p>
             <p>The dots ... mean "keep adding or subtracting \(360°\) as often as you like."</p>
         </div>
     </div>
 
-    <!-- Page 10 -->
-    <div class="page" id="page-10">
-        <div class="exercise">If \(\alpha\) is any solution of the equation \(\sin\theta = 0.4\),
-            which of the following are also solutions of the equation:
-
-        <div class="answer-options" style="display: flex; justify-content: space-between;">
-            <span>\(180 - \alpha\)</span>
-            <span>\(180 + \alpha\)</span>
-            <span>\(-\alpha\)</span>
-            <span>\(\alpha + 360\)</span>
-            <span>\(\alpha - 360\)</span>
-        </div>
-        </div>
-    </div>
-
-    <!-- Page 11 -->
-    <div class="page" id="page-11">
+    <!-- Page 6 -->
+    <div class="page" id="page-6">
         <div class="exercise">If \(\alpha\) is any solution of
             the equation \(\sin\theta = 0.4\),
             which of the following are also solutions of the equation:
@@ -220,6 +192,14 @@
             <span style="flex: 1; text-align: center;">\(\alpha + 360\)</span>
             <span style="flex: 1; text-align: center;">\(\alpha - 360\)</span>
         </div>
+        </div>
+        <div class="two-column">
+            <figure>
+                <img src="equations_images/image5.png" alt="Unit circle showing angles 156.42° and 23.58°">
+            </figure>
+            <figure>
+                <img src="equations_images/image6.png" alt="Unit circle showing angles 156.42° and 23.58°">
+            </figure>
         </div>
 
         <div class="answer" style="margin-top: 40px;">
@@ -250,8 +230,8 @@
         </div>
     </div>    
 
-    <!-- Page 12 -->
-    <div class="page" id="page-12">
+    <!-- Page 7 -->
+    <div class="page" id="page-7">
         <div class="exercise">
             <p>Next, we will adapt the previous
             method to solve the equation \(\cos\theta = -0.7\).</p>
@@ -260,21 +240,15 @@
             </p>
         </div>
 
-        <figure>
-            <img src="equations_images/image7.png" alt="Unit circle with x = -0.7 line">
-        </figure>
-    </div>
-
-    <!-- Page 13 -->
-    <div class="page" id="page-13">
-        <figure>
-            <img src="equations_images/image26.png" alt="Unit circle with x = -0.7 line">
-        </figure>
+        <div class="image-stack">
+            <img src="equations_images/image7.png" class="stack-img stack-img--active" alt="Unit circle with x = -0.7 line">
+            <img src="equations_images/image26.png" class="stack-img" alt="Unit circle with x = -0.7 line" style="transform: translateX(2.4%) translateY(-1%) scale(0.98); transform-origin: center;">
+        </div>
         <div class="exercise">Use this diagram and your calculator to find solutions of \(\cos\theta = -0.7\).</div>
     </div>
 
-    <!-- Page 14 -->
-    <div class="page" id="page-14">
+    <!-- Page 8 -->
+    <div class="page" id="page-8">
         <div class="exercise">Use this diagram and your calculator to find solutions of \(\cos\theta = -0.7\).</div>
         <div style="display: flex; justify-content: space-between;">
             <figure style="flex: 1; margin: 0 10px;">
@@ -290,8 +264,10 @@
         </div>
     </div>
 
-    <!-- Page 15 -->
-    <div class="page" id="page-15">
+    
+
+    <!-- Page 9 -->
+    <div class="page" id="page-9">
         <div class="exercise">If \(\alpha\) is any solution of the equation \(\cos\theta = k\), which of the following are also solutions of the equation:
 
         <div class="answer-options" style="display: flex;">
@@ -301,20 +277,15 @@
             <span style="flex: 1; text-align: center;">\(\alpha + 360\)</span>
             <span style="flex: 1; text-align: center;">\(\alpha - 360\)</span>
         </div>
+        
         </div>
-    </div>
-
-    <!-- Page 16 -->
-    <div class="page" id="page-16">
-        <div class="exercise">If \(\alpha\) is any solution of the equation \(\cos\theta = k\), which of the following are also solutions of the equation:
-
-        <div class="answer-options" style="display: flex;">
-            <span style="flex: 1; text-align: center;">\(180 - \alpha\)</span>
-            <span style="flex: 1; text-align: center;">\(180 + \alpha\)</span>
-            <span style="flex: 1; text-align: center;">\(-\alpha\)</span>
-            <span style="flex: 1; text-align: center;">\(\alpha + 360\)</span>
-            <span style="flex: 1; text-align: center;">\(\alpha - 360\)</span>
-        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <figure style="flex: 1; margin: 0 10px;">
+                <img src="equations_images/image8.png" alt="Unit circle with x = -0.7 line" style="max-width: 100%;">
+            </figure>
+            <figure style="flex: 1; margin: 0 10px;">
+                <img src="equations_images/image9.png" alt="Unit circle with x = -0.7 line" style="max-width: 100%;">
+            </figure>
         </div>
         <div class="answer" style="margin-top: 40px;">
             <p>Play around with the various solutions we have
@@ -337,22 +308,40 @@
         </div>
     </div>
 
-    <!-- Page 17 -->
-    <div class="page" id="page-17">
+    <!-- Page 10 -->
+    <div class="page" id="page-10">
         <div class="exercise">
-            <p>Use this diagram and a calculator to solve the equation</p>
-            <p style="text-align: center; font-size: 1.2em;">\(\tan\theta = 2\)</p>
+            <p>In this diagram, what is \(\tan\theta\)?</p>
         </div>
 
-        <figure>
-            <img src="equations_images/image10.png" alt="Unit circle with line y = 2x">
+        <figure style="max-width: 76%; margin: auto;">
+            <img src="equations_images/image27.png" alt="Unit circle with line y = 2x">
         </figure>
+        <div class="answer">
+            <p>tan is the gradient of the radius, so \(\tan\theta=2\)?</p>
+        </div>
+        <div class="exercise">
+            <p>Where is another point on the circle whose radius has the same gradient?</p>
+        </div>
     </div>
 
-    <!-- Page 18 -->
-    <div class="page" id="page-18">
+    <!-- Page 11 -->
+    <div class="page" id="page-11">
         <div class="exercise">
-            <p>Use this diagram and a calculator to solve the equation</p>
+            <p>Where is another point on the circle whose radius has the same gradient?</p>
+        </div>
+        <figure style="max-width: 80%; margin: auto;">
+            <img src="equations_images/image28.png" alt="Unit circle with line y = 2x">
+        </figure>
+        <div class="exercise">
+            Use this diagram to solve the equation \(\tan\theta=2\).
+        </div>
+    </div>
+
+    <!-- Page 12 -->
+    <div class="page" id="page-12">
+        <div class="exercise">
+            <p>Solve the equation</p>
             <p style="text-align: center; font-size: 1.2em;">\(\tan\theta = 2\)</p>
         </div>
 
@@ -371,8 +360,9 @@
         </div>
     </div>
 
-    <!-- Page 19 -->
-    <div class="page" id="page-19">
+
+    <!-- Page 13 -->
+    <div class="page" id="page-13">
         <div class="exercise">If \(\alpha\) is any solution of the equation \(\tan\theta = k\), which of the
             following are also solutions of the equation:
 
@@ -384,20 +374,13 @@
             <span style="flex: 1; text-align: center;">\(\alpha - 360\)</span>
         </div>
         </div>
-    </div>
-
-    <!-- Page 20 -->
-    <div class="page" id="page-20">
-        <div class="exercise">If \(\alpha\) is any solution of the equation \(\tan\theta = k\), which of the
-            following are also solutions of the equation:
-
-        <div class="answer-options" style="display: flex;">
-            <span style="flex: 1; text-align: center;">\(180 - \alpha\)</span>
-            <span style="flex: 1; text-align: center;">\(180 + \alpha\)</span>
-            <span style="flex: 1; text-align: center;">\(-\alpha\)</span>
-            <span style="flex: 1; text-align: center;">\(\alpha + 360\)</span>
-            <span style="flex: 1; text-align: center;">\(\alpha - 360\)</span>
-        </div>
+        <div style="display: flex; justify-content: space-between;">
+            <figure style="flex: 1; margin: 0 10px;">
+                <img src="equations_images/image11.png" alt="Unit circle with x = -0.7 line" style="max-width: 100%;">
+            </figure>
+            <figure style="flex: 1; margin: 0 10px;">
+                <img src="equations_images/image12.png" alt="Unit circle with x = -0.7 line" style="max-width: 100%;">
+            </figure>
         </div>
 
         <div class="answer" style="margin-top: 40px;">
@@ -420,8 +403,8 @@
         </div>
     </div>
 
-    <!-- Page 21: Congratulations Page -->
-    <div class="page" id="page-21">
+    <!-- Page 14: Congratulations Page -->
+    <div class="page" id="page-14">
         <div class="welcome-page">
             <h1>Congratulations on completing this stage!</h1>
             <div class="welcome-content">
@@ -454,7 +437,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="21" onchange="goToPage(this.value)"> of 21
+        Page <input type="number" id="pageInput" value="1" min="1" max="14" onchange="goToPage(this.value)"> of 14
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -464,23 +447,75 @@
 <script>
 (function () {
     'use strict';
-    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept';
+    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer';
     let revealQueue = [];
     let goingBackward = false;
 
     function initPageReveal(page, revealAll) {
         revealQueue = [];
         if (page.hasAttribute('data-no-reveal')) { return; }
-        const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
-            .filter(div => !div.classList.contains('reveal-instant'));
-        animatable.forEach(div => div.classList.add('div-hidden'));
-        if (revealAll) {
-            animatable.forEach(div => div.classList.remove('div-hidden'));
-            return;
-        }
-        if (animatable.length > 0) {
-            animatable[0].classList.remove('div-hidden');
-            revealQueue = animatable.slice(1);
+
+        const groupedEls = Array.from(page.querySelectorAll('[data-reveal-group]'))
+            .filter(el => !el.classList.contains('reveal-instant'));
+
+        if (groupedEls.length > 0) {
+            // Group-based reveal: bucket by group value, sort groups, reveal first immediately
+            const groups = {};
+            groupedEls.forEach(el => {
+                const g = el.getAttribute('data-reveal-group');
+                if (!groups[g]) groups[g] = [];
+                groups[g].push(el);
+            });
+            const batches = Object.keys(groups).sort().map(k => groups[k]);
+            groupedEls.forEach(el => el.classList.add('div-hidden'));
+            if (revealAll) {
+                groupedEls.forEach(el => el.classList.remove('div-hidden'));
+                return;
+            }
+            batches[0].forEach(el => el.classList.remove('div-hidden'));
+            revealQueue = batches.slice(1);
+        } else {
+            // DOM-order reveal: animatable divs and image-stack crossfades interleaved by position
+            // .crossfade-next placeholders pull the next pending crossfade from the page's stack
+            const items = [];
+            const pendingCrossfades = [];
+            page.querySelectorAll(ANIMATABLE + ', .image-stack, .crossfade-next').forEach(node => {
+                if (node.classList.contains('image-stack')) {
+                    const imgs = Array.from(node.querySelectorAll('.stack-img'));
+                    imgs.forEach(img => img.classList.remove('stack-img--active'));
+                    if (imgs.length > 0) {
+                        imgs[0].classList.add('stack-img--active');
+                        // first crossfade fires at the stack position; rest are deferred
+                        if (imgs.length > 1) {
+                            items.push({ _crossfade: { from: imgs[0], to: imgs[1] } });
+                        }
+                        for (let i = 2; i < imgs.length; i++) {
+                            pendingCrossfades.push({ _crossfade: { from: imgs[i - 1], to: imgs[i] } });
+                        }
+                    }
+                } else if (node.classList.contains('crossfade-next')) {
+                    if (pendingCrossfades.length > 0) items.push(pendingCrossfades.shift());
+                } else if (!node.classList.contains('reveal-instant')) {
+                    node.classList.add('div-hidden');
+                    items.push(node);
+                }
+            });
+            // flush any unplaced crossfades to the end
+            pendingCrossfades.forEach(cf => items.push(cf));
+            if (revealAll) {
+                page.querySelectorAll(ANIMATABLE).forEach(el => {
+                    if (!el.classList.contains('reveal-instant')) el.classList.remove('div-hidden');
+                });
+                page.querySelectorAll('.image-stack').forEach(stack => {
+                    const imgs = Array.from(stack.querySelectorAll('.stack-img'));
+                    imgs.forEach(img => img.classList.remove('stack-img--active'));
+                    if (imgs.length > 0) imgs[imgs.length - 1].classList.add('stack-img--active');
+                });
+            } else if (items.length > 0) {
+                const first = items[0];
+                if (!first._crossfade) first.classList.remove('div-hidden');
+                revealQueue = items.slice(1);
+            }
         }
     }
 
@@ -490,10 +525,18 @@
     function revealNextOrAdvance() {
         if (revealQueue.length > 0) {
             const next = revealQueue.shift();
-            next.classList.remove('div-hidden');
-            next.classList.add('div-revealed');
-            setTimeout(() => next.classList.remove('div-revealed'), 400);
-            next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            if (next && next._crossfade) {
+                next._crossfade.from.classList.remove('stack-img--active');
+                next._crossfade.to.classList.add('stack-img--active');
+            } else {
+                const items = Array.isArray(next) ? next : [next];
+                items.forEach(el => {
+                    el.classList.remove('div-hidden');
+                    el.classList.add('div-revealed');
+                    setTimeout(() => el.classList.remove('div-revealed'), 400);
+                });
+                items[items.length - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         } else {
             _origChangePage(1);
         }

@@ -11,6 +11,7 @@ const FADE = 180; // ms for each half of the page transition (fade-out, then fad
 let transitioning = false;
 
 function showPage(pageNum) {
+    if (nav) nav.classList.remove('visible');
     // Stop audio from the previous page
     if (currentAudio) {
         currentAudio.pause();
@@ -201,6 +202,7 @@ function toggleAudio(btn) {
 }
 
 function changePage(delta) {
+    if (nav) nav.classList.remove('visible');
     // On first forward navigation away from page 1, prime Firefox's audio autoplay gate.
     // A throwaway Audio object (not in the DOM) primes the session without touching the
     // real audio elements, so there is no volume/timing conflict.
@@ -228,6 +230,7 @@ function changePage(delta) {
 }
 
 function goToPage(pageNum) {
+    if (nav) nav.classList.remove('visible');
     const num = parseInt(pageNum);
     if (num >= 1 && num <= totalPages) {
         showPage(num);
