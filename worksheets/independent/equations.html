@@ -66,6 +66,10 @@
             transition: opacity 1.2s ease;
         }
         .image-stack .stack-img.stack-img--active { opacity: 1; }
+        .layout-preserve-hidden.div-hidden {
+            display: block !important;
+            visibility: hidden !important;
+        }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -92,6 +96,8 @@
                     </ul>
                 </div>
 
+                <button id="audio-enable-btn" onclick="toggleAudio(this)">🔇 Enable audio</button>
+
                 <p class="welcome-tip">Use the unit circle diagram to help you visualize solutions!</p>
 
                 <p class="welcome-author">
@@ -107,15 +113,17 @@
     <div class="page" id="page-2">
         <h2 class="chapter">Solving equations with circular functions</h2>
         <div class="intro" data-reveal-group="1">
-            <p>Again, we'll start with something very familiar from right-angled triangles and then see how to extend the idea of solving equations to our new more general circular functions.</p>
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio1.mp3"></audio>
+            <p>We'll start by going back to something very familiar from right-angled triangles and then see how to extend this to solving equations with our new more general circular functions.</p>
         </div>
-        <div class="exercise" data-reveal-group="2">Use your calculator to find the angle \(\theta\).</div>
+        <div class="exercise" data-reveal-group="2"><audio data-trigger="on-reveal" src="equations_audio/mp3s/audio2.mp3"></audio>Use your calculator to find the angle \(\theta\) and hence find one solution to the equation \(\sin\theta=0.4\).</div>
 
         <figure data-reveal-group="2">
             <img src="equations_images/image0.png" alt="Right triangle with hypotenuse 1, opposite 0.4, angle θ">
         </figure>
         <div class="answer" data-reveal-group="3">
-            <p>\[\theta = \sin^{-1}0.4 = 23.58°\]</p>
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio3.mp3"></audio>
+            <p>\(\theta = \sin^{-1}0.4 = 23.58°\), so \(23.58^\circ\) is a solution to the equation \(\sin\theta=0.4\).</p>
         </div>
         <div class="teacher-note">
             <p>There are an infinite number of solutions to an equation like \(\sin\theta = 0.4\),
@@ -129,18 +137,22 @@
 
     <!-- Page 3 -->
     <div class="page" id="page-3">
-        <div class="exercise">
-            <p>If the \(y\) coordinate of the blue point is \(0.4\), find the angle \(\theta\).</p>
-            <p>What other point on the circle has the same \(y\) coordinate as the blue point?</p>
+        <div class="intro">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio4.mp3"></audio>
+            <p>Now we know one solution to the equation \(\sin\theta=0.4\). Next, we'll see how to find other solutions to the same equation.</p>
+        </div>
+        <div class="exercise layout-preserve-hidden">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio5.mp3"></audio>
+            <p>The \(y\) coordinate of the blue point is \(0.4\). Find another point on the circle with the same \(y\) coordinate as the blue point. Use this new point to find another solution to the equation \(\sin\theta=0.4\).</p>
         </div>
         <div class="image-stack">
             <img src="equations_images/image1.png" class="stack-img stack-img--active" alt="Unit circle with point at angle θ showing y-coordinate 0.4">
             <img src="equations_images/image2.png" class="stack-img" alt="Unit circle showing θ = 23.58° and symmetric point">
             <img src="equations_images/image3.png" class="stack-img" alt="Unit circle showing angles 156.42° and 23.58°">
         </div>
-        <div class="exercise">What other positive angle between \(0°\) and \(360°\) is a solution of \(\sin\theta = 0.4\)?</div>
         <div class="crossfade-next"></div>
         <div class="answer">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio6.mp3"></audio>
             <p>Symmetry is the key (as it is with graphs), so</p>
             <p>\(180 - 23.58 = 156.42°\) is another solution of \(\sin\theta = 0.4\)</p>
         </div>
@@ -148,7 +160,7 @@
 
     <!-- Page 4 -->
     <div class="page" id="page-4">
-        <div class="exercise">What negative angles between \(-360°\) and \(0°\) are solutions of \(\sin\theta = 0.4\)?</div>
+        <div class="exercise"><audio data-trigger="on-reveal" src="equations_audio/mp3s/audio7.mp3"></audio>What negative angles between \(-360°\) and \(0°\) are solutions of \(\sin\theta = 0.4\)?</div>
 
         <div class="image-stack">
             <img src="equations_images/image4.png" class="stack-img stack-img--active" alt="Unit circle showing angles 156.42° and 23.58°">
@@ -157,12 +169,13 @@
         </div>
         <div class="crossfade-next"></div>
         <div class="answer">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio8.mp3"></audio>
             <p>\[-203.58° \text{ and } -336.42° \text{ are also solutions of } \sin\theta = 0.4\]</p>
         </div>
     </div>
     <!-- Page 5 -->
     <div class="page" id="page-5">
-        <div class="exercise">Solve the equation \(\sin\theta = 0.4\)</div>
+        <div class="exercise"><audio data-trigger="on-reveal" src="equations_audio/mp3s/audio9.mp3"></audio>Solve the equation \(\sin\theta = 0.4\)</div>
 
         <div class="two-column">
             <figure>
@@ -174,6 +187,7 @@
         </div>
 
         <div class="answer">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio10.mp3"></audio>
             <p>\[\theta = 23.58°, 156.42°, 383.58°, 516.42° \ldots\]</p>
             <p>\[-203.58°, -336.42°, -563.58°, -696.42° \ldots\]</p>
             <p>The dots ... mean "keep adding or subtracting \(360°\) as often as you like."</p>
@@ -182,7 +196,7 @@
 
     <!-- Page 6 -->
     <div class="page" id="page-6">
-        <div class="exercise">If \(\alpha\) is any solution of
+        <div class="exercise"><audio data-trigger="on-reveal" src="equations_audio/mp3s/audio11.mp3"></audio>If \(\alpha\) is any solution of
             the equation \(\sin\theta = 0.4\),
             which of the following are also solutions of the equation:
         <div class="answer-options" style="display: flex;">
@@ -203,6 +217,7 @@
         </div>
 
         <div class="answer" style="margin-top: 40px;">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio12.mp3"></audio>
             <p>Play around with the various solutions we have
                 already found, and you will soon see that only
                 the following produce other solutions:
@@ -220,19 +235,21 @@
             <p>The point of asking this question is to get to some easy rules for solving sin, cos, and tan equations that don't even need the unit circle, let alone graphs.</p>
         </div>
         <div class="key-concept">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio13.mp3"></audio>
             <p>Here is an easy rule to remember:</p>
             <p style="margin-left: 20px;">&#x2022; for equations with sin, take your first answer from \(180\).</p>
             <p style="margin-left: 20px;">&#x2022; then keep adding or subtracting \(360°\) as often as you like to each of your solutions.</p>
         </div>
-        <div class="intro">
+        <!--<div class="intro">
             <p>Later, we will see that \(180 + \alpha\) works for tan and \(-\alpha\) works for cos.</p>
             <p>The last two options, \(\alpha \pm 360\), work for sin, cos, and tan.</p>
-        </div>
+        </div>-->
     </div>    
 
     <!-- Page 7 -->
     <div class="page" id="page-7">
         <div class="exercise">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio14.mp3"></audio>
             <p>Next, we will adapt the previous
             method to solve the equation \(\cos\theta = -0.7\).</p>
             <p>First, find another point on the circle with the same
@@ -244,7 +261,7 @@
             <img src="equations_images/image7.png" class="stack-img stack-img--active" alt="Unit circle with x = -0.7 line">
             <img src="equations_images/image26.png" class="stack-img" alt="Unit circle with x = -0.7 line" style="transform: translateX(2.4%) translateY(-1%) scale(0.98); transform-origin: center;">
         </div>
-        <div class="exercise">Use this diagram and your calculator to find solutions of \(\cos\theta = -0.7\).</div>
+        <div class="exercise"><audio data-trigger="on-reveal" src="equations_audio/mp3s/audio15.mp3"></audio>Use this diagram and your calculator to find solutions of \(\cos\theta = -0.7\).</div>
     </div>
 
     <!-- Page 8 -->
@@ -259,6 +276,7 @@
             </figure>
         </div>
         <div class="answer">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio16.mp3"></audio>
             <p>\[\theta = 134.43°, 225.57°, 494.43°, 585.57° \ldots\]</p>
             <p>\[-134.43°, -225.57°, -494.43°, -585.57° \ldots\]</p>
         </div>
@@ -268,7 +286,7 @@
 
     <!-- Page 9 -->
     <div class="page" id="page-9">
-        <div class="exercise">If \(\alpha\) is any solution of the equation \(\cos\theta = k\), which of the following are also solutions of the equation:
+        <div class="exercise"><audio data-trigger="on-reveal" src="equations_audio/mp3s/audio17.mp3"></audio>If \(\alpha\) is any solution of the equation \(\cos\theta = k\), which of the following are also solutions of the equation:
 
         <div class="answer-options" style="display: flex;">
             <span style="flex: 1; text-align: center;">\(180 - \alpha\)</span>
@@ -288,6 +306,7 @@
             </figure>
         </div>
         <div class="answer" style="margin-top: 40px;">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio18.mp3"></audio>
             <p>Play around with the various solutions we have
                 already found, and you will soon see that only
                 the following produce other solutions:
@@ -302,6 +321,7 @@
         </div>
 
         <div class="key-concept" style="margin-top: 40px;">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio19.mp3"></audio>
             <p>This is the second easy rule to remember:</p>
             <p style="margin-left: 20px;">&#x2022; for cos, take the negative of your first answer.</p>
             <p style="margin-left: 20px;">&#x2022; then keep adding or subtracting \(360°\) as often as you like to each of your solutions.</p>
@@ -311,16 +331,19 @@
     <!-- Page 10 -->
     <div class="page" id="page-10">
         <div class="exercise">
-            <p>In this diagram, what is \(\tan\theta\)?</p>
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio20.mp3"></audio>
+            <p>In this diagram, what is \(\tan\theta\;\)?</p>
         </div>
 
         <figure style="max-width: 76%; margin: auto;">
             <img src="equations_images/image27.png" alt="Unit circle with line y = 2x">
         </figure>
         <div class="answer">
-            <p>tan is the gradient of the radius, so \(\tan\theta=2\)?</p>
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio21.mp3"></audio>
+            <p>tan is the gradient of the radius, so \(\tan\theta=2\).</p>
         </div>
         <div class="exercise">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio22.mp3"></audio>
             <p>Where is another point on the circle whose radius has the same gradient?</p>
         </div>
     </div>
@@ -334,6 +357,7 @@
             <img src="equations_images/image28.png" alt="Unit circle with line y = 2x">
         </figure>
         <div class="exercise">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio23.mp3"></audio>
             Use this diagram to solve the equation \(\tan\theta=2\).
         </div>
     </div>
@@ -355,6 +379,7 @@
         </div>
 
         <div class="answer">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio24.mp3"></audio>
             <p>\[\theta = 63.43°, 243.43°, 423.43°, 603.43° \ldots\]</p>
             <p>\[-116.57°, -296.57°, -476.57°, -656.57° \ldots\]</p>
         </div>
@@ -363,7 +388,7 @@
 
     <!-- Page 13 -->
     <div class="page" id="page-13">
-        <div class="exercise">If \(\alpha\) is any solution of the equation \(\tan\theta = k\), which of the
+        <div class="exercise"><audio data-trigger="on-reveal" src="equations_audio/mp3s/audio25.mp3"></audio>If \(\alpha\) is any solution of the equation \(\tan\theta = k\), which of the
             following are also solutions of the equation:
 
         <div class="answer-options" style="display: flex;">
@@ -384,6 +409,7 @@
         </div>
 
         <div class="answer" style="margin-top: 40px;">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio26.mp3"></audio>
             <p>Play around with the various solutions we have
                 already found, and you will soon see that only
                 the following produce other solutions:
@@ -397,6 +423,7 @@
             </table>
         </div>
         <div class="key-concept" style="margin-top: 40px;">
+            <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio27.mp3"></audio>
             <p>Here is the third easy rule to remember:</p>
             <p style="margin-left: 20px;">&#x2022; for tan, add \(180\) to your first answer.</p>
             <p style="margin-left: 20px;">&#x2022; then keep adding or subtracting \(360°\) as often as you like to each of your solutions.</p>
@@ -473,6 +500,7 @@
                 return;
             }
             batches[0].forEach(el => el.classList.remove('div-hidden'));
+            batches[0].forEach(playOnRevealAudio);
             revealQueue = batches.slice(1);
         } else {
             // DOM-order reveal: animatable divs and image-stack crossfades interleaved by position
@@ -513,7 +541,7 @@
                 });
             } else if (items.length > 0) {
                 const first = items[0];
-                if (!first._crossfade) first.classList.remove('div-hidden');
+                if (!first._crossfade) { first.classList.remove('div-hidden'); playOnRevealAudio(first); }
                 revealQueue = items.slice(1);
             }
         }
@@ -521,6 +549,16 @@
 
     const _origShowPage   = window.showPage;
     const _origChangePage = window.changePage;
+
+    function playOnRevealAudio(el) {
+        const audio = el.querySelector && el.querySelector('audio[data-trigger="on-reveal"]');
+        if (audio && audioEnabled) {
+            if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+            currentAudio = audio;
+            audio.currentTime = 0;
+            audio.play().catch(() => {});
+        }
+    }
 
     function revealNextOrAdvance() {
         if (revealQueue.length > 0) {
@@ -534,6 +572,7 @@
                     el.classList.remove('div-hidden');
                     el.classList.add('div-revealed');
                     setTimeout(() => el.classList.remove('div-revealed'), 400);
+                    playOnRevealAudio(el);
                 });
                 items[items.length - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
