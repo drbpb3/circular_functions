@@ -81,12 +81,16 @@
         </div>
     </div>
 <div class="page" id="page-2">
+        
+        
+    </div>
+<div class="page" id="page-3" data-no-wipes-first data-reveal-answers>
         <div class="teacher-note">
-            <p>Early in your students’ mathematical careers, they will have happily use the <span class="math inline">\(\arcsin\)</span> key on their calculators to find angles in right-angled triangles when they know side lengths. This is probably one of their earliest encounters with the idea of the inverse of a function, although of course it is not framed this way.</p>
-            <p>At the start of our work on circular functions, we spent plenty of time separating these functions from right-angled triangles using the unit circle. From there, we generated graphs of the circular functions. It’s time to look at a similar process for their inverses. In right-angled triangles, we are only dealing with angles between <span class="math inline">\(0\)</span> and <span class="math inline">\(\frac{\pi}{2}\)</span>. For each ratio of two sides, there is only one possible angle, so in this range, the inverse functions are well defined. However, when we look at angles outside this range, it is not immediately clear what the inverses of the functions might be. For example:</p>
-            <p><span class="math inline">\(\sin\frac{\pi}{6} = \sin\frac{5\pi}{6} = \sin\frac{13\pi}{6} = \sin\frac{17\pi}{6} = \ldots = \frac{1}{2}\)</span>.</p>
-            <p>So is <span class="math inline">\(\arcsin\frac{1}{2} = \frac{\pi}{6}\text{or}\frac{5\pi}{6}\text{or}\frac{13\pi}{6}\text{or}\frac{17\pi}{6}\text{or}\ldots\)</span> ?</p>
-            <p>and is <span class="math inline">\(\arcsin\left( - \frac{1}{2} \right) = - \frac{\pi}{6}\text{or}\frac{11\pi}{6}\text{or} - \frac{5\pi}{6}\text{or}\frac{7\pi}{6}\text{or}\ldots\)</span> ?</p>
+            <p>Early in your students’ mathematical careers, they will have happily use the \(\arcsin\) key on their calculators to find angles in right-angled triangles when they know side lengths. This is probably one of their earliest encounters with the idea of the inverse of a function, although of course it is not framed this way.</p>
+            <p>At the start of our work on circular functions, we spent plenty of time separating these functions from right-angled triangles using the unit circle. From there, we generated graphs of the circular functions. It’s time to look at a similar process for their inverses. In right-angled triangles, we are only dealing with angles between \(0\) and \(\frac{\pi}{2}\). For each ratio of two sides, there is only one possible angle, so in this range, the inverse functions are well defined. However, when we look at angles outside this range, it is not immediately clear what the inverses of the functions might be. For example:</p>
+            <p>\(\sin\frac{\pi}{6} = \sin\frac{5\pi}{6} = \sin\frac{13\pi}{6} = \sin\frac{17\pi}{6} = \ldots = \frac{1}{2}\).</p>
+            <p>So is \(\arcsin\frac{1}{2} = \frac{\pi}{6}\text{or}\frac{5\pi}{6}\text{or}\frac{13\pi}{6}\text{or}\frac{17\pi}{6}\text{or}\ldots\) ?</p>
+            <p>and is \(\arcsin\left( - \frac{1}{2} \right) = - \frac{\pi}{6}\text{or}\frac{11\pi}{6}\text{or} - \frac{5\pi}{6}\text{or}\frac{7\pi}{6}\text{or}\ldots\) ?</p>
             <p>Similar questions arise for the inverses of the other circular functions.</p>
             <p>The answer is, in general, that we make the simplest possible choice, so, for example:</p>
             <p><span class="math display">\[\begin{matrix}
@@ -97,7 +101,7 @@
             &amp; \arctan\frac{\sqrt{3}}{3} = \frac{\pi}{6} &amp; \arctan\left( - \frac{\sqrt{3}}{3} \right) = - \frac{\pi}{6} \\
             \phantom{-} &amp; &amp;
             \end{matrix}\]</span></p>
-            <p>In other words, for <span class="math inline">\(\arcsin\)</span> and <span class="math inline">\(\arctan\)</span> we will always choose a value between <span class="math inline">\(- \frac{\pi}{2}\)</span> and <span class="math inline">\(\frac{\pi}{2}\)</span> , whereas for <span class="math inline">\(\arccos\)</span> we will choose a value between <span class="math inline">\(0\)</span> and <span class="math inline">\(\pi\)</span>.</p>
+            <p>In other words, for \(\arcsin\) and \(\arctan\) we will always choose a value between \(- \frac{\pi}{2}\) and \(\frac{\pi}{2}\) , whereas for \(\arccos\) we will choose a value between \(0\) and \(\pi\).</p>
             <p>In the language of functions, we can say:</p>
             <p><span class="math display">\[\begin{array}{r}
             \arcsin:\{ x| - 1 \leq x \leq 1\} \rightarrow \{ y| - \frac{\pi}{2} \leq y \leq \frac{\pi}{2}\}
@@ -109,35 +113,38 @@
             \arccos:\{ x| - 1 \leq x \leq 1\} \rightarrow \{ y|0 \leq y \leq \pi\}
             \end{array}\]</span></p>
             <div class="teacher-note">
-                <p>Actually, for <span class="math inline">\(\sin\)</span> and <span class="math inline">\(\arcsin\)</span> to be inverses of each other, the domain of each has to be the range of the other. This means that the inverse of <span class="math inline">\(\arcsin\)</span> is not <span class="math inline">\(\sin\)</span>, but the restriction of <span class="math inline">\(\sin\)</span> to the domain <span class="math inline">\(\left\{ x| - \frac{\pi}{2} \leq x \leq \frac{\pi}{2} \right\}\)</span>. This is really a technicality too far at this stage in your students mathematical careers, but it could possibly come up in questions!</p>
+                <p>Actually, for \(\sin\) and \(\arcsin\) to be inverses of each other, the domain of each has to be the range of the other. This means that the inverse of \(\arcsin\) is not \(\sin\), but the restriction of \(\sin\) to the domain \(\left\{ x| - \frac{\pi}{2} \leq x \leq \frac{\pi}{2} \right\}\). This is really a technicality too far at this stage in your students mathematical careers, but it could possibly come up in questions!</p>
             </div>
             <p>One way to approach this with your class would be to tell them all this, and then move on to some questions. But if you want your class to have a deeper insight into the inner workings of these inverse functions, you might consider thinking about them from the point of view of unit circles (the first part of this worksheet) or of graphs (the second part). Or even both!</p>
             <p>Whatever you decide, there is still plenty in this worksheet to explore once you have your definitions in place.</p>
         </div>
         <div class="exercise">
-            <p>When <span class="math inline">\(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\):</span></p>
-            <ul>
-            <p>What is <span class="math inline">\(\theta\)</span> in terms of <span class="math inline">\(x\)</span>?</p>
-            <p>What is <span class="math inline">\(\theta\)</span> in terms of <span class="math inline">\(y\)</span>?</p>
-            <p>What is <span class="math inline">\(\theta\)</span> in terms of <span class="math inline">\(\displaystyle{\frac{y}{x}}\)</span> ?</p>
-            </ul>
+            <p>When \(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\):</p>
         </div>
-        <figure>
-            <img src="inverse_images/image1.png" alt="Unit circle diagram">
-        </figure>
-    </div>
-<div class="page" id="page-3">
+        <div>
+            <figure>
+            <img src="inverse_images/image1.png" alt="Unit circle diagram" style="max-width: 72%">
+            </figure>
+        </div>
         <div class="exercise">
-            <p>When <span class="math inline">\(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\):</span></p>
-            <ul>
-                <p>What is <span class="math inline">\(\theta\)</span> in terms of <span class="math inline">\(x\)</span>?</p>
-                <p>What is <span class="math inline">\(\theta\)</span> in terms of <span class="math inline">\(y\)</span>?</p>
-                <p>What is <span class="math inline">\(\theta\)</span> in terms of <span class="math inline">\(\displaystyle{\frac{y}{x}}\)</span> ?</p>
-                </ul>
+            <p>What is \(x\) in terms of \(\theta\)?</p>
         </div>
-        <figure>
-            <img src="inverse_images/image1.png" alt="Unit circle diagram">
-        </figure>
+        <div class="answer">
+            <p>\(x=\cos\theta\)</p>
+        </div>
+        <div class="exercise">
+            <p>What is \(\theta\) in terms of \(x\)?</p>
+        </div>
+        <div class="answer">
+            <p>\(\theta=\cos^{-1}x=\arccos x\)</p>
+        </div>
+        <div class="exercise">
+                <p>What is \(y\) in terms of \(\theta\)?</p>
+                <p>What is \(\theta\) in terms of \(y\)?</p>
+                <p>What is \(\displaystyle{\frac{y}{x}}\) in terms of \(\theta\)?</p>
+                <p>What is \(\theta\) in terms of \(\displaystyle{\frac{y}{x}}\) ?</p>
+        </div>
+        
         <div class="answer">
             <p><span class="math display">\[\begin{aligned}
             &amp; \cos\theta = x\qquad\sin\theta = y\qquad\tan\theta = \frac{y}{x} \\
@@ -146,9 +153,10 @@
             \end{aligned}\]</span></p>
         </div>
         <div class="intro">
-            <p>So long as <span class="math inline">\(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\)</span>, there is only one value of <span class="math inline">\(\theta\)</span> that makes <span class="math inline">\(x = \cos\theta\)</span>, <span class="math inline">\(\;y = \sin\theta\)</span>, and <span class="math inline">\(\;\displaystyle\frac{y}{x} = \tan\theta\)</span>. So we know exactly what angle we mean by <span class="math inline">\(\arccos x\)</span>, <span class="math inline">\(\arcsin y\)</span>, or <span class="math inline">\(\arctan\displaystyle\frac{y}{x}\)</span>.</p>
+            <p>So long as \(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\), there is only one value of \(\theta\) that makes \(x = \cos\theta\), \(\;y = \sin\theta\), and \(\;\displaystyle\frac{y}{x} = \tan\theta\). So we know exactly what angle we mean by \(\arccos x\), \(\arcsin y\), or \(\arctan\displaystyle\frac{y}{x}\).</p>
         </div>
     </div>
+    
 <div class="page" id="page-4" data-no-reveal>
         <div class="exercise">
             <p>Use this diagram to find the values below (no calculator, of course):</p>
@@ -485,21 +493,19 @@
         </script>
 
     </div>
-<div class="page" id="page-5">
-        <div class="intro">
-            <p>Next, we'll look at the whole thing again from the point of view of graphs.</p>
-        </div>
-        <div class="exercise">
-            <p>On the same set of axes, draw the graphs \(y=\sin x\) and \(x=\sin y\)</p>
-        </div>
+    <div class="page" id="page-5">
+        
     </div>
-<div class="page" id="page-6">
+    <div class="page" id="page-6">
+        <p>Next, we'll look at the whole thing again from the point of view of graphs.</p>
         <div class="exercise">
             <p>On the same set of axes, draw the graphs \(y=\sin x\) and \(x=\sin y\)</p>
         </div>
-        <figure>
-            <video autoplay loop muted playsinline><source src="inverse_images/video1.mp4" alt="Graph showing intersections"></video>
-        </figure>
+        <div>
+            <figure>
+                <video autoplay loop muted playsinline><source src="inverse_images/video1.mp4" alt="Graph showing intersections"></video>
+            </figure>
+        </div>
         <div class="exercise">
             <p>Can you explain why the graph \(y=\arcsin x\) is not the same as the graph \(x=\sin y\) ? The video might help you to see why this should be.</p>
         </div>
@@ -520,23 +526,23 @@
             <img src="inverse_images/image4.png" alt="Graph showing intersections">
         </figure>
         <div class="answer">
-            <p><span class="math inline">\(\sin y = \frac{1}{2}\)</span> has solutions</p>
+            <p>\(\sin y = \frac{1}{2}\) has solutions</p>
             <p><span class="math display">\[y = \frac{\pi}{6},\frac{5\pi}{6},\frac{13\pi}{6},\ldots - \frac{7\pi}{6}, - \frac{11\pi}{6}, - \frac{19\pi}{6},\ldots\]</span></p>
-            <p>and these values are where the graphs <span class="math inline">\(x = \sin y\)</span> and <span class="math inline">\(x = \frac{1}{2}\)</span> intersect.</p>
+            <p>and these values are where the graphs \(x = \sin y\) and \(x = \frac{1}{2}\) intersect.</p>
         </div>
 
         <div class="exercise">
-            <p>How many values do you want for <span class="math inline">\(\arcsin\frac{1}{2}\)</span> ?</p>
-            <p>How many times do you want the line <span class="math inline">\(x = \frac{1}{2}\)</span> to intersect with the graph <span class="math inline">\(y = \arcsin x\)</span> ?</p>
+            <p>How many values do you want for \(\arcsin\frac{1}{2}\) ?</p>
+            <p>How many times do you want the line \(x = \frac{1}{2}\) to intersect with the graph \(y = \arcsin x\) ?</p>
         </div>
     </div>
 <div class="page" id="page-9">
         <div class="answer">
-            <p>Like any function, the function <span class="math inline">\(y = \arcsin x\)</span> must be well-defined (that is, uniquely defined) for all values of <span class="math inline">\(x\)</span> in its domain.</p>
-            <p>That means that the line <span class="math inline">\(x = \frac{1}{2}\)</span> must intersect with the graph <span class="math inline">\(y = \arcsin x\)</span> exactly once.</p>
+            <p>Like any function, the function \(y = \arcsin x\) must be well-defined (that is, uniquely defined) for all values of \(x\) in its domain.</p>
+            <p>That means that the line \(x = \frac{1}{2}\) must intersect with the graph \(y = \arcsin x\) exactly once.</p>
         </div>
         <div class="exercise">
-            <p>How can you adapt the graph <span class="math inline">\(x = \sin y\)</span> to ensure that any vertical line between <span class="math inline">\(x = - 1\)</span> and <span class="math inline">\(x = 1\)</span> intersects it exactly once?</p>
+            <p>How can you adapt the graph \(x = \sin y\) to ensure that any vertical line between \(x = - 1\) and \(x = 1\) intersects it exactly once?</p>
         </div>
         <figure>
             <video autoplay loop muted playsinline><source src="inverse_images/video1.mp4" alt="Graph showing intersections"></video>
@@ -548,7 +554,7 @@
             <video autoplay loop muted playsinline><source src="inverse_images/video2.mp4" alt="Graph showing intersections"></video>
         </figure>
         <div class="answer">
-            <p>We need to choose just a small part of the curve <span class="math inline">\(x = \sin y\)</span>, making sure that it is big enough to intersect every vertical line between <span class="math inline">\(x = - 1\)</span> and <span class="math inline">\(x = 1\)</span>, but small enough to make sure that no such vertical line intersects this section of the curve more than once.</p>
+            <p>We need to choose just a small part of the curve \(x = \sin y\), making sure that it is big enough to intersect every vertical line between \(x = - 1\) and \(x = 1\), but small enough to make sure that no such vertical line intersects this section of the curve more than once.</p>
         </div>
         <div class="intro">
             <p>There are many such segments . . . an infinite number, in fact.Some of the possibilities are coloured pink and green in this diagram.</p>
@@ -561,10 +567,10 @@
             <img src="inverse_images/image5.png" alt="Graph showing segment choices">
         </figure>
         <div class="intro">
-            <p>We could choose any coloured section of the graph <span class="math inline">\(x = \sin y\)</span>, but it would be strange (though not impossible) to choose any segment other than the one that would mean <span class="math inline">\(\arcsin0 = 0\)</span>.</p>
+            <p>We could choose any coloured section of the graph \(x = \sin y\), but it would be strange (though not impossible) to choose any segment other than the one that would mean \(\arcsin0 = 0\).</p>
         </div>
         <div class="exercise">
-            <p>Which of these pink or green segments on the curve would correspond to the most sensible definition of the function <span class="math inline">\(\arcsin x\)</span> ?</p>
+            <p>Which of these pink or green segments on the curve would correspond to the most sensible definition of the function \(\arcsin x\) ?</p>
         </div>
     </div>
 <div class="page" id="page-12">
@@ -594,8 +600,8 @@
     </div>
 <div class="page" id="page-14">
         <div class="exercise">
-            <p>Draw the graph <span class="math inline">\(y = \cos x\)</span>.</p>
-            <p>On the same axes, draw the graph <span class="math inline">\(x=\cos y\)</span>.</p>
+            <p>Draw the graph \(y = \cos x\).</p>
+            <p>On the same axes, draw the graph \(x=\cos y\).</p>
         </div>
         <figure>
             <img src="inverse_images/image29.png" alt="Graphs of x = cos y and y = cos^-1 x">
@@ -604,8 +610,8 @@
 <div class="page" id="page-15">
         
         <div class="exercise">
-            <p>Draw the graph <span class="math inline">\(y = \cos x\)</span>.</p>
-            <p>On the same axes, draw the graph <span class="math inline">\(x=\cos y\)</span>.</p>
+            <p>Draw the graph \(y = \cos x\).</p>
+            <p>On the same axes, draw the graph \(x=\cos y\).</p>
         </div>
         
         <figure>
@@ -718,7 +724,10 @@
         function initPageReveal(page, revealAll) {
             revealQueue = [];
             if (page.hasAttribute('data-no-reveal')) { return; }
-            const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
+            const selectorParts = [ANIMATABLE];
+            if (page.hasAttribute('data-reveal-answers')) selectorParts.push('div.answer');
+            const selector = selectorParts.join(', ');
+            const animatable = Array.from(page.querySelectorAll(selector))
                 .filter(div => !div.classList.contains('reveal-instant'));
             animatable.forEach(div => div.classList.add('div-hidden'));
             if (revealAll) {
