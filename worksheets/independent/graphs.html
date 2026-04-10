@@ -71,6 +71,8 @@
                     </ul>
                 </div>
 
+                <button id="audio-enable-btn" onclick="toggleAudio(this)">🔇 Enable audio</button>
+
                 <p class="welcome-tip">Take your time with each video. Pause, rewind, and think before moving on!</p>
 
                 <p class="welcome-author">
@@ -84,6 +86,7 @@
 
     <!-- Page 2: Overview animation -->
     <div class="page" id="page-2">
+        <audio src="graphs_audio/audio1.mp3"></audio>
         <h2 class="chapter">Graphs of the circular functions</h2>
 
         <div class="intro">
@@ -101,6 +104,7 @@
 
     <!-- Page 3: sin graph -->
     <div class="page" id="page-3">
+        <audio src="graphs_audio/audio2.mp3"></audio>
         <div class="intro">
             <p>This video builds up the relationship between the unit circle and the graph \(y=\sin x\) very gradually.</p>
         </div>
@@ -108,28 +112,40 @@
         <figure>
             <video src="graphs_images/singraph.mp4" autoplay playsinline style="width:100%;"></video>
         </figure>
+        <!--
+        <div class="intro">
+            <p>Here is the unit circle that we have been using to define the sine function, and here are the axes for plotting the graph. First, let's see how the angle in the unit circle maps onto the \(x\) axis on the graph. Next, here's a reminder of how the unit circle defines the sine function: it's the \(y\) coordinate of the yellow point. Now we'll see this again, but with the \(y\) coordinate also appearing on the \(y\) axis. Next, we'll take a painfully small step and see the angle appearing on the \(x\) axis and the \(y\) coordinate on the \(y\) axis together. Another small step: here is the point on the graph whose \(x\) coordinate is the angle and whose \(y\) coordinate is the value of sine of the angle. And lastly, let's see the sine graph appearing on the axis as the yellow point moves around the circle.</p>
+        </div>-->
     </div>
 
     <!-- Page 4: cos graph -->
     <div class="page" id="page-4">
+        <audio src="graphs_audio/audio3.mp3"></audio>
         <div class="intro">
             <p>The relationship between the unit circle and the graph \(y=\cos x\) is slightly harder to visualize, but this video builds it up in exactly the same way.</p>
         </div>
 
         <figure>
-            <video src="graphs_images/cosgraph.mp4" autoplay playsinline style="width:100%;"></video>
+            <video src="graphs_images/cosgraphspeedy.mp4" autoplay playsinline style="width:100%;"></video>
         </figure>
+        <!--<div class="intro">
+            <p>Here are the unit circle and axes again. First, a quick reminder of how the angle in the unit circle maps onto the \(x\) axis on the graph. Now a reminder of how the unit circle defines the cosine function: it's the \(x\) coordinate of the yellow point. Now we'll see this again, but with this time with the \(x\) coordinate, that is, the cos of the angle, also appearing on the \(y\) axis of the graph. As before, we'll see the angle appearing on the \(x\) axis and the \(x\) coordinate on the \(y\) axis together. And then the point on the graph whose \(x\) coordinate is the angle and whose \(y\) coordinate is the value of cosine of the angle. And lastly, let's see the cos graph appearing on the axes as the yellow point moves around the circle.</p>
+        </div>-->
     </div>
 
     <!-- Page 5: tan graph -->
     <div class="page" id="page-5">
+        <audio src="graphs_audio/audio4.mp3"></audio>
         <div class="intro">
-            <p>Tan is even harder, because now we are mapping a gradient to a point on the \(y\) axis. However, try this:</p>
+            <p>Tan is even harder, because this time, we have to make the \(y\) coordinate on the graph match the gradient of the yellow radius.</p>
         </div>
 
         <figure>
-            <video src="graphs_images/tangraph.mp4" autoplay playsinline style="width:100%;"></video>
+            <video src="graphs_images/tangraphspeedy.mp4" autoplay playsinline style="width:100%;"></video>
         </figure>
+        <!--<div class="intro">
+            <p>Look carefully for the blue dot on the \(y\) axis. As the angle increases to \(45^\circ\), the gradient increases to \(1\) and the blue dot moves to \(1\) on the \(y\) axis. Then the gradient and the \(y\) coordinate increase to \(2\), then to \(3\), but as the angle gets closer to \(90^\circ\), the gradient gets larger without limit and the blue dot disappears off the scale. As soon as the angle passes \(90^\circ\), the gradient is negative, and as the angle gets to \(180^\circ\) the blue point renters the range of the axes, but now on the negative side of the \(y\) axis. And so on. Now we are ready to see the familiar tan graph appearing on the axes as the yellow point moves around the circle.</p>
+        </div>-->
     </div>
 
     <!-- Page 6: sin symmetry -->
