@@ -104,14 +104,16 @@
 
     <!-- Page 3: sin graph -->
     <div class="page" id="page-3">
-        <audio src="graphs_audio/audio2.mp3"></audio>
         <div class="intro">
             <p>This video builds up the relationship between the unit circle and the graph \(y=\sin x\) very gradually.</p>
         </div>
 
-        <figure>
-            <video src="graphs_images/singraph.mp4" autoplay playsinline style="width:100%;"></video>
-        </figure>
+        <div class="answer" style="background:none; border:none; box-shadow:none; padding:0; margin:0;">
+            <audio data-trigger="on-reveal" src="graphs_audio/audio2.mp3"></audio>
+            <figure>
+                <video src="graphs_images/singraph.mp4" playsinline style="width:100%;"></video>
+            </figure>
+        </div>
         <!--
         <div class="intro">
             <p>Here is the unit circle that we have been using to define the sine function, and here are the axes for plotting the graph. First, let's see how the angle in the unit circle maps onto the \(x\) axis on the graph. Next, here's a reminder of how the unit circle defines the sine function: it's the \(y\) coordinate of the yellow point. Now we'll see this again, but with the \(y\) coordinate also appearing on the \(y\) axis. Next, we'll take a painfully small step and see the angle appearing on the \(x\) axis and the \(y\) coordinate on the \(y\) axis together. Another small step: here is the point on the graph whose \(x\) coordinate is the angle and whose \(y\) coordinate is the value of sine of the angle. And lastly, let's see the sine graph appearing on the axis as the yellow point moves around the circle.</p>
@@ -395,6 +397,16 @@ document.querySelectorAll('video').forEach(function (v) {
             next.classList.add('div-revealed');
             setTimeout(() => next.classList.remove('div-revealed'), 400);
             next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            // Play any video inside the revealed div
+            next.querySelectorAll('video').forEach(v => { v.currentTime = 0; v.play().catch(() => {}); });
+            // Play on-reveal audio
+            const onRevealAudio = next.querySelector('audio[data-trigger="on-reveal"]');
+            if (onRevealAudio && audioEnabled) {
+                if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+                currentAudio = onRevealAudio;
+                onRevealAudio.currentTime = 0;
+                onRevealAudio.play().catch(() => {});
+            }
         } else {
             _origChangePage(1);
         }
@@ -407,7 +419,9 @@ document.querySelectorAll('video').forEach(function (v) {
             initPageReveal(page, revealAll || goingBackward);
             const videos = Array.from(page.querySelectorAll('video'));
             videos.forEach(v => { v.pause(); v.currentTime = 0; });
-            if (videos.length > 0) videos[0].play();
+            // Only autoplay videos that are not inside a queued (hidden) div
+            const visibleVideo = videos.find(v => !v.closest('.div-hidden'));
+            if (visibleVideo) visibleVideo.play().catch(() => {});
         }
         goingBackward = false;
     };
