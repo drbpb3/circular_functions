@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graphs of the Circular Functions</title>
+    <title>Reciprocal Circular Functions</title>
     <script>
     window.MathJax = {
         tex: {
@@ -45,6 +45,8 @@
         }
         .div-revealed { animation: divReveal 0.35s ease; }
         video { cursor: pointer; }
+        .nav-gated { display: contents; }
+        .nav-gated.div-hidden { display: none; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -58,9 +60,9 @@
     <!-- Page 1: Welcome Page -->
     <div class="page" id="page-1">
         <div class="welcome-page">
-            <h1>Graphs of the circular functions</h1>
+            <h1>Reciprocal circular functions</h1>
             <div class="welcome-content">
-                <p>So far, we have explored circular functions through their representations on a unit circle. Now we turn to their graphs. The question is: what is the relationship between these two representations?</p>
+                <p>We've explored sine, cosine, and tangent functions in some depth. Now it's time to broaden our horizons with some new functions.</p>
 
                 <div class="navigation-box">
                     <h2>How to Navigate:</h2>
@@ -86,208 +88,155 @@
 
     <!-- Page 2: Overview animation -->
     <div class="page" id="page-2">
-        <audio src="graphs_audio/audio1.mp3"></audio>
-        <h2 class="chapter">Graphs of the circular functions</h2>
+        
+        <h2 class="chapter">Reciprocal circular functions</h2>
 
         <div class="intro">
-            <p>You know only too well that we can draw graphs like \(y=\sin x\), \(y=\cos x\), and \(y=\tan x\). The question is, what is the relationship between these graphs and the unit circle? You can watch a fancy animation like this</p>
+            <p>Take a look at this animation.</p>
         </div>
 
         <figure>
-            <video src="graphs_images/graphsfromcircle.mp4" autoplay playsinline style="width:100%;"></video>
+            <video id="p2-video" src="reciprocals_images/seccsccot.mp4" autoplay playsinline style="width:100%;max-width:100%;"></video>
         </figure>
+        <div class="exercise">
+            <p>What are the lengths of the three coloured line segments (in terms of \(\theta\))?</p>
+        </div>
 
-        <div class="intro reveal-instant div-hidden" id="p2-second-intro">
-            <p>and it looks very convincing, but it's easy to miss the details. The next few pages build up each graph very gradually to make the relationship crystal clear.</p>
+        <div class="intro" id="p2-second-intro">
+            <p>The functions \(\displaystyle{\frac{1}{\cos\theta},\;\frac{1}{\sin\theta},\;\frac{1}{\tan\theta}}\) are useful enough to merit having their own names:</p>
+            \[\begin{align*}
+            &\frac{1}{\cos\theta}=\sec\theta\\[6pt]
+            &\frac{1}{\sin\theta}=\mathrm{cosec}\,\theta\text{ or }\csc\theta\\[6pt]
+            &\frac{1}{\tan\theta}=\mathrm{cotan}\,\theta\text{ or }\cot\theta
+            \end{align*}\]
         </div>
     </div>
-
-    <!-- Page 3: sin graph -->
+    <!-- Page 3: Pythagoras -->
     <div class="page" id="page-3">
-        <audio src="graphs_audio/audio2a.mp3"></audio>
-        <audio id="p3-audio" data-trigger="on-resume" src="graphs_audio/audio2b.mp3"></audio>
-        <div class="intro">
-            <p>This video builds up the relationship between the unit circle and the graph \(y=\sin x\) very gradually.</p>
-        </div>
-
         <figure>
-            <video id="p3-video" src="graphs_images/singraph.mp4" playsinline style="width:100%;"></video>
+            <img src="reciprocals_images/image1.png" alt="unit circle with new functions" style="max-width: 100%">
         </figure>
-        <!--
-        <div class="intro">
-            <p>Here is the unit circle that we have been using to define the sine function, and here are the axes for plotting the graph. First, let's see how the angle in the unit circle maps onto the \(x\) axis on the graph. Next, here's a reminder of how the unit circle defines the sine function: it's the \(y\) coordinate of the yellow point. Now we'll see this again, but with the \(y\) coordinate also appearing on the \(y\) axis. Next, we'll take a painfully small step and see the angle appearing on the \(x\) axis and the \(y\) coordinate on the \(y\) axis together. Another small step: here is the point on the graph whose \(x\) coordinate is the angle and whose \(y\) coordinate is the value of sine of the angle. And lastly, let's see the sine graph appearing on the axis as the yellow point moves around the circle.</p>
-        </div>-->
+        <div class="exercise">
+            <p>What would Pythagoras say about each of the right-angled triangles in this diagram?.</p>
+        </div>
+        <div class="answer">
+            \[\begin{align*}
+            &1+\tan^2\theta=\sec^2\theta\\[12pt]
+            &1+\cot^2\theta=\mathrm{cosec}^2\,\theta\\[12pt]
+            &\mathrm{cosec}^2\,\theta+\sec^2\theta=(\tan\theta+\cot\theta)^2
+            \end{align*}\]
+        </div>
     </div>
-
-    <!-- Page 4: cos graph -->
+    <!-- Page 4: graphs1 -->
     <div class="page" id="page-4">
-        <audio src="graphs_audio/audio3.mp3"></audio>
-        <div class="intro">
-            <p>The relationship between the unit circle and the graph \(y=\cos x\) is slightly harder to visualize, but this video builds it up in exactly the same way.</p>
-        </div>
-
         <figure>
-            <video src="graphs_images/cosgraphspeedy.mp4" autoplay playsinline style="width:100%;"></video>
+            <video src="reciprocals_images/seccsccot2.mp4" autoplay playsinline style="width:100%;max-width:100%;"></video>
         </figure>
-        <!--<div class="intro">
-            <p>Here are the unit circle and axes again. First, a quick reminder of how the angle in the unit circle maps onto the \(x\) axis on the graph. Now a reminder of how the unit circle defines the cosine function: it's the \(x\) coordinate of the yellow point. Now we'll see this again, but with this time with the \(x\) coordinate, that is, the cos of the angle, also appearing on the \(y\) axis of the graph. As before, we'll see the angle appearing on the \(x\) axis and the \(x\) coordinate on the \(y\) axis together. And then the point on the graph whose \(x\) coordinate is the angle and whose \(y\) coordinate is the value of cosine of the angle. And lastly, let's see the cos graph appearing on the axes as the yellow point moves around the circle.</p>
-        </div>-->
-    </div>
-
-    <!-- Page 5: tan graph -->
-    <div class="page" id="page-5">
-        <audio src="graphs_audio/audio4.mp3"></audio>
-        <div class="intro">
-            <p>Tan is even harder, because this time, we have to make the \(y\) coordinate on the graph match the gradient of the yellow radius.</p>
-        </div>
-
-        <figure>
-            <video src="graphs_images/tangraphspeedy.mp4" autoplay playsinline style="width:100%;"></video>
-        </figure>
-        <!--<div class="intro">
-            <p>Look carefully for the blue dot on the \(y\) axis. As the angle increases to \(45^\circ\), the gradient increases to \(1\) and the blue dot moves to \(1\) on the \(y\) axis. Then the gradient and the \(y\) coordinate increase to \(2\), then to \(3\), but as the angle gets closer to \(90^\circ\), the gradient gets larger without limit and the blue dot disappears off the scale. As soon as the angle passes \(90^\circ\), the gradient is negative, and as the angle gets to \(180^\circ\) the blue point renters the range of the axes, but now on the negative side of the \(y\) axis. And so on. Now we are ready to see the familiar tan graph appearing on the axes as the yellow point moves around the circle.</p>
-        </div>-->
-    </div>
-
-    <!-- Page 6: sin symmetry -->
-    <div class="page" id="page-6">
+        
         <div class="exercise">
-            <p>Draw the graph \(y=\sin x\) on a set of axes marked in degrees from \(-540^\circ\) to \(540^\circ\).</p>
+            <p>What happens to \(\sec\theta\) as \(\theta\to 90^\circ\) ?</p>
+            <p>What is the minimum value of \(\sec\theta\) ?</p>
+            <p>What happens to \(\sec\theta\) as  \(\theta\to 0\) ?</p>
         </div>
-        <figure>
-            <video id="p6-video" src="graphs_images/singraph2.mp4" playsinline style="width:100%;"></video>
-        </figure>
-        <div class="exercise">
-            <p>On the same axes, draw the graphs \(y=\sin (-x)\) and \(y=-\sin x\).</p>
+        <div class="answer">
+            <p>\(\sec\theta\to\infty\) as \(\theta\to 90^\circ\)</p>
+            <p>\(\sec\theta\geq 1\)</p>
+            <p>\(\sec\theta\to 1\) as  \(\theta\to 0\)</p>
         </div>
     </div>
     
-    <!-- Page 7: sin symmetry -->
-    <div class="page" id="page-7">
-        <div class="exercise">
-            <p>On the same axes, draw the graphs \(y=\sin (-x)\) and \(y=-\sin x\).</p>
-        </div>
+    <!-- Page 5: graphs2 -->
+    <div class="page" id="page-5">
         <figure>
-            <video id="singraph3" src="graphs_images/singraph3.mp4" autoplay playsinline style="width:100%;"></video>
+            <video src="reciprocals_images/seccsccot2.mp4" autoplay playsinline style="width:100%;max-width:100%;"></video>
         </figure>
-        <figure>
-            <video id="singraph4" src="graphs_images/singraph4.mp4" playsinline style="width:100%;"></video>
-        </figure>
-        <div class="answer">
-            <p>Really, we only need one well-chosen point on the new graphs to see immediately what they will look like. For example, when \(x=90^\circ\) on the graph \(y=\sin(-x)\), then \(y=\sin(-90^\circ)=-1\). With this information, you can probably draw the graph \(y=\sin(-x)\) straight away. You might like to check a few other points just to be sure.</p>
-            <p>You can also draw \(y=-\sin x\) the same way. And yes, it turns out to be the same as \(y=\sin(-x)\).</p>
-        </div>
         
-        <script>
-        document.getElementById('singraph3').addEventListener('ended', function () {
-            document.getElementById('singraph4').play();
-        });
-        </script>
         <div class="exercise">
-            <p>Describe the transformation of the graph \(y=\sin x\) to the graph \(y=\sin (-x)\) or \(y=-\sin x\) in as many ways as you can. Remember you can use reflections or translations!</p>
+            <p>What happens to \(\mathrm{cosec}\,\theta\) as \(\theta\to 90^\circ\) ?</p>
+            <p>What is the minimum value of \(\mathrm{cosec}\,\theta\) ?</p>
+            <p>What happens to \(\mathrm{cosec}\,\theta\) as  \(\theta\to 0\) ?</p>
+        </div>
+        <div class="answer">
+            <p>\(\mathrm{cosec}\,\theta\to 1\) as \(\theta\to 90^\circ\)</p>
+            <p>\(\mathrm{cosec}\,\theta\geq 1\)</p>
+            <p>\(\mathrm{cosec}\,\theta\to \infty\) as  \(\theta\to 0\)</p>
+        </div>
+    </div>
+    <!-- Page 6: graphs3 -->
+    <div class="page" id="page-6">
+        <figure>
+            <video src="reciprocals_images/seccsccot2.mp4" autoplay playsinline style="width:100%;max-width:100%;"></video>
+        </figure>
+        
+        <div class="exercise">
+            <p>What happens to \(\cot\theta\) as \(\theta\to 90^\circ\) ?</p>
+            <p>For what value of \(\theta\) is \(\cot\theta=1\) ?</p>
+            <p>What happens to \(\cot\theta\) as  \(\theta\to 0\) ?</p>
+        </div>
+        <div class="answer">
+            <p>\(\cot\theta\to 0\) as \(\theta\to 90^\circ\)</p>
+            <p>\(\cot 45^\circ= 1\)</p>
+            <p>\(\cot\theta\to \infty\) as  \(\theta\to 0\)</p>
         </div>
     </div>
 
-    <!-- Page 8: sin symmetry -->
+    <!-- Page 7: graphs4 -->
+    <div class="page" id="page-7">
+        <div class="intro">
+            <p>The same diagram illustrates these three new functions for other values of \(\theta\). Lengths are always positive, however, so they cannot easily show when these functions are negatives.</p>
+            <p>Since</p>
+            \[\begin{align*}
+            &\frac{1}{\cos\theta}=\sec\theta\\[6pt]
+            &\frac{1}{\sin\theta}=\mathrm{cosec}\,\theta\text{ or }\csc\theta\\[6pt]
+            &\frac{1}{\tan\theta}=\mathrm{cotan}\,\theta\text{ or }\cot\theta
+            \end{align*}\]
+            <p>it must be the case that \(\sec\theta &lt 0 \) whenever \(\cos\theta &lt 0\) and so on.</p>
+            
+             <p>This animation should help.</p>
+        </div>
+        <figure>
+            <video src="reciprocals_images/seccsccot3.mp4" autoplay playsinline style="width:100%;max-width:100%;"></video>
+        </figure>
+    </div>
+
+    <!-- Page 8: graphs5 -->
     <div class="page" id="page-8">
         <div class="exercise">
-            <p>Describe the transformation of the graph \(y=\sin x\) to the graph \(y=\sin (-x)\) or \(y=-\sin x\) in as many ways as you can. Remember you can use reflections or translations!</p>
+            <p>On the same set of axes, draw the graphs \(y=\cos x\) and \(y=\sec x\).</p>
+        </div>
+        <div class="nav-gated" data-nav-play>
+            <figure>
+                <video id="p8-video" data-stop="84" src="reciprocals_images/seccsccot5.mp4" playsinline style="width:100%;max-width:100%;"></video>
+            </figure>
         </div>
     </div>
 
-    <!-- Page 9: sin symmetry -->
+    <!-- Page 9: graphs5 copy -->
     <div class="page" id="page-9">
         <div class="exercise">
-            <p>Describe the transformation of the graph \(y=\sin x\) to the graph \(y=\sin (-x)\) or \(y=-\sin x\) in as many ways as you can. Remember you can use reflections or translations!</p>
+            <p>On a new set of axes, draw the graphs \(y=\sin x\) and \(y=\mathrm{cosec}\, x\).</p>
         </div>
-        <figure>
-            <video src="graphs_images/sintransformations.mp4" autoplay playsinline style="width:100%;"></video>
-        </figure>
-        <div class="answer">
-            <p>We can reflect in the \(x\) axis, reflect in the \(y\) axis, translate left or right by \(180^\circ\) or \(540^\circ\) or add multiples of \(360^\circ\) to either of these.</p>
+        <div class="nav-gated" data-nav-play>
+            <figure>
+                <video id="p9-video" data-start="87" data-stop="151" src="reciprocals_images/seccsccot5.mp4" playsinline style="width:100%;max-width:100%;"></video>
+            </figure>
         </div>
     </div>
 
-    <!-- Page 10: cos symmetry -->
+    <!-- Page 10: graphs5 copy -->
     <div class="page" id="page-10">
         <div class="exercise">
-            <p>Draw the graph \(y=\cos x\) on a set of axes marked in degrees from \(-540^\circ\) to \(540^\circ\).</p>
+            <p>On a new set of axes, draw the graphs \(y=\tan x\) and \(y=\cot x\).</p>
         </div>
-        <figure>
-            <video id="p10-video" src="graphs_images/cosgraph2.mp4" playsinline style="width:100%;"></video>
-        </figure>
-
-        <div class="exercise">
-            <p>On the same axes, draw the graphs \(y=\cos (-x)\) and \(y=-\cos x\).</p>
+        <div class="nav-gated" data-nav-play>
+            <figure>
+                <video data-start="155" src="reciprocals_images/seccsccot5.mp4" playsinline style="width:100%;max-width:100%;"></video>
+            </figure>
         </div>
-
     </div>
 
-    <!-- Page 11: cos symmetry -->
+    <!-- Page 11: Congratulations Page -->
     <div class="page" id="page-11">
-        <div class="exercise">
-            <p>On the same axes, draw the graphs \(y=\cos (-x)\) and \(y=-\cos x\).</p>
-        </div>
-
-        <figure>
-            <video id="cosgraph3" src="graphs_images/cosgraph3.mp4" autoplay playsinline style="width:100%;"></video>
-        </figure>
-        <figure>
-            <video id="cosgraph4" src="graphs_images/cosgraph4.mp4" playsinline style="width:100%;"></video>
-        </figure>
-        <script>
-        document.getElementById('cosgraph3').addEventListener('ended', function () {
-            var v = document.getElementById('cosgraph4');
-            v.play();
-        });
-        </script>
-        <div class="answer">
-            <p>Really, we only need one well-chosen point on the new graphs to see immediately what they will look like. For example, when \(x=180^\circ\) on the graph \(y=\cos(-x)\), then \(y=\cos(-180^\circ)=-1\). With this information, you can probably draw the graph \(y=\cos(-x)\) straight away. You might like to check a few other points just to be sure.</p>
-            <p>You can also draw \(y=-\cos x\) the same way.</p>
-        </div>
-        <div class="exercise">
-            <p>Describe the transformation of the graph \(y=\cos x\) to the graph \(y=-\cos x\) in as many ways as you can. Remember you can use reflections or translations!</p>
-        </div>
-    </div>
-
-    
-
-    <!-- Page 12: cos symmetry -->
-    <div class="page" id="page-12">
-        <div class="exercise">
-            <p>Describe the transformation of the graph \(y=\cos x\) to the graph \(y=-\cos x\) in as many ways as you can. Remember you can use reflections or translations!</p>
-        </div>
-        <figure>
-            <video id="p12-video" src="graphs_images/costransformations.mp4" playsinline style="width:100%;"></video>
-        </figure>
-    </div>
-
-    
-    <!-- Page 13: tan symmetry -->
-    <div class="page" id="page-13">
-        <div class="exercise">
-            <p>Draw the graph \(y=\tan x\) on a set of axes marked in degrees from \(-540^\circ\) to \(540^\circ\).</p>
-        </div>
-        <figure>
-            <video id="p13-video" src="graphs_images/tantransformations.mp4" playsinline style="width:100%;"></video>
-        </figure>
-        <div class="exercise">
-            <p>On the same axes, draw the graphs \(y=\tan (-x)\) and \(y=-\tan x\).</p>
-        </div>
-    </div>
-
-    <!-- Page 14: sin to cos -->
-    <div class="page" id="page-14">
-        <div class="exercise">
-            <p>On the same axes, draw the graphs \(y=\sin x\) and \(y=\cos x\).</p>
-            <p>Describe in as many ways as you can the transformations that take one graph to the other.</p>
-        </div>
-        <figure>
-            <video src="graphs_images/sintocos.mp4" autoplay playsinline style="width:100%;"></video>
-        </figure>
-    </div>
-    <!-- Page 15: Congratulations Page -->
-    <div class="page" id="page-15">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
@@ -317,7 +266,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="15" onchange="goToPage(this.value)"> of 15
+        Page <input type="number" id="pageInput" value="1" min="1" max="11" onchange="goToPage(this.value)"> of 11
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -332,6 +281,11 @@ document.querySelectorAll('video').forEach(function (v) {
     }, { once: true });
 });
 
+// Page 2: three-stage pause sequence
+var p2waitingForExercise = false;
+var p2waitingForResume = false;
+var p2waitingForFinalPlay = false;
+var p2pauseListener = null;
 // Page 3: flag set when video pauses at 13s, cleared on resume or page change
 var p3waitingForResume = false;
 var p6waitingForResume = false;
@@ -422,13 +376,16 @@ document.addEventListener('DOMContentLoaded', function () {
 (function () {
     'use strict';
 
-    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer';
+    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer, div.nav-gated';
 
     let revealQueue = [];
     let goingBackward = false;
 
     function initPageReveal(page, revealAll) {
         // Leaving any page — clear resume flags
+        p2waitingForExercise = false;
+        p2waitingForResume = false;
+        p2waitingForFinalPlay = false;
         p3waitingForResume = false;
         p6waitingForResume = false;
         p10waitingForResume = false;
@@ -439,7 +396,10 @@ document.addEventListener('DOMContentLoaded', function () {
             .filter(div => !div.classList.contains('reveal-instant'));
         animatable.forEach(div => div.classList.add('div-hidden'));
         if (revealAll) {
-            animatable.forEach(div => div.classList.remove('div-hidden'));
+            animatable.forEach(div => {
+                if (!div.hasAttribute('data-nav-play')) div.classList.remove('div-hidden');
+            });
+            revealQueue = animatable.filter(div => div.hasAttribute('data-nav-play'));
             return;
         }
         if (animatable.length > 0) {
@@ -452,6 +412,53 @@ document.addEventListener('DOMContentLoaded', function () {
     const _origChangePage = window.changePage;
 
     function revealNextOrAdvance() {
+        // Page 2: nav after 17s pause plays 17→27s; nav after 27s pause plays 43→54s
+        if (p2waitingForResume) {
+            p2waitingForResume = false;
+            const p2v = document.getElementById('p2-video');
+            if (p2v) {
+                if (p2pauseListener) {
+                    p2v.removeEventListener('timeupdate', p2pauseListener);
+                    p2pauseListener = null;
+                }
+                revealQueue = []; // p2-second-intro will be shown by timeupdate, not nav
+                p2v.currentTime = 17;
+                function p2pauseAt27() {
+                    if (p2v.currentTime >= 27) {
+                        p2v.pause();
+                        p2v.removeEventListener('timeupdate', p2pauseAt27);
+                        const intro = document.getElementById('p2-second-intro');
+                        if (intro) {
+                            intro.classList.remove('div-hidden');
+                            intro.classList.add('div-revealed');
+                            setTimeout(() => intro.classList.remove('div-revealed'), 400);
+                            intro.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                        p2waitingForFinalPlay = true;
+                    }
+                }
+                p2v.addEventListener('timeupdate', p2pauseAt27);
+                p2v.play().catch(() => {});
+            }
+            return;
+        }
+        if (p2waitingForFinalPlay) {
+            p2waitingForFinalPlay = false;
+            const p2v = document.getElementById('p2-video');
+            if (p2v) {
+                p2v.currentTime = 43;
+                function p2stopAt54() {
+                    if (p2v.currentTime >= 54) {
+                        p2v.pause();
+                        p2v.removeEventListener('timeupdate', p2stopAt54);
+                    }
+                }
+                p2v.addEventListener('timeupdate', p2stopAt54);
+                p2v.play().catch(() => {});
+            }
+            return;
+        }
+
         // Page 3 special case: resume video + play audio together on nav press
         if (p3waitingForResume) {
             p3waitingForResume = false;
@@ -505,8 +512,22 @@ document.addEventListener('DOMContentLoaded', function () {
             next.classList.add('div-revealed');
             setTimeout(() => next.classList.remove('div-revealed'), 400);
             next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            // Play any video inside the revealed div
-            next.querySelectorAll('video').forEach(v => { v.currentTime = 0; v.play().catch(() => {}); });
+            // Play any video inside the revealed div, respecting data-start / data-stop
+            next.querySelectorAll('video').forEach(v => {
+                const startTime = parseFloat(v.dataset.start) || 0;
+                v.currentTime = startTime;
+                v.play().catch(() => {});
+                const stopTime = parseFloat(v.dataset.stop);
+                if (stopTime) {
+                    const stopFn = function () {
+                        if (v.currentTime >= stopTime) {
+                            v.pause();
+                            v.removeEventListener('timeupdate', stopFn);
+                        }
+                    };
+                    v.addEventListener('timeupdate', stopFn);
+                }
+            });
             // Play on-reveal audio
             const onRevealAudio = next.querySelector('audio[data-trigger="on-reveal"]');
             if (onRevealAudio && audioEnabled) {
@@ -524,10 +545,36 @@ document.addEventListener('DOMContentLoaded', function () {
         _origShowPage(pageNum);
         const page = document.getElementById('page-' + pageNum);
         if (page) {
-            // Re-hide page 2 timed div so it triggers fresh on each visit
+            // Re-arm page 2 pause-at-17s listener on each visit
             if (pageNum === 2) {
+                p2waitingForExercise = false;
+                p2waitingForResume = false;
+                p2waitingForFinalPlay = false;
                 const p2intro = document.getElementById('p2-second-intro');
                 if (p2intro) p2intro.classList.add('div-hidden');
+                const p2v = document.getElementById('p2-video');
+                if (p2v) {
+                    if (p2pauseListener) {
+                        p2v.removeEventListener('timeupdate', p2pauseListener);
+                    }
+                    p2pauseListener = function () {
+                        if (!p2v.paused && p2v.currentTime >= 17) {
+                            p2v.pause();
+                            p2v.removeEventListener('timeupdate', p2pauseListener);
+                            p2pauseListener = null;
+                            // Show exercise immediately — no nav press needed
+                            const exDiv = revealQueue.shift();
+                            if (exDiv) {
+                                exDiv.classList.remove('div-hidden');
+                                exDiv.classList.add('div-revealed');
+                                setTimeout(() => exDiv.classList.remove('div-revealed'), 400);
+                                exDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }
+                            p2waitingForResume = true;
+                        }
+                    };
+                    p2v.addEventListener('timeupdate', p2pauseListener);
+                }
             }
             // Re-arm page 10 pause-at-4s listener on each visit
             if (pageNum === 10) {
