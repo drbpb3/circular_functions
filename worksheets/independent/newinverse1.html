@@ -80,11 +80,137 @@
             </div>
         </div>
     </div>
-<div class="page" id="page-2">
-        
-        
+<div class="page" id="page-2" data-reveal-answers>
+    <div class="intro">
+        <p>We are very used to the idea of inverse functions as somehow "undoing" a function. For example, if we know the lengths of two sides of a right-angled triangle, we can work out the angles using \(\arcsin,\;\arccos,\;\text{ or }\arctan\).</p>
+        <p>You might prefer the notation \(\sin^{-1},\;\cos^{-1},\;\tan^{-1}\), but whichever notation you use, they mean the same thing, and you should get used to both forms.</p>
+        <p>If the side of the triangle opposite the angle is \(1\) and the hypotenuse is \(2\), then the angle is \(\arcsin\frac{1}{2}=30^\circ=\frac{\pi}{6}\).</p>
     </div>
-<div class="page" id="page-3" data-no-wipes-first data-reveal-answers>
+
+</div>
+<div class="page" id="page-3" data-reveal-answers>
+    <div class="exercise">
+        <p>When \(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\):</p>
+    </div><div>
+        <figure>
+        <img src="inverse_images/image1.png" alt="Unit circle diagram" style="max-width: 72%">
+        </figure>
+    </div>
+    <div class="exercise">
+        <p>What is \(x\) in terms of \(\theta\)?</p>
+    </div>
+    <div class="answer">
+        <p>\(x=\cos\theta\)</p>
+    </div>
+    <div class="exercise">
+        <p>What is \(\theta\) in terms of \(x\)?</p>
+    </div>
+    <div class="answer">
+        <p>\(\theta=\cos^{-1}x=\arccos x\)</p>
+    </div>
+    <div class="exercise">
+            <p>What is \(y\) in terms of \(\theta\)?</p>
+            <p>What is \(\theta\) in terms of \(y\)?</p>
+            <p>What is \(\displaystyle{\frac{y}{x}}\) in terms of \(\theta\)?</p>
+            <p>What is \(\theta\) in terms of \(\displaystyle{\frac{y}{x}}\) ?</p>
+    </div>
+    
+    <div class="answer">
+        <p><span class="math display">\[\begin{aligned}
+        &amp; \cos\theta = x\qquad\sin\theta = y\qquad\tan\theta = \frac{y}{x} \\
+        \phantom{-} &amp; \\
+        &amp; \Rightarrow \theta = \arccos x = \arcsin y = \arctan\frac{y}{x}
+        \end{aligned}\]</span></p>
+    </div>
+    <div class="intro">
+        <p>So long as \(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\), there is only one value of \(\theta\) that makes \(x = \cos\theta\), \(\;y = \sin\theta\), and \(\;\displaystyle\frac{y}{x} = \tan\theta\). So we know exactly what angle we mean by \(\arccos x\), \(\arcsin y\), or \(\arctan\displaystyle\frac{y}{x}\).</p>
+    </div>
+</div>
+<div class="page" id="page-4" data-reveal-answers>
+    <div class="exercise">
+        <p>Solve the equation \(\sin\theta=\frac{\sqrt 3}{2}\).</p>
+    </div>
+
+    <div class="answer">
+        \[\begin{align*}
+        \theta=&\frac{\pi}{3},\;\frac{2\pi}{3},\;\frac{7\pi}{3},\;\frac{8\pi}{3}\dots\\
+        &-\frac{4\pi}{3},\;-\frac{5\pi}{3},\;-\frac{10\pi}{3},\;-\frac{11\pi}{3}
+        \end{align*}\]
+    </div>
+
+    <div class="intro">
+        \[\begin{align*}
+        \sin\frac{\pi}{3}&=\sin\frac{2\pi}{3}=\sin\frac{7\pi}{3}=\sin\frac{8\pi}{3}\dots\\
+        &=\sin\left(-\frac{4\pi}{3}\right)=\sin\left(-\frac{5\pi}{3}\right)=\sin\left(-\frac{10\pi}{3}\right)=\sin\left(-\frac{11\pi}{3}\right)\\
+        &=\frac{\sqrt 3}{2}
+        \end{align*}\]
+    </div>
+    <div class="exercise">
+        What is \(\displaystyle{\arcsin\frac{\sqrt 3}{2}}\) ?
+    </div>
+    <div class="answer">
+        \(\arcsin\frac{\sqrt 3}{2}=\frac{\pi}{3}\)
+    </div>
+    </div>
+
+<div class="page" id="page-5" data-reveal-answers>
+    <div class="exercise">
+        Figure these out without a calculator:
+    
+    \[\begin{array}{ll}
+    \arcsin \left(\sin\dfrac{\pi}{3}\right) &\qquad \arcsin \left(\sin\dfrac{2\pi}{3}\right)\\[16pt]
+    \arcsin \left(\sin\dfrac{7\pi}{3}\right) &\qquad \arcsin \left(\sin\dfrac{8\pi}{3}\right)\\[16pt]
+    \arcsin \left(\sin\left(-\dfrac{4\pi}{3}\right)\right) &\qquad \arcsin \left(\sin\left(-\dfrac{5\pi}{3}\right)\right)\\[16pt]
+    \arcsin \left(\sin\left(-\dfrac{10\pi}{3}\right)\right) &\qquad \arcsin \left(\sin\left(-\dfrac{11\pi}{3}\right)\right)
+    \end{array}\]
+    </div>
+    <div class="answer">
+        \[\begin{align*}
+        \arcsin \left(\sin\frac{\pi}{3}\right)&=\arcsin\frac{\sqrt 3}{2}=\frac{\pi}{3}\\[12pt]
+        \arcsin \left(\sin\frac{2\pi}{3}\right)&=\arcsin \left(\sin\frac{7\pi}{3}\right)=\arcsin \left(\sin\frac{8\pi}{3}\right)\\[12pt]
+        &=\arcsin \left(\sin\left(-\frac{4\pi}{3}\right)\right)=\arcsin \left(\sin\left(-\frac{5\pi}{3}\right)\right)\\[12pt]
+        &=\arcsin \left(\sin\left(-\frac{10\pi}{3}\right)\right)=
+        \arcsin \left(\sin\left(-\frac{11\pi}{3}\right)\right)\\[12pt]
+        &=\arcsin\frac{\sqrt 3}{2}\\[6pt]
+        &=\frac{\pi}{3}\\[12pt]
+        \end{align*}\]
+    </div>
+    </div>
+
+<div class="page" id="page-6" data-reveal-answers>
+<div class="intro">
+    If \(\theta\) is between \(-\frac{\pi}{2}\) and \(0\), then \(\sin\theta&lt 0\). For example, 
+    \[\begin{align*}
+    \sin\left(-\frac{\pi}{3}\right)=-\frac{\sqrt 3}{2}\text{ and}\\[6pt]
+    \arcsin\left(-\frac{\sqrt 3}{2}\right)=-\frac{\pi}{3}
+    \end{align*}\]
+    <div class="exercise">
+        Figure these out without a calculator:
+    
+    \[\begin{array}{ll}
+    \arcsin \left(\sin\left(-\dfrac{\pi}{3}\right)\right) &\qquad \arcsin \left(\sin\left(-\dfrac{2\pi}{3}\right)\right)\\[16pt]
+    \arcsin \left(\sin\left(-\dfrac{7\pi}{3}\right)\right) &\qquad \arcsin \left(\sin\left(-\dfrac{8\pi}{3}\right)\right)\\[16pt]
+    \arcsin \left(\sin\dfrac{4\pi}{3}\right) &\qquad \arcsin \left(\sin\dfrac{5\pi}{3}\right)\\[16pt]
+    \arcsin \left(\sin\dfrac{10\pi}{3}\right) &\qquad \arcsin \left(\sin\dfrac{11\pi}{3}\right)
+    \end{array}\]
+    </div>
+    <div class="answer">
+        \[\begin{align*}
+        \arcsin \left(\sin\left(-\frac{\pi}{3}\right)\right)&=
+        \arcsin \left(\sin\left(-\frac{2\pi}{3}\right)\right)=
+        \arcsin \left(\sin\left(-\frac{7\pi}{3}\right)\right)\\[12pt]
+        &=\arcsin \left(\sin\left(-\frac{8\pi}{3}\right)\right)=
+        \arcsin \left(\sin\frac{4\pi}{3}\right)
+        =\arcsin \left(\sin\frac{5\pi}{3}\right)\\[12pt]
+        &=\arcsin \left(\sin\frac{10\pi}{3}\right)=
+        \arcsin \left(\sin\frac{11\pi}{3}\right)\\[12pt]
+        &=\arcsin\left(-\frac{\sqrt 3}{2}\right)\\[12pt]
+        &=-\frac{\pi}{3}
+        \end{align*}\]
+    </div>
+    
+</div>
+<div class="page" id="page-7" data-no-wipes-first data-reveal-answers>
         <div class="teacher-note">
             <p>Early in your students’ mathematical careers, they will have happily use the \(\arcsin\) key on their calculators to find angles in right-angled triangles when they know side lengths. This is probably one of their earliest encounters with the idea of the inverse of a function, although of course it is not framed this way.</p>
             <p>At the start of our work on circular functions, we spent plenty of time separating these functions from right-angled triangles using the unit circle. From there, we generated graphs of the circular functions. It’s time to look at a similar process for their inverses. In right-angled triangles, we are only dealing with angles between \(0\) and \(\frac{\pi}{2}\). For each ratio of two sides, there is only one possible angle, so in this range, the inverse functions are well defined. However, when we look at angles outside this range, it is not immediately clear what the inverses of the functions might be. For example:</p>
@@ -112,52 +238,17 @@
             <p><span class="math display">\[\begin{array}{r}
             \arccos:\{ x| - 1 \leq x \leq 1\} \rightarrow \{ y|0 \leq y \leq \pi\}
             \end{array}\]</span></p>
-            <div class="teacher-note">
+            
                 <p>Actually, for \(\sin\) and \(\arcsin\) to be inverses of each other, the domain of each has to be the range of the other. This means that the inverse of \(\arcsin\) is not \(\sin\), but the restriction of \(\sin\) to the domain \(\left\{ x| - \frac{\pi}{2} \leq x \leq \frac{\pi}{2} \right\}\). This is really a technicality too far at this stage in your students mathematical careers, but it could possibly come up in questions!</p>
-            </div>
+            
             <p>One way to approach this with your class would be to tell them all this, and then move on to some questions. But if you want your class to have a deeper insight into the inner workings of these inverse functions, you might consider thinking about them from the point of view of unit circles (the first part of this worksheet) or of graphs (the second part). Or even both!</p>
             <p>Whatever you decide, there is still plenty in this worksheet to explore once you have your definitions in place.</p>
         </div>
-        <div class="exercise">
-            <p>When \(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\):</p>
-        </div>
-        <div>
-            <figure>
-            <img src="inverse_images/image1.png" alt="Unit circle diagram" style="max-width: 72%">
-            </figure>
-        </div>
-        <div class="exercise">
-            <p>What is \(x\) in terms of \(\theta\)?</p>
-        </div>
-        <div class="answer">
-            <p>\(x=\cos\theta\)</p>
-        </div>
-        <div class="exercise">
-            <p>What is \(\theta\) in terms of \(x\)?</p>
-        </div>
-        <div class="answer">
-            <p>\(\theta=\cos^{-1}x=\arccos x\)</p>
-        </div>
-        <div class="exercise">
-                <p>What is \(y\) in terms of \(\theta\)?</p>
-                <p>What is \(\theta\) in terms of \(y\)?</p>
-                <p>What is \(\displaystyle{\frac{y}{x}}\) in terms of \(\theta\)?</p>
-                <p>What is \(\theta\) in terms of \(\displaystyle{\frac{y}{x}}\) ?</p>
-        </div>
         
-        <div class="answer">
-            <p><span class="math display">\[\begin{aligned}
-            &amp; \cos\theta = x\qquad\sin\theta = y\qquad\tan\theta = \frac{y}{x} \\
-            \phantom{-} &amp; \\
-            &amp; \Rightarrow \theta = \arccos x = \arcsin y = \arctan\frac{y}{x}
-            \end{aligned}\]</span></p>
-        </div>
-        <div class="intro">
-            <p>So long as \(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\), there is only one value of \(\theta\) that makes \(x = \cos\theta\), \(\;y = \sin\theta\), and \(\;\displaystyle\frac{y}{x} = \tan\theta\). So we know exactly what angle we mean by \(\arccos x\), \(\arcsin y\), or \(\arctan\displaystyle\frac{y}{x}\).</p>
         </div>
     </div>
     
-<div class="page" id="page-4" data-no-reveal>
+<div class="page" id="page-8" data-no-reveal>
         <div class="exercise">
             <p>Use this diagram to find the values below (no calculator, of course):</p>
     </div>
@@ -458,7 +549,7 @@
         // Keyboard navigation for matrix rows (left/right arrows when on page 4)
         document.addEventListener('keydown', function(e) {
         // Only handle arrow keys on page 4
-        if (currentPage === 4) {
+        if (currentPage === 8) {
         if (e.key === 'ArrowLeft') {
         e.preventDefault();
         changeMatrixRow(-1);
@@ -493,10 +584,10 @@
         </script>
 
     </div>
-    <div class="page" id="page-5">
+    <div class="page" id="page-9">
         
     </div>
-    <div class="page" id="page-6">
+    <div class="page" id="page-10">
         <p>Next, we'll look at the whole thing again from the point of view of graphs.</p>
         <div class="exercise">
             <p>On the same set of axes, draw the graphs \(y=\sin x\) and \(x=\sin y\)</p>
@@ -510,7 +601,7 @@
             <p>Can you explain why the graph \(y=\arcsin x\) is not the same as the graph \(x=\sin y\) ? The video might help you to see why this should be.</p>
         </div>
     </div>
-<div class="page" id="page-7">
+<div class="page" id="page-11">
         <div class="exercise">
             <p>To see this, first solve the equation \(\sin y = \frac{1}{2}\) and explain how your answer relates to the graphs.</p>
         </div>
@@ -518,7 +609,7 @@
             <img src="inverse_images/image4.png" alt="Graph showing intersections">
         </figure>
     </div>
-<div class="page" id="page-8">
+<div class="page" id="page-12">
         <div class="exercise">
             <p>Solve the equation \(\sin y = \frac{1}{2}\) and explain how your answer relates to the graphs.</p>
         </div>
@@ -536,7 +627,7 @@
             <p>How many times do you want the line \(x = \frac{1}{2}\) to intersect with the graph \(y = \arcsin x\) ?</p>
         </div>
     </div>
-<div class="page" id="page-9">
+<div class="page" id="page-13">
         <div class="answer">
             <p>Like any function, the function \(y = \arcsin x\) must be well-defined (that is, uniquely defined) for all values of \(x\) in its domain.</p>
             <p>That means that the line \(x = \frac{1}{2}\) must intersect with the graph \(y = \arcsin x\) exactly once.</p>
@@ -548,7 +639,7 @@
             <video autoplay loop muted playsinline><source src="inverse_images/video1.mp4" alt="Graph showing intersections"></video>
         </figure>
     </div>
-<div class="page" id="page-10">
+<div class="page" id="page-14">
 
         <figure>
             <video autoplay loop muted playsinline><source src="inverse_images/video2.mp4" alt="Graph showing intersections"></video>
@@ -561,7 +652,7 @@
         </div>
 
     </div>
-<div class="page" id="page-11">
+<div class="page" id="page-15">
 
         <figure>
             <img src="inverse_images/image5.png" alt="Graph showing segment choices">
@@ -573,7 +664,7 @@
             <p>Which of these pink or green segments on the curve would correspond to the most sensible definition of the function \(\arcsin x\) ?</p>
         </div>
     </div>
-<div class="page" id="page-12">
+<div class="page" id="page-16">
         <figure>
             <img src="inverse_images/image6.png" alt="Graph showing different segments">
         </figure>
@@ -585,7 +676,7 @@
             <p>What are the domain and range of the function \(f(x)=\arcsin x\)?</p>
         </div>
     </div>
-<div class="page" id="page-13">
+<div class="page" id="page-17">
         <div class="exercise">
             <p>What are the domain and range of the function \(f(x)=\arcsin x\)?</p>
         </div>
@@ -598,7 +689,7 @@
             <img src="inverse_images/image6.png" alt="Graph showing different segments">
         </figure>
     </div>
-<div class="page" id="page-14">
+<div class="page" id="page-18">
         <div class="exercise">
             <p>Draw the graph \(y = \cos x\).</p>
             <p>On the same axes, draw the graph \(x=\cos y\).</p>
@@ -607,7 +698,7 @@
             <img src="inverse_images/image29.png" alt="Graphs of x = cos y and y = cos^-1 x">
         </figure>
     </div>
-<div class="page" id="page-15">
+<div class="page" id="page-19">
         
         <div class="exercise">
             <p>Draw the graph \(y = \cos x\).</p>
@@ -621,7 +712,7 @@
         <p>How can we adapt the graph \(x=\cos y\) to get the graph \(y=\arccos x\) ?</p>
         </div>
     </div>
-<div class="page" id="page-16">
+<div class="page" id="page-20">
         <div class="exercise"
             <p>How can we adapt the graph \(x=\cos y\) to get the graph \(y=\arccos x\) ?</p>
         </div>
@@ -635,7 +726,7 @@
             <p>Which segment shall we choose for the graph \(y=\arccos x\) ?</p>
         </div>
     </div>
-<div class="page" id="page-17">
+<div class="page" id="page-21">
         <figure>
             <img src="inverse_images/image35.png" alt="Graph showing different segments">
         </figure>
@@ -646,7 +737,7 @@
             <p><span class="math display">\[\left\{ y:0 \leq y \leq \pi \right\}\]</span></p>
         </div>
     </div>
-<div class="page" id="page-18">
+<div class="page" id="page-22">
         <div class="exercise"
             <p>Draw the graphs \(y=\tan x\) and \(x=\tan y\) on the same set of axes.</p>
         </div>
@@ -655,7 +746,7 @@
             <img src="inverse_images/image56.png" alt="Diagram">
         </figure>
     </div>
-<div class="page" id="page-19">
+<div class="page" id="page-23">
         <div class="exercise">
             <p>Draw the graphs \(y=\tan x\) and \(x=\tan y\) on the same set of axes.</p>
         </div>
@@ -667,7 +758,7 @@
             <p>What are the domain and range of the function \(y=\arctan x\)?</p>
         </div>
     </div>
-<div class="page" id="page-20">
+<div class="page" id="page-24">
         <div class="exercise">
             <p>What are the domain and range of the function \(y=\arctan x\)?</p>
         </div>
@@ -682,8 +773,8 @@
             <p><span class="math display">\[\left\{ y: - \frac{\pi}{2} &lt; y &lt; \frac{\pi}{2} \right\}\]</span></p>
         </div>
     </div>
-    <!-- Page 21: Congratulations -->
-    <div class="page" id="page-21">
+    <!-- Page 25: Congratulations -->
+    <div class="page" id="page-25">
         <div class="welcome-page">
             <h1>Well done on completing Part 1!</h1>
             <div class="welcome-content">
@@ -707,7 +798,7 @@
         <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
         <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="21" onchange="goToPage(this.value)"> of 21
+        Page <input type="number" id="pageInput" value="1" min="1" max="25" onchange="goToPage(this.value)"> of 25
         </span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
         <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
