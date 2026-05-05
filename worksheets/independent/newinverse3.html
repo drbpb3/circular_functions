@@ -37,14 +37,6 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <link rel="stylesheet" href="worksheet-styles.css">
-    <style>
-        .div-hidden { display: none; }
-        @keyframes divReveal {
-            from { opacity: 0; transform: translateY(6px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .div-revealed { animation: divReveal 0.35s ease; }
-    </style>
 </head>
 <body oncontextmenu="return false;">
 
@@ -80,208 +72,174 @@
             </div>
         </div>
     </div>
-<div class="page" id="page-2">
+<div class="page" id="page-2" data-reveal-steps>
     <h2 class="chapter">differentials of inverse circular functions</h2>
-
-        <div class="exercise">
-            <p>If <span class="math inline">\(\displaystyle{y=\arcsin x}\)</span>, what is <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}}\)</span> in terms of <span class="math inline">\(\displaystyle{y}\)</span> ?</p>
-        </div>
-    </div>
-<div class="page" id="page-3">
             <div class="exercise">
                 <p>If <span class="math inline">\(\displaystyle{y=\arcsin x}\)</span>, what is <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}}\)</span> in terms of <span class="math inline">\(\displaystyle{y}\)</span> ?</p>
             </div>
             <div class="answer">
-                \[x=\sin y\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}=\cos y\]
+                \[x=\sin y\Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y}=\cos y\]
             </div>
             <div class="exercise">
-                <p>If \(\displaystyle{y=\arcsin x}\), what is \(\displaystyle{\cos y}\)?</p>
-            </div>
-    </div>
-<div class="page" id="page-4">
-            <div class="exercise">
-                <p>If \(\displaystyle{y=\arcsin x}\), what is \(\displaystyle{\cos y}\)?</p>
+                <p>What is \(\displaystyle{\cos y}\) in terms of \(x\) ?</p>
             </div>
             <div class="answer">
-                \[\begin{aligned}
-                &\sin^2y+\cos^2y=1\\[6pt]
-                \Rightarrow &\cos^2y=1-x^2\\[12pt]
-                &-\frac{\pi}{2}\leq \sin y\leq \frac{\pi}{2}\\[6pt]
-                \Rightarrow &\cos y\geq 0\\[12pt]
-                \Rightarrow &\cos y=\sqrt{1-x^2}
-
-                \end{aligned}\]
+                \[\sin^2y+\cos^2y=1\]
+                <div class="step">\[\Rightarrow\, \cos^2y=1-x^2\]</div>
+                <div class="step">\[-\frac{\pi}{2}\leq \arcsin x\leq \frac{\pi}{2}\Rightarrow\,-\frac{\pi}{2}\leq y\leq \frac{\pi}{2}\]</div>
+                <div class="step">\[\Rightarrow\, \cos y\geq 0\]</div>
+                <div class="step">\[\Rightarrow\, \cos y=\sqrt{1-x^2}\]</div>
             </div>
             <div class="exercise">
                 <p>What are <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}\text{ and }\frac{\mathrm{d}y}{\mathrm{d}x}}\)</span> in terms of <span class="math inline">\(\displaystyle{x}\)</span> ?</p>
             </div>
-    </div>
-<div class="page" id="page-5">
-            <div class="exercise">
-                <p>What are <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}\text{ and }\frac{\mathrm{d}y}{\mathrm{d}x}}\)</span> in terms of <span class="math inline">\(\displaystyle{x}\)</span> ?</p>
-            </div>
             <div class="answer">
-                \[\begin{aligned}
-                &\frac{\mathrm{d}x}{\mathrm{d}y}=\cos y=\sqrt{1-x^2}\\[6pt]
-                \Rightarrow &\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{\sqrt{1-x^2}}\\
-                \end{aligned}\]
-            </div> 
-            <figure>
-                <img src="inverse_images/image5.png" alt="Graph showing segment choices" style="max-width:64%">
-            </figure>
+                \[\frac{\mathrm{d}x}{\mathrm{d}y}=\cos y=\sqrt{1-x^2}\]
+                <div class="step">\[\Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{\sqrt{1-x^2}}\]</div>
+            </div>
+    </div>
+<div class="page" id="page-3">
+            
+            <div class="nav-gated">
+                <figure>
+                    <img src="inverse_images/image5.png" alt="Graph showing segment choices" style="max-width:64%">
+                </figure>
+            </div>
             <div class="intro">
                 <p>Notice that the gradient of the pink segments on the graph are always positive, and our formula for \(\displaystyle\frac{\mathrm{d}y}{\mathrm{d}x}\) is also always positive.</p>
                 <p>How would \(\displaystyle\frac{\mathrm{d}y}{\mathrm{d}x}\) change if we had chosen one of the green segments as our graph of \(\arcsin x\)? Look back at the previous page for a clue.</p>
             </div>
     </div>
-<div class="page" id="page-6">
-        <figure>
-            <img src="inverse_images/image100.png" alt="unit circle for differentiation" style="max-width:64%">
-        </figure>
+    <div class="page" id="page-4" data-reveal-steps>
+        <div class="exercise">
+            <p>Follow the same method to find \[\frac{\mathrm{d}}{\mathrm{d}y}\arccos x\]</p>
+        </div>
+        <div class="answer">
+            \[y=\arccos x\Rightarrow\, x=\cos y\]
+            <div class="step">\[\Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y}=-\sin y\]</div>
+            <div class="step">\[\sin^2y+\cos^2y=1\]</div>
+            <div class="step">\[\Rightarrow\, \sin^2y=1-x^2\]</div>
+            <div class="step">\[0\leq \cos y\leq \pi\]</div>
+            <div class="step">\[\Rightarrow\, \sin y\geq 0\]</div>
+            <div class="step">\[\Rightarrow\, \sin y=\sqrt{1-x^2}\]</div>
+            <div class="step">\[\Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y}=-\sqrt{1-x^2}\]</div>
+            <div class="step">\[\Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x}=-\frac{1}{\sqrt{1-x^2}}\]</div>
+        </div>
+        <div class="nav-gated">
+            <figure>
+                <img src="inverse_images/image35.png" alt="Graph showing different segments" style="max-width:48%">
+            </figure>
+        </div>
         <div class="intro">
-            \[\begin{aligned}
-                \text{As }\delta\theta\to 0,\; \alpha\to\theta\\[6pt]
-                \text{and }\delta x\to\sin\theta\times\delta\theta,\; \delta y\to\cos\theta\times\delta\theta\\[6pt]
-                \Rightarrow \frac{\delta \theta}{\delta y}\to \frac{1}{\cos\theta}\\[6pt]
-                =\frac{1}{\sqrt{1-y^2}}\text{ and }\theta=\arcsin y\\[6pt]
-                \Rightarrow \frac{\mathrm{d}}{\mathrm{d}y}\arcsin y=\frac{1}{\sqrt{1-y^2}}
-            \end{aligned}\]
+            <p>Notice that the gradient of the graph \(y=\arccos x\) is always negative, as is our formula for \(\displaystyle\frac{\mathrm{d}y}{\mathrm{d}x}\).</p>
+        </div>
+        </div>
+        <div class="page" id="page-5" data-reveal-steps>
+            <div class="exercise">
+                <p>Follow the same method to find \[\frac{\mathrm{d}}{\mathrm{d}y}\arctan x\]</p>
+            </div>
+            <div class="answer">
+                \[y=\arctan x\Rightarrow\, x=\tan y\]
+                <div class="step">\[\Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y}=\sec^2 y=1+\tan^2y=1+x^2\]</div>
+                <div class="step">\[\Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{1+x^2}\]</div>
+            </div>
+            </div>
+<div class="page" id="page-6" data-reveal-steps>
+        <div class="nav-gated">
+            <figure>
+                <img src="inverse_images/image100.png" alt="unit circle for differentiation" style="max-width:64%">
+            </figure>
+        </div>
+        <div class="answer">
+            \[\text{As }\delta\theta\to 0,\; \alpha\to\theta\]
+            <div class="step">\[\text{and }\delta x\to\sin\theta\times\delta\theta,\; \delta y\to\cos\theta\times\delta\theta\]</div>
+            <div class="step">\[\Rightarrow\, \frac{\delta \theta}{\delta y}\to \frac{1}{\cos\theta}\]</div>
+            <div class="step">\[=\frac{1}{\sqrt{1-y^2}}\text{ and }\theta=\arcsin y\]</div>
+            <div class="step">\[\Rightarrow\, \frac{\mathrm{d}}{\mathrm{d}y}\arcsin y=\frac{1}{\sqrt{1-y^2}}\]</div>
         </div>
     </div>
 
 <div class="page" id="page-7">
-        <div class="exercise">
-            <p>Follow the same method to find \[\frac{\mathrm{d}}{\mathrm{d}y}\arccos x\]</p>
-        </div>
+        
     </div>
-<div class="page" id="page-8">
-    <div class="exercise">
-        <p>Follow the same method to find \[\frac{\mathrm{d}}{\mathrm{d}y}\arccos x\]</p>
-    </div>
-    <div class="answer">
-        \[\begin{aligned}
-        y=\arccos x\Rightarrow &x=\cos y\\[6pt]
-        \Rightarrow &\frac{\mathrm{d}x}{\mathrm{d}y}=-\sin y\\[12pt]
-        &\sin^2y+\cos^2y=1\\[6pt]
-        \Rightarrow &\sin^2y=1-x^2\\[12pt]
-        &0\leq \cos y\leq \pi\\[6pt]
-        \Rightarrow &\sin y\geq 0\\[12pt]
-        \Rightarrow &\sin y=\sqrt{1-x^2}\\[6pt]
-        \Rightarrow &\frac{\mathrm{d}x}{\mathrm{d}y}=-\sqrt{1-x^2}\\[6pt]
-        \Rightarrow &\frac{\mathrm{d}y}{\mathrm{d}x}=-\frac{1}{\sqrt{1-x^2}}\\
-        \end{aligned}\]
-    </div>
-    <figure>
-        <img src="inverse_images/image35.png" alt="Graph showing different segments" style="max-width:48%">
-    </figure>
-    <div class="intro">
-        <p>Notice that the gradient of the graph \(y=\arccos x\) is always negative, as is our formula for \(\displaystyle\frac{\mathrm{d}y}{\mathrm{d}x}\).</p>
-    </div>
-    </div>
-<div class="page" id="page-9">
-        <div class="exercise">
-            <p>Follow the same method to find \[\frac{\mathrm{d}}{\mathrm{d}y}\arctan x\]</p>
-        </div>
-    </div>
-<div class="page" id="page-10">
-    <div class="exercise">
-        <p>Follow the same method to find \[\frac{\mathrm{d}}{\mathrm{d}y}\arctan x\]</p>
-    </div>
-    <div class="answer">
-        \[\begin{aligned}
-        y=\arctan x\Rightarrow &x=\tan y\\[6pt]
-        \Rightarrow &\frac{\mathrm{d}x}{\mathrm{d}y}=\sec^2 y=1+\tan^2y=1+x^2\\[12pt]
-        \Rightarrow &\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{1+x^2}\\
-        \end{aligned}\]
-    </div>
-    </div>
-<div class="page" id="page-11">
-    <h2 class="chapter">integrals using inverse circular functions</h2>
 
+<div class="page" id="page-8">
+        
+    </div>
+
+<div class="page" id="page-9" data-reveal-steps>
+    <h2 class="chapter">integrals using inverse circular functions</h2>
+    <div class="nav-gated">
+        <figure>
+            <img src="inverse_images/image203.png" alt="integral" style="max-width:48%">
+        </figure>
+    </div>
         <div class="exercise">
-            <p>Use the substitution <span class="math inline">\(\displaystyle{u = \arcsin x}\)</span> for the integral \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\]</p>
+            <p>Find the shaded area.</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}\frac{\mathrm{d}}{\mathrm{d}x}\arcsin x&=\frac{1}{\sqrt{1-x^2}}\end{aligned}\]
+            <div class="step">\[\begin{aligned}\Rightarrow\, \int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x&=\arcsin x+c\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow\,\text{area}&=\int_0^1 \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\Rightarrow\,\text{area}}&=\bigg[\arcsin x\bigg]_0^1\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\Rightarrow\,\text{area}}&=\frac{\pi}{2}\end{aligned}\]</div>
         </div>
     </div>
-<div class="page" id="page-12">
+<div class="page" id="page-10" data-reveal-steps>
         <div class="exercise">
             <p>Use the substitution <span class="math inline">\(\displaystyle{u = \arcsin x}\)</span> for the integral \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\]</p>
         </div>
         <div class="answer">
-            \[\begin{aligned}
-            u = \arcsin x \Rightarrow \frac{\mathrm{d}u}{\mathrm{d}x} &amp; = \frac{1}{\sqrt{1 - x^{2}}}
-            \end{aligned}\]</span></p>
-            <p><span class="math display">\[\begin{aligned}
-            \int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x &amp; = \int\frac{1}{\sqrt{1 - x^{2}}}\,\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u \\
-            &amp; = \int\frac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u \\
-            &amp; = \int \mathrm{d}u \\
-            &amp; = u + c \\
-            &amp; = \arcsin x + c
-            \end{aligned}\]</span></p>
+            \[\begin{aligned}u = \arcsin x \Rightarrow\, \frac{\mathrm{d}u}{\mathrm{d}x} &= \frac{1}{\sqrt{1 - x^{2}}}\end{aligned}\]
+            <div class="step">\[\begin{aligned}\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x &= \int\frac{1}{\sqrt{1 - x^{2}}}\,\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \int\frac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \int \mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= u + c\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \arcsin x + c\end{aligned}\]</div>
         </div>
-
-
     </div>
-<div class="page" id="page-13">
+<div class="page" id="page-11" data-reveal-steps>
         <div class="exercise">
             <p>In practice, you might write the subsitution as \(\displaystyle{x=\sin u}\). Try it this way.</p>
         </div>
-    </div>
-<div class="page" id="page-14">
-        <div class="exercise">
-            <p>Use the subsitution \(\displaystyle{x=\sin u}\) for the integral
-                \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\]
-            </p>
-
-        </div>
         <div class="answer">
-            <p><span class="math display">\[\begin{aligned}
-            x = \sin u \Rightarrow \frac{\mathrm{d}x}{\mathrm{d}u} &amp; = \cos u \\
-            &amp; = \pm \sqrt{1 - \sin^{2}u} \\
-            &amp; = \pm \sqrt{1 - x^{2}}
-            \end{aligned}\]</span></p>
-            <p>At this point, it is really important to remember that the actual substitution is \(\displaystyle{u=\arcsin x}\) so that \(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}u}>0}\)</p>
-            <p><span class="math display">\[\begin{aligned}
-            \int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x &amp; = \int\frac{1}{\sqrt{1 - x^{2}}}\;\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u \\
-            &amp; =  \int\frac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u \\
-            &amp; =  \int \mathrm{d}u \\
-            &amp; =  u + c \\
-            &amp; = \arcsin x + c
-            \end{aligned}\]</span></p>
+            \[\begin{aligned}x = \sin u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u} &= \cos u\end{aligned}\]
+            <div class="step">\[\begin{aligned}\phantom{x = \sin u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u}} &= \pm \sqrt{1 - \sin^{2}u}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{x = \sin u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u}} &= \pm \sqrt{1 - x^{2}}\end{aligned}\]</div>
+            <div class="step"><p>At this point, it is really important to remember that the actual substitution is \(\displaystyle{u=\arcsin x}\) so that \(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}u}>0}\)</p></div>
+            <div class="step">\[\begin{aligned}\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x &= \int\frac{1}{\sqrt{1 - x^{2}}}\;\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \int\frac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \int \mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= u + c\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \arcsin x + c\end{aligned}\]</div>
         </div>
     </div>
-<div class="page" id="page-15">
-        
+<div class="page" id="page-12">
+</div>
+
+<div class="page" id="page-13" data-reveal-steps>
+
         <div class="exercise">
             <p>Use the subsitution \(\displaystyle{x=\cos u}\) for the integral
                 \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\]
             </p>
-
         </div>
         <div class="answer">
-            <p><span class="math display">\[\begin{aligned}
-            x = \cos u \Rightarrow \frac{\mathrm{d}x}{\mathrm{d}u} &amp; = -\sin u \\
-            &amp; = \pm \sqrt{1 - \cos^{2}u} \\
-            &amp; = \pm \sqrt{1 - x^{2}}
-            \end{aligned}\]</span></p>
-            <p>At this point, it is really important to remember that the actual substitution is \(\displaystyle{u=\arccos x}\) so that \(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}u}<0}\)</p>
-            <p><span class="math display">\[\begin{aligned}
-            \int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x &amp; = \int\frac{1}{\sqrt{1 - x^{2}}}\;\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u \\
-            &amp; = -\int\frac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u \\
-            &amp; = -\int \mathrm{d}u \\
-            &amp; =  -u + c \\
-            &amp; = -\arccos x + c
-            \end{aligned}\]</span></p>
+            \[\begin{aligned}x = \cos u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u} &= -\sin u\end{aligned}\]
+            <div class="step">\[\begin{aligned}\phantom{x = \cos u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u}} &= \pm \sqrt{1 - \cos^{2}u}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{x = \cos u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u}} &= \pm \sqrt{1 - x^{2}}\end{aligned}\]</div>
+            <div class="step"><p>At this point, it is really important to remember that the actual substitution is \(\displaystyle{u=\arccos x}\) so that \(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}u}<0}\)</p></div>
+            <div class="step">\[\begin{aligned}\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x &= \int\frac{1}{\sqrt{1 - x^{2}}}\;\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= -\int\frac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= -\int \mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= -u + c\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= -\arccos x + c\end{aligned}\]</div>
         </div>
     </div>
-<div class="page" id="page-16">
-        <div class="exercise">
-            <p>Explain why it is possible that <em>both</em></p>
-            \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x=\arcsin x+c\]
-            <p><em>and</em> </p>
-            \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x=-\arccos x+c\]
-        </div>
+<div class="page" id="page-14">
+        
     </div>
-<div class="page" id="page-17">
+<div class="page" id="page-15">
         <div class="exercise">
             <p>Explain why it is possible that <em>both</em></p>
             \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x=\arcsin x+c\]
@@ -291,66 +249,95 @@
         <div class="answer">
             <p>Remember that</p>
             \[\arcsin x+\arccos x=\frac{\pi}{2}\]
-            <p>so the two integrals differ by \(\displaystyle{\frac{\pi}{2}}\). That is, the "c" is different in each case.</p>
+            <p>so the two integrals differ by \(\displaystyle{\frac{\pi}{2}}\). That is, the \(c\) is different in each case.</p>
         </div>
     </div>
-<div class="page" id="page-18">
+<div class="page" id="page-16" data-reveal-steps>
+
         <div class="exercise">
-            <p>Use the substitution <span class="math inline">\(\displaystyle{x = \tan u}\)</span> for the integral:</p>
-            <p><span class="math display">\[\begin{aligned}
-            \int\frac{1}{1 + x^{2}}\;\mathrm{d}x
-            \end{aligned}\]</span></p>
+            <p>Find the shaded area.</p>
         </div>
+        <div class="nav-gated">
+            <figure>
+                <img src="inverse_images/image204.png" alt="integral" style="max-width:84%">
+            </figure>
+        </div>
+
+    <div class="answer">
+        \[\begin{aligned}\frac{\mathrm{d}}{\mathrm{d}x}\arctan x&=\frac{1}{1+x^2}\end{aligned}\]
+        <div class="step">\[\begin{aligned}\Rightarrow\, \int \frac{1}{1+x^2}\;\mathrm{d}x&=\arctan x+c\end{aligned}\]</div>
+        <div class="step">\[\begin{aligned}\Rightarrow\,\text{area}&=\int_0^\infty \frac{1}{1+x^2}\;\mathrm{d}x\end{aligned}\]</div>
+        <div class="step">\[\begin{aligned}\phantom{\Rightarrow\,\text{area}}&=\bigg[\arctan x\bigg]_0^\infty\end{aligned}\]</div>
+        <div class="step">\[\begin{aligned}\phantom{\Rightarrow\,\text{area}}&=\frac{\pi}{2}\end{aligned}\]</div>
     </div>
-<div class="page" id="page-19">
+</div>
+<div class="page" id="page-17" data-reveal-steps>
+
         <div class="exercise">
-            <p>Use the substitution <span class="math inline">\(\displaystyle{x = \tan u}\)</span> for the integral:</p>
-            <p><span class="math display">\[\begin{aligned}
-            \int\frac{1}{1 + x^{2}}\;\mathrm{d}x
-            \end{aligned}\]</span></p>
+            <p>Use the substitution \(\displaystyle{x = \tan u}\) for the integral \[\int\frac{1}{1 + x^{2}}\;\mathrm{d}x\]</p>
         </div>
         <div class="answer">
-            <p><span class="math display">\[\begin{aligned}
-            x = \tan u \Rightarrow \frac{\mathrm{d}x}{\mathrm{d}u} &amp; = \sec^{2}u \\
-            &amp; = 1 + \tan^{2}u \\
-            &amp; = 1 + x^{2}
-            \end{aligned}\]</span></p>
-            <p><span class="math display">\[\begin{aligned}
-            \int\frac{1}{1 + x^{2}}\;\mathrm{d}x &amp; = \int\frac{1}{1 + x^{2}}\;\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u \\
-            &amp; = \int\frac{1}{1 + x^{2}}\left( 1 + x^{2} \right)\;\mathrm{d}u \\
-            &amp; = \int \mathrm{d}u \\
-            &amp; = u + c \\
-            &amp; = \arctan x + c
-            \end{aligned}\]</span></p>
+            \[\begin{aligned}x = \tan u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u} &= \sec^{2}u\end{aligned}\]
+            <div class="step">\[\begin{aligned}\phantom{x = \tan u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u}} &= 1 + \tan^{2}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{x = \tan u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u}} &= 1 + x^{2}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\int\frac{1}{1 + x^{2}}\;\mathrm{d}x &= \int\frac{1}{1 + x^{2}}\;\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{1 + x^{2}}\;\mathrm{d}x} &= \int\frac{1}{1 + x^{2}}\left( 1 + x^{2} \right)\;\mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{1 + x^{2}}\;\mathrm{d}x} &= \int \mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{1 + x^{2}}\;\mathrm{d}x} &= u + c\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{1 + x^{2}}\;\mathrm{d}x} &= \arctan x + c\end{aligned}\]</div>
         </div>
         <div class="intro">
             <p>Here, although the substitution is actually \(\displaystyle{u=\arctan x}\), there is no difficulty with the signs as there was before.</p>
         </div>
     </div>
-<!--new page break here-->
-<div class="page" id="page-20">
+<div class="page" id="page-18">
+    <figure>
+        <img src="inverse_images/image207.png" alt="integral" style="max-width:84%">
+    </figure>
     <div class="exercise">
-        <p>The area under \(\displaystyle{y = \sqrt{1-x^2}}\) (the upper unit semicircle) from \(\displaystyle{x=0}\) to \(\displaystyle{x=a}\) (where \(\displaystyle{0 < a < 1}\)) can be split into a circular sector and a right-angled triangle.</p>
-        <p>Let \(\displaystyle{\theta = \arcsin a}\). Show geometrically that</p>
-        \[\int_0^a\!\sqrt{1-x^2}\,\mathrm{d}x = \frac{1}{2}\arcsin a + \frac{1}{2}a\sqrt{1-a^2}\]
-        <p>and hence write down \(\displaystyle{\displaystyle\int\sqrt{1-x^2}\,\mathrm{d}x}\).</p>
+        <p>What are the marked angles, in terms of \(a\)?</p>
     </div>
-</div>
-<div class="page" id="page-21">
+    <div class="nav-gated">
+        <figure>
+            <img src="inverse_images/image208.png" alt="integral" style="max-width:84%">
+        </figure>
+    </div>
+    </div>
+
+    <div class="page" id="page-19" data-reveal-steps>
+        <figure>
+            <img src="inverse_images/image208.png" alt="integral" style="max-width:84%">
+        </figure>
+
     <div class="exercise">
-        <p>Find \(\displaystyle{\displaystyle\int\sqrt{1-x^2}\,\mathrm{d}x}\) geometrically, then verify using the substitution \(\displaystyle{x = \sin u}\).</p>
+        <p>What are the area of the green segment and the area of the pink triangle?</p>
     </div>
     <div class="answer">
-        <p><strong>Geometric argument:</strong></p>
-        <p>The region is composed of a circular sector (radius 1, angle \(\displaystyle{\theta = \arcsin a}\)) with area \(\displaystyle{\tfrac{1}{2}\theta}\), and a right-angled triangle (base \(\displaystyle{a}\), height \(\displaystyle{\sqrt{1-a^2}}\)) with area \(\displaystyle{\tfrac{1}{2}a\sqrt{1-a^2}}\).</p>
-        \[\int_0^a\!\sqrt{1-x^2}\,\mathrm{d}x = \frac{\arcsin a}{2} + \frac{a\sqrt{1-a^2}}{2}\]
-        \[\boxed{\int\sqrt{1-x^2}\,\mathrm{d}x = \frac{1}{2}\arcsin x + \frac{1}{2}x\sqrt{1-x^2} + C}\]
-        <p><strong>Verification by substitution \(\displaystyle{x = \sin u}\):</strong></p>
-        \[\begin{aligned}
-        &\mathrm{d}x = \cos u\,\mathrm{d}u, \quad \sqrt{1-x^2} = \cos u\\[6pt]
-        &\int\sqrt{1-x^2}\,\mathrm{d}x = \int\cos^2 u\,\mathrm{d}u = \int\frac{1+\cos 2u}{2}\,\mathrm{d}u\\[6pt]
-        &= \frac{u}{2} + \frac{\sin 2u}{4} + C = \frac{\arcsin x}{2} + \frac{x\sqrt{1-x^2}}{2} + C \;\checkmark
-        \end{aligned}\]
+        \[\text{green area}=\frac{1}{2}\arcsin a\]
+        <div class="step">\[\text{pink area}=\frac{1}{2}a\sqrt{1-a^2}\]</div>
+    </div>
+    <div class="exercise">
+        <p>Use these results to find
+            \[\int_0^a\sqrt{1-x^2}\,\mathrm{d}x\]
+        </p>
+    </div>
+    <div class="answer">
+        \[\begin{aligned}\int_0^a\sqrt{1-x^2}\,\mathrm{d}x&=\text{green + pink areas}\end{aligned}\]
+        <div class="step">\[\begin{aligned}\phantom{\int_0^a\sqrt{1-x^2}\,\mathrm{d}x}&=\frac{1}{2}\arcsin a+\frac{1}{2}a\sqrt{1-a^2}\end{aligned}\]</div>
+    </div>
+</div>
+<div class="page" id="page-20" data-reveal-steps>
+    <div class="exercise">
+        <p>Find \(\displaystyle{\int\sqrt{1-x^2}\,\mathrm{d}x}\) using the substitution \(\displaystyle{x = \sin u}\).</p>
+    </div>
+    <div class="answer">
+        \[\frac{\mathrm{d}x}{\mathrm{d}u} = \cos u\]
+        <div class="step">\[\begin{aligned}\int\sqrt{1-x^2}\,\mathrm{d}x &= \int\sqrt{1-\sin^2 u}\cos u\,\mathrm{d}u\end{aligned}\]</div>
+        <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \int\cos^2 u\,\mathrm{d}u\end{aligned}\]</div>
+        <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \int\frac{1+\cos 2u}{2}\,\mathrm{d}u\end{aligned}\]</div>
+        <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \frac{u}{2} + \frac{\sin 2u}{4} + c\end{aligned}\]</div>
+        <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \frac{u}{2} + \frac{2\sin u\cos u}{4} + c\end{aligned}\]</div>
+        <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \frac{\arcsin x}{2} + \frac{x\sqrt{1-x^2}}{2} + c\end{aligned}\]</div>
     </div>
 </div>
 
@@ -410,8 +397,8 @@
         </div>
     </div>
 -->
-    <!-- Page 22: Congratulations -->
-    <div class="page" id="page-22">
+    <!-- Page 21: Congratulations -->
+    <div class="page" id="page-21">
         <div class="welcome-page">
             <h1>Well done on completing Part 3!</h1>
             <div class="welcome-content">
@@ -435,7 +422,7 @@
         <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
         <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="22" onchange="goToPage(this.value)"> of 22
+        Page <input type="number" id="pageInput" value="1" min="1" max="21" onchange="goToPage(this.value)"> of 21
         </span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
         <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -445,22 +432,35 @@
     <script>
     (function () {
         'use strict';
-        const ANIMATABLE = 'div.exercise, div.intro, div.key-concept';
+        const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer, div.nav-gated';
         let revealQueue = [];
         let goingBackward = false;
 
         function initPageReveal(page, revealAll) {
             revealQueue = [];
             if (page.hasAttribute('data-no-reveal')) { return; }
-            const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
+            const selectorParts = [ANIMATABLE];
+            if (page.hasAttribute('data-reveal-steps')) selectorParts.push('div.step');
+            const selector = selectorParts.join(', ');
+            const animatable = Array.from(page.querySelectorAll(selector))
                 .filter(div => !div.classList.contains('reveal-instant'));
-            animatable.forEach(div => div.classList.add('div-hidden'));
+            animatable.forEach(div => {
+                if (div.classList.contains('step')) {
+                    div.classList.add('step-hidden');
+                } else {
+                    div.classList.add('div-hidden');
+                }
+            });
             if (revealAll) {
-                animatable.forEach(div => div.classList.remove('div-hidden'));
+                animatable.forEach(div => {
+                    div.classList.remove('div-hidden');
+                    div.classList.remove('step-hidden');
+                });
                 return;
             }
             if (animatable.length > 0) {
                 animatable[0].classList.remove('div-hidden');
+                animatable[0].classList.remove('step-hidden');
                 revealQueue = animatable.slice(1);
             }
         }
@@ -471,10 +471,11 @@
         function revealNextOrAdvance() {
             if (revealQueue.length > 0) {
                 const next = revealQueue.shift();
-                next.classList.remove('div-hidden');
+                next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
                 next.classList.add('div-revealed');
                 setTimeout(() => next.classList.remove('div-revealed'), 400);
-                next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                const scrollTarget = next.classList.contains('nav-gated') ? (next.firstElementChild || next) : next;
+                scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } else {
                 _origChangePage(1);
             }

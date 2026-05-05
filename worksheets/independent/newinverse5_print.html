@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverse Circular Functions Part 5 — Print Version</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => MathJax.startup.defaultPageReady()
+        },
+        options: {
+            enableMenu: false,
+            renderActions: { addMenu: [] }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #2d5a27;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.8;
+            color: #333;
+            background: white;
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .page {
+            display: block;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #ccc;
+        }
+        .page:last-child {
+            border-bottom: none;
+        }
+        .page-label {
+            font-size: 0.75em;
+            color: #999;
+            text-align: right;
+            margin-bottom: 6px;
+        }
+        .welcome-page {
+            background: white;
+            color: #2c3e50;
+            padding: 30px;
+            text-align: left;
+            border-radius: 8px;
+            border: 2px solid #2d5a27;
+            margin-top: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        .welcome-page h1 {
+            font-size: 2em;
+            margin: 0 0 20px;
+            font-weight: normal;
+            text-align: center;
+        }
+        .welcome-page h2 {
+            font-size: 1.3em;
+            margin: 20px 0 10px;
+            color: #2c3e50;
+        }
+        .welcome-content { max-width: 700px; margin: 0 auto; }
+        .welcome-content p { font-size: 1em; line-height: 1.6; }
+        .navigation-box {
+            background: #f4f9f4;
+            padding: 15px 25px;
+            border-radius: 5px;
+            border-left: 4px solid #2d5a27;
+            margin: 15px 0;
+        }
+        .navigation-box h2 { margin-top: 0; margin-bottom: 10px; }
+        .welcome-content ul {
+            background: transparent;
+            padding: 15px 25px 15px 40px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .welcome-content li { margin: 8px 0; line-height: 1.5; font-size: 0.95em; }
+        .welcome-tip {
+            background: #f4f9f4;
+            padding: 12px 15px;
+            border-radius: 5px;
+            border-left: 4px solid #2d5a27;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        .welcome-author {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 20px;
+            opacity: 0.9;
+            font-size: 1em;
+            line-height: 1.6;
+            text-align: right;
+        }
+        .welcome-logo { width: 50px; height: 50px; opacity: 0.7; }
+        .intro {
+            font-style: normal;
+            color: #555;
+            background: #f5f5f5;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: 4px solid #2d5a27;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+        }
+        .exercise {
+            background: #fff9e6;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #2d5a27;
+        }
+        .answer {
+            background: #f4f9f4;
+            padding: 12px 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #2d5a27;
+        }
+        figure {
+            margin: 30px 0;
+            text-align: center;
+        }
+        figure img {
+            max-width: 85%;
+            height: auto;
+            border-radius: 10px;
+            border: 4px solid #2d5a27;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+        }
+        /* video replaced by placeholder in print */
+        figure video { display: none; }
+        figure .video-placeholder {
+            display: inline-block;
+            padding: 20px 40px;
+            background: #f5f5f5;
+            border: 2px dashed #999;
+            border-radius: 8px;
+            color: #777;
+            font-style: italic;
+        }
+        p { margin: 15px 0; }
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary);
+            margin: 50px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--accent);
+        }
+        ul { margin: 15px 0; padding-left: 25px; }
+        li { margin: 8px 0; }
+        .nav-gated { display: block; }
+        @media print {
+            body { background: white; }
+            .page { page-break-after: always; }
+            .page:last-child { page-break-after: avoid; }
+            .page-label { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Page 1: Welcome -->
+    <div class="page" id="page-1">
+        <div class="page-label">Page 1</div>
+        <div class="welcome-page">
+            <h1>Welcome to Inverse Circular Functions: Part 5</h1>
+            <div class="welcome-content">
+                <p>This extension stage covers the graphs, domains, ranges, and derivatives of arcsec, arccosec, and arccot, together with compositions and identities involving these functions.</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                    </ul>
+                </div>
+
+                <p class="welcome-tip">These extension functions build directly on arcsin, arccos, and arctan — and the same implicit differentiation technique from Part 3 applies to their derivatives!</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="page-2">
+        <div class="page-label">Page 2</div>
+        <div class="intro">
+            We've worked through the basic circular functions: sin, cos, and tan. We've worked through the reciprocal circular functions: cosec, sec, and cot. We've worked on the inverses of the basic functions: arcsin, arccos, and arctan. Surely that's plenty? Yes it is, especially when we've worked through them all in such depth. But if you are still just a little bit interested to see more, we could work on the inverses of the reciprocal functions: arccosec, arcsec, arccot. Strictly for interest only, though!
+        </div>
+
+        <div class="exercise">
+            Here is the graph \(y=\sec x\). Draw this graph, and, on the same set of axes, draw the graph \(x=\sec y\).
+        </div>
+        <figure>
+            <img src="inverse_images/image102.png" alt="Graph of sec x">
+        </figure>
+    </div>
+
+    <div class="page" id="page-3">
+        <div class="page-label">Page 3</div>
+        <figure>
+            <img src="inverse_images/image103.png" alt="Graphs of sec x and sec inverse x">
+        </figure>
+    </div>
+
+    <div class="page" id="page-4">
+        <div class="page-label">Page 4</div>
+        <div class="exercise">
+            Why is the graph \(x=\sec y\) not the same as the graph \(y=\mathrm{arcsec} \,x\)?
+        </div>
+        <figure>
+            <div class="video-placeholder">[Animation: vertical line test on sec graph — see interactive version]</div>
+        </figure>
+
+        <div class="answer">
+            For the graph to represent a function, the vertical line must only ever intersect the graph at a single point.
+        </div>
+        <div class="exercise">
+            How can we choose part of the graph \(x=\sec y\) to create a sensible graph of the function \(y=\mathrm{arcsec}\,x\)?
+        </div>
+    </div>
+
+    <div class="page" id="page-5">
+        <div class="page-label">Page 5</div>
+        <div class="exercise">
+            How can we choose part of the graph \(x=\sec y\) to create a sensible graph of the function \(y=\mathrm{arcsec}\,x\)?
+        </div>
+        <figure>
+            <img src="inverse_images/image211.png" alt="Graphs of sec x and sec inverse x">
+        </figure>
+    </div>
+
+    <div class="page" id="page-6">
+        <div class="page-label">Page 6</div>
+        <div class="exercise">
+            If this is the graph \(y=\mathrm{arcsec}\,x\), what are the domain and the range of the function arcsec?
+        </div>
+        <figure>
+            <img src="inverse_images/image104.png" alt="Graphs of sec x and sec inverse x">
+        </figure>
+        <div class="answer">
+            \[\begin{aligned}
+            &\text{Domain: } (-\infty,-1]\cup[1,\infty)\\[6pt]
+            &\text{Range: } \left[0,\, \pi\right]\setminus\{0\}
+            \end{aligned}\]
+        </div>
+    </div>
+
+    <div class="page" id="page-7">
+        <div class="page-label">Page 7</div>
+        <div class="exercise">
+            Draw the graphs \(y=\mathrm{cosec}\,x\) and \(x=\mathrm{cosec}\,y\) on the same set of axes.
+        </div>
+        <figure>
+            <img src="inverse_images/image209.png" alt="Graphs of cosec x and cosec inverse x">
+        </figure>
+    </div>
+
+    <div class="page" id="page-8">
+        <div class="page-label">Page 8</div>
+        <div class="exercise">
+            How can we choose part of the graph \(x=\mathrm{cosec}\, y\) to create a sensible graph of the function \(y=\mathrm{arccosec}\,x\)?
+        </div>
+        <figure>
+            <img src="inverse_images/image213.png" alt="Graphs of cosec x and cosec inverse x">
+        </figure>
+    </div>
+
+    <div class="page" id="page-9">
+        <div class="page-label">Page 9</div>
+        <div class="exercise">
+            What are the domain and range of the function arccosec?
+        </div>
+        <figure>
+            <img src="inverse_images/image210.png" alt="Graphs of cosec x and cosec inverse x">
+        </figure>
+        <div class="answer">
+        \[\begin{aligned}
+            &\text{Domain: } (-\infty,-1]\cup[1,\infty)\\[6pt]
+            &\text{Range: } \left[-\tfrac{\pi}{2},\, \tfrac{\pi}{2}\right]\setminus\{0\}
+            \end{aligned}\]
+        </div>
+    </div>
+
+    <div class="page" id="page-10">
+        <div class="page-label">Page 10</div>
+        <div class="exercise">
+            <p>Draw the graphs \(y=\cot x\) and \(x=\cot y\).</p>
+        </div>
+        <div class="nav-gated">
+            <figure>
+                <img src="inverse_images/image214.png" alt="Graph of cot x and cot inverse x">
+            </figure>
+        </div>
+    </div>
+
+    <div class="page" id="page-11">
+        <div class="page-label">Page 11</div>
+        <div class="exercise">
+            <p>Use this to draw the graph \(y=\mathrm{arccot}\,x\)</p>
+        </div>
+        <div class="nav-gated">
+            <figure>
+                <img src="inverse_images/image215.png" alt="Graphs of cot x and cot inverse x">
+            </figure>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            &\text{Domain: } \mathbb{R}\\[6pt]
+            &\text{Range: } [-\frac{\pi}{2},\,\frac{\pi}{2}]
+            \end{aligned}\]
+        </div>
+    </div>
+
+    <div class="page" id="page-12">
+        <div class="page-label">Page 12</div>
+        <div class="exercise">
+            <p>The graphs of \(y = \operatorname{arccot} x\) and \(y = \arctan x\) are shown together below.</p>
+            <p>What symmetry do you observe? Use it to state the value of \(\operatorname{arccot} x + \arctan x\).</p>
+        </div>
+        <figure>
+            <img src="inverse_images/image51.png" alt="Graphs of cot inverse x and tan inverse x">
+        </figure>
+        <div class="answer">
+            <p>The average of \(\operatorname{arccot} x\) and \(\arctan x\) is either \(\displaystyle{\frac{\pi}{4}}\) or \(\displaystyle{-\frac{\pi}{4}}\), depending on whether \(x\) is positive or negative. So</p>
+            \[\operatorname{arccot} x + \arctan x=
+            \begin{cases}\displaystyle{\frac{\pi}{2}} &\quad x > 0\\[12pt]
+            \displaystyle{-\frac{\pi}{2}}&\quad x < 0
+            \end{cases}
+            \]
+        </div>
+    </div>
+
+    <div class="page" id="page-13">
+        <div class="page-label">Page 13</div>
+        <div class="exercise">
+            <p>The graphs of \(y = \operatorname{arcsec} x\) and \(y = \operatorname{arccosec} x\) are shown together below.</p>
+            <p>What symmetry do you observe? Use it to state the value of \(\operatorname{arcsec} x + \operatorname{arccosec} x\).</p>
+        </div>
+        <figure>
+            <img src="inverse_images/image52.png" alt="Graphs of sec inverse x and cosec inverse x">
+        </figure>
+        <div class="answer">
+            <p>The average of \(\operatorname{arcsec} x\) and \(\operatorname{arccosec} x\) is \(\displaystyle{\frac{\pi}{4}}\). So</p>
+            \[\operatorname{arcsec} x + \operatorname{arccosec}  x=
+            \frac{\pi}{2}
+            \]
+        </div>
+    </div>
+
+    <div class="page" id="page-14">
+        <div class="page-label">Page 14</div>
+        <p style="text-align: center;"><strong>differentials and integrals of \(\boldsymbol{\operatorname{arcsec} x}\), \(\boldsymbol{\operatorname{arccosec} x}\), and \(\boldsymbol{\operatorname{arccot} x}\)</strong></p>
+        <div class="exercise">
+            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arcsec} x\)</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            y=\operatorname{arcsec}x\Rightarrow x &= \sec y \\[12pt]
+            \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y} = \sec y\tan y&=\pm\sec y\sqrt{\sec^2 y-1}\\[12pt]
+            &=\pm x\sqrt{x^2-1}\\[12pt]
+            \Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x} &=\pm \frac{1}{x\sqrt{x^2-1}}\\[12pt]
+            \text{but gradient on graph is }&\text{always positive, so that}\\[12pt]
+            \frac{\mathrm{d}y}{\mathrm{d}x} &=\frac{1}{x\sqrt{x^2-1}}
+            \end{aligned}\]
+        </div>
+        <div class="exercise">
+            <p>Find (using integration by parts) \[\int \operatorname{arcsec}x\,\mathrm{d}x\]</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            u&=\operatorname{arcsec}x\qquad \frac{\mathrm{d}v}{\mathrm{d}x}=1\\[12pt]
+            \frac{\mathrm{d}u}{\mathrm{d}x}&=\frac{1}{x\sqrt{x^2-1}}\qquad v=x\\[12pt]
+            \int \operatorname{arcsec}x\,\mathrm{d}x&=uv-\int v \,\mathrm{d}u\\[12pt]
+            &=x\operatorname{arcsec}x-\int \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x
+            \\[12pt]
+            \end{aligned}\]
+        </div>
+        <div class="exercise">
+            <p>Use the substitution \(x=\sec u\) to find \[\int \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\]</p>
+        </div>
+        <div class="answer">
+            \[\begin{align*}
+            \int \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\\[12pt]
+            x=\sec u\qquad \frac{\mathrm{d}x}{\mathrm{d}u}=\sec u\tan u\\[12pt]
+            \int \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x&=\int \frac{1}{\sqrt{x^2-1}}\frac{\mathrm{d}x}{\mathrm{d}u}\,\mathrm{d}u\\[12pt]
+            &=\int \frac{1}{\sqrt{x^2-1}}\sec u\tan u\,\mathrm{d}u\\[12pt]
+            &=\int \frac{1}{\tan u}\sec u\tan u\,\mathrm{d}u\\[12pt]
+            &=\int \sec u\,\mathrm{d}u\\[12pt]
+            &=\ln|\sec u+\tan u|\\[12pt]
+            &=\ln\left|x+\frac{1}{\sqrt{x^2-1}}\right|\\[12pt]
+            \end{align*}\]
+        </div>
+        <div class="exercise">
+            <p>Use this result to find\[\int \operatorname{arcsec}x\,\mathrm{d}x\]</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            \int \operatorname{arcsec}x\,\mathrm{d}x
+            &=x\operatorname{arcsec}x-\int \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x
+            \\[12pt]
+            &=x\operatorname{arcsec}x-\ln\left|x+\frac{1}{\sqrt{x^2-1}}\right|+c
+            \end{aligned}\]
+        </div>
+    </div>
+
+    <div class="page" id="page-15">
+        <div class="page-label">Page 15</div>
+        <div class="exercise">
+            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccosec} x\).</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            y=\operatorname{arccosec}x\Rightarrow x &= \operatorname{cosec}y \\[12pt]
+            \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y} = -\operatorname{arccosec} y\cot y&=\pm\operatorname{arccosec} y\sqrt{\operatorname{cosec}^2 y-1}\\[12pt]
+            &=\pm x\sqrt{x^2-1}\\[12pt]
+            \Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x} &=\pm \frac{1}{x\sqrt{x^2-1}}\\[12pt]
+            \text{but gradient on graph is }&\text{always negative, so that}\\[12pt]
+            \frac{\mathrm{d}y}{\mathrm{d}x} &=-\frac{1}{x\sqrt{x^2-1}}
+            \end{aligned}\]
+        </div>
+        <div class="exercise">
+            <p>Find (using integration by parts) \[\int \operatorname{arccosec}x\,\mathrm{d}x\]</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            u&=\operatorname{arccosec}x\qquad \frac{\mathrm{d}v}{\mathrm{d}x}=1\\[12pt]
+            \frac{\mathrm{d}u}{\mathrm{d}x}&=-\frac{1}{x\sqrt{x^2-1}}\qquad v=x\\[12pt]
+            \int \operatorname{arccosec}x\,\mathrm{d}x&=uv-\int v \,\mathrm{d}u\\[12pt]
+            &=x\operatorname{arccosec}x+\int \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x
+            \\[12pt]
+            &=x\operatorname{arccosec}x+\ln\left|x+\frac{1}{\sqrt{x^2-1}}\right|+c
+            \end{aligned}\]
+        </div>
+    </div>
+
+    <div class="page" id="page-16">
+        <div class="page-label">Page 16</div>
+        <div class="exercise">
+            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccot} x\).</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            y=\operatorname{arccot}x\Rightarrow x &= \cot y \\[12pt]
+            \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y} = -\operatorname{cosec}^2 y &=-\left(1+\cot^2 y\right)\\[12pt]
+            &=-\left(1+x^2\right)\\[12pt]
+            \Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x} &=-\frac{1}{1+x^2}
+            \end{aligned}\]
+        </div>
+        <div class="exercise">
+            <p>Find (using integration by parts) \[\int \operatorname{arccot}x\,\mathrm{d}x\]</p>
+        </div>
+        <div class="answer">
+            \[\begin{aligned}
+            u&=\operatorname{arccot}x\qquad \frac{\mathrm{d}v}{\mathrm{d}x}=1\\[12pt]
+            \frac{\mathrm{d}u}{\mathrm{d}x}&=-\frac{1}{1+x^2}\qquad v=x\\[12pt]
+            \int \operatorname{arccot}x\,\mathrm{d}x&=uv-\int v \,\mathrm{d}u\\[12pt]
+            &=x\operatorname{arccot}x+\int x\frac{1}{1+x^2}\,\mathrm{d}x
+            \\[12pt]
+            &=x\operatorname{arccot}x+\frac{1}{2}\ln\left(1+x^2\right)+c
+            \end{aligned}\]
+        </div>
+    </div>
+
+    <!-- Page 17: Congratulations -->
+    <div class="page" id="page-17">
+        <div class="page-label">Page 17</div>
+        <div class="welcome-page">
+            <h1>Well done on completing Part 5!</h1>
+            <div class="welcome-content">
+                <p>You have explored the graphs, domains, ranges, and compositions of arcsec, arccosec, and arccot, and derived their derivatives using implicit differentiation.</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; text-align: left;"><a href="newinverse4.html" style="color: #2d6a4f; text-decoration: underline;">← Part 4</a></div>
+    </div>
+
+</div>
+</body>
+</html>

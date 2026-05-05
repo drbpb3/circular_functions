@@ -47,15 +47,8 @@
         .col-block mjx-container[display] {
             text-align: left !important;
         }
-        .div-hidden { display: none; }
-        .step-hidden { visibility: hidden; height: 0; overflow: hidden; }
         .div-opacity-zero { opacity: 0; pointer-events: none; }
         .div-crossfaded-out { opacity: 0; pointer-events: none; }
-        @keyframes divReveal {
-            from { opacity: 0; transform: translateY(6px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .div-revealed { animation: divReveal 0.35s ease; }
         @keyframes divFadeOut {
             from { opacity: 1; }
             to   { opacity: 0; }

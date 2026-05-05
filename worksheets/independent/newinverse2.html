@@ -37,14 +37,6 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <link rel="stylesheet" href="worksheet-styles.css">
-    <style>
-        .div-hidden { display: none; }
-        @keyframes divReveal {
-            from { opacity: 0; transform: translateY(6px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .div-revealed { animation: divReveal 0.35s ease; }
-    </style>
 </head>
 <body oncontextmenu="return false;">
 
@@ -81,187 +73,146 @@
         </div>
     </div>
 <div class="page" id="page-2">
-    
-</div>
-<div class="page" id="page-3">
     <div class="intro">
         <p>You already know that \(\cos(-x)=\cos x\) and that \(\sin(-x)=-\sin x\).</p>
         <p>Let's see what the relationship is between  \(\arccos(-x)\) and \(\arccos x\), and between \(\arcsin(-x)\) and \(\arcsin x\).</p>
     </div>
     <div class="exercise">
-        <p>Test out some standard values of arccos and arcsin with positive and negative arguments to find a relationship between  \(\arccos(-x)\) and \(\arccos x\), and between \(\arcsin(-x)\) and \(\arcsin x\).</p>
+        <p>On the same set of axes, draw the graphs \(y=\arccos x\) and \(y=\arccos(-x)\)</p>
+    </div>
+    <div class="nav-gated">
+        <figure>
+            <img src="inverse_images/image200.png" alt="Graphs of y = cos^-1 x and y = cos^-1 -x" style="max-width: 44%;">
+        </figure>
+    </div>
+    <div class="exercise">
+        <p>What is \(\arccos x+\arccos(-x)\) ?</p>
     </div>
     <div class="answer">
-        <p>A few different values will soon convince you that</p>
+        <p>The average \(y\) coordinates of the two crosses is \(\displaystyle\frac{\pi}{2}\) so</p>
         \[\arccos x+\arccos(-x)=\pi\]
-        \[\arcsin x+\arcsin(-x)=0\] 
     </div>
 </div>
+<div class="page" id="page-3">
+    <div class="exercise">
+        <p>On the same set of axes, draw the graphs \(y=\arcsin x\) and \(y=\arcsin(-x)\)</p>
+    </div>
+    <div class="nav-gated">
+        <figure>
+            <img src="inverse_images/image201.png" alt="Graphs of y = sin^-1 x and y = sin^-1 -x" style="max-width: 44%;">
+        </figure>
+    </div>
+    <div class="exercise">
+        <p>What is \(\arcsin x+\arcsin(-x)\) ?</p>
+    </div>
+    <div class="answer">
+        <p>The average \(y\) coordinates of the two crosses is \(0\) so</p>
+        \[\arcsin x+\arcsin(-x)=0\]
+    </div>
+
+    
+</div>
 <div class="page" id="page-4">
-    <div class="intro">
-        <p>Firstly, I want to show you a generalization of the fact that angles in a triangle add up to \(180^\circ\) using arcsin and arccos functions.</p>
+    <div class="exercise">
+        <p>On the same set of axes, draw the graphs \(y=\arctan x\) and \(y=\arctan(-x)\)</p>
     </div>
-        <div class="exercise">
-            <p>What are</p>
-            <p><span class="math display">\[\arcsin x + \arccos x\]</span></p>
-            <p>when</p>
-            <p><span class="math display">\[x=0,\;x=\pm\frac{1}{2},\;\pm\frac{\sqrt 2}{2},\;\pm\frac{\sqrt 3}{2},\;\pm 1\]</span></p>
-        </div>
-
-    </div>
-<div class="page" id="page-5">
-        <div class="exercise">
-            <p>What are</p>
-            <p><span class="math display">\[\arcsin x + \arccos x\]</span></p>
-            <p>when</p>
-            <p><span class="math display">\[x=0,\;x=\pm\frac{1}{2},\;\pm\frac{\sqrt 2}{2},\;\pm\frac{\sqrt 3}{2},\;\pm 1\]</span></p>
-        </div>
-        <div class="answer">
-
-            <p>For example: <span class="math display">\[\arcsin\frac{\sqrt{2}}{2} + \arccos\frac{\sqrt{2}}{2} = \frac{\pi}{4} + \frac{\pi}{4} = \frac{\pi}{2}\]</span></p>
-            <p><span class="math display">\[\arcsin0 + \arccos0 = 0 + \frac{\pi}{2} = \frac{\pi}{2}\]</span></p>
-            <p><span class="math display">\[\arcsin1 + \arccos1 = \frac{\pi}{2} + 0 = \frac{\pi}{2}\]</span></p>
-            <p><span class="math display">\[\arcsin( - 1) + \arccos( - 1) = - \frac{\pi}{2} + \pi = \frac{\pi}{2}\]</span></p>
-            <p><span class="math display">\[\arcsin\left(-\frac{\sqrt{2}}{2}\right) + \arccos\left(-\frac{\sqrt{2}}{2}\right) = -\frac{\pi}{4} + \frac{3\pi}{4} = \frac{\pi}{2}\]</span></p>
-            <p><span class="math display">\[\arcsin\frac{1}{2} + \arccos\frac{1}{2} = \frac{\pi}{6} + \frac{\pi}{3} = \frac{\pi}{2}\]</span></p>
-            <p><span class="math display">\[\arcsin\left(-\frac{\sqrt{3}}{2}\right) + \arccos\left(-\frac{\sqrt{3}}{2}\right) = -\frac{\pi}{3} + \frac{5\pi}{6} = \frac{\pi}{2}\]</span></p>
-            
-        </div>
-    </div>
-<div class="page" id="page-6">
-        <div class="exercise">
-            When \(x\) is positive, what is \(\arcsin x + \arccos x\)?
-        </div>
+    <div class="nav-gated">
         <figure>
-            <img src="inverse_images/image2.png" alt="diagram" style="max-width: 40%;">
+            <img src="inverse_images/image202.png" alt="Graphs of y = tan^-1 x and y = tan^-1 -x" style="max-width: 82%;">
         </figure>
+    </div>
+    <div class="exercise">
+        <p>What is \(\arctan x+\arctan(-x)\) ?</p>
+    </div>
+    <div class="answer">
+        <p>The average \(y\) coordinates of the two crosses is \(0\) so</p>
+        \[\arctan x+\arctan(-x)=0\]
+    </div>
         
-    </div>
-<div class="page" id="page-7">
+    
+</div>
 
-        <div class="exercise">
+<div class="page" id="page-5">
+        <div class="intro">
+        <p>Next, I want to show you a generalization of the fact that angles in a triangle add up to \(180^\circ\) using arcsin and arccos functions.</p>
+    </div>
+    <div class="exercise">
             When \(x\) is positive, what is \(\arcsin x + \arccos x\)?
         </div>
-        <figure>
-            <img src="inverse_images/image2.png" alt="diagram" style="max-width: 40%;">
-        </figure>
+        <div class="nav-gated">
+            <figure>
+                <img src="inverse_images/image2.png" alt="diagram" style="max-width: 40%;">
+            </figure>
+        </div>
         <div class="answer">
             <p><span class="math inline">\(\arcsin x + \arccos x = \theta + \varphi = \displaystyle{\frac{\pi}{2}}\)</span> when <span class="math inline">\(x\)</span> is positive.</p>
         </div>
-    </div>
-<div class="page" id="page-8">
+
+</div>
+
+<div class="page" id="page-6">
         <div class="intro">
             <p>When \(x\) is positive, we can easily see this from the right-angled triangle. The triangle doesn't really help so much for negative values of \(x\), but we can use the identities from the start of this journey or we can look at graphs for this.</p>
         </div>
         <div class="exercise">
-            <p>Use the identities</p>
-            \[\arccos x+\arccos(-x)=\pi\]
-            \[\arcsin x+\arcsin(-x)=0\]
-            <p>to find \(\arcsin x+\arccos x\) when \(x<0\).</p>
-        </div>
-    </div>
-<div class="page" id="page-9">
-        <div class="exercise">
-            <p>Use the identities</p>
-            \[\arccos x+\arccos(-x)=\pi\]
-            \[\arcsin x+\arcsin(-x)=0\]
-            <p>to find \(\arcsin x+\arccos x\) when \(x<0\).</p>
-        </div>
-        <div class="answer">
-            \[\begin{aligned}
-                x<0\Rightarrow -x>0\\[6pt]
-                \Rightarrow \arcsin (-x)+\arccos (-x)=\frac{\pi}{2}\\[6pt]
-                \Rightarrow -\arcsin x+\pi-\arccos x=\frac{\pi}{2}\\[6pt]
-                \Rightarrow \arcsin x+\arccos x=\frac{\pi}{2}
-            \end{aligned}\]       
-        </div>
-        <div class="exercise">
             <p>On the same set of axes, draw the graphs <span class="math inline">\(y = \arcsin x\)</span> and <span class="math inline">\(y = \arccos x\)</span></p>
         </div>
-    </div>
-<div class="page" id="page-10">
-        <div class="exercise">
-            <p>On the same set of axes, draw the graphs <span class="math inline">\(y = \arcsin x\)</span> and <span class="math inline">\(y = \arccos x\)</span></p>
-        </div>
-        <div class="answer">
-            <p>Here are the graphs <span class="math inline">\(y = \arcsin x\)</span> and <span class="math inline">\(y = \arccos x\)</span>.</p>
-        </div>
+        
+        <div class="nav-gated">
             <figure>
                 <img src="inverse_images/image3.png" alt="Graphs of y = sin^-1 x and y = cos^-1 x" style="max-width: 32%;">
             </figure>
+        </div>
         <div class="exercise">
             <p>Where do they cross?</p>
         </div>
-    </div>
-<div class="page" id="page-11">
-
-        <figure>
-            <img src="inverse_images/image3.png" alt="Graphs of y = sin^-1 x and y = cos^-1 x" style="max-width: 32%;">
-        </figure>
         <div class="answer">
             <p>They cross at <span class="math inline">\(\displaystyle{\left( \frac{\sqrt{2}}{2},\frac{\pi}{4}\right)}\)</span>.</p>
             <p>The easiest way to see this is by looking at the symmetry of the diagram.</p>
-            
             <p>Alternatively, note that
             \[\sin y = \cos y \Rightarrow \tan y = 1 \Rightarrow y = \frac{\pi}{4}\].</p>
         </div>
-    </div>
-<div class="page" id="page-12">
-        <div class="exercise">
-            <p>What are the vertical distances of the pink and green points from the horizontal line of symmetry?</p>
-        </div>
         
-            <figure>
-                <img src="inverse_images/image54.png" alt="Graphs of y = sin^-1 x and y = cos^-1 x" style="max-width: 48%;">
-            </figure>
-        </div>
-<div class="page" id="page-13">
+    </div>
+<div class="page" id="page-7">
         <div class="exercise">
-            <p>What are the vertical distances of the pink and green points from the horizontal line of symmetry?</p>
+            <p>What is the average of the \(y\) coordinates of the pink and green points?</p>
         </div>
 
-        <figure>
-            <img src="inverse_images/image54.png" alt="Graphs of y = sin^-1 x and y = cos^-1 x" style="max-width: 32%;">
-        </figure>
-        <div class="answer">
-            <p>The vertical distances are \[\arccos x-\frac{\pi}{4}\quad\text{and}\quad \frac{\pi}{4}-\arcsin x\]</p>
-        </div>
-        <div class="exercise">
-            <p>Now use the symmetry of the diagram to find \[\arccos x+\arcsin x\]</p>
-        </div>
-    </div>
-<div class="page" id="page-14">
-        <div class="exercise">
-            <p>Now use the symmetry of the diagram to find \[\arccos x+\arcsin x\]</p>
-        </div>
-        <div class="answer">
-            <p>Symmetry shows that these two distances are equal, which means</p>
-            \[\begin{aligned}
-            &\arccos x-\frac{\pi}{4}=\frac{\pi}{4}-\arcsin x\\[12pt]
-            \Rightarrow &\arccos x+\arcsin x=\frac{\pi}{2}
-            \end{aligned}
-            \]
-        </div>
         
-        <figure>
-            <img src="inverse_images/image54.png" alt="Graphs of y = sin^-1 x and y = cos^-1 x" style="max-width: 32%;">
-        </figure>
+            <figure>
+                <img src="inverse_images/image54.png" alt="Graphs of y = sin^-1 x and y = cos^-1 x" style="max-width: 44%;">
+            </figure>
+        
+        <div class="answer">
+            <p>Symmetry means that the average is \(\displaystyle{\frac{\pi}{4}}\).</p>
+        </div>
+        <div class="exercise">
+            <p>Now find \(\arccos x+\arcsin x\).</p>
+        </div>
+        <div class="answer">
+            <p>If their average is \(\displaystyle{\frac{\pi}{4}}\) then their total is \(\displaystyle{\frac{\pi}{2}}\), so that for any value of \(x\), 
+                \[\arccos x+\arcsin x=\frac{\pi}{2}\]
+        </div>
     </div>
-<div class="page" id="page-15">
-    <div class="intro">
-        <p>Next, let's see what happens when we combine circular functions with their inverses. Some of the results might be a bit unexpected.</p>
-    </div>
+<div class="page" id="page-8" data-reveal-steps>
     <div class="exercise">
-        <p>Find</p>
-        \[\begin{aligned}
-        &\cos\left(\arcsin \frac{1}{2}\right)\\[6pt]
-        &\cos\left(\arcsin \left(-\frac{1}{2}\right)\right)\\[6pt]
-        &\sin\left(\arccos \frac{1}{2}\right)\\[6pt]
-        &\sin\left(\arccos \left(-\frac{1}{2}\right)\right)
-        \end{aligned}\]
+        <p>Use the identities</p>
+        \[\arccos x+\arccos(-x)=\pi\]
+        \[\arcsin x+\arcsin(-x)=0\]
+        <p>to find \(\arcsin x+\arccos x\) when \(x<0\).</p>
+    </div>
+    <div class="answer">
+        \[x<0\Rightarrow\, -x>0\]
+        <div class="step">\[\Rightarrow\, \arcsin (-x)+\arccos (-x)=\frac{\pi}{2}\]</div>
+        <div class="step">\[\Rightarrow\, -\arcsin x+\pi-\arccos x=\frac{\pi}{2}\]</div>
+        <div class="step">\[\Rightarrow\, \arcsin x+\arccos x=\frac{\pi}{2}\]</div>
     </div>
 </div>
-<div class="page" id="page-16">
+<div class="page" id="page-9">
+    <div class="intro">
+        <p>Next, let's see what happens when we combine circular functions with their inverses.</p>
+    </div>
     <div class="exercise">
         <p>Find</p>
         \[\begin{aligned}
@@ -274,13 +225,14 @@
     <div class="answer">
         \[\begin{aligned}
         &\cos\left(\arcsin \frac{1}{2}\right)=\cos\frac{\pi}{6}=\frac{\sqrt 3}{2}\\[6pt]
-        &\cos\left(\arcsin \left(-\frac{1}{2}\right)\right)=\cos\left(-\frac{\pi}{6}\right)=\frac{\sqrt 3}{2}\\[6pt]
-        &\sin\left(\arccos \frac{1}{2}\right)=\sin\frac{\pi}{3}=\frac{\sqrt 3}{2}\\[6pt]
+    &\cos\left(\arcsin \left(-\frac{1}{2}\right)\right)=\cos\left(-\frac{\pi}{6}\right)=\frac{\sqrt 3}{2}\\[6pt]
+    &\sin\left(\arccos \frac{1}{2}\right)=\sin\frac{\pi}{3}=\frac{\sqrt 3}{2}\\[6pt]
         &\sin\left(\arccos \left(-\frac{1}{2}\right)\right)=\sin\frac{2\pi}{3}=\frac{\sqrt 3}{2}
         \end{aligned}\]
     </div>
 </div>
-<div class="page" id="page-17">
+
+<div class="page" id="page-10">
         <div class="intro">
             <p>We've seen what happens with some values. Now let's generalize.</p>
         </div>
@@ -288,18 +240,11 @@
             <p>Find \(\cos(\arcsin x)\) when \(x\) is positive.</p>
             <p>Find \(\sin(\arccos x)\) when \(x\) is positive.</p>
         </div>
-        <figure>
-            <img src="inverse_images/image57.png" alt="Right triangle with angle theta where sin theta = x" style="max-width:48%">
-        </figure>
-        
-    </div>
-<div class="page" id="page-18">
-        <div class="exercise">
-            <p>Find \(\cos(\arcsin x)\) when \(x\) is positive.</p>
-            <p>Find \(\sin(\arccos x)\) when \(x\) is positive.</p>        </div>
-        <figure>
-            <img src="inverse_images/image58.png" alt="Right triangle with angle theta where sin theta = x" style="max-width:48%">
-        </figure>
+        <div class="nav-gated">
+            <figure>
+                <img src="inverse_images/image57.png" alt="Right triangle with angle theta where sin theta = x" style="max-width:48%">
+            </figure>
+        </div>
         <div class="answer">
             <p>From the diagram</p>
             \[\begin{aligned}
@@ -307,17 +252,10 @@
             &x>0\Rightarrow\sin(\arccos x) = \cos\varphi=\sqrt{1-x^2}\\
             \end{aligned}\]
         </div>
-        <div class="exercise">
-            <p>Remembering that 
-                \[\begin{aligned}
-                &\arcsin x+\arcsin(-x)=0 \text{ and}\\[6pt]
-                &\arccos x+\arccos(-x)=\pi
-                \end{aligned}\]
-            </p>
-            <p>find \(\cos(\arcsin x)\) and \(\sin(\arccos x)\) when \(x\) is negative.</p>
-        </div>
-    </div>
-<div class="page" id="page-19">
+        
+</div>
+
+<div class="page" id="page-11">
         <div class="exercise">
             <p>Remembering that 
                 \[\begin{aligned}
@@ -333,20 +271,55 @@
             &x<0\Rightarrow -x> 0 \Rightarrow \sin(\arccos x) = \sin(\pi-\arccos(-x))=\sin(\arccos(-x))=\sqrt{1-x^2}
             \end{aligned}\]
         </div>
-        
-    </div>
-<div class="page" id="page-20">
-    <div class="exercise">
-        <p>Find</p>
-            \[\begin{aligned}
-            &\arccos\left(\sin \frac{\pi}{6}\right)\\[6pt]
-            &\arccos\left(\sin \left(-\frac{\pi}{6}\right)\right)\\[6pt]
-            &\arccos\left(\sin \frac{5\pi}{6}\right)\\[6pt]
-            &\arccos\left(\sin \left(-\frac{5\pi}{6}\right)\right)
-            \end{aligned}\]
+        <div class="key-concept">
+            Whatever the value of \(x\), it is always the case that 
+            \[\cos(\arcsin x)=\sin(\arccos x)=\sqrt{1-x^2}\]
+        </div>
+        <div class="intro">
+            <p>Another way to write this is:</p>
+            \[\begin{align*}
+            &x^2+\cos^2(\arcsin x)=1\\[12pt]
+            &x^2+\sin^2(\arccos x)=1
+            \end{align*}\]
         </div>
     </div>
-<div class="page" id="page-21">
+
+<div class="page" id="page-12">
+        <div class="exercise">
+            <p>Draw the graph \(y=\sin(\arccos x)\)</p>
+        </div>
+        <div class="nav-gated">
+            <figure>
+                <img src="inverse_images/image205.png" alt="semicircle on graph" style="max-width:64%">
+            </figure>
+        </div>
+        
+        <div class="exercise">
+            <p>Use the fact that \((x,\,y)=(\cos\theta,\,\sin\theta)\) lies on the unit circle to explain why the point \((x,\,\sin(\arccos x))\) lies on the unit circle.</p>
+        </div>
+        <div class="answer">  
+                \[\begin{align*}
+                x^2+y^2=1\text{ and }\theta=\arccos x\\[12pt]
+                \Rightarrow\,x^2+\sin^2(\arccos x)=1
+                \end{align*}\]
+        </div>
+        <div class="exercise">
+            Explain why the point \((x,\,\cos(\arcsin x))\) lies on the unit circle.
+        </div>
+        <div class="answer">
+            <p>\((x,\,y)=(\sin\varphi, \,\cos\varphi)\) also lies on the unit circle, so </p>
+            \[\begin{align*}
+                x^2+y^2=1\text{ and }\theta=\arcsin x\\[12pt]
+                \Rightarrow\,x^2+\cos^2(\arcsin x)=1
+                \end{align*}\]
+        </div>
+        
+</div>
+
+<div class="page" id="page-13">
+    <div class="intro">
+        Now we know what happens if we follow an inverse sin or inverse cos with cos or sin. How about following cos or sin with inverse sin or inverse cos? First, some specific values.
+    </div>
         <div class="exercise">
             <p>Find</p>
                 \[\begin{aligned}
@@ -356,203 +329,156 @@
                 &\arccos\left(\sin \left(-\frac{5\pi}{6}\right)\right)
                 \end{aligned}\]
             </div>
-<div class="answer">
-        \[\begin{aligned}
-        &\arccos\left(\sin \frac{\pi}{6}\right)=\arccos \frac{1}{2}=\frac{\pi}{3}\\[6pt]
-        &\arccos\left(\sin \left(-\frac{\pi}{6}\right)\right)=\arccos\left(-\frac{1}{2}\right)=\frac{2\pi}{3}\\[6pt]
-        &\arccos\left(\sin \frac{5\pi}{6}\right)=\arccos\left(\frac{1}{2}\right)=\frac{\pi}{3}\\[6pt]
-        &\arccos\left(\sin \left(-\frac{5\pi}{6}\right)\right)=\arccos\left(-\frac{1}{2}\right)=\frac{2\pi}{3}
-        \end{aligned}\]
-    </div>
-</div>
-<div class="page" id="page-22">
-<div class="exercise">
-    <p>Find \(\arccos(\sin\theta)\) in terms of \(\theta\) when </p>
-    \[\begin{aligned}
-            0\le\theta\le\frac{\pi}{2}\\[6pt]
-            \frac{\pi}{2}\le\theta\le\pi\\[6pt]
-            -\frac{\pi}{2}\le\theta\le 0\\[6pt]
-            -\pi\le\theta\le -\frac{\pi}{2}\\[6pt]
+        <div class="answer">
+            \[\begin{aligned}
+            &\arccos\left(\sin \frac{\pi}{6}\right)=\arccos \frac{1}{2}=\frac{\pi}{3}\\[6pt]
+    &\arccos\left(\sin \left(-\frac{\pi}{6}\right)\right)=\arccos\left(-\frac{1}{2}\right)=\frac{2\pi}{3}\\[6pt]
+    &\arccos\left(\sin \frac{5\pi}{6}\right)=\arccos\left(\frac{1}{2}\right)=\frac{\pi}{3}\\[6pt]
+            &\arccos\left(\sin \left(-\frac{5\pi}{6}\right)\right)=\arccos\left(-\frac{1}{2}\right)=\frac{2\pi}{3}
             \end{aligned}\]
+        </div>
 </div>
-<figure>
-    <img src="inverse_images/image58.png" alt="Right triangle with angle theta where sin theta = x" style="max-width:48%">
-</figure>
-</div>
-<div class="page" id="page-23">
+<div class="page" id="page-14">
     <div class="exercise">
-        <p>Find \(\arccos(\sin\theta)\) in terms of \(\theta\) when </p>
-            \[\begin{aligned}
-            0\le\theta\le\frac{\pi}{2}\\[6pt]
-            \frac{\pi}{2}\le\theta\le\pi\\[6pt]
-            -\frac{\pi}{2}\le\theta\le 0\\[6pt]
-            -\pi\le\theta\le -\frac{\pi}{2}\\[6pt]
-            \end{aligned}\]
+        <p>Find \(\arccos(\sin\theta)\) and \(\arcsin(\cos\varphi)\)in terms of \(\theta\) or \(\varphi\) when \(0\le\theta, \varphi\le\frac{\pi}{2}\)</p>
     </div>
-    <figure>
-        <img src="inverse_images/image58.png" alt="Right triangle with angle theta where sin theta = x" style="max-width:48%">
-    </figure>
+    <div class="nav-gated">
+        <figure>
+            <img src="inverse_images/image58.png" alt="Right triangle with angle theta where sin theta = x" style="max-width:48%">
+        </figure>
+    </div>
     <div class="answer">
-        \[\begin{aligned}
-        &0\le\theta\le\frac{\pi}{2}\Rightarrow \arccos(\sin\theta) =\arccos x= \varphi=\frac{\pi}{2} - \theta\\[24pt]
-        &\frac{\pi}{2}\le\theta\le\pi\Rightarrow \sin \theta=\sin(\pi-\theta)\\[6pt]
-        &\phantom{\frac{\pi}{2}\le\theta\le\pi}\Rightarrow \arcsin(\sin\theta)=\arcsin(\sin(\pi-\theta))=\pi-\theta\\
-&\phantom{\frac{\pi}{2}\le\theta\le\pi}\Rightarrow \arccos(\sin\theta)=\frac{\pi}{2}-\arcsin(\sin(\pi-\theta))=\frac{\pi}{2}-(\pi-\theta)=\theta-\frac{\pi}{2}\\[24pt]
-        &-\frac{\pi}{2}\le\theta\le 0\Rightarrow \arccos(\sin\theta)=\frac{\pi}{2}-\arcsin(\sin\theta)\\[6pt]
-&\phantom{-\frac{\pi}{2}\le\theta\le 0\Rightarrow \arccos(\sin\theta)}=\frac{\pi}{2}-\theta\\[24pt]
-&-\pi\le\theta\le-\frac{\pi}{2}\Rightarrow 0\le \pi+\theta\le \frac{\pi}{2}\text{ and }\sin\theta=-\sin\left(\pi+\theta\right)\\[6pt]
-&\phantom{-\pi\le\theta\le-\frac{\pi}{2}}\Rightarrow \arccos(\sin\theta)=\frac{\pi}{2}-\arcsin\left(-\sin\left(\pi+\theta\right)\right)\\[6pt]
-&\phantom{-\pi\le\theta\le-\frac{\pi}{2} \Rightarrow\arccos(\sin\theta)}=\frac{\pi}{2}+\pi+\theta\\[6pt]
-&\phantom{-\pi\le\theta\le-\frac{\pi}{2}\Rightarrow\arccos(\sin\theta)}=\theta+\frac{3\pi}{2}\\[24pt]
-        \end{aligned}\]
+        \[\begin{align*}
+        \arccos(\sin\theta) &=\arccos x\\[6pt]
+        &= \varphi\\[6pt]
+        &=\frac{\pi}{2} - \theta\\[12pt]
+        \arcsin(\cos\varphi) &=\arcsin x\\[6pt]
+        &= \theta\\[6pt]
+        &=\frac{\pi}{2} - \varphi
+        \end{align*}\]
     </div>
+    </div>
+
+<div class="page" id="page-15">
+    <div class="intro">
+        <p>For other values of \(\theta\), we still have \(\arccos(\sin\theta)+\arcsin(\sin\theta)=\displaystyle{\frac{\pi}{2}}\).</p>
+    </div>
+    <div class="exercise">
+        <p>On the same set of axes, draw the graphs \(y=\arcsin(\sin x)\) and \(y=\arccos(\sin x)\).</p>
+    </div>
+    <div class="nav-gated">
+        <figure>
+            <img src="inverse_images/image206.png" alt="two sawtooth graphs" style="max-width:82%">
+        </figure>
+    </div>
+    <div class="answer">
+        \[\begin{align*}
+        &y=\arcsin(\sin x) \Rightarrow\,\sin y=\sin x\\[12pt]
+        \Rightarrow \,&x-y=(2n-1)\pi\text{ or }x+y=2n\pi
+        \end{align*}\]
+    </div>
+    
 </div>
-<div class="page" id="page-24">
-        <div class="exercise">
-            <p>Find</p>
-            <p>(a) &nbsp; \(\sin(\arccos x)\)</p>
-            <p>(b) &nbsp; \(\arcsin(\cos\phi)\) for \(\phi \in [0, \pi]\)</p>
-        </div>
-        <figure>
-            <img src="inverse_images/image58.png" alt="Right triangle with angle phi where cos phi = x" style="max-width:48%">
-        </figure>
+
+<div class="page" id="page-16">
+</div>
+
+<div class="page" id="page-17" data-reveal-steps>
+    <div class="intro">
+        Now we have seen how sin and cos interact with their inverses. What about when we add tan into the mix?
     </div>
-<div class="page" id="page-25">
-        <div class="exercise">
-            <p>Find</p>
-            <p>(a) &nbsp; \(\sin(\arccos x)\)</p>
-            <p>(b) &nbsp; \(\arcsin(\cos\phi)\) for \(\phi \in [0, \pi]\)</p>
-        </div>
-        <figure>
-            <img src="inverse_images/image58.png" alt="Right triangle with angle phi where cos phi = x" style="max-width:48%">
-        </figure>
-        <div class="answer">
-            \[\begin{aligned}
-            &\text{(a) } \sin(\arccos x) = \sqrt{1-x^2}, \quad |x| \leq 1\\[10pt]
-            &\text{(b) } \arcsin(\cos\phi) = \frac{\pi}{2} - \phi
-            \end{aligned}\]
-            <p>For (b): \(\sin\bigl(\tfrac{\pi}{2}-\phi\bigr)=\cos\phi\) and \(\tfrac{\pi}{2}-\phi\in\bigl[-\tfrac{\pi}{2},\tfrac{\pi}{2}\bigr]\) for \(\phi\in[0,\pi]\). &#10003;</p>
-        </div>
         <div class="exercise">
             <p>Find \(\tan(\arcsin x)\) and \(\tan(\arccos x)\).</p>
         </div>
-    </div>
-<div class="page" id="page-26">
-        <div class="exercise">
-            <p>Find \(\tan(\arcsin x)\) and \(\tan(\arccos x)\).</p>
+        <div class="nav-gated">
+            <figure>
+                <img src="inverse_images/image58.png" alt="Right triangle with angle phi where cos phi = x" style="max-width:48%">
+            </figure>
         </div>
-        <figure>
-            <img src="inverse_images/image58.png" alt="Right triangle with angle phi where cos phi = x" style="max-width:48%">
-        </figure>
         <div class="answer">
-            \[\begin{aligned}
-            &\tan(\arcsin x) = \frac{x}{\sqrt{1-x^2}}, \quad |x| < 1\\[10pt]
-            &\tan(\arccos x) = \frac{\sqrt{1-x^2}}{x}, \quad 0 < |x| \leq 1
-            \end{aligned}\]
+            \[\tan(\arcsin x) = \frac{x}{\sqrt{1-x^2}}, \quad 0 \leq x < 1\]
+            <div class="step">\[\tan(\arccos x) = \frac{\sqrt{1-x^2}}{x}, \quad 0 < x \leq 1\]</div>
+            <div class="step">\[-1 < x\leq 0 \Rightarrow\, -\frac{\pi}{2}< \arcsin x\leq 0\]</div>
+            <div class="step">\[\Rightarrow\, \tan(\arcsin x)< 0\]</div>
+            <div class="step">\[\Rightarrow\, \tan(\arcsin x)=\frac{x}{\sqrt{1-x^2}}\]</div>
+            <div class="step">\[-1 \leq x< 0 \Rightarrow\, \frac{\pi}{2}\leq \arccos x< \pi\]</div>
+            <div class="step">\[\Rightarrow\, \tan(\arccos x)< 0\]</div>
+            <div class="step">\[\Rightarrow\, \tan(\arccos x)=\frac{\sqrt{1-x^2}}{x}\]</div>
         </div>
 
     </div>
-<div class="page" id="page-27">
+<div class="page" id="page-18">
         <div class="exercise">
             <p>Find \(\sin(\arctan x)\) and \(\cos(\arctan x)\).</p>
         </div>
-        <figure>
-            <img src="inverse_images/image37.png" alt="Right triangle for sin and cos of tan inverse x" style="max-width:48%">
-        </figure>
-    </div>
-
-<div class="page" id="page-28">
-        <div class="exercise">
-            <p>Find \(\sin(\arctan x)\) and \(\cos(\arctan x)\).</p>
+        <div class="nav-gated">
+            <figure>
+                <img src="inverse_images/image37.png" alt="Right triangle for sin and cos of tan inverse x" style="max-width:48%">
+            </figure>
         </div>
-        <figure>
-            <img src="inverse_images/image37.png" alt="Right triangle for sin and cos of tan inverse x" style="max-width:48%">
-        </figure>
         <div class="answer">
             \[\begin{aligned}
             &\sin(\arctan x) = \frac{x}{\sqrt{1+x^2}}\\[10pt]
             &\cos(\arctan x) = \frac{1}{\sqrt{1+x^2}}
             \end{aligned}\]
-            <p>Since \(\arctan x \in \bigl(-\tfrac{\pi}{2}, \tfrac{\pi}{2}\bigr)\), the cosine is always positive.</p>
         </div>
     </div>
-<div class="page" id="page-29">
+<div class="page" id="page-19" data-reveal-steps>
         <div class="exercise">
             <p>Using the fact that</p>
             \[\sin(A + B) = \sin A\cos B + \cos A\sin B\]
             <p>and putting \(A = \arcsin a\) and \(B = \arcsin b\), find \(\sin\left(\arcsin a + \arcsin b\right)\) in terms of \(a\) and \(b\), without using \(\sin\) or \(\cos\) in your expression.</p>
             <p>Hence find \(\arcsin a + \arcsin b\).</p>
         </div>
-    </div>
-<div class="page" id="page-30">
-        <div class="exercise">
-            <p>Find \(\sin\left(\arcsin a + \arcsin b\right)\) and hence \(\arcsin a + \arcsin b\).</p>
-        </div>
         <div class="answer" id="arcsin-sum">
-            \[\begin{aligned}
-            \sin(A + B) &= \sin A\cos B + \cos A\sin B \\[6pt]
-            A=\arcsin& \,a\quad\text{and}\quad B=\arcsin b\\[6pt]
-            \Rightarrow\quad\sin(\arcsin a + \arcsin b)
-                &= \sin(\arcsin a)\cos(\arcsin b) + \cos(\arcsin a)\sin(\arcsin b) \\[6pt]
-                &= a\sqrt{1 - b^{2}} + b\sqrt{1 - a^{2}} \\[10pt]
-            \Rightarrow\quad\arcsin a + \arcsin b
-                &= \arcsin\left(a\sqrt{1 - b^{2}} + b\sqrt{1 - a^{2}}\right)
-            \end{aligned}\]
-            <p>although this isn't quite right if \(\arcsin a+\arcsin b\gt\frac{\pi}{2}\) or \(\le-\frac{\pi}{2}\)</p>
-            <p>In these cases, we have
-            \[\begin{aligned}
-            \arcsin a + \arcsin b&=\pm\pi- \arcsin\left(a\sqrt{1 - b^{2}} + b\sqrt{1 - a^{2}}\right)
-            \end{aligned}\]</p>
-        </div>
-        <div class="exercise">
-            <p>Find \(\cos\left(\arcsin a + \arcsin b\right)\) and hence \(\arccos a + \arccos b\).</p>
-            
-
+            \[\begin{aligned}\sin(A + B) &= \sin A\cos B + \cos A\sin B\end{aligned}\]
+            <div class="step">\[A=\arcsin a\quad\text{and}\quad B=\arcsin b\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow\quad\sin(\arcsin a + \arcsin b)
+                &= \sin(\arcsin a)\cos(\arcsin b) + \cos(\arcsin a)\sin(\arcsin b)\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\Rightarrow\quad\sin(\arcsin a + \arcsin b)}
+                &= a\sqrt{1 - b^{2}} + b\sqrt{1 - a^{2}}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow\quad\arcsin a + \arcsin b
+                &= \arcsin\left(a\sqrt{1 - b^{2}} + b\sqrt{1 - a^{2}}\right)\end{aligned}\]</div>
+            <div class="step">
+                <p>although this isn't quite right if \(\arcsin a+\arcsin b\gt\frac{\pi}{2}\) or \(\le-\frac{\pi}{2}\)</p>
+                <p>In these cases, we have
+                \[\arcsin a + \arcsin b=\pm\pi- \arcsin\left(a\sqrt{1 - b^{2}} + b\sqrt{1 - a^{2}}\right)\]</p>
+            </div>
         </div>
     </div>
-<div class="page" id="page-31">
+<div class="page" id="page-20" data-reveal-steps>
         <div class="exercise">
             <p>Find \(\cos\left(\arcsin a + \arcsin b\right)\) and hence \(\arccos a + \arccos b\).</p>
         </div>
         <div class="answer" id="arccos-sum-sin">
-            \[\begin{aligned}
-            \cos(A+B)&=\cos(\arcsin a)\cos(\arcsin b)-ab\\[12pt]
-            &=\sqrt{1-a^2}\sqrt{1-b^2}-ab\\[12pt]
-            \Rightarrow \arccos a+\arccos b&=\arccos\left(\sqrt{(1-a^2)(1-b^2)}-ab\right)\\[12pt]
-            \end{aligned}\]
+            \[\begin{aligned}\cos(A+B)&=\cos(\arcsin a)\cos(\arcsin b)-ab\end{aligned}\]
+            <div class="step">\[\begin{aligned}\phantom{\cos(A+B)}&=\sqrt{1-a^2}\sqrt{1-b^2}-ab\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow\, \arccos a+\arccos b&=\arccos\left(\sqrt{(1-a^2)(1-b^2)}-ab\right)\end{aligned}\]</div>
         </div>
-        <div class="exercise">
-            <p>Putting \(c=\cos A\) and \(d=\cos B\), find \(\cos (A+B)\) and hence find \(\arccos c + \arccos d\).</p>
-        </div>
+
     </div>
-<div class="page" id="page-32">
+<div class="page" id="page-21" data-reveal-steps>
         <div class="exercise">
             <p>Putting \(c=\cos A\) and \(d=\cos B\), find \(\cos (A+B)\) and hence find \(\arccos c + \arccos d\).</p>
         </div>
         <div class="answer" id="arccos-sum-cos">
-            \[\begin{aligned}
-            \cos(A+B)&=cd-\sin(\arccos c)\sin(\arccos d)\\[12pt]
-            &=cd-\sqrt{1-c^2}\sqrt{1-d^2}\\[12pt]
-            \Rightarrow \arccos c+\arccos d&=\arccos\left(cd-\sqrt{(1-c^2)(1-d^2)}\right)\\[12pt]
-            \end{aligned}\]
+            \[\begin{aligned}\cos(A+B)&=cd-\sin(\arccos c)\sin(\arccos d)\end{aligned}\]
+            <div class="step">\[\begin{aligned}\phantom{\cos(A+B)}&=cd-\sqrt{1-c^2}\sqrt{1-d^2}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow\, \arccos c+\arccos d&=\arccos\left(cd-\sqrt{(1-c^2)(1-d^2)}\right)\end{aligned}\]</div>
         </div>
-        <div class="exercise">
-            <p>Putting \(u=\tan A\) and \(v=\tan B\), find \(\tan (A+B)\) and hence find \(\arctan u + \arctan v\).</p>
-        </div>
+
     </div>
-<div class="page" id="page-33">
+<div class="page" id="page-22" data-reveal-steps>
         <div class="exercise">
             <p>Putting \(u=\tan A\) and \(v=\tan B\), find \(\tan (A+B)\) and hence find \(\arctan u + \arctan v\).</p>
         </div>
         <div class="answer" id="arctan-sum">
-            \[\begin{aligned}
-            &\tan(A+B)=\frac{\tan A+\tan B}{1-\tan A\tan B}=\frac{u+v}{1-uv}\\[12pt]
-            \Rightarrow &\arctan u+\arctan v=\arctan\frac{u+v}{1-uv}
-            \end{aligned}\]
+            \[\tan(A+B)=\frac{\tan A+\tan B}{1-\tan A\tan B}=\frac{u+v}{1-uv}\]
+            <div class="step">\[\Rightarrow\, \arctan u+\arctan v=\arctan\frac{u+v}{1-uv}\]</div>
         </div>
-    </div>
-    <!-- Page 33: Congratulations -->
-    <div class="page" id="page-34">
+</div>
+    <!-- Page 29: Congratulations -->
+    <div class="page" id="page-23">
         <div class="welcome-page">
             <h1>Well done on completing Part 2!</h1>
             <div class="welcome-content">
@@ -576,7 +502,7 @@
         <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
         <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="34" onchange="goToPage(this.value)"> of 34
+        Page <input type="number" id="pageInput" value="1" min="1" max="23" onchange="goToPage(this.value)"> of 23
         </span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
         <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -586,22 +512,35 @@
     <script>
     (function () {
         'use strict';
-        const ANIMATABLE = 'div.exercise, div.intro, div.key-concept';
+        const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer, div.nav-gated';
         let revealQueue = [];
         let goingBackward = false;
 
         function initPageReveal(page, revealAll) {
             revealQueue = [];
             if (page.hasAttribute('data-no-reveal')) { return; }
-            const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
+            const selectorParts = [ANIMATABLE];
+            if (page.hasAttribute('data-reveal-steps')) selectorParts.push('div.step');
+            const selector = selectorParts.join(', ');
+            const animatable = Array.from(page.querySelectorAll(selector))
                 .filter(div => !div.classList.contains('reveal-instant'));
-            animatable.forEach(div => div.classList.add('div-hidden'));
+            animatable.forEach(div => {
+                if (div.classList.contains('step')) {
+                    div.classList.add('step-hidden');
+                } else {
+                    div.classList.add('div-hidden');
+                }
+            });
             if (revealAll) {
-                animatable.forEach(div => div.classList.remove('div-hidden'));
+                animatable.forEach(div => {
+                    div.classList.remove('div-hidden');
+                    div.classList.remove('step-hidden');
+                });
                 return;
             }
             if (animatable.length > 0) {
                 animatable[0].classList.remove('div-hidden');
+                animatable[0].classList.remove('step-hidden');
                 revealQueue = animatable.slice(1);
             }
         }
@@ -612,10 +551,11 @@
         function revealNextOrAdvance() {
             if (revealQueue.length > 0) {
                 const next = revealQueue.shift();
-                next.classList.remove('div-hidden');
+                next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
                 next.classList.add('div-revealed');
                 setTimeout(() => next.classList.remove('div-revealed'), 400);
-                next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                const scrollTarget = next.classList.contains('nav-gated') ? (next.firstElementChild || next) : next;
+                scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } else {
                 _origChangePage(1);
             }
