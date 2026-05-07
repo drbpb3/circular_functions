@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>More differentials of circular functions</title>
+    <title>Differentials of inverse circular functions</title>
     <script>
     window.MathJax = {
         tex: {
@@ -53,9 +53,9 @@
     <!-- Page 1: Welcome Page -->
     <div class="page" id="page-1">
         <div class="welcome-page">
-            <h1>Differentials of reciprocal functions</h1>
+            <h1>Differentials of inverse circular functions</h1>
             <div class="welcome-content">
-                <p>We've explored sine, cosine, and tangent functions in some depth. Now it's time to broaden our horizons with some new functions.</p>
+                <p>We now turn to the inverse circular functions — arcsin, arccos, arctan, arcsec, arccosec, and arccot — and find their differentials using implicit differentiation.</p>
 
                 <div class="navigation-box">
                     <h2>How to Navigate:</h2>
@@ -81,111 +81,114 @@
 
     <!-- Page 2 -->
     <div class="page" id="page-2">
-
-        <h2 class="chapter">Differentials of reciprocal functions</h2>
-
         <div class="exercise">
-            What is the differential of \(\cos x\) ?
+            Find the differential of \(\arcsin x\).
         </div>
         <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/cosderiv.mp4" alt="animation of differential of cos"></video>
+            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arcsinderiv.mp4" alt="animation of differential of arcsin"></video>
         </figure>
         <div class="answer">
-            <p>It's easy to see from the graph \(y=\cos x\) and the fact that it is a translation of the sin graph, that
-                \[\frac{\mathrm{d}}{\mathrm{d}x}\cos x=-\sin x\]
-            </p>
-            <p>but we can also use the definition of a differential:</p>
-            \[\begin{aligned}f(x)&=\cos x\end{aligned}\]
-            <div class="step">\[\begin{aligned}f'(x)&=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{\cos(x+h)-\cos x}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{\cos x\cos h-\sin x\sin h-\cos x}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{-\cos x(1-\cos h)-\sin x\sin h}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=-\cos x\lim_{h\to 0}\frac{(1-\cos h)}{h}-\sin x\lim_{h\to 0}\frac{\sin h}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=-\sin x\end{aligned}\]</div>
+            \[\begin{aligned}y&=\arcsin x \Rightarrow x=\sin y\end{aligned}\]
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}&=\cos y\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{1}{\cos y}=\pm\frac{1}{\sqrt{1-x^2}}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\text{but gradient is always positive}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{1}{\sqrt{1-x^2}}\end{aligned}\]</div>
         </div>
     </div>
 
     <!-- Page 3 -->
     <div class="page" id="page-3">
         <div class="exercise">
-            Use the quotient rule to find the differential of \(\tan x\).
+            Find the differential of \(\arccos x\).
         </div>
         <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/tanderiv.mp4" alt="animation of differential of tan"></video>
+            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arccosderiv.mp4" alt="animation of differential of arccos"></video>
         </figure>
         <div class="answer">
-            \[\begin{aligned}f(x)&=\tan x=\frac{\sin x}{\cos x}\end{aligned}\]
-            <div class="step">\[\begin{aligned}f'(x)&=\frac{\cos^2 x+\sin^2 x}{\cos^2 x}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\frac{1}{\cos^2 x}=\sec^2 x\end{aligned}\]</div>
+            \[\begin{aligned}y&=\arccos x\Rightarrow x=\cos y\end{aligned}\]
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}&=-\sin y\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{1}{\sin y}=\pm\frac{1}{\sqrt{1-x^2}}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\text{but gradient is always negative}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{1}{\sqrt{1-x^2}}\end{aligned}\]</div>
         </div>
     </div>
 
     <!-- Page 4 -->
     <div class="page" id="page-4">
         <div class="exercise">
-            Use the quotient rule to find the differential of \(\sec x\).
+            Find the differential of \(\arctan x\).
         </div>
         <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/secderiv.mp4" alt="animation of differential of cos"></video>
+            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arctanderiv.mp4" alt="animation of differential of arctan"></video>
         </figure>
         <div class="answer">
-            \[\begin{aligned}f(x)&=\sec x=\frac{1}{\cos x}\end{aligned}\]
-            <div class="step">\[\begin{aligned}f'(x)&=\frac{\sin x}{\cos^2 x}=\sec x\tan x\end{aligned}\]</div>
-            <div class="step">
-                <p>or if you prefer to differentiate everything using only the essential definition of a differential:</p>
-                \[\begin{aligned}f(x)&=\sec x\end{aligned}\]
-            </div>
-            <div class="step">\[\begin{aligned}f'(x)&=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{\sec(x+h)-\sec x}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{\dfrac{1}{\cos(x+h)}-\dfrac{1}{\cos x}}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{\cos x-\cos(x+h)}{h\cos x\cos (x+h)}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{\cos x-\cos (x+h)}{h}\cdot\frac{1}{\cos x\cos (x+h)}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\sin x\cdot\frac{1}{\cos^2 x}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\frac{\sin x}{\cos^2 x}=\sec x\tan x\end{aligned}\]</div>
+            \[\begin{aligned}y&=\arctan x\Rightarrow x=\tan y\end{aligned}\]
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}&=\sec^2 y\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{1}{\sec^2 y}=\frac{1}{1+x^2}\end{aligned}\]</div>
         </div>
     </div>
 
     <!-- Page 5 -->
     <div class="page" id="page-5">
         <div class="exercise">
-            Use the quotient rule to find the differential of \(\operatorname{cosec} x\).
+            Find the differential of \(\operatorname{arcsec} x\).
         </div>
         <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/cscderiv.mp4" alt="animation of differential of csc"></video>
+            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arcsecderiv.mp4" alt="animation of differential of arcsec"></video>
         </figure>
         <div class="answer">
-            \[\begin{aligned}f(x)&=\operatorname{cosec} x=\frac{1}{\sin x}\end{aligned}\]
-            <div class="step">\[\begin{aligned}f'(x)&=-\frac{\cos x}{\sin^2 x}=-\operatorname{cosec} x\cot x\end{aligned}\]</div>
+            \[\begin{aligned}y&=\operatorname{arcsec} x \Rightarrow x=\sec y\end{aligned}\]
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}&=\sec y\tan y\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=\pm\frac{1}{x\sqrt{1-x^2}}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\text{but gradient is always positive}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{1}{|x|\sqrt{1-x^2}}=\frac{1}{\sqrt{x^2(1-x^2)}}\end{aligned}\]</div>
         </div>
     </div>
 
     <!-- Page 6 -->
     <div class="page" id="page-6">
         <div class="exercise">
-            Use the quotient rule to find the differential of \(\cot x\).
+            Find the differential of \(\operatorname{arccsc} x\).
         </div>
         <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/cotderiv.mp4" alt="animation of differential of cot"></video>
+            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arccscderiv.mp4" alt="animation of differential of arccsc"></video>
         </figure>
         <div class="answer">
-            \[\begin{aligned}f(x)&=\cot x=\frac{\cos x}{\sin x}\end{aligned}\]
-            <div class="step">\[\begin{aligned}f'(x)&=\frac{-\sin^2 x-\cos^2 x}{\sin^2 x}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=-\frac{1}{\sin^2 x}=-\operatorname{cosec}^2 x\end{aligned}\]</div>
+            \[\begin{aligned}y&=\operatorname{arccosec} x \Rightarrow x=\operatorname{cosec} y\end{aligned}\]
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}&=-\operatorname{cosec} y\cot y\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=\pm\frac{1}{x\sqrt{1-x^2}}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\text{but gradient is always negative}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{1}{|x|\sqrt{1-x^2}}=-\frac{1}{\sqrt{x^2(1-x^2)}}\end{aligned}\]</div>
         </div>
     </div>
 
-    <!-- Page 7: Closing Page -->
+    <!-- Page 7 -->
     <div class="page" id="page-7">
+        <div class="exercise">
+            Find the differential of \(\operatorname{arccot} x\).
+        </div>
+        <figure style="max-width: 100%; margin: 30px auto;">
+            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arccotderiv.mp4" alt="animation of differential of arccot"></video>
+        </figure>
+        <div class="answer">
+            \[\begin{aligned}y&=\operatorname{arccot}x \Rightarrow x=\cot y\end{aligned}\]
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}&=-\operatorname{cosec}^2 y\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{1}{\operatorname{cosec}^2 y}=-\frac{1}{1+x^2}\end{aligned}\]</div>
+        </div>
+    </div>
+
+    <!-- Page 8: Closing Page -->
+    <div class="page" id="page-8">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
-                <p>You've found the differentials of the five reciprocal circular functions: \(\cos x\), \(\tan x\), \(\sec x\), \(\operatorname{cosec} x\), and \(\cot x\).</p>
+                <p>You've now found the differentials of all six inverse circular functions: arcsin, arccos, arctan, arcsec, arccosec, and arccot.</p>
 
                 <div class="navigation-box">
                     <h2>What's Next:</h2>
                     <ul>
-                        <li>The next worksheet covers the differentials of the <strong>inverse</strong> circular functions</li>
-                        <li>You'll use implicit differentiation to find the derivatives of arcsin, arccos, arctan, and more</li>
+                        <li>These results open the door to a whole new class of <strong>integrals</strong></li>
+                        <li>Any integral whose answer involves an inverse circular function can now be recognised and evaluated</li>
                     </ul>
                 </div>
 
@@ -204,7 +207,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="7" onchange="goToPage(this.value)"> of 7
+        Page <input type="number" id="pageInput" value="1" min="1" max="8" onchange="goToPage(this.value)"> of 8
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
