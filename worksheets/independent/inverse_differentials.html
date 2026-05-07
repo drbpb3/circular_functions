@@ -81,23 +81,61 @@
 
     <!-- Page 2 -->
     <div class="page" id="page-2">
-        <div class="exercise">
-            Find the differential of \(\arcsin x\).
-        </div>
         <figure style="max-width: 100%; margin: 30px auto;">
             <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arcsinderiv.mp4" alt="animation of differential of arcsin"></video>
         </figure>
-        <div class="answer">
-            \[\begin{aligned}y&=\arcsin x \Rightarrow x=\sin y\end{aligned}\]
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}&=\cos y\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{1}{\cos y}=\pm\frac{1}{\sqrt{1-x^2}}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\text{but gradient is always positive}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{1}{\sqrt{1-x^2}}\end{aligned}\]</div>
+        <div class="exercise">
+            <p>If <span class="math inline">\(\displaystyle{y=\arcsin x}\)</span>, what is <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}}\)</span> in terms of <span class="math inline">\(\displaystyle{y}\)</span> ?</p>
         </div>
+        <div class="answer">
+            \[x=\sin y\Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y}=\cos y\]
+        </div>
+        <div class="exercise">
+            <p>What is \(\displaystyle{\cos y}\) in terms of \(x\) ?</p>
+        </div>
+        <div class="answer">
+            \[\sin^2y+\cos^2y=1\]
+            <div class="step">\[\Rightarrow\, \cos^2y=1-x^2\]</div>
+            <div class="step">\[\Rightarrow\, \cos y=\pm\sqrt{1-x^2}\]</div>
+        </div>
+        <div class="exercise">
+            <p>Is \(\displaystyle{\cos y}\) positive or negative when \(y=\arcsin x\)?</p>
+        </div>
+        <div class="answer">
+
+            <div class="step">\[-\frac{\pi}{2}\leq \arcsin x\leq \frac{\pi}{2}\Rightarrow\,-\frac{\pi}{2}\leq y\leq \frac{\pi}{2}\]</div>
+            <div class="step">\[\Rightarrow\, \cos y\geq 0\]</div>
+            <div class="step">\[\Rightarrow\, \cos y=\sqrt{1-x^2}\]</div>
+        </div>
+        <div class="exercise">
+            <p>What are <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}\text{ and }\frac{\mathrm{d}y}{\mathrm{d}x}}\)</span> in terms of <span class="math inline">\(\displaystyle{x}\)</span> ?</p>
+        </div>
+        <div class="answer">
+            \[\frac{\mathrm{d}x}{\mathrm{d}y}=\cos y=\sqrt{1-x^2}\]
+            <div class="step">\[\Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{\sqrt{1-x^2}}\]</div>
+            
+        </div>
+        <div style="height: 3em;"></div>
     </div>
 
     <!-- Page 3 -->
-    <div class="page" id="page-3">
+    <div class="page" id="page-3" data-reveal-steps>
+        <div class="nav-gated">
+            <figure>
+                <img src="inverse_images/image100.png" alt="unit circle for differentiation" style="max-width:64%">
+            </figure>
+        </div>
+        <div class="answer">
+            \[\text{As }\delta\theta\to 0,\; \alpha\to\theta\]
+            <div class="step">\[\text{and }\delta x\to\sin\theta\times\delta\theta,\; \delta y\to\cos\theta\times\delta\theta\]</div>
+            <div class="step">\[\Rightarrow\, \frac{\delta \theta}{\delta y}\to \frac{1}{\cos\theta}\]</div>
+            <div class="step">\[=\frac{1}{\sqrt{1-y^2}}\text{ and }\theta=\arcsin y\]</div>
+            <div class="step">\[\Rightarrow\, \frac{\mathrm{d}}{\mathrm{d}y}\arcsin y=\frac{1}{\sqrt{1-y^2}}\]</div>
+        </div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="page" id="page-4">
         <div class="exercise">
             Find the differential of \(\arccos x\).
         </div>
@@ -108,13 +146,14 @@
             \[\begin{aligned}y&=\arccos x\Rightarrow x=\cos y\end{aligned}\]
             <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}&=-\sin y\end{aligned}\]</div>
             <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{1}{\sin y}=\pm\frac{1}{\sqrt{1-x^2}}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\text{but gradient is always negative}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\text{but gradient is always negative, and}\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}0\le \arccos x=y\le \pi\Rightarrow \sin y\ge 0\end{aligned}\]</div>
             <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{1}{\sqrt{1-x^2}}\end{aligned}\]</div>
         </div>
     </div>
 
     <!-- Page 4 -->
-    <div class="page" id="page-4">
+    <div class="page" id="page-5">
         <div class="exercise">
             Find the differential of \(\arctan x\).
         </div>
@@ -129,7 +168,7 @@
     </div>
 
     <!-- Page 5 -->
-    <div class="page" id="page-5">
+    <div class="page" id="page-6">
         <div class="exercise">
             Find the differential of \(\operatorname{arcsec} x\).
         </div>
@@ -146,7 +185,7 @@
     </div>
 
     <!-- Page 6 -->
-    <div class="page" id="page-6">
+    <div class="page" id="page-7">
         <div class="exercise">
             Find the differential of \(\operatorname{arccsc} x\).
         </div>
@@ -163,7 +202,7 @@
     </div>
 
     <!-- Page 7 -->
-    <div class="page" id="page-7">
+    <div class="page" id="page-8">
         <div class="exercise">
             Find the differential of \(\operatorname{arccot} x\).
         </div>
@@ -178,7 +217,7 @@
     </div>
 
     <!-- Page 8: Closing Page -->
-    <div class="page" id="page-8">
+    <div class="page" id="page-9">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
@@ -207,7 +246,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="8" onchange="goToPage(this.value)"> of 8
+        Page <input type="number" id="pageInput" value="1" min="1" max="9" onchange="goToPage(this.value)"> of 9
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -265,7 +304,7 @@ document.querySelectorAll('video').forEach(function (v) {
             next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
             next.classList.add('div-revealed');
             setTimeout(() => next.classList.remove('div-revealed'), 400);
-            next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            next.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
             _origChangePage(1);
         }

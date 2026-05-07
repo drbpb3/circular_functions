@@ -50,7 +50,7 @@
         <div class="welcome-page">
             <h1>Welcome to Inverse Circular Functions: Part 3</h1>
             <div class="welcome-content">
-                <p>This stage covers the derivatives of arcsin, arccos, and arctan, and how to use these results to evaluate integrals involving inverse circular functions. It concludes with a deeper look at differentiating arcsin directly from the definition of the derivative.</p>
+                <p>This stage covers the use of inverse circular functions to evaluate integrals.</p>
 
                 <div class="navigation-box">
                     <h2>How to Navigate:</h2>
@@ -72,108 +72,15 @@
             </div>
         </div>
     </div>
-<div class="page" id="page-2" data-reveal-steps>
-    <h2 class="chapter">differentials of inverse circular functions</h2>
-            <div class="exercise">
-                <p>If <span class="math inline">\(\displaystyle{y=\arcsin x}\)</span>, what is <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}}\)</span> in terms of <span class="math inline">\(\displaystyle{y}\)</span> ?</p>
-            </div>
-            <div class="answer">
-                \[x=\sin y\Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y}=\cos y\]
-            </div>
-            <div class="exercise">
-                <p>What is \(\displaystyle{\cos y}\) in terms of \(x\) ?</p>
-            </div>
-            <div class="answer">
-                \[\sin^2y+\cos^2y=1\]
-                <div class="step">\[\Rightarrow\, \cos^2y=1-x^2\]</div>
-                <div class="step">\[-\frac{\pi}{2}\leq \arcsin x\leq \frac{\pi}{2}\Rightarrow\,-\frac{\pi}{2}\leq y\leq \frac{\pi}{2}\]</div>
-                <div class="step">\[\Rightarrow\, \cos y\geq 0\]</div>
-                <div class="step">\[\Rightarrow\, \cos y=\sqrt{1-x^2}\]</div>
-            </div>
-            <div class="exercise">
-                <p>What are <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}\text{ and }\frac{\mathrm{d}y}{\mathrm{d}x}}\)</span> in terms of <span class="math inline">\(\displaystyle{x}\)</span> ?</p>
-            </div>
-            <div class="answer">
-                \[\frac{\mathrm{d}x}{\mathrm{d}y}=\cos y=\sqrt{1-x^2}\]
-                <div class="step">\[\Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{\sqrt{1-x^2}}\]</div>
-            </div>
-    </div>
-<div class="page" id="page-3">
-            
-            <div class="nav-gated">
-                <figure>
-                    <img src="inverse_images/image5.png" alt="Graph showing segment choices" style="max-width:64%">
-                </figure>
-            </div>
-            <div class="intro">
-                <p>Notice that the gradient of the pink segments on the graph are always positive, and our formula for \(\displaystyle\frac{\mathrm{d}y}{\mathrm{d}x}\) is also always positive.</p>
-                <p>How would \(\displaystyle\frac{\mathrm{d}y}{\mathrm{d}x}\) change if we had chosen one of the green segments as our graph of \(\arcsin x\)? Look back at the previous page for a clue.</p>
-            </div>
-    </div>
-    <div class="page" id="page-4" data-reveal-steps>
-        <div class="exercise">
-            <p>Follow the same method to find \[\frac{\mathrm{d}}{\mathrm{d}y}\arccos x\]</p>
-        </div>
-        <div class="answer">
-            \[y=\arccos x\Rightarrow\, x=\cos y\]
-            <div class="step">\[\Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y}=-\sin y\]</div>
-            <div class="step">\[\sin^2y+\cos^2y=1\]</div>
-            <div class="step">\[\Rightarrow\, \sin^2y=1-x^2\]</div>
-            <div class="step">\[0\leq \cos y\leq \pi\]</div>
-            <div class="step">\[\Rightarrow\, \sin y\geq 0\]</div>
-            <div class="step">\[\Rightarrow\, \sin y=\sqrt{1-x^2}\]</div>
-            <div class="step">\[\Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y}=-\sqrt{1-x^2}\]</div>
-            <div class="step">\[\Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x}=-\frac{1}{\sqrt{1-x^2}}\]</div>
-        </div>
+
+    <!-- Page 2 -->
+    <div class="page" id="page-2" data-reveal-steps>
+        <h2 class="chapter">integrals using inverse circular functions</h2>
         <div class="nav-gated">
             <figure>
-                <img src="inverse_images/image35.png" alt="Graph showing different segments" style="max-width:48%">
+                <img src="inverse_images/image203.png" alt="integral" style="max-width:48%">
             </figure>
         </div>
-        <div class="intro">
-            <p>Notice that the gradient of the graph \(y=\arccos x\) is always negative, as is our formula for \(\displaystyle\frac{\mathrm{d}y}{\mathrm{d}x}\).</p>
-        </div>
-        </div>
-        <div class="page" id="page-5" data-reveal-steps>
-            <div class="exercise">
-                <p>Follow the same method to find \[\frac{\mathrm{d}}{\mathrm{d}y}\arctan x\]</p>
-            </div>
-            <div class="answer">
-                \[y=\arctan x\Rightarrow\, x=\tan y\]
-                <div class="step">\[\Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y}=\sec^2 y=1+\tan^2y=1+x^2\]</div>
-                <div class="step">\[\Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{1+x^2}\]</div>
-            </div>
-            </div>
-<div class="page" id="page-6" data-reveal-steps>
-        <div class="nav-gated">
-            <figure>
-                <img src="inverse_images/image100.png" alt="unit circle for differentiation" style="max-width:64%">
-            </figure>
-        </div>
-        <div class="answer">
-            \[\text{As }\delta\theta\to 0,\; \alpha\to\theta\]
-            <div class="step">\[\text{and }\delta x\to\sin\theta\times\delta\theta,\; \delta y\to\cos\theta\times\delta\theta\]</div>
-            <div class="step">\[\Rightarrow\, \frac{\delta \theta}{\delta y}\to \frac{1}{\cos\theta}\]</div>
-            <div class="step">\[=\frac{1}{\sqrt{1-y^2}}\text{ and }\theta=\arcsin y\]</div>
-            <div class="step">\[\Rightarrow\, \frac{\mathrm{d}}{\mathrm{d}y}\arcsin y=\frac{1}{\sqrt{1-y^2}}\]</div>
-        </div>
-    </div>
-
-<div class="page" id="page-7">
-        
-    </div>
-
-<div class="page" id="page-8">
-        
-    </div>
-
-<div class="page" id="page-9" data-reveal-steps>
-    <h2 class="chapter">integrals using inverse circular functions</h2>
-    <div class="nav-gated">
-        <figure>
-            <img src="inverse_images/image203.png" alt="integral" style="max-width:48%">
-        </figure>
-    </div>
         <div class="exercise">
             <p>Find the shaded area.</p>
         </div>
@@ -185,7 +92,9 @@
             <div class="step">\[\begin{aligned}\phantom{\Rightarrow\,\text{area}}&=\frac{\pi}{2}\end{aligned}\]</div>
         </div>
     </div>
-<div class="page" id="page-10" data-reveal-steps>
+
+    <!-- Page 3 -->
+    <div class="page" id="page-3" data-reveal-steps>
         <div class="exercise">
             <p>Use the substitution <span class="math inline">\(\displaystyle{u = \arcsin x}\)</span> for the integral \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\]</p>
         </div>
@@ -198,7 +107,9 @@
             <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \arcsin x + c\end{aligned}\]</div>
         </div>
     </div>
-<div class="page" id="page-11" data-reveal-steps>
+
+    <!-- Page 4 -->
+    <div class="page" id="page-4" data-reveal-steps>
         <div class="exercise">
             <p>In practice, you might write the subsitution as \(\displaystyle{x=\sin u}\). Try it this way.</p>
         </div>
@@ -214,11 +125,9 @@
             <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \arcsin x + c\end{aligned}\]</div>
         </div>
     </div>
-<div class="page" id="page-12">
-</div>
 
-<div class="page" id="page-13" data-reveal-steps>
-
+    <!-- Page 5 -->
+    <div class="page" id="page-5" data-reveal-steps>
         <div class="exercise">
             <p>Use the subsitution \(\displaystyle{x=\cos u}\) for the integral
                 \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\]
@@ -236,10 +145,9 @@
             <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= -\arccos x + c\end{aligned}\]</div>
         </div>
     </div>
-<div class="page" id="page-14">
-        
-    </div>
-<div class="page" id="page-15">
+
+    <!-- Page 6 -->
+    <div class="page" id="page-6">
         <div class="exercise">
             <p>Explain why it is possible that <em>both</em></p>
             \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x=\arcsin x+c\]
@@ -252,8 +160,9 @@
             <p>so the two integrals differ by \(\displaystyle{\frac{\pi}{2}}\). That is, the \(c\) is different in each case.</p>
         </div>
     </div>
-<div class="page" id="page-16" data-reveal-steps>
 
+    <!-- Page 7 -->
+    <div class="page" id="page-7" data-reveal-steps>
         <div class="exercise">
             <p>Find the shaded area.</p>
         </div>
@@ -262,17 +171,17 @@
                 <img src="inverse_images/image204.png" alt="integral" style="max-width:84%">
             </figure>
         </div>
-
-    <div class="answer">
-        \[\begin{aligned}\frac{\mathrm{d}}{\mathrm{d}x}\arctan x&=\frac{1}{1+x^2}\end{aligned}\]
-        <div class="step">\[\begin{aligned}\Rightarrow\, \int \frac{1}{1+x^2}\;\mathrm{d}x&=\arctan x+c\end{aligned}\]</div>
-        <div class="step">\[\begin{aligned}\Rightarrow\,\text{area}&=\int_0^\infty \frac{1}{1+x^2}\;\mathrm{d}x\end{aligned}\]</div>
-        <div class="step">\[\begin{aligned}\phantom{\Rightarrow\,\text{area}}&=\bigg[\arctan x\bigg]_0^\infty\end{aligned}\]</div>
-        <div class="step">\[\begin{aligned}\phantom{\Rightarrow\,\text{area}}&=\frac{\pi}{2}\end{aligned}\]</div>
+        <div class="answer">
+            \[\begin{aligned}\frac{\mathrm{d}}{\mathrm{d}x}\arctan x&=\frac{1}{1+x^2}\end{aligned}\]
+            <div class="step">\[\begin{aligned}\Rightarrow\, \int \frac{1}{1+x^2}\;\mathrm{d}x&=\arctan x+c\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\Rightarrow\,\text{area}&=\int_0^\infty \frac{1}{1+x^2}\;\mathrm{d}x\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\Rightarrow\,\text{area}}&=\bigg[\arctan x\bigg]_0^\infty\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\Rightarrow\,\text{area}}&=\frac{\pi}{2}\end{aligned}\]</div>
+        </div>
     </div>
-</div>
-<div class="page" id="page-17" data-reveal-steps>
 
+    <!-- Page 8 -->
+    <div class="page" id="page-8" data-reveal-steps>
         <div class="exercise">
             <p>Use the substitution \(\displaystyle{x = \tan u}\) for the integral \[\int\frac{1}{1 + x^{2}}\;\mathrm{d}x\]</p>
         </div>
@@ -290,115 +199,63 @@
             <p>Here, although the substitution is actually \(\displaystyle{u=\arctan x}\), there is no difficulty with the signs as there was before.</p>
         </div>
     </div>
-<div class="page" id="page-18">
-    <figure>
-        <img src="inverse_images/image207.png" alt="integral" style="max-width:84%">
-    </figure>
-    <div class="exercise">
-        <p>What are the marked angles, in terms of \(a\)?</p>
+
+    <!-- Page 9 -->
+    <div class="page" id="page-9">
+        <figure>
+            <img src="inverse_images/image207.png" alt="integral" style="max-width:84%">
+        </figure>
+        <div class="exercise">
+            <p>What are the marked angles, in terms of \(a\)?</p>
+        </div>
+        <div class="nav-gated">
+            <figure>
+                <img src="inverse_images/image208.png" alt="integral" style="max-width:84%">
+            </figure>
+        </div>
     </div>
-    <div class="nav-gated">
+
+    <!-- Page 10 -->
+    <div class="page" id="page-10" data-reveal-steps>
         <figure>
             <img src="inverse_images/image208.png" alt="integral" style="max-width:84%">
         </figure>
-    </div>
-    </div>
-
-    <div class="page" id="page-19" data-reveal-steps>
-        <figure>
-            <img src="inverse_images/image208.png" alt="integral" style="max-width:84%">
-        </figure>
-
-    <div class="exercise">
-        <p>What are the area of the green segment and the area of the pink triangle?</p>
-    </div>
-    <div class="answer">
-        \[\text{green area}=\frac{1}{2}\arcsin a\]
-        <div class="step">\[\text{pink area}=\frac{1}{2}a\sqrt{1-a^2}\]</div>
-    </div>
-    <div class="exercise">
-        <p>Use these results to find
-            \[\int_0^a\sqrt{1-x^2}\,\mathrm{d}x\]
-        </p>
-    </div>
-    <div class="answer">
-        \[\begin{aligned}\int_0^a\sqrt{1-x^2}\,\mathrm{d}x&=\text{green + pink areas}\end{aligned}\]
-        <div class="step">\[\begin{aligned}\phantom{\int_0^a\sqrt{1-x^2}\,\mathrm{d}x}&=\frac{1}{2}\arcsin a+\frac{1}{2}a\sqrt{1-a^2}\end{aligned}\]</div>
-    </div>
-</div>
-<div class="page" id="page-20" data-reveal-steps>
-    <div class="exercise">
-        <p>Find \(\displaystyle{\int\sqrt{1-x^2}\,\mathrm{d}x}\) using the substitution \(\displaystyle{x = \sin u}\).</p>
-    </div>
-    <div class="answer">
-        \[\frac{\mathrm{d}x}{\mathrm{d}u} = \cos u\]
-        <div class="step">\[\begin{aligned}\int\sqrt{1-x^2}\,\mathrm{d}x &= \int\sqrt{1-\sin^2 u}\cos u\,\mathrm{d}u\end{aligned}\]</div>
-        <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \int\cos^2 u\,\mathrm{d}u\end{aligned}\]</div>
-        <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \int\frac{1+\cos 2u}{2}\,\mathrm{d}u\end{aligned}\]</div>
-        <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \frac{u}{2} + \frac{\sin 2u}{4} + c\end{aligned}\]</div>
-        <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \frac{u}{2} + \frac{2\sin u\cos u}{4} + c\end{aligned}\]</div>
-        <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \frac{\arcsin x}{2} + \frac{x\sqrt{1-x^2}}{2} + c\end{aligned}\]</div>
-    </div>
-</div>
-
-<!--
-<div class="page" id="page-20">
-            <p style="text-align: center;"><strong>differentiating \(\displaystyle{\boldsymbol{\arcsin x}}\) from the definition</strong></p>
-            <div class="exercise">
-                <p>(a) &nbsp; Use the identity above to find \(\displaystyle{\sin\left(\arcsin(x + h) - \arcsin x\right)}\) in terms of \(\displaystyle{x}\) and \(\displaystyle{h}\), without \(\displaystyle{\sin}\) or \(\displaystyle{\cos}\).</p>
-                <p>(b) &nbsp; Put \(\displaystyle{\theta(h) = \sin\left(\arcsin(x + h) - \arcsin x\right)}\). Find</p>
-                \[\lim_{h \to 0}\frac{\theta(h)}{h}\]
-                <p>(c) &nbsp; Find</p>
-                \[\lim_{h \to 0}\frac{\arcsin\,\theta(h)}{\theta(h)}\]
-                <p>(d) &nbsp; Hence find</p>
-                \[\lim_{h \to 0}\frac{\arcsin\,\theta(h)}{h}\]
-                <p>(e) &nbsp; Now let \(\displaystyle{f(x) = \arcsin x}\). Explain why \(\displaystyle{\arcsin(x+h) - \arcsin x = \arcsin\,\theta(h)}\), and hence find \(\displaystyle{f'(x)}\) and \(\displaystyle{\dfrac{\mathrm{d}}{\mathrm{d}x}\arcsin x}\).</p>
-            </div>
-    </div>
-<div class="page" id="page-21">
         <div class="exercise">
-            <p>(a) Find \(\displaystyle{\theta(h)}\). &nbsp;&nbsp; (b) Find \(\displaystyle{\displaystyle\lim_{h\to 0}\dfrac{\theta(h)}{h}}\).</p>
+            <p>What are the area of the green segment and the area of the pink triangle?</p>
         </div>
         <div class="answer">
-            <p>(a) &nbsp; Applying the subtraction formula with \(\displaystyle{A = \arcsin(x+h)}\) and \(\displaystyle{B = \arcsin x}\):</p>
-            \[\theta(h) = (x+h)\sqrt{1-x^{2}} - x\sqrt{1-(x+h)^{2}}\]
-            <p>(b)</p>
-            \[\begin{aligned}
-            \frac{(x+h)\sqrt{1-x^{2}} - x\sqrt{1-(x+h)^{2}}}{h}
-                &= \sqrt{1-x^{2}} + x\cdot\frac{\sqrt{1-x^{2}} - \sqrt{1-(x+h)^{2}}}{h} \\[6pt]
-                &= \sqrt{1-x^{2}} + x\cdot\frac{1-x^{2}-\bigl(1-(x+h)^{2}\bigr)}{h\bigl(\sqrt{1-x^{2}}+\sqrt{1-(x+h)^{2}}\bigr)} \\[6pt]
-                &= \sqrt{1-x^{2}} + x\cdot\frac{2xh+h^{2}}{h\bigl(\sqrt{1-x^{2}}+\sqrt{1-(x+h)^{2}}\bigr)} \\[6pt]
-                &\to \sqrt{1-x^{2}} + x\cdot\frac{2x}{2\sqrt{1-x^{2}}} \quad\text{as }h\to 0 \\[6pt]
-                &= \sqrt{1-x^{2}} + \frac{x^{2}}{\sqrt{1-x^{2}}} = \frac{1}{\sqrt{1-x^{2}}}
-            \end{aligned}\]
+            \[\text{green area}=\frac{1}{2}\arcsin a\]
+            <div class="step">\[\text{pink area}=\frac{1}{2}a\sqrt{1-a^2}\]</div>
         </div>
-    </div>
-<div class="page" id="page-22">
         <div class="exercise">
-            <p>(c) Find \(\displaystyle{\displaystyle\lim_{h\to 0}\dfrac{\arcsin\,\theta(h)}{\theta(h)}}\). &nbsp;&nbsp;
-               (d) Hence find \(\displaystyle{\displaystyle\lim_{h\to 0}\dfrac{\arcsin\,\theta(h)}{h}}\). &nbsp;&nbsp;
-               (e) Find \(\displaystyle{f'(x)}\) where \(\displaystyle{f(x) = \arcsin x}\).</p>
+            <p>Use these results to find
+                \[\int_0^a\sqrt{1-x^2}\,\mathrm{d}x\]
+            </p>
         </div>
         <div class="answer">
-            <p>(c) &nbsp; As \(\displaystyle{h\to 0}\), \(\displaystyle{\theta(h)\to 0}\). Since \(\displaystyle{\displaystyle\lim_{u\to 0}\frac{\arcsin u}{u} = 1}\):</p>
-            \[\lim_{h\to 0}\frac{\arcsin\,\theta(h)}{\theta(h)} = 1\]
-            <p>(d)</p>
-            \[\lim_{h\to 0}\frac{\arcsin\,\theta(h)}{h}
-                = \lim_{h\to 0}\frac{\theta(h)}{h}\times\lim_{h\to 0}\frac{\arcsin\,\theta(h)}{\theta(h)}
-                = \frac{1}{\sqrt{1-x^{2}}}\times 1
-                = \frac{1}{\sqrt{1-x^{2}}}\]
-            <p>(e) &nbsp; Since \(\displaystyle{\theta(h) = \sin\left(\arcsin(x+h)-\arcsin x\right)}\), applying \(\displaystyle{\arcsin}\) to both sides gives \(\displaystyle{\arcsin\,\theta(h) = \arcsin(x+h) - \arcsin x}\) (the principal values agree for small \(\displaystyle{h}\)). Therefore:</p>
-            \[\begin{aligned}
-            f'(x) &= \lim_{h\to 0}\frac{\arcsin(x+h)-\arcsin x}{h}
-                   = \lim_{h\to 0}\frac{\arcsin\,\theta(h)}{h}
-                   = \frac{1}{\sqrt{1-x^{2}}}
-            \end{aligned}\]
-            \[\boxed{\dfrac{\mathrm{d}}{\mathrm{d}x}\arcsin x = \dfrac{1}{\sqrt{1-x^{2}}}}\]
+            \[\begin{aligned}\int_0^a\sqrt{1-x^2}\,\mathrm{d}x&=\text{green + pink areas}\end{aligned}\]
+            <div class="step">\[\begin{aligned}\phantom{\int_0^a\sqrt{1-x^2}\,\mathrm{d}x}&=\frac{1}{2}\arcsin a+\frac{1}{2}a\sqrt{1-a^2}\end{aligned}\]</div>
         </div>
     </div>
--->
-    <!-- Page 21: Congratulations -->
-    <div class="page" id="page-21">
+
+    <!-- Page 11 -->
+    <div class="page" id="page-11" data-reveal-steps>
+        <div class="exercise">
+            <p>Find \(\displaystyle{\int\sqrt{1-x^2}\,\mathrm{d}x}\) using the substitution \(\displaystyle{x = \sin u}\).</p>
+        </div>
+        <div class="answer">
+            \[\frac{\mathrm{d}x}{\mathrm{d}u} = \cos u\]
+            <div class="step">\[\begin{aligned}\int\sqrt{1-x^2}\,\mathrm{d}x &= \int\sqrt{1-\sin^2 u}\cos u\,\mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \int\cos^2 u\,\mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \int\frac{1+\cos 2u}{2}\,\mathrm{d}u\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \frac{u}{2} + \frac{\sin 2u}{4} + c\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \frac{u}{2} + \frac{2\sin u\cos u}{4} + c\end{aligned}\]</div>
+            <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \frac{\arcsin x}{2} + \frac{x\sqrt{1-x^2}}{2} + c\end{aligned}\]</div>
+        </div>
+    </div>
+
+    <!-- Page 12: Congratulations -->
+    <div class="page" id="page-12">
         <div class="welcome-page">
             <h1>Well done on completing Part 3!</h1>
             <div class="welcome-content">
@@ -422,7 +279,7 @@
         <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
         <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="21" onchange="goToPage(this.value)"> of 21
+        Page <input type="number" id="pageInput" value="1" min="1" max="12" onchange="goToPage(this.value)"> of 12
         </span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
         <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -501,14 +358,13 @@
     }());
     </script>
     <script>
-    // Disable keyboard shortcuts for saving/printing
     document.addEventListener('keydown', function(e) {
-    if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p')) {
-    e.preventDefault();
-    return false;
-    }
+        if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p')) {
+            e.preventDefault();
+            return false;
+        }
     });
-</script>
+    </script>
 
 </body>
 </html>
