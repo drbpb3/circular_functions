@@ -39,6 +39,25 @@
     <link rel="stylesheet" href="worksheet-styles.css">
     <style>
         video { cursor: pointer; }
+
+        /* Page 4: video stays pinned, exercises scroll below */
+        #page-4.active {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 40px);
+            overflow: hidden;
+            padding-bottom: 0;
+        }
+        #page-4.active .intro,
+        #page-4.active figure {
+            flex-shrink: 0;
+        }
+        .p4-exercises {
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+            padding-bottom: 80px;
+        }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -116,13 +135,51 @@
     <!-- Page 4: cos graph -->
     <div class="page" id="page-4">
         <audio src="graphs_audio/audio3.mp3"></audio>
-        <div class="intro">
-            <p>The relationship between the unit circle and the graph \(y=\cos x\) is slightly harder to visualize, but this video builds it up in exactly the same way.</p>
-        </div>
+        
 
         <figure>
-            <video src="graphs_images/cosgraphspeedy.mp4" autoplay playsinline style="width:100%;"></video>
+            <video id="p4-video" src="graphs_images/cosgraphspeedy.mp4" autoplay playsinline style="width:100%;"></video>
         </figure>
+
+        <div class="p4-exercises">
+            <div class="intro">
+                <p>The relationship between the unit circle and the graph \(y=\cos x\) is slightly harder to visualize, but this video builds it up in exactly the same way.</p>
+            </div>
+        <div class="exercise reveal-instant div-hidden" id="p4-ex1">
+            How does the pink segment on the \(x\) axis relate to the pink angle in the unit circle?
+        </div>
+        <div class="answer reveal-instant div-hidden" id="p4-ans1">
+            The length pink segment on the \(x\) axis increases as the angle increases.
+        </div>
+        <div class="exercise reveal-instant div-hidden" id="p4-ex2">
+            How does the blue segment on the unit circle relate to the pink angle?
+        </div>
+        <div class="answer reveal-instant div-hidden" id="p4-ans2">
+            The blue segment is the cos of the pink angle.
+        </div>
+        <div class="exercise reveal-instant div-hidden" id="p4-ex3">
+            How does the blue segment on the unit circle relate to the blue segment on the \(y\) axis?
+        </div>
+        <div class="answer reveal-instant div-hidden" id="p4-ans3">
+            They are both the cos of the pink angle.
+        </div>
+        <div class="exercise reveal-instant div-hidden" id="p4-ex4">
+            What are the coordinates of the blue point?
+        </div>
+        <div class="answer reveal-instant div-hidden" id="p4-ans4">
+            The \(x\) coordinate is the angle, the \(y\) coordinate is the cos of the angle.
+        </div>
+        <div class="exercise reveal-instant div-hidden" id="p4-ex5">
+            What is the equation of the blue curve?
+        </div>
+        <div class="answer reveal-instant div-hidden" id="p4-ans5">
+            \[y=\cos x\]
+        </div>
+        </div>
+
+
+
+
         <!--<div class="intro">
             <p>Here are the unit circle and axes again. First, a quick reminder of how the angle in the unit circle maps onto the \(x\) axis on the graph. Now a reminder of how the unit circle defines the cosine function: it's the \(x\) coordinate of the yellow point. Now we'll see this again, but with this time with the \(x\) coordinate, that is, the cos of the angle, also appearing on the \(y\) axis of the graph. As before, we'll see the angle appearing on the \(x\) axis and the \(x\) coordinate on the \(y\) axis together. And then the point on the graph whose \(x\) coordinate is the angle and whose \(y\) coordinate is the value of cosine of the angle. And lastly, let's see the cos graph appearing on the axes as the yellow point moves around the circle.</p>
         </div>-->
@@ -328,6 +385,17 @@ document.querySelectorAll('video').forEach(function (v) {
 
 // Page 3: flag set when video pauses at 13s, cleared on resume or page change
 var p2firstVisit = true;
+var p4waitingForReveal = false;
+var p4waitingForResume = false;
+var p4pendingAnswerId = null;
+var p4pauseConfig = [
+    { time: 14, answerId: 'p4-ans1' },
+    { time: 27.4, answerId: 'p4-ans2' },
+    { time: 37, answerId: 'p4-ans3' },
+    { time: 44, answerId: 'p4-ans4' },
+    { time: 59, answerId: 'p4-ans5' }
+];
+var p4remainingPauses = p4pauseConfig.slice();
 var p3waitingForResume = false;
 var p6waitingForResume = false;
 var p10waitingForResume = false;
@@ -350,6 +418,54 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         }
+    }
+
+    // Page 4: reveal first exercise at 9s and first answer at 13s into video
+    var p4video = document.getElementById('p4-video');
+    if (p4video) {
+        p4video.addEventListener('timeupdate', function () {
+            if (!p4waitingForReveal && !p4waitingForResume && p4remainingPauses.length > 0 && p4video.currentTime >= p4remainingPauses[0].time) {
+                var pause = p4remainingPauses.shift();
+                p4video.pause();
+                p4waitingForReveal = true;
+                p4pendingAnswerId = pause.answerId;
+            }
+            var p4ex1 = document.getElementById('p4-ex1');
+            if (p4ex1 && p4video.currentTime >= 9 && p4ex1.classList.contains('div-hidden')) {
+                p4ex1.classList.remove('div-hidden');
+                p4ex1.classList.add('div-revealed');
+                setTimeout(function () { p4ex1.classList.remove('div-revealed'); }, 400);
+                p4ex1.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            var p4ex2 = document.getElementById('p4-ex2');
+            if (p4ex2 && p4video.currentTime >= 20 && p4ex2.classList.contains('div-hidden')) {
+                p4ex2.classList.remove('div-hidden');
+                p4ex2.classList.add('div-revealed');
+                setTimeout(function () { p4ex2.classList.remove('div-revealed'); }, 400);
+                p4ex2.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            var p4ex3 = document.getElementById('p4-ex3');
+            if (p4ex3 && p4video.currentTime >= 30 && p4ex3.classList.contains('div-hidden')) {
+                p4ex3.classList.remove('div-hidden');
+                p4ex3.classList.add('div-revealed');
+                setTimeout(function () { p4ex3.classList.remove('div-revealed'); }, 400);
+                p4ex3.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            var p4ex4 = document.getElementById('p4-ex4');
+            if (p4ex4 && p4video.currentTime >= 43 && p4ex4.classList.contains('div-hidden')) {
+                p4ex4.classList.remove('div-hidden');
+                p4ex4.classList.add('div-revealed');
+                setTimeout(function () { p4ex4.classList.remove('div-revealed'); }, 400);
+                p4ex4.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            var p4ex5 = document.getElementById('p4-ex5');
+            if (p4ex5 && p4video.currentTime >= 52 && p4ex5.classList.contains('div-hidden')) {
+                p4ex5.classList.remove('div-hidden');
+                p4ex5.classList.add('div-revealed');
+                setTimeout(function () { p4ex5.classList.remove('div-revealed'); }, 400);
+                p4ex5.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
     }
 
     var p3video = document.getElementById('p3-video');
@@ -447,6 +563,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const _origChangePage = window.changePage;
 
     function revealNextOrAdvance() {
+        // Page 4 special case: first nav reveals answer, second nav resumes video
+        if (p4waitingForReveal) {
+            p4waitingForReveal = false;
+            p4waitingForResume = true;
+            const ans = document.getElementById(p4pendingAnswerId);
+            if (ans) {
+                ans.classList.remove('div-hidden');
+                ans.classList.add('div-revealed');
+                setTimeout(() => ans.classList.remove('div-revealed'), 400);
+                ans.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            return;
+        }
+        if (p4waitingForResume) {
+            p4waitingForResume = false;
+            const p4video = document.getElementById('p4-video');
+            if (p4video) p4video.play().catch(() => {});
+            return;
+        }
         // Page 3 special case: resume video + play audio together on nav press
         if (p3waitingForResume) {
             p3waitingForResume = false;
@@ -511,6 +646,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 onRevealAudio.play().catch(() => {});
             }
         } else {
+            const p4page = document.getElementById('page-4');
+            if (p4page && p4page.classList.contains('active') && p4remainingPauses.length > 0) return;
             _origChangePage(1);
         }
     }
@@ -530,6 +667,33 @@ document.addEventListener('DOMContentLoaded', function () {
                         p2intro.classList.add('div-hidden');
                     }
                 }
+            }
+            // Re-hide page 4 video-timed divs and reset pause queue on each visit
+            if (pageNum === 4) {
+                p4waitingForReveal = false;
+                p4waitingForResume = false;
+                p4pendingAnswerId = null;
+                p4remainingPauses = p4pauseConfig.slice();
+                const p4ex1 = document.getElementById('p4-ex1');
+                const p4ans1 = document.getElementById('p4-ans1');
+                if (p4ex1) p4ex1.classList.add('div-hidden');
+                if (p4ans1) p4ans1.classList.add('div-hidden');
+                const p4ex2 = document.getElementById('p4-ex2');
+                const p4ans2 = document.getElementById('p4-ans2');
+                if (p4ex2) p4ex2.classList.add('div-hidden');
+                if (p4ans2) p4ans2.classList.add('div-hidden');
+                const p4ex3 = document.getElementById('p4-ex3');
+                const p4ans3 = document.getElementById('p4-ans3');
+                if (p4ex3) p4ex3.classList.add('div-hidden');
+                if (p4ans3) p4ans3.classList.add('div-hidden');
+                const p4ex4 = document.getElementById('p4-ex4');
+                const p4ans4 = document.getElementById('p4-ans4');
+                if (p4ex4) p4ex4.classList.add('div-hidden');
+                if (p4ans4) p4ans4.classList.add('div-hidden');
+                const p4ex5 = document.getElementById('p4-ex5');
+                const p4ans5 = document.getElementById('p4-ans5');
+                if (p4ex5) p4ex5.classList.add('div-hidden');
+                if (p4ans5) p4ans5.classList.add('div-hidden');
             }
             // Re-arm page 10 pause-at-4s listener on each visit
             if (pageNum === 10) {
