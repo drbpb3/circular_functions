@@ -327,6 +327,7 @@ document.querySelectorAll('video').forEach(function (v) {
 });
 
 // Page 3: flag set when video pauses at 13s, cleared on resume or page change
+var p2firstVisit = true;
 var p3waitingForResume = false;
 var p6waitingForResume = false;
 var p10waitingForResume = false;
@@ -518,10 +519,17 @@ document.addEventListener('DOMContentLoaded', function () {
         _origShowPage(pageNum);
         const page = document.getElementById('page-' + pageNum);
         if (page) {
-            // Re-hide page 2 timed div so it triggers fresh on each visit
+            // On first visit show immediately; on revisits re-hide so audio can reveal it
             if (pageNum === 2) {
                 const p2intro = document.getElementById('p2-second-intro');
-                if (p2intro) p2intro.classList.add('div-hidden');
+                if (p2intro) {
+                    if (p2firstVisit) {
+                        p2intro.classList.remove('div-hidden');
+                        p2firstVisit = false;
+                    } else {
+                        p2intro.classList.add('div-hidden');
+                    }
+                }
             }
             // Re-arm page 10 pause-at-4s listener on each visit
             if (pageNum === 10) {
