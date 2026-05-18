@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even more differentials of circular functions</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        },
+        options: {
+            enableMenu: false,
+            renderActions: {
+                addMenu: []
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+        video { cursor: pointer; }
+        .step { margin-top: 18pt; }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav" target="_top">
+    <span class="back-btn">←</span>
+</a>
+
+<div class="container">
+
+    <!-- Page 1: Welcome Page -->
+    <div class="page" id="page-1">
+        <div class="welcome-page">
+            <h1>Differentials from the unit circle</h1>
+            <div class="welcome-content">
+                <p>We've seen how to work out differentials graphs and limits. Now let's see how the geometry of the unit circle gives us the differential of \(\sin\theta\) directly.</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                    </ul>
+                </div>
+
+                <button id="audio-enable-btn" onclick="toggleAudio(this)">🔇 Enable audio</button>
+
+                <p class="welcome-tip">Take your time with each video. Pause, rewind, and think before moving on!</p>
+
+                <p class="welcome-author">
+                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page" id="page-2">
+        <div class="intro">
+            <p>Here's a completely different way of thinking about the differential of sine. In a way it's much more direct, but I've never seen this derivation anywhere else! Start with this video clip: it's the usual unit circle, but with an extra angle \(h\) added in:</p>
+        </div>
+    </div>
+
+    <div class="page" id="page-3">
+        <div style="position: sticky; top: 0; z-index: 10; background: #fafafa; padding-bottom: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin: 0 -20px; padding-left: 20px; padding-right: 20px;">
+            <figure style="width: 144%; position: relative; left: 50%; transform: translateX(-50%); margin: 10px 0 0;">
+                <video autoplay muted playsinline style="width: 100%;"><source src="even_more_differentials_images/video1.mp4" alt="difference triangle"></video>
+            </figure>
+        </div>
+        <div class="exercise">
+            <p>What is the length of the pink vertical line segment in terms of \(\theta\) and \(h\)?</p>
+        </div>
+        <div class="answer">
+            <p>The radius of the circle is \(1\) so the pink segment length is \(\sin(\theta+h)\).</p>
+        </div>
+
+        <div class="exercise">
+            <p>What is the length of the vertical blue segment?</p>
+        </div>
+        <div class="answer">
+            <p>The blue vertical segment length is the pink vertical minus the yellow vertical; that is \(\sin(\theta+h)-\sin\theta\).</p>
+        </div>
+        <div class="exercise">
+            <p>What is the length of the pink arc?</p>
+        </div>
+        <div class="answer">
+            <p>Since the angle is in radians and the radius of the circle is \(1\), the measure of the angle is the arc length, so the arc length is \(h\).</p>
+        </div>
+        <div class="exercise">
+            <p>What is the yellow shaded angle?</p>
+        </div>
+        <div class="answer">
+            <p>It's \(\theta\).</p>
+        </div>
+    </div>
+
+    <div class="page" id="page-4">
+        <div style="position: sticky; top: 0; z-index: 10; background: #fafafa; padding-bottom: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin: 0 -20px; padding-left: 20px; padding-right: 20px;">
+            <figure style="width: 144%; position: relative; left: 50%; transform: translateX(-50%); margin: 10px 0 0;">
+                <video autoplay muted playsinline style="width: 100%;"><source src="even_more_differentials_images/video2.mp4" alt="difference triangle"></video>
+            </figure>
+        </div>
+        <div class="exercise">
+            <p>What is the blue shaded angle?</p>
+        </div>
+        <div class="answer">
+            <p>The angle between tangent and radius is \(90^\circ\), so the blue angle is \(90^\circ-\theta\).</p>
+        </div>
+        
+        <div class="intro">
+            <p>Now watch what happens to the light green angle and to \(\alpha\) as \(h\) gets increasingly small</p>
+        </div>
+        <div class="exercise">
+            <p>What does happen to the light green angle as \(h\) gets increasingly small? What does this mean for \(\alpha\)?</p>
+        </div>
+        
+        <div class="answer">
+            <p>The light green angle gets increasingly small, which means that \(\alpha\) gets increasingly close to \(\theta\).</p>
+        </div>
+        
+        <div class="intro">
+            <p>This time, watch what happens to the blue hypotenuse as \(h\) gets increasingly small</p>
+            
+        </div>
+        
+        <div class="exercise">
+            <p>What does happen as \(h\) gets increasingly small?</p>
+        </div>
+        <div class="answer">
+            <p>The blue hypotenuse gets increasingly close to the arc length, \(h\).</p>
+        </div>
+        <div class="exercise">
+            <p>What happens to \(\cos\alpha\) as \(h\) gets increasingly small?</p>
+        </div>
+        <div class="answer">
+            \[\cos\alpha=\frac{\sin(\theta+h)-\sin\theta}{\text{hypotenuse}}\to \frac{\sin(\theta+h)-\sin\theta}{h}\]
+        </div>
+        <div class="exercise">
+            <p>What is \[\frac{\mathrm{d}}{\mathrm{d}\theta}\sin\theta\;?\]</p>
+        </div>
+        <div class="answer">
+            <p>\[\begin{align*}
+                \frac{\mathrm{d}}{\mathrm{d}\theta}\cos\alpha&=\lim_{h\to 0}\frac{\sin(\theta+h)-\sin\theta}{\text{hypotenuse}}\to \frac{\sin(\theta+h)-\sin\theta}{h}\\[12pt]
+                &=\lim_{h\to 0}\cos\alpha\\[12pt]
+                &=\cos\theta
+                \end{align*}\].</p>
+        </div>
+    </div>
+<!--
+    <div class="page" id="page-5">
+        <div style="position: sticky; top: 0; z-index: 10; background: #fafafa; padding-bottom: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin: 0 -20px; padding-left: 20px; padding-right: 20px;">
+            <figure style="width: 144%; position: relative; left: 50%; transform: translateX(-50%); margin: 10px 0 0;">
+                <video autoplay muted playsinline style="width: 100%;"><source src="even_more_differentials_images/video3.mp4" alt="difference triangle"></video>
+            </figure>
+        </div>
+
+    </div>
+-->
+    <!-- Page 7: Closing Page -->
+    <div class="page" id="page-5">
+        <div class="welcome-page">
+            <h1>Well done!</h1>
+            <div class="welcome-content">
+                <p>You've seen how the geometry of the unit circle directly gives us</p>
+                \[\frac{\mathrm{d}}{\mathrm{d}\theta}\sin\theta = \cos\theta\]
+                <p>without needing to expand \(\sin(\theta+h)\) using the addition formula.</p>
+
+                <div class="navigation-box">
+                    <h2>What's Next:</h2>
+                    <ul>
+                        <li>Can you use a similar geometric argument to find \(\dfrac{\mathrm{d}}{\mathrm{d}\theta}\cos\theta\)?</li>
+                        <li>The next worksheet covers differentials of the <strong>reciprocal</strong> circular functions</li>
+                    </ul>
+                </div>
+
+                <p class="welcome-author">
+                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="navigation">
+    <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+    <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+    <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="5" onchange="goToPage(this.value)"> of 5
+    </span>
+    <button class="nav-btn" id="nextBtn" onclick="changePage(1, true)">Next</button>
+    <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+</div>
+
+<script src="navigation.js"></script>
+<script>
+(function () {
+    'use strict';
+
+    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer, div.nav-gated, div.step';
+
+    let revealQueue = [];
+    let goingBackward = false;
+    let page3Cleanup = null;
+    let page4Cleanup = null;
+
+    function initPageReveal(page, revealAll) {
+        revealQueue = [];
+        const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
+            .filter(div => !div.classList.contains('reveal-instant'));
+        animatable.forEach(div => {
+            if (div.classList.contains('step')) {
+                div.classList.add('step-hidden');
+            } else {
+                div.classList.add('div-hidden');
+            }
+        });
+        if (revealAll) {
+            animatable.forEach(div => {
+                div.classList.remove('div-hidden');
+                div.classList.remove('step-hidden');
+            });
+            return;
+        }
+        if (animatable.length > 0) {
+            animatable[0].classList.remove('div-hidden');
+            animatable[0].classList.remove('step-hidden');
+            revealQueue = animatable.slice(1);
+        }
+    }
+
+    function scheduleTimedPause(video, pauseAt, elToReveal, queueAfter) {
+        function onTimeUpdate() {
+            if (video.currentTime >= pauseAt) {
+                video.removeEventListener('timeupdate', onTimeUpdate);
+                video.pause();
+                video.playbackRate = 1;
+                [].concat(elToReveal).forEach(el => revealEl(el));
+                revealQueue = queueAfter;
+            }
+        }
+        video.addEventListener('timeupdate', onTimeUpdate);
+        return function () { video.removeEventListener('timeupdate', onTimeUpdate); };
+    }
+
+    function setupPage3Timing(page, video) {
+        if (!video) return;
+        const animatable = Array.from(page.querySelectorAll('div.exercise, div.answer'));
+        if (animatable.length === 0) return;
+
+        animatable[0].classList.add('div-hidden');
+        revealQueue = [];
+
+        const cues = [
+            { time: 29, exIdx: 0, ansIdx: 1, ansMs: 2000 },
+            { time: 39, exIdx: 2, ansIdx: 3, ansMs: 2400 },
+            { time: 49, exIdx: 4, ansIdx: 5, ansMs: 2400 },
+            { time: 54, exIdx: 6, ansIdx: 7, ansMs: 2400 },
+        ];
+
+        let timerCleanup = null;
+        function cancelTimer() { if (timerCleanup) { timerCleanup(); timerCleanup = null; } }
+
+        function buildQueue(cueIdx) {
+            const cue = cues[cueIdx];
+            const isLast = cueIdx + 1 >= cues.length;
+            return [
+                { _revealEl: animatable[cue.ansIdx], _briefPlay: { video, ms: cue.ansMs } },
+                isLast
+                    ? { _resumeVideo: video }
+                    : { _resumeVideo: video, _afterResume: () => {
+                        const next = cues[cueIdx + 1];
+                        timerCleanup = scheduleTimedPause(video, next.time, animatable[next.exIdx], buildQueue(cueIdx + 1));
+                    }}
+            ];
+        }
+
+        function applyState(t) {
+            cancelTimer();
+            animatable.forEach(el => el.classList.add('div-hidden'));
+            revealQueue = [];
+            video.playbackRate = t < cues[0].time ? 2 : 1;
+            const nextIdx = cues.findIndex(c => t < c.time);
+            if (nextIdx === -1) {
+                animatable.forEach(el => el.classList.remove('div-hidden'));
+                return;
+            }
+            for (let i = 0; i < nextIdx; i++) {
+                animatable[cues[i].exIdx].classList.remove('div-hidden');
+                animatable[cues[i].ansIdx].classList.remove('div-hidden');
+            }
+            timerCleanup = scheduleTimedPause(video, cues[nextIdx].time, animatable[cues[nextIdx].exIdx], buildQueue(nextIdx));
+        }
+
+        function onSeeked() { applyState(video.currentTime); }
+        video.addEventListener('seeked', onSeeked);
+
+        page3Cleanup = function () {
+            cancelTimer();
+            video.removeEventListener('seeked', onSeeked);
+        };
+
+        applyState(video.currentTime);
+    }
+
+    function setupPage4Timing(page, video) {
+        if (!video) return;
+        const am = Array.from(page.querySelectorAll('div.exercise, div.intro, div.answer'));
+        // am: [0]=ex1 [1]=ans1 [2]=intro1 [3]=ex2 [4]=ans2 [5]=intro2 [6]=ex3 [7]=ans3 [8]=ex4 [9]=ans4
+        if (am.length === 0) return;
+
+        am[0].classList.add('div-hidden');
+        revealQueue = [];
+
+        // cleanups holds teardown fns for timeupdate listeners only
+        const cleanups = [];
+        let endedArmed = false;
+        function onAt(t, fn) {
+            function h() { if (video.currentTime >= t) { video.removeEventListener('timeupdate', h); fn(); } }
+            video.addEventListener('timeupdate', h);
+            cleanups.push(() => video.removeEventListener('timeupdate', h));
+        }
+        // ended listener lives outside cleanups so applyState doesn't remove it
+        function onEnded() { if (endedArmed) { endedArmed = false; revealQueue = [am[8], am[9], am[10], am[11]]; } }
+        video.addEventListener('ended', onEnded);
+        function cancelAll() { cleanups.forEach(fn => fn()); cleanups.length = 0; }
+        function autoQ(el) { return [{ _revealEl: el, _autoResume: video }]; }
+
+        function armFrom54() {
+            onAt(49, () => { video.pause(); revealEl(am[6]); revealQueue = autoQ(am[7]); endedArmed = true; });
+        }
+        function armFrom47() {
+            onAt(47, () => { revealEl(am[5]); armFrom54(); });
+        }
+        function armFrom23() {
+            onAt(23, () => { video.pause(); revealEl(am[3]); revealQueue = autoQ(am[4]); armFrom47(); });
+        }
+        function armFrom16() {
+            onAt(16, () => { revealEl(am[2]); armFrom23(); });
+        }
+        function armFrom9() {
+            onAt(9, () => { video.pause(); revealEl(am[0]); revealQueue = autoQ(am[1]); armFrom16(); });
+        }
+
+        function applyState(t) {
+            cancelAll(); endedArmed = false;
+            am.forEach(el => el.classList.add('div-hidden'));
+            revealQueue = [];
+            if      (t < 9)  { armFrom9(); }
+            else if (t < 16) { am[0].classList.remove('div-hidden'); revealQueue = autoQ(am[1]); armFrom16(); }
+            else if (t < 23) { [0,1,2].forEach(i => am[i].classList.remove('div-hidden')); armFrom23(); }
+            else if (t < 47) { [0,1,2,3].forEach(i => am[i].classList.remove('div-hidden')); revealQueue = autoQ(am[4]); armFrom47(); }
+            else if (t < 49) { [0,1,2,3,4,5].forEach(i => am[i].classList.remove('div-hidden')); armFrom54(); }
+            else             { [0,1,2,3,4,5,6].forEach(i => am[i].classList.remove('div-hidden')); revealQueue = autoQ(am[7]); endedArmed = true; }
+        }
+
+        function onSeeked() { applyState(video.currentTime); }
+        video.addEventListener('seeked', onSeeked);
+        page4Cleanup = function () { cancelAll(); video.removeEventListener('seeked', onSeeked); video.removeEventListener('ended', onEnded); };
+
+        applyState(video.currentTime);
+    }
+
+    const _origShowPage   = window.showPage;
+    const _origChangePage = window.changePage;
+
+    function revealEl(el) {
+        el.classList.remove(el.classList.contains('step') ? 'step-hidden' : 'div-hidden');
+        el.classList.add('div-revealed');
+        setTimeout(() => el.classList.remove('div-revealed'), 400);
+        el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function revealNextOrAdvance() {
+        if (revealQueue.length > 0) {
+            const next = revealQueue.shift();
+            if (next && next._resumeVideo) {
+                next._resumeVideo.play().catch(() => {});
+                if (next._afterResume) next._afterResume();
+            } else if (next && next._revealEl) {
+                revealEl(next._revealEl);
+                if (next._briefPlay) {
+                    const { video, ms } = next._briefPlay;
+                    video.play().catch(() => {});
+                    setTimeout(() => video.pause(), ms);
+                } else if (next._autoResume) {
+                    next._autoResume.play().catch(() => {});
+                }
+            } else {
+                revealEl(next);
+            }
+        } else {
+            _origChangePage(1);
+        }
+    }
+
+    window.showPage = function (pageNum, revealAll) {
+        document.querySelectorAll('.page.active video').forEach(v => v.pause());
+        if (page3Cleanup) { page3Cleanup(); page3Cleanup = null; }
+        if (page4Cleanup) { page4Cleanup(); page4Cleanup = null; }
+        _origShowPage(pageNum);
+        const page = document.getElementById('page-' + pageNum);
+        if (page) {
+            const isBackward = !!revealAll;
+            initPageReveal(page, isBackward);
+            const videos = Array.from(page.querySelectorAll('video'));
+            videos.forEach(v => { v.pause(); v.currentTime = 0; });
+            const visibleVideo = videos.find(v => !v.closest('.div-hidden'));
+            if (visibleVideo) visibleVideo.play().catch(() => {});
+            if (pageNum === 3 && !isBackward) {
+                setupPage3Timing(page, visibleVideo || videos[0]);
+            }
+            if (pageNum === 4 && !isBackward) {
+                setupPage4Timing(page, visibleVideo || videos[0]);
+            }
+        }
+        goingBackward = false;
+    };
+
+    window.changePage = function (delta, force) {
+        if (delta > 0) {
+            if (!force) {
+                const activePage = document.querySelector('.page.active');
+                if (activePage && Array.from(activePage.querySelectorAll('video')).some(v => !v.paused)) return;
+            }
+            revealNextOrAdvance();
+        } else {
+            goingBackward = true;
+            _origChangePage(delta);
+        }
+    };
+}());
+</script>
+
+</body>
+</html>
