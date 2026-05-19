@@ -40,6 +40,34 @@
     <style>
         video { cursor: pointer; }
         .step { margin-top: 18pt; }
+
+        /* Pin exercise and video at top; answer scrolls independently */
+        body { overflow: clip; }
+        .page.active {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 80px);
+            overflow: clip;
+            padding-bottom: 0;
+            min-height: unset;
+        }
+        .page.active h2.chapter,
+        .page.active .exercise,
+        .page.active figure {
+            flex-shrink: 0;
+        }
+        .page.active .answer {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+        }
+        .page.active figure {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        .page.active figure video {
+            max-width: 84%;
+        }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -53,7 +81,7 @@
     <!-- Page 1: Welcome Page -->
     <div class="page" id="page-1">
         <div class="welcome-page">
-            <h1>Differentials of reciprocal functions</h1>
+            <h1>More differentials of circular functions</h1>
             <div class="welcome-content">
                 <p>We've explored sine, cosine, and tangent functions in some depth. Now it's time to broaden our horizons with some new functions.</p>
 
@@ -79,30 +107,16 @@
         </div>
     </div>
 
+    
+
     <!-- Page 2 -->
     <div class="page" id="page-2">
-        <p>What is the length of the vertical side of the blue triangle?</p>
-        \[\sin(\theta+h)-\sin\theta\]
-        <p>What is the difference between the pink arc length and the length of the blue hypotenuse?</p>
-        <p>What is the difference between the blue and yellow triangles?</p>
-        <p>What is the difference between \(\theta\) and \(\alpha\)?</p>
-        <p>What, approximately, is \(\cos\alpha\)?</p>
-        \[\cos\alpha=\frac{\sin(\theta+h)-\sin\theta}{h}\]
-        <p>What is \[\lim_{h\to 0}\frac{\sin(\theta+h)-\sin\theta}{h}?\]</p>
-        <p>What is \[\frac{\mathrm{d}}{\mathrm{d}\theta}\sin\theta\,?\]</p>
-
-    </div>
-
-    <!-- Page 3 -->
-    <div class="page" id="page-3">
-
-        <h2 class="chapter">Differentials of reciprocal functions</h2>
 
         <div class="exercise">
             What is the differential of \(\cos x\) ?
         </div>
-        <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/cosderiv.mp4" alt="animation of differential of cos"></video>
+        <figure>
+            <video autoplay loop muted playsinline><source src="more_differentials_images/cosderiv.mp4" alt="animation of differential of cos"></video>
         </figure>
         <div class="answer">
             <p>It's easy to see from the graph \(y=\cos x\) and the fact that it is a translation of the sin graph, that
@@ -119,13 +133,13 @@
         </div>
     </div>
 
-    <!-- Page 4 -->
-    <div class="page" id="page-4">
+    <!-- Page 3 -->
+    <div class="page" id="page-3">
         <div class="exercise">
             Use the quotient rule to find the differential of \(\tan x\).
         </div>
-        <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/tanderiv.mp4" alt="animation of differential of tan"></video>
+        <figure>
+            <video autoplay loop muted playsinline><source src="more_differentials_images/tanderiv.mp4" alt="animation of differential of tan"></video>
         </figure>
         <div class="answer">
             \[\begin{aligned}f(x)&=\tan x=\frac{\sin x}{\cos x}\end{aligned}\]
@@ -134,13 +148,13 @@
         </div>
     </div>
 
-    <!-- Page 5 -->
-    <div class="page" id="page-5">
+    <!-- Page 4 -->
+    <div class="page" id="page-4">
         <div class="exercise">
             Use the quotient rule to find the differential of \(\sec x\).
         </div>
-        <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/secderiv.mp4" alt="animation of differential of cos"></video>
+        <figure>
+            <video autoplay loop muted playsinline><source src="more_differentials_images/secderiv.mp4" alt="animation of differential of cos"></video>
         </figure>
         <div class="answer">
             \[\begin{aligned}f(x)&=\sec x=\frac{1}{\cos x}\end{aligned}\]
@@ -159,13 +173,13 @@
         </div>
     </div>
 
-    <!-- Page 6 -->
-    <div class="page" id="page-6">
+    <!-- Page 5 -->
+    <div class="page" id="page-5">
         <div class="exercise">
             Use the quotient rule to find the differential of \(\operatorname{cosec} x\).
         </div>
-        <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/cscderiv.mp4" alt="animation of differential of csc"></video>
+        <figure>
+            <video autoplay loop muted playsinline><source src="more_differentials_images/cscderiv.mp4" alt="animation of differential of csc"></video>
         </figure>
         <div class="answer">
             \[\begin{aligned}f(x)&=\operatorname{cosec} x=\frac{1}{\sin x}\end{aligned}\]
@@ -173,13 +187,13 @@
         </div>
     </div>
 
-    <!-- Page 7 -->
-    <div class="page" id="page-7">
+    <!-- Page 6 -->
+    <div class="page" id="page-6">
         <div class="exercise">
             Use the quotient rule to find the differential of \(\cot x\).
         </div>
-        <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/cotderiv.mp4" alt="animation of differential of cot"></video>
+        <figure>
+            <video autoplay loop muted playsinline><source src="more_differentials_images/cotderiv.mp4" alt="animation of differential of cot"></video>
         </figure>
         <div class="answer">
             \[\begin{aligned}f(x)&=\cot x=\frac{\cos x}{\sin x}\end{aligned}\]
@@ -188,8 +202,8 @@
         </div>
     </div>
 
-    <!-- Page 8: Closing Page -->
-    <div class="page" id="page-8">
+    <!-- Page 7: Closing Page -->
+    <div class="page" id="page-7">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
@@ -258,6 +272,7 @@ document.querySelectorAll('video').forEach(function (v) {
                 div.classList.remove('div-hidden');
                 div.classList.remove('step-hidden');
             });
+            page.querySelectorAll('.answer').forEach(a => { a.scrollTop = 0; });
             return;
         }
         if (animatable.length > 0) {
@@ -276,7 +291,14 @@ document.querySelectorAll('video').forEach(function (v) {
             next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
             next.classList.add('div-revealed');
             setTimeout(() => next.classList.remove('div-revealed'), 400);
-            next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            const answer = next.closest('.answer');
+            const isFirstStep = answer && next.classList.contains('step') &&
+                answer.querySelectorAll('.step:not(.step-hidden)').length === 1;
+            if (isFirstStep) {
+                answer.scrollTop = 0;
+            } else {
+                next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
         } else {
             _origChangePage(1);
         }
@@ -287,6 +309,9 @@ document.querySelectorAll('video').forEach(function (v) {
         const page = document.getElementById('page-' + pageNum);
         if (page) {
             initPageReveal(page, revealAll || goingBackward);
+            requestAnimationFrame(() => {
+                page.querySelectorAll('.answer').forEach(a => { a.scrollTop = 0; });
+            });
             const videos = Array.from(page.querySelectorAll('video'));
             videos.forEach(v => { v.pause(); v.currentTime = 0; });
             const visibleVideo = videos.find(v => !v.closest('.div-hidden'));
