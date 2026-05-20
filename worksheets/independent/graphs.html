@@ -181,12 +181,7 @@
 
         <div class="qa-exercises">
             
-        <div class="exercise reveal-instant div-hidden" id="p4-ex1">
-            How does the pink segment on the \(x\) axis relate to the pink angle in the unit circle?
-        </div>
-        <div class="answer reveal-instant div-hidden" id="p4-ans1">
-            The length of the pink segment on the \(x\) axis is proportional to the angle.
-        </div>
+        
         <div class="exercise reveal-instant div-hidden" id="p4-ex2">
             How does the blue segment on the unit circle relate to the pink angle?
         </div>
@@ -229,11 +224,9 @@
         </div>
 
         <figure>
-            <video src="graphs_images/tangraphspeedy.mp4" autoplay playsinline style="width:100%;"></video>
+            <video src="graphs_images/tangraph.mp4" autoplay playsinline style="width:100%;"></video>
         </figure>
-        <!--<div class="intro">
-            <p>Look carefully for the blue dot on the \(y\) axis. As the angle increases to \(45^\circ\), the gradient increases to \(1\) and the blue dot moves to \(1\) on the \(y\) axis. Then the gradient and the \(y\) coordinate increase to \(2\), then to \(3\), but as the angle gets closer to \(90^\circ\), the gradient gets larger without limit and the blue dot disappears off the scale. As soon as the angle passes \(90^\circ\), the gradient is negative, and as the angle gets to \(180^\circ\) the blue point renters the range of the axes, but now on the negative side of the \(y\) axis. And so on. Now we are ready to see the familiar tan graph appearing on the axes as the yellow point moves around the circle.</p>
-        </div>-->
+        
     </div>
 
     <!-- Page 6: sin symmetry -->
@@ -436,7 +429,6 @@ var p4waitingForReveal = false;
 var p4waitingForResume = false;
 var p4pendingAnswerId = null;
 var p4pauseConfig = [
-    { time: 14, answerId: 'p4-ans1' },
     { time: 27.4, answerId: 'p4-ans2' },
     { time: 37, answerId: 'p4-ans3' },
     { time: 44, answerId: 'p4-ans4' },
@@ -470,6 +462,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var p3videoEl = document.getElementById('p3-video');
     if (p3videoEl) {
         p3videoEl.addEventListener('timeupdate', function () {
+            var target = p3videoEl.currentTime < 18 ? 2 : 1;
+            if (p3videoEl.playbackRate !== target) p3videoEl.playbackRate = target;
             if (!p3qWaitingForReveal && !p3qWaitingForResume && p3qRemainingPauses.length > 0 && p3videoEl.currentTime >= p3qRemainingPauses[0].time) {
                 var pause = p3qRemainingPauses.shift();
                 p3videoEl.pause();
