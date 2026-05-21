@@ -74,13 +74,86 @@
     </div>
 <div class="page" id="page-2" data-reveal-answers>
     <div class="intro">
-        <p>We are very used to the idea of inverse functions as somehow "undoing" a function. For example, if we know the lengths of two sides of a right-angled triangle, we can work out the angles using \(\arcsin,\;\arccos,\;\text{ or }\arctan\).</p>
-        <p>You might prefer the notation \(\sin^{-1},\;\cos^{-1},\;\tan^{-1}\), but whichever notation you use, they mean the same thing, and you should get used to both forms.</p>
-        <p>If the side of the triangle opposite the angle is \(1\) and the hypotenuse is \(2\), then the angle is \(\arcsin\frac{1}{2}=30^\circ=\frac{\pi}{6}\).</p>
+        <p>We are very used to the idea of inverse functions as somehow "undoing" a function. For example, the inverse of the function \(f(x)=e^x\) is \(f^{-1}x=\ln x\). Or for a more basic example, the inverse of the function \(g(x)=2x-3\) is the function \(g^{-1}(x)=\frac{x+3}{2}\). </p>
+        <p>Hopefully, we are also familiar with the idea that the graphs of a pair of inverse functions are reflections of eachother in the line \(y=x\). If this idea is unfamiliar to you, it would be worth spending a bit of research time figuring out why this should be before tackling the inverse circular functions.</p>
+        <p>
+            A trickier example is the function \(f(x)=x^2\). If \(f^{-1}\) is its inverse, what is \(f^{-1}(4)\)?</p>
+        </div>
+        <div class="exercise">
+            <p>
+                If \(f^{-1}(4)=2\), what are \(f\circ f^{-1}(4)\) and \(f^{-1}\circ f(2)\)?
+            </p>
+        </div>
+        <div class="answer">
+            If \(f^{-1}(4)=2\), then \(f\circ f^{-1}(4)=f(2)=4\) and \(f^{-1}\circ f(2)=f^{-1}(4)=2\).
+        </div>
+        <div class="exercise">
+            <p>
+                If \(f^{-1}(4)=-2\), what are \(f\circ f^{-1}(4)\) and \(f^{-1}\circ f(2)\)?
+            </p>
+        </div>
+        <div class="answer">
+            If \(f^{-1}(4)=2\), then \(f\circ f^{-1}(4)=f(-2)=4\) and \(f^{-1}\circ f(-2)=f^{-1}(4)=-2\).
+        </div>
+        <div class="intro">
+            <p>
+                In either case, \(f\) and \(f^{-1}\) seem to undo each other, so that either value for \(f^{-1}(4)\) is perfectly reasonable.
+            </p>
+            <p>
+                But we need to know what \(f^{-1}(4)\) actually is; in fact, we need to know what \(f^{-1}(x)\) actually is for any \(x\geqslant 0\).
+            </p>
+        </div>  
+    </div>
+    <div class="page" id="page-3" data-reveal-answers>
+        <div class="intro">
+            <p>Let's take a look at this from a graphical point of view.</p>
+        </div>
+        <div class="exercise">
+            <p>Draw the graph \(y=x^2\) and the line \(y=x\), and then reflect the curve in the line.</p>
+            <p>What is the equation of the reflected curve?</p>
+        </div>
+        <div class="answer">
+            <p>The equation of the reflected curve is \(x=y^2\).</p>
+        </div>
+        <div class="exercise">
+            <p>On the same set of axes, draw the graph \(y=\sqrt x\) and reflect it in the line \(y=x\).</p>
+            <p>What is the equation of the reflected curve?</p>
+        </div>
+        <div class="answer">
+            <p>The equation of the reflected curve is \(y=x^2\) but only defined when \(x\geqslant 0\).</p>
+            <p>In terms of functions, we could say that it's the graph of the function \(f(x)=x^2\) where the domain of the function is \(\{x\in \mathbb{R}|x\geqslant 0\}\).</p>
+        </div>
+        <div class="exercise">
+            <p>On the same set of axes, draw the graph \(y=-\sqrt x\) and reflect it in the line \(y=x\).</p>
+            <p>What is the equation of the reflected curve?</p>
+        </div>
+        <div class="answer">
+            <p>The equation of the reflected curve is \(y=x^2\) but only defined when \(x\leqslant 0\).</p>
+            <p>In terms of functions, we could say that it's the graph of the function \(f(x)=x^2\) where the domain of the function is \(\{x\in \mathbb{R}|x\leqslant 0\}\).</p>
+        </div>
+    </div>
+    <div class="page" id="page-4" data-reveal-answers>
+        <div class="intro">
+            <p>The inverse of the function</p>
+            \[f(x)=x^2\text{ with domain }\{x\in \mathbb{R}|x\geqslant 0\}\text{ is}\]
+            \[f^{-1}(x)=\sqrt x\]
+            <p>and the inverse of the function</p>
+            \[f(x)=x^2\text{ with domain }\{x\in \mathbb{R}|x\leqslant 0\}\text{ is}\]
+            \[f^{-1}(x)=-\sqrt x\]
+            <p>When it comes to finding the inverses of the circular functions, we face a similar difficulty with a similar solution &mdash; only it's all a bit more complicated.</p>
+        </div>
+    </div>
+    <div class="page" id="page-5" data-reveal-answers>
+        <div class="intro">
+            <p>If we are only thinking about right-angled triangles, there is no problem at all. For example,</p>
+            \[\sin\frac{\pi}{6}=\frac{1}{2} \text{ and } \sin^{-1}\frac{1}{2}=\frac{\pi}{6}\]
+            <p>This is something you are already very used to. We could also write \(\arcsin\) instead of \(\sin^{-1}\). They mean the same thing, but you should get used to both notations. </p> 
+            <p>When we move to general circular functions, we need to take rather more care!</p> 
+        </div>
     </div>
 
-</div>
-<div class="page" id="page-3" data-reveal-answers>
+
+<div class="page-hidden" id="page-hidden-6" data-reveal-answers>
     <div class="exercise">
         <p>When \(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\):</p>
     </div><div>
@@ -118,7 +191,7 @@
         <p>So long as \(0 \leq \theta \leq \displaystyle\frac{\pi}{2}\), there is only one value of \(\theta\) that makes \(x = \cos\theta\), \(\;y = \sin\theta\), and \(\;\displaystyle\frac{y}{x} = \tan\theta\). So we know exactly what angle we mean by \(\arccos x\), \(\arcsin y\), or \(\arctan\displaystyle\frac{y}{x}\).</p>
     </div>
 </div>
-<div class="page" id="page-4" data-reveal-answers>
+<div class="page-hidden" id="page-hidden-7" data-reveal-answers>
     <div class="exercise">
         <p>Solve the equation \(\sin\theta=\frac{\sqrt 3}{2}\).</p>
     </div>
@@ -145,7 +218,7 @@
     </div>
     </div>
 
-<div class="page" id="page-5" data-reveal-answers>
+<div class="page-hidden" id="page-hidden-8" data-reveal-answers>
     <div class="exercise">
         Figure these out without a calculator:
     
@@ -169,7 +242,7 @@
     </div>
     </div>
 
-<div class="page" id="page-6" data-reveal-answers>
+<div class="page-hidden" id="page-hidden-9" data-reveal-answers>
 <div class="intro">
     If \(\theta\) is between \(-\frac{\pi}{2}\) and \(0\), then \(\sin\theta&lt 0\). For example, 
     \[\begin{align*}
@@ -202,7 +275,7 @@
     </div>
     
 </div>
-<div class="page" id="page-7" data-no-wipes-first data-reveal-answers>
+<div class="page-hidden" id="page-hidden-10" data-no-wipes-first data-reveal-answers>
         <div class="teacher-note">
             <p>Early in your students’ mathematical careers, they will have happily use the \(\arcsin\) key on their calculators to find angles in right-angled triangles when they know side lengths. This is probably one of their earliest encounters with the idea of the inverse of a function, although of course it is not framed this way.</p>
             <p>At the start of our work on circular functions, we spent plenty of time separating these functions from right-angled triangles using the unit circle. From there, we generated graphs of the circular functions. It’s time to look at a similar process for their inverses. In right-angled triangles, we are only dealing with angles between \(0\) and \(\frac{\pi}{2}\). For each ratio of two sides, there is only one possible angle, so in this range, the inverse functions are well defined. However, when we look at angles outside this range, it is not immediately clear what the inverses of the functions might be. For example:</p>
@@ -240,7 +313,7 @@
         </div>
     </div>
     
-<div class="page" id="page-8" data-no-reveal>
+<div class="page-hidden" id="page-hidden-11" data-no-reveal>
         <div class="exercise">
             <p>Use this diagram to find the values below (no calculator, of course):</p>
     </div>
@@ -576,121 +649,114 @@
         </script>
 
     </div>
-    <div class="page" id="page-9">
+    <div class="page-hidden" id="page-hidden-12">
         
     </div>
-    <div class="page" id="page-10">
-        <p>Next, we'll look at the whole thing again from the point of view of graphs.</p>
+    <div class="page" id="page-6">
+        <p>We'll look at the whole thing from the point of view of graphs.</p>
         <div class="exercise">
             <p>On the same set of axes, draw the graphs \(y=\sin x\) and \(x=\sin y\)</p>
         </div>
-        <div>
+        <div class="nav-gated">
             <figure>
-                <video autoplay loop muted playsinline><source src="inverse_images/video1.mp4" alt="Graph showing intersections"></video>
+                <img src="inverse_images/image220.png" alt="Graph showing intersections" style="max-width: 72%">
             </figure>
         </div>
-        <div class="exercise">
-            <p>Can you explain why the graph \(y=\arcsin x\) is not the same as the graph \(x=\sin y\) ? The video might help you to see why this should be.</p>
-        </div>
+        
     </div>
-<div class="page" id="page-11">
-        <div class="exercise">
-            <p>To see this, first solve the equation \(\sin y = \frac{1}{2}\) and explain how your answer relates to the graphs.</p>
-        </div>
-        <figure>
-            <img src="inverse_images/image4.png" alt="Graph showing intersections">
-        </figure>
+<div class="page" id="page-7" data-reveal-answers>
+    <div class="exercise">
+        <p>Solve the equation \(\sin y = \frac{1}{2}\) and explain how your answer relates to the graphs.</p>
     </div>
-<div class="page" id="page-12">
-        <div class="exercise">
-            <p>Solve the equation \(\sin y = \frac{1}{2}\) and explain how your answer relates to the graphs.</p>
-        </div>
-        <figure>
-            <img src="inverse_images/image4.png" alt="Graph showing intersections">
-        </figure>
-        <div class="answer">
-            <p>\(\sin y = \frac{1}{2}\) has solutions</p>
-            <p><span class="math display">\[y = \frac{\pi}{6},\frac{5\pi}{6},\frac{13\pi}{6},\ldots - \frac{7\pi}{6}, - \frac{11\pi}{6}, - \frac{19\pi}{6},\ldots\]</span></p>
-            <p>and these values are where the graphs \(x = \sin y\) and \(x = \frac{1}{2}\) intersect.</p>
-        </div>
+    <figure>
+        <img src="inverse_images/image4.png" alt="Graph showing intersections" style="max-width: 64%">
+    </figure>
+    <div class="answer">
+        <p>\(\sin y = \frac{1}{2}\) has solutions</p>
+        <p><span class="math display">\[y = \frac{\pi}{6},\frac{5\pi}{6},\frac{13\pi}{6},\ldots - \frac{7\pi}{6}, - \frac{11\pi}{6}, - \frac{19\pi}{6},\ldots\]</span></p>
+        <p>and these values are where the graphs \(x = \sin y\) and \(x = \frac{1}{2}\) intersect.</p>
+    </div>
+</div>
+<div class="page" id="page-8" data-reveal-answers>
+        
 
         <div class="exercise">
             <p>How many values do you want for \(\arcsin\frac{1}{2}\) ?</p>
             <p>How many times do you want the line \(x = \frac{1}{2}\) to intersect with the graph \(y = \arcsin x\) ?</p>
         </div>
-    </div>
-<div class="page" id="page-13">
         <div class="answer">
             <p>Like any function, the function \(y = \arcsin x\) must be well-defined (that is, uniquely defined) for all values of \(x\) in its domain.</p>
             <p>That means that the line \(x = \frac{1}{2}\) must intersect with the graph \(y = \arcsin x\) exactly once.</p>
         </div>
         <div class="exercise">
+            <p>How many values do you want for \(\arcsin a\) for any value of \(a\) between \(-1\) and \(1\)?</p>
+            <p>How many times do you want the line \(x = a \) for any value of \(a\) between \(-1\) and \(1\) to intersect with the graph \(y = \arcsin x\) ?</p>
+        </div>
+        <div class="answer">
+            <p>Like any function, the function \(y = \arcsin x\) must be well-defined (that is, uniquely defined) for all values of \(x\) in its domain.</p>
+            <p>That means that the line \(x = a\) must intersect with the graph \(y = \arcsin x\) exactly once.</p>
+        </div>
+    </div>
+<div class="page" id="page-9" data-reveal-answers>
+        <div class="exercise">
             <p>How can you adapt the graph \(x = \sin y\) to ensure that any vertical line between \(x = - 1\) and \(x = 1\) intersects it exactly once?</p>
         </div>
-        <figure>
-            <video autoplay loop muted playsinline><source src="inverse_images/video1.mp4" alt="Graph showing intersections"></video>
-        </figure>
-    </div>
-<div class="page" id="page-14">
 
-        <figure>
-            <video autoplay loop muted playsinline><source src="inverse_images/video2.mp4" alt="Graph showing intersections"></video>
-        </figure>
+        <!-- Stacked videos: video1 visible first; video2 crossfades in on next nav -->
+        <div style="position: relative; max-width: 80%; margin: 20px auto; border-radius: 10px; border: 4px solid #2d5a27; padding: 10px; background: white; box-shadow: 0 6px 20px rgba(0,0,0,0.18); overflow: hidden;">
+            <video id="cf-p9-v1" autoplay loop muted playsinline style="display:block; width:100%; border-radius:6px;"><source src="inverse_images/video1.mp4"></video>
+            <video id="cf-p9-v2" loop muted playsinline style="position:absolute; top:10px; left:10px; width:calc(100% - 20px); opacity:0; transition: opacity 1.5s ease; border-radius:6px;"><source src="inverse_images/video2.mp4"></video>
+        </div>
+
+        <div class="crossfade-step" data-cf-from="cf-p9-v1" data-cf-to="cf-p9-v2"></div>
+
         <div class="answer">
             <p>We need to choose just a small part of the curve \(x = \sin y\), making sure that it is big enough to intersect every vertical line between \(x = - 1\) and \(x = 1\), but small enough to make sure that no such vertical line intersects this section of the curve more than once.</p>
         </div>
         <div class="intro">
-            <p>There are many such segments . . . an infinite number, in fact.Some of the possibilities are coloured pink and green in this diagram.</p>
+            <p>There are many such segments . . . an infinite number, in fact. Some of the possibilities are coloured pink and green in this diagram.</p>
+        </div>
+    </div>
+<div class="page" id="page-10" data-reveal-answers>
+
+        <!-- image5 → image6 crossfade container (always visible from landing) -->
+        <div style="position: relative; max-width: 64%; margin: 20px auto; overflow: hidden; border-radius: 10px; border: 4px solid #2d5a27; padding: 16px 10px; background: white; box-shadow: 0 6px 20px rgba(0,0,0,0.18);">
+            <img id="cf-p10-before" src="inverse_images/image5.png" alt="Graph showing segment choices" style="display:block; width:100%;">
+            <img id="cf-p10-after" src="inverse_images/image6.png" alt="Graph showing selected segment"
+                 style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:100%; opacity:0; transition: opacity 1.5s ease;">
         </div>
 
-    </div>
-<div class="page" id="page-15">
-
-        <figure>
-            <img src="inverse_images/image5.png" alt="Graph showing segment choices">
-        </figure>
         <div class="intro">
             <p>We could choose any coloured section of the graph \(x = \sin y\), but it would be strange (though not impossible) to choose any segment other than the one that would mean \(\arcsin0 = 0\).</p>
         </div>
         <div class="exercise">
             <p>Which of these pink or green segments on the curve would correspond to the most sensible definition of the function \(\arcsin x\) ?</p>
         </div>
-    </div>
-<div class="page" id="page-16">
-        <figure>
-            <img src="inverse_images/image6.png" alt="Graph showing different segments">
-        </figure>
+
+        <div class="crossfade-step" data-cf-from="cf-p10-before" data-cf-to="cf-p10-after"></div>
+
         <div class="answer">
-            <p>Only the pink segment here is the graph \(y = \arcsin x\). 
-            </p>
+            <p>Only the pink segment here is the graph \(y = \arcsin x\).</p>
         </div>
         <div class="exercise">
             <p>What are the domain and range of the function \(f(x)=\arcsin x\)?</p>
         </div>
-    </div>
-<div class="page" id="page-17">
-        <div class="exercise">
-            <p>What are the domain and range of the function \(f(x)=\arcsin x\)?</p>
-        </div>
         <div class="answer">
-            <p>The easiest way to see this is to look at the graph:</p>
-            <p>\(\text{domain}=\big\{x|-1\leq x\leq 1\big\}\)</p>
-            <p>\(\text{range}=\Big\{y\Big |-\displaystyle\frac{\pi}{2}\leq x\leq \displaystyle\frac{\pi}{2}\Big\}\)</p>
+            <p>The easiest way to see this is to look at the graph above:</p>
+            <p>\(\text{domain}=\big\{x\mid-1\leq x\leq 1\big\}\)</p>
+            <p>\(\text{range}=\Big\{y\;\Big|\;-\dfrac{\pi}{2}\leq y\leq \dfrac{\pi}{2}\Big\}\)</p>
         </div>
-        <figure>
-            <img src="inverse_images/image6.png" alt="Graph showing different segments">
-        </figure>
     </div>
-<div class="page" id="page-18">
+<div class="page" id="page-11">
         <div class="exercise">
             <p>Draw the graph \(y = \cos x\).</p>
             <p>On the same axes, draw the graph \(x=\cos y\).</p>
         </div>
         <figure>
-            <img src="inverse_images/image29.png" alt="Graphs of x = cos y and y = cos^-1 x">
+            <img src="inverse_images/image29.png" alt="Graphs of x = cos y and y = cos^-1 x" style="max-width: 64%">
         </figure>
     </div>
-<div class="page" id="page-19">
+<div class="page" id="page-12">
         
         <div class="exercise">
             <p>Draw the graph \(y = \cos x\).</p>
@@ -704,7 +770,7 @@
         <p>How can we adapt the graph \(x=\cos y\) to get the graph \(y=\arccos x\) ?</p>
         </div>
     </div>
-<div class="page" id="page-20">
+<div class="page" id="page-13">
         <div class="exercise"
             <p>How can we adapt the graph \(x=\cos y\) to get the graph \(y=\arccos x\) ?</p>
         </div>
@@ -718,9 +784,9 @@
             <p>Which segment shall we choose for the graph \(y=\arccos x\) ?</p>
         </div>
     </div>
-<div class="page" id="page-21">
+<div class="page" id="page-14">
         <figure>
-            <img src="inverse_images/image35.png" alt="Graph showing different segments">
+            <img src="inverse_images/image35.png" alt="Graph showing different segments" style="max-width: 64%">
         </figure>
         <div class="answer">
             <p>domain:</p>
@@ -729,33 +795,33 @@
             <p><span class="math display">\[\left\{ y:0 \leq y \leq \pi \right\}\]</span></p>
         </div>
     </div>
-<div class="page" id="page-22">
+<div class="page" id="page-15">
         <div class="exercise"
             <p>Draw the graphs \(y=\tan x\) and \(x=\tan y\) on the same set of axes.</p>
         </div>
         
         <figure>
-            <img src="inverse_images/image56.png" alt="Diagram">
+            <img src="inverse_images/image56.png" alt="Diagram" style="max-width: 64%">
         </figure>
     </div>
-<div class="page" id="page-23">
+<div class="page" id="page-16">
         <div class="exercise">
             <p>Draw the graphs \(y=\tan x\) and \(x=\tan y\) on the same set of axes.</p>
         </div>
         
         <figure>
-            <img src="inverse_images/image55.png" alt="Diagram">
+            <img src="inverse_images/image55.png" alt="Diagram" style="max-width: 64%">
         </figure>
         <div class="exercise">
             <p>What are the domain and range of the function \(y=\arctan x\)?</p>
         </div>
     </div>
-<div class="page" id="page-24">
+<div class="page" id="page-17">
         <div class="exercise">
             <p>What are the domain and range of the function \(y=\arctan x\)?</p>
         </div>
         <figure>
-            <img src="inverse_images/image55.png" alt="Diagram">
+            <img src="inverse_images/image55.png" alt="Diagram" style="max-width: 64%">
         </figure>
         <div class="answer">
             <p>The red graph is the graph \(y=\arctan x\), giving</p>
@@ -765,8 +831,8 @@
             <p><span class="math display">\[\left\{ y: - \frac{\pi}{2} &lt; y &lt; \frac{\pi}{2} \right\}\]</span></p>
         </div>
     </div>
-    <!-- Page 25: Congratulations -->
-    <div class="page" id="page-25">
+    <!-- Page 28: Congratulations -->
+    <div class="page" id="page-18">
         <div class="welcome-page">
             <h1>Well done on completing Part 1!</h1>
             <div class="welcome-content">
@@ -790,7 +856,7 @@
         <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
         <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="25" onchange="goToPage(this.value)"> of 25
+        Page <input type="number" id="pageInput" value="1" min="1" max="21" onchange="goToPage(this.value)"> of 21
         </span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
         <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -800,7 +866,7 @@
     <script>
     (function () {
         'use strict';
-        const ANIMATABLE = 'div.exercise, div.intro, div.key-concept';
+        const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.nav-gated, div.crossfade-step';
         let revealQueue = [];
         let goingBackward = false;
 
@@ -813,8 +879,21 @@
             const animatable = Array.from(page.querySelectorAll(selector))
                 .filter(div => !div.classList.contains('reveal-instant'));
             animatable.forEach(div => div.classList.add('div-hidden'));
+            // Reset any crossfade video pairs to their initial state
+            page.querySelectorAll('.crossfade-step[data-cf-to]').forEach(function(step) {
+                const toEl = document.getElementById(step.dataset.cfTo);
+                const fromEl = step.dataset.cfFrom ? document.getElementById(step.dataset.cfFrom) : null;
+                if (toEl) { toEl.style.transition = 'none'; toEl.style.opacity = '0'; if (toEl.pause) { toEl.pause(); toEl.currentTime = 0; } }
+                if (fromEl) { fromEl.style.transition = 'none'; fromEl.style.opacity = '1'; if (fromEl.play) fromEl.play().catch(()=>{}); }
+            });
             if (revealAll) {
                 animatable.forEach(div => div.classList.remove('div-hidden'));
+                page.querySelectorAll('.crossfade-step[data-cf-to]').forEach(function(step) {
+                    const toEl = document.getElementById(step.dataset.cfTo);
+                    const fromEl = step.dataset.cfFrom ? document.getElementById(step.dataset.cfFrom) : null;
+                    if (toEl) { toEl.style.transition = 'none'; toEl.style.opacity = '1'; if (toEl.play) toEl.play().catch(()=>{}); }
+                    if (fromEl) { fromEl.style.transition = 'none'; fromEl.style.opacity = '0'; if (fromEl.pause) { fromEl.pause(); } }
+                });
                 return;
             }
             if (animatable.length > 0) {
@@ -829,10 +908,27 @@
         function revealNextOrAdvance() {
             if (revealQueue.length > 0) {
                 const next = revealQueue.shift();
-                next.classList.remove('div-hidden');
-                next.classList.add('div-revealed');
-                setTimeout(() => next.classList.remove('div-revealed'), 400);
-                next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                if (next.classList.contains('crossfade-step')) {
+                    // Trigger video crossfade instead of showing the sentinel div
+                    const toEl = next.dataset.cfTo ? document.getElementById(next.dataset.cfTo) : null;
+                    const fromEl = next.dataset.cfFrom ? document.getElementById(next.dataset.cfFrom) : null;
+                    if (fromEl) {
+                        fromEl.style.transition = 'opacity 1.5s ease';
+                        fromEl.style.opacity = '0';
+                        setTimeout(() => { if (fromEl.pause) fromEl.pause(); }, 1500);
+                    }
+                    if (toEl) {
+                        toEl.style.transition = 'opacity 1.5s ease';
+                        toEl.offsetHeight; // force reflow
+                        toEl.style.opacity = '1';
+                        if (toEl.play) toEl.play().catch(() => {});
+                    }
+                } else {
+                    next.classList.remove('div-hidden');
+                    next.classList.add('div-revealed');
+                    setTimeout(() => next.classList.remove('div-revealed'), 400);
+                    next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
             } else {
                 _origChangePage(1);
             }

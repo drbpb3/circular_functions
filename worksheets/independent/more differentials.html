@@ -41,6 +41,26 @@
         video { cursor: pointer; }
         .step { margin-top: 18pt; }
 
+        /* Aligned equation grid: columns are LHS | operator | RHS.
+           display:contents on step divs lets their spans participate directly
+           in the grid, so all operators land in the same column regardless of
+           RHS width. visibility:hidden (not display:none) keeps hidden rows
+           in layout so column widths are stable before any step is revealed. */
+        .aligned-eq-block {
+            display: grid;
+            grid-template-columns: max-content max-content auto;
+            column-gap: 0.3em;
+            row-gap: 0.7em;
+            margin: 1em auto;
+            align-items: center;
+        }
+        .aligned-eq-block .step { display: contents; }
+        .aligned-eq-block .step.step-hidden > * { visibility: hidden; }
+        .aligned-eq-block .step.div-revealed > * { animation: divReveal 0.35s ease; }
+        .aligned-eq-block .aeq-lhs { text-align: right; }
+        .aligned-eq-block .aeq-op  { white-space: nowrap; padding: 0 0.15em; }
+        .aligned-eq-block .aeq-rhs { text-align: left; }
+
         /* Pin exercise and video at top; answer scrolls independently */
         body { overflow: clip; }
         .page.active {
@@ -123,13 +143,42 @@
                 \[\frac{\mathrm{d}}{\mathrm{d}x}\cos x=-\sin x\]
             </p>
             <p>but we can also use the definition of a differential:</p>
-            \[\begin{aligned}f(x)&=\cos x\end{aligned}\]
-            <div class="step">\[\begin{aligned}f'(x)&=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{\cos(x+h)-\cos x}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{\cos x\cos h-\sin x\sin h-\cos x}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{-\cos x(1-\cos h)-\sin x\sin h}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=-\cos x\lim_{h\to 0}\frac{(1-\cos h)}{h}-\sin x\lim_{h\to 0}\frac{\sin h}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=-\sin x\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(f(x)\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\cos x\)</span>
+
+                <div class="step">
+                    <span class="aeq-lhs">\(f'(x)\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{f(x+h)-f(x)}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{\cos(x+h)-\cos x}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{\cos x\cos h-\sin x\sin h-\cos x}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{-\cos x(1-\cos h)-\sin x\sin h}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-\cos x\displaystyle\lim_{h\to 0}\dfrac{1-\cos h}{h}-\sin x\lim_{h\to 0}\dfrac{\sin h}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-\sin x\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -142,9 +191,62 @@
             <video autoplay loop muted playsinline><source src="more_differentials_images/tanderiv.mp4" alt="animation of differential of tan"></video>
         </figure>
         <div class="answer">
-            \[\begin{aligned}f(x)&=\tan x=\frac{\sin x}{\cos x}\end{aligned}\]
-            <div class="step">\[\begin{aligned}f'(x)&=\frac{\cos^2 x+\sin^2 x}{\cos^2 x}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\frac{1}{\cos^2 x}=\sec^2 x\end{aligned}\]</div>
+            <!-- Quotient rule result: grid aligns = signs via column layout -->
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(f(x)\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\tan x=\dfrac{\sin x}{\cos x}\)</span>
+
+                <div class="step">
+                    <span class="aeq-lhs">\(f'(x)\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\cos^2 x+\sin^2 x}{\cos^2 x}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{1}{\cos^2 x}=\sec^2 x\)</span>
+                </div>
+            </div>
+
+            <!-- First-principles derivation -->
+            <div class="aligned-eq-block">
+                <div class="step">
+                    <span class="aeq-lhs">\(\dfrac{\tan(x+h)-\tan x}{h}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{1}{h}\!\left[\dfrac{\tan x+\tan h}{1-\tan x\tan h}-\tan x\right]\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{1}{h}\dfrac{\tan x+\tan h-\tan x+\tan^2 x\tan h}{1-\tan x\tan h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{1}{h}\dfrac{\tan h(1+\tan^2 x)}{1-\tan x\tan h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\tan h}{h}\dfrac{1+\tan^2 x}{1-\tan x\tan h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\tan h}{h}\dfrac{\sec^2 x}{1-\tan x\tan h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(\to\)</span>
+                    <span class="aeq-rhs">\(1\times\sec^2 x\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(\Rightarrow\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\mathrm{d}}{\mathrm{d}x}\tan x=\sec^2 x\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -157,19 +259,60 @@
             <video autoplay loop muted playsinline><source src="more_differentials_images/secderiv.mp4" alt="animation of differential of cos"></video>
         </figure>
         <div class="answer">
-            \[\begin{aligned}f(x)&=\sec x=\frac{1}{\cos x}\end{aligned}\]
-            <div class="step">\[\begin{aligned}f'(x)&=\frac{\sin x}{\cos^2 x}=\sec x\tan x\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(f(x)\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\sec x=\dfrac{1}{\cos x}\)</span>
+
+                <div class="step">
+                    <span class="aeq-lhs">\(f'(x)\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\sin x}{\cos^2 x}=\sec x\tan x\)</span>
+                </div>
+            </div>
+
             <div class="step">
                 <p>or if you prefer to differentiate everything using only the essential definition of a differential:</p>
                 \[\begin{aligned}f(x)&=\sec x\end{aligned}\]
             </div>
-            <div class="step">\[\begin{aligned}f'(x)&=\lim_{h\to 0}\frac{f(x+h)-f(x)}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{\sec(x+h)-\sec x}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{\dfrac{1}{\cos(x+h)}-\dfrac{1}{\cos x}}{h}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{\cos x-\cos(x+h)}{h\cos x\cos (x+h)}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\lim_{h\to 0}\frac{\cos x-\cos (x+h)}{h}\cdot\frac{1}{\cos x\cos (x+h)}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\sin x\cdot\frac{1}{\cos^2 x}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=\frac{\sin x}{\cos^2 x}=\sec x\tan x\end{aligned}\]</div>
+
+            <div class="aligned-eq-block">
+                <div class="step">
+                    <span class="aeq-lhs">\(f'(x)\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{f(x+h)-f(x)}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{\sec(x+h)-\sec x}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{\dfrac{1}{\cos(x+h)}-\dfrac{1}{\cos x}}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{\cos x-\cos(x+h)}{h\cos x\cos(x+h)}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{\cos x-\cos(x+h)}{h}\cdot\dfrac{1}{\cos x\cos(x+h)}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\sin x\cdot\dfrac{1}{\cos^2 x}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\sin x}{\cos^2 x}=\sec x\tan x\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -182,8 +325,17 @@
             <video autoplay loop muted playsinline><source src="more_differentials_images/cscderiv.mp4" alt="animation of differential of csc"></video>
         </figure>
         <div class="answer">
-            \[\begin{aligned}f(x)&=\operatorname{cosec} x=\frac{1}{\sin x}\end{aligned}\]
-            <div class="step">\[\begin{aligned}f'(x)&=-\frac{\cos x}{\sin^2 x}=-\operatorname{cosec} x\cot x\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(f(x)\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\operatorname{cosec} x=\dfrac{1}{\sin x}\)</span>
+
+                <div class="step">
+                    <span class="aeq-lhs">\(f'(x)\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-\dfrac{\cos x}{\sin^2 x}=-\operatorname{cosec} x\cot x\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -196,9 +348,22 @@
             <video autoplay loop muted playsinline><source src="more_differentials_images/cotderiv.mp4" alt="animation of differential of cot"></video>
         </figure>
         <div class="answer">
-            \[\begin{aligned}f(x)&=\cot x=\frac{\cos x}{\sin x}\end{aligned}\]
-            <div class="step">\[\begin{aligned}f'(x)&=\frac{-\sin^2 x-\cos^2 x}{\sin^2 x}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{f'(x)}&=-\frac{1}{\sin^2 x}=-\operatorname{cosec}^2 x\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(f(x)\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\cot x=\dfrac{\cos x}{\sin x}\)</span>
+
+                <div class="step">
+                    <span class="aeq-lhs">\(f'(x)\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{-\sin^2 x-\cos^2 x}{\sin^2 x}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-\dfrac{1}{\sin^2 x}=-\operatorname{cosec}^2 x\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -297,7 +462,10 @@ document.querySelectorAll('video').forEach(function (v) {
             if (isFirstStep) {
                 answer.scrollTop = 0;
             } else {
-                next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                const scrollTarget = window.getComputedStyle(next).display === 'contents'
+                    ? (next.lastElementChild || next)
+                    : next;
+                scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
         } else {
             _origChangePage(1);

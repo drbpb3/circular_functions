@@ -683,6 +683,8 @@ li {
     background: #f4f9f4;
 }
 
+.page-hidden { display: none; }
+
 /* ── nav-reveal system ── */
 .div-hidden { display: none; }
 .step-hidden { visibility: hidden; height: 0; overflow: hidden; }
