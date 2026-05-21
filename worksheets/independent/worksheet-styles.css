@@ -411,7 +411,6 @@ img {
     -moz-user-drag: none;
     -o-user-drag: none;
     user-drag: none;
-    pointer-events: none;
 }
 
 .answer-options {
@@ -684,6 +683,12 @@ li {
 }
 
 .page-hidden { display: none; }
+
+/* Allow wide display-math equations to scroll horizontally rather than overflow */
+mjx-container[display="true"] {
+    overflow-x: auto;
+    max-width: 100%;
+}
 
 /* ── nav-reveal system ── */
 .div-hidden { display: none; }

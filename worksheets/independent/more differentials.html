@@ -48,11 +48,12 @@
            in layout so column widths are stable before any step is revealed. */
         .aligned-eq-block {
             display: grid;
-            grid-template-columns: max-content max-content auto;
+            grid-template-columns: max-content max-content max-content;
             column-gap: 0.3em;
             row-gap: 0.7em;
             margin: 1em auto;
             align-items: center;
+            overflow-x: auto;
         }
         .aligned-eq-block .step { display: contents; }
         .aligned-eq-block .step.step-hidden > * { visibility: hidden; }
