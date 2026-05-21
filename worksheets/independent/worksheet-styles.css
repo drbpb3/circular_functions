@@ -16,6 +16,7 @@ body {
     color: #333;
     background: #fafafa;
     margin: 0;
+    overflow-x: hidden;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -260,6 +261,7 @@ p.small {
     border-radius: 5px;
     margin: 15px 0;
     border-left: 4px solid #2d5a27;
+    overflow-x: auto;
 }
 
 .teacher-note { 
