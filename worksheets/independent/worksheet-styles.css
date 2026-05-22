@@ -6,8 +6,12 @@
     --accent: #2d5a27;
 }
 
-* { 
-    box-sizing: border-box; 
+* {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
 }
 
 body {
@@ -688,6 +692,7 @@ li {
 
 /* Allow wide display-math equations to scroll horizontally rather than overflow */
 mjx-container[display="true"] {
+    display: block;
     overflow-x: auto;
     max-width: 100%;
 }
