@@ -22,7 +22,7 @@ function hideNavPromptTemporarily() {
     navPrompt.style.pointerEvents = 'none';
     navPromptTimer = setTimeout(function() {
         navPrompt.style.transition = 'opacity 0.6s ease';
-        navPrompt.style.opacity = '0.55';
+        navPrompt.style.opacity = '0.1';
         navPromptTimer = setTimeout(function() {
             navPrompt.style.animation = '';
             navPrompt.style.opacity = '';
@@ -181,11 +181,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Pulsing logo nav prompt
-    navPrompt = document.createElement('img');
-    navPrompt.src = '/darklogo_circle.png';
+    // Pulsing logo + arrow nav prompt
+    navPrompt = document.createElement('div');
     navPrompt.className = 'nav-prompt';
-    navPrompt.alt = '';
+    var promptLogo = document.createElement('img');
+    promptLogo.src = '/darklogo_circle.png';
+    promptLogo.className = 'nav-prompt__logo';
+    promptLogo.alt = '';
+    var promptArrow = document.createElement('span');
+    promptArrow.className = 'nav-prompt__arrow';
+    promptArrow.textContent = '▶';
+    navPrompt.appendChild(promptLogo);
+    navPrompt.appendChild(promptArrow);
     navPrompt.addEventListener('click', function() {
         hideNavPromptTemporarily();
         changePage(1);
