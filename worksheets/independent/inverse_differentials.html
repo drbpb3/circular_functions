@@ -167,57 +167,8 @@
         </div>
     </div>
 
-    <!-- Page 5 -->
+   
     <div class="page" id="page-6">
-        <div class="exercise">
-            Find the differential of \(\operatorname{arcsec} x\).
-        </div>
-        <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arcsecderiv.mp4" alt="animation of differential of arcsec"></video>
-        </figure>
-        <div class="answer">
-            \[\begin{aligned}y&=\operatorname{arcsec} x \Rightarrow x=\sec y\end{aligned}\]
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}&=\sec y\tan y\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=\pm\frac{1}{x\sqrt{1-x^2}}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\text{but gradient is always positive}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{1}{|x|\sqrt{1-x^2}}=\frac{1}{\sqrt{x^2(1-x^2)}}\end{aligned}\]</div>
-        </div>
-    </div>
-
-    <!-- Page 6 -->
-    <div class="page" id="page-7">
-        <div class="exercise">
-            Find the differential of \(\operatorname{arccsc} x\).
-        </div>
-        <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arccscderiv.mp4" alt="animation of differential of arccsc"></video>
-        </figure>
-        <div class="answer">
-            \[\begin{aligned}y&=\operatorname{arccosec} x \Rightarrow x=\operatorname{cosec} y\end{aligned}\]
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}&=-\operatorname{cosec} y\cot y\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=\pm\frac{1}{x\sqrt{1-x^2}}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\text{but gradient is always negative}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{1}{|x|\sqrt{1-x^2}}=-\frac{1}{\sqrt{x^2(1-x^2)}}\end{aligned}\]</div>
-        </div>
-    </div>
-
-    <!-- Page 7 -->
-    <div class="page" id="page-8">
-        <div class="exercise">
-            Find the differential of \(\operatorname{arccot} x\).
-        </div>
-        <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arccotderiv.mp4" alt="animation of differential of arccot"></video>
-        </figure>
-        <div class="answer">
-            \[\begin{aligned}y&=\operatorname{arccot}x \Rightarrow x=\cot y\end{aligned}\]
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}&=-\operatorname{cosec}^2 y\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{1}{\operatorname{cosec}^2 y}=-\frac{1}{1+x^2}\end{aligned}\]</div>
-        </div>
-    </div>
-
-    <!-- Page 8: Closing Page -->
-    <div class="page" id="page-9">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
@@ -246,7 +197,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="9" onchange="goToPage(this.value)"> of 9
+        Page <input type="number" id="pageInput" value="1" min="1" max="6" onchange="goToPage(this.value)"> of 6
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>

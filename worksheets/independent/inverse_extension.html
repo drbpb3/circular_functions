@@ -114,7 +114,8 @@
         For the graph to represent a function, the vertical line must only ever intersect the graph at a single point.
     </div>
     <div class="exercise">
-        How can we choose part of the graph \(x=\sec y\) to create a sensible graph of the function \(y=\mathrm{arcsec}\,x\)?
+        <p>How can we choose part of the graph \(x=\sec y\) to create a sensible graph of the function</p>
+         <p>\(y=\operatorname{arcsec}x\)?</p>
     </div>
 
 </div>
@@ -129,7 +130,7 @@
 
 </div>
 
-<div class="page" id="page-6">
+<div class="page" id="page-6" data-reveal-steps>
 
     <div class="exercise">
         If this is the graph \(y=\mathrm{arcsec}\,x\), what are the domain and the range of the function arcsec?
@@ -138,11 +139,10 @@
         <img src="inverse_images/image104.png" alt="Graphs of sec x and sec inverse x">
     </figure>
 
-
     <div class="answer">
         \[\begin{aligned}
         &\text{Domain: } (-\infty,-1]\cup[1,\infty)\\[6pt]
-        &\text{Range: } \left[0,\, \pi\right]\setminus\{\frac{\pi}{2}\}
+        &\text{Range: } \left[0,\, \pi\right]\setminus\left\{\frac{\pi}{2}\right\}
         \end{aligned}\]
     </div>
     <div class="exercise">
@@ -150,12 +150,26 @@
         \[\operatorname{arccos}y=\operatorname{arcsec}x\]
     </div>
     <div class="answer">
-        \[\begin{align*}
-        \operatorname{arccos}y&=\operatorname{arcsec}x\\
-        \Rightarrow \sec(\operatorname{arccos}y)&=\sec(\operatorname{arcsec}x)=x\\
-        \Rightarrow x&=\frac{1}{\cos(\operatorname{arccos}y)}=\frac{1}{y}\\
-        \Rightarrow \operatorname{arcsec} x&=\arccos{\frac{1}{x}}
-        \end{align*}\]
+        <div class="aligned-eq-block">
+            <span class="aeq-lhs">\(\operatorname{arccos}y\)</span>
+            <span class="aeq-op">\(=\)</span>
+            <span class="aeq-rhs">\(\operatorname{arcsec}x\)</span>
+            <div class="step">
+                <span class="aeq-lhs">\(\Rightarrow \sec(\operatorname{arccos}y)\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\sec(\operatorname{arcsec}x)=x\)</span>
+            </div>
+            <div class="step">
+                <span class="aeq-lhs">\(\Rightarrow x\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\dfrac{1}{\cos(\operatorname{arccos}y)}=\dfrac{1}{y}\)</span>
+            </div>
+            <div class="step">
+                <span class="aeq-lhs">\(\Rightarrow \operatorname{arcsec} x\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\arccos\dfrac{1}{x}\)</span>
+            </div>
+        </div>
     </div>
 
 </div>
@@ -174,7 +188,7 @@
         How can we choose part of the graph \(x=\mathrm{cosec}\, y\) to create a sensible graph of the function \(y=\mathrm{arccosec}\,x\)?
     </div>
     <figure>
-        <img src="inverse_images/image213.png" alt="Graphs of sec x and sec inverse x">
+        <img src="inverse_images/image221.png" alt="Graphs of sec x and sec inverse x">
     </figure>
 
 </div>
@@ -209,7 +223,7 @@
     </div>
     <div class="nav-gated">
     <figure>
-        <img src="inverse_images/image215.png" alt="Graphs of cot x and cot inverse x">
+        <img src="inverse_images/image223.png" alt="Graphs of cot x and cot inverse x">
     </figure>
     </div>
         <div class="answer">
@@ -227,14 +241,11 @@
         <p>What symmetry do you observe? Use it to state the value of \(\operatorname{arccot} x + \arctan x\).</p>
     </div>
     <figure>
-        <img src="inverse_images/image51.png" alt="Graphs of cot inverse x and tan inverse x">
+        <img src="inverse_images/image222.png" alt="Graphs of cot inverse x and tan inverse x">
     </figure>
     <div class="answer">
-        <p>The average of \(\operatorname{arccot} x\) and \(\arctan x\) is either \(\displaystyle{\frac{\pi}{4}}\) or \(\displaystyle{-\frac{\pi}{4}}\), depending on whether \(x\) is positive or negative. So</p>
-        \[\operatorname{arccot} x + \arctan x=
-        \begin{cases}\displaystyle{\frac{\pi}{2}} &\quad x > 0\\[12pt]
-        \displaystyle{-\frac{\pi}{2}}&\quad x < 0
-        \end{cases}
+        <p>The average of \(\operatorname{arccot} x\) and \(\arctan x\) is\(\displaystyle{\frac{\pi}{4}}\). So</p>
+        \[\operatorname{arccot} x + \arctan x=\frac{\pi}{2}
         \]
     </div>
     </div>
@@ -256,22 +267,105 @@
         </div>
     </div>
 
-<div class="page" id="page-14">
-        <p style="text-align: center;"><strong>differentials and integrals of \(\boldsymbol{\operatorname{arcsec} x}\), \(\boldsymbol{\operatorname{arccosec} x}\), and \(\boldsymbol{\operatorname{arccot} x}\)</strong></p>
+    <!-- Page 14 -->
+    <div class="page" id="page-14" data-reveal-steps>
         <div class="exercise">
-            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arcsec} x\)</p>
+            Find the differential of \(\operatorname{arcsec} x\).
         </div>
+        <figure style="max-width: 100%; margin: 30px auto;">
+            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arcsecderiv.mp4" alt="animation of differential of arcsec"></video>
+        </figure>
         <div class="answer">
-            
-            \[\begin{aligned}
-            y=\operatorname{arcsec}x\Rightarrow x &= \sec y \\[12pt]
-            \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y} = \sec y\tan y&=\pm\sec y\sqrt{\sec^2 y-1}\\[12pt]
-            &=\pm x\sqrt{x^2-1}\\[12pt]
-            \Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x} &=\pm \frac{1}{x\sqrt{x^2-1}}\\[12pt]
-            \text{but gradient on graph is }&\text{always positive, so that}\\[12pt]
-            \frac{\mathrm{d}y}{\mathrm{d}x} &=\frac{1}{x\sqrt{x^2-1}}
-            \end{aligned}\]
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(y = \operatorname{arcsec}x \Rightarrow x\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\sec y\)</span>
+                <div class="step">
+                    <span class="aeq-lhs">\(\Rightarrow\dfrac{\mathrm{d}x}{\mathrm{d}y}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\sec y\tan y\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\Rightarrow\dfrac{\mathrm{d}y}{\mathrm{d}x}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\pm\dfrac{1}{x\sqrt{1-x^2}}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-full">but gradient is always positive</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\Rightarrow\dfrac{\mathrm{d}y}{\mathrm{d}x}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{1}{|x|\sqrt{1-x^2}}=\dfrac{1}{\sqrt{x^2(1-x^2)}}\)</span>
+                </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Page 15 -->
+    <div class="page" id="page-15" data-reveal-steps>
+        <div class="exercise">
+            Find the differential of \(\operatorname{arccsc} x\).
+        </div>
+        <figure style="max-width: 100%; margin: 30px auto;">
+            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arccscderiv.mp4" alt="animation of differential of arccsc"></video>
+        </figure>
+        <div class="answer">
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(y = \operatorname{arccosec}x \Rightarrow x\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\operatorname{cosec} y\)</span>
+                <div class="step">
+                    <span class="aeq-lhs">\(\Rightarrow\dfrac{\mathrm{d}x}{\mathrm{d}y}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-\operatorname{cosec} y\cot y\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\Rightarrow\dfrac{\mathrm{d}y}{\mathrm{d}x}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\pm\dfrac{1}{x\sqrt{1-x^2}}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-full">but gradient is always negative</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\Rightarrow\dfrac{\mathrm{d}y}{\mathrm{d}x}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-\dfrac{1}{|x|\sqrt{1-x^2}}=-\dfrac{1}{\sqrt{x^2(1-x^2)}}\)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 16 -->
+    <div class="page" id="page-16" data-reveal-steps>
+        <div class="exercise">
+            Find the differential of \(\operatorname{arccot} x\).
+        </div>
+        <figure style="max-width: 100%; margin: 30px auto;">
+            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arccotderiv.mp4" alt="animation of differential of arccot"></video>
+        </figure>
+        <div class="answer">
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(y = \operatorname{arccot}x \Rightarrow x\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\cot y\)</span>
+                <div class="step">
+                    <span class="aeq-lhs">\(\Rightarrow\dfrac{\mathrm{d}x}{\mathrm{d}y}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-\operatorname{cosec}^2 y\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\Rightarrow\dfrac{\mathrm{d}y}{\mathrm{d}x}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-\dfrac{1}{\operatorname{cosec}^2 y}=-\dfrac{1}{1+x^2}\)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="page" id="page-17">
+        
             <div class="exercise">
                 <p>Find (using integration by parts) \[\int \operatorname{arcsec}x\,\mathrm{d}x\]</p>
             </div>
@@ -312,21 +406,8 @@
                 \end{aligned}
             </div>
     </div>
-<div class="page" id="page-15">
-    <div class="exercise">
-        <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccosec} x\).</p>
-    </div>
-    <div class="answer">
-        
-        \[\begin{aligned}
-            y=\operatorname{arccosec}x\Rightarrow x &= \operatorname{cosec}y \\[12pt]
-            \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y} = -\operatorname{arccosec} y\cot y&=\pm\operatorname{arccosec} y\sqrt{\operatorname{cosec}^2 y-1}\\[12pt]
-            &=\pm x\sqrt{x^2-1}\\[12pt]
-            \Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x} &=\pm \frac{1}{x\sqrt{x^2-1}}\\[12pt]
-            \text{but gradient on graph is }&\text{always negative, so that}\\[12pt]
-            \frac{\mathrm{d}y}{\mathrm{d}x} &=-\frac{1}{x\sqrt{x^2-1}}
-            \end{aligned}\]
-    </div>
+<div class="page" id="page-18">
+    
     <div class="exercise">
         <p>Find (using integration by parts) \[\int \operatorname{arccosec}x\,\mathrm{d}x\]</p>
     </div>
@@ -342,19 +423,8 @@
         \end{aligned}
     </div>
     </div>
-<div class="page" id="page-16">
-        <div class="exercise">
-            <p>Find \(\dfrac{\mathrm{d}}{\mathrm{d}x}\operatorname{arccot} x\).</p>
-        </div>
-        <div class="answer">
-            \[\begin{aligned}
-            y=\operatorname{arccot}x\Rightarrow x &= \cot y \\[12pt]
-            \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y} = -\operatorname{cosec}^2 y &=-\left(1+\cot^2 y\right)\\[12pt]
-            &=-\left(1+x^2\right)\\[12pt]
-            \Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x} &=-\frac{1}{1+x^2}
-            \end{aligned}\]
-            
-        </div>
+<div class="page" id="page-19">
+        
         <div class="exercise">
             <p>Find (using integration by parts) \[\int \operatorname{arccot}x\,\mathrm{d}x\]</p>
         </div>
@@ -372,8 +442,8 @@
     </div>
 
 
-    <!-- Page 17: Congratulations -->
-    <div class="page" id="page-17">
+    <!-- Page 20: Congratulations -->
+    <div class="page" id="page-20">
         <div class="welcome-page">
             <h1>Well done on completing Part 5!</h1>
             <div class="welcome-content">
@@ -386,7 +456,7 @@
                 </p>
             </div>
         </div>
-        <div style="margin-top: 1rem; text-align: left;"><a href="newinverse4.html" style="color: #2d6a4f; text-decoration: underline;">← Part 4</a></div>
+        <div style="margin-top: 1rem; text-align: left;"><a href="inverse_integrals.html" style="color: #2d6a4f; text-decoration: underline;">← Part 4</a></div>
     </div>
 
 </div>
@@ -395,7 +465,7 @@
         <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
         <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="17" onchange="goToPage(this.value)"> of 17
+        Page <input type="number" id="pageInput" value="1" min="1" max="20" onchange="goToPage(this.value)"> of 20
         </span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
         <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -447,7 +517,10 @@
                 next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
                 next.classList.add('div-revealed');
                 setTimeout(() => next.classList.remove('div-revealed'), 400);
-                const scrollTarget = next.classList.contains('nav-gated') ? (next.firstElementChild || next) : next;
+                const scrollTarget = window.getComputedStyle(next).display === 'contents'
+                    ? (next.lastElementChild || next)
+                    : next.classList.contains('nav-gated') ? (next.firstElementChild || next)
+                    : next;
                 scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } else {
                 _origChangePage(1);
