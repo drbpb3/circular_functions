@@ -10,6 +10,28 @@ let audioEnabled = false;
 const FADE = 180; // ms for each half of the page transition (fade-out, then fade-in)
 let transitioning = false;
 
+let navPrompt = null;
+let navPromptTimer = null;
+
+function hideNavPromptTemporarily() {
+    if (!navPrompt) return;
+    clearTimeout(navPromptTimer);
+    navPrompt.style.transition = 'opacity 0.2s ease';
+    navPrompt.style.animation = 'none';
+    navPrompt.style.opacity = '0';
+    navPrompt.style.pointerEvents = 'none';
+    navPromptTimer = setTimeout(function() {
+        navPrompt.style.transition = 'opacity 0.6s ease';
+        navPrompt.style.opacity = '0.55';
+        navPromptTimer = setTimeout(function() {
+            navPrompt.style.animation = '';
+            navPrompt.style.opacity = '';
+            navPrompt.style.transition = '';
+            navPrompt.style.pointerEvents = '';
+        }, 600);
+    }, 2000);
+}
+
 function showPage(pageNum) {
     if (nav) nav.classList.remove('visible');
     // Stop audio from the previous page
@@ -159,6 +181,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Pulsing logo nav prompt
+    navPrompt = document.createElement('img');
+    navPrompt.src = '/darklogo_circle.png';
+    navPrompt.className = 'nav-prompt';
+    navPrompt.alt = '';
+    navPrompt.addEventListener('click', function() {
+        hideNavPromptTemporarily();
+        changePage(1);
+    });
+    document.body.appendChild(navPrompt);
+
     showPage(1);
 });
 
@@ -243,6 +276,7 @@ function goToPage(pageNum) {
 document.addEventListener('keydown', function(e) {
     if (e.key === ' ' || e.key === 'ArrowRight') {
         e.preventDefault();
+        hideNavPromptTemporarily();
         changePage(1);
     } else if (e.key === 'ArrowLeft') {
         e.preventDefault();
@@ -315,6 +349,7 @@ if (nav) {
 
         if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
             if (deltaX < 0) {
+                hideNavPromptTemporarily();
                 changePage(1);   // Swipe left → next page
             } else {
                 changePage(-1);  // Swipe right → previous page

@@ -713,6 +713,26 @@ mjx-container[display="true"] {
 .aligned-eq-block .aeq-rhs { text-align: left; }
 .aligned-eq-block .aeq-full { grid-column: 1 / -1; text-align: center; }
 
+/* ── nav prompt (pulsing logo) ── */
+.nav-prompt {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    z-index: 997;
+    opacity: 0.55;
+    animation: navPromptPulse 2.2s ease-in-out infinite;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+@keyframes navPromptPulse {
+    0%, 100% { opacity: 0.35; transform: translateX(-50%) translateY(0);    }
+    50%       { opacity: 0.7;  transform: translateX(-50%) translateY(-7px); }
+}
+
 /* ── nav-reveal system ── */
 .div-hidden { display: none; }
 .step-hidden { visibility: hidden; height: 0; overflow: hidden; }
