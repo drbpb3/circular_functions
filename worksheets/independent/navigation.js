@@ -13,6 +13,10 @@ let transitioning = false;
 let navPrompt = null;
 let navPromptTimer = null;
 
+// Captured before any worksheet script can override window.changePage
+const _forceChangePage = changePage;
+function forceNextPage() { _forceChangePage(1); }
+
 function hideNavPromptTemporarily() {
     if (!navPrompt) return;
     clearTimeout(navPromptTimer);
@@ -199,6 +203,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.body.appendChild(navPrompt);
 
+    const nextBtnEl = document.getElementById('nextBtn');
+    if (nextBtnEl) nextBtnEl.onclick = forceNextPage;
+
     showPage(1);
 });
 
@@ -328,7 +335,7 @@ if (nav) {
     nextArrow.className = 'side-nav-next';
     nextArrow.innerHTML = '&#x25BA;';
     nextArrow.setAttribute('aria-label', 'Next page');
-    nextArrow.addEventListener('click', function() { changePage(1); });
+    nextArrow.addEventListener('click', forceNextPage);
 
     document.body.appendChild(prevArrow);
     document.body.appendChild(nextArrow);

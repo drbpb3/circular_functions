@@ -40,6 +40,31 @@
     <style>
         video { cursor: pointer; }
         .step { margin-top: 18pt; }
+
+        .nav-prompt.nav-blocked { opacity: 0 !important; animation: none !important; pointer-events: none !important; }
+
+        body { overflow: clip; }
+        .page.active {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 80px);
+            overflow: clip;
+            padding-bottom: 0;
+            min-height: unset;
+        }
+        .page.active figure {
+            flex-shrink: 0;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        .page.active .page-scroll {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+        }
+        .page.active figure video {
+            max-width: 84%;
+        }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -87,89 +112,83 @@
     </div>
 
     <div class="page" id="page-3">
-        <div style="position: sticky; top: 0; z-index: 10; background: #fafafa; padding-bottom: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin: 0 -20px; padding-left: 20px; padding-right: 20px;">
-            <figure style="width: 144%; position: relative; left: 50%; transform: translateX(-50%); margin: 10px 0 0;">
-                <video autoplay muted playsinline style="width: 100%;"><source src="even_more_differentials_images/video1.mp4" alt="difference triangle"></video>
-            </figure>
-        </div>
-        <div class="exercise">
-            <p>What is the length of the pink vertical line segment in terms of \(\theta\) and \(h\)?</p>
-        </div>
-        <div class="answer">
-            <p>The radius of the circle is \(1\) so the pink segment length is \(\sin(\theta+h)\).</p>
-        </div>
-
-        <div class="exercise">
-            <p>What is the length of the vertical blue segment?</p>
-        </div>
-        <div class="answer">
-            <p>The blue vertical segment length is the pink vertical minus the yellow vertical; that is \(\sin(\theta+h)-\sin\theta\).</p>
-        </div>
-        <div class="exercise">
-            <p>What is the length of the pink arc?</p>
-        </div>
-        <div class="answer">
-            <p>Since the angle is in radians and the radius of the circle is \(1\), the measure of the angle is the arc length, so the arc length is \(h\).</p>
-        </div>
-        <div class="exercise">
-            <p>What is the yellow shaded angle?</p>
-        </div>
-        <div class="answer">
-            <p>It's \(\theta\).</p>
+        <figure>
+            <video autoplay muted playsinline style="width: 100%;"><source src="even_more_differentials_images/video1.mp4" alt="difference triangle"></video>
+        </figure>
+        <div class="page-scroll">
+            <div class="exercise">
+                <p>What is the length of the pink vertical line segment in terms of \(\theta\) and \(h\)?</p>
+            </div>
+            <div class="answer">
+                <p>The radius of the circle is \(1\) so the pink segment length is \(\sin(\theta+h)\).</p>
+            </div>
+            <div class="exercise">
+                <p>What is the length of the vertical blue segment?</p>
+            </div>
+            <div class="answer">
+                <p>The blue vertical segment length is the pink vertical minus the yellow vertical; that is \(\sin(\theta+h)-\sin\theta\).</p>
+            </div>
+            <div class="exercise">
+                <p>What is the length of the pink arc?</p>
+            </div>
+            <div class="answer">
+                <p>Since the angle is in radians and the radius of the circle is \(1\), the measure of the angle is the arc length, so the arc length is \(h\).</p>
+            </div>
+            <div class="exercise">
+                <p>What is the yellow shaded angle?</p>
+            </div>
+            <div class="answer">
+                <p>It's \(\theta\).</p>
+            </div>
         </div>
     </div>
 
     <div class="page" id="page-4">
-        <div style="position: sticky; top: 0; z-index: 10; background: #fafafa; padding-bottom: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin: 0 -20px; padding-left: 20px; padding-right: 20px;">
-            <figure style="width: 144%; position: relative; left: 50%; transform: translateX(-50%); margin: 10px 0 0;">
-                <video autoplay muted playsinline style="width: 100%;"><source src="even_more_differentials_images/video2.mp4" alt="difference triangle"></video>
-            </figure>
-        </div>
-        <div class="exercise">
-            <p>What is the blue shaded angle?</p>
-        </div>
-        <div class="answer">
-            <p>The angle between tangent and radius is \(90^\circ\), so the blue angle is \(90^\circ-\theta\).</p>
-        </div>
-        
-        <div class="intro">
-            <p>Now watch what happens to the light green angle and to \(\alpha\) as \(h\) gets increasingly small</p>
-        </div>
-        <div class="exercise">
-            <p>What does happen to the light green angle as \(h\) gets increasingly small? What does this mean for \(\alpha\)?</p>
-        </div>
-        
-        <div class="answer">
-            <p>The light green angle gets increasingly small, which means that \(\alpha\) gets increasingly close to \(\theta\).</p>
-        </div>
-        
-        <div class="intro">
-            <p>This time, watch what happens to the blue hypotenuse as \(h\) gets increasingly small</p>
-            
-        </div>
-        
-        <div class="exercise">
-            <p>What does happen as \(h\) gets increasingly small?</p>
-        </div>
-        <div class="answer">
-            <p>The blue hypotenuse gets increasingly close to the arc length, \(h\).</p>
-        </div>
-        <div class="exercise">
-            <p>What happens to \(\cos\alpha\) as \(h\) gets increasingly small?</p>
-        </div>
-        <div class="answer">
-            \[\cos\alpha=\frac{\sin(\theta+h)-\sin\theta}{\text{hypotenuse}}\to \frac{\sin(\theta+h)-\sin\theta}{h}\]
-        </div>
-        <div class="exercise">
-            <p>What is \[\frac{\mathrm{d}}{\mathrm{d}\theta}\sin\theta\;?\]</p>
-        </div>
-        <div class="answer">
-            <p>\[\begin{align*}
-                \frac{\mathrm{d}}{\mathrm{d}\theta}\cos\alpha&=\lim_{h\to 0}\frac{\sin(\theta+h)-\sin\theta}{\text{hypotenuse}}\\[12pt]
-                &=\lim_{h\to 0}\to \frac{\sin(\theta+h)-\sin\theta}{h}\\[12pt]
-                &=\lim_{h\to 0}\cos\alpha\\[12pt]
-                &=\cos\theta
-                \end{align*}\].</p>
+        <figure>
+            <video autoplay muted playsinline style="width: 100%;"><source src="even_more_differentials_images/video2.mp4" alt="difference triangle"></video>
+        </figure>
+        <div class="page-scroll">
+            <div class="exercise">
+                <p>What is the blue shaded angle?</p>
+            </div>
+            <div class="answer">
+                <p>The angle between tangent and radius is \(90^\circ\), so the blue angle is \(90^\circ-\theta\).</p>
+            </div>
+            <div class="intro">
+                <p>Now watch what happens to the light green angle and to \(\alpha\) as \(h\) gets increasingly small</p>
+            </div>
+            <div class="exercise">
+                <p>What does happen to the light green angle as \(h\) gets increasingly small? What does this mean for \(\alpha\)?</p>
+            </div>
+            <div class="answer">
+                <p>The light green angle gets increasingly small, which means that \(\alpha\) gets increasingly close to \(\theta\).</p>
+            </div>
+            <div class="intro">
+                <p>This time, watch what happens to the blue hypotenuse as \(h\) gets increasingly small</p>
+            </div>
+            <div class="exercise">
+                <p>What does happen as \(h\) gets increasingly small?</p>
+            </div>
+            <div class="answer">
+                <p>The blue hypotenuse gets increasingly close to the arc length, \(h\).</p>
+            </div>
+            <div class="exercise">
+                <p>What happens to \(\cos\alpha\) as \(h\) gets increasingly small?</p>
+            </div>
+            <div class="answer">
+                \[\cos\alpha=\frac{\sin(\theta+h)-\sin\theta}{\text{hypotenuse}}\to \frac{\sin(\theta+h)-\sin\theta}{h}\]
+            </div>
+            <div class="exercise">
+                <p>What is \[\frac{\mathrm{d}}{\mathrm{d}\theta}\sin\theta\;?\]</p>
+            </div>
+            <div class="answer">
+                <p>\[\begin{align*}
+                    \frac{\mathrm{d}}{\mathrm{d}\theta}\cos\alpha&=\lim_{h\to 0}\frac{\sin(\theta+h)-\sin\theta}{\text{hypotenuse}}\\[12pt]
+                    &=\lim_{h\to 0} \frac{\sin(\theta+h)-\sin\theta}{h}\\[12pt]
+                    &=\lim_{h\to 0}\cos\alpha\\[12pt]
+                    &=\cos\theta
+                    \end{align*}\].</p>
+            </div>
         </div>
     </div>
 <!--
@@ -257,76 +276,42 @@
         }
     }
 
-    function scheduleTimedPause(video, pauseAt, elToReveal, queueAfter) {
-        function onTimeUpdate() {
-            if (video.currentTime >= pauseAt) {
-                video.removeEventListener('timeupdate', onTimeUpdate);
-                video.pause();
-                video.playbackRate = 1;
-                [].concat(elToReveal).forEach(el => revealEl(el));
-                revealQueue = queueAfter;
-            }
-        }
-        video.addEventListener('timeupdate', onTimeUpdate);
-        return function () { video.removeEventListener('timeupdate', onTimeUpdate); };
-    }
-
     function setupPage3Timing(page, video) {
         if (!video) return;
-        const animatable = Array.from(page.querySelectorAll('div.exercise, div.answer'));
-        if (animatable.length === 0) return;
+        const am = Array.from(page.querySelectorAll('div.exercise, div.answer'));
+        if (am.length === 0) return;
 
-        animatable[0].classList.add('div-hidden');
+        am[0].classList.add('div-hidden');
         revealQueue = [];
 
-        const cues = [
-            { time: 29, exIdx: 0, ansIdx: 1, ansMs: 2000 },
-            { time: 39, exIdx: 2, ansIdx: 3, ansMs: 2400 },
-            { time: 49, exIdx: 4, ansIdx: 5, ansMs: 2400 },
-            { time: 54, exIdx: 6, ansIdx: 7, ansMs: 2400 },
-        ];
-
-        let timerCleanup = null;
-        function cancelTimer() { if (timerCleanup) { timerCleanup(); timerCleanup = null; } }
-
-        function buildQueue(cueIdx) {
-            const cue = cues[cueIdx];
-            const isLast = cueIdx + 1 >= cues.length;
-            return [
-                { _revealEl: animatable[cue.ansIdx], _briefPlay: { video, ms: cue.ansMs } },
-                isLast
-                    ? { _resumeVideo: video }
-                    : { _resumeVideo: video, _afterResume: () => {
-                        const next = cues[cueIdx + 1];
-                        timerCleanup = scheduleTimedPause(video, next.time, animatable[next.exIdx], buildQueue(cueIdx + 1));
-                    }}
-            ];
+        const cleanups = [];
+        function onAt(t, fn) {
+            function h() { if (video.currentTime >= t) { video.removeEventListener('timeupdate', h); fn(); } }
+            video.addEventListener('timeupdate', h);
+            cleanups.push(() => video.removeEventListener('timeupdate', h));
         }
+        function autoQ(el) { return [{ _revealEl: el, _autoResume: video }]; }
+
+        function armFrom54() { onAt(54, () => { video.pause(); revealEl(am[6]); revealQueue = autoQ(am[7]); }); }
+        function armFrom49() { onAt(49, () => { video.pause(); revealEl(am[4]); revealQueue = autoQ(am[5]); armFrom54(); }); }
+        function armFrom39() { onAt(39, () => { video.pause(); revealEl(am[2]); revealQueue = autoQ(am[3]); armFrom49(); }); }
+        function armFrom29() { onAt(29, () => { video.pause(); revealEl(am[0]); revealQueue = autoQ(am[1]); armFrom39(); }); }
 
         function applyState(t) {
-            cancelTimer();
-            animatable.forEach(el => el.classList.add('div-hidden'));
+            cleanups.forEach(fn => fn()); cleanups.length = 0;
+            am.forEach(el => el.classList.add('div-hidden'));
             revealQueue = [];
-            video.playbackRate = t < cues[0].time ? 2 : 1;
-            const nextIdx = cues.findIndex(c => t < c.time);
-            if (nextIdx === -1) {
-                animatable.forEach(el => el.classList.remove('div-hidden'));
-                return;
-            }
-            for (let i = 0; i < nextIdx; i++) {
-                animatable[cues[i].exIdx].classList.remove('div-hidden');
-                animatable[cues[i].ansIdx].classList.remove('div-hidden');
-            }
-            timerCleanup = scheduleTimedPause(video, cues[nextIdx].time, animatable[cues[nextIdx].exIdx], buildQueue(nextIdx));
+            video.playbackRate = 2;
+            if      (t < 29) { armFrom29(); }
+            else if (t < 39) { [0,1].forEach(i => am[i].classList.remove('div-hidden')); armFrom39(); }
+            else if (t < 49) { [0,1,2,3].forEach(i => am[i].classList.remove('div-hidden')); armFrom49(); }
+            else if (t < 54) { [0,1,2,3,4,5].forEach(i => am[i].classList.remove('div-hidden')); armFrom54(); }
+            else             { am.forEach(el => el.classList.remove('div-hidden')); }
         }
 
         function onSeeked() { applyState(video.currentTime); }
         video.addEventListener('seeked', onSeeked);
-
-        page3Cleanup = function () {
-            cancelTimer();
-            video.removeEventListener('seeked', onSeeked);
-        };
+        page3Cleanup = function () { cleanups.forEach(fn => fn()); cleanups.length = 0; video.removeEventListener('seeked', onSeeked); };
 
         applyState(video.currentTime);
     }
@@ -389,6 +374,21 @@
         applyState(video.currentTime);
     }
 
+    function setNavBlocked(blocked) {
+        const prompt = document.querySelector('.nav-prompt');
+        if (!prompt) return;
+        prompt.classList.toggle('nav-blocked', blocked);
+        if (!blocked) {
+            prompt.style.opacity = '';
+            prompt.style.animation = '';
+            prompt.style.transition = '';
+            prompt.style.pointerEvents = '';
+        }
+    }
+    document.addEventListener('play',  e => { if (e.target.tagName === 'VIDEO') setNavBlocked(true);  }, true);
+    document.addEventListener('pause', e => { if (e.target.tagName === 'VIDEO') setNavBlocked(false); }, true);
+    document.addEventListener('ended', e => { if (e.target.tagName === 'VIDEO') setNavBlocked(false); }, true);
+
     const _origShowPage   = window.showPage;
     const _origChangePage = window.changePage;
 
@@ -413,6 +413,7 @@
                     setTimeout(() => video.pause(), ms);
                 } else if (next._autoResume) {
                     next._autoResume.play().catch(() => {});
+                    if (next._afterResume) next._afterResume();
                 }
             } else {
                 revealEl(next);
@@ -434,7 +435,11 @@
             const videos = Array.from(page.querySelectorAll('video'));
             videos.forEach(v => { v.pause(); v.currentTime = 0; });
             const visibleVideo = videos.find(v => !v.closest('.div-hidden'));
-            if (visibleVideo) visibleVideo.play().catch(() => {});
+            if (visibleVideo) {
+                visibleVideo.play().catch(() => {});
+            } else {
+                setNavBlocked(false);
+            }
             if (pageNum === 3 && !isBackward) {
                 setupPage3Timing(page, visibleVideo || videos[0]);
             }
@@ -445,12 +450,10 @@
         goingBackward = false;
     };
 
-    window.changePage = function (delta, force) {
+    window.changePage = function (delta) {
         if (delta > 0) {
-            if (!force) {
-                const activePage = document.querySelector('.page.active');
-                if (activePage && Array.from(activePage.querySelectorAll('video')).some(v => !v.paused)) return;
-            }
+            const activePage = document.querySelector('.page.active');
+            if (activePage && Array.from(activePage.querySelectorAll('video')).some(v => !v.paused)) return;
             revealNextOrAdvance();
         } else {
             goingBackward = true;
