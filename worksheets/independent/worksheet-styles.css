@@ -12,6 +12,7 @@
 
 html {
     overflow-x: hidden;
+    scroll-padding-bottom: 80px;
 }
 
 body {
@@ -706,7 +707,7 @@ mjx-container[display="true"] {
     overflow-x: auto;
 }
 .aligned-eq-block .step { display: contents; }
-.aligned-eq-block .step.step-hidden > * { visibility: hidden; }
+.aligned-eq-block .step.step-hidden { display: none; }
 .aligned-eq-block .step.div-revealed > * { animation: divReveal 0.35s ease; }
 .aligned-eq-block .aeq-lhs { text-align: right; }
 .aligned-eq-block .aeq-op  { white-space: nowrap; padding: 0 0.15em; }

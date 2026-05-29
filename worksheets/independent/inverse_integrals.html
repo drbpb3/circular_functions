@@ -77,21 +77,13 @@
         <div class="intro">We can find \(\displaystyle{\int \arcsin x\,\mathrm{d}x}\) using an area argument. The region under \(\displaystyle{y = \arcsin x}\) from \(\displaystyle{x=0}\) to \(\displaystyle{x=a}\) can be related to the area of a rectangle minus a complementary curved region.
         </div>
         <figure>
-            <img src="inverse_images/image101.png" alt="Graph showing different segments" style="max-width:64%">
+            <img src="inverse_images/image101.png" alt="Graph showing different segments" style="max-width:56%">
         </figure>
         <div class="exercise">
             <p>What is the area of the shaded rectangle (pink and green together)?</p>
             <p>What is the pink shaded area?</p>
             <p>What is the green shaded area?</p>
         </div>
-    </div>
-<div class="page" id="page-3" data-reveal-steps>
-        <div class="exercise">
-            <p>Find \(\displaystyle{\displaystyle\int_0^a \arcsin x\,\mathrm{d}x}\) and deduce \(\displaystyle{\displaystyle\int \arcsin x\,\mathrm{d}x}\).</p>
-        </div>
-        <figure>
-            <img src="inverse_images/image101.png" alt="Graph showing different segments" style="max-width:64%">
-        </figure>
         <div class="answer">
             \[\text{rectangle area} = a\arcsin a\]
             <div class="step">\[\text{pink area} = \int_0^{\arcsin a}\!\sin y\,\mathrm{d}y = \Big[-\cos y\Big]_0^{\arcsin a}\]</div>
@@ -102,35 +94,16 @@
             <p>Use this result to find </p>
             \[\int \arcsin x\,\mathrm{d}x\]
         </div>
-
-    </div>
-<div class="page" id="page-4">
-    <div class="exercise">
-        <p>Find </p>
-        \[\int \arcsin x\,\mathrm{d}x\]
-    </div>
-    <div class="answer">
-        <p>We know that  </p>
-        \[\int_0^a \arcsin x\,\mathrm{d}x=a\arcsin a-1+\sqrt{1-a^2}\]
-        <p>and since the \(1\) is just a constant, the indefinite integral is simply</p>
-        \[\int \arcsin x\,\mathrm{d}x = x\arcsin x + \sqrt{1-x^2} + c\]
-    </div>
-</div>
-<div class="page" id="page-5">
-        <div class="exercise">
-            <p>Use a similar area argument to find \(\displaystyle{\displaystyle\int \arccos x\,\mathrm{d}x}\).</p>
-            
-<!--
-            <p>Consider the region under \(\displaystyle{y = \arccos x}\) from \(\displaystyle{x=0}\) to \(\displaystyle{x=a}\) (where \(\displaystyle{0 < a < 1}\)).</p>
-            <p>(a) &nbsp; The rectangle with height \(\displaystyle{\arccos(0) = \dfrac{\pi}{2}}\) and width \(\displaystyle{a}\) covers the region plus some extra. What is its area?</p>
-            <p>(b) &nbsp; The complementary curved region (to the left of \(\displaystyle{y = \arccos x}\)) has area \(\displaystyle{\displaystyle\int_{\arccos a}^{\pi/2}\!\cos y\,\mathrm{d}y}\). Evaluate this.</p>
-            <p>(c) &nbsp; Hence find \(\displaystyle{\displaystyle\int_0^a \arccos x\,\mathrm{d}x}\) and deduce \(\displaystyle{\displaystyle\int \arccos x\,\mathrm{d}x}\).</p>-->
+        <div class="answer">
+            <p>We know that  </p>
+            \[\int_0^a \arcsin x\,\mathrm{d}x=a\arcsin a-1+\sqrt{1-a^2}\]
+            <p>and since the \(1\) is just a constant, the indefinite integral is simply</p>
+            \[\int \arcsin x\,\mathrm{d}x = x\arcsin x + \sqrt{1-x^2} + c\]
         </div>
-        <figure>
-            <img src="inverse_images/image53.png" alt="Graph showing different segments" style="max-width:64%">
-        </figure>
     </div>
-<div class="page" id="page-6" data-reveal-steps>
+
+
+<div class="page" id="page-3" data-reveal-steps>
         <div class="exercise">
             <p>Find \(\displaystyle{\displaystyle\int \arccos x\,\mathrm{d}x}\) using an area argument.</p>
         </div>
@@ -144,20 +117,12 @@
             <div class="step">\[\Rightarrow\, \int \arccos x\,\mathrm{d}x = x\arccos x - \sqrt{1-x^2} + c\]</div>
         </div>
     </div>
-<div class="page" id="page-7">
+<div class="page" id="page-4" data-reveal-steps>
         <div class="exercise">
             <p>Use the area argument to find \(\displaystyle{\displaystyle\int \arctan x\,\mathrm{d}x}\).</p>
         </div>
         <figure>
-            <img src="inverse_images/image40.png" alt="arctan integral" style="max-width:80%">
-        </figure>
-    </div>
-<div class="page" id="page-8" data-reveal-steps>
-        <div class="exercise">
-            <p>Find \(\displaystyle{\displaystyle\int \arctan x\,\mathrm{d}x}\).</p>
-        </div>
-        <figure>
-            <img src="inverse_images/image40.png" alt="arctan integral" style="max-width:80%">
+            <img src="inverse_images/image40.png" alt="arctan integral" style="max-width:64%">
         </figure>
         <div class="answer">
             \[\text{rectangle area}= x\arctan x\]
@@ -165,15 +130,11 @@
             <div class="step">\[\sec(\arctan x) = \sqrt{1+x^2}, \;\text{so } \ln\sec(\arctan x) = \tfrac{1}{2}\ln(1+x^2)\]</div>
             <div class="step">\[\text{green area}= \int_0^x \arctan x\,\mathrm{d}x = x\arctan x - \tfrac{1}{2}\ln(1+x^2)\]</div>
         </div>
-        <div class="exercise">
-            <p>Use integration by parts to find \[\displaystyle{\int\arcsin x\,\mathrm{d}x}\] \[\displaystyle{\int\arccos x\,\mathrm{d}x}\]
-                \[\displaystyle{\int\arctan x\,\mathrm{d}x}\].</p>
-        </div>
+        
     </div>
-<div class="page" id="page-9" data-reveal-steps>
+<div class="page" id="page-5" data-reveal-steps>
     <div class="exercise">
-        <p>Use integration by parts to find \[\displaystyle{\int\arcsin x\,\mathrm{d}x}\] \[\displaystyle{\int\arccos x\,\mathrm{d}x}\]
-            \[\displaystyle{\int\arctan x\,\mathrm{d}x}\].</p>
+        <p>Use integration by parts to find \[\displaystyle{\int\arcsin x\,\mathrm{d}x}\]</p>
     </div>
         <div class="answer">
             \[u = \arcsin x\qquad \frac{\textrm{d}v}{\textrm{d}x}=1\]
@@ -181,11 +142,30 @@
             <div class="step">\[\begin{aligned}\int\arcsin x\,\mathrm{d}x &=uv-\int v\frac{\textrm{d}u}{\textrm{d}x}\;\textrm{d}x\end{aligned}\]</div>
             <div class="step">\[\begin{aligned}\phantom{\int\arcsin x\,\mathrm{d}x} &=x\arcsin x-\int \frac{x}{\sqrt{1-x^2}}\,\textrm{d} x\end{aligned}\]</div>
             <div class="step">\[\begin{aligned}\phantom{\int\arcsin x\,\mathrm{d}x} &= x\arcsin x + \sqrt{1-x^2} + c\end{aligned}\]</div>
-            <div class="step">\[u = \arccos x\qquad \frac{\textrm{d}v}{\textrm{d}x}=1\]</div>
-            <div class="step">\[\frac{\textrm{d}u}{\textrm{d}x}=-\frac{1}{\sqrt{1-x^2}}\qquad v=x\]</div>
-            <div class="step">\[\begin{aligned}\int\arccos x\,\mathrm{d}x &=uv-\int v\frac{\textrm{d}u}{\textrm{d}x}\;\textrm{d}x\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\arccos x\,\mathrm{d}x} &=x\arccos x+\int \frac{x}{\sqrt{1-x^2}}\,\textrm{d} x\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\arccos x\,\mathrm{d}x} &= x\arccos x -\sqrt{1-x^2} + c\end{aligned}\]</div>
+        </div>
+    </div>
+    <div class="page" id="page-6" data-reveal-steps>
+        <div class="exercise">
+            <p>Use integration by parts to find \[\displaystyle{\int\arccos x\,\mathrm{d}x}\].</p>
+        </div>
+            <div class="answer">
+                
+                <div class="step">\[u = \arccos x\qquad \frac{\textrm{d}v}{\textrm{d}x}=1\]</div>
+                <div class="step">\[\frac{\textrm{d}u}{\textrm{d}x}=-\frac{1}{\sqrt{1-x^2}}\qquad v=x\]</div>
+                <div class="step">\[\begin{aligned}\int\arccos x\,\mathrm{d}x &=uv-\int v\frac{\textrm{d}u}{\textrm{d}x}\;\textrm{d}x\end{aligned}\]</div>
+                <div class="step">\[\begin{aligned}\phantom{\int\arccos x\,\mathrm{d}x} &=x\arccos x+\int \frac{x}{\sqrt{1-x^2}}\,\textrm{d} x\end{aligned}\]</div>
+                <div class="step">\[\begin{aligned}\phantom{\int\arccos x\,\mathrm{d}x} &= x\arccos x -\sqrt{1-x^2} + c\end{aligned}\]</div>
+                
+            </div>
+        
+    </div>
+<div class="page" id="page-7" data-reveal-steps>
+    <div class="exercise">
+        <p>Use integration by parts to find 
+            \[\displaystyle{\int\arctan x\,\mathrm{d}x}\].</p>
+    </div>
+        <div class="answer">
+            
             <div class="step">\[u = \arctan x\qquad \frac{\textrm{d}v}{\textrm{d}x}=1\]</div>
             <div class="step">\[\frac{\textrm{d}u}{\textrm{d}x}=\frac{1}{1+x^2}\qquad v=x\]</div>
             <div class="step">\[\begin{aligned}\int\arctan x\,\mathrm{d}x &=uv-\int v\frac{\textrm{d}u}{\textrm{d}x}\;\textrm{d}x\end{aligned}\]</div>
@@ -193,8 +173,9 @@
             <div class="step">\[\begin{aligned}\phantom{\int\arctan x\,\mathrm{d}x} &= x\arctan x +\frac{1}{2}\ln\left(1+x^2\right)+ c\end{aligned}\]</div>
         </div>
     </div>
-    <!-- Page 10: Congratulations -->
-    <div class="page" id="page-10">
+
+    <!-- Page 9: Congratulations -->
+    <div class="page" id="page-8">
         <div class="welcome-page">
             <h1>Well done on completing Part 4!</h1>
             <div class="welcome-content">
@@ -218,7 +199,7 @@
         <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
         <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="10" onchange="goToPage(this.value)"> of 10
+        Page <input type="number" id="pageInput" value="1" min="1" max="8" onchange="goToPage(this.value)"> of 8
         </span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
         <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
