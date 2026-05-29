@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Circular Functions</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        },
+        options: {
+            enableMenu: false,
+            renderActions: {
+                addMenu: []
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+        .keep-space.div-hidden { display: block !important; visibility: hidden; }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+    <span class="back-btn">←</span>
+</a>
+
+<div class="container">
+    <!-- Page 1: Welcome Page -->
+    <div class="page" id="page-1">
+        <div class="welcome-page">
+            <h1>Welcome to the start of your circular functions insight journey</h1>
+            <div class="welcome-content">
+                <p>The circular functions are extensions of the trigonometry functions that you know from right-angled triangles. Often, the word trigonometry is used for these more general functions, but I prefer to use the term "circular functions"<span>&#8212; </span> and you are about to find out why! </p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                    </ul>
+                </div>
+
+                <button id="audio-enable-btn" onclick="toggleAudio(this)">🔇 Enable audio</button>
+
+                <p class="welcome-tip">Take your time with each page. Work on the questions before moving to the answers!</p>
+
+                <p class="welcome-author">
+                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Introduction -->
+    <div class="page" id="page-2">
+        <audio src="definitions_audio/audio00.mp3" onended="if(audioEnabled){var a=document.querySelector('#page-2 audio[data-trigger=on-reveal]');if(a){currentAudio=a;a.currentTime=0;a.play().catch(function(){});}}"></audio>
+        <h2 class="chapter">Defining the circular functions</h2>
+
+        <div class="teacher-note">
+            <p>My idea is to start with the trigonometric functions that my students already know, namely, ratios of sides in right-angled triangles, and to give them the chance to see for themselves how to extend these functions to include all real numbers in their domains. The purpose here is to begin a long process of divorcing the trigonometric functions from right-angled triangles, and ultimately from angles altogether.</p>
+
+            <p>At the same time, I want to decouple the functions from calculators; that is, to remind students that the trigonometric functions are more than just something that your calculator gives you. To do this, I want my students to know the easy exact values of trigonometric functions. This has to do with embedding the image of the unit circle in the minds' eyes of my students, and with continually reinforcing the interpretation of the functions in terms of the unit circle, again in opposition to an understanding of the functions as something that the calculator tells you. This then means that the solution of trigonometric equations is built on a firm foundation.</p>
+
+            <p>Any text in blue and any diagrams with a blue border are only for you, and do not appear on the student version.</p>
+
+            <p>For you as a teacher, you can, if you feel attracted to the idea, use them to hand more responsibility for progress to your students, encouraging them always to think for themselves rather than to outsource their thinking to you, to their calculator, to the mark-scheme, or to artificial intelligence. This takes a tremendous amount of patience on your part: the patience to give them time to figure something out for themselves either individually or, more likely, by collaborating with each other.</p>
+
+            <p>These sheets are not in any way a complete course: they provide a context within which to develop insight and understanding by encouraging self-reliance and curiosity. They will not replace more traditional resources; in particular, you will need both routine exercises and more challenging sets of problems both for fluency and for creative problem-solving.</p>
+        </div>
+        <div class="intro reveal-instant">
+            <audio data-trigger="on-reveal" src="definitions_audio/audio0.mp3"></audio>
+            <p>How exciting! You are about to embark on the study of a group of functions that are so fundamental to our understanding of the physical world that it is hard to imagine doing much physics at all without them. Your first introduction to them, trigonometry,  showed you how to use them to calculate angles and side lengths of triangles. Of course, you know perfectly well that sin, cos, and tan represent ratios of sides of right-angled triangles. But they are far more powerful than this! To begin to find out how, we need to think less about triangles and more about circles.</p>
+            <p>The word "trigonometry" really means "measurement of triangles" &mdash; it's a combination of two Greek words, "trigon", a
+                three-sided shape (a bit like hexagon, only with tri- instead of hex-) while "metron" means measure. Once we start working with circles, the name trigonometry doesn't make much sense to me. I prefer another common name for sin, cos, and tan: "circular functions". You'll often see all this material under the heading "trigonometry", and what we call it is really neither here nor there, but circular functions reminds us that the general definitions of sin, cos, and tan are based on circles and have little or nothing to do with triangles.
+                </p>
+            </div>
+
+    </div>
+
+    <!-- Page 3: How to use this document -->
+    <div class="page" id="page-3">
+        <div class="intro">
+            <p>When you are travelling on this journey, you will find questions in a pale yellow box. When you have considered and hopefully answered the question, navigate by pressing the forward arrow or swiping left. My discussion of the question will be in a pale green box, but don't go to this too soon. Give yourself as much time as you need with the question &mdash; if you go to my discussion early, you deprive yourself of the opportunity to practise thinking like a mathematician, which is, after all, the whole point of your being here reading and working on this. Be patient! Look around at the mathematical panorama!
+        </div>
+        <div class="intro">
+                We'll start way back with right-angled triangles, firstly to remind ourselves of what we already know about trigonometry, but also to establish some standard exact values that we will use for the rest of the sheet.
+        </div>
+    </div>
+
+    <!-- Page 4: Ready to Continue -->
+    <div class="page" id="page-4">
+        <div class="welcome-page">
+            <h1>You're ready to begin!</h1>
+            <div class="welcome-content">
+                <p>You now know the context and how to navigate this journey. The next stage establishes the key standard values of sin, cos, and tan, and uses the unit circle to extend these functions to all real numbers.</p>
+
+                <div class="navigation-box">
+                    <h2>What's Next:</h2>
+                    <ul>
+                        <li>Return to the <a href="/resources/insight-journeys/circular-functions" target="_top">journey page</a> and open <strong>Definitions</strong></li>
+                        <li>You'll find the exact values of sin, cos, and tan for key standard angles</li>
+                        <li>You'll see how the unit circle extends these to all real numbers — including angles beyond 360° and negative angles</li>
+                    </ul>
+                </div>
+
+                <p class="welcome-tip">Remember: take your time with each page and work on the questions before moving to the answers!</p>
+
+                <p class="welcome-author">
+                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="navigation">
+    <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+    <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+    <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="4" onchange="goToPage(this.value)"> of 4
+    </span>
+    <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+    <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+</div>
+
+<script src="navigation.js"></script>
+<script>
+(function () {
+    'use strict';
+
+    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer, div.crossfade-step, div.figure-reveal';
+
+    let revealQueue = [];
+    let goingBackward = false;
+
+    function initPageReveal(page, revealAll) {
+        revealQueue = [];
+        const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
+            .filter(div => !div.classList.contains('reveal-instant'));
+        animatable.forEach(div => div.classList.add('div-hidden'));
+        if (revealAll) {
+            animatable.forEach(div => div.classList.remove('div-hidden'));
+            page.querySelectorAll('.crossfade-step[data-cf-to]').forEach(function(step) {
+                const toEl = document.getElementById(step.dataset.cfTo);
+                if (toEl) { toEl.style.transition = 'none'; toEl.style.opacity = '1'; }
+                const fromEl = step.dataset.cfFrom ? document.getElementById(step.dataset.cfFrom) : null;
+                const fromScale = step.dataset.cfFromScale || '1';
+                if (fromEl) { fromEl.style.transition = 'none'; fromEl.style.opacity = '0'; fromEl.style.transform = `scale(${fromScale})`; }
+            });
+            return;
+        }
+        page.querySelectorAll('.crossfade-step[data-cf-to]').forEach(function(step) {
+            const toEl = document.getElementById(step.dataset.cfTo);
+            if (toEl) { toEl.style.transition = 'none'; toEl.style.opacity = '0'; }
+            const fromEl = step.dataset.cfFrom ? document.getElementById(step.dataset.cfFrom) : null;
+            if (fromEl) { fromEl.style.transition = 'none'; fromEl.style.opacity = '1'; fromEl.style.transform = 'scale(1)'; }
+        });
+        if (animatable.length > 0) {
+            animatable[0].classList.remove('div-hidden');
+            revealQueue = animatable.slice(1);
+        }
+    }
+
+    const _origShowPage   = window.showPage;
+    const _origChangePage = window.changePage;
+
+    function revealDiv(div) {
+        if (div.classList.contains('crossfade-step')) {
+            const duration = div.dataset.cfDuration || '1.5s';
+            const fromDuration = div.dataset.cfFromDuration || duration;
+            const toEl = div.dataset.cfTo ? document.getElementById(div.dataset.cfTo) : null;
+            const fromEl = div.dataset.cfFrom ? document.getElementById(div.dataset.cfFrom) : null;
+            const fromScale = div.dataset.cfFromScale || null;
+            if (toEl) {
+                toEl.style.transition = `opacity ${duration} ease`;
+                toEl.offsetHeight;
+                toEl.style.opacity = '1';
+            }
+            if (fromEl) {
+                const props = fromScale ? `opacity ${fromDuration} ease, transform ${fromDuration} ease` : `opacity ${fromDuration} ease`;
+                fromEl.style.transition = props;
+                fromEl.style.opacity = '0';
+                if (fromScale) fromEl.style.transform = `scale(${fromScale})`;
+            }
+            return;
+        }
+        div.classList.remove('div-hidden');
+        div.classList.add('div-revealed');
+        setTimeout(() => div.classList.remove('div-revealed'), 400);
+        div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        const onRevealAudio = div.querySelector('audio[data-trigger="on-reveal"]');
+        if (onRevealAudio && audioEnabled) {
+            if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+            currentAudio = onRevealAudio;
+            onRevealAudio.currentTime = 0;
+            onRevealAudio.play().catch(() => {});
+        }
+    }
+
+    function revealNextOrAdvance() {
+        if (revealQueue.length > 0) {
+            revealDiv(revealQueue.shift());
+            if (revealQueue.length > 0 && revealQueue[0].classList.contains('figure-reveal')) {
+                revealDiv(revealQueue.shift());
+            }
+        } else {
+            _origChangePage(1);
+        }
+    }
+
+    window.showPage = function (pageNum, revealAll) {
+        _origShowPage(pageNum);
+        const page = document.getElementById('page-' + pageNum);
+        if (page) {
+            const wasRevealing = revealAll || goingBackward;
+            initPageReveal(page, wasRevealing);
+            if (wasRevealing && audioEnabled && !currentAudio) {
+                const onRevealAudio = page.querySelector('audio[data-trigger="on-reveal"]');
+                if (onRevealAudio) {
+                    currentAudio = onRevealAudio;
+                    onRevealAudio.currentTime = 0;
+                    onRevealAudio.play().catch(() => {});
+                }
+            }
+        }
+        goingBackward = false;
+    };
+
+    window.changePage = function (delta) {
+        if (delta > 0) {
+            revealNextOrAdvance();
+        } else {
+            goingBackward = true;
+            _origChangePage(delta);
+        }
+    };
+}());
+</script>
+
+</body>
+</html>
