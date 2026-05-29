@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Equations">
+    <meta name="theme-color" content="#2c3e50">
+    <title>Circular Function Equations</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        },
+        options: {
+            enableMenu: false,
+            renderActions: {
+                addMenu: []
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+        .image-stack {
+            display: grid;
+            max-width: 65%;
+            margin: 20px auto;
+            border-radius: 10px;
+            border: 4px solid #2d5a27;
+            padding: 10px;
+            background: white;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+        }
+        .image-stack .stack-img {
+            grid-area: 1 / 1;
+            width: 100%;
+            max-width: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+        }
+        .image-stack .stack-img.stack-img--active { opacity: 1; }
+        .layout-preserve-hidden.div-hidden {
+            display: block !important;
+            visibility: hidden !important;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+    <span class="back-btn">←</span>
+</a>
+
+<div class="container">
+
+    <!-- Page 1: Welcome Page -->
+    <div class="page" id="page-1">
+        <div class="welcome-page">
+            <h1>Welcome to solving equations with circular functions</h1>
+            <div class="welcome-content">
+                <p>This stage builds on your understanding of the definitions of circular functions and explores their consequences for equations involving them.</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                    </ul>
+                </div>
+
+                <button id="audio-enable-btn" onclick="toggleAudio(this)">🔇 Enable audio</button>
+
+                <p class="welcome-tip">Use the unit circle diagram to help you visualize solutions!</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2 -->
+<div class="page" id="page-2">
+    <div class="intro">
+        <p>Let's simplify the notation a bit.</p>
+        <p>First, let's number the seats so that each passenger \(i\) is assigned seat number \(i\), and </p>
+        \[T_i=\text{the seat number of passenger }i\]
+        <br>
+        <p>If \(T_1=1\), then every passenger will be in their assigned seat, so </p>
+        \[\begin{align*}
+        P\left(T_n=n|T_1=1\right)&=1\\[12pt]
+        P\left(T_n=n\cap T_1=1\right)&=P\left(T_n=n|T_1=1\right)P\left(T_1=1\right)\\[12pt]
+        &=\frac{1}{n}
+        \end{align*}\]
+        <p>If \(T_1=6\), then passengers 2 to 5 will be in their assigned seats, so we only need to consider passengers 6 to \(n\). To make things a little bit easier to grasp, let's take \(n=16\). Now we have 5 passengers in seats 2 to 6 and 11 passengers still to sit in seats 1 and 7 to 16.</p>
+        \[\begin{align*}
+        P\left(T_{16}=16|T_1=6\right)&=P(T_{11}=11)=P_{11}\\[12pt]
+        P\left(T_n=n|T_1=6\right)&=P(T_{n-5}=n-5)=P_{n-5}\\[12pt]
+        P\left(T_n=n\cap T_1=6\right)&=P\left(T_n=n|T_1=6\right)P\left(T_1=6\right)\\[12pt]
+        &=\frac{1}{n}P_{n-5}\\[12pt]
+        P\left(T_n=n\cap T_1=k\right)&=\frac{1}{n}P_{n-k+1}\\[12pt]
+        \text{when }1 < k < n
+        \end{align*}\]
+        <p>And lastly</p>
+        \[\begin{align*}
+        P\left(T_n=n|T_1=n\right)&=0\\[12pt]
+        P\left(T_n=n\cap T_1=n\right)&=0
+        \end{align*}\]
+    </div>
+</div>
+  
+<div class="page" id="page-3">
+    <div class="intro">
+
+        <p>Now we can put things together:</p>
+
+        \begin{align*}
+        P_n&=\sum_1^n P(T_n=n\cap T_1=k)\\[12pt]
+        &=\sum_1^n P(T_n=n|T_1=k)P(T_1=k)\\[12pt]
+        &=\frac{1}{n}\sum_1^n P(T_n=n|T_1=k)\\[12pt]
+        &=\frac{1}{n}\left(P(T_n=n|T_1=1)+\frac{1}{n}\sum_2^{n-1} P(T_n=n|T_1=k)+P(T_n=n|T_1=n)\right)\\[12pt]
+        &=\frac{1}{n}\left(1+\frac{1}{n}\sum_2^{n-1} P(T_n=n|T_1=k)+0\right)\\[12pt]
+        &=\frac{1}{n}\left(1+\frac{1}{n}\sum_2^{n-1} P_{n-k+1}\right)\\[12pt]
+        \end{align*}
+        <p>Now put \(r=n-k+1\) so that \(2\le r\le n-1\), and </p>
+        \begin{align*}
+        P_n&=\frac{1}{n}\left(1+\frac{1}{n}\sum_{r=2}^{n-1} P_{r}\right)
+        \end{align*}
+    </div>
+</div>
+<div class="page" id="page-4">
+    <div class="intro">
+        <p>We can see pretty easily that \(P_2=\frac{1}{2}\), and then the recurrence relation shows that \(P_n=\frac{1}{2}\) for all \(n\ge 2\).</p>
+        <p>That's perhaps a slightly unexpected result. It makes me wonder whether I can find an intuitive way of understanding why this should be so, not a complicated analytical way.</p>
+        <p>To start with, notice that, if \(n=16\), then \(P(T_{16}=15)=0\), because  \(T_{m}= 15\) where \(m\le 15\). And similarly, passenger \(n\) can only ever end up in seat \(1\) or \(n\).</p>
+        <p>Can we perhaps see why these two outcomes should be equally likely?</p>
+        <p>There are repeated occasions when a passenger makes a choice to occupy a seat that is not their assigned seat. If seat \(1\) and seat \(n\) are both free, then the probabilities that the passenger chooses one or the other or these are equal. Once one of them has been chosen, the other must be the final destination of passenger \(n\).</p>
+    </div>
+
+</div>
+<div class="navigation">
+    <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+    <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+    <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="3" onchange="goToPage(this.value)"> of 3
+    </span>
+    <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+    <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+</div>
+
+<script src="navigation.js"></script>
+<script>
+(function () {
+    'use strict';
+    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer';
+    let revealQueue = [];
+    let goingBackward = false;
+
+    function initPageReveal(page, revealAll) {
+        revealQueue = [];
+        if (page.hasAttribute('data-no-reveal')) { return; }
+
+        const groupedEls = Array.from(page.querySelectorAll('[data-reveal-group]'))
+            .filter(el => !el.classList.contains('reveal-instant'));
+
+        if (groupedEls.length > 0) {
+            // Group-based reveal: bucket by group value, sort groups, reveal first immediately
+            const groups = {};
+            groupedEls.forEach(el => {
+                const g = el.getAttribute('data-reveal-group');
+                if (!groups[g]) groups[g] = [];
+                groups[g].push(el);
+            });
+            const batches = Object.keys(groups).sort().map(k => groups[k]);
+            groupedEls.forEach(el => el.classList.add('div-hidden'));
+            if (revealAll) {
+                groupedEls.forEach(el => el.classList.remove('div-hidden'));
+                return;
+            }
+            batches[0].forEach(el => el.classList.remove('div-hidden'));
+            batches[0].forEach(playOnRevealAudio);
+            revealQueue = batches.slice(1);
+        } else {
+            // DOM-order reveal: animatable divs and image-stack crossfades interleaved by position
+            // .crossfade-next placeholders pull the next pending crossfade from the page's stack
+            const items = [];
+            const pendingCrossfades = [];
+            page.querySelectorAll(ANIMATABLE + ', .image-stack, .crossfade-next').forEach(node => {
+                if (node.classList.contains('image-stack')) {
+                    const imgs = Array.from(node.querySelectorAll('.stack-img'));
+                    imgs.forEach(img => img.classList.remove('stack-img--active'));
+                    if (imgs.length > 0) {
+                        imgs[0].classList.add('stack-img--active');
+                        // first crossfade fires at the stack position; rest are deferred
+                        if (imgs.length > 1) {
+                            items.push({ _crossfade: { from: imgs[0], to: imgs[1] } });
+                        }
+                        for (let i = 2; i < imgs.length; i++) {
+                            pendingCrossfades.push({ _crossfade: { from: imgs[i - 1], to: imgs[i] } });
+                        }
+                    }
+                } else if (node.classList.contains('crossfade-next')) {
+                    if (pendingCrossfades.length > 0) items.push(pendingCrossfades.shift());
+                } else if (!node.classList.contains('reveal-instant')) {
+                    node.classList.add('div-hidden');
+                    items.push(node);
+                }
+            });
+            // flush any unplaced crossfades to the end
+            pendingCrossfades.forEach(cf => items.push(cf));
+            if (revealAll) {
+                page.querySelectorAll(ANIMATABLE).forEach(el => {
+                    if (!el.classList.contains('reveal-instant')) el.classList.remove('div-hidden');
+                });
+                page.querySelectorAll('.image-stack').forEach(stack => {
+                    const imgs = Array.from(stack.querySelectorAll('.stack-img'));
+                    imgs.forEach(img => img.classList.remove('stack-img--active'));
+                    if (imgs.length > 0) imgs[imgs.length - 1].classList.add('stack-img--active');
+                });
+            } else if (items.length > 0) {
+                const first = items[0];
+                if (!first._crossfade) { first.classList.remove('div-hidden'); playOnRevealAudio(first); }
+                revealQueue = items.slice(1);
+            }
+        }
+    }
+
+    const _origShowPage   = window.showPage;
+    const _origChangePage = window.changePage;
+
+    function playOnRevealAudio(el) {
+        const audio = el.querySelector && el.querySelector('audio[data-trigger="on-reveal"]');
+        if (audio && audioEnabled) {
+            if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }
+            currentAudio = audio;
+            audio.currentTime = 0;
+            audio.play().catch(() => {});
+        }
+    }
+
+    function revealNextOrAdvance() {
+        if (revealQueue.length > 0) {
+            const next = revealQueue.shift();
+            if (next && next._crossfade) {
+                next._crossfade.from.classList.remove('stack-img--active');
+                next._crossfade.to.classList.add('stack-img--active');
+            } else {
+                const items = Array.isArray(next) ? next : [next];
+                items.forEach(el => {
+                    el.classList.remove('div-hidden');
+                    el.classList.add('div-revealed');
+                    setTimeout(() => el.classList.remove('div-revealed'), 400);
+                    playOnRevealAudio(el);
+                });
+                items[items.length - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        } else {
+            _origChangePage(1);
+        }
+    }
+
+    window.showPage = function (pageNum, revealAll) {
+        _origShowPage(pageNum);
+        const page = document.getElementById('page-' + pageNum);
+        if (page) {
+            initPageReveal(page, revealAll || goingBackward);
+        }
+        goingBackward = false;
+    };
+
+    window.changePage = function (delta) {
+        if (delta > 0) {
+            revealNextOrAdvance();
+        } else {
+            goingBackward = true;
+            _origChangePage(delta);
+        }
+    };
+}());
+</script>
+
+</body>
+</html>

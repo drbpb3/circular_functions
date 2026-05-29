@@ -37,6 +37,7 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <link rel="stylesheet" href="worksheet-styles.css">
+
 </head>
 <body oncontextmenu="return false;">
 
@@ -85,11 +86,31 @@
             <p>Find the shaded area.</p>
         </div>
         <div class="answer">
-            \[\begin{aligned}\frac{\mathrm{d}}{\mathrm{d}x}\arcsin x&=\frac{1}{\sqrt{1-x^2}}\end{aligned}\]
-            <div class="step">\[\begin{aligned}\Rightarrow\, \int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x&=\arcsin x+c\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\Rightarrow\,\text{area}&=\int_0^1 \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\Rightarrow\,\text{area}}&=\bigg[\arcsin x\bigg]_0^1\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\Rightarrow\,\text{area}}&=\frac{\pi}{2}\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(\dfrac{\mathrm{d}}{\mathrm{d}x}\arcsin x\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\dfrac{1}{\sqrt{1-x^2}}\)</span>
+                <div class="step">
+                    <span class="aeq-lhs">\(\Rightarrow\,\displaystyle\int \dfrac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\arcsin x+c\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\Rightarrow\,\text{area}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int_0^1 \dfrac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\bigg[\arcsin x\bigg]_0^1\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\pi}{2}\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -99,12 +120,36 @@
             <p>Use the substitution <span class="math inline">\(\displaystyle{u = \arcsin x}\)</span> for the integral \[\int \frac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\]</p>
         </div>
         <div class="answer">
-            \[\begin{aligned}u = \arcsin x \Rightarrow\, \frac{\mathrm{d}u}{\mathrm{d}x} &= \frac{1}{\sqrt{1 - x^{2}}}\end{aligned}\]
-            <div class="step">\[\begin{aligned}\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x &= \int\frac{1}{\sqrt{1 - x^{2}}}\,\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \int\frac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \int \mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= u + c\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \arcsin x + c\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(u = \arcsin x \Rightarrow\,\dfrac{\mathrm{d}u}{\mathrm{d}x}\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\dfrac{1}{\sqrt{1 - x^{2}}}\)</span>
+                <div class="step">
+                    <span class="aeq-lhs">\(\displaystyle\int\dfrac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int\dfrac{1}{\sqrt{1 - x^{2}}}\,\dfrac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int\dfrac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int \mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(u + c\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\arcsin x + c\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -114,15 +159,49 @@
             <p>In practice, you might write the subsitution as \(\displaystyle{x=\sin u}\). Try it this way.</p>
         </div>
         <div class="answer">
-            \[\begin{aligned}x = \sin u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u} &= \cos u\end{aligned}\]
-            <div class="step">\[\begin{aligned}\phantom{x = \sin u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u}} &= \pm \sqrt{1 - \sin^{2}u}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{x = \sin u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u}} &= \pm \sqrt{1 - x^{2}}\end{aligned}\]</div>
-            <div class="step"><p>At this point, it is really important to remember that the actual substitution is \(\displaystyle{u=\arcsin x}\) so that \(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}u}>0}\)</p></div>
-            <div class="step">\[\begin{aligned}\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x &= \int\frac{1}{\sqrt{1 - x^{2}}}\;\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \int\frac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \int \mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= u + c\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= \arcsin x + c\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(x = \sin u \Rightarrow\,\dfrac{\mathrm{d}x}{\mathrm{d}u}\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\cos u\)</span>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\pm \sqrt{1 - \sin^{2}u}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\pm \sqrt{1 - x^{2}}\)</span>
+                </div>
+            </div>
+            <div class="step"><p>At this point, it is really important to remember that the actual substitution is \(\displaystyle{u=\arcsin x}\) so that \(\displaystyle{\dfrac{\mathrm{d}x}{\mathrm{d}u}>0}\)</p></div>
+            <div class="aligned-eq-block">
+                <div class="step">
+                    <span class="aeq-lhs">\(\displaystyle\int\dfrac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int\dfrac{1}{\sqrt{1 - x^{2}}}\;\dfrac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int\dfrac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int \mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(u + c\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\arcsin x + c\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -134,15 +213,49 @@
             </p>
         </div>
         <div class="answer">
-            \[\begin{aligned}x = \cos u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u} &= -\sin u\end{aligned}\]
-            <div class="step">\[\begin{aligned}\phantom{x = \cos u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u}} &= \pm \sqrt{1 - \cos^{2}u}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{x = \cos u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u}} &= \pm \sqrt{1 - x^{2}}\end{aligned}\]</div>
-            <div class="step"><p>At this point, it is really important to remember that the actual substitution is \(\displaystyle{u=\arccos x}\) so that \(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}u}<0}\)</p></div>
-            <div class="step">\[\begin{aligned}\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x &= \int\frac{1}{\sqrt{1 - x^{2}}}\;\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= -\int\frac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= -\int \mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= -u + c\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x} &= -\arccos x + c\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(x = \cos u \Rightarrow\,\dfrac{\mathrm{d}x}{\mathrm{d}u}\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(-\sin u\)</span>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\pm \sqrt{1 - \cos^{2}u}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\pm \sqrt{1 - x^{2}}\)</span>
+                </div>
+            </div>
+            <div class="step"><p>At this point, it is really important to remember that the actual substitution is \(\displaystyle{u=\arccos x}\) so that \(\displaystyle{\dfrac{\mathrm{d}x}{\mathrm{d}u}<0}\)</p></div>
+            <div class="aligned-eq-block">
+                <div class="step">
+                    <span class="aeq-lhs">\(\displaystyle\int\dfrac{1}{\sqrt{1 - x^{2}}}\;\mathrm{d}x\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int\dfrac{1}{\sqrt{1 - x^{2}}}\;\dfrac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle{-}\int\dfrac{1}{\sqrt{1 - x^{2}}}\sqrt{1 - x^{2}}\;\mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle{-}\int \mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-u + c\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-\arccos x + c\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -172,11 +285,31 @@
             </figure>
         </div>
         <div class="answer">
-            \[\begin{aligned}\frac{\mathrm{d}}{\mathrm{d}x}\arctan x&=\frac{1}{1+x^2}\end{aligned}\]
-            <div class="step">\[\begin{aligned}\Rightarrow\, \int \frac{1}{1+x^2}\;\mathrm{d}x&=\arctan x+c\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\Rightarrow\,\text{area}&=\int_0^\infty \frac{1}{1+x^2}\;\mathrm{d}x\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\Rightarrow\,\text{area}}&=\bigg[\arctan x\bigg]_0^\infty\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\Rightarrow\,\text{area}}&=\frac{\pi}{2}\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(\dfrac{\mathrm{d}}{\mathrm{d}x}\arctan x\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\dfrac{1}{1+x^2}\)</span>
+                <div class="step">
+                    <span class="aeq-lhs">\(\Rightarrow\,\displaystyle\int \dfrac{1}{1+x^2}\;\mathrm{d}x\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\arctan x+c\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\Rightarrow\,\text{area}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int_0^\infty \dfrac{1}{1+x^2}\;\mathrm{d}x\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\bigg[\arctan x\bigg]_0^\infty\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\pi}{2}\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -186,14 +319,46 @@
             <p>Use the substitution \(\displaystyle{x = \tan u}\) for the integral \[\int\frac{1}{1 + x^{2}}\;\mathrm{d}x\]</p>
         </div>
         <div class="answer">
-            \[\begin{aligned}x = \tan u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u} &= \sec^{2}u\end{aligned}\]
-            <div class="step">\[\begin{aligned}\phantom{x = \tan u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u}} &= 1 + \tan^{2}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{x = \tan u \Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}u}} &= 1 + x^{2}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\int\frac{1}{1 + x^{2}}\;\mathrm{d}x &= \int\frac{1}{1 + x^{2}}\;\frac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{1 + x^{2}}\;\mathrm{d}x} &= \int\frac{1}{1 + x^{2}}\left( 1 + x^{2} \right)\;\mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{1 + x^{2}}\;\mathrm{d}x} &= \int \mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{1 + x^{2}}\;\mathrm{d}x} &= u + c\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\frac{1}{1 + x^{2}}\;\mathrm{d}x} &= \arctan x + c\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(x = \tan u \Rightarrow\,\dfrac{\mathrm{d}x}{\mathrm{d}u}\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\sec^{2}u\)</span>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(1 + \tan^{2}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(1 + x^{2}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\displaystyle\int\dfrac{1}{1 + x^{2}}\;\mathrm{d}x\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int\dfrac{1}{1 + x^{2}}\;\dfrac{\mathrm{d}x}{\mathrm{d}u}\mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int\dfrac{1}{1 + x^{2}}\left( 1 + x^{2} \right)\;\mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int \mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(u + c\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\arctan x + c\)</span>
+                </div>
+            </div>
         </div>
         <div class="intro">
             <p>Here, although the substitution is actually \(\displaystyle{u=\arctan x}\), there is no difficulty with the signs as there was before.</p>
@@ -224,8 +389,16 @@
             <p>What are the area of the green segment and the area of the pink triangle?</p>
         </div>
         <div class="answer">
-            \[\text{green area}=\frac{1}{2}\arcsin a\]
-            <div class="step">\[\text{pink area}=\frac{1}{2}a\sqrt{1-a^2}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(\text{green area}\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\dfrac{1}{2}\arcsin a\)</span>
+                <div class="step">
+                    <span class="aeq-lhs">\(\text{pink area}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{1}{2}a\sqrt{1-a^2}\)</span>
+                </div>
+            </div>
         </div>
         <div class="exercise">
             <p>Use these results to find
@@ -233,8 +406,16 @@
             </p>
         </div>
         <div class="answer">
-            \[\begin{aligned}\int_0^a\sqrt{1-x^2}\,\mathrm{d}x&=\text{green + pink areas}\end{aligned}\]
-            <div class="step">\[\begin{aligned}\phantom{\int_0^a\sqrt{1-x^2}\,\mathrm{d}x}&=\frac{1}{2}\arcsin a+\frac{1}{2}a\sqrt{1-a^2}\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(\displaystyle\int_0^a\sqrt{1-x^2}\,\mathrm{d}x\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\text{green + pink areas}\)</span>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{1}{2}\arcsin a+\dfrac{1}{2}a\sqrt{1-a^2}\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -244,13 +425,41 @@
             <p>Find \(\displaystyle{\int\sqrt{1-x^2}\,\mathrm{d}x}\) using the substitution \(\displaystyle{x = \sin u}\).</p>
         </div>
         <div class="answer">
-            \[\frac{\mathrm{d}x}{\mathrm{d}u} = \cos u\]
-            <div class="step">\[\begin{aligned}\int\sqrt{1-x^2}\,\mathrm{d}x &= \int\sqrt{1-\sin^2 u}\cos u\,\mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \int\cos^2 u\,\mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \int\frac{1+\cos 2u}{2}\,\mathrm{d}u\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \frac{u}{2} + \frac{\sin 2u}{4} + c\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \frac{u}{2} + \frac{2\sin u\cos u}{4} + c\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\sqrt{1-x^2}\,\mathrm{d}x} &= \frac{\arcsin x}{2} + \frac{x\sqrt{1-x^2}}{2} + c\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(\dfrac{\mathrm{d}x}{\mathrm{d}u}\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\cos u\)</span>
+                <div class="step">
+                    <span class="aeq-lhs">\(\displaystyle\int\sqrt{1-x^2}\,\mathrm{d}x\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int\sqrt{1-\sin^2 u}\cos u\,\mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int\cos^2 u\,\mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\int\dfrac{1+\cos 2u}{2}\,\mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{u}{2} + \dfrac{\sin 2u}{4} + c\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{u}{2} + \dfrac{2\sin u\cos u}{4} + c\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\arcsin x}{2} + \dfrac{x\sqrt{1-x^2}}{2} + c\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -331,7 +540,11 @@
                 next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
                 next.classList.add('div-revealed');
                 setTimeout(() => next.classList.remove('div-revealed'), 400);
-                const scrollTarget = next.classList.contains('nav-gated') ? (next.firstElementChild || next) : next;
+                const scrollTarget = next.classList.contains('nav-gated')
+                    ? (next.firstElementChild || next)
+                    : window.getComputedStyle(next).display === 'contents'
+                        ? (next.lastElementChild || next)
+                        : next;
                 scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             } else {
                 _origChangePage(1);

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More differentials of circular functions</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: {
+            fontCache: 'global',
+            scale: 1,
+            minScale: 0.5,
+            mtextInheritFont: false,
+            merrorInheritFont: false,
+            mathmlSpacing: false,
+            skipAttributes: {},
+            exFactor: 0.5,
+            displayAlign: 'center',
+            displayIndent: '0'
+        },
+        startup: {
+            pageReady: () => {
+                return MathJax.startup.defaultPageReady();
+            }
+        },
+        options: {
+            enableMenu: false,
+            renderActions: {
+                addMenu: []
+            }
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+        video { cursor: pointer; }
+        .step { margin-top: 18pt; }
+
+        /* Hide nav prompt while video plays (class beats hideNavPromptTemporarily's inline-style restore) */
+        .nav-prompt.nav-blocked { opacity: 0 !important; animation: none !important; pointer-events: none !important; }
+
+        /* Pin exercise and video at top; answer scrolls independently */
+        body { overflow: clip; }
+        .page.active {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 80px);
+            overflow: clip;
+            padding-bottom: 0;
+            min-height: unset;
+        }
+        .page.active h2.chapter,
+        .page.active .intro,
+        .page.active .exercise,
+        .page.active figure {
+            flex-shrink: 0;
+        }
+        .page.active .answer {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+        }
+        .page.active figure {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        /* Scrollable content area below the pinned video */
+        .page.active .page-scroll {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+        }
+        /* Answers inside page-scroll are plain block elements, not flex items */
+        .page.active .page-scroll .answer {
+            flex: unset;
+            min-height: unset;
+            overflow-y: visible;
+        }
+        /* Steps inside page-scroll use display:none so the answer box grows as they reveal */
+        .page-scroll .aligned-eq-block .step.step-hidden { display: none; }
+        .page.active figure video {
+            max-width: 84%;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+    <span class="back-btn">←</span>
+</a>
+
+<div class="container">
+
+    <!-- Page 1: Welcome Page -->
+    <div class="page" id="page-1">
+        <div class="welcome-page">
+            <h1>More differentials of circular functions</h1>
+            <div class="welcome-content">
+                <p>We've explored sine, cosine, and tangent functions in some depth. Now it's time to broaden our horizons with some new functions.</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                    </ul>
+                </div>
+
+                <button id="audio-enable-btn" onclick="toggleAudio(this)">🔇 Enable audio</button>
+
+                <p class="welcome-tip">Take your time with each video. Pause, rewind, and think before moving on!</p>
+
+                <p class="welcome-author">
+                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Page 2 -->
+    <div class="page" id="page-2">
+
+        <div class="intro">
+            Watch this video to figure out the differential of \(\cos x\).
+        </div>
+        <figure>
+            <video autoplay muted playsinline style="max-width: 60%"><source src="more_differentials_images/cosderiv.mp4" alt="animation of differential of cos"></video>
+        </figure>
+        <div class="page-scroll">
+            <div class="exercise">
+                <p>First of all, what is the relationship of the yellow curve to the white graph \(y=\cos x\)?</p>
+            </div>
+            <div class="answer">
+                <p>The yellow curve represents the gradient of the white curve.</p>
+            </div>
+            <div class="exercise">
+                <p>Use the equation of the yellow curve to find the differential of \(\cos x\).</p>
+            </div>
+            <div class="answer">
+                <p>It's easy to see from the graph \(y=\cos x\) and the fact that it is a translation of the sin graph, that
+                    \[\frac{\mathrm{d}}{\mathrm{d}x}\cos x=-\sin x\]
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page" id="page-3">
+        <div class="exercise">
+            <p>Use the definition of a differential to find the differential of \(\cos x\):</p>
+        </div>
+        <div class="answer">
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(f(x)\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\cos x\)</span>
+
+                <div class="step">
+                    <span class="aeq-lhs">\(f'(x)\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{f(x+h)-f(x)}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{\cos(x+h)-\cos x}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{\cos x\cos h-\sin x\sin h-\cos x}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{-\cos x(1-\cos h)-\sin x\sin h}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-\cos x\displaystyle\lim_{h\to 0}\dfrac{1-\cos h}{h}-\sin x\lim_{h\to 0}\dfrac{\sin h}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-\sin x\)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="page" id="page-4">
+        <div class="exercise">
+            This video demonstrates the differential of \(\tan x\).
+        </div>
+        <figure>
+            <video autoplay muted playsinline style="max-width: 60%"><source src="more_differentials_images/tanderiv.mp4" alt="animation of differential of tan"></video>
+        </figure>
+        <div class="page-scroll">
+            <div class="exercise">
+                Use the quotient rule to find the differential of \(\tan x\).
+            </div>
+            <div class="answer">
+                <!-- Quotient rule result: grid aligns = signs via column layout -->
+                <div class="aligned-eq-block">
+                    <span class="aeq-lhs">\(f(x)\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\tan x=\dfrac{\sin x}{\cos x}\)</span>
+
+                    <div class="step">
+                        <span class="aeq-lhs">\(f'(x)\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\dfrac{\cos^2 x+\sin^2 x}{\cos^2 x}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\dfrac{1}{\cos^2 x}=\sec^2 x\)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 5 -->
+    <div class="page" id="page-5">
+        <div class="page-scroll">
+            <div class="exercise">
+                Have a go at a first-principles differential of \(\tan x\).
+            </div>
+            <div class="answer">
+                <!-- First-principles derivation -->
+                <div class="aligned-eq-block">
+                    <div class="step">
+                        <span class="aeq-lhs">\(\dfrac{\tan(x+h)-\tan x}{h}\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\dfrac{1}{h}\!\left[\dfrac{\tan x+\tan h}{1-\tan x\tan h}-\tan x\right]\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\dfrac{1}{h}\dfrac{\tan x+\tan h-\tan x+\tan^2 x\tan h}{1-\tan x\tan h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\dfrac{1}{h}\dfrac{\tan h(1+\tan^2 x)}{1-\tan x\tan h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\dfrac{\tan h}{h}\dfrac{1+\tan^2 x}{1-\tan x\tan h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\dfrac{\tan h}{h}\dfrac{\sec^2 x}{1-\tan x\tan h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(\to\)</span>
+                        <span class="aeq-rhs">\(1\times\sec^2 x\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(\Rightarrow\)</span>
+                        <span class="aeq-rhs">\(\dfrac{\mathrm{d}}{\mathrm{d}x}\tan x=\sec^2 x\)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 6 -->
+    <div class="page" id="page-6">
+        <div class="exercise">
+            And here is the differential of \(\sec x\).
+        </div>
+        <figure>
+            <video autoplay muted playsinline style="max-width:60%"><source src="more_differentials_images/secderiv.mp4" alt="animation of differential of cos"></video>
+        </figure>
+        <div class="page-scroll">
+            <div class="exercise">
+                Use the quotient rule to find the differential of \(\sec x\).
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <span class="aeq-lhs">\(f(x)\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\sec x=\dfrac{1}{\cos x}\)</span>
+
+                    <div class="step">
+                        <span class="aeq-lhs">\(f'(x)\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\dfrac{\sin x}{\cos^2 x}=\sec x\tan x\)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 7 -->
+    <div class="page" id="page-7">
+        <div class="page-scroll">
+            <div class="exercise">
+                <p>or if you prefer to differentiate everything using only the essential definition of a differential:</p>
+                \[\begin{aligned}f(x)&=\sec x\end{aligned}\]
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <div class="step">
+                        <span class="aeq-lhs">\(f'(x)\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{f(x+h)-f(x)}{h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{\sec(x+h)-\sec x}{h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{\dfrac{1}{\cos(x+h)}-\dfrac{1}{\cos x}}{h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{\cos x-\cos(x+h)}{h\cos x\cos(x+h)}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\dfrac{\cos x-\cos(x+h)}{h}\cdot\dfrac{1}{\cos x\cos(x+h)}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\sin x\cdot\dfrac{1}{\cos^2 x}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\dfrac{\sin x}{\cos^2 x}=\sec x\tan x\)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 8 -->
+    <div class="page" id="page-8">
+        <div class="exercise">
+            Use the quotient rule to find the differential of \(\operatorname{cosec} x\).
+        </div>
+        <figure>
+            <video autoplay muted playsinline style="max-width:60%"><source src="more_differentials_images/cscderiv.mp4" alt="animation of differential of csc"></video>
+        </figure>
+        <div class="page-scroll">
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <span class="aeq-lhs">\(f(x)\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\operatorname{cosec} x=\dfrac{1}{\sin x}\)</span>
+
+                    <div class="step">
+                        <span class="aeq-lhs">\(f'(x)\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(-\dfrac{\cos x}{\sin^2 x}=-\operatorname{cosec} x\cot x\)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 9 -->
+    <div class="page" id="page-9">
+        <div class="exercise">
+            Use the quotient rule to find the differential of \(\cot x\).
+        </div>
+        <figure>
+            <video autoplay muted playsinline style="max-width:60%"><source src="more_differentials_images/cotderiv.mp4" alt="animation of differential of cot"></video>
+        </figure>
+        <div class="page-scroll">
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <span class="aeq-lhs">\(f(x)\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\cot x=\dfrac{\cos x}{\sin x}\)</span>
+
+                    <div class="step">
+                        <span class="aeq-lhs">\(f'(x)\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\dfrac{-\sin^2 x-\cos^2 x}{\sin^2 x}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(-\dfrac{1}{\sin^2 x}=-\operatorname{cosec}^2 x\)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 10: Closing Page -->
+    <div class="page" id="page-10">
+        <div class="welcome-page">
+            <h1>Well done!</h1>
+            <div class="welcome-content">
+                <p>You've found the differentials of the five reciprocal circular functions: \(\cos x\), \(\tan x\), \(\sec x\), \(\operatorname{cosec} x\), and \(\cot x\).</p>
+
+                <div class="navigation-box">
+                    <h2>What's Next:</h2>
+                    <ul>
+                        <li>The next worksheet covers the differentials of the <strong>inverse</strong> circular functions</li>
+                        <li>You'll use implicit differentiation to find the derivatives of arcsin, arccos, arctan, and more</li>
+                    </ul>
+                </div>
+
+                <p class="welcome-author">
+                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="navigation">
+    <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+    <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+    <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="7" onchange="goToPage(this.value)"> of 7
+    </span>
+    <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+    <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+</div>
+
+<script src="navigation.js"></script>
+<script>
+document.querySelectorAll('video').forEach(function (v) {
+    v.addEventListener('click', function () {
+        v.controls = true;
+        v.play();
+    }, { once: true });
+});
+</script>
+<script>
+(function () {
+    'use strict';
+
+    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer, div.nav-gated, div.step';
+
+    let revealQueue = [];
+    let goingBackward = false;
+    let navBlocked = false;
+    let videoResumeNode = null;
+    let revealsUntilResume = 0;
+    let activeTimeHandlerVid = null;
+    let activeTimeHandlerRef = null;
+
+    function initPageReveal(page, revealAll) {
+        revealQueue = [];
+        const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
+            .filter(div => !div.classList.contains('reveal-instant'));
+        animatable.forEach(div => {
+            if (div.classList.contains('step')) {
+                div.classList.add('step-hidden');
+            } else {
+                div.classList.add('div-hidden');
+            }
+        });
+        if (revealAll) {
+            animatable.forEach(div => {
+                div.classList.remove('div-hidden');
+                div.classList.remove('step-hidden');
+            });
+            page.querySelectorAll('.answer').forEach(a => { a.scrollTop = 0; });
+            return;
+        }
+        if (animatable.length > 0) {
+            animatable[0].classList.remove('div-hidden');
+            animatable[0].classList.remove('step-hidden');
+            revealQueue = animatable.slice(1);
+        }
+    }
+
+    const _origShowPage   = window.showPage;
+    const _origChangePage = window.changePage;
+
+    function revealNextOrAdvance() {
+        if (revealQueue.length > 0) {
+            const next = revealQueue.shift();
+            next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
+            next.classList.add('div-revealed');
+            setTimeout(() => next.classList.remove('div-revealed'), 400);
+            const answer = next.closest('.answer');
+            const isFirstStep = answer && next.classList.contains('step') &&
+                answer.querySelectorAll('.step:not(.step-hidden)').length === 1;
+            if (isFirstStep) {
+                answer.scrollTop = 0;
+            } else {
+                const scrollTarget = window.getComputedStyle(next).display === 'contents'
+                    ? (next.lastElementChild || next)
+                    : next;
+                scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            // When an answer inside .page-scroll is revealed, also show its first step immediately
+            // (but not when the video is also resuming on this same nav event)
+            if (next.classList.contains('answer') && next.closest('.page-scroll') &&
+                    revealQueue.length > 0 && revealQueue[0].classList.contains('step') &&
+                    revealQueue[0].closest('.answer') === next &&
+                    !(videoResumeNode !== null && revealsUntilResume === 0)) {
+                const firstStep = revealQueue.shift();
+                firstStep.classList.remove('step-hidden');
+                firstStep.classList.add('div-revealed');
+                setTimeout(() => firstStep.classList.remove('div-revealed'), 400);
+                firstStep.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            if (videoResumeNode !== null) {
+                if (revealsUntilResume > 0) {
+                    revealsUntilResume--;
+                } else {
+                    videoResumeNode.play().catch(() => {});
+                    videoResumeNode = null;
+                }
+            }
+        } else {
+            _origChangePage(1);
+        }
+    }
+
+    function setupVideoControl(v, startSpeed, speedUpEnd, skipStart, skipEnd, pauseAt, revealCount, autoRevealEl) {
+        v.playbackRate = startSpeed;
+        navBlocked = true;
+        const prompt = document.querySelector('.nav-prompt');
+        if (prompt) prompt.classList.add('nav-blocked');
+
+        function timeHandler() {
+            if (v.currentTime >= speedUpEnd && v.playbackRate !== 1) {
+                v.playbackRate = 1;
+            }
+            if (v.currentTime >= skipStart && v.currentTime < skipEnd) {
+                v.currentTime = skipEnd;
+            }
+            if (v.currentTime >= pauseAt) {
+                v.pause();
+                v.removeEventListener('timeupdate', timeHandler);
+                activeTimeHandlerVid = null;
+                activeTimeHandlerRef = null;
+                navBlocked = false;
+                if (prompt) prompt.classList.remove('nav-blocked');
+                if (autoRevealEl) {
+                    const idx = revealQueue.indexOf(autoRevealEl);
+                    if (idx !== -1) revealQueue.splice(idx, 1);
+                    autoRevealEl.classList.remove('div-hidden');
+                    autoRevealEl.classList.add('div-revealed');
+                    setTimeout(() => autoRevealEl.classList.remove('div-revealed'), 400);
+                }
+                videoResumeNode = v;
+                revealsUntilResume = revealCount;
+            }
+        }
+        activeTimeHandlerVid = v;
+        activeTimeHandlerRef = timeHandler;
+        v.addEventListener('timeupdate', timeHandler);
+
+        v.addEventListener('ended', function () {
+            v.removeEventListener('timeupdate', timeHandler);
+            activeTimeHandlerVid = null;
+            activeTimeHandlerRef = null;
+            navBlocked = false;
+            const p = document.querySelector('.nav-prompt');
+            if (p) p.classList.remove('nav-blocked');
+        }, { once: true });
+    }
+
+    window.showPage = function (pageNum, revealAll) {
+        // Clear any leftover video control state from a previous page
+        videoResumeNode = null;
+        revealsUntilResume = 0;
+        if (activeTimeHandlerVid && activeTimeHandlerRef) {
+            activeTimeHandlerVid.removeEventListener('timeupdate', activeTimeHandlerRef);
+            activeTimeHandlerVid = null;
+            activeTimeHandlerRef = null;
+        }
+
+        _origShowPage(pageNum);
+        const page = document.getElementById('page-' + pageNum);
+        if (page) {
+            initPageReveal(page, revealAll || goingBackward);
+            requestAnimationFrame(() => {
+                page.querySelectorAll('.answer, .page-scroll').forEach(a => { a.scrollTop = 0; });
+            });
+            const videos = Array.from(page.querySelectorAll('video'));
+            videos.forEach(v => { v.pause(); v.currentTime = 0; });
+            const visibleVideo = videos.find(v => !v.closest('.div-hidden'));
+            if (visibleVideo) {
+                visibleVideo.play().catch(() => {});
+                if (!(revealAll || goingBackward)) {
+                    if (pageNum === 2) {
+                        // 0–8s at 2×; skip 22–31s; pause at 43s; 3 reveals then resume
+                        setupVideoControl(visibleVideo, 2, 8, 22, 31, 43, 3);
+                    } else if (pageNum === 4) {
+                        // 0–12s at 2×; skip 25–33s; pause at 50s; auto-reveal exercise then resume on next reveal
+                        const ex = page.querySelectorAll('.exercise')[1];
+                        setupVideoControl(visibleVideo, 2, 12, 25, 33, 50, 0, ex);
+                    } else if (pageNum === 6) {
+                        // 0–11s at 1.5×; skip 25–35s; pause at 49s; auto-reveal exercise then resume on next reveal
+                        const ex = page.querySelectorAll('.exercise')[1];
+                        setupVideoControl(visibleVideo, 1.5, 11, 25, 35, 49, 0, ex);
+                    } else if (pageNum === 8) {
+                        // 0–12s at 2×; skip 25–35s; pause at 48s; resume on next reveal (answer)
+                        setupVideoControl(visibleVideo, 2, 12, 25, 35, 48, 0);
+                    } else if (pageNum === 9) {
+                        // 0–12s at 2×; skip 25–35s; pause at 48s; resume on next reveal (answer)
+                        setupVideoControl(visibleVideo, 2, 12, 25, 35, 48, 0);
+                    }
+                }
+            }
+        }
+        goingBackward = false;
+    };
+
+    window.changePage = function (delta) {
+        if (delta > 0) {
+            if (navBlocked) return;
+            revealNextOrAdvance();
+        } else {
+            navBlocked = false;
+            goingBackward = true;
+            _origChangePage(delta);
+        }
+    };
+}());
+</script>
+
+</body>
+</html>
