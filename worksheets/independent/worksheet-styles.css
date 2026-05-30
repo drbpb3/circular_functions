@@ -628,6 +628,32 @@ li {
     transform: scale(1.05);
 }
 
+/* Sheet-to-sheet navigation on final pages */
+.sheet-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #c8e6c9;
+}
+
+.sheet-nav a {
+    color: #2d5a27;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.35rem 0.8rem;
+    border: 1.5px solid #2d5a27;
+    border-radius: 6px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.sheet-nav a:hover {
+    background: #2d5a27;
+    color: white;
+}
+
 /* Typewriter continuation prompt */
 .typewriter-prompt {
     display: flex;
