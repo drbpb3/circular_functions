@@ -64,6 +64,16 @@
             display: block !important;
             visibility: hidden !important;
         }
+
+        /* Images stay fixed at the top while content below them scrolls */
+        .page.active > figure,
+        .page.active > .image-stack,
+        .page.active > .two-column {
+            position: sticky;
+            top: 0;
+            background: #fafafa;
+            z-index: 5;
+        }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -112,7 +122,7 @@
         </div>
         <div class="exercise" data-reveal-group="2"><audio data-trigger="on-reveal" src="equations_audio/mp3s/audio2.mp3"></audio>Use your calculator to find the angle \(\theta\) and hence find one solution to the equation \(\sin\theta=0.4\).</div>
 
-        <figure data-reveal-group="2">
+        <figure data-reveal-group="2" style="max-width:72%; margin-left:auto; margin-right:auto;">
             <img src="equations_images/image0.png" alt="Right triangle with hypotenuse 1, opposite 0.4, angle θ">
         </figure>
         <div class="answer" data-reveal-group="3">
@@ -139,8 +149,8 @@
             <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio5.mp3"></audio>
             <p>The \(y\) coordinate of the blue point is \(0.4\). Find another point on the circle with the same \(y\) coordinate as the blue point. Use this new point to find another solution to the equation \(\sin\theta=0.4\).</p>
         </div>
-        <div class="image-stack">
-            <img src="equations_images/image1.png" class="stack-img stack-img--active" alt="Unit circle with point at angle θ showing y-coordinate 0.4">
+        <div class="image-stack" style="max-width:64%; margin-left:auto; margin-right:auto;">
+            <img src="equations_images/image1.png" class="stack-img stack-img--active" alt="Unit circle with point at angle θ showing y-coordinate 0.4 ">
             <img src="equations_images/image2.png" class="stack-img" alt="Unit circle showing θ = 23.58° and symmetric point">
             <img src="equations_images/image3.png" class="stack-img" alt="Unit circle showing angles 156.42° and 23.58°">
         </div>
@@ -156,7 +166,7 @@
     <div class="page" id="page-4">
         <div class="exercise"><audio data-trigger="on-reveal" src="equations_audio/mp3s/audio7.mp3"></audio>What negative angles between \(-360°\) and \(0°\) are solutions of \(\sin\theta = 0.4\)?</div>
 
-        <div class="image-stack">
+        <div class="image-stack" style="max-width:64%; margin-left:auto; margin-right:auto;">
             <img src="equations_images/image4.png" class="stack-img stack-img--active" alt="Unit circle showing angles 156.42° and 23.58°">
             <img src="equations_images/image5.png" class="stack-img" alt="Unit circle showing negative angle -203.58°">
             <img src="equations_images/image6.png" class="stack-img" alt="Unit circle showing negative angle -336.42°">
@@ -251,7 +261,7 @@
             </p>
         </div>
 
-        <div class="image-stack">
+        <div class="image-stack" style="max-width:56%; margin-left:auto; margin-right:auto;">
             <img src="equations_images/image7.png" class="stack-img stack-img--active" alt="Unit circle with x = -0.7 line">
             <img src="equations_images/image26.png" class="stack-img" alt="Unit circle with x = -0.7 line" style="transform: translateX(2.4%) translateY(-1%) scale(0.98); transform-origin: center;">
         </div>
@@ -329,7 +339,7 @@
             <p>In this diagram, what is \(\tan\theta\;\)?</p>
         </div>
 
-        <figure style="max-width: 76%; margin: auto;">
+        <figure style="max-width: 64%; margin: auto;">
             <img src="equations_images/image27.png" alt="Unit circle with line y = 2x">
         </figure>
         <div class="answer">
@@ -347,7 +357,7 @@
         <div class="exercise">
             <p>Where is another point on the circle whose radius has the same gradient?</p>
         </div>
-        <figure style="max-width: 80%; margin: auto;">
+        <figure style="max-width: 64%; margin: auto;">
             <img src="equations_images/image28.png" alt="Unit circle with line y = 2x">
         </figure>
         <div class="exercise">

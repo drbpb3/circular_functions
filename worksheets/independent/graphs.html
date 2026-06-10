@@ -61,6 +61,7 @@
             min-height: 0;
             padding-bottom: 80px;
         }
+        .nav-prompt.nav-blocked { opacity: 0 !important; animation: none !important; pointer-events: none !important; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -217,16 +218,28 @@
     </div>
 
     <!-- Page 5: tan graph -->
-    <div class="page" id="page-5">
+    <div class="page" id="page-5" data-page-name="tan-graph">
         <audio src="graphs_audio/audio4.mp3"></audio>
         <div class="intro">
             <p>Tan is even harder, because this time, we have to make the \(y\) coordinate on the graph match the gradient of the yellow radius.</p>
         </div>
 
         <figure>
-            <video src="graphs_images/tangraph.mp4" autoplay playsinline style="width:100%;"></video>
+            <video id="p5-video" src="graphs_images/tangraph.mp4" autoplay playsinline style="width:100%;"></video>
         </figure>
-        
+        <div class="exercise reveal-instant div-hidden" id="p5-ex1">
+            <p>How does the position of the blue cross on the \(y\) axis relate to the yellow radius?</p>
+        </div>
+        <div class="answer reveal-instant div-hidden" id="p5-ans1">
+            <p>The \(y\) coordinate of the blue cross is the gradient of the yellow radius.</p>
+        </div>
+        <div class="exercise reveal-instant div-hidden" id="p5-ex2">
+            <p>How does the position of the blue cross on the \(y\) axis relate to the pink angle, and what is the equation of the curve?</p>
+        </div>
+        <div class="answer reveal-instant div-hidden" id="p5-ans2">
+            <p>The \(y\) coordinate of the blue cross is the tan of the pink angle, and the equation is</p>
+            \[y=\tan x\]
+        </div>
     </div>
 
     <!-- Page 6: sin symmetry -->
@@ -439,6 +452,10 @@ var p4pauseConfig = [
     { time: 59, answerId: 'p4-ans5' }
 ];
 var p4remainingPauses = p4pauseConfig.slice();
+var p5waitingAtPause = false;
+var p5waitingAtEnd = false;
+var p5videoEnded = false;
+var p5remainingPauses = [{ time: 47 }];
 var p6waitingForResume = false;
 var p10waitingForResume = false;
 var p12waitingForResume = false;
@@ -473,6 +490,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 p3videoEl.pause();
                 p3qWaitingForReveal = true;
                 p3qPendingAnswerId = pause.answerId;
+                if (window.syncNavPrompt) window.syncNavPrompt();
             }
             var p3ex1 = document.getElementById('p3-ex1');
             if (p3ex1 && p3videoEl.currentTime >= 22 && p3ex1.classList.contains('div-hidden')) {
@@ -521,6 +539,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 p4video.pause();
                 p4waitingForReveal = true;
                 p4pendingAnswerId = pause.answerId;
+                if (window.syncNavPrompt) window.syncNavPrompt();
             }
             var p4ex1 = document.getElementById('p4-ex1');
             if (p4ex1 && p4video.currentTime >= 9 && p4ex1.classList.contains('div-hidden')) {
@@ -557,6 +576,37 @@ document.addEventListener('DOMContentLoaded', function () {
                 setTimeout(function () { p4ex5.classList.remove('div-revealed'); }, 400);
                 p4ex5.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
+        });
+    }
+
+    var p5video = document.getElementById('p5-video');
+    if (p5video) {
+        p5video.addEventListener('timeupdate', function () {
+            var p5ex1 = document.getElementById('p5-ex1');
+            if (p5ex1 && p5video.currentTime >= 41 && p5ex1.classList.contains('div-hidden')) {
+                p5ex1.classList.remove('div-hidden');
+                p5ex1.classList.add('div-revealed');
+                setTimeout(function () { p5ex1.classList.remove('div-revealed'); }, 400);
+                p5ex1.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            if (!p5waitingAtPause && p5remainingPauses.length > 0 && p5video.currentTime >= p5remainingPauses[0].time) {
+                p5remainingPauses.shift();
+                p5video.pause();
+                p5waitingAtPause = true;
+                if (window.syncNavPrompt) window.syncNavPrompt();
+            }
+            var p5ex2 = document.getElementById('p5-ex2');
+            if (p5ex2 && p5video.currentTime >= 88 && p5ex2.classList.contains('div-hidden')) {
+                p5ex2.classList.remove('div-hidden');
+                p5ex2.classList.add('div-revealed');
+                setTimeout(function () { p5ex2.classList.remove('div-revealed'); }, 400);
+                p5ex2.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
+        p5video.addEventListener('ended', function () {
+            p5videoEnded = true;
+            p5waitingAtEnd = true;
+            if (window.syncNavPrompt) window.syncNavPrompt();
         });
     }
 
@@ -625,6 +675,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const OVERVIEW_PAGE        = getPageNum('overview');
     const SIN_GRAPH_PAGE       = getPageNum('sin-graph');
     const COS_GRAPH_PAGE       = getPageNum('cos-graph');
+    const TAN_GRAPH_PAGE       = getPageNum('tan-graph');
     const SIN_SYMMETRY_PAGE    = getPageNum('sin-symmetry');
     const COS_SYMMETRY_PAGE    = getPageNum('cos-symmetry');
     const COS_SYMM_EXT_PAGE    = getPageNum('cos-symmetry-extended');
@@ -639,6 +690,8 @@ document.addEventListener('DOMContentLoaded', function () {
         p3qWaitingForResume = false;
         p4waitingForReveal = false;
         p4waitingForResume = false;
+        p5waitingAtPause = false;
+        p5waitingAtEnd = false;
         p6waitingForResume = false;
         p10waitingForResume = false;
         p12waitingForResume = false;
@@ -679,6 +732,7 @@ document.addEventListener('DOMContentLoaded', function () {
             p4waitingForResume = false;
             const p4video = document.getElementById('p4-video');
             if (p4video) p4video.play().catch(() => {});
+            syncNavPrompt();
             return;
         }
 
@@ -700,8 +754,38 @@ document.addEventListener('DOMContentLoaded', function () {
             p3qWaitingForResume = false;
             const p3v = document.getElementById('p3-video');
             if (p3v) p3v.play().catch(() => {});
+            syncNavPrompt();
             return;
         }
+
+        // Page 5 special cases
+        if (p5waitingAtPause) {
+            p5waitingAtPause = false;
+            const p5ans1el = document.getElementById('p5-ans1');
+            if (p5ans1el) {
+                p5ans1el.classList.remove('div-hidden');
+                p5ans1el.classList.add('div-revealed');
+                setTimeout(() => p5ans1el.classList.remove('div-revealed'), 400);
+                p5ans1el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            const p5vel = document.getElementById('p5-video');
+            if (p5vel) p5vel.play().catch(() => {});
+            syncNavPrompt();
+            return;
+        }
+        if (p5waitingAtEnd) {
+            p5waitingAtEnd = false;
+            const p5ans2el = document.getElementById('p5-ans2');
+            if (p5ans2el) {
+                p5ans2el.classList.remove('div-hidden');
+                p5ans2el.classList.add('div-revealed');
+                setTimeout(() => p5ans2el.classList.remove('div-revealed'), 400);
+                p5ans2el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            syncNavPrompt();
+            return;
+        }
+
         // Page 6 special case: resume video on nav press
         if (p6waitingForResume) {
             p6waitingForResume = false;
@@ -755,6 +839,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (p3page && p3page.classList.contains('active') && p3qRemainingPauses.length > 0) return;
             const p4page = getPageEl('cos-graph');
             if (p4page && p4page.classList.contains('active') && p4remainingPauses.length > 0) return;
+            const p5pageEl = document.getElementById('page-5');
+            if (p5pageEl && p5pageEl.classList.contains('active') && (p5remainingPauses.length > 0 || !p5videoEnded)) return;
             _origChangePage(1);
         }
     }
@@ -782,6 +868,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 p3qPendingAnswerId = null;
                 p3qRemainingPauses = p3qPauseConfig.slice();
                 ['p3-ex1','p3-ans1','p3-ex2','p3-ans2','p3-ex3','p3-ans3','p3-ex4','p3-ans4','p3-ex5','p3-ans5'].forEach(function (id) {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.add('div-hidden');
+                });
+            }
+            // Re-hide page 5 video-timed divs and reset state on each visit
+            if (pageNum === TAN_GRAPH_PAGE) {
+                p5waitingAtPause = false;
+                p5waitingAtEnd = false;
+                p5videoEnded = false;
+                p5remainingPauses = [{ time: 47 }];
+                ['p5-ex1', 'p5-ans1', 'p5-ex2', 'p5-ans2'].forEach(function (id) {
                     const el = document.getElementById(id);
                     if (el) el.classList.add('div-hidden');
                 });
@@ -878,6 +975,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
             initPageReveal(page, revealAll || goingBackward);
+            syncNavPrompt();
             const videos = Array.from(page.querySelectorAll('video'));
             videos.forEach(v => { v.pause(); v.currentTime = 0; });
             // Only autoplay videos that are not inside a queued (hidden) div
@@ -886,6 +984,33 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         goingBackward = false;
     };
+
+    function syncNavPrompt() {
+        const prompt = document.querySelector('.nav-prompt');
+        if (!prompt) return;
+        const anyWaiting = p4waitingForReveal || p4waitingForResume ||
+            p3qWaitingForReveal || p3qWaitingForResume ||
+            p5waitingAtPause || p5waitingAtEnd ||
+            p6waitingForResume || p10waitingForResume ||
+            p12waitingForResume || p13waitingForResume;
+        // Mirror the exact blocking conditions in revealNextOrAdvance
+        const p3pg = getPageEl('sin-graph');
+        const p3Blocking = p3pg && p3pg.classList.contains('active') &&
+            p3qRemainingPauses.length > 0 && !p3qWaitingForReveal && !p3qWaitingForResume;
+        const p4pg = getPageEl('cos-graph');
+        const p4Blocking = p4pg && p4pg.classList.contains('active') &&
+            p4remainingPauses.length > 0 && !p4waitingForReveal && !p4waitingForResume;
+        const p5pg = document.getElementById('page-5');
+        const p5Blocking = p5pg && p5pg.classList.contains('active') &&
+            (p5remainingPauses.length > 0 || !p5videoEnded) && !p5waitingAtPause && !p5waitingAtEnd;
+        const hasAction = revealQueue.length > 0 || anyWaiting || currentPage < totalPages;
+        if (hasAction && !p3Blocking && !p4Blocking && !p5Blocking) {
+            prompt.classList.remove('nav-blocked');
+        } else {
+            prompt.classList.add('nav-blocked');
+        }
+    }
+    window.syncNavPrompt = syncNavPrompt;
 
     window.changePage = function (delta) {
         if (delta > 0) {
