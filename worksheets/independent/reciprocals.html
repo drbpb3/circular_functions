@@ -39,6 +39,21 @@
     <link rel="stylesheet" href="worksheet-styles.css">
     <style>
         video { cursor: pointer; }
+        .nav-prompt.nav-blocked { opacity: 0 !important; animation: none !important; pointer-events: none !important; }
+        #page-4.active, #page-5.active, #page-6.active {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 40px);
+            overflow: hidden;
+            padding-bottom: 0;
+        }
+        #page-4.active figure, #page-5.active figure, #page-6.active figure { flex-shrink: 0; }
+        .qa-scroll {
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+            padding-bottom: 80px;
+        }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -83,18 +98,14 @@
         
         <h2 class="chapter">Reciprocal circular functions</h2>
 
-        <div class="intro">
-            <p>Take a look at this animation.</p>
-        </div>
-
         <figure>
             <video id="p2-video" src="reciprocals_images/seccsccot.mp4" autoplay playsinline style="width:100%;max-width:100%;"></video>
         </figure>
-        <div class="exercise">
+        <div class="exercise reveal-instant div-hidden" id="p2-exercise">
             <p>What are the lengths of the three coloured line segments (in terms of \(\theta\))?</p>
         </div>
 
-        <div class="intro" id="p2-second-intro">
+        <div class="intro reveal-instant div-hidden" id="p2-second-intro">
             <p>The functions \(\displaystyle{\frac{1}{\cos\theta},\;\frac{1}{\sin\theta},\;\frac{1}{\tan\theta}}\) are useful enough to merit having their own names:</p>
             \[\begin{align*}
             &\frac{1}{\cos\theta}=\sec\theta\\[6pt]
@@ -112,63 +123,52 @@
             <p>What would Pythagoras say about each of the right-angled triangles in this diagram?.</p>
         </div>
         <div class="answer">
-            \[\begin{align*}
-            &1+\tan^2\theta=\sec^2\theta\\[12pt]
-            &1+\cot^2\theta=\mathrm{cosec}^2\,\theta\\[12pt]
-            &\mathrm{cosec}^2\,\theta+\sec^2\theta=(\tan\theta+\cot\theta)^2
-            \end{align*}\]
+            <div class="step">\[1+\tan^2\theta=\sec^2\theta\]</div>
+            <div class="step">\[1+\cot^2\theta=\mathrm{cosec}^2\,\theta\]</div>
+            <div class="step">\[\mathrm{cosec}^2\,\theta+\sec^2\theta=(\tan\theta+\cot\theta)^2\]</div>
         </div>
     </div>
     <!-- Page 4: graphs1 -->
     <div class="page" id="page-4">
         <figure>
-            <video src="reciprocals_images/seccsccot2.mp4" autoplay playsinline style="width:100%;max-width:100%;"></video>
+            <video src="reciprocals_images/seccsccot2.mp4" autoplay loop playsinline style="width:100%;max-width:100%;"></video>
         </figure>
-        
-        <div class="exercise">
-            <p>What happens to \(\sec\theta\) as \(\theta\to 90^\circ\) ?</p>
-            <p>What is the minimum value of \(\sec\theta\) ?</p>
-            <p>What happens to \(\sec\theta\) as  \(\theta\to 0\) ?</p>
-        </div>
-        <div class="answer">
-            <p>\(\sec\theta\to\infty\) as \(\theta\to 90^\circ\)</p>
-            <p>\(\sec\theta\geq 1\)</p>
-            <p>\(\sec\theta\to 1\) as  \(\theta\to 0\)</p>
+        <div class="qa-scroll">
+            <div class="exercise"><p>What happens to \(\sec\theta\) as \(\theta\to 90^\circ\) ?</p></div>
+            <div class="answer" data-reveal-with-next><p>\(\sec\theta\to\infty\) as \(\theta\to 90^\circ\)</p></div>
+            <div class="exercise"><p>What is the minimum value of \(\sec\theta\) ?</p></div>
+            <div class="answer" data-reveal-with-next><p>\(\sec\theta\geq 1\)</p></div>
+            <div class="exercise"><p>What happens to \(\sec\theta\) as \(\theta\to 0\) ?</p></div>
+            <div class="answer"><p>\(\sec\theta\to 1\) as \(\theta\to 0\)</p></div>
         </div>
     </div>
     
     <!-- Page 5: graphs2 -->
     <div class="page" id="page-5">
         <figure>
-            <video src="reciprocals_images/seccsccot2.mp4" autoplay playsinline style="width:100%;max-width:100%;"></video>
+            <video src="reciprocals_images/seccsccot2.mp4" autoplay loop playsinline style="width:100%;max-width:100%;"></video>
         </figure>
-        
-        <div class="exercise">
-            <p>What happens to \(\mathrm{cosec}\,\theta\) as \(\theta\to 90^\circ\) ?</p>
-            <p>What is the minimum value of \(\mathrm{cosec}\,\theta\) ?</p>
-            <p>What happens to \(\mathrm{cosec}\,\theta\) as  \(\theta\to 0\) ?</p>
-        </div>
-        <div class="answer">
-            <p>\(\mathrm{cosec}\,\theta\to 1\) as \(\theta\to 90^\circ\)</p>
-            <p>\(\mathrm{cosec}\,\theta\geq 1\)</p>
-            <p>\(\mathrm{cosec}\,\theta\to \infty\) as  \(\theta\to 0\)</p>
+        <div class="qa-scroll">
+            <div class="exercise"><p>What happens to \(\mathrm{cosec}\,\theta\) as \(\theta\to 90^\circ\) ?</p></div>
+            <div class="answer" data-reveal-with-next><p>\(\mathrm{cosec}\,\theta\to 1\) as \(\theta\to 90^\circ\)</p></div>
+            <div class="exercise"><p>What is the minimum value of \(\mathrm{cosec}\,\theta\) ?</p></div>
+            <div class="answer" data-reveal-with-next><p>\(\mathrm{cosec}\,\theta\geq 1\)</p></div>
+            <div class="exercise"><p>What happens to \(\mathrm{cosec}\,\theta\) as \(\theta\to 0\) ?</p></div>
+            <div class="answer"><p>\(\mathrm{cosec}\,\theta\to \infty\) as \(\theta\to 0\)</p></div>
         </div>
     </div>
     <!-- Page 6: graphs3 -->
     <div class="page" id="page-6">
         <figure>
-            <video src="reciprocals_images/seccsccot2.mp4" autoplay playsinline style="width:100%;max-width:100%;"></video>
+            <video src="reciprocals_images/seccsccot2.mp4" autoplay loop playsinline style="width:100%;max-width:100%;"></video>
         </figure>
-        
-        <div class="exercise">
-            <p>What happens to \(\cot\theta\) as \(\theta\to 90^\circ\) ?</p>
-            <p>For what value of \(\theta\) is \(\cot\theta=1\) ?</p>
-            <p>What happens to \(\cot\theta\) as  \(\theta\to 0\) ?</p>
-        </div>
-        <div class="answer">
-            <p>\(\cot\theta\to 0\) as \(\theta\to 90^\circ\)</p>
-            <p>\(\cot 45^\circ= 1\)</p>
-            <p>\(\cot\theta\to \infty\) as  \(\theta\to 0\)</p>
+        <div class="qa-scroll">
+            <div class="exercise"><p>What happens to \(\cot\theta\) as \(\theta\to 90^\circ\) ?</p></div>
+            <div class="answer" data-reveal-with-next><p>\(\cot\theta\to 0\) as \(\theta\to 90^\circ\)</p></div>
+            <div class="exercise"><p>For what value of \(\theta\) is \(\cot\theta=1\) ?</p></div>
+            <div class="answer" data-reveal-with-next><p>\(\cot 45^\circ= 1\)</p></div>
+            <div class="exercise"><p>What happens to \(\cot\theta\) as \(\theta\to 0\) ?</p></div>
+            <div class="answer"><p>\(\cot\theta\to \infty\) as \(\theta\to 0\)</p></div>
         </div>
     </div>
 
@@ -198,7 +198,7 @@
         </div>
         <div class="nav-gated" data-nav-play>
             <figure>
-                <video id="p8-video" data-stop="84" src="reciprocals_images/seccsccot5.mp4" playsinline style="width:100%;max-width:100%;"></video>
+                <video id="p8-video" data-stop="84" data-playback-rate="2" src="reciprocals_images/seccsccot5.mp4" playsinline style="width:100%;max-width:100%;"></video>
             </figure>
         </div>
     </div>
@@ -210,7 +210,7 @@
         </div>
         <div class="nav-gated" data-nav-play>
             <figure>
-                <video id="p9-video" data-start="87" data-stop="151" src="reciprocals_images/seccsccot5.mp4" playsinline style="width:100%;max-width:100%;"></video>
+                <video id="p9-video" data-start="87" data-stop="151" data-playback-rate="2" src="reciprocals_images/seccsccot5.mp4" playsinline style="width:100%;max-width:100%;"></video>
             </figure>
         </div>
     </div>
@@ -222,7 +222,7 @@
         </div>
         <div class="nav-gated" data-nav-play>
             <figure>
-                <video data-start="155" src="reciprocals_images/seccsccot5.mp4" playsinline style="width:100%;max-width:100%;"></video>
+                <video data-start="155" data-playback-rate="2" src="reciprocals_images/seccsccot5.mp4" playsinline style="width:100%;max-width:100%;"></video>
             </figure>
         </div>
     </div>
@@ -282,6 +282,7 @@ var p2waitingForExercise = false;
 var p2waitingForResume = false;
 var p2waitingForFinalPlay = false;
 var p2pauseListener = null;
+var p2navReady = false;
 // Page 3: flag set when video pauses at 13s, cleared on resume or page change
 var p3waitingForResume = false;
 var p6waitingForResume = false;
@@ -372,16 +373,33 @@ document.addEventListener('DOMContentLoaded', function () {
 (function () {
     'use strict';
 
-    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer, div.nav-gated';
+    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer, div.nav-gated, div.step';
 
     let revealQueue = [];
     let goingBackward = false;
+
+    function syncNavPrompt() {
+        const prompt = document.querySelector('.nav-prompt');
+        if (!prompt) return;
+        const p2pgEl = document.getElementById('page-2');
+        const p2Blocking = p2pgEl && p2pgEl.classList.contains('active') && !p2navReady;
+        const hasAction = revealQueue.length > 0 || p2waitingForResume || p2waitingForFinalPlay ||
+            p3waitingForResume || p6waitingForResume || p10waitingForResume ||
+            p12waitingForResume || p13waitingForResume || currentPage < totalPages;
+        if (hasAction && !p2Blocking) {
+            prompt.classList.remove('nav-blocked');
+        } else {
+            prompt.classList.add('nav-blocked');
+        }
+    }
+    window.syncNavPrompt = syncNavPrompt;
 
     function initPageReveal(page, revealAll) {
         // Leaving any page — clear resume flags
         p2waitingForExercise = false;
         p2waitingForResume = false;
         p2waitingForFinalPlay = false;
+        p2navReady = false;
         p3waitingForResume = false;
         p6waitingForResume = false;
         p10waitingForResume = false;
@@ -408,29 +426,28 @@ document.addEventListener('DOMContentLoaded', function () {
     const _origChangePage = window.changePage;
 
     function revealNextOrAdvance() {
+        // Block all forward nav while page 2 is not ready
+        const p2pgEl = document.getElementById('page-2');
+        if (p2pgEl && p2pgEl.classList.contains('active') && !p2navReady) return;
+
         // Page 2: nav after 17s pause plays 17→27s; nav after 27s pause plays 43→54s
         if (p2waitingForResume) {
             p2waitingForResume = false;
+            p2navReady = false;
             const p2v = document.getElementById('p2-video');
             if (p2v) {
                 if (p2pauseListener) {
                     p2v.removeEventListener('timeupdate', p2pauseListener);
                     p2pauseListener = null;
                 }
-                revealQueue = []; // p2-second-intro will be shown by timeupdate, not nav
                 p2v.currentTime = 17;
                 function p2pauseAt27() {
                     if (p2v.currentTime >= 27) {
                         p2v.pause();
                         p2v.removeEventListener('timeupdate', p2pauseAt27);
-                        const intro = document.getElementById('p2-second-intro');
-                        if (intro) {
-                            intro.classList.remove('div-hidden');
-                            intro.classList.add('div-revealed');
-                            setTimeout(() => intro.classList.remove('div-revealed'), 400);
-                            intro.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                        }
                         p2waitingForFinalPlay = true;
+                        p2navReady = true;
+                        syncNavPrompt();
                     }
                 }
                 p2v.addEventListener('timeupdate', p2pauseAt27);
@@ -440,13 +457,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if (p2waitingForFinalPlay) {
             p2waitingForFinalPlay = false;
+            p2navReady = false;
             const p2v = document.getElementById('p2-video');
             if (p2v) {
+                const p2intro = document.getElementById('p2-second-intro');
+                if (p2intro) {
+                    p2intro.classList.remove('div-hidden');
+                    p2intro.classList.add('div-revealed');
+                    setTimeout(() => p2intro.classList.remove('div-revealed'), 400);
+                    p2intro.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
                 p2v.currentTime = 43;
                 function p2stopAt54() {
                     if (p2v.currentTime >= 54) {
                         p2v.pause();
                         p2v.removeEventListener('timeupdate', p2stopAt54);
+                        p2navReady = true;
+                        syncNavPrompt();
                     }
                 }
                 p2v.addEventListener('timeupdate', p2stopAt54);
@@ -503,7 +530,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (revealQueue.length > 0) {
-            const next = revealQueue.shift();
+            let next = revealQueue.shift();
+            // If this is an answer div immediately followed by steps, reveal it silently
+            // and combine with the first step — no separate nav press for the container
+            if (next.classList.contains('answer') && revealQueue.length > 0 && revealQueue[0].classList.contains('step')) {
+                next.classList.remove('div-hidden');
+                next = revealQueue.shift();
+            }
+            // If marked data-reveal-with-next, reveal this item and advance to the paired item
+            if (next.hasAttribute('data-reveal-with-next') && revealQueue.length > 0) {
+                next.classList.remove('div-hidden');
+                next.classList.add('div-revealed');
+                setTimeout(() => next.classList.remove('div-revealed'), 400);
+                next = revealQueue.shift();
+            }
             next.classList.remove('div-hidden');
             next.classList.add('div-revealed');
             setTimeout(() => next.classList.remove('div-revealed'), 400);
@@ -512,6 +552,7 @@ document.addEventListener('DOMContentLoaded', function () {
             next.querySelectorAll('video').forEach(v => {
                 const startTime = parseFloat(v.dataset.start) || 0;
                 v.currentTime = startTime;
+                if (v.dataset.playbackRate) v.playbackRate = parseFloat(v.dataset.playbackRate);
                 v.play().catch(() => {});
                 const stopTime = parseFloat(v.dataset.stop);
                 if (stopTime) {
@@ -546,30 +587,40 @@ document.addEventListener('DOMContentLoaded', function () {
                 p2waitingForExercise = false;
                 p2waitingForResume = false;
                 p2waitingForFinalPlay = false;
+                const p2exDiv = document.getElementById('p2-exercise');
                 const p2intro = document.getElementById('p2-second-intro');
+                if (p2exDiv) p2exDiv.classList.add('div-hidden');
                 if (p2intro) p2intro.classList.add('div-hidden');
-                const p2v = document.getElementById('p2-video');
-                if (p2v) {
-                    if (p2pauseListener) {
-                        p2v.removeEventListener('timeupdate', p2pauseListener);
-                    }
-                    p2pauseListener = function () {
-                        if (!p2v.paused && p2v.currentTime >= 17) {
-                            p2v.pause();
+                if (revealAll || goingBackward) {
+                    if (p2exDiv) p2exDiv.classList.remove('div-hidden');
+                    if (p2intro) p2intro.classList.remove('div-hidden');
+                    p2navReady = true;
+                } else {
+                    p2navReady = false;
+                    const p2v = document.getElementById('p2-video');
+                    if (p2v) {
+                        p2v.playbackRate = 2;
+                        if (p2pauseListener) {
                             p2v.removeEventListener('timeupdate', p2pauseListener);
-                            p2pauseListener = null;
-                            // Show exercise immediately — no nav press needed
-                            const exDiv = revealQueue.shift();
-                            if (exDiv) {
-                                exDiv.classList.remove('div-hidden');
-                                exDiv.classList.add('div-revealed');
-                                setTimeout(() => exDiv.classList.remove('div-revealed'), 400);
-                                exDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                            }
-                            p2waitingForResume = true;
                         }
-                    };
-                    p2v.addEventListener('timeupdate', p2pauseListener);
+                        p2pauseListener = function () {
+                            if (!p2v.paused && p2v.currentTime >= 17) {
+                                p2v.pause();
+                                p2v.removeEventListener('timeupdate', p2pauseListener);
+                                p2pauseListener = null;
+                                if (p2exDiv) {
+                                    p2exDiv.classList.remove('div-hidden');
+                                    p2exDiv.classList.add('div-revealed');
+                                    setTimeout(() => p2exDiv.classList.remove('div-revealed'), 400);
+                                    p2exDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                                }
+                                p2waitingForResume = true;
+                                p2navReady = true;
+                                syncNavPrompt();
+                            }
+                        };
+                        p2v.addEventListener('timeupdate', p2pauseListener);
+                    }
                 }
             }
             // Re-arm page 10 pause-at-4s listener on each visit
@@ -637,8 +688,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
             initPageReveal(page, revealAll || goingBackward);
+            syncNavPrompt();
             const videos = Array.from(page.querySelectorAll('video'));
-            videos.forEach(v => { v.pause(); v.currentTime = 0; });
+            videos.forEach(v => { v.pause(); v.currentTime = parseFloat(v.dataset.start) || 0; });
             // Only autoplay videos that are not inside a queued (hidden) div
             const visibleVideo = videos.find(v => !v.closest('.div-hidden'));
             if (visibleVideo) visibleVideo.play().catch(() => {});

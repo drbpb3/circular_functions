@@ -82,6 +82,7 @@
             flex: unset;
             min-height: unset;
             overflow-y: visible;
+            padding-bottom: 12px;
         }
         /* Steps inside page-scroll use display:none so the answer box grows as they reveal */
         .page-scroll .aligned-eq-block .step.step-hidden { display: none; }
@@ -136,7 +137,7 @@
             Watch this video to figure out the differential of \(\cos x\).
         </div>
         <figure>
-            <video autoplay muted playsinline style="max-width: 60%"><source src="more_differentials_images/cosderiv.mp4" alt="animation of differential of cos"></video>
+            <video autoplay muted playsinline style="max-width: 84%"><source src="more_differentials_images/cosderiv.mp4" alt="animation of differential of cos"></video>
         </figure>
         <div class="page-scroll">
             <div class="exercise">
@@ -161,6 +162,7 @@
         <div class="exercise">
             <p>Use the definition of a differential to find the differential of \(\cos x\):</p>
         </div>
+        <div class="page-scroll">
         <div class="answer">
             <div class="aligned-eq-block">
                 <span class="aeq-lhs">\(f(x)\)</span>
@@ -198,6 +200,7 @@
                     <span class="aeq-rhs">\(-\sin x\)</span>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 
@@ -478,6 +481,7 @@ document.querySelectorAll('video').forEach(function (v) {
     let revealsUntilResume = 0;
     let activeTimeHandlerVid = null;
     let activeTimeHandlerRef = null;
+    let holdTimeoutId = null;
 
     function initPageReveal(page, revealAll) {
         revealQueue = [];
@@ -520,10 +524,15 @@ document.querySelectorAll('video').forEach(function (v) {
             if (isFirstStep) {
                 answer.scrollTop = 0;
             } else {
-                const scrollTarget = window.getComputedStyle(next).display === 'contents'
-                    ? (next.lastElementChild || next)
-                    : next;
-                scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                const pageScroll = next.closest('.page-scroll');
+                if (pageScroll) {
+                    requestAnimationFrame(() => pageScroll.scrollTo({ top: pageScroll.scrollHeight, behavior: 'smooth' }));
+                } else {
+                    const scrollTarget = window.getComputedStyle(next).display === 'contents'
+                        ? (next.lastElementChild || next)
+                        : next;
+                    scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
             }
             // When an answer inside .page-scroll is revealed, also show its first step immediately
             // (but not when the video is also resuming on this same nav event)
@@ -550,18 +559,32 @@ document.querySelectorAll('video').forEach(function (v) {
         }
     }
 
-    function setupVideoControl(v, startSpeed, speedUpEnd, skipStart, skipEnd, pauseAt, revealCount, autoRevealEl) {
+    function setupVideoControl(v, startSpeed, speedUpEnd, skipStart, skipEnd, pauseAt, revealCount, autoRevealEl, holdDuration) {
         v.playbackRate = startSpeed;
         navBlocked = true;
         const prompt = document.querySelector('.nav-prompt');
         if (prompt) prompt.classList.add('nav-blocked');
+        let holdPending = false;
 
         function timeHandler() {
             if (v.currentTime >= speedUpEnd && v.playbackRate !== 1) {
                 v.playbackRate = 1;
             }
-            if (v.currentTime >= skipStart && v.currentTime < skipEnd) {
-                v.currentTime = skipEnd;
+            if (v.currentTime >= skipStart && v.currentTime < skipEnd && !holdPending) {
+                if (holdDuration > 0) {
+                    holdPending = true;
+                    v.pause();
+                    v.removeEventListener('timeupdate', timeHandler);
+                    holdTimeoutId = setTimeout(function () {
+                        holdTimeoutId = null;
+                        holdPending = false;
+                        v.currentTime = skipEnd;
+                        v.addEventListener('timeupdate', timeHandler);
+                        v.play().catch(() => {});
+                    }, holdDuration * 1000);
+                } else {
+                    v.currentTime = skipEnd;
+                }
             }
             if (v.currentTime >= pauseAt) {
                 v.pause();
@@ -599,6 +622,7 @@ document.querySelectorAll('video').forEach(function (v) {
         // Clear any leftover video control state from a previous page
         videoResumeNode = null;
         revealsUntilResume = 0;
+        if (holdTimeoutId) { clearTimeout(holdTimeoutId); holdTimeoutId = null; }
         if (activeTimeHandlerVid && activeTimeHandlerRef) {
             activeTimeHandlerVid.removeEventListener('timeupdate', activeTimeHandlerRef);
             activeTimeHandlerVid = null;
@@ -619,8 +643,8 @@ document.querySelectorAll('video').forEach(function (v) {
                 visibleVideo.play().catch(() => {});
                 if (!(revealAll || goingBackward)) {
                     if (pageNum === 2) {
-                        // 0–8s at 2×; skip 22–31s; pause at 43s; 3 reveals then resume
-                        setupVideoControl(visibleVideo, 2, 8, 22, 31, 43, 3);
+                        // whole video at 2×; pause at 43s; 3 reveals then resume
+                        setupVideoControl(visibleVideo, 2, 9999, 9999, 9999, 43, 3);
                     } else if (pageNum === 4) {
                         // 0–12s at 2×; skip 25–33s; pause at 50s; auto-reveal exercise then resume on next reveal
                         const ex = page.querySelectorAll('.exercise')[1];
