@@ -105,7 +105,18 @@
 
     <!-- Page 2: scene0 -->
     <div class="page" id="page-2">
-        
+        <div class="intro">
+            <p>Compound angle formulas: there are so many ways of proving these, but almost all these ways only work for a more or less narrow range of values. They also often shed little if any light on what is actually going on &mdash; they are technical proofs rather than intuitive proofs.</p>
+            <p>
+                That's why I like the proof I'm about to show you so much: it is completely general, and it gives you a strong sense of what's really going on.
+            </p>
+            <p>
+                The idea is very simple: rotating a vector is the same as adding its rotated components.
+            </p>
+            <p>
+                Try my proof and see what you think for yourself!
+            </p>
+        </div>
     
     </div>
 
@@ -133,11 +144,11 @@
     <!-- Page 4: scene2 -->
     <div class="page" id="page-4">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0002_scene2.mp4"></video>
+            <video autoplay muted playsinline controls src="compound_images/compound_0002_scene3.mp4"></video>
         </figure>
         <div class="page-scroll">
             <div class="exercise">
-                <p>Write the two yellow vectors vector as column vectors.</p>
+                <p>Write the two yellow vectors as column vectors.</p>
             </div>
             <div class="answer">
                 <p>\[\binom{\cos\theta}{0}\]
@@ -151,7 +162,7 @@
     <!-- Page 5: scene3 -->
     <div class="page" id="page-5">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0003_scene3.mp4"></video>
+            <video autoplay muted playsinline controls src="compound_images/compound_0003_scene3a.mp4"></video>
         </figure>
         <div class="page-scroll">
             <div class="exercise">
@@ -169,29 +180,48 @@
         <figure>
             <video autoplay muted playsinline controls data-playback-rate="2" src="compound_images/compound_0004_scene4.mp4"></video>
         </figure>
-        <div class="intro">
-            <p>You already know perfectly well that the unit vector \(\displaystyle\binom{1}{0}\) when rotated through the angle \(\varphi\) is \(\displaystyle\binom{\cos\varphi}{\sin\varphi}\).</p>
-            <p>
-            Rotating the vertical unit vector is a bit harder, so keep going.
-            </p>
+        <div class="page-scroll">
+            <div class="intro">
+                <p>You already know perfectly well that the unit vector \(\displaystyle\binom{1}{0}\) when rotated through the angle \(\varphi\) is \(\displaystyle\binom{\cos\varphi}{\sin\varphi}\).</p>
+            </div>
+            <div class="exercise">
+                <p>What is the rotated yellow vector?
+                </p>
+            </div>
+            <div class="answer">
+                <p>Here, the length of the vector is \(\cos\theta\), so the rotated vector is
+                    \[\cos\theta\binom{\cos\varphi}{\sin\varphi}\]
+                </p>
+            </div>
         </div>
     </div>
 
     <!-- Page 7: scene5 -->
     <div class="page" id="page-7">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0005_scene5.mp4"></video>
+            <video autoplay muted playsinline controls src="compound_images/compound_0005_scene4b.mp4"></video>
         </figure>
         <div class="page-scroll">
-            <div class="exercise">
+            <div class="intro">
                 <p>
-                    What is the rotated yellow vector here?</p>
-            </div>
-            <div class="answer">
-                <p>\[\binom{-\sin\varphi}{\phantom{-}\cos \varphi}\]</p>
+                    That's all very well, but what about cases where \(\cos\theta\) is negative? </p>
             </div>
             <div class="intro">
-                <p>Check that the signs are right in each quadrant.</p>
+                <p>Here is such a situation. Now the length of the yellow vector is positive, but \(\cos\theta\) is negative.</p>
+            </div>
+            <div class="exercise">
+                <p>
+                    What is the rotated yellow vector this time?</p>
+            </div>
+            <div class="answer">
+                <p>Here, \(\cos\theta < 0\) and both components of the yellow vector are negative, so if the yellow vector is</0>
+                    </p>
+                <p>\[\cos\theta\binom{\cos\varphi}{\sin \varphi}\]</p>
+
+                <p>then the signs of the vector work out as they should. That is, the yellow vector formula is still the same as when \(\cos\theta\) was positive. What a stroke of luck!</p>
+            </div>
+            <div class="intro">
+                <p>Check that the signs are right no matter the size of \(\varphi\).</p>
             </div>
         </div>
     </div>
@@ -199,33 +229,120 @@
     <!-- Page 8: scene6a -->
     <div class="page" id="page-8">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0006_scene6a.mp4"></video>
+            <video autoplay muted playsinline controls src="compound_images/compound_0006_scene4c.mp4"></video>
         </figure>
+        <div class="page-scroll">
+            <div class="intro">
+                <p>Here, \(\theta > \pi\) and \(\cos\theta\) is still negative.</p>
+                <p>Once again, check that the signs are right no matter the size of \(\varphi\).</p>
+            </div>
+        </div>
     </div>
 
     <!-- Page 9: scene6b -->
     <div class="page" id="page-9">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0007_scene6b.mp4"></video>
+            <video autoplay muted playsinline controls src="compound_images/compound_0007_scene5.mp4"></video>
         </figure>
+        <div class="page-scroll">
+            <div class="intro">
+                <p>Rotating the vertical component is harder. We'll start with the unit vector in the vertical direction.</p>
+            </div>
+            <div class="exercise">
+                <p>What is the rotated vertical unit vector?</p>
+            </div>
+            <div class="answer">
+                <p>The two components of the rotated vertical unit vector are the same as the two components of the the rotated horizontal unit vector only reversed and with one change of sign.</p>
+                \[\binom{-\sin\varphi}{\phantom{-}\cos\varphi}\]
+                <p>Take the time to make sure you understand this.</p>
+            </div>
+            <div class="intro">
+                <p>Once again, check that the signs are right no matter the size of \(\varphi\).</p>
+            </div>
+        </div>
     </div>
+
 
     <!-- Page 10: scene7 -->
     <div class="page" id="page-10">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0008_scene7.mp4"></video>
+            <video autoplay muted playsinline controls src="compound_images/compound_0008_scene5a.mp4"></video>
         </figure>
+        <div class="page-scroll">
+            <div class="intro">
+                <p>Now we know what happens to the unit vertical vector when it rotates, but that's not what we are dealing with. </p>
+            </div>
+            <div class="intro">
+                <p>Instead, we are rotating the vertical component of a vector, whose magnitude is, in general, less than \(1\).</p>
+            </div>
+            <div class="exercise">
+                <p>What is the rotated vertical component?</p>
+            </div>
+            <div class="answer">
+                <p>The magnitude of the vertical component is \(\sin\theta\), so the rotated vector is</p>
+                \[\sin\theta\binom{-\sin\varphi}{\phantom{-}\cos\varphi}\]
+                
+            </div>
+            <div class="intro">
+                <p>\(\sin\theta\) here is positive, so this vector is correct no matter the size of \(\varphi\).</p>
+            </div>
+        </div>
     </div>
 
     <!-- Page 11: scene8 -->
     <div class="page" id="page-11">
+        
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0009_scene8.mp4"></video>
+            <video autoplay muted playsinline controls src="compound_images/compound_0010_scene5c.mp4"></video>
+        </figure>
+        <div class="page-scroll">
+            <div class="intro">
+                <p>
+                    That's all very well, but what about cases where \(\sin\theta\) is negative? </p>
+            </div>
+            <div class="intro">
+                <p>Here is such a situation. Now the length of the yellow vector is positive, but \(\sin\theta\) is negative.</p>
+            </div>
+            <div class="exercise">
+                <p>
+                    What is the rotated yellow vector this time?</p>
+            </div>
+            <div class="answer">
+                <p>Here, \(\sin\theta < 0\) and the \(x\) component of the yellow vector is negative, so if the yellow vector is</0>
+                    </p>
+                <p>\[\sin\theta\binom{-\sin\varphi}{\phantom{-}\cos \varphi}\]</p>
+
+                <p>then the signs of the vector work out as they should. That is, the yellow vector formula is still the same as when \(\sin\theta\) was positive. Another stroke of luck!</p>
+            </div>
+            <div class="intro">
+                <p>Check that the signs are right no matter the size of \(\varphi\).</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 12: scene8 -->
+    <div class="page" id="page-12">
+        <figure>
+            <video autoplay muted playsinline controls src="compound_images/compound_0011_scene6.mp4"></video>
         </figure>
     </div>
 
-    <!-- Page 12: End -->
-    <div class="page" id="page-12">
+    <!-- Page 13: scene8 -->
+    <div class="page" id="page-13">
+        <figure>
+            <video autoplay muted playsinline controls src="compound_images/compound_0012_scene8.mp4"></video>
+        </figure>
+        <div class="intro">
+            <p>Now we can write the blue vector in two ways.</p>
+            <p>Look what happens!</p>
+        </div>
+
+    </div>
+
+    
+
+    <!-- Page 14: End -->
+    <div class="page" id="page-14">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
@@ -246,7 +363,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="12" onchange="goToPage(this.value)"> of 12
+        Page <input type="number" id="pageInput" value="1" min="1" max="14" onchange="goToPage(this.value)"> of 14
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -274,7 +391,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let revealsUntilResume = 0;
     let activeTimeHandlerVid = null;
     let activeTimeHandlerRef = null;
-    let videoEndedListener = null;
+    let blockOnResume = false;
 
     function initPageReveal(page, revealAll) {
         revealQueue = [];
@@ -322,8 +439,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     const vid = videoResumeNode;
                     videoResumeNode = null;
                     vid.play().catch(() => {});
-                    // Re-block nav if more video-gated content remains
-                    if (revealQueue.length > 0) {
+                    // Re-block nav if more video-gated content remains, or page requested it
+                    if (blockOnResume || revealQueue.length > 0) {
+                        blockOnResume = false;
                         navBlocked = true;
                         const prompt = document.querySelector('.nav-prompt');
                         if (prompt) prompt.classList.add('nav-blocked');
@@ -357,8 +475,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // ans1 and ans2 remain in the queue to be revealed by nav events.
 
         const pausePoints = [
-            { time: 7,  autoReveal: ex1 },
-            { time: 21, autoReveal: ex2 }
+            { time: 5,  autoReveal: ex1 },
+            { time: 17, autoReveal: ex2 }
         ];
         let nextIdx = 0;
 
@@ -392,6 +510,47 @@ document.addEventListener('DOMContentLoaded', function () {
             v.removeEventListener('timeupdate', timeHandler);
             activeTimeHandlerVid = null;
             activeTimeHandlerRef = null;
+            navBlocked = false;
+            const p = document.querySelector('.nav-prompt');
+            if (p) p.classList.remove('nav-blocked');
+        }, { once: true });
+    }
+
+    // Page 4: pause at 11s, auto-reveal exercise, next nav reveals answer + resumes video
+    function setupPage4(v, exercise) {
+        navBlocked = true;
+        const prompt = document.querySelector('.nav-prompt');
+        if (prompt) prompt.classList.add('nav-blocked');
+
+        function timeHandler() {
+            if (v.currentTime >= 2 && v.currentTime < 4) {
+                v.currentTime = 4;
+            } else if (v.currentTime >= 11) {
+                v.pause();
+                v.removeEventListener('timeupdate', timeHandler);
+                activeTimeHandlerVid = null;
+                activeTimeHandlerRef = null;
+                navBlocked = false;
+                const p = document.querySelector('.nav-prompt');
+                if (p) p.classList.remove('nav-blocked');
+                if (exercise) {
+                    exercise.classList.remove('div-hidden');
+                    exercise.classList.add('div-revealed');
+                    setTimeout(() => exercise.classList.remove('div-revealed'), 400);
+                    const ps = exercise.closest('.page-scroll');
+                    if (ps) ps.scrollTo({ top: ps.scrollHeight, behavior: 'smooth' });
+                }
+                blockOnResume = true;
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            }
+        }
+        activeTimeHandlerVid = v;
+        activeTimeHandlerRef = timeHandler;
+        v.addEventListener('timeupdate', timeHandler);
+
+        v.addEventListener('ended', function () {
+            blockOnResume = false;
             navBlocked = false;
             const p = document.querySelector('.nav-prompt');
             if (p) p.classList.remove('nav-blocked');
@@ -438,8 +597,322 @@ document.addEventListener('DOMContentLoaded', function () {
         }, { once: true });
     }
 
-    // Page 7: pause at 16.5s (auto-reveal exercise), nav resumes; pause at 19s (auto-reveal answer + intro after 2s), nav resumes to end
-    function setupPage7(v, exercise, answer, intro) {
+    // Page 6: pause at 8s, auto-reveal exercise; nav reveals answer + resumes video (blocked till end)
+    function setupPage6(v, exercise) {
+        navBlocked = true;
+        const prompt = document.querySelector('.nav-prompt');
+        if (prompt) prompt.classList.add('nav-blocked');
+
+        function timeHandler() {
+            if (v.currentTime >= 8) {
+                v.pause();
+                v.removeEventListener('timeupdate', timeHandler);
+                activeTimeHandlerVid = null;
+                activeTimeHandlerRef = null;
+                navBlocked = false;
+                const p = document.querySelector('.nav-prompt');
+                if (p) p.classList.remove('nav-blocked');
+                if (exercise) {
+                    exercise.classList.remove('div-hidden');
+                    exercise.classList.add('div-revealed');
+                    setTimeout(() => exercise.classList.remove('div-revealed'), 400);
+                    const ps = exercise.closest('.page-scroll');
+                    if (ps) ps.scrollTo({ top: ps.scrollHeight, behavior: 'smooth' });
+                }
+                blockOnResume = true;
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            }
+        }
+        activeTimeHandlerVid = v;
+        activeTimeHandlerRef = timeHandler;
+        v.addEventListener('timeupdate', timeHandler);
+
+        v.addEventListener('ended', function () {
+            blockOnResume = false;
+            navBlocked = false;
+            const p = document.querySelector('.nav-prompt');
+            if (p) p.classList.remove('nav-blocked');
+        }, { once: true });
+    }
+
+    // Page 7: 4 pause points; 11s auto-reveals intro2+exercise (nav also reveals answer); 15s auto-reveals intro3; 19s, 23s are bare pauses
+    function setupPage7(v, exercise, intro2, intro3) {
+        navBlocked = true;
+        const prompt = document.querySelector('.nav-prompt');
+        if (prompt) prompt.classList.add('nav-blocked');
+
+        function autoReveal(el) {
+            if (!el) return;
+            el.classList.remove('div-hidden');
+            el.classList.add('div-revealed');
+            setTimeout(() => el.classList.remove('div-revealed'), 400);
+        }
+
+        function unblock() {
+            navBlocked = false;
+            const p = document.querySelector('.nav-prompt');
+            if (p) p.classList.remove('nav-blocked');
+        }
+
+        let phase = 0;
+        function timeHandler() {
+            if (phase === 0 && v.currentTime >= 11) {
+                phase = 1;
+                v.pause();
+                unblock();
+                autoReveal(intro2);
+                autoReveal(exercise);
+                const ps = (exercise || intro2).closest('.page-scroll');
+                if (ps) ps.scrollTo({ top: ps.scrollHeight, behavior: 'smooth' });
+                blockOnResume = true;
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            } else if (phase === 1 && v.currentTime >= 15) {
+                phase = 2;
+                v.pause();
+                unblock();
+                autoReveal(intro3);
+                const ps = intro3 && intro3.closest('.page-scroll');
+                if (ps) ps.scrollTo({ top: ps.scrollHeight, behavior: 'smooth' });
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            } else if (phase === 2 && v.currentTime >= 19) {
+                phase = 3;
+                v.pause();
+                unblock();
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            } else if (phase === 3 && v.currentTime >= 23) {
+                phase = 4;
+                v.pause();
+                v.removeEventListener('timeupdate', timeHandler);
+                activeTimeHandlerVid = null;
+                activeTimeHandlerRef = null;
+                unblock();
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            }
+        }
+        activeTimeHandlerVid = v;
+        activeTimeHandlerRef = timeHandler;
+        v.addEventListener('timeupdate', timeHandler);
+
+        v.addEventListener('ended', function () {
+            v.removeEventListener('timeupdate', timeHandler);
+            activeTimeHandlerVid = null;
+            activeTimeHandlerRef = null;
+            blockOnResume = false;
+            navBlocked = false;
+            const p = document.querySelector('.nav-prompt');
+            if (p) p.classList.remove('nav-blocked');
+        }, { once: true });
+    }
+
+    // Page 8: pause at 3s (auto-reveal intro), then bare pauses at 7, 11, 15, 20s; nav resumes between each
+    function setupPage8(v, intro) {
+        navBlocked = true;
+        const prompt = document.querySelector('.nav-prompt');
+        if (prompt) prompt.classList.add('nav-blocked');
+
+        function unblock() {
+            navBlocked = false;
+            const p = document.querySelector('.nav-prompt');
+            if (p) p.classList.remove('nav-blocked');
+        }
+
+        let phase = 0;
+        function timeHandler() {
+            if (phase === 0 && v.currentTime >= 3) {
+                phase = 1;
+                v.pause();
+                unblock();
+                if (intro) {
+                    intro.classList.remove('div-hidden');
+                    intro.classList.add('div-revealed');
+                    setTimeout(() => intro.classList.remove('div-revealed'), 400);
+                    const ps = intro.closest('.page-scroll');
+                    if (ps) ps.scrollTo({ top: ps.scrollHeight, behavior: 'smooth' });
+                }
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            } else if (phase === 1 && v.currentTime >= 7) {
+                phase = 2;
+                v.pause();
+                unblock();
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            } else if (phase === 2 && v.currentTime >= 11) {
+                phase = 3;
+                v.pause();
+                unblock();
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            } else if (phase === 3 && v.currentTime >= 15) {
+                phase = 4;
+                v.pause();
+                unblock();
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            } else if (phase === 4 && v.currentTime >= 20) {
+                phase = 5;
+                v.pause();
+                v.removeEventListener('timeupdate', timeHandler);
+                activeTimeHandlerVid = null;
+                activeTimeHandlerRef = null;
+                unblock();
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            }
+        }
+        activeTimeHandlerVid = v;
+        activeTimeHandlerRef = timeHandler;
+        v.addEventListener('timeupdate', timeHandler);
+
+        v.addEventListener('ended', function () {
+            v.removeEventListener('timeupdate', timeHandler);
+            activeTimeHandlerVid = null;
+            activeTimeHandlerRef = null;
+            navBlocked = false;
+            const p = document.querySelector('.nav-prompt');
+            if (p) p.classList.remove('nav-blocked');
+        }, { once: true });
+    }
+
+    // Page 9: skip first 7s; pause at 10s (intro), 21s (exercise), 25s (answer), each auto-revealed
+    function setupPage9(v, intro, exercise, answer, intro2) {
+
+        function autoReveal(el) {
+            if (!el) return;
+            el.classList.remove('div-hidden');
+            el.classList.add('div-revealed');
+            setTimeout(() => el.classList.remove('div-revealed'), 400);
+            const ps = el.closest('.page-scroll');
+            if (ps) ps.scrollTo({ top: ps.scrollHeight, behavior: 'smooth' });
+        }
+
+        function unblock() {
+            navBlocked = false;
+            const p = document.querySelector('.nav-prompt');
+            if (p) p.classList.remove('nav-blocked');
+        }
+
+        let phase = 0;
+        function timeHandler() {
+            if (phase === 0 && v.currentTime >= 3) {
+                phase = 1;
+                v.pause();
+                unblock();
+                autoReveal(intro);
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            } else if (phase === 1 && v.currentTime >= 14) {
+                phase = 2;
+                v.pause();
+                unblock();
+                autoReveal(exercise);
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            } else if (phase === 2 && v.currentTime >= 19) {
+                phase = 3;
+                v.pause();
+                v.removeEventListener('timeupdate', timeHandler);
+                activeTimeHandlerVid = null;
+                activeTimeHandlerRef = null;
+                unblock();
+                autoReveal(answer);
+                revealQueue = intro2 ? [intro2] : [];
+                blockOnResume = true;
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            }
+        }
+        activeTimeHandlerVid = v;
+        activeTimeHandlerRef = timeHandler;
+        v.addEventListener('timeupdate', timeHandler);
+
+        v.addEventListener('ended', function () {
+            v.removeEventListener('timeupdate', timeHandler);
+            activeTimeHandlerVid = null;
+            activeTimeHandlerRef = null;
+            navBlocked = false;
+            const p = document.querySelector('.nav-prompt');
+            if (p) p.classList.remove('nav-blocked');
+        }, { once: true });
+    }
+
+    // Page 10: intro1 on landing, nav starts video at 0.5x; 2s→normal speed; 12s→intro2; 15s→exercise (answer on nav+resume); 18s→intro3; nav resumes at 2x to end
+    function setupPage10(v, intro2, exercise, answer, intro3) {
+        v.playbackRate = 0.5;
+
+        function autoReveal(el) {
+            if (!el) return;
+            el.classList.remove('div-hidden');
+            el.classList.add('div-revealed');
+            setTimeout(() => el.classList.remove('div-revealed'), 400);
+            const ps = el.closest('.page-scroll');
+            if (ps) ps.scrollTo({ top: ps.scrollHeight, behavior: 'smooth' });
+        }
+
+        function unblock() {
+            navBlocked = false;
+            const p = document.querySelector('.nav-prompt');
+            if (p) p.classList.remove('nav-blocked');
+        }
+
+        let phase = 0;
+        let speedRestored = false;
+        function timeHandler() {
+            if (!speedRestored && v.currentTime >= 2) {
+                speedRestored = true;
+                v.playbackRate = 1.0;
+            }
+            if (phase === 0 && v.currentTime >= 12) {
+                phase = 1;
+                v.pause();
+                unblock();
+                autoReveal(intro2);
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            } else if (phase === 1 && v.currentTime >= 15) {
+                phase = 2;
+                v.pause();
+                unblock();
+                autoReveal(exercise);
+                revealQueue = answer ? [answer] : [];
+                blockOnResume = true;
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            } else if (phase === 2 && v.currentTime >= 18) {
+                phase = 3;
+                v.pause();
+                v.removeEventListener('timeupdate', timeHandler);
+                activeTimeHandlerVid = null;
+                activeTimeHandlerRef = null;
+                unblock();
+                v.playbackRate = 2;
+                revealQueue = intro3 ? [intro3] : [];
+                blockOnResume = true;
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            }
+        }
+        activeTimeHandlerVid = v;
+        activeTimeHandlerRef = timeHandler;
+        v.addEventListener('timeupdate', timeHandler);
+
+        v.addEventListener('ended', function () {
+            v.removeEventListener('timeupdate', timeHandler);
+            activeTimeHandlerVid = null;
+            activeTimeHandlerRef = null;
+            navBlocked = false;
+            const p = document.querySelector('.nav-prompt');
+            if (p) p.classList.remove('nav-blocked');
+        }, { once: true });
+    }
+
+    // Page 12: 8s→intro1+exercise (answer on nav+resume); 17s→intro3; nav resumes to end
+    function setupPage12(v, intro1, exercise, answer, intro3) {
         navBlocked = true;
         const prompt = document.querySelector('.nav-prompt');
         if (prompt) prompt.classList.add('nav-blocked');
@@ -453,27 +926,46 @@ document.addEventListener('DOMContentLoaded', function () {
             if (ps) ps.scrollTo({ top: ps.scrollHeight, behavior: 'smooth' });
         }
 
-        let paused6s = false;
+        function unblock() {
+            navBlocked = false;
+            const p = document.querySelector('.nav-prompt');
+            if (p) p.classList.remove('nav-blocked');
+        }
+
+        let phase = 0;
+        let intro1Shown = false;
         function timeHandler() {
-            if (!paused6s && v.currentTime >= 14) {
-                paused6s = true;
+            if (!intro1Shown && v.currentTime >= 3) {
+                intro1Shown = true;
+                if (intro1) {
+                    intro1.classList.remove('div-hidden');
+                    intro1.classList.add('div-revealed');
+                    setTimeout(() => intro1.classList.remove('div-revealed'), 400);
+                }
+            }
+            if (phase === 0 && v.currentTime >= 8) {
+                phase = 1;
                 v.pause();
-                navBlocked = false;
-                const p = document.querySelector('.nav-prompt');
-                if (p) p.classList.remove('nav-blocked');
+                unblock();
                 autoReveal(exercise);
+                revealQueue = answer ? [answer] : [];
+                blockOnResume = true;
                 videoResumeNode = v;
                 revealsUntilResume = 0;
-            } else if (paused6s && v.currentTime >= 18.4) {
+            } else if (phase === 1 && v.currentTime >= 9.9) {
+                phase = 2;
+                v.pause();
+                unblock();
+                videoResumeNode = v;
+                revealsUntilResume = 0;
+            } else if (phase === 2 && v.currentTime >= 17) {
+                phase = 2;
                 v.pause();
                 v.removeEventListener('timeupdate', timeHandler);
                 activeTimeHandlerVid = null;
                 activeTimeHandlerRef = null;
-                navBlocked = false;
-                const p = document.querySelector('.nav-prompt');
-                if (p) p.classList.remove('nav-blocked');
-                autoReveal(answer);
-                setTimeout(() => autoReveal(intro), 2000);
+                unblock();
+                autoReveal(intro3);
                 videoResumeNode = v;
                 revealsUntilResume = 0;
             }
@@ -497,13 +989,7 @@ document.addEventListener('DOMContentLoaded', function () {
         videoResumeNode = null;
         revealsUntilResume = 0;
         navBlocked = false;
-        if (videoEndedListener) {
-            [4, 5].forEach(n => {
-                const vid = document.querySelector('#page-' + n + ' video');
-                if (vid) vid.removeEventListener('ended', videoEndedListener);
-            });
-            videoEndedListener = null;
-        }
+        blockOnResume = false;
         if (activeTimeHandlerVid && activeTimeHandlerRef) {
             activeTimeHandlerVid.removeEventListener('timeupdate', activeTimeHandlerRef);
             activeTimeHandlerVid = null;
@@ -535,43 +1021,89 @@ document.addEventListener('DOMContentLoaded', function () {
                 visibleVideo.play().catch(() => {});
                 setupPage3(visibleVideo, allItems[0], allItems[1], allItems[2], allItems[3]);
             } else if (pageNum === 4 && forwardVisit && visibleVideo) {
-                // Re-hide exercise; video ended event will reveal it
+                // Pause at 11s, auto-reveal exercise; nav reveals answer + resumes video
                 const p4exercise = page.querySelector('.exercise');
                 if (p4exercise) p4exercise.classList.add('div-hidden');
-                navBlocked = true;
-                const p4prompt = document.querySelector('.nav-prompt');
-                if (p4prompt) p4prompt.classList.add('nav-blocked');
                 visibleVideo.play().catch(() => {});
-                videoEndedListener = function () {
-                    videoEndedListener = null;
-                    navBlocked = false;
-                    const p = document.querySelector('.nav-prompt');
-                    if (p) p.classList.remove('nav-blocked');
-                    if (p4exercise) {
-                        p4exercise.classList.remove('div-hidden');
-                        p4exercise.classList.add('div-revealed');
-                        setTimeout(() => p4exercise.classList.remove('div-revealed'), 400);
-                        const ps = p4exercise.closest('.page-scroll');
-                        if (ps) ps.scrollTo({ top: ps.scrollHeight, behavior: 'smooth' });
-                        else p4exercise.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }
-                };
-                visibleVideo.addEventListener('ended', videoEndedListener, { once: true });
+                setupPage4(visibleVideo, p4exercise);
             } else if (pageNum === 5 && forwardVisit && visibleVideo) {
                 // Re-hide exercise; video pauses at 7s, exercise auto-revealed, nav reveals answer + resumes
                 const p5exercise = page.querySelector('.exercise');
                 if (p5exercise) p5exercise.classList.add('div-hidden');
                 visibleVideo.play().catch(() => {});
                 setupPage5(visibleVideo, p5exercise);
+            } else if (pageNum === 6 && forwardVisit && visibleVideo) {
+                // Pause at 8s, auto-reveal exercise; nav reveals answer + resumes video (blocked till end)
+                const p6exercise = page.querySelector('.exercise');
+                if (p6exercise) p6exercise.classList.add('div-hidden');
+                revealQueue = [];
+                const p6answer = page.querySelector('.answer');
+                if (p6answer) revealQueue = [p6answer];
+                if (visibleVideo.dataset.playbackRate) visibleVideo.playbackRate = parseFloat(visibleVideo.dataset.playbackRate);
+                visibleVideo.play().catch(() => {});
+                setupPage6(visibleVideo, p6exercise);
             } else if (pageNum === 7 && forwardVisit && visibleVideo) {
-                // Re-hide exercise; both items auto-revealed by timeHandler at 6s and 19s
+                // 4 pauses: 11s (intro+exercise), 15s (intro2), 19s, 23s; nav reveals answer after 11s
+                const p7intros = page.querySelectorAll('.intro');
+                const p7intro2 = p7intros[1];
+                const p7intro3 = p7intros[2];
                 const p7exercise = page.querySelector('.exercise');
-                const p7answer = page.querySelector('.answer');
-                const p7intro = page.querySelector('.intro');
+                if (p7intro2) p7intro2.classList.add('div-hidden');
+                if (p7intro3) p7intro3.classList.add('div-hidden');
                 if (p7exercise) p7exercise.classList.add('div-hidden');
                 revealQueue = [];
+                const p7answer = page.querySelector('.answer');
+                if (p7answer) revealQueue = [p7answer];
                 visibleVideo.play().catch(() => {});
-                setupPage7(visibleVideo, p7exercise, p7answer, p7intro);
+                setupPage7(visibleVideo, p7exercise, p7intro2, p7intro3);
+            } else if (pageNum === 8 && forwardVisit && visibleVideo) {
+                // Pause at 3s (auto-reveal intro), then bare pauses at 7, 11, 15, 20s
+                const p8intro = page.querySelector('.intro');
+                if (p8intro) p8intro.classList.add('div-hidden');
+                revealQueue = [];
+                visibleVideo.play().catch(() => {});
+                setupPage8(visibleVideo, p8intro);
+            } else if (pageNum === 9 && forwardVisit && visibleVideo) {
+                // intro1 visible on landing; first nav starts video; pause at 10s, 21s (exercise), 25s (answer)
+                const p9intro2 = page.querySelectorAll('.intro')[1];
+                const p9exercise = page.querySelector('.exercise');
+                const p9answer = page.querySelector('.answer');
+                if (p9intro2) p9intro2.classList.add('div-hidden');
+                if (p9exercise) p9exercise.classList.add('div-hidden');
+                if (p9answer) p9answer.classList.add('div-hidden');
+                revealQueue = [];
+                videoResumeNode = visibleVideo;
+                revealsUntilResume = 0;
+                setupPage9(visibleVideo, null, p9exercise, p9answer, p9intro2);
+            } else if (pageNum === 10 && forwardVisit && visibleVideo) {
+                // intro1 visible on landing; video auto-plays; pauses at 12s (intro2), 15s (exercise), 18s (intro3)
+                const p10intros = page.querySelectorAll('.intro');
+                const p10intro2 = p10intros[1];
+                const p10intro3 = p10intros[2];
+                const p10exercise = page.querySelector('.exercise');
+                const p10answer = page.querySelector('.answer');
+                if (p10intro2) p10intro2.classList.add('div-hidden');
+                if (p10intro3) p10intro3.classList.add('div-hidden');
+                if (p10exercise) p10exercise.classList.add('div-hidden');
+                if (p10answer) p10answer.classList.add('div-hidden');
+                revealQueue = [];
+                videoResumeNode = visibleVideo;
+                revealsUntilResume = 0;
+                setupPage10(visibleVideo, p10intro2, p10exercise, p10answer, p10intro3);
+            } else if (pageNum === 12 && forwardVisit && visibleVideo) {
+                // 8s→intro1+exercise (answer on nav+resume); 17s→intro3; nav resumes to end
+                const p12intros = page.querySelectorAll('.intro');
+                const p12intro1 = p12intros[0];
+                const p12intro3 = p12intros[2];
+                const p12exercise = page.querySelector('.exercise');
+                const p12answer = page.querySelector('.answer');
+                if (p12intro1) p12intro1.classList.add('div-hidden');
+                if (p12intro3) p12intro3.classList.add('div-hidden');
+                if (p12exercise) p12exercise.classList.add('div-hidden');
+                if (p12answer) p12answer.classList.add('div-hidden');
+                revealQueue = [];
+                visibleVideo.play().catch(() => {});
+                setupPage12(visibleVideo, p12intro1, p12exercise, p12answer, p12intro3);
             } else if (visibleVideo && forwardVisit) {
                 if (visibleVideo.dataset.playbackRate) visibleVideo.playbackRate = parseFloat(visibleVideo.dataset.playbackRate);
                 visibleVideo.play().catch(() => {});

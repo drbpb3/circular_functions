@@ -37,6 +37,17 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+    .page.active figure,
+    .page.active .sticky-media {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        background: #fafafa;
+        margin-top: 0;
+        padding-bottom: 4px;
+    }
+    </style>
 </head>
 <body oncontextmenu="return false;">
 
@@ -703,7 +714,7 @@
         </div>
 
         <!-- Stacked videos: video1 visible first; video2 crossfades in on next nav -->
-        <div style="position: relative; max-width: 80%; margin: 20px auto; border-radius: 10px; border: 4px solid #2d5a27; padding: 10px; background: white; box-shadow: 0 6px 20px rgba(0,0,0,0.18); overflow: hidden;">
+        <div class="sticky-media" style="position: relative; max-width: 80%; margin: 20px auto; border-radius: 10px; border: 4px solid #2d5a27; padding: 10px; background: white; box-shadow: 0 6px 20px rgba(0,0,0,0.18); overflow: hidden;">
             <video id="cf-p9-v1" autoplay loop muted playsinline style="display:block; width:100%; border-radius:6px;"><source src="inverse_images/video1.mp4"></video>
             <video id="cf-p9-v2" loop muted playsinline style="position:absolute; top:10px; left:10px; width:calc(100% - 20px); opacity:0; transition: opacity 1.5s ease; border-radius:6px;"><source src="inverse_images/video2.mp4"></video>
         </div>
@@ -720,7 +731,7 @@
 <div class="page" id="page-10" data-reveal-answers>
 
         <!-- image5 → image6 crossfade container (always visible from landing) -->
-        <div style="position: relative; max-width: 64%; margin: 20px auto; overflow: hidden; border-radius: 10px; border: 4px solid #2d5a27; padding: 16px 10px; background: white; box-shadow: 0 6px 20px rgba(0,0,0,0.18);">
+        <div class="sticky-media" style="position: relative; max-width: 64%; margin: 20px auto; overflow: hidden; border-radius: 10px; border: 4px solid #2d5a27; padding: 16px 10px; background: white; box-shadow: 0 6px 20px rgba(0,0,0,0.18);">
             <img id="cf-p10-before" src="inverse_images/image5.png" alt="Graph showing segment choices" style="display:block; width:100%;">
             <img id="cf-p10-after" src="inverse_images/image6.png" alt="Graph showing selected segment"
                  style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:100%; opacity:0; transition: opacity 1.5s ease;">
@@ -930,6 +941,10 @@
                     next.classList.remove('div-hidden');
                     next.classList.add('div-revealed');
                     setTimeout(() => next.classList.remove('div-revealed'), 400);
+                    const _page = next.closest('.page');
+                    const _sticky = _page && _page.querySelector('figure, .sticky-media');
+                    const _stickyH = _sticky ? _sticky.getBoundingClientRect().height : 0;
+                    if (_stickyH > 0) next.style.scrollMarginTop = (_stickyH + 8) + 'px';
                     next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }
             } else {
