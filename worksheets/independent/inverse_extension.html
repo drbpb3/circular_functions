@@ -37,6 +37,40 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+        .div-opacity-zero { opacity: 0; pointer-events: none; }
+        .div-crossfaded-out { opacity: 0; pointer-events: none; }
+        @keyframes divFadeOut {
+            from { opacity: 1; }
+            to   { opacity: 0; }
+        }
+        .div-fading-out { animation: divFadeOut 1.2s ease forwards; pointer-events: none; }
+        @keyframes divCrossfadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        .div-crossfade-in { animation: divCrossfadeIn 1.2s ease forwards; }
+        /* Stack children in the same grid cell for crossfade */
+        .crossfade-container { display: grid; }
+        .crossfade-container > * { grid-area: 1 / 1; min-width: 0; }
+        /* Page 5: pin the reference image and let only the exercises/answers
+           below it scroll, in their own scroll region (same approach as
+           reciprocals.html pages 4-6) */
+        #page-5.active {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 40px);
+            overflow: hidden;
+            padding-bottom: 0;
+        }
+        #page-5.active > figure { flex-shrink: 0; }
+        #page-5 .qa-scroll {
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+            padding-bottom: 80px;
+        }
+    </style>
 </head>
 <body oncontextmenu="return false;">
 
@@ -77,12 +111,17 @@
         We've worked through the basic circular functions: sin, cos, and tan. We've worked through the reciprocal circular functions: cosec, sec, and cot. We've worked on the inverses of the basic functions: arcsin, arccos, and arctan. Surely that's plenty? Yes it is, especially when we've worked through them all in such depth. But if you are still just a little bit interested to see more, we could work on the inverses of the reciprocal functions: arccosec, arcsec, arccot. Strictly for interest only, though!
     </div>
 
-    <div class="exercise">
+    <div class="exercise" data-reveal-with-next>
         Here is the graph \(y=\sec x\). Draw this graph, and, on the same set of axes, draw the graph \(x=\sec y\).
     </div>
-    <figure>
-        <img src="inverse_images/image102.png" alt="Graph of sec x">
-    </figure>
+    <div class="crossfade-container">
+        <figure class="reveal-paired">
+            <img src="inverse_images/image102.png" alt="Graph of sec x">
+        </figure>
+        <figure class="reveal-with-prev">
+            <img src="inverse_images/image103.png" alt="Graphs of sec x and sec inverse x">
+        </figure>
+    </div>
         <!--<p style="text-align: center;"><strong>graphs of \(\boldsymbol{\operatorname{arcsec} x}\), \(\boldsymbol{\operatorname{arccosec} x}\), and \(\boldsymbol{\operatorname{arccot} x}\)</strong></p>
         <p class="intro">The graph of \(y = \arccos x\) is shown as a reminder. Its domain is \([-1, 1]\) and its range is \([0, \pi]\).</p>
         <figure>
@@ -97,18 +136,20 @@
     </div>-->
     </div>
 <div class="page" id="page-3">
-    <figure>
-        <img src="inverse_images/image103.png" alt="Graphs of sec x and sec inverse x">
-    </figure>
-
-    </div>
-<div class="page" id="page-4">
     <div class="exercise">
         Why is the graph \(x=\sec y\) not the same as the graph \(y=\mathrm{arcsec} \,x\)?
     </div>
-        <figure style="max-width: 72%; margin: 30px auto;">
+    <div class="crossfade-container" style="max-width: 72%; margin: 30px auto;">
+        <figure>
             <video autoplay loop muted playsinline style="max-width: 100%;"><source src="inverse_images/video5.mp4" alt="Graph showing intersections with sec"></video>
         </figure>
+        <figure class="reveal-with-prev reveal-defer">
+            <img src="inverse_images/image211.png" alt="Graphs of sec x and sec inverse x" style="max-width: 100%;">
+        </figure>
+        <figure class="reveal-with-prev reveal-defer">
+            <img src="inverse_images/image104.png" alt="Graphs of sec x and sec inverse x" style="max-width: 100%;">
+        </figure>
+    </div>
 
     <div class="answer">
         For the graph to represent a function, the vertical line must only ever intersect the graph at a single point.
@@ -120,24 +161,16 @@
 
 </div>
 
-<div class="page" id="page-5">
-    <div class="exercise">
-        How can we choose part of the graph \(x=\sec y\) to create a sensible graph of the function \(y=\mathrm{arcsec}\,x\)?
-    </div>
-    <figure>
-        <img src="inverse_images/image211.png" alt="Graphs of sec x and sec inverse x">
-    </figure>
-
-</div>
-
-<div class="page" id="page-6" data-reveal-steps>
+<div class="page" id="page-4" data-reveal-steps>
+    
+        <figure>
+            <img src="inverse_images/image104.png" alt="Graphs of sec x and sec inverse x">
+        </figure>
+    
 
     <div class="exercise">
         If this is the graph \(y=\mathrm{arcsec}\,x\), what are the domain and the range of the function arcsec?
     </div>
-    <figure>
-        <img src="inverse_images/image104.png" alt="Graphs of sec x and sec inverse x">
-    </figure>
 
     <div class="answer">
         \[\begin{aligned}
@@ -145,54 +178,74 @@
         &\text{Range: } \left[0,\, \pi\right]\setminus\left\{\frac{\pi}{2}\right\}
         \end{aligned}\]
     </div>
-    <div class="exercise">
-        <p>Solve the equation</p>
-        \[\operatorname{arccos}y=\operatorname{arcsec}x\]
-    </div>
-    <div class="answer">
-        <div class="aligned-eq-block">
-            <span class="aeq-lhs">\(\operatorname{arccos}y\)</span>
-            <span class="aeq-op">\(=\)</span>
-            <span class="aeq-rhs">\(\operatorname{arcsec}x\)</span>
-            <div class="step">
-                <span class="aeq-lhs">\(\Rightarrow \sec(\operatorname{arccos}y)\)</span>
-                <span class="aeq-op">\(=\)</span>
-                <span class="aeq-rhs">\(\sec(\operatorname{arcsec}x)=x\)</span>
-            </div>
-            <div class="step">
-                <span class="aeq-lhs">\(\Rightarrow x\)</span>
-                <span class="aeq-op">\(=\)</span>
-                <span class="aeq-rhs">\(\dfrac{1}{\cos(\operatorname{arccos}y)}=\dfrac{1}{y}\)</span>
-            </div>
-            <div class="step">
-                <span class="aeq-lhs">\(\Rightarrow \operatorname{arcsec} x\)</span>
-                <span class="aeq-op">\(=\)</span>
-                <span class="aeq-rhs">\(\arccos\dfrac{1}{x}\)</span>
-            </div>
+
+</div>
+
+<div class="page" id="page-5" data-reveal-steps>
+    <figure>
+        <img src="inverse_images/image240.png" alt="Graphs of sec x and sec inverse x">
+    </figure>
+    <div class="qa-scroll">
+        <div class="intro">
+            <p>
+                We know that \(\sec x=\displaystyle\frac{1}{\cos x}\).
+            </p>
+            <p>
+                Now we'll look for a similar relationship between
+                \(\operatorname{arccos}x\) and \(\operatorname{arcsec}x\), the pink and blue graphs in the diagram.
+            </p>
+        </div>
+
+        <div class="exercise">
+            <p>Putting \(x=\operatorname{arcsec}A\), what are \(\sec x\) and \(\cos x\) in terms of \(A\)?</p>
+
+        </div>
+        <div class="answer">
+            \[\sec x=A\qquad \cos x=\frac{1}{\sec x}=\frac{1}{A}
+            \]
+        </div>
+        <div class="exercise">
+            <p>
+                Now make \(x\) the subject of  \(\cos x=\displaystyle\frac{1}{A}\).
+            </p>
+        </div>
+        <div class="answer">
+            <p>
+                \(x=\operatorname{arccos}\displaystyle\frac{1}{A}\).
+            </p>
+        </div>
+        <div class="exercise">
+            <p>
+                What do we now know about \(\operatorname{arcsec}A\) and \(\operatorname{arccos}\displaystyle\frac{1}{A}\)?
+            </p>
+        </div>
+        <div class="answer">
+
+                \[\operatorname{arcsec}A=\operatorname{arccos}\displaystyle\frac{1}{A}\]
+
         </div>
     </div>
 
 </div>
 
 
-<div class="page" id="page-7">
+<div class="page" id="page-6">
     <div class="exercise">
         Draw the graphs \(y=\mathrm{cosec}\,x\) and \(x=\mathrm{cosec}\,y\) on the same set of axes.
     </div>
-    <figure>
-        <img src="inverse_images/image209.png" alt="Graphs of sec x and sec inverse x">
-    </figure>
-</div>
-<div class="page" id="page-8">
+    <div class="crossfade-container">
+        <figure class="reveal-paired">
+            <img src="inverse_images/image209.png" alt="Graphs of cosec x and cosec inverse x">
+        </figure>
+        <figure class="reveal-with-prev reveal-defer">
+            <img src="inverse_images/image221.png" alt="Graphs of cosec x and arccosec x">
+        </figure>
+    </div>
     <div class="exercise">
         How can we choose part of the graph \(x=\mathrm{cosec}\, y\) to create a sensible graph of the function \(y=\mathrm{arccosec}\,x\)?
     </div>
-    <figure>
-        <img src="inverse_images/image221.png" alt="Graphs of sec x and sec inverse x">
-    </figure>
-
 </div>
-<div class="page" id="page-9">
+<div class="page" id="page-7">
 
     <div class="exercise">
         What are the domain and range of the function arccosec?
@@ -207,7 +260,7 @@
         \end{aligned}\]
     </div>
 </div>
-<div class="page" id="page-10">
+<div class="page" id="page-8">
         <div class="exercise">
             <p>Draw the graphs \(y=\cot x\) and \(x=\cot y\).</p>
         </div>
@@ -217,7 +270,7 @@
             </figure>
         </div>
     </div>
-<div class="page" id="page-11">
+<div class="page" id="page-9">
     <div class="exercise">
         <p>Use this to draw the graph \(y=\mathrm{arccot}\,x\)</p>
     </div>
@@ -234,7 +287,7 @@
         </div>
 
     </div>
-<div class="page" id="page-12">
+<div class="page" id="page-10">
     <div class="exercise">
         <p>The graphs of \(y = \operatorname{arccot} x\) and \(y = \arctan x\) are shown together below.</p>
 
@@ -249,7 +302,7 @@
         \]
     </div>
     </div>
-<div class="page" id="page-13">
+<div class="page" id="page-11">
         <div class="exercise">
             <p>The graphs of \(y = \operatorname{arcsec} x\) and \(y = \operatorname{arccosec} x\) are shown together below.</p>
 
@@ -267,13 +320,13 @@
         </div>
     </div>
 
-    <!-- Page 14 -->
-    <div class="page" id="page-14" data-reveal-steps>
+    <!-- Page 12 -->
+    <div class="page" id="page-12" data-reveal-steps>
         <div class="exercise">
             Find the differential of \(\operatorname{arcsec} x\).
         </div>
         <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arcsecderiv.mp4" alt="animation of differential of arcsec"></video>
+            <video autoplay  muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arcsecderiv.mp4" alt="animation of differential of arcsec"></video>
         </figure>
         <div class="answer">
             <div class="aligned-eq-block">
@@ -302,13 +355,13 @@
         </div>
     </div>
 
-    <!-- Page 15 -->
-    <div class="page" id="page-15" data-reveal-steps>
+    <!-- Page 13 -->
+    <div class="page" id="page-13" data-reveal-steps>
         <div class="exercise">
             Find the differential of \(\operatorname{arccsc} x\).
         </div>
         <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arccscderiv.mp4" alt="animation of differential of arccsc"></video>
+            <video autoplay  muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arccscderiv.mp4" alt="animation of differential of arccsc"></video>
         </figure>
         <div class="answer">
             <div class="aligned-eq-block">
@@ -337,13 +390,13 @@
         </div>
     </div>
 
-    <!-- Page 16 -->
-    <div class="page" id="page-16" data-reveal-steps>
+    <!-- Page 14 -->
+    <div class="page" id="page-14" data-reveal-steps>
         <div class="exercise">
             Find the differential of \(\operatorname{arccot} x\).
         </div>
         <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arccotderiv.mp4" alt="animation of differential of arccot"></video>
+            <video autoplay  muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arccotderiv.mp4" alt="animation of differential of arccot"></video>
         </figure>
         <div class="answer">
             <div class="aligned-eq-block">
@@ -364,80 +417,283 @@
         </div>
     </div>
 
-<div class="page" id="page-17">
-        
-            <div class="exercise">
-                <p>Find (using integration by parts) \[\int \operatorname{arcsec}x\,\mathrm{d}x\]</p>
-            </div>
-            <div class="answer">
-                \[\begin{aligned}
-                u&=\operatorname{arcsec}x\qquad \frac{\mathrm{d}v}{\mathrm{d}x}=1\\[12pt]
-                \frac{\mathrm{d}u}{\mathrm{d}x}&=\frac{1}{x\sqrt{x^2-1}}\qquad v=x\\[12pt]
-                \int \operatorname{arcsec}x\,\mathrm{d}x&=uv-\int v \,\mathrm{d}u\\[12pt]
-                &=x\operatorname{arcsec}x-\int \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x
-                \\[12pt]
-                \end{aligned}\]
-            </div>
-            <div class="exercise">
-                <p>Use the substitution \(x=\sec u\) to find \[\int \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\]</p>
-            </div>
-            <div class="answer">
+<div class="page" id="page-15" data-reveal-steps>
 
-                \[\begin{align*}
-                \int \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\\[12pt]
-                x=\sec u\qquad \frac{\mathrm{d}x}{\mathrm{d}u}=\sec u\tan u\\[12pt]
-                \int \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x&=\int \frac{1}{\sqrt{x^2-1}}\frac{\mathrm{d}x}{\mathrm{d}u}\,\mathrm{d}u\\[12pt]
-                &=\int \frac{1}{\sqrt{x^2-1}}\sec u\tan u\,\mathrm{d}u\\[12pt]
-                &=\int \frac{1}{\tan u}\sec u\tan u\,\mathrm{d}u\\[12pt]
-                &=\int \sec u\,\mathrm{d}u\\[12pt]
-                &=\ln|\sec u+\tan u|\\[12pt]
-                &=\ln\left|x+\sqrt{x^2-1}\right|\\[12pt]
-                \end{align*}\]
-            </div>
             <div class="exercise">
-                <p>Use this result to find\[\int \operatorname{arcsec}x\,\mathrm{d}x\]</p>
+                <p>Find (using integration by parts) \[\int_1^2 \operatorname{arcsec}x\,\mathrm{d}x\]</p>
             </div>
             <div class="answer">
-            \begin{aligned}
-                \int \operatorname{arcsec}x\,\mathrm{d}x
-                &=x\operatorname{arcsec}x-\int \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x
-                \\[12pt]
-                &=x\operatorname{arcsec}x-\ln\left|x+\sqrt{x^2-1}\right|+c
-                \end{aligned}
+                <div class="aligned-eq-block">
+                    <span class="aeq-full">\(u=\operatorname{arcsec}x\qquad \dfrac{\mathrm{d}v}{\mathrm{d}x}=1\)</span>
+                    <div class="step">
+                        <span class="aeq-full">\(\dfrac{\mathrm{d}u}{\mathrm{d}x}=\dfrac{1}{x\sqrt{x^2-1}}\qquad v=x\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\int_1^2 \operatorname{arcsec}x\,\mathrm{d}x\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(uv-\displaystyle\int v \,\mathrm{d}u\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\Big[x\operatorname{arcsec}x\Big]_1^2-\displaystyle\int_1^2 \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="exercise">
+                <p>Use the substitution \(x=\sec u\) to find \[\int_1^2 \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\]</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <span class="aeq-full">\(\displaystyle\int_1^2 \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\)</span>
+                    <div class="step">
+                        <span class="aeq-full">\(x=\sec u\qquad \dfrac{\mathrm{d}x}{\mathrm{d}u}=\sec u\tan u\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\int_1^2 \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\int_0^\frac{\pi}{3} \frac{1}{\sqrt{x^2-1}}\frac{\mathrm{d}x}{\mathrm{d}u}\,\mathrm{d}u\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\int_0^\frac{\pi}{3} \frac{1}{\sqrt{x^2-1}}\sec u\tan u\,\mathrm{d}u\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\int_0^\frac{\pi}{3} \frac{1}{\tan u}\sec u\tan u\,\mathrm{d}u\qquad\) as \(\tan u
+                            \geqslant 0\) in this range
+                        </span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\int_0^\frac{\pi}{3} \sec u\,\mathrm{d}u\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\Big[\ln|\sec u+\tan u|\Big]_0^\frac{\pi}{3}=\ln\left(2+\sqrt{3}\right)\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\Bigg[\ln\left|x+\sqrt{x^2-1}\right|\Bigg]_1^2=\ln\left(2+\sqrt{3}\right)\)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="exercise">
+                <p>Use this result to find\[\int_1^2 \operatorname{arcsec}x\,\mathrm{d}x\]</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\int_1^2 \operatorname{arcsec}x\,\mathrm{d}x\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\Big[x\operatorname{arcsec}x\Big]_1^2-\displaystyle\int_1^2 \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\frac{2\pi}{3}-\ln\left(2+\sqrt 3\right)\)</span>
+                    </div>
+                </div>
             </div>
     </div>
-<div class="page" id="page-18">
-    
-    <div class="exercise">
-        <p>Find (using integration by parts) \[\int \operatorname{arccosec}x\,\mathrm{d}x\]</p>
+<div class="page" id="page-16" data-reveal-steps>
+
+            <div class="exercise">
+                <p>Find (using integration by parts) \[\int_{-2}^{-1} \operatorname{arcsec}x\,\mathrm{d}x\]</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <span class="aeq-full">\(u=\operatorname{arcsec}x\qquad \dfrac{\mathrm{d}v}{\mathrm{d}x}=1\)</span>
+                    <div class="step">
+                        <span class="aeq-full">\(\dfrac{\mathrm{d}u}{\mathrm{d}x}=\dfrac{1}{x\sqrt{x^2-1}}\qquad v=x\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\int_{-2}^{-1} \operatorname{arcsec}x\,\mathrm{d}x\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(uv-\displaystyle\int v \,\mathrm{d}u\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\Big[x\operatorname{arcsec}x\Big]_{-2}^{-1}-\displaystyle\int_{-2}^{-1} \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="exercise">
+                <p>Use the substitution \(x=\sec u\) to find \[\int_{-2}^{-1} \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\]</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <span class="aeq-full">\(\displaystyle\int_{-2}^{-1} \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\)</span>
+                    <div class="step">
+                        <span class="aeq-full">\(x=\sec u\qquad \dfrac{\mathrm{d}x}{\mathrm{d}u}=\sec u\tan u\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\int_{-2}^{-1} \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\int_\frac{2\pi}{3}^\pi \frac{1}{\sqrt{x^2-1}}\frac{\mathrm{d}x}{\mathrm{d}u}\,\mathrm{d}u\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\int_\frac{2\pi}{3}^\pi \frac{1}{\sqrt{x^2-1}}\sec u\tan u\,\mathrm{d}u\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(-\displaystyle\int_\frac{2\pi}{3}^\pi \frac{1}{\tan u}\sec u\tan u\,\mathrm{d}u\qquad\) as \(\tan u
+                            \leqslant 0\) in this range
+                        </span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(-\displaystyle\int_\frac{2\pi}{3}^\pi \sec u\,\mathrm{d}u\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(-\Big[\ln|\sec u+\tan u|\Big]_\frac{2\pi}{3}^\pi=\ln\left(2+\sqrt{3}\right)\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(-\Bigg[\ln\left|x-\sqrt{x^2-1}\right|\Bigg]_{-2}^{-1}=\ln\left(2+\sqrt{3}\right)\)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="exercise">
+                <p>Use this result to find\[\int_{-2}^{-1} \operatorname{arcsec}x\,\mathrm{d}x\]</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\int_{-2}^{-1} \operatorname{arcsec}x\,\mathrm{d}x\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\Big[x\operatorname{arcsec}x\Big]_{-2}^{-1}-\displaystyle\int_{-2}^{-1} \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\frac{4\pi}{3}-\ln\left(2+\sqrt 3\right)\)</span>
+                    </div>
+                </div>
+            </div>
     </div>
-    <div class="answer">
-        \begin{aligned}
-        u&=\operatorname{arccosec}x\qquad \frac{\mathrm{d}v}{\mathrm{d}x}=1\\[12pt]
-        \frac{\mathrm{d}u}{\mathrm{d}x}&=-\frac{1}{x\sqrt{x^2-1}}\qquad v=x\\[12pt]
-        \int \operatorname{arccosec}x\,\mathrm{d}x&=uv-\int v \,\mathrm{d}u\\[12pt]
-        &=x\operatorname{arccosec}x+\int \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x
-        \\[12pt]
-        
-        &=x\operatorname{arccosec}x+\ln\left|x+\frac{1}{\sqrt{x^2-1}}\right|+c
-        \end{aligned}
+<div class="page" id="page-17" data-reveal-steps>
+
+            <div class="exercise">
+                <p>Find (using integration by parts) \[\int_1^2 \operatorname{arccosec}x\,\mathrm{d}x\]</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <span class="aeq-full">\(u=\operatorname{arccosec}x\qquad \dfrac{\mathrm{d}v}{\mathrm{d}x}=1\)</span>
+                    <div class="step">
+                        <span class="aeq-full">\(\dfrac{\mathrm{d}u}{\mathrm{d}x}=-\dfrac{1}{x\sqrt{x^2-1}}\qquad v=x\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\int_1^2 \operatorname{arccosec}x\,\mathrm{d}x\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(uv-\displaystyle\int v \,\mathrm{d}u\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\Big[x\operatorname{arccosec}x\Big]_1^2+\displaystyle\int_1^2 \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="exercise">
+                <p>Using the result \[\int_1^2 \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x=\ln\left(2+\sqrt{3}\right)\] (found earlier by the substitution \(x=\sec u\)), find \[\int_1^2 \operatorname{arccosec}x\,\mathrm{d}x\]</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\int_1^2 \operatorname{arccosec}x\,\mathrm{d}x\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\Big[x\operatorname{arccosec}x\Big]_1^2+\displaystyle\int_1^2 \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\ln\left(2+\sqrt 3\right)-\displaystyle\frac{\pi}{6}\)</span>
+                    </div>
+                </div>
+            </div>
     </div>
+<div class="page" id="page-18" data-reveal-steps>
+
+            <div class="exercise">
+                <p>Find (using integration by parts) \[\int_{-2}^{-1} \operatorname{arccosec}x\,\mathrm{d}x\]</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <span class="aeq-full">\(u=\operatorname{arccosec}x\qquad \dfrac{\mathrm{d}v}{\mathrm{d}x}=1\)</span>
+                    <div class="step">
+                        <span class="aeq-full">\(\dfrac{\mathrm{d}u}{\mathrm{d}x}=-\dfrac{1}{x\sqrt{x^2-1}}\qquad v=x\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\int_{-2}^{-1} \operatorname{arccosec}x\,\mathrm{d}x\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(uv-\displaystyle\int v \,\mathrm{d}u\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\Big[x\operatorname{arccosec}x\Big]_{-2}^{-1}+\displaystyle\int_{-2}^{-1} \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="exercise">
+                <p>Using the result \[\int_{-2}^{-1} \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x=\ln\left(2+\sqrt{3}\right)\] (found earlier by the substitution \(x=\sec u\)), find \[\int_{-2}^{-1} \operatorname{arccosec}x\,\mathrm{d}x\]</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\int_{-2}^{-1} \operatorname{arccosec}x\,\mathrm{d}x\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\Big[x\operatorname{arccosec}x\Big]_{-2}^{-1}+\displaystyle\int_{-2}^{-1} \frac{1}{\sqrt{x^2-1}}\,\mathrm{d}x\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\ln\left(2+\sqrt 3\right)+\displaystyle\frac{\pi}{6}\)</span>
+                    </div>
+                </div>
+            </div>
     </div>
-<div class="page" id="page-19">
-        
+<div class="page" id="page-19" data-reveal-steps>
+
         <div class="exercise">
             <p>Find (using integration by parts) \[\int \operatorname{arccot}x\,\mathrm{d}x\]</p>
         </div>
         <div class="answer">
-            \begin{aligned}
-            u&=\operatorname{arccot}x\qquad \frac{\mathrm{d}v}{\mathrm{d}x}=1\\[12pt]
-            \frac{\mathrm{d}u}{\mathrm{d}x}&=-\frac{1}{1+x^2}\qquad v=x\\[12pt]
-            \int \operatorname{arccosec}x\,\mathrm{d}x&=uv-\int v \,\mathrm{d}u\\[12pt]
-            &=x\operatorname{arccot}x+\int x\frac{1}{1+x^2}\,\mathrm{d}x
-            \\[12pt]
-            
-            &=x\operatorname{arccot}x+\frac{1}{2}\ln\left(1+x^2\right)+c
-            \end{aligned}
+            <div class="aligned-eq-block">
+                <span class="aeq-full">\(u=\operatorname{arccot}x\qquad \dfrac{\mathrm{d}v}{\mathrm{d}x}=1\)</span>
+                <div class="step">
+                    <span class="aeq-full">\(\dfrac{\mathrm{d}u}{\mathrm{d}x}=-\dfrac{1}{1+x^2}\qquad v=x\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\displaystyle\int \operatorname{arccot}x\,\mathrm{d}x\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(uv-\displaystyle\int v \,\mathrm{d}u\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(x\operatorname{arccot}x+\displaystyle\int x\frac{1}{1+x^2}\,\mathrm{d}x\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(x\operatorname{arccot}x+\frac{1}{2}\ln\left(1+x^2\right)+c\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -484,14 +740,30 @@
 
         function initPageReveal(page, revealAll) {
             revealQueue = [];
+            // Crossfade base images (the sibling a reveal-with-prev item fades out) aren't
+            // matched by the animatable selector below, so their transient state needs its
+            // own reset here or they stay stuck hidden on a later revisit of the page.
+            page.querySelectorAll('.crossfade-container > *').forEach(el => {
+                el.classList.remove('div-crossfaded-out', 'div-fading-out', 'div-crossfade-in');
+            });
             if (page.hasAttribute('data-no-reveal')) { return; }
-            const selectorParts = [ANIMATABLE];
+            const selectorParts = [ANIMATABLE, '.reveal-with-prev', '.reveal-paired'];
             if (page.hasAttribute('data-reveal-steps')) selectorParts.push('div.step');
             const selector = selectorParts.join(', ');
-            const animatable = Array.from(page.querySelectorAll(selector))
+            let animatable = Array.from(page.querySelectorAll(selector))
                 .filter(div => !div.classList.contains('reveal-instant'));
+            // reveal-defer: push these elements to the end of the reveal queue
+            // regardless of DOM position, so a crossfade can stay visually where
+            // it belongs (e.g. page 3's video) but still fire after other content.
+            const deferred = animatable.filter(div => div.classList.contains('reveal-defer'));
+            if (deferred.length > 0) {
+                animatable = animatable.filter(div => !div.classList.contains('reveal-defer')).concat(deferred);
+            }
             animatable.forEach(div => {
-                if (div.classList.contains('step')) {
+                div.classList.remove('div-crossfaded-out');
+                if (div.classList.contains('reveal-with-prev')) {
+                    div.classList.add('div-opacity-zero');
+                } else if (div.classList.contains('step')) {
                     div.classList.add('step-hidden');
                 } else {
                     div.classList.add('div-hidden');
@@ -499,8 +771,7 @@
             });
             if (revealAll) {
                 animatable.forEach(div => {
-                    div.classList.remove('div-hidden');
-                    div.classList.remove('step-hidden');
+                    div.classList.remove('div-hidden', 'div-opacity-zero', 'div-crossfaded-out', 'step-hidden');
                 });
                 return;
             }
@@ -514,17 +785,44 @@
         const _origShowPage   = window.showPage;
         const _origChangePage = window.changePage;
 
+        function revealPlain(el) {
+            el.classList.remove(el.classList.contains('step') ? 'step-hidden' : 'div-hidden');
+            el.classList.add('div-revealed');
+            setTimeout(() => el.classList.remove('div-revealed'), 400);
+            const scrollTarget = window.getComputedStyle(el).display === 'contents'
+                ? (el.lastElementChild || el)
+                : el.classList.contains('nav-gated') ? (el.firstElementChild || el)
+                : el;
+            scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
         function revealNextOrAdvance() {
             if (revealQueue.length > 0) {
                 const next = revealQueue.shift();
-                next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
-                next.classList.add('div-revealed');
-                setTimeout(() => next.classList.remove('div-revealed'), 400);
-                const scrollTarget = window.getComputedStyle(next).display === 'contents'
-                    ? (next.lastElementChild || next)
-                    : next.classList.contains('nav-gated') ? (next.firstElementChild || next)
-                    : next;
-                scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                if (next.classList.contains('reveal-with-prev')) {
+                    let prev = next.previousElementSibling;
+                    while (prev && prev.classList.contains('div-crossfaded-out')) {
+                        prev = prev.previousElementSibling;
+                    }
+                    if (prev) {
+                        prev.classList.add('div-fading-out');
+                        setTimeout(() => {
+                            prev.classList.remove('div-fading-out');
+                            prev.classList.add('div-crossfaded-out');
+                        }, 1200);
+                    }
+                    next.classList.remove('div-opacity-zero');
+                    next.classList.add('div-crossfade-in');
+                    setTimeout(() => next.classList.remove('div-crossfade-in'), 1200);
+                    return;
+                }
+                revealPlain(next);
+                // data-reveal-with-next: reveal the following queued item in the same
+                // nav step (e.g. page 2's exercise text + its base image appearing together)
+                if (next.hasAttribute('data-reveal-with-next') && revealQueue.length > 0
+                    && !revealQueue[0].classList.contains('reveal-with-prev')) {
+                    revealPlain(revealQueue.shift());
+                }
             } else {
                 _origChangePage(1);
             }

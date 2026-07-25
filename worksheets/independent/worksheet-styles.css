@@ -21,7 +21,6 @@ body {
     color: #333;
     background: #fafafa;
     margin: 0;
-    overflow-x: hidden;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -727,13 +726,28 @@ mjx-container[display="true"] {
     display: grid;
     grid-template-columns: max-content max-content max-content;
     column-gap: 0.3em;
-    row-gap: 1.5em;
+    row-gap: 0;
     margin: 1em auto;
     align-items: center;
     overflow-x: auto;
 }
 .aligned-eq-block .step { display: contents; }
-.aligned-eq-block .step.step-hidden { display: none; }
+/* Keep hidden steps' cells in layout (not display:none) so their width still
+   counts toward the grid's max-content column sizing — this establishes the
+   block's final width from page load instead of widening (and re-centering
+   any full-width lines above it) each time a wider step is later revealed.
+   Height and the row-gap they'd otherwise reserve are collapsed instead, via
+   margin-top applied only to visible rows, so hidden future steps don't leave
+   blank vertical space either. */
+.aligned-eq-block .step.step-hidden > * {
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    margin-top: 0;
+}
+.aligned-eq-block .step:not(.step-hidden) > * {
+    margin-top: 1.5em;
+}
 .aligned-eq-block .step.div-revealed > * { animation: divReveal 0.35s ease; }
 .aligned-eq-block .aeq-lhs { text-align: right; }
 .aligned-eq-block .aeq-op  { white-space: nowrap; padding: 0 0.15em; }
@@ -743,7 +757,7 @@ mjx-container[display="true"] {
 /* ── nav prompt (pulsing logo + arrow) ── */
 .nav-prompt {
     position: fixed;
-    right: 20px;
+    right: max(20px, calc((100vw - 1200px) / 2 + 20px));
     top: 50%;
     transform: translateY(-50%);
     display: flex;

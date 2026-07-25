@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compound Angle Formulae</title>
+    <title>Transformations</title>
     <script>
     window.MathJax = {
         tex: {
@@ -63,6 +63,9 @@
             overflow-y: auto;
             padding: 0 4px 80px;
         }
+
+        /* Nav prompt: move away from right edge */
+        .nav-prompt { right: 50px; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -76,9 +79,9 @@
     <!-- Page 1: Welcome -->
     <div class="page" id="page-1">
         <div class="welcome-page">
-            <h1>Welcome to compound angle formulae</h1>
+            <h1>Welcome to transformations angle formulae</h1>
             <div class="welcome-content">
-                <p>In this stage we derive the compound angle formulae for \(\sin(A+B)\) and \(\cos(A+B)\) using rotations of vectors in the unit circle.</p>
+                <p>In this stage we derive the transformations angle formulae for \(\sin(A+B)\) and \(\cos(A+B)\) using rotations of vectors in the unit circle.</p>
 
                 <div class="navigation-box">
                     <h2>How to Navigate:</h2>
@@ -120,20 +123,19 @@
     <!-- Page 3: scene1 -->
     <div class="page" id="page-3">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0001_scene1.mp4"></video>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0000_section_1.mp4"></video>
         </figure>
         <div class="page-scroll">
+            <div class="intro">
+                <p>You are a water molecule. A wave comes along and you are repeatedly lifted up and dropped down.</p>
+            </div>
+            <div class="intro">
+                <p>A second wave comes along, out of phase with the first wave. Now you have one wave wanting you to move like the red dot and another wanting you to move like the green dot.
+                </p>
+            </div>
             <div class="exercise">
-                <p>Write this vector as a column vector</p>
-            </div>
-            <div class="answer">
-                <p>\[\binom{\cos\theta}{\sin \theta}\]</p>
-            </div>
-            <div class="exercise">
-                <p>Now write this rotated vector as a column vector</p>
-            </div>
-            <div class="answer">
-                <p>\[\binom{\cos(\theta+\varphi)}{\sin (\theta+\varphi)}\]</p>
+                <p>
+                    What will happen to you under the influence of both these waves simultaneously?</p>
             </div>
         </div>
     </div>
@@ -141,17 +143,9 @@
     <!-- Page 4: scene2 -->
     <div class="page" id="page-4">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0002_scene3.mp4"></video>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0001_section_2.mp4"></video>
         </figure>
         <div class="page-scroll">
-            <div class="exercise">
-                <p>Write the two yellow vectors as column vectors.</p>
-            </div>
-            <div class="answer">
-                <p>\[\binom{\cos\theta}{0}\]
-                    \[\binom{0}{\sin\theta}\]
-                </p>
-            </div>
             
         </div>
     </div>
@@ -159,7 +153,7 @@
     <!-- Page 5: scene3 -->
     <div class="page" id="page-5">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0003_scene3a.mp4"></video>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0002_section_3.mp4"></video>
         </figure>
         <div class="page-scroll">
             <div class="exercise">
@@ -175,7 +169,7 @@
     <!-- Page 6: scene4 -->
     <div class="page" id="page-6">
         <figure>
-            <video autoplay muted playsinline controls data-playback-rate="2" src="compound_images/compound_0004_scene4.mp4"></video>
+            <video autoplay muted playsinline controls data-playback-rate="2" src="transformations_images/transformations2_0003_section_4.mp4"></video>
         </figure>
         <div class="page-scroll">
             <div class="intro">
@@ -196,7 +190,7 @@
     <!-- Page 7: scene5 -->
     <div class="page" id="page-7">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0005_scene4b.mp4"></video>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0004_section_5.mp4"></video>
         </figure>
         <div class="page-scroll">
             <div class="intro">
@@ -226,7 +220,7 @@
     <!-- Page 8: scene6a -->
     <div class="page" id="page-8">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0006_scene4c.mp4"></video>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0005_section_6.mp4"></video>
         </figure>
         <div class="page-scroll">
             <div class="intro">
@@ -239,7 +233,7 @@
     <!-- Page 9: scene6b -->
     <div class="page" id="page-9">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0007_scene5.mp4"></video>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0006_section_7.mp4"></video>
         </figure>
         <div class="page-scroll">
             <div class="intro">
@@ -263,7 +257,7 @@
     <!-- Page 10: scene7 -->
     <div class="page" id="page-10">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0008_scene5a.mp4"></video>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0007_section_8.mp4"></video>
         </figure>
         <div class="page-scroll">
             <div class="intro">
@@ -290,7 +284,7 @@
     <div class="page" id="page-11">
         
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0010_scene5c.mp4"></video>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0008_section_9.mp4"></video>
         </figure>
         <div class="page-scroll">
             <div class="intro">
@@ -320,14 +314,14 @@
     <!-- Page 12: scene8 -->
     <div class="page" id="page-12">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0011_scene6.mp4"></video>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0009_section_10.mp4"></video>
         </figure>
     </div>
 
     <!-- Page 13: scene8 -->
     <div class="page" id="page-13">
         <figure>
-            <video autoplay muted playsinline controls src="compound_images/compound_0012_scene8.mp4"></video>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0010_section_11.mp4"></video>
         </figure>
         <div class="intro">
             <p>Now we can write the blue vector in two ways.</p>
@@ -335,15 +329,39 @@
         </div>
 
     </div>
-
+    <!-- Page 13: scene8 -->
+    <div class="page" id="page-13">
+        <figure>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0011_section_12.mp4"></video>
+        </figure>
     
+    </div>
+    <!-- Page 13: scene8 -->
+    <div class="page" id="page-13">
+        <figure>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0012_section_13.mp4"></video>
+        </figure>
 
+    </div>
+    <!-- Page 13: scene8 -->
+    <div class="page" id="page-13">
+        <figure>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0013_section_14.mp4"></video>
+        </figure>
+    </div>
+    <!-- Page 13: scene8 -->
+    <div class="page" id="page-13">
+        <figure>
+            <video autoplay muted playsinline controls src="transformations_images/transformations2_0014_section_15.mp4"></video>
+        </figure>
+    
+    
     <!-- Page 14: End -->
     <div class="page" id="page-14">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
-                <p>You've now seen how the compound angle formulae arise naturally from rotating vectors in the unit circle.</p>
+                <p>You've now seen how the transformations angle formulae arise naturally from rotating vectors in the unit circle.</p>
 
                 <p class="welcome-author">
                     <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
@@ -460,42 +478,39 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Sets up two pause points on a video; each auto-reveals an exercise div,
-    // then the next nav event reveals the corresponding answer and resumes the video.
-    function setupPage3(v, ex1, ans1, ex2, ans2) {
+    // Reveals 3 divs at specified times without pausing the video.
+    function setupPage3(v, item1, item2, item3) {
         navBlocked = true;
         const prompt = document.querySelector('.nav-prompt');
         if (prompt) prompt.classList.add('nav-blocked');
 
-        // revealQueue at this point: [ex1, ans1, ex2, ans2]
-        // ex1 and ex2 will be auto-revealed by the pause handler (spliced out of queue).
-        // ans1 and ans2 remain in the queue to be revealed by nav events.
+        function autoReveal(el) {
+            if (!el) return;
+            const idx = revealQueue.indexOf(el);
+            if (idx !== -1) revealQueue.splice(idx, 1);
+            el.classList.remove('div-hidden');
+            el.classList.add('div-revealed');
+            setTimeout(() => el.classList.remove('div-revealed'), 400);
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
 
-        const pausePoints = [
-            { time: 5,  autoReveal: ex1 },
-            { time: 17, autoReveal: ex2 }
+        const reveals = [
+            { time: 3,  el: item1, done: false },
+            { time: 12, el: item2, done: false },
+            { time: 23, el: item3, done: false },
         ];
-        let nextIdx = 0;
 
         function timeHandler() {
-            if (nextIdx < pausePoints.length && v.currentTime >= pausePoints[nextIdx].time) {
-                const pp = pausePoints[nextIdx++];
-                v.pause();
-                navBlocked = false;
-                const p = document.querySelector('.nav-prompt');
-                if (p) p.classList.remove('nav-blocked');
-
-                // Auto-reveal the exercise (remove from queue so nav skips it)
-                const idx = revealQueue.indexOf(pp.autoReveal);
-                if (idx !== -1) revealQueue.splice(idx, 1);
-                pp.autoReveal.classList.remove('div-hidden');
-                pp.autoReveal.classList.add('div-revealed');
-                setTimeout(() => pp.autoReveal.classList.remove('div-revealed'), 400);
-                pp.autoReveal.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                // Next nav event will reveal the answer and resume the video
-                videoResumeNode = v;
-                revealsUntilResume = 0;
+            for (const r of reveals) {
+                if (!r.done && v.currentTime >= r.time) {
+                    r.done = true;
+                    autoReveal(r.el);
+                }
+            }
+            if (reveals.every(r => r.done)) {
+                v.removeEventListener('timeupdate', timeHandler);
+                activeTimeHandlerVid = null;
+                activeTimeHandlerRef = null;
             }
         }
 
@@ -1008,15 +1023,15 @@ document.addEventListener('DOMContentLoaded', function () {
             const visibleVideo = videos.find(v => !v.closest('.div-hidden'));
 
             if (pageNum === 3 && forwardVisit && visibleVideo) {
-                // Hide ALL animatable items; video pause handler drives the reveals
+                // Hide all divs; video timeupdate reveals them at 3s, 12s, 23s without pausing
                 const allItems = Array.from(page.querySelectorAll(ANIMATABLE))
                     .filter(div => !div.classList.contains('reveal-instant'));
                 allItems.forEach(el => el.classList.add('div-hidden'));
-                revealQueue = [...allItems];
+                revealQueue = [];
 
                 visibleVideo.currentTime = 0;
                 visibleVideo.play().catch(() => {});
-                setupPage3(visibleVideo, allItems[0], allItems[1], allItems[2], allItems[3]);
+                setupPage3(visibleVideo, allItems[0], allItems[1], allItems[2]);
             } else if (pageNum === 4 && forwardVisit && visibleVideo) {
                 // Pause at 11s, auto-reveal exercise; nav reveals answer + resumes video
                 const p4exercise = page.querySelector('.exercise');

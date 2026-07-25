@@ -85,40 +85,34 @@
     </div>
 <div class="page" id="page-2" data-reveal-answers>
     <div class="intro">
-        <p>We are very used to the idea of inverse functions as somehow "undoing" a function. For example, the inverse of the function \(f(x)=e^x\) is \(f^{-1}x=\ln x\). Or for a more basic example, the inverse of the function \(g(x)=2x-3\) is the function \(g^{-1}(x)=\frac{x+3}{2}\). </p>
-        <p>Hopefully, we are also familiar with the idea that the graphs of a pair of inverse functions are reflections of eachother in the line \(y=x\). If this idea is unfamiliar to you, it would be worth spending a bit of research time figuring out why this should be before tackling the inverse circular functions.</p>
+        <p>We are very used to the idea of inverse functions as somehow "undoing" a function. For example, the inverse of the function \(f(x)=2x-3\) is the function \(f^{-1}(x)=\frac{x+3}{2}\).</p>
         <p>
-            A trickier example is the function \(f(x)=x^2\). If \(f^{-1}\) is its inverse, what is \(f^{-1}(4)\)?</p>
+            Similarly, the inverse of the function \(g(x)=e^x\) is \(g^{-1}(x)=\ln x\). 
+        </p>
+
+        <p>If you are a bit hazy on the subject of inverses, it would be a good idea to review the topic at this point. In particular, if you are unfamiliar with the idea that the graphs of a function and its inverse are reflections of eachother in the line \(y=x\), it would be worth spending a bit of research time figuring out why this should be before tackling the inverse circular functions.</p>
+        <p>Our first example has nothing to do with circular functions, but it does illustrate the difficulty that we will encounter when trying to the find the inverses of circular functions, and suggest a way to overcome this difficulty.</p>
+    
         </div>
         <div class="exercise">
             <p>
-                If \(f^{-1}(4)=2\), what are \(f\circ f^{-1}(4)\) and \(f^{-1}\circ f(2)\)?
+                If \(f(x)=x^2\), what is \(f^{-1}(4)\)?</p>
             </p>
         </div>
         <div class="answer">
-            If \(f^{-1}(4)=2\), then \(f\circ f^{-1}(4)=f(2)=4\) and \(f^{-1}\circ f(2)=f^{-1}(4)=2\).
+            <p>We want \(f\circ f^{-1}(4)=4\), which means that \(\left(f^{-1}(4)\right)^2=4\)</p>
+            <p>Either \(f^{-1}(4)=2\) or \(f^{-1}(4)=-2\) would be suitable. We'll have to make a choice, but we need a definite answer!</p>
         </div>
-        <div class="exercise">
-            <p>
-                If \(f^{-1}(4)=-2\), what are \(f\circ f^{-1}(4)\) and \(f^{-1}\circ f(2)\)?
-            </p>
-        </div>
-        <div class="answer">
-            If \(f^{-1}(4)=2\), then \(f\circ f^{-1}(4)=f(-2)=4\) and \(f^{-1}\circ f(-2)=f^{-1}(4)=-2\).
-        </div>
+        
         <div class="intro">
+            
             <p>
-                In either case, \(f\) and \(f^{-1}\) seem to undo each other, so that either value for \(f^{-1}(4)\) is perfectly reasonable.
+                We need to know what \(f^{-1}(4)\) actually is; in fact, we need to know what \(f^{-1}(x)\) actually is for any \(x\geqslant 0\). There can't be any doubt &mdash; we can't say "well it could be this or it could be that."
             </p>
-            <p>
-                But we need to know what \(f^{-1}(4)\) actually is; in fact, we need to know what \(f^{-1}(x)\) actually is for any \(x\geqslant 0\).
-            </p>
+            <p>We are going to look at this problem from a graphical point of view.</p>
         </div>  
     </div>
     <div class="page" id="page-3" data-reveal-answers>
-        <div class="intro">
-            <p>Let's take a look at this from a graphical point of view.</p>
-        </div>
         <div class="exercise">
             <p>Draw the graph \(y=x^2\) and the line \(y=x\), and then reflect the curve in the line.</p>
             <p>What is the equation of the reflected curve?</p>
