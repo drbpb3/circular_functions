@@ -46,8 +46,7 @@
         .video-logo-overlay video {
             display: block;
             /* Reserve the video's real box (1920x1080) before its metadata
-               loads, so it doesn't resize — and shift .qa-scroll's top edge
-               with it — right as the reader happens to hit the first reveal */
+               loads, so nothing below it has to resize once it's known */
             aspect-ratio: 16 / 9;
         }
         .video-logo-overlay .video-logo {
@@ -74,12 +73,7 @@
             display: flex;
             flex-direction: column;
             height: calc(100vh - 40px);
-            /* clip, not hidden: hidden is still programmatically scrollable
-               (scrollIntoView can nudge its scrollTop even with no visible
-               scrollbar), which was letting the answer-reveal scroll leak
-               into this box instead of staying confined to .qa-scroll. clip
-               disallows scrolling entirely, so it can't happen. */
-            overflow: clip;
+            overflow: hidden;
             padding-bottom: 0;
         }
         #page-2.active > figure { flex-shrink: 0; }
