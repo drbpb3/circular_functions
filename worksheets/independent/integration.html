@@ -752,7 +752,7 @@
                 next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
                 next.classList.add('div-revealed');
                 setTimeout(() => next.classList.remove('div-revealed'), 400);
-                next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                next.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         } else {
             _origChangePage(1);

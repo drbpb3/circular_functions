@@ -793,7 +793,7 @@
                 ? (el.lastElementChild || el)
                 : el.classList.contains('nav-gated') ? (el.firstElementChild || el)
                 : el;
-            scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
         function revealNextOrAdvance() {

@@ -276,7 +276,7 @@
                     setTimeout(() => el.classList.remove('div-revealed'), 400);
                     playOnRevealAudio(el);
                 });
-                items[items.length - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                items[items.length - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         } else {
             _origChangePage(1);

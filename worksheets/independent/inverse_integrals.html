@@ -37,6 +37,82 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+        /* Page 2: pin the title/intro/image and let only the exercises/answers
+           below them scroll, in their own scroll region (same approach as
+           reciprocals.html pages 4-6 and inverse_extension.html page 5) */
+        #page-2.active {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 40px);
+            overflow: hidden;
+            padding-bottom: 0;
+        }
+        #page-2.active > p,
+        #page-2.active > .intro,
+        #page-2.active > figure { flex-shrink: 0; }
+        #page-2 .qa-scroll {
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+            padding-bottom: 80px;
+        }
+        /* Image gradually shrinks once the first exercise appears, giving the
+           scrollable exercises/answers below more room */
+        #page-2 img#p2-area-img {
+            max-width: 56%;
+            transition: max-width 2s ease;
+        }
+        #page-2 img#p2-area-img.img-shrink {
+            max-width: 40%;
+        }
+        /* Intro text collapses away at the same time the image shrinks, so the
+           image moves up to the top of the pinned header */
+        #page-2 .intro#p2-intro {
+            max-height: 300px;
+            overflow: hidden;
+            opacity: 1;
+            transition: max-height 2s ease, opacity 1.5s ease, margin 2s ease, padding 2s ease, border-width 2s ease;
+        }
+        #page-2 .intro#p2-intro.intro-collapse {
+            max-height: 0;
+            opacity: 0;
+            margin: 0;
+            padding: 0;
+            border-width: 0;
+        }
+
+        /* Pages 3-4: same pinned-image + scrollable-content approach as page 2 */
+        #page-3.active, #page-4.active {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 40px);
+            overflow: hidden;
+            padding-bottom: 0;
+        }
+        #page-3.active > .exercise, #page-3.active > figure,
+        #page-4.active > .exercise, #page-4.active > figure { flex-shrink: 0; }
+        #page-3 .qa-scroll, #page-4 .qa-scroll {
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+            padding-bottom: 80px;
+        }
+        #page-3 img#p3-area-img {
+            max-width: 42%;
+            transition: max-width 2s ease;
+        }
+        #page-3 img#p3-area-img.img-shrink {
+            max-width: 30%;
+        }
+        #page-4 img#p4-area-img {
+            max-width: 64%;
+            transition: max-width 2s ease;
+        }
+        #page-4 img#p4-area-img.img-shrink {
+            max-width: 45%;
+        }
+    </style>
 </head>
 <body oncontextmenu="return false;">
 
@@ -72,33 +148,48 @@
             </div>
         </div>
     </div>
-<div class="page" id="page-2">
-        <p style="text-align: center;"><strong>integrals of inverse circular functions</strong></p>
-        <div class="intro">We can find \(\displaystyle{\int \arcsin x\,\mathrm{d}x}\) using an area argument. The region under \(\displaystyle{y = \arcsin x}\) from \(\displaystyle{x=0}\) to \(\displaystyle{x=a}\) can be related to the area of a rectangle minus a complementary curved region.
+<div class="page" id="page-2" data-reveal-steps>
+        <div class="intro" id="p2-intro">We can find \(\displaystyle{\int \arcsin x\,\mathrm{d}x}\) using an area argument. The region under \(\displaystyle{y = \arcsin x}\) from \(\displaystyle{x=0}\) to \(\displaystyle{x=a}\) is the area of a rectangle minus a complementary curved region.
         </div>
         <figure>
-            <img src="inverse_images/image101.png" alt="Graph showing different segments" style="max-width:56%">
+            <img id="p2-area-img" src="inverse_images/image101.png" alt="Graph showing different segments">
         </figure>
-        <div class="exercise">
-            <p>What is the area of the shaded rectangle (pink and green together)?</p>
-            <p>What is the pink shaded area?</p>
-            <p>What is the green shaded area?</p>
-        </div>
-        <div class="answer">
-            \[\text{rectangle area} = a\arcsin a\]
-            <div class="step">\[\text{pink area} = \int_0^{\arcsin a}\!\sin y\,\mathrm{d}y = \Big[-\cos y\Big]_0^{\arcsin a}\]</div>
-            <div class="step">\[\phantom{\text{pink area}} = -\cos(\arcsin a) + 1 = 1 - \sqrt{1-a^2}\]</div>
-            <div class="step">\[\int_0^a \arcsin x\,\mathrm{d}x = a\arcsin a - \left(1 - \sqrt{1-a^2}\right)\]</div>
-        </div>
-        <div class="exercise">
-            <p>Use this result to find </p>
-            \[\int \arcsin x\,\mathrm{d}x\]
-        </div>
-        <div class="answer">
-            <p>We know that  </p>
-            \[\int_0^a \arcsin x\,\mathrm{d}x=a\arcsin a-1+\sqrt{1-a^2}\]
-            <p>and since the \(1\) is just a constant, the indefinite integral is simply</p>
-            \[\int \arcsin x\,\mathrm{d}x = x\arcsin x + \sqrt{1-x^2} + c\]
+        <div class="qa-scroll">
+            <div class="exercise" data-shrink-image="p2-area-img" data-collapse-el="p2-intro">
+                <p>What is the area of the shaded rectangle (pink and green together)?</p>
+                <p>What is the pink shaded area?</p>
+                <p>What is the green shaded area?</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <span class="aeq-lhs">\(\text{rectangle area}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(a\arcsin a\)</span>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\text{pink area}\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\int_0^{\arcsin a}\!\sin y\,\mathrm{d}y = \Big[-\cos y\Big]_0^{\arcsin a}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(-\cos(\arcsin a) + 1 = 1 - \sqrt{1-a^2}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\implies\text{green area}\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(a\arcsin a - \left(1 - \sqrt{1-a^2}\right)\)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="exercise">
+                <p>Use this result to find </p>
+                \[\int_0^a \arcsin x\,\mathrm{d}x\]
+            </div>
+            <div class="answer">
+                <p>Since the integral is the green area, </p>
+                \[\int_0^a \arcsin x\,\mathrm{d}x=a\arcsin a-1+\sqrt{1-a^2}\]
+            </div>
         </div>
     </div>
 
@@ -108,13 +199,31 @@
             <p>Find \(\displaystyle{\displaystyle\int \arccos x\,\mathrm{d}x}\) using an area argument.</p>
         </div>
         <figure>
-            <img src="inverse_images/image53.png" alt="Graph showing different segments" style="max-width:42%">
+            <img id="p3-area-img" src="inverse_images/image53.png" alt="Graph showing different segments">
         </figure>
-        <div class="answer">
-            \[\text{pink rectangle area}= x\arccos x\]
-            <div class="step">\[\text{green area}=\int_{\arccos x}^{\pi/2}\cos y\,\mathrm{d}y = \Big[\sin y\Big]_{\arccos x}^{\pi/2} = 1 - \sin(\arccos x) = 1 - \sqrt{1-x^2}\]</div>
-            <div class="step">\[\Rightarrow\, \int_0^x \arccos x\,\mathrm{d}x = x \arccos x+ \left(1 - \sqrt{1-x^2}\right)\]</div>
-            <div class="step">\[\Rightarrow\, \int \arccos x\,\mathrm{d}x = x\arccos x - \sqrt{1-x^2} + c\]</div>
+        <div class="qa-scroll">
+            <div class="answer" data-shrink-image="p3-area-img">
+                <div class="aligned-eq-block">
+                    <span class="aeq-lhs">\(\text{pink rectangle area}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(x\arccos x\)</span>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\text{green area}\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\int_{\arccos x}^{\pi/2}\cos y\,\mathrm{d}y = \Big[\sin y\Big]_{\arccos x}^{\pi/2} = 1 - \sin(\arccos x) = 1 - \sqrt{1-x^2}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\implies\displaystyle\int_0^x \arccos x\,\mathrm{d}x\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(x \arccos x+ \left(1 - \sqrt{1-x^2}\right)\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\implies\displaystyle\int \arccos x\,\mathrm{d}x\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(x\arccos x - \sqrt{1-x^2} + c\)</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 <div class="page" id="page-4" data-reveal-steps>
@@ -122,26 +231,57 @@
             <p>Use the area argument to find \(\displaystyle{\displaystyle\int \arctan x\,\mathrm{d}x}\).</p>
         </div>
         <figure>
-            <img src="inverse_images/image40.png" alt="arctan integral" style="max-width:64%">
+            <img id="p4-area-img" src="inverse_images/image40.png" alt="arctan integral">
         </figure>
-        <div class="answer">
-            \[\text{rectangle area}= x\arctan x\]
-            <div class="step">\[\text{pink area} =\int_0^{\arctan x}\!\tan y\,\mathrm{d}y = \Big[\ln\sec y\Big]_0^{\arctan x} = \ln\sec(\arctan x)\]</div>
-            <div class="step">\[\sec(\arctan x) = \sqrt{1+x^2}, \;\text{so } \ln\sec(\arctan x) = \tfrac{1}{2}\ln(1+x^2)\]</div>
-            <div class="step">\[\text{green area}= \int_0^x \arctan x\,\mathrm{d}x = x\arctan x - \tfrac{1}{2}\ln(1+x^2)\]</div>
+        <div class="qa-scroll">
+            <div class="answer" data-shrink-image="p4-area-img">
+                <div class="aligned-eq-block">
+                    <span class="aeq-lhs">\(\text{rectangle area}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(x\arctan x\)</span>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\text{pink area}\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\int_0^{\arctan x}\!\tan y\,\mathrm{d}y = \Big[\ln\sec y\Big]_0^{\arctan x} = \ln\sec(\arctan x)\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-full">\(\sec(\arctan x) = \sqrt{1+x^2}, \;\text{so } \ln\sec(\arctan x) = \tfrac{1}{2}\ln(1+x^2)\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\text{green area}\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\int_0^x \arctan x\,\mathrm{d}x = x\arctan x - \tfrac{1}{2}\ln(1+x^2)\)</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        
     </div>
 <div class="page" id="page-5" data-reveal-steps>
     <div class="exercise">
         <p>Use integration by parts to find \[\displaystyle{\int\arcsin x\,\mathrm{d}x}\]</p>
     </div>
         <div class="answer">
-            \[u = \arcsin x\qquad \frac{\textrm{d}v}{\textrm{d}x}=1\]
-            <div class="step">\[\frac{\textrm{d}u}{\textrm{d}x}=\frac{1}{\sqrt{1-x^2}}\qquad v=x\]</div>
-            <div class="step">\[\begin{aligned}\int\arcsin x\,\mathrm{d}x &=uv-\int v\frac{\textrm{d}u}{\textrm{d}x}\;\textrm{d}x\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\arcsin x\,\mathrm{d}x} &=x\arcsin x-\int \frac{x}{\sqrt{1-x^2}}\,\textrm{d} x\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\arcsin x\,\mathrm{d}x} &= x\arcsin x + \sqrt{1-x^2} + c\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-full">\(u = \arcsin x\qquad \dfrac{\mathrm{d}v}{\mathrm{d}x}=1\)</span>
+                <div class="step">
+                    <span class="aeq-full">\(\dfrac{\mathrm{d}u}{\mathrm{d}x}=\dfrac{1}{\sqrt{1-x^2}}\qquad v=x\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\displaystyle\int\arcsin x\,\mathrm{d}x\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(uv-\displaystyle\int v\frac{\mathrm{d}u}{\mathrm{d}x}\;\mathrm{d}x\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(x\arcsin x-\displaystyle\int \frac{x}{\sqrt{1-x^2}}\,\mathrm{d} x\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(x\arcsin x + \sqrt{1-x^2} + c\)</span>
+                </div>
+            </div>
         </div>
     </div>
     <div class="page" id="page-6" data-reveal-steps>
@@ -149,13 +289,27 @@
             <p>Use integration by parts to find \[\displaystyle{\int\arccos x\,\mathrm{d}x}\].</p>
         </div>
             <div class="answer">
-                
-                <div class="step">\[u = \arccos x\qquad \frac{\textrm{d}v}{\textrm{d}x}=1\]</div>
-                <div class="step">\[\frac{\textrm{d}u}{\textrm{d}x}=-\frac{1}{\sqrt{1-x^2}}\qquad v=x\]</div>
-                <div class="step">\[\begin{aligned}\int\arccos x\,\mathrm{d}x &=uv-\int v\frac{\textrm{d}u}{\textrm{d}x}\;\textrm{d}x\end{aligned}\]</div>
-                <div class="step">\[\begin{aligned}\phantom{\int\arccos x\,\mathrm{d}x} &=x\arccos x+\int \frac{x}{\sqrt{1-x^2}}\,\textrm{d} x\end{aligned}\]</div>
-                <div class="step">\[\begin{aligned}\phantom{\int\arccos x\,\mathrm{d}x} &= x\arccos x -\sqrt{1-x^2} + c\end{aligned}\]</div>
-                
+                <div class="aligned-eq-block">
+                    <span class="aeq-full">\(u = \arccos x\qquad \dfrac{\mathrm{d}v}{\mathrm{d}x}=1\)</span>
+                    <div class="step">
+                        <span class="aeq-full">\(\dfrac{\mathrm{d}u}{\mathrm{d}x}=-\dfrac{1}{\sqrt{1-x^2}}\qquad v=x\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\int\arccos x\,\mathrm{d}x\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(uv-\displaystyle\int v\frac{\mathrm{d}u}{\mathrm{d}x}\;\mathrm{d}x\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(x\arccos x+\displaystyle\int \frac{x}{\sqrt{1-x^2}}\,\mathrm{d} x\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(x\arccos x -\sqrt{1-x^2} + c\)</span>
+                    </div>
+                </div>
             </div>
         
     </div>
@@ -165,12 +319,27 @@
             \[\displaystyle{\int\arctan x\,\mathrm{d}x}\].</p>
     </div>
         <div class="answer">
-            
-            <div class="step">\[u = \arctan x\qquad \frac{\textrm{d}v}{\textrm{d}x}=1\]</div>
-            <div class="step">\[\frac{\textrm{d}u}{\textrm{d}x}=\frac{1}{1+x^2}\qquad v=x\]</div>
-            <div class="step">\[\begin{aligned}\int\arctan x\,\mathrm{d}x &=uv-\int v\frac{\textrm{d}u}{\textrm{d}x}\;\textrm{d}x\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\arctan x\,\mathrm{d}x} &=x\arctan x+\int \frac{x}{1+x^2}\,\textrm{d} x\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\phantom{\int\arctan x\,\mathrm{d}x} &= x\arctan x +\frac{1}{2}\ln\left(1+x^2\right)+ c\end{aligned}\]</div>
+            <div class="aligned-eq-block">
+                <span class="aeq-full">\(u = \arctan x\qquad \dfrac{\mathrm{d}v}{\mathrm{d}x}=1\)</span>
+                <div class="step">
+                    <span class="aeq-full">\(\dfrac{\mathrm{d}u}{\mathrm{d}x}=\dfrac{1}{1+x^2}\qquad v=x\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\displaystyle\int\arctan x\,\mathrm{d}x\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(uv-\displaystyle\int v\frac{\mathrm{d}u}{\mathrm{d}x}\;\mathrm{d}x\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(x\arctan x+\displaystyle\int \frac{x}{1+x^2}\,\mathrm{d} x\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(x\arctan x +\frac{1}{2}\ln\left(1+x^2\right)+ c\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -218,6 +387,8 @@
 
         function initPageReveal(page, revealAll) {
             revealQueue = [];
+            page.querySelectorAll('.img-shrink').forEach(el => el.classList.remove('img-shrink'));
+            page.querySelectorAll('.intro-collapse').forEach(el => el.classList.remove('intro-collapse'));
             if (page.hasAttribute('data-no-reveal')) { return; }
             const selectorParts = [ANIMATABLE];
             if (page.hasAttribute('data-reveal-steps')) selectorParts.push('div.step');
@@ -235,6 +406,14 @@
                 animatable.forEach(div => {
                     div.classList.remove('div-hidden');
                     div.classList.remove('step-hidden');
+                    if (div.hasAttribute('data-shrink-image')) {
+                        const shrinkImg = document.getElementById(div.getAttribute('data-shrink-image'));
+                        if (shrinkImg) shrinkImg.classList.add('img-shrink');
+                    }
+                    if (div.hasAttribute('data-collapse-el')) {
+                        const collapseEl = document.getElementById(div.getAttribute('data-collapse-el'));
+                        if (collapseEl) collapseEl.classList.add('intro-collapse');
+                    }
                 });
                 return;
             }
@@ -254,7 +433,20 @@
                 next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
                 next.classList.add('div-revealed');
                 setTimeout(() => next.classList.remove('div-revealed'), 400);
-                next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                if (next.hasAttribute('data-shrink-image')) {
+                    const shrinkImg = document.getElementById(next.getAttribute('data-shrink-image'));
+                    if (shrinkImg) shrinkImg.classList.add('img-shrink');
+                }
+                if (next.hasAttribute('data-collapse-el')) {
+                    const collapseEl = document.getElementById(next.getAttribute('data-collapse-el'));
+                    if (collapseEl) collapseEl.classList.add('intro-collapse');
+                }
+                // div.step inside .aligned-eq-block is display:contents (no box of its
+                // own), so scrollIntoView on it is a no-op — scroll its last child instead.
+                const scrollTarget = window.getComputedStyle(next).display === 'contents'
+                    ? (next.lastElementChild || next)
+                    : next;
+                scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
                 _origChangePage(1);
             }

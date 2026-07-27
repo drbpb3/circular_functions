@@ -939,7 +939,7 @@
                     const _sticky = _page && _page.querySelector('figure, .sticky-media');
                     const _stickyH = _sticky ? _sticky.getBoundingClientRect().height : 0;
                     if (_stickyH > 0) next.style.scrollMarginTop = (_stickyH + 8) + 'px';
-                    next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    next.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             } else {
                 _origChangePage(1);

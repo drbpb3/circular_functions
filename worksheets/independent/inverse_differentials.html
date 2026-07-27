@@ -40,6 +40,55 @@
     <style>
         video { cursor: pointer; }
         .step { margin-top: 18pt; }
+        /* Overlay the logo on top of a video, matching where it used to be
+           baked into the Manim render (bottom-left, ~10% of frame width) */
+        .video-logo-overlay { position: relative; display: inline-block; }
+        .video-logo-overlay video {
+            display: block;
+            /* Reserve the video's real box (1920x1080) before its metadata
+               loads, so it doesn't resize — and shift .qa-scroll's top edge
+               with it — right as the reader happens to hit the first reveal */
+            aspect-ratio: 16 / 9;
+        }
+        .video-logo-overlay .video-logo {
+            position: absolute;
+            left: 3%;
+            bottom: 5%;
+            width: 8%;
+            pointer-events: none;
+            /* Reset the site-wide figure img framing (border/padding/white
+               background/shadow) — this is a transparent overlay, not a
+               regular content image */
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            background: none;
+            box-shadow: none;
+            max-width: none;
+        }
+
+        /* Page 2: pin the video and let only the exercises/answers below it
+           scroll, in their own scroll region (same approach used elsewhere
+           in this worksheet series) */
+        #page-2.active {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 40px);
+            /* clip, not hidden: hidden is still programmatically scrollable
+               (scrollIntoView can nudge its scrollTop even with no visible
+               scrollbar), which was letting the answer-reveal scroll leak
+               into this box instead of staying confined to .qa-scroll. clip
+               disallows scrolling entirely, so it can't happen. */
+            overflow: clip;
+            padding-bottom: 0;
+        }
+        #page-2.active > figure { flex-shrink: 0; }
+        #page-2 .qa-scroll {
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+            padding-bottom: 80px;
+        }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -81,41 +130,44 @@
 
     <!-- Page 2 -->
     <div class="page" id="page-2">
-        <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arcsinderiv.mp4" alt="animation of differential of arcsin"></video>
+        <figure class="video-logo-overlay" style="max-width: 100%; margin: 30px auto;">
+            <video id="p2-video" autoplay muted playsinline data-stop="27" style="max-width: 100%;"><source src="more_differentials_images/arcsinderiv.mp4" alt="animation of differential of arcsin"></video>
+            <img class="video-logo" src="../../../darklogo_circle.png" alt="">
         </figure>
-        <div class="exercise">
-            <p>If <span class="math inline">\(\displaystyle{y=\arcsin x}\)</span>, what is <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}}\)</span> in terms of <span class="math inline">\(\displaystyle{y}\)</span> ?</p>
-        </div>
-        <div class="answer">
-            \[x=\sin y\Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y}=\cos y\]
-        </div>
-        <div class="exercise">
-            <p>What is \(\displaystyle{\cos y}\) in terms of \(x\) ?</p>
-        </div>
-        <div class="answer">
-            \[\sin^2y+\cos^2y=1\]
-            <div class="step">\[\Rightarrow\, \cos^2y=1-x^2\]</div>
-            <div class="step">\[\Rightarrow\, \cos y=\pm\sqrt{1-x^2}\]</div>
-        </div>
-        <div class="exercise">
-            <p>Is \(\displaystyle{\cos y}\) positive or negative when \(y=\arcsin x\)?</p>
-        </div>
-        <div class="answer">
+        <div class="qa-scroll">
+            <div class="exercise">
+                <p>If <span class="math inline">\(\displaystyle{y=\arcsin x}\)</span>, what is <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}}\)</span> in terms of <span class="math inline">\(\displaystyle{y}\)</span> ?</p>
+            </div>
+            <div class="answer">
+                \[x=\sin y\Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y}=\cos y\]
+            </div>
+            <div class="exercise">
+                <p>What is \(\displaystyle{\cos y}\) in terms of \(x\) ?</p>
+            </div>
+            <div class="answer">
+                \[\sin^2y+\cos^2y=1\]
+                <div class="step">\[\Rightarrow\, \cos^2y=1-x^2\]</div>
+                <div class="step">\[\Rightarrow\, \cos y=\pm\sqrt{1-x^2}\]</div>
+            </div>
+            <div class="exercise">
+                <p>Is \(\displaystyle{\cos y}\) positive or negative when \(y=\arcsin x\)?</p>
+            </div>
+            <div class="answer">
 
-            <div class="step">\[-\frac{\pi}{2}\leq \arcsin x\leq \frac{\pi}{2}\Rightarrow\,-\frac{\pi}{2}\leq y\leq \frac{\pi}{2}\]</div>
-            <div class="step">\[\Rightarrow\, \cos y\geq 0\]</div>
-            <div class="step">\[\Rightarrow\, \cos y=\sqrt{1-x^2}\]</div>
+                \[-\frac{\pi}{2}\leq \arcsin x\leq \frac{\pi}{2}\Rightarrow\,-\frac{\pi}{2}\leq y\leq \frac{\pi}{2}\]
+                <div class="step">\[\Rightarrow\, \cos y\geq 0\]</div>
+                <div class="step">\[\Rightarrow\, \cos y=\sqrt{1-x^2}\]</div>
+            </div>
+            <div class="exercise">
+                <p>What are <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}\text{ and }\frac{\mathrm{d}y}{\mathrm{d}x}}\)</span> in terms of <span class="math inline">\(\displaystyle{x}\)</span> ?</p>
+            </div>
+            <div class="answer" data-resume-video="p2-video">
+                \[\frac{\mathrm{d}x}{\mathrm{d}y}=\cos y=\sqrt{1-x^2}\]
+                <div class="step">\[\Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{\sqrt{1-x^2}}\]</div>
+
+            </div>
+            <div style="height: 3em;"></div>
         </div>
-        <div class="exercise">
-            <p>What are <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}\text{ and }\frac{\mathrm{d}y}{\mathrm{d}x}}\)</span> in terms of <span class="math inline">\(\displaystyle{x}\)</span> ?</p>
-        </div>
-        <div class="answer">
-            \[\frac{\mathrm{d}x}{\mathrm{d}y}=\cos y=\sqrt{1-x^2}\]
-            <div class="step">\[\Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{\sqrt{1-x^2}}\]</div>
-            
-        </div>
-        <div style="height: 3em;"></div>
     </div>
 
     <!-- Page 3 -->
@@ -215,6 +267,17 @@ document.querySelectorAll('video').forEach(function (v) {
         v.play();
     }, { once: true });
 });
+
+// data-stop: pause a video once it reaches a given time, until something
+// (data-resume-video, below) explicitly resumes it.
+document.querySelectorAll('video[data-stop]').forEach(function (video) {
+    const stopAt = parseFloat(video.dataset.stop);
+    video.addEventListener('timeupdate', function () {
+        if (!video.classList.contains('resume-armed') && !video.paused && video.currentTime >= stopAt) {
+            video.pause();
+        }
+    });
+});
 </script>
 <script>
 (function () {
@@ -224,6 +287,13 @@ document.querySelectorAll('video').forEach(function (v) {
 
     let revealQueue = [];
     let goingBackward = false;
+
+    function resumeVideo(id) {
+        const video = document.getElementById(id);
+        if (!video) return;
+        video.classList.add('resume-armed');
+        if (video.paused) video.play().catch(() => {});
+    }
 
     function initPageReveal(page, revealAll) {
         revealQueue = [];
@@ -240,6 +310,7 @@ document.querySelectorAll('video').forEach(function (v) {
             animatable.forEach(div => {
                 div.classList.remove('div-hidden');
                 div.classList.remove('step-hidden');
+                if (div.hasAttribute('data-resume-video')) resumeVideo(div.getAttribute('data-resume-video'));
             });
             return;
         }
@@ -259,6 +330,7 @@ document.querySelectorAll('video').forEach(function (v) {
             next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
             next.classList.add('div-revealed');
             setTimeout(() => next.classList.remove('div-revealed'), 400);
+            if (next.hasAttribute('data-resume-video')) resumeVideo(next.getAttribute('data-resume-video'));
             next.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
             _origChangePage(1);
@@ -271,7 +343,7 @@ document.querySelectorAll('video').forEach(function (v) {
         if (page) {
             initPageReveal(page, revealAll || goingBackward);
             const videos = Array.from(page.querySelectorAll('video'));
-            videos.forEach(v => { v.pause(); v.currentTime = 0; });
+            videos.forEach(v => { v.pause(); v.currentTime = 0; v.classList.remove('resume-armed'); });
             const visibleVideo = videos.find(v => !v.closest('.div-hidden'));
             if (visibleVideo) visibleVideo.play().catch(() => {});
         }

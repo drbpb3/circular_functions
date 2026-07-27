@@ -401,7 +401,7 @@
         el.classList.remove(el.classList.contains('step') ? 'step-hidden' : 'div-hidden');
         el.classList.add('div-revealed');
         setTimeout(() => el.classList.remove('div-revealed'), 400);
-        el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
     function revealNextOrAdvance() {

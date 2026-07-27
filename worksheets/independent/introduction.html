@@ -221,7 +221,7 @@
         div.classList.remove('div-hidden');
         div.classList.add('div-revealed');
         setTimeout(() => div.classList.remove('div-revealed'), 400);
-        div.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        div.scrollIntoView({ behavior: 'smooth', block: 'center' });
         const onRevealAudio = div.querySelector('audio[data-trigger="on-reveal"]');
         if (onRevealAudio && audioEnabled) {
             if (currentAudio) { currentAudio.pause(); currentAudio.currentTime = 0; }

@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     p2intro.classList.remove('div-hidden');
                     p2intro.classList.add('div-revealed');
                     setTimeout(function () { p2intro.classList.remove('div-revealed'); }, 400);
-                    p2intro.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    p2intro.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             });
         }
@@ -465,7 +465,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     p2intro.classList.remove('div-hidden');
                     p2intro.classList.add('div-revealed');
                     setTimeout(() => p2intro.classList.remove('div-revealed'), 400);
-                    p2intro.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    p2intro.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
                 p2v.currentTime = 43;
                 function p2stopAt54() {
@@ -547,7 +547,7 @@ document.addEventListener('DOMContentLoaded', function () {
             next.classList.remove('div-hidden');
             next.classList.add('div-revealed');
             setTimeout(() => next.classList.remove('div-revealed'), 400);
-            next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            next.scrollIntoView({ behavior: 'smooth', block: 'center' });
             // Play any video inside the revealed div, respecting data-start / data-stop
             next.querySelectorAll('video').forEach(v => {
                 const startTime = parseFloat(v.dataset.start) || 0;
@@ -612,7 +612,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                     p2exDiv.classList.remove('div-hidden');
                                     p2exDiv.classList.add('div-revealed');
                                     setTimeout(() => p2exDiv.classList.remove('div-revealed'), 400);
-                                    p2exDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                                    p2exDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
                                 }
                                 p2waitingForResume = true;
                                 p2navReady = true;

@@ -37,7 +37,58 @@
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
     <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+        .div-opacity-zero { opacity: 0; pointer-events: none; }
+        .div-crossfaded-out { opacity: 0; pointer-events: none; }
+        @keyframes divFadeOut {
+            from { opacity: 1; }
+            to   { opacity: 0; }
+        }
+        .div-fading-out { animation: divFadeOut 1.2s ease forwards; pointer-events: none; }
+        @keyframes divCrossfadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+        .div-crossfade-in { animation: divCrossfadeIn 1.2s ease forwards; }
+        /* Stack children in the same grid cell for crossfade */
+        .crossfade-container { display: grid; }
+        .crossfade-container > * { grid-area: 1 / 1; min-width: 0; }
 
+        /* Page 9 (merged with old page 10): pin the image and let everything
+           else — including the original page-9 exercise — scroll below it.
+           The crossfade figure uses reveal-defer-first (see script below) to
+           queue right after the auto-shown exercise, even though it sits
+           earlier in the DOM (as a sibling of the pinned image, not inside
+           .qa-scroll). */
+        #page-9.active {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 40px);
+            overflow: hidden;
+            padding-bottom: 0;
+        }
+        #page-9.active > .crossfade-container { flex-shrink: 0; }
+        #page-9 .qa-scroll {
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+            padding-bottom: 80px;
+        }
+        /* Image gradually shrinks once the second exercise appears. Shrinking
+           the whole crossfade-container (not just the visible <img>) matters:
+           both images are grid-stacked (grid-area: 1/1), so the container's
+           height is set by the tallest child present, including the invisible
+           one — shrinking only the visible image left the container (and so
+           .qa-scroll below it) pinned at the old, full-size height. */
+        #page-9 .crossfade-container#p9-crossfade-container {
+            max-width: 84%;
+            margin: 0 auto;
+            transition: max-width 2s ease;
+        }
+        #page-9 .crossfade-container#p9-crossfade-container.img-shrink {
+            max-width: 58%;
+        }
+    </style>
 </head>
 <body oncontextmenu="return false;">
 
@@ -91,12 +142,12 @@
                 <span class="aeq-op">\(=\)</span>
                 <span class="aeq-rhs">\(\dfrac{1}{\sqrt{1-x^2}}\)</span>
                 <div class="step">
-                    <span class="aeq-lhs">\(\Rightarrow\,\displaystyle\int \dfrac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\)</span>
+                    <span class="aeq-lhs">\(\implies\,\displaystyle\int \dfrac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\)</span>
                     <span class="aeq-op">\(=\)</span>
                     <span class="aeq-rhs">\(\arcsin x+c\)</span>
                 </div>
                 <div class="step">
-                    <span class="aeq-lhs">\(\Rightarrow\,\text{area}\)</span>
+                    <span class="aeq-lhs">\(\implies\,\text{area}\)</span>
                     <span class="aeq-op">\(=\)</span>
                     <span class="aeq-rhs">\(\displaystyle\int_0^1 \dfrac{1}{\sqrt{1-x^2}}\;\mathrm{d}x\)</span>
                 </div>
@@ -121,7 +172,7 @@
         </div>
         <div class="answer">
             <div class="aligned-eq-block">
-                <span class="aeq-lhs">\(u = \arcsin x \Rightarrow\,\dfrac{\mathrm{d}u}{\mathrm{d}x}\)</span>
+                <span class="aeq-lhs">\(u = \arcsin x \implies\,\dfrac{\mathrm{d}u}{\mathrm{d}x}\)</span>
                 <span class="aeq-op">\(=\)</span>
                 <span class="aeq-rhs">\(\dfrac{1}{\sqrt{1 - x^{2}}}\)</span>
                 <div class="step">
@@ -160,7 +211,7 @@
         </div>
         <div class="answer">
             <div class="aligned-eq-block">
-                <span class="aeq-lhs">\(x = \sin u \Rightarrow\,\dfrac{\mathrm{d}x}{\mathrm{d}u}\)</span>
+                <span class="aeq-lhs">\(x = \sin u \implies\,\dfrac{\mathrm{d}x}{\mathrm{d}u}\)</span>
                 <span class="aeq-op">\(=\)</span>
                 <span class="aeq-rhs">\(\cos u\)</span>
                 <div class="step">
@@ -214,7 +265,7 @@
         </div>
         <div class="answer">
             <div class="aligned-eq-block">
-                <span class="aeq-lhs">\(x = \cos u \Rightarrow\,\dfrac{\mathrm{d}x}{\mathrm{d}u}\)</span>
+                <span class="aeq-lhs">\(x = \cos u \implies\,\dfrac{\mathrm{d}x}{\mathrm{d}u}\)</span>
                 <span class="aeq-op">\(=\)</span>
                 <span class="aeq-rhs">\(-\sin u\)</span>
                 <div class="step">
@@ -290,12 +341,12 @@
                 <span class="aeq-op">\(=\)</span>
                 <span class="aeq-rhs">\(\dfrac{1}{1+x^2}\)</span>
                 <div class="step">
-                    <span class="aeq-lhs">\(\Rightarrow\,\displaystyle\int \dfrac{1}{1+x^2}\;\mathrm{d}x\)</span>
+                    <span class="aeq-lhs">\(\implies\,\displaystyle\int \dfrac{1}{1+x^2}\;\mathrm{d}x\)</span>
                     <span class="aeq-op">\(=\)</span>
                     <span class="aeq-rhs">\(\arctan x+c\)</span>
                 </div>
                 <div class="step">
-                    <span class="aeq-lhs">\(\Rightarrow\,\text{area}\)</span>
+                    <span class="aeq-lhs">\(\implies\,\text{area}\)</span>
                     <span class="aeq-op">\(=\)</span>
                     <span class="aeq-rhs">\(\displaystyle\int_0^\infty \dfrac{1}{1+x^2}\;\mathrm{d}x\)</span>
                 </div>
@@ -320,7 +371,7 @@
         </div>
         <div class="answer">
             <div class="aligned-eq-block">
-                <span class="aeq-lhs">\(x = \tan u \Rightarrow\,\dfrac{\mathrm{d}x}{\mathrm{d}u}\)</span>
+                <span class="aeq-lhs">\(x = \tan u \implies\,\dfrac{\mathrm{d}x}{\mathrm{d}u}\)</span>
                 <span class="aeq-op">\(=\)</span>
                 <span class="aeq-rhs">\(\sec^{2}u\)</span>
                 <div class="step">
@@ -365,62 +416,57 @@
         </div>
     </div>
 
-    <!-- Page 9 -->
-    <div class="page" id="page-9">
-        <figure>
-            <img src="inverse_images/image207.png" alt="integral" style="max-width:84%">
-        </figure>
-        <div class="exercise">
-            <p>What are the marked angles, in terms of \(a\)?</p>
-        </div>
-        <div class="nav-gated">
+    <!-- Page 9 (merged with old page 10) -->
+    <div class="page" id="page-9" data-reveal-steps>
+        <div class="crossfade-container" id="p9-crossfade-container">
             <figure>
-                <img src="inverse_images/image208.png" alt="integral" style="max-width:84%">
+                <img src="inverse_images/image207.png" alt="integral" style="max-width:100%">
             </figure>
+            <figure class="reveal-with-prev reveal-defer-first">
+                <img src="inverse_images/image208.png" alt="integral" style="max-width:100%">
+            </figure>
+        </div>
+        <div class="qa-scroll">
+            <div class="exercise">
+                <p>What are the marked angles, in terms of \(a\)?</p>
+            </div>
+            <div class="exercise" data-shrink-image="p9-crossfade-container">
+                <p>What are the area of the green segment and the area of the pink triangle?</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <span class="aeq-lhs">\(\text{green area}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{1}{2}\arcsin a\)</span>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\text{pink area}\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\dfrac{1}{2}a\sqrt{1-a^2}\)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="exercise">
+                <p>Use these results to find
+                    \[\int_0^a\sqrt{1-x^2}\,\mathrm{d}x\]
+                </p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <span class="aeq-lhs">\(\displaystyle\int_0^a\sqrt{1-x^2}\,\mathrm{d}x\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\text{green + pink areas}\)</span>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\dfrac{1}{2}\arcsin a+\dfrac{1}{2}a\sqrt{1-a^2}\)</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Page 10 -->
     <div class="page" id="page-10" data-reveal-steps>
-        <figure>
-            <img src="inverse_images/image208.png" alt="integral" style="max-width:84%">
-        </figure>
-        <div class="exercise">
-            <p>What are the area of the green segment and the area of the pink triangle?</p>
-        </div>
-        <div class="answer">
-            <div class="aligned-eq-block">
-                <span class="aeq-lhs">\(\text{green area}\)</span>
-                <span class="aeq-op">\(=\)</span>
-                <span class="aeq-rhs">\(\dfrac{1}{2}\arcsin a\)</span>
-                <div class="step">
-                    <span class="aeq-lhs">\(\text{pink area}\)</span>
-                    <span class="aeq-op">\(=\)</span>
-                    <span class="aeq-rhs">\(\dfrac{1}{2}a\sqrt{1-a^2}\)</span>
-                </div>
-            </div>
-        </div>
-        <div class="exercise">
-            <p>Use these results to find
-                \[\int_0^a\sqrt{1-x^2}\,\mathrm{d}x\]
-            </p>
-        </div>
-        <div class="answer">
-            <div class="aligned-eq-block">
-                <span class="aeq-lhs">\(\displaystyle\int_0^a\sqrt{1-x^2}\,\mathrm{d}x\)</span>
-                <span class="aeq-op">\(=\)</span>
-                <span class="aeq-rhs">\(\text{green + pink areas}\)</span>
-                <div class="step">
-                    <span class="aeq-lhs"></span>
-                    <span class="aeq-op">\(=\)</span>
-                    <span class="aeq-rhs">\(\dfrac{1}{2}\arcsin a+\dfrac{1}{2}a\sqrt{1-a^2}\)</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Page 11 -->
-    <div class="page" id="page-11" data-reveal-steps>
         <div class="exercise">
             <p>Find \(\displaystyle{\int\sqrt{1-x^2}\,\mathrm{d}x}\) using the substitution \(\displaystyle{x = \sin u}\).</p>
         </div>
@@ -463,8 +509,8 @@
         </div>
     </div>
 
-    <!-- Page 12: Congratulations -->
-    <div class="page" id="page-12">
+    <!-- Page 11: Congratulations -->
+    <div class="page" id="page-11">
         <div class="welcome-page">
             <h1>Well done on completing Part 3!</h1>
             <div class="welcome-content">
@@ -491,7 +537,7 @@
         <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
         <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
         <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="12" onchange="goToPage(this.value)"> of 12
+        Page <input type="number" id="pageInput" value="1" min="1" max="11" onchange="goToPage(this.value)"> of 11
         </span>
         <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
         <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -507,14 +553,35 @@
 
         function initPageReveal(page, revealAll) {
             revealQueue = [];
+            // Crossfade base images (the sibling a reveal-with-prev item fades out) aren't
+            // matched by the animatable selector below, so their transient state needs its
+            // own reset here or they stay stuck hidden on a later revisit of the page.
+            page.querySelectorAll('.crossfade-container > *').forEach(el => {
+                el.classList.remove('div-crossfaded-out', 'div-fading-out', 'div-crossfade-in');
+            });
+            page.querySelectorAll('.img-shrink').forEach(el => el.classList.remove('img-shrink'));
             if (page.hasAttribute('data-no-reveal')) { return; }
-            const selectorParts = [ANIMATABLE];
+            const selectorParts = [ANIMATABLE, '.reveal-with-prev'];
             if (page.hasAttribute('data-reveal-steps')) selectorParts.push('div.step');
             const selector = selectorParts.join(', ');
-            const animatable = Array.from(page.querySelectorAll(selector))
+            let animatable = Array.from(page.querySelectorAll(selector))
                 .filter(div => !div.classList.contains('reveal-instant'));
+            // reveal-defer: push these elements to the end of the reveal queue regardless of
+            // DOM position. reveal-defer-first: insert these elements right after the item
+            // that ends up auto-shown (queue position 0) regardless of DOM position — e.g. a
+            // crossfade that must fire on the very first nav press even though it sits
+            // earlier in the DOM than the item that ends up auto-shown.
+            const deferredFirst = animatable.filter(div => div.classList.contains('reveal-defer-first'));
+            const deferredEnd = animatable.filter(div => div.classList.contains('reveal-defer') && !div.classList.contains('reveal-defer-first'));
+            if (deferredFirst.length > 0 || deferredEnd.length > 0) {
+                const rest = animatable.filter(div => !div.classList.contains('reveal-defer') && !div.classList.contains('reveal-defer-first'));
+                animatable = rest.slice(0, 1).concat(deferredFirst, rest.slice(1), deferredEnd);
+            }
             animatable.forEach(div => {
-                if (div.classList.contains('step')) {
+                div.classList.remove('div-crossfaded-out');
+                if (div.classList.contains('reveal-with-prev')) {
+                    div.classList.add('div-opacity-zero');
+                } else if (div.classList.contains('step')) {
                     div.classList.add('step-hidden');
                 } else {
                     div.classList.add('div-hidden');
@@ -522,8 +589,11 @@
             });
             if (revealAll) {
                 animatable.forEach(div => {
-                    div.classList.remove('div-hidden');
-                    div.classList.remove('step-hidden');
+                    div.classList.remove('div-hidden', 'div-opacity-zero', 'div-crossfaded-out', 'step-hidden');
+                    if (div.hasAttribute('data-shrink-image')) {
+                        const shrinkImg = document.getElementById(div.getAttribute('data-shrink-image'));
+                        if (shrinkImg) shrinkImg.classList.add('img-shrink');
+                    }
                 });
                 return;
             }
@@ -537,9 +607,34 @@
         const _origShowPage   = window.showPage;
         const _origChangePage = window.changePage;
 
+        function triggerCrossfade(next) {
+            let prev = next.previousElementSibling;
+            while (prev && prev.classList.contains('div-crossfaded-out')) {
+                prev = prev.previousElementSibling;
+            }
+            if (prev) {
+                prev.classList.add('div-fading-out');
+                setTimeout(() => {
+                    prev.classList.remove('div-fading-out');
+                    prev.classList.add('div-crossfaded-out');
+                }, 1200);
+            }
+            next.classList.remove('div-opacity-zero');
+            next.classList.add('div-crossfade-in');
+            setTimeout(() => next.classList.remove('div-crossfade-in'), 1200);
+        }
+
         function revealNextOrAdvance() {
             if (revealQueue.length > 0) {
                 const next = revealQueue.shift();
+                if (next.classList.contains('reveal-with-prev')) {
+                    triggerCrossfade(next);
+                    return;
+                }
+                if (next.hasAttribute('data-shrink-image')) {
+                    const shrinkImg = document.getElementById(next.getAttribute('data-shrink-image'));
+                    if (shrinkImg) shrinkImg.classList.add('img-shrink');
+                }
                 next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
                 next.classList.add('div-revealed');
                 setTimeout(() => next.classList.remove('div-revealed'), 400);
@@ -548,7 +643,7 @@
                     : window.getComputedStyle(next).display === 'contents'
                         ? (next.lastElementChild || next)
                         : next;
-                scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
                 _origChangePage(1);
             }
