@@ -40,6 +40,10 @@
     <style>
         video { cursor: pointer; }
         .step { margin-top: 18pt; }
+        /* step-hidden collapses a step's own height to 0, but not its margin
+           — margin-top persists on hidden steps and stacks up as invisible
+           blank space below the visible content until each one reveals */
+        .step.step-hidden { margin-top: 0; }
         /* Overlay the logo on top of a video, matching where it used to be
            baked into the Manim render (bottom-left, ~10% of frame width) */
         .video-logo-overlay { position: relative; display: inline-block; }
@@ -66,23 +70,27 @@
             max-width: none;
         }
 
-        /* Page 2: pin the video and let only the exercises/answers below it
-           scroll, in their own scroll region (same approach used elsewhere
-           in this worksheet series) */
-        #page-2.active {
+        /* Pages 2-4, 8: pin the video/image and let only the exercises/answers
+           below it scroll, in their own scroll region (same approach used
+           elsewhere in this worksheet series) */
+        #page-2.active, #page-3.active, #page-4.active, #page-8.active {
             display: flex;
             flex-direction: column;
             height: calc(100vh - 40px);
             overflow: hidden;
             padding-bottom: 0;
         }
-        #page-2.active > figure { flex-shrink: 0; }
-        #page-2 .qa-scroll {
+        #page-2.active > figure,
+        #page-3.active > .exercise, #page-3.active > figure,
+        #page-4.active > .exercise, #page-4.active > figure,
+        #page-8.active > .nav-gated, #page-8.active > .nav-gated > figure { flex-shrink: 0; }
+        #page-2 .qa-scroll, #page-3 .qa-scroll, #page-4 .qa-scroll, #page-8 .qa-scroll {
             flex: 1;
             overflow-y: auto;
             min-height: 0;
             padding-bottom: 80px;
         }
+        .nav-prompt.nav-blocked { opacity: 0 !important; animation: none !important; pointer-events: none !important; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -123,9 +131,9 @@
     </div>
 
     <!-- Page 2 -->
-    <div class="page" id="page-2">
+    <div class="page" id="page-2" data-nav-gate-video="p2-video">
         <figure class="video-logo-overlay" style="max-width: 100%; margin: 30px auto;">
-            <video id="p2-video" autoplay muted playsinline data-stop="27" style="max-width: 100%;"><source src="more_differentials_images/arcsinderiv.mp4" alt="animation of differential of arcsin"></video>
+            <video id="p2-video" autoplay muted playsinline data-stop="23" style="max-width: 100%;"><source src="more_differentials_images/arcsinderiv.mp4" alt="animation of differential of arcsin"></video>
             <img class="video-logo" src="../../../darklogo_circle.png" alt="">
         </figure>
         <div class="qa-scroll">
@@ -133,31 +141,31 @@
                 <p>If <span class="math inline">\(\displaystyle{y=\arcsin x}\)</span>, what is <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}}\)</span> in terms of <span class="math inline">\(\displaystyle{y}\)</span> ?</p>
             </div>
             <div class="answer">
-                \[x=\sin y\Rightarrow\, \frac{\mathrm{d}x}{\mathrm{d}y}=\cos y\]
+                \[x=\sin y\implies\, \frac{\mathrm{d}x}{\mathrm{d}y}=\cos y\]
             </div>
             <div class="exercise">
                 <p>What is \(\displaystyle{\cos y}\) in terms of \(x\) ?</p>
             </div>
             <div class="answer">
                 \[\sin^2y+\cos^2y=1\]
-                <div class="step">\[\Rightarrow\, \cos^2y=1-x^2\]</div>
-                <div class="step">\[\Rightarrow\, \cos y=\pm\sqrt{1-x^2}\]</div>
+                <div class="step">\[\implies\, \cos^2y=1-x^2\]</div>
+                <div class="step">\[\implies\, \cos y=\pm\sqrt{1-x^2}\]</div>
             </div>
             <div class="exercise">
                 <p>Is \(\displaystyle{\cos y}\) positive or negative when \(y=\arcsin x\)?</p>
             </div>
             <div class="answer">
 
-                \[-\frac{\pi}{2}\leq \arcsin x\leq \frac{\pi}{2}\Rightarrow\,-\frac{\pi}{2}\leq y\leq \frac{\pi}{2}\]
-                <div class="step">\[\Rightarrow\, \cos y\geq 0\]</div>
-                <div class="step">\[\Rightarrow\, \cos y=\sqrt{1-x^2}\]</div>
+                \[-\frac{\pi}{2}\leq \arcsin x\leq \frac{\pi}{2}\implies\,-\frac{\pi}{2}\leq y\leq \frac{\pi}{2}\]
+                <div class="step">\[\implies\, \cos y\geq 0\]</div>
+                <div class="step">\[\implies\, \cos y=\sqrt{1-x^2}\]</div>
             </div>
             <div class="exercise">
                 <p>What are <span class="math inline">\(\displaystyle{\frac{\mathrm{d}x}{\mathrm{d}y}\text{ and }\frac{\mathrm{d}y}{\mathrm{d}x}}\)</span> in terms of <span class="math inline">\(\displaystyle{x}\)</span> ?</p>
             </div>
             <div class="answer" data-resume-video="p2-video">
                 \[\frac{\mathrm{d}x}{\mathrm{d}y}=\cos y=\sqrt{1-x^2}\]
-                <div class="step">\[\Rightarrow\, \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{\sqrt{1-x^2}}\]</div>
+                <div class="step">\[\implies\, \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{1}{\sqrt{1-x^2}}\]</div>
 
             </div>
             <div style="height: 3em;"></div>
@@ -165,56 +173,120 @@
     </div>
 
     <!-- Page 3 -->
-    <div class="page" id="page-3" data-reveal-steps>
-        <div class="nav-gated">
-            <figure>
-                <img src="inverse_images/image100.png" alt="unit circle for differentiation" style="max-width:64%">
-            </figure>
-        </div>
-        <div class="answer">
-            \[\text{As }\delta\theta\to 0,\; \alpha\to\theta\]
-            <div class="step">\[\text{and }\delta x\to\sin\theta\times\delta\theta,\; \delta y\to\cos\theta\times\delta\theta\]</div>
-            <div class="step">\[\Rightarrow\, \frac{\delta \theta}{\delta y}\to \frac{1}{\cos\theta}\]</div>
-            <div class="step">\[=\frac{1}{\sqrt{1-y^2}}\text{ and }\theta=\arcsin y\]</div>
-            <div class="step">\[\Rightarrow\, \frac{\mathrm{d}}{\mathrm{d}y}\arcsin y=\frac{1}{\sqrt{1-y^2}}\]</div>
-        </div>
-    </div>
-
-    <!-- Page 4 -->
-    <div class="page" id="page-4">
+    <div class="page" id="page-3" data-nav-gate-video="p3-video">
         <div class="exercise">
             Find the differential of \(\arccos x\).
         </div>
         <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arccosderiv.mp4" alt="animation of differential of arccos"></video>
+            <video id="p3-video" autoplay loop muted playsinline data-stop="23" style="max-width: 100%;"><source src="more_differentials_images/arccosderiv.mp4" alt="animation of differential of arccos"></video>
         </figure>
-        <div class="answer">
-            \[\begin{aligned}y&=\arccos x\Rightarrow x=\cos y\end{aligned}\]
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}&=-\sin y\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{1}{\sin y}=\pm\frac{1}{\sqrt{1-x^2}}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\text{but gradient is always negative, and}\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}0\le \arccos x=y\le \pi\Rightarrow \sin y\ge 0\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{1}{\sqrt{1-x^2}}\end{aligned}\]</div>
+        <div class="qa-scroll">
+            <div class="answer">
+                \[\begin{aligned}y&=\arccos x\implies x=\cos y\end{aligned}\]
+                <div class="step">\[\begin{aligned}\implies \frac{\mathrm{d}x}{\mathrm{d}y}&=-\sin y\end{aligned}\]</div>
+                <div class="step">\[\begin{aligned}\implies \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{1}{\sin y}=\pm\frac{1}{\sqrt{1-x^2}}\end{aligned}\]</div>
+                <div class="step">\[\begin{aligned}\text{but gradient is always negative, and}\end{aligned}\]</div>
+                <div class="step">\[\begin{aligned}0\le \arccos x=y\le \pi\implies \sin y\ge 0\end{aligned}\]</div>
+                <div class="step">\[\begin{aligned}\implies \frac{\mathrm{d}y}{\mathrm{d}x}&=-\frac{1}{\sqrt{1-x^2}}\end{aligned}\]</div>
+            </div>
         </div>
     </div>
 
     <!-- Page 4 -->
-    <div class="page" id="page-5">
+    <div class="page" id="page-4" data-nav-gate-video="p4-video">
         <div class="exercise">
             Find the differential of \(\arctan x\).
         </div>
         <figure style="max-width: 100%; margin: 30px auto;">
-            <video autoplay loop muted playsinline style="max-width: 100%;"><source src="more_differentials_images/arctanderiv.mp4" alt="animation of differential of arctan"></video>
+            <video id="p4-video" autoplay muted playsinline data-stop="23" style="max-width: 100%;"><source src="more_differentials_images/arctanderiv.mp4" alt="animation of differential of arctan"></video>
         </figure>
-        <div class="answer">
-            \[\begin{aligned}y&=\arctan x\Rightarrow x=\tan y\end{aligned}\]
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}x}{\mathrm{d}y}&=\sec^2 y\end{aligned}\]</div>
-            <div class="step">\[\begin{aligned}\Rightarrow \frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{1}{\sec^2 y}=\frac{1}{1+x^2}\end{aligned}\]</div>
+        <div class="qa-scroll">
+            <div class="answer">
+                \[\begin{aligned}y&=\arctan x\implies x=\tan y\end{aligned}\]
+                <div class="step">\[\begin{aligned}\implies \frac{\mathrm{d}x}{\mathrm{d}y}&=\sec^2 y\end{aligned}\]</div>
+                <div class="step" data-resume-video="p4-video">\[\begin{aligned}\implies \frac{\mathrm{d}y}{\mathrm{d}x}&=\frac{1}{\sec^2 y}=\frac{1}{1+x^2}\end{aligned}\]</div>
+            </div>
+        </div>
+    </div>
+    <!-- Page 5 -->
+    <div class="page" id="page-5">
+        <div class="intro">
+            \begin{align*}
+            \arcsin a-\arcsin b&=\arcsin\left(a\sqrt{1-b^2}-b\sqrt{1-a^2}\right)\\[15pt]
+            \implies \frac{1}{h}\left(\arcsin (x+h)-\arcsin x\right)&=\arcsin\left((x+h)\sqrt{1-x^2}-x\sqrt{1-(x+h)^2}\right)\\[15pt]
+            &=\frac{1}{h}\arcsin\left(x\left(\sqrt{1-x^2}-\sqrt{1-(x+h)^2}\right)+h\sqrt{1-x^2}\right)\\[15pt]
+            &=\frac{1}{h}\arcsin\left(x\frac{(1-x^2)-\left(1-(x+h)^2\right)}{\sqrt{1-x^2}+\sqrt{1-(x+h)^2}}+h\sqrt{1-x^2}\right)\\[15pt]
+            &=\frac{1}{h}\arcsin\left(x\frac{(x+h)^2-x^2}{\sqrt{1-x^2}+\sqrt{1-(x+h)^2}}+h\sqrt{1-x^2}\right)\\[15pt]
+            &=\frac{1}{h}\arcsin\left(x\frac{2xh+h^2}{\sqrt{1-x^2}+\sqrt{1-(x+h)^2}}+h\sqrt{1-x^2}\right)\\[15pt]
+            &\to \lim_{h\to0}\frac{1}{h}\arcsin \left( x\frac{2xh}{2\sqrt{1-x^2}}+h\sqrt{1-x^2}\right)\\[15pt]
+            &= \lim_{h\to0}\frac{1}{h}\arcsin\frac{h(x^2+(1-x^2))}{\sqrt{1-x^2}}\\[15pt]
+            &= \lim_{h\to0}\frac{1}{h}\arcsin\frac{h}{\sqrt{1-x^2}}\\[15pt]
+            &= \frac{1}{\sqrt{1-x^2}}\lim_{h\to0}\frac{\sqrt{1-x^2}}{h}\arcsin\frac{h}{\sqrt{1-x^2}}\\[15pt]
+            &= \frac{1}{\sqrt{1-x^2}}\lim_{\theta\to0}\frac{1}{\theta}\arcsin\theta\\[15pt]
+            &= \frac{1}{\sqrt{1-x^2}}
+            \end{align*}
         </div>
     </div>
 
-   
+    <!-- Page 6 -->
     <div class="page" id="page-6">
+        <div class="intro">
+        \begin{align*}
+        \text{Let }\varphi&=\arccos(x+h),\quad\theta=\arccos x\quad(\text{so }\cos\varphi=x+h,\ \cos\theta=x)\\[15pt]
+        \implies \cos\varphi-\cos\theta&=h\\[15pt]
+        \implies -2\sin\left(\frac{\varphi+\theta}{2}\right)\sin\left(\frac{\varphi-\theta}{2}\right)&=h\\[15pt]
+        \implies \frac{\varphi-\theta}{h}&=-\frac{1}{\sin\left(\dfrac{\varphi+\theta}{2}\right)}\cdot\frac{\left(\varphi-\theta\right)/2}{\sin\left(\dfrac{\varphi-\theta}{2}\right)}\\[15pt]
+        &\to -\frac{1}{\sin\theta}\lim_{u\to0}\frac{u}{\sin u}\quad\left(h\to0\implies\varphi\to\theta,\ u=\frac{\varphi-\theta}{2}\to0\right)\\[15pt]
+        &=-\frac{1}{\sin\theta}\\[15pt]
+        \implies \frac{\mathrm{d}}{\mathrm{d}x}\arccos x&=-\frac{1}{\sin\theta}=-\frac{1}{\sqrt{1-x^2}}\quad(\sin\theta\ge0\text{ since }\theta\in[0,\pi])
+        \end{align*}
+    </div>
+    </div>
+
+    <!-- Page 7 -->
+    <div class="page" id="page-7">
+        <div class="intro">
+            \begin{align*}
+            \frac{\arctan(x+h)-\arctan x}{h}&=\frac{1}{h}\arctan\frac{x+h-x}{1+x(x+h)}\\[15pt]
+            &=\frac{1}{h}\arctan\frac{h}{1+x(x+h)}\\[15pt]
+            &=\frac{\left(1+x(x+h)\right)}{h\left(1+x(x+h)\right)}\arctan\frac{h}{1+x(x+h)}\\[15pt]
+            &=\frac{1}{\left(1+x(x+h)\right)}\frac{\arctan\theta}{\theta}\text{ where }\theta=\frac{h}{1+x(x+h)}\\[15pt]
+            &\to \frac{1}{1+x^2}\lim_{\theta\to 0} \frac{\arctan\theta}{\theta}\\[15pt]
+            &=\frac{1}{1+x^2}
+            \end{align*}
+        </div>
+    </div>
+
+    <!-- Page 8 -->
+    <div class="page" id="page-8" data-reveal-steps>
+        <div class="nav-gated">
+            <figure>
+                <img src="inverse_images/image100.png" alt="unit circle for differentiation" style="max-width:56%">
+            </figure>
+        </div>
+        <div class="qa-scroll">
+            <div class="intro">
+                <p>Although I know that the circular functions are, rather obviously, related to circles, I was still intrigued by the fact that the differentials of the inverse functions look so much like the equation of a circle.</p>
+                <p>To satisfy my curiosity, I went back to a diagram from earlier in the Differentials Extra sheet. Here is a summary of my thinking &mdash; it's not a detailed walk-through, more of an expository excursion.</p>
+            </div>
+            <div class="answer">
+                <p>First, notice that \(\delta x < 0\), even though it is attached in the diagram to a positive distance.</p>
+                <div class="step">
+                    \[\text{As }\delta\theta\to 0,\; \alpha\to\theta\]
+                </div>
+                <div class="step">\[\text{and }\delta x\to-\sin\theta\times\delta\theta,\quad \delta y\to\cos\theta\times\delta\theta\]</div>
+                <div class="step">\[\implies\, \frac{\delta \theta}{\delta y}\to \frac{1}{\cos\theta}\qquad \frac{\delta \theta}{\delta x}\to -\frac{1}{\sin\theta}\]</div>
+                <div class="step">\[\implies\, \frac{\mathrm{d} \theta}{\mathrm{d} y}= \frac{1}{\cos\theta}\qquad \frac{\mathrm{d} \theta}{\mathrm{d} x}= -\frac{1}{\sin\theta}\]</div>
+                <div class="step">\[\text{ and }\theta=\arcsin y=\arccos x\]</div>
+                <div class="step">\[\implies\, \frac{\mathrm{d}}{\mathrm{d}y}\arcsin y=\frac{1}{\cos\theta}=\frac{1}{\sqrt{1-y^2}}\]</div>
+                <div class="step">\[\frac{\mathrm{d}}{\mathrm{d}x}\arccos x=-\frac{1}{\sin\theta}=-\frac{1}{\sqrt{1-x^2}}\]</div>
+            </div>
+            
+            
+        </div>
+    </div>
+
+    <div class="page" id="page-9">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
@@ -247,7 +319,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="6" onchange="goToPage(this.value)"> of 6
+        Page <input type="number" id="pageInput" value="1" min="1" max="9" onchange="goToPage(this.value)"> of 9
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -270,6 +342,7 @@ document.querySelectorAll('video[data-stop]').forEach(function (video) {
         if (!video.classList.contains('resume-armed') && !video.paused && video.currentTime >= stopAt) {
             video.pause();
         }
+        if (window.syncNavPrompt) window.syncNavPrompt();
     });
 });
 </script>
@@ -329,6 +402,7 @@ document.querySelectorAll('video[data-stop]').forEach(function (video) {
         } else {
             _origChangePage(1);
         }
+        syncNavPrompt();
     }
 
     window.showPage = function (pageNum, revealAll) {
@@ -342,14 +416,42 @@ document.querySelectorAll('video[data-stop]').forEach(function (video) {
             if (visibleVideo) visibleVideo.play().catch(() => {});
         }
         goingBackward = false;
+        syncNavPrompt();
     };
+
+    // data-nav-gate-video: block forward nav (page-to-page and step-to-step)
+    // on this page until the named video's currentTime reaches its own
+    // data-stop threshold. Going backward is never blocked.
+    function navGateOpen() {
+        const activePage = document.querySelector('.page.active');
+        if (!activePage || !activePage.hasAttribute('data-nav-gate-video')) return true;
+        const video = document.getElementById(activePage.getAttribute('data-nav-gate-video'));
+        if (!video) return true;
+        return video.currentTime >= parseFloat(video.dataset.stop);
+    }
+
+    // Hide the pulsing nav-prompt logo/arrow while the nav gate is closed, so
+    // it doesn't invite a press that would just be ignored.
+    function syncNavPrompt() {
+        const prompt = document.querySelector('.nav-prompt');
+        if (!prompt) return;
+        const hasAction = revealQueue.length > 0 || currentPage < totalPages;
+        if (hasAction && navGateOpen()) {
+            prompt.classList.remove('nav-blocked');
+        } else {
+            prompt.classList.add('nav-blocked');
+        }
+    }
+    window.syncNavPrompt = syncNavPrompt;
 
     window.changePage = function (delta) {
         if (delta > 0) {
+            if (!navGateOpen()) return;
             revealNextOrAdvance();
         } else {
             goingBackward = true;
             _origChangePage(delta);
+            syncNavPrompt();
         }
     };
 }());

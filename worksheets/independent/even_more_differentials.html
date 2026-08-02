@@ -184,8 +184,8 @@
             </div>
             <div class="answer">
                 <p>\[\begin{align*}
-                    \frac{\mathrm{d}}{\mathrm{d}\theta}\cos\alpha&=\lim_{h\to 0}\frac{\sin(\theta+h)-\sin\theta}{\text{hypotenuse}}\\[12pt]
-                    &=\lim_{h\to 0} \frac{\sin(\theta+h)-\sin\theta}{h}\\[12pt]
+                    \frac{\mathrm{d}}{\mathrm{d}\theta}\sin\theta&=\lim_{h\to 0}\frac{\sin(\theta+h)-\sin\theta}{h}\\[12pt]
+                    &=\lim_{h\to 0} \frac{\sin(\theta+h)-\sin\theta}{\text{hypotenuse}}\\[12pt]
                     &=\lim_{h\to 0}\cos\alpha\\[12pt]
                     &=\cos\theta
                     \end{align*}\].</p>
@@ -202,8 +202,71 @@
 
     </div>
 -->
-    <!-- Page 7: Closing Page -->
+
+    <!-- Page 5 -->
     <div class="page" id="page-5">
+        <div class="exercise">
+            <p>Use the formula</p>
+            \[\sin\alpha-\sin\beta=2\cos \frac{\alpha+\beta}{2}\sin \frac{\alpha-\beta}{2}\]
+            <p>to find the differential of sine</p>
+        </div>
+        <div class="answer">
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(\dfrac{\sin(x+h)-\sin x}{h}\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\dfrac{2}{h}\cos\dfrac{2x+h}{2}\sin\dfrac{h}{2}\)</span>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{1}{k}\cos(x+k)\sin k\qquad\text{ where }h=2k\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(\to\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{k\to 0}\cos (x+k)\lim_{k\to 0}\dfrac{\sin k}{k}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\cos x\)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 6 -->
+    <div class="page" id="page-6">
+        <div class="exercise">
+            <p>Use the formula</p>
+            \[\cos\alpha-\cos\beta=-2\sin \frac{\alpha+\beta}{2}\sin \frac{\alpha-\beta}{2}\]
+            <p>to find the differential of cosine</p>
+        </div>
+        <div class="answer">
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(\dfrac{\cos(x+h)-\cos x}{h}\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(-\dfrac{2}{h}\sin\dfrac{2x+h}{2}\sin\dfrac{h}{2}\)</span>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-\dfrac{1}{k}\sin(x+k)\sin k\qquad\text{ where }h=2k\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(\to\)</span>
+                    <span class="aeq-rhs">\(-\displaystyle\lim_{k\to 0}\sin (x+k)\lim_{k\to 0}\dfrac{\sin k}{k}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-\sin x\)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 7: Closing Page -->
+    <div class="page" id="page-7">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
@@ -238,7 +301,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="5" onchange="goToPage(this.value)"> of 5
+        Page <input type="number" id="pageInput" value="1" min="1" max="7" onchange="goToPage(this.value)"> of 7
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1, true)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -401,7 +464,12 @@
         el.classList.remove(el.classList.contains('step') ? 'step-hidden' : 'div-hidden');
         el.classList.add('div-revealed');
         setTimeout(() => el.classList.remove('div-revealed'), 400);
-        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // .aligned-eq-block .step is display:contents (generates no box), so
+        // scrollIntoView on it directly is a no-op — scroll its last child instead.
+        const scrollTarget = window.getComputedStyle(el).display === 'contents'
+            ? (el.lastElementChild || el)
+            : el;
+        scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
     function revealNextOrAdvance() {

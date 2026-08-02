@@ -63,6 +63,10 @@
             overflow-y: auto;
             padding: 0 4px 80px;
         }
+
+        /* Extra breathing room before a step that starts a new conceptual
+           group within an aligned-eq-block (default step gap is 1.5em) */
+        .aligned-eq-block .step.step-gap:not(.step-hidden) > * { margin-top: 3em; }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -336,10 +340,177 @@
 
     </div>
 
+    <!-- Page 14 -->
+    <div class="page" id="page-14" data-reveal-steps>
+        <div class="exercise">
+            <p>Now we have established that</p>
+            \begin{align*}
+                \sin(A+B)&=\sin A\cos B+\cos A\sin B\\[12pt]
+                \cos(A+B)&=\cos A\cos B-\sin A\sin B\\[12pt]
+            \end{align*}
+            <p>adapt these identities to find versions for </p>
+            \begin{align*}
+                \sin(A-B)\\[12pt]
+                \cos(A-B)\\[12pt]
+                \tan(A+B)\\[12pt]
+                \tan(A-B)
+            \end{align*}
+
+        </div>
+        <div class="page-scroll">
+        <div class="answer">
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(\sin(A-B)\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\sin A\cos B+\cos A\sin (-B)\)</span>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\sin A\cos B-\cos A\sin B\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\cos(A-B)\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\cos A\cos (-B)-\sin A\sin (-B)\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\cos A\cos B+\cos A\cos B\)</span>
+                </div>
+            </div>
+        </div>
+        <div class="answer">
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs">\(\tan(A+B)\)</span>
+                <span class="aeq-op">\(=\)</span>
+                <span class="aeq-rhs">\(\dfrac{\sin(A+B)}{\cos(A+B)}\)</span>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\sin A\cos B+\cos A\sin B}{\cos A\cos B-\sin A\sin B}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\quad\dfrac{\sin A\cos B+\cos A\sin B}{\cos A\cos B}\quad}{\dfrac{\cos A\cos B-\sin A\sin B}{\cos A\cos B}}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\tan A+\tan B}{1-\tan A\tan B}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\tan(A-B)\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\tan A+\tan (-B)}{1-\tan A\tan (-B)}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\dfrac{\tan A-\tan B}{1+\tan A\tan B}\)</span>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- Page 15 -->
+    <div class="page" id="page-15" data-reveal-steps>
+        <div class="exercise">
+            <p>By putting \(\sin(A+B)\) and \(\sin(A-B)\) together, find formulas for \(\sin A\cos B\) and \(\cos A\sin B\)</p>
+        </div>
+        <div class="answer">
+            <div class="aligned-eq-block">
+                <span class="aeq-full">\(\sin A\cos B+\cos A\sin B=\sin(A+B)\)</span>
+                <div class="step">
+                    <span class="aeq-full">\(\sin A\cos B-\cos A\sin B=\sin(A-B)\)</span>
+                </div>
+                <div class="step step-gap">
+                    <span class="aeq-lhs">\(\implies 2\sin A\cos B\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\sin(A+B)+\sin(A-B)\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(2\cos A\sin B\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\sin(A+B)-\sin(A-B)\)</span>
+                </div>
+            </div>
+            </div>
+            <div class="exercise">
+                <p>By putting \(\alpha=A+B,\qquad \beta=A-B\), find formulas for \(\sin \alpha+\sin \beta\) and \(\sin \alpha-\sin \beta\)</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <span class="aeq-full">\(\alpha=A+B,\qquad \beta=A-B\)</span>
+                    <div class="step">
+                        <span class="aeq-full">\(\implies A=\dfrac{\alpha+\beta}{2},\qquad B=\dfrac{\alpha-\beta}{2}\)</span>
+                    </div>
+                    <div class="step step-gap">
+                        <span class="aeq-lhs">\(\implies\sin\alpha+\sin\beta\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(2\sin \dfrac{\alpha+\beta}{2}\cos \dfrac{\alpha-\beta}{2}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs">\(\sin\alpha-\sin\beta\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(2\cos \dfrac{\alpha+\beta}{2}\sin \dfrac{\alpha-\beta}{2}\)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
     
 
-    <!-- Page 14: End -->
-    <div class="page" id="page-14">
+    <!-- Page 16 -->
+    <div class="page" id="page-16" data-reveal-steps>
+        <div class="exercise">
+            <p>By putting \(\cos(A+B)\) and \(\cos(A-B)\) together, find formulas for \(\cos A\cos B\) and \(\sin A\sin B\)</p>
+        </div>
+        <div class="answer">
+            <div class="aligned-eq-block">
+                <span class="aeq-full">\(\cos(A+B)=\cos A\cos B-\sin A\sin B\)</span>
+                <div class="step">
+                    <span class="aeq-full">\(\cos(A-B)=\cos A\cos B+\sin A\sin B\)</span>
+                </div>
+                <div class="step step-gap">
+                    <span class="aeq-lhs">\(\implies 2\cos A\cos B\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\cos(A+B)+\cos(A-B)\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(2\sin A\sin B\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\cos(A-B)-\cos(A+B)\)</span>
+                </div>
+            </div>
+        </div>
+        <div class="exercise">
+            <p>By putting \(\alpha=A-B,\qquad \beta=A+B\), find formulas for \(\cos \alpha+\cos \beta\) and \(\cos \alpha-\cos \beta\)</p>
+        </div>
+        <div class="answer">
+            <div class="aligned-eq-block">
+                <span class="aeq-full">\(\alpha=A-B,\qquad \beta=A+B\)</span>
+                <div class="step">
+                    <span class="aeq-full">\(\implies A=\dfrac{\alpha+\beta}{2},\qquad B=-\dfrac{\alpha-\beta}{2}\)</span>
+                </div>
+                <div class="step step-gap">
+                    <span class="aeq-lhs">\(\implies\cos\alpha+\cos\beta\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(2\cos \dfrac{\alpha+\beta}{2}\cos \dfrac{\alpha-\beta}{2}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\cos\alpha-\cos\beta\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(-2\sin \dfrac{\alpha+\beta}{2}\sin \dfrac{\alpha-\beta}{2}\)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 17: End -->
+    <div class="page" id="page-17">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
@@ -360,7 +531,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="14" onchange="goToPage(this.value)"> of 14
+        Page <input type="number" id="pageInput" value="1" min="1" max="17" onchange="goToPage(this.value)"> of 17
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -379,7 +550,7 @@ document.addEventListener('DOMContentLoaded', function () {
 (function () {
     'use strict';
 
-    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer, div.crossfade-step, div.figure-reveal';
+    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer, div.crossfade-step, div.figure-reveal, div.step';
 
     let revealQueue = [];
     let goingBackward = false;
@@ -394,9 +565,9 @@ document.addEventListener('DOMContentLoaded', function () {
         revealQueue = [];
         const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
             .filter(div => !div.classList.contains('reveal-instant'));
-        animatable.forEach(div => div.classList.add('div-hidden'));
+        animatable.forEach(div => div.classList.add(div.classList.contains('step') ? 'step-hidden' : 'div-hidden'));
         if (revealAll) {
-            animatable.forEach(div => div.classList.remove('div-hidden'));
+            animatable.forEach(div => { div.classList.remove('div-hidden'); div.classList.remove('step-hidden'); });
             page.querySelectorAll('.crossfade-step[data-cf-to]').forEach(function(step) {
                 const toEl = document.getElementById(step.dataset.cfTo);
                 if (toEl) { toEl.style.transition = 'none'; toEl.style.opacity = '1'; }
@@ -414,6 +585,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         if (animatable.length > 0) {
             animatable[0].classList.remove('div-hidden');
+            animatable[0].classList.remove('step-hidden');
             revealQueue = animatable.slice(1);
         }
     }
@@ -424,10 +596,15 @@ document.addEventListener('DOMContentLoaded', function () {
     function revealNextOrAdvance() {
         if (revealQueue.length > 0) {
             const next = revealQueue.shift();
-            next.classList.remove('div-hidden');
+            next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
             next.classList.add('div-revealed');
             setTimeout(() => next.classList.remove('div-revealed'), 400);
-            next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // .aligned-eq-block .step is display:contents (generates no box), so
+            // scrollIntoView on it directly is a no-op — scroll its last child instead.
+            const scrollTarget = window.getComputedStyle(next).display === 'contents'
+                ? (next.lastElementChild || next)
+                : next;
+            scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
             if (videoResumeNode !== null) {
                 if (revealsUntilResume > 0) {
