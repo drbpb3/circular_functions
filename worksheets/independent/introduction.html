@@ -79,7 +79,7 @@
 
     <!-- Page 2: Introduction -->
     <div class="page" id="page-2">
-        <audio src="definitions_audio/audio00.mp3" onended="if(audioEnabled){var a=document.querySelector('#page-2 audio[data-trigger=on-reveal]');if(a){currentAudio=a;a.currentTime=0;a.play().catch(function(){});}}"></audio>
+        <audio src="definitions_audio/audio00.mp3"></audio>
         <h2 class="chapter">Defining the circular functions</h2>
 
         <div class="teacher-note">
@@ -93,9 +93,16 @@
 
             <p>These sheets are not in any way a complete course: they provide a context within which to develop insight and understanding by encouraging self-reliance and curiosity. They will not replace more traditional resources; in particular, you will need both routine exercises and more challenging sets of problems both for fluency and for creative problem-solving.</p>
         </div>
-        <div class="intro reveal-instant">
-            <audio data-trigger="on-reveal" src="definitions_audio/audio0.mp3"></audio>
+        <div class="intro">
             <p>How exciting! You are about to embark on the study of a group of functions that are so fundamental to our understanding of the physical world that it is hard to imagine doing much physics at all without them. Your first introduction to them, trigonometry,  showed you how to use them to calculate angles and side lengths of triangles. Of course, you know perfectly well that sin, cos, and tan represent ratios of sides of right-angled triangles. But they are far more powerful than this! To begin to find out how, we need to think less about triangles and more about circles.</p>
+        </div>
+    </div>
+
+    <!-- Page 3: Introduction text -->
+    <div class="page" id="page-3">
+        <div class="intro reveal-instant">
+            <audio src="definitions_audio/audio0.mp3"></audio>
+            
             <p>The word "trigonometry" really means "measurement of triangles" &mdash; it's a combination of two Greek words, "trigon", a
                 three-sided shape (a bit like hexagon, only with tri- instead of hex-) while "metron" means measure. Once we start working with circles, the name trigonometry doesn't make much sense to me. I prefer another common name for sin, cos, and tan: "circular functions". You'll often see all this material under the heading "trigonometry", and what we call it is really neither here nor there, but circular functions reminds us that the general definitions of sin, cos, and tan are based on circles and have little or nothing to do with triangles.
                 </p>
@@ -103,8 +110,8 @@
 
     </div>
 
-    <!-- Page 3: How to use this document -->
-    <div class="page" id="page-3">
+    <!-- Page 4: How to use this document -->
+    <div class="page" id="page-4">
         <div class="intro">
             <p>When you are travelling on this journey, you will find questions in a pale yellow box. When you have considered and hopefully answered the question, navigate by pressing the forward arrow or swiping left. My discussion of the question will be in a pale green box, but don't go to this too soon. Give yourself as much time as you need with the question &mdash; if you go to my discussion early, you deprive yourself of the opportunity to practise thinking like a mathematician, which is, after all, the whole point of your being here reading and working on this. Be patient! Look around at the mathematical panorama!
         </div>
@@ -113,8 +120,8 @@
         </div>
     </div>
 
-    <!-- Page 4: Ready to Continue -->
-    <div class="page" id="page-4">
+    <!-- Page 5: Ready to Continue -->
+    <div class="page" id="page-5">
         <div class="welcome-page">
             <h1>You're ready to begin!</h1>
             <div class="welcome-content">
@@ -151,7 +158,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="4" onchange="goToPage(this.value)"> of 4
+        Page <input type="number" id="pageInput" value="1" min="1" max="5" onchange="goToPage(this.value)"> of 5
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
