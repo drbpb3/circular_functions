@@ -40,9 +40,11 @@
     <style>
         video { cursor: pointer; }
 
-        /* Pages 3 & 4: video stays pinned, exercises scroll below */
+        /* Pages 3, 4, 6 & 7: video stays pinned, exercises scroll below */
         #page-3.active,
-        #page-4.active {
+        #page-4.active,
+        #page-6.active,
+        #page-7.active {
             display: flex;
             flex-direction: column;
             height: calc(100vh - 40px);
@@ -52,7 +54,9 @@
         #page-3.active .intro,
         #page-3.active figure,
         #page-4.active .intro,
-        #page-4.active figure {
+        #page-4.active figure,
+        #page-6.active figure,
+        #page-7.active figure {
             flex-shrink: 0;
         }
         .qa-exercises {
@@ -138,24 +142,14 @@
             <div class="answer reveal-instant div-hidden" id="p3-ans1">
                 The length of the pink segment on the \(x\) axis is proportional to the angle.
             </div>
-            <div class="exercise reveal-instant div-hidden" id="p3-ex2">
-                How does the blue segment on the unit circle relate to the pink angle?
-            </div>
-            <div class="answer reveal-instant div-hidden" id="p3-ans2">
-                The blue segment is the sin of the pink angle.
-            </div>
+
             <div class="exercise reveal-instant div-hidden" id="p3-ex3">
-                How does the blue segment on the unit circle relate to the blue segment on the \(y\) axis?
+                How does the blue segment on the unit circle relate to the blue segment on the \(y\) axis, and how do they both relate to the pink angle?
             </div>
             <div class="answer reveal-instant div-hidden" id="p3-ans3">
                 They are both the sin of the pink angle.
             </div>
-            <div class="exercise reveal-instant div-hidden" id="p3-ex4">
-                What are the coordinates of the blue point?
-            </div>
-            <div class="answer reveal-instant div-hidden" id="p3-ans4">
-                The \(x\) coordinate is the angle, the \(y\) coordinate is the sin of the angle.
-            </div>
+
             <div class="exercise reveal-instant div-hidden" id="p3-ex5">
                 What is the equation of the blue curve?
             </div>
@@ -177,29 +171,17 @@
         </div>
 
         <figure>
-            <video id="p4-video" src="graphs_images/cosgraphspeedy.mp4" autoplay playsinline style="width:100%;"></video>
+            <video id="p4-video" src="graphs_images/cosgraph.mp4" autoplay playsinline style="width:100%;"></video>
         </figure>
 
         <div class="qa-exercises">
             
         
         <div class="exercise reveal-instant div-hidden" id="p4-ex2">
-            How does the blue segment on the unit circle relate to the pink angle?
+            How does the blue segment on the unit circle relate to the blue segment on the \(y\) axis, and how do they both relate to the pink angle?
         </div>
         <div class="answer reveal-instant div-hidden" id="p4-ans2">
-            The blue segment is the cos of the pink angle.
-        </div>
-        <div class="exercise reveal-instant div-hidden" id="p4-ex3">
-            How does the blue segment on the unit circle relate to the blue segment on the \(y\) axis?
-        </div>
-        <div class="answer reveal-instant div-hidden" id="p4-ans3">
             They are both the cos of the pink angle.
-        </div>
-        <div class="exercise reveal-instant div-hidden" id="p4-ex4">
-            What are the coordinates of the blue point?
-        </div>
-        <div class="answer reveal-instant div-hidden" id="p4-ans4">
-            The \(x\) coordinate is the angle, the \(y\) coordinate is the cos of the angle.
         </div>
         <div class="exercise reveal-instant div-hidden" id="p4-ex5">
             What is the equation of the blue curve?
@@ -244,120 +226,70 @@
 
     <!-- Page 6: sin symmetry -->
     <div class="page" id="page-6" data-page-name="sin-symmetry">
-        <div class="exercise">
-            <p>Draw the graph \(y=\sin x\) on a set of axes marked in degrees from \(-540^\circ\) to \(540^\circ\).</p>
-        </div>
-        <figure>
-            <video id="p6-video" src="graphs_images/singraph2.mp4" playsinline style="width:100%;"></video>
-        </figure>
-        <div class="exercise">
-            <p>On the same axes, draw the graphs \(y=\sin (-x)\) and \(y=-\sin x\).</p>
-        </div>
-    </div>
-    
-    <!-- Page 7: sin symmetry -->
-    <div class="page" id="page-7">
-        <div class="exercise">
-            <p>On the same axes, draw the graphs \(y=\sin (-x)\) and \(y=-\sin x\).</p>
-        </div>
-        <figure>
-            <video id="singraph3" src="graphs_images/singraph3.mp4" autoplay playsinline style="width:100%;"></video>
-        </figure>
-        <figure>
-            <video id="singraph4" src="graphs_images/singraph4.mp4" playsinline style="width:100%;"></video>
-        </figure>
-        <div class="answer">
-            <p>Really, we only need one well-chosen point on the new graphs to see immediately what they will look like. For example, when \(x=90^\circ\) on the graph \(y=\sin(-x)\), then \(y=\sin(-90^\circ)=-1\). With this information, you can probably draw the graph \(y=\sin(-x)\) straight away. You might like to check a few other points just to be sure.</p>
-            <p>You can also draw \(y=-\sin x\) the same way. And yes, it turns out to be the same as \(y=\sin(-x)\).</p>
-        </div>
         
-        <script>
-        document.getElementById('singraph3').addEventListener('ended', function () {
-            document.getElementById('singraph4').play();
-        });
-        </script>
-        <div class="exercise">
-            <p>Describe the transformation of the graph \(y=\sin x\) to the graph \(y=\sin (-x)\) or \(y=-\sin x\) in as many ways as you can. Remember you can use reflections or translations!</p>
-        </div>
-    </div>
-
-    <!-- Page 8: sin symmetry -->
-    <div class="page" id="page-8">
-        <div class="exercise">
-            <p>Describe the transformation of the graph \(y=\sin x\) to the graph \(y=\sin (-x)\) or \(y=-\sin x\) in as many ways as you can. Remember you can use reflections or translations!</p>
-        </div>
-    </div>
-
-    <!-- Page 9: sin symmetry -->
-    <div class="page" id="page-9">
-        <div class="exercise">
-            <p>Describe the transformation of the graph \(y=\sin x\) to the graph \(y=\sin (-x)\) or \(y=-\sin x\) in as many ways as you can. Remember you can use reflections or translations!</p>
-        </div>
         <figure>
-            <video src="graphs_images/sintransformations.mp4" autoplay playsinline style="width:100%;"></video>
+            <video id="p6-video" src="graphs_images/sintransformations.mp4" playsinline style="max-width:84%;"></video>
         </figure>
-        <div class="answer">
-            <p>We can reflect in the \(x\) axis, reflect in the \(y\) axis, translate left or right by \(180^\circ\) or \(540^\circ\) or add multiples of \(360^\circ\) to either of these.</p>
+        <div class="qa-exercises">
+            <div class="exercise reveal-instant div-hidden" id="p6-ex1">
+                <p>On the same axes, draw the graphs \(y=\sin x\) and \(y=-\sin x\).</p>
+            </div>
+            <div class="answer reveal-instant div-hidden" id="p6-ans1">
+                <p>
+                    The transformation from \(y=\sin x\) to \(y=-\sin x\) is a reflection in the \(x\) axis. Watch this happening in the video.
+                </p>
+            </div>
+            <div class="exercise reveal-instant div-hidden" id="p6-ex2">
+                <p>Now draw the graph \(y=\sin (-x)\).</p>
+            </div>
+            <div class="answer reveal-instant div-hidden" id="p6-ans2">
+                <p>
+                    The transformation from \(y=\sin x\) to \(y=\sin (-x)\) is a reflection in the \(y\) axis. Watch this happening in the video.
+                </p>
+            </div>
+            <div class="exercise reveal-instant div-hidden" id="p6-ex3">
+                <p>Describe the transformation of the graph \(y=\sin x\) to the graph \(y=\sin (-x)\) or \(y=-\sin x\) using translations instead of reflections</p>
+            </div>
+            <div class="answer reveal-instant div-hidden" id="p6-ans3">
+                <p>We can translate left or right by \(180^\circ\) or \(540^\circ\) or add multiples of \(360^\circ\) to either of these. Watch these happening in the video.</p>
+            </div>
         </div>
     </div>
 
-    <!-- Page 10: cos symmetry -->
-    <div class="page" id="page-10" data-page-name="cos-symmetry">
-        <div class="exercise">
-            <p>Draw the graph \(y=\cos x\) on a set of axes marked in degrees from \(-540^\circ\) to \(540^\circ\).</p>
-        </div>
-        <figure>
-            <video id="p10-video" src="graphs_images/cosgraph2.mp4" playsinline style="width:100%;"></video>
-        </figure>
-
-        <div class="exercise">
-            <p>On the same axes, draw the graphs \(y=\cos (-x)\) and \(y=-\cos x\).</p>
-        </div>
-
-    </div>
-
-    <!-- Page 11: cos symmetry -->
-    <div class="page" id="page-11">
-        <div class="exercise">
-            <p>On the same axes, draw the graphs \(y=\cos (-x)\) and \(y=-\cos x\).</p>
-        </div>
+    <!-- Page 7: cos symmetry -->
+    <div class="page" id="page-7" data-page-name="cos-symmetry">
 
         <figure>
-            <video id="cosgraph3" src="graphs_images/cosgraph3.mp4" autoplay playsinline style="width:100%;"></video>
+            <video id="p7-video" src="graphs_images/costransformations.mp4" playsinline style="max-width:84%;"></video>
         </figure>
-        <figure>
-            <video id="cosgraph4" src="graphs_images/cosgraph4.mp4" playsinline style="width:100%;"></video>
-        </figure>
-        <script>
-        document.getElementById('cosgraph3').addEventListener('ended', function () {
-            var v = document.getElementById('cosgraph4');
-            v.play();
-        });
-        </script>
-        <div class="answer">
-            <p>Really, we only need one well-chosen point on the new graphs to see immediately what they will look like. For example, when \(x=180^\circ\) on the graph \(y=\cos(-x)\), then \(y=\cos(-180^\circ)=-1\). With this information, you can probably draw the graph \(y=\cos(-x)\) straight away. You might like to check a few other points just to be sure.</p>
-            <p>You can also draw \(y=-\cos x\) the same way.</p>
-        </div>
-        <div class="exercise">
-            <p>Describe the transformation of the graph \(y=\cos x\) to the graph \(y=-\cos x\) in as many ways as you can. Remember you can use reflections or translations!</p>
+        <div class="qa-exercises">
+            <div class="exercise reveal-instant div-hidden" id="p7-ex1">
+                <p>On the same axes, draw the graphs \(y=\cos x\) and \(y=-\cos x\).</p>
+            </div>
+            <div class="answer reveal-instant div-hidden" id="p7-ans1">
+                <p>
+                    The transformation from \(y=\cos x\) to \(y=-\cos x\) is a reflection in the \(x\) axis. Watch this happening in the video.
+                </p>
+            </div>
+            <div class="exercise reveal-instant div-hidden" id="p7-ex2">
+                <p>Now draw the graph \(y=\cos (-x)\).</p>
+            </div>
+            <div class="answer reveal-instant div-hidden" id="p7-ans2">
+                <p>
+                    The transformation from \(y=\cos x\) to \(y=\cos (-x)\) is a reflection in the \(y\) axis. But \(\cos x\) is already symmetric about the \(y\) axis, so this reflection leaves the graph unchanged. Watch this in the video.
+                </p>
+            </div>
+            <div class="exercise reveal-instant div-hidden" id="p7-ex3">
+                <p>Describe the transformation of the graph \(y=\cos x\) to the graph \(y=-\cos x\) using translations instead of reflections</p>
+            </div>
+            <div class="answer reveal-instant div-hidden" id="p7-ans3">
+                <p>We can translate left or right by \(180^\circ\) or \(540^\circ\) or add multiples of \(360^\circ\) to either of these. Watch these happening in the video.</p>
+            </div>
         </div>
     </div>
 
-    
-
-    <!-- Page 12: cos symmetry -->
-    <div class="page" id="page-12" data-page-name="cos-symmetry-extended">
-        <div class="exercise">
-            <p>Describe the transformation of the graph \(y=\cos x\) to the graph \(y=-\cos x\) in as many ways as you can. Remember you can use reflections or translations!</p>
-        </div>
-        <figure>
-            <video id="p12-video" src="graphs_images/costransformations.mp4" playsinline style="width:100%;"></video>
-        </figure>
-    </div>
-
-    
-    <!-- Page 13: tan symmetry -->
-    <div class="page" id="page-13" data-page-name="tan-symmetry">
+    <!-- Page 8: tan symmetry -->
+    <div class="page" id="page-8" data-page-name="tan-symmetry">
         <div class="exercise">
             <p>Draw the graph \(y=\tan x\) on a set of axes marked in degrees from \(-540^\circ\) to \(540^\circ\).</p>
         </div>
@@ -369,8 +301,8 @@
         </div>
     </div>
 
-    <!-- Page 14: sin to cos -->
-    <div class="page" id="page-14">
+    <!-- Page 9: sin to cos -->
+    <div class="page" id="page-9">
         <div class="exercise">
             <p>On the same axes, draw the graphs \(y=\sin x\) and \(y=\cos x\).</p>
             <p>Describe in as many ways as you can the transformations that take one graph to the other.</p>
@@ -379,8 +311,8 @@
             <video src="graphs_images/sintocos.mp4" autoplay playsinline style="width:100%;"></video>
         </figure>
     </div>
-    <!-- Page 15: Congratulations Page -->
-    <div class="page" id="page-15">
+    <!-- Page 10: Congratulations Page -->
+    <div class="page" id="page-10">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
@@ -414,7 +346,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="15" onchange="goToPage(this.value)"> of 15
+        Page <input type="number" id="pageInput" value="1" min="1" max="10" onchange="goToPage(this.value)"> of 10
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -433,32 +365,47 @@ document.querySelectorAll('video').forEach(function (v) {
 var p2firstVisit = true;
 var p3qWaitingForReveal = false;
 var p3qWaitingForResume = false;
+var p3qWaitingAtEnd = false;
+var p3videoEnded = false;
 var p3qPendingAnswerId = null;
 var p3qPauseConfig = [
-    { time: 30,  answerId: 'p3-ans1' },
-    { time: 47,  answerId: 'p3-ans2' },
-    { time: 63,  answerId: 'p3-ans3' },
-    { time: 88,  answerId: 'p3-ans4' },
-    { time: 105, answerId: 'p3-ans5' }
+    { time: 14, answerId: 'p3-ans1' },
+    { time: 27, answerId: 'p3-ans3' }
 ];
 var p3qRemainingPauses = p3qPauseConfig.slice();
 var p4waitingForReveal = false;
 var p4waitingForResume = false;
+var p4waitingAtEnd = false;
+var p4videoEnded = false;
 var p4pendingAnswerId = null;
 var p4pauseConfig = [
-    { time: 27.4, answerId: 'p4-ans2' },
-    { time: 37, answerId: 'p4-ans3' },
-    { time: 44, answerId: 'p4-ans4' },
-    { time: 59, answerId: 'p4-ans5' }
+    { time: 27, answerId: 'p4-ans2' }
 ];
 var p4remainingPauses = p4pauseConfig.slice();
 var p5waitingAtPause = false;
 var p5waitingAtEnd = false;
 var p5videoEnded = false;
-var p5remainingPauses = [{ time: 47 }];
-var p6waitingForResume = false;
-var p10waitingForResume = false;
-var p12waitingForResume = false;
+var p5remainingPauses = [{ time: 20 }];
+var p6qWaitingForReveal = false;
+var p6qWaitingForResume = false;
+var p6qPendingAnswerId = null;
+var p6qPauseConfig = [
+    { time: 7,  exerciseId: 'p6-ex1', answerId: 'p6-ans1' },
+    { time: 14, exerciseId: 'p6-ex2', answerId: 'p6-ans2' },
+    { time: 23, exerciseId: 'p6-ex3', answerId: 'p6-ans3' }
+];
+var p6qRemainingPauses = p6qPauseConfig.slice();
+var p6videoEnded = false;
+var p7qWaitingForReveal = false;
+var p7qWaitingForResume = false;
+var p7qPendingAnswerId = null;
+var p7qPauseConfig = [
+    { time: 7,  exerciseId: 'p7-ex1', answerId: 'p7-ans1' },
+    { time: 14, exerciseId: 'p7-ex2', answerId: 'p7-ans2' },
+    { time: 23, exerciseId: 'p7-ex3', answerId: 'p7-ans3' }
+];
+var p7qRemainingPauses = p7qPauseConfig.slice();
+var p7videoEnded = false;
 var p13waitingForResume = false;
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -483,8 +430,6 @@ document.addEventListener('DOMContentLoaded', function () {
     var p3videoEl = document.getElementById('p3-video');
     if (p3videoEl) {
         p3videoEl.addEventListener('timeupdate', function () {
-            var target = p3videoEl.currentTime < 18 ? 2 : 1;
-            if (p3videoEl.playbackRate !== target) p3videoEl.playbackRate = target;
             if (!p3qWaitingForReveal && !p3qWaitingForResume && p3qRemainingPauses.length > 0 && p3videoEl.currentTime >= p3qRemainingPauses[0].time) {
                 var pause = p3qRemainingPauses.shift();
                 p3videoEl.pause();
@@ -493,47 +438,40 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (window.syncNavPrompt) window.syncNavPrompt();
             }
             var p3ex1 = document.getElementById('p3-ex1');
-            if (p3ex1 && p3videoEl.currentTime >= 22 && p3ex1.classList.contains('div-hidden')) {
+            if (p3ex1 && p3videoEl.currentTime >= 14 && p3ex1.classList.contains('div-hidden')) {
                 p3ex1.classList.remove('div-hidden');
                 p3ex1.classList.add('div-revealed');
                 setTimeout(function () { p3ex1.classList.remove('div-revealed'); }, 400);
                 p3ex1.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-            var p3ex2 = document.getElementById('p3-ex2');
-            if (p3ex2 && p3videoEl.currentTime >= 38 && p3ex2.classList.contains('div-hidden')) {
-                p3ex2.classList.remove('div-hidden');
-                p3ex2.classList.add('div-revealed');
-                setTimeout(function () { p3ex2.classList.remove('div-revealed'); }, 400);
-                p3ex2.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
             var p3ex3 = document.getElementById('p3-ex3');
-            if (p3ex3 && p3videoEl.currentTime >= 58 && p3ex3.classList.contains('div-hidden')) {
+            if (p3ex3 && p3videoEl.currentTime >= 27 && p3ex3.classList.contains('div-hidden')) {
                 p3ex3.classList.remove('div-hidden');
                 p3ex3.classList.add('div-revealed');
                 setTimeout(function () { p3ex3.classList.remove('div-revealed'); }, 400);
                 p3ex3.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-            var p3ex4 = document.getElementById('p3-ex4');
-            if (p3ex4 && p3videoEl.currentTime >= 83 && p3ex4.classList.contains('div-hidden')) {
-                p3ex4.classList.remove('div-hidden');
-                p3ex4.classList.add('div-revealed');
-                setTimeout(function () { p3ex4.classList.remove('div-revealed'); }, 400);
-                p3ex4.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+        });
+        p3videoEl.addEventListener('ended', function () {
             var p3ex5 = document.getElementById('p3-ex5');
-            if (p3ex5 && p3videoEl.currentTime >= 99 && p3ex5.classList.contains('div-hidden')) {
+            if (p3ex5 && p3ex5.classList.contains('div-hidden')) {
                 p3ex5.classList.remove('div-hidden');
                 p3ex5.classList.add('div-revealed');
                 setTimeout(function () { p3ex5.classList.remove('div-revealed'); }, 400);
                 p3ex5.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
+            p3videoEnded = true;
+            p3qWaitingAtEnd = true;
+            if (window.syncNavPrompt) window.syncNavPrompt();
         });
     }
 
-    // Page 4: reveal first exercise at 9s and first answer at 13s into video
+    // Page 4: video-timed exercise reveals and pause-before-answer system
     var p4video = document.getElementById('p4-video');
     if (p4video) {
         p4video.addEventListener('timeupdate', function () {
+            var target = p4video.currentTime < 14 ? 2 : 1;
+            if (p4video.playbackRate !== target) p4video.playbackRate = target;
             if (!p4waitingForReveal && !p4waitingForResume && p4remainingPauses.length > 0 && p4video.currentTime >= p4remainingPauses[0].time) {
                 var pause = p4remainingPauses.shift();
                 p4video.pause();
@@ -541,69 +479,53 @@ document.addEventListener('DOMContentLoaded', function () {
                 p4pendingAnswerId = pause.answerId;
                 if (window.syncNavPrompt) window.syncNavPrompt();
             }
-            var p4ex1 = document.getElementById('p4-ex1');
-            if (p4ex1 && p4video.currentTime >= 9 && p4ex1.classList.contains('div-hidden')) {
-                p4ex1.classList.remove('div-hidden');
-                p4ex1.classList.add('div-revealed');
-                setTimeout(function () { p4ex1.classList.remove('div-revealed'); }, 400);
-                p4ex1.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
             var p4ex2 = document.getElementById('p4-ex2');
-            if (p4ex2 && p4video.currentTime >= 20 && p4ex2.classList.contains('div-hidden')) {
+            if (p4ex2 && p4video.currentTime >= 27 && p4ex2.classList.contains('div-hidden')) {
                 p4ex2.classList.remove('div-hidden');
                 p4ex2.classList.add('div-revealed');
                 setTimeout(function () { p4ex2.classList.remove('div-revealed'); }, 400);
                 p4ex2.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-            var p4ex3 = document.getElementById('p4-ex3');
-            if (p4ex3 && p4video.currentTime >= 30 && p4ex3.classList.contains('div-hidden')) {
-                p4ex3.classList.remove('div-hidden');
-                p4ex3.classList.add('div-revealed');
-                setTimeout(function () { p4ex3.classList.remove('div-revealed'); }, 400);
-                p4ex3.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-            var p4ex4 = document.getElementById('p4-ex4');
-            if (p4ex4 && p4video.currentTime >= 43 && p4ex4.classList.contains('div-hidden')) {
-                p4ex4.classList.remove('div-hidden');
-                p4ex4.classList.add('div-revealed');
-                setTimeout(function () { p4ex4.classList.remove('div-revealed'); }, 400);
-                p4ex4.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+        });
+        p4video.addEventListener('ended', function () {
             var p4ex5 = document.getElementById('p4-ex5');
-            if (p4ex5 && p4video.currentTime >= 52 && p4ex5.classList.contains('div-hidden')) {
+            if (p4ex5 && p4ex5.classList.contains('div-hidden')) {
                 p4ex5.classList.remove('div-hidden');
                 p4ex5.classList.add('div-revealed');
                 setTimeout(function () { p4ex5.classList.remove('div-revealed'); }, 400);
                 p4ex5.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
+            p4videoEnded = true;
+            p4waitingAtEnd = true;
+            if (window.syncNavPrompt) window.syncNavPrompt();
         });
     }
 
     var p5video = document.getElementById('p5-video');
     if (p5video) {
         p5video.addEventListener('timeupdate', function () {
-            var p5ex1 = document.getElementById('p5-ex1');
-            if (p5ex1 && p5video.currentTime >= 41 && p5ex1.classList.contains('div-hidden')) {
-                p5ex1.classList.remove('div-hidden');
-                p5ex1.classList.add('div-revealed');
-                setTimeout(function () { p5ex1.classList.remove('div-revealed'); }, 400);
-                p5ex1.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
             if (!p5waitingAtPause && p5remainingPauses.length > 0 && p5video.currentTime >= p5remainingPauses[0].time) {
                 p5remainingPauses.shift();
                 p5video.pause();
                 p5waitingAtPause = true;
                 if (window.syncNavPrompt) window.syncNavPrompt();
             }
+            var p5ex1 = document.getElementById('p5-ex1');
+            if (p5ex1 && p5video.currentTime >= 20 && p5ex1.classList.contains('div-hidden')) {
+                p5ex1.classList.remove('div-hidden');
+                p5ex1.classList.add('div-revealed');
+                setTimeout(function () { p5ex1.classList.remove('div-revealed'); }, 400);
+                p5ex1.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+        p5video.addEventListener('ended', function () {
             var p5ex2 = document.getElementById('p5-ex2');
-            if (p5ex2 && p5video.currentTime >= 88 && p5ex2.classList.contains('div-hidden')) {
+            if (p5ex2 && p5ex2.classList.contains('div-hidden')) {
                 p5ex2.classList.remove('div-hidden');
                 p5ex2.classList.add('div-revealed');
                 setTimeout(function () { p5ex2.classList.remove('div-revealed'); }, 400);
                 p5ex2.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-        });
-        p5video.addEventListener('ended', function () {
             p5videoEnded = true;
             p5waitingAtEnd = true;
             if (window.syncNavPrompt) window.syncNavPrompt();
@@ -612,38 +534,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var p6video = document.getElementById('p6-video');
     if (p6video) {
-        function p6pauseAt4() {
-            if (!p6video.paused && p6video.currentTime >= 4) {
+        p6video.addEventListener('timeupdate', function () {
+            if (!p6qWaitingForReveal && !p6qWaitingForResume && p6qRemainingPauses.length > 0 && p6video.currentTime >= p6qRemainingPauses[0].time) {
+                var pause = p6qRemainingPauses.shift();
                 p6video.pause();
-                p6waitingForResume = true;
-                p6video.removeEventListener('timeupdate', p6pauseAt4);
+                p6qWaitingForReveal = true;
+                p6qPendingAnswerId = pause.answerId;
+                var exEl = document.getElementById(pause.exerciseId);
+                if (exEl && exEl.classList.contains('div-hidden')) {
+                    exEl.classList.remove('div-hidden');
+                    exEl.classList.add('div-revealed');
+                    setTimeout(function () { exEl.classList.remove('div-revealed'); }, 400);
+                    exEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                if (window.syncNavPrompt) window.syncNavPrompt();
             }
-        }
-        p6video.addEventListener('timeupdate', p6pauseAt4);
+        });
+        p6video.addEventListener('ended', function () {
+            p6videoEnded = true;
+            if (window.syncNavPrompt) window.syncNavPrompt();
+        });
     }
 
-    var p10video = document.getElementById('p10-video');
-    if (p10video) {
-        function p10pauseAt4() {
-            if (!p10video.paused && p10video.currentTime >= 4) {
-                p10video.pause();
-                p10waitingForResume = true;
-                p10video.removeEventListener('timeupdate', p10pauseAt4);
+    var p7video = document.getElementById('p7-video');
+    if (p7video) {
+        p7video.addEventListener('timeupdate', function () {
+            if (!p7qWaitingForReveal && !p7qWaitingForResume && p7qRemainingPauses.length > 0 && p7video.currentTime >= p7qRemainingPauses[0].time) {
+                var pause = p7qRemainingPauses.shift();
+                p7video.pause();
+                p7qWaitingForReveal = true;
+                p7qPendingAnswerId = pause.answerId;
+                var exEl = document.getElementById(pause.exerciseId);
+                if (exEl && exEl.classList.contains('div-hidden')) {
+                    exEl.classList.remove('div-hidden');
+                    exEl.classList.add('div-revealed');
+                    setTimeout(function () { exEl.classList.remove('div-revealed'); }, 400);
+                    exEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                if (window.syncNavPrompt) window.syncNavPrompt();
             }
-        }
-        p10video.addEventListener('timeupdate', p10pauseAt4);
-    }
-
-    var p12video = document.getElementById('p12-video');
-    if (p12video) {
-        function p12pauseAt14() {
-            if (!p12video.paused && p12video.currentTime >= 14) {
-                p12video.pause();
-                p12waitingForResume = true;
-                p12video.removeEventListener('timeupdate', p12pauseAt14);
-            }
-        }
-        p12video.addEventListener('timeupdate', p12pauseAt14);
+        });
+        p7video.addEventListener('ended', function () {
+            p7videoEnded = true;
+            if (window.syncNavPrompt) window.syncNavPrompt();
+        });
     }
 
     var p13video = document.getElementById('p13-video');
@@ -678,7 +612,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const TAN_GRAPH_PAGE       = getPageNum('tan-graph');
     const SIN_SYMMETRY_PAGE    = getPageNum('sin-symmetry');
     const COS_SYMMETRY_PAGE    = getPageNum('cos-symmetry');
-    const COS_SYMM_EXT_PAGE    = getPageNum('cos-symmetry-extended');
     const TAN_SYMMETRY_PAGE    = getPageNum('tan-symmetry');
 
     let revealQueue = [];
@@ -688,13 +621,16 @@ document.addEventListener('DOMContentLoaded', function () {
         // Leaving any page — clear ALL waiting flags and pause off-page videos
         p3qWaitingForReveal = false;
         p3qWaitingForResume = false;
+        p3qWaitingAtEnd = false;
         p4waitingForReveal = false;
         p4waitingForResume = false;
+        p4waitingAtEnd = false;
         p5waitingAtPause = false;
         p5waitingAtEnd = false;
-        p6waitingForResume = false;
-        p10waitingForResume = false;
-        p12waitingForResume = false;
+        p6qWaitingForReveal = false;
+        p6qWaitingForResume = false;
+        p7qWaitingForReveal = false;
+        p7qWaitingForResume = false;
         p13waitingForResume = false;
         document.querySelectorAll('.page:not(.active) video').forEach(function (v) { v.pause(); });
         revealQueue = [];
@@ -735,6 +671,18 @@ document.addEventListener('DOMContentLoaded', function () {
             syncNavPrompt();
             return;
         }
+        if (p4waitingAtEnd) {
+            p4waitingAtEnd = false;
+            const p4ans5el = document.getElementById('p4-ans5');
+            if (p4ans5el) {
+                p4ans5el.classList.remove('div-hidden');
+                p4ans5el.classList.add('div-revealed');
+                setTimeout(() => p4ans5el.classList.remove('div-revealed'), 400);
+                p4ans5el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            syncNavPrompt();
+            return;
+        }
 
 
         // Page 3 Q&A special case: first nav reveals answer, second nav resumes video
@@ -754,6 +702,18 @@ document.addEventListener('DOMContentLoaded', function () {
             p3qWaitingForResume = false;
             const p3v = document.getElementById('p3-video');
             if (p3v) p3v.play().catch(() => {});
+            syncNavPrompt();
+            return;
+        }
+        if (p3qWaitingAtEnd) {
+            p3qWaitingAtEnd = false;
+            const p3ans5el = document.getElementById('p3-ans5');
+            if (p3ans5el) {
+                p3ans5el.classList.remove('div-hidden');
+                p3ans5el.classList.add('div-revealed');
+                setTimeout(() => p3ans5el.classList.remove('div-revealed'), 400);
+                p3ans5el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
             syncNavPrompt();
             return;
         }
@@ -786,27 +746,47 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Page 6 special case: resume video on nav press
-        if (p6waitingForResume) {
-            p6waitingForResume = false;
+        // Page 6 Q&A special case: first nav reveals answer, second nav resumes video
+        if (p6qWaitingForReveal) {
+            p6qWaitingForReveal = false;
+            p6qWaitingForResume = true;
+            const ans = document.getElementById(p6qPendingAnswerId);
+            if (ans) {
+                ans.classList.remove('div-hidden');
+                ans.classList.add('div-revealed');
+                setTimeout(() => ans.classList.remove('div-revealed'), 400);
+                ans.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            syncNavPrompt();
+            return;
+        }
+        if (p6qWaitingForResume) {
+            p6qWaitingForResume = false;
             const p6video = document.getElementById('p6-video');
             if (p6video) p6video.play().catch(() => {});
+            syncNavPrompt();
             return;
         }
 
-        // Page 10 special case: resume video on nav press
-        if (p10waitingForResume) {
-            p10waitingForResume = false;
-            const p10video = document.getElementById('p10-video');
-            if (p10video) p10video.play().catch(() => {});
+        // Page 7 Q&A special case: first nav reveals answer, second nav resumes video
+        if (p7qWaitingForReveal) {
+            p7qWaitingForReveal = false;
+            p7qWaitingForResume = true;
+            const ans = document.getElementById(p7qPendingAnswerId);
+            if (ans) {
+                ans.classList.remove('div-hidden');
+                ans.classList.add('div-revealed');
+                setTimeout(() => ans.classList.remove('div-revealed'), 400);
+                ans.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            syncNavPrompt();
             return;
         }
-
-        // Page 12 special case: resume video on nav press
-        if (p12waitingForResume) {
-            p12waitingForResume = false;
-            const p12video = document.getElementById('p12-video');
-            if (p12video) p12video.play().catch(() => {});
+        if (p7qWaitingForResume) {
+            p7qWaitingForResume = false;
+            const p7video = document.getElementById('p7-video');
+            if (p7video) p7video.play().catch(() => {});
+            syncNavPrompt();
             return;
         }
 
@@ -836,11 +816,15 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         } else {
             const p3page = getPageEl('sin-graph');
-            if (p3page && p3page.classList.contains('active') && p3qRemainingPauses.length > 0) return;
+            if (p3page && p3page.classList.contains('active') && (p3qRemainingPauses.length > 0 || !p3videoEnded)) return;
             const p4page = getPageEl('cos-graph');
-            if (p4page && p4page.classList.contains('active') && p4remainingPauses.length > 0) return;
+            if (p4page && p4page.classList.contains('active') && (p4remainingPauses.length > 0 || !p4videoEnded)) return;
             const p5pageEl = document.getElementById('page-5');
             if (p5pageEl && p5pageEl.classList.contains('active') && (p5remainingPauses.length > 0 || !p5videoEnded)) return;
+            const p6page = getPageEl('sin-symmetry');
+            if (p6page && p6page.classList.contains('active') && (p6qRemainingPauses.length > 0 || !p6videoEnded)) return;
+            const p7page = getPageEl('cos-symmetry');
+            if (p7page && p7page.classList.contains('active') && (p7qRemainingPauses.length > 0 || !p7videoEnded)) return;
             _origChangePage(1);
         }
     }
@@ -865,9 +849,11 @@ document.addEventListener('DOMContentLoaded', function () {
             if (pageNum === SIN_GRAPH_PAGE) {
                 p3qWaitingForReveal = false;
                 p3qWaitingForResume = false;
+                p3qWaitingAtEnd = false;
+                p3videoEnded = false;
                 p3qPendingAnswerId = null;
                 p3qRemainingPauses = p3qPauseConfig.slice();
-                ['p3-ex1','p3-ans1','p3-ex2','p3-ans2','p3-ex3','p3-ans3','p3-ex4','p3-ans4','p3-ex5','p3-ans5'].forEach(function (id) {
+                ['p3-ex1','p3-ans1','p3-ex3','p3-ans3','p3-ex5','p3-ans5'].forEach(function (id) {
                     const el = document.getElementById(id);
                     if (el) el.classList.add('div-hidden');
                 });
@@ -877,7 +863,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 p5waitingAtPause = false;
                 p5waitingAtEnd = false;
                 p5videoEnded = false;
-                p5remainingPauses = [{ time: 47 }];
+                p5remainingPauses = [{ time: 20 }];
                 ['p5-ex1', 'p5-ans1', 'p5-ex2', 'p5-ans2'].forEach(function (id) {
                     const el = document.getElementById(id);
                     if (el) el.classList.add('div-hidden');
@@ -887,76 +873,38 @@ document.addEventListener('DOMContentLoaded', function () {
             if (pageNum === COS_GRAPH_PAGE) {
                 p4waitingForReveal = false;
                 p4waitingForResume = false;
+                p4waitingAtEnd = false;
+                p4videoEnded = false;
                 p4pendingAnswerId = null;
                 p4remainingPauses = p4pauseConfig.slice();
-                const p4ex1 = document.getElementById('p4-ex1');
-                const p4ans1 = document.getElementById('p4-ans1');
-                if (p4ex1) p4ex1.classList.add('div-hidden');
-                if (p4ans1) p4ans1.classList.add('div-hidden');
-                const p4ex2 = document.getElementById('p4-ex2');
-                const p4ans2 = document.getElementById('p4-ans2');
-                if (p4ex2) p4ex2.classList.add('div-hidden');
-                if (p4ans2) p4ans2.classList.add('div-hidden');
-                const p4ex3 = document.getElementById('p4-ex3');
-                const p4ans3 = document.getElementById('p4-ans3');
-                if (p4ex3) p4ex3.classList.add('div-hidden');
-                if (p4ans3) p4ans3.classList.add('div-hidden');
-                const p4ex4 = document.getElementById('p4-ex4');
-                const p4ans4 = document.getElementById('p4-ans4');
-                if (p4ex4) p4ex4.classList.add('div-hidden');
-                if (p4ans4) p4ans4.classList.add('div-hidden');
-                const p4ex5 = document.getElementById('p4-ex5');
-                const p4ans5 = document.getElementById('p4-ans5');
-                if (p4ex5) p4ex5.classList.add('div-hidden');
-                if (p4ans5) p4ans5.classList.add('div-hidden');
+                ['p4-ex2','p4-ans2','p4-ex5','p4-ans5'].forEach(function (id) {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.add('div-hidden');
+                });
             }
-            // Re-arm page 10 pause-at-4s listener on each visit
-            if (pageNum === COS_SYMMETRY_PAGE) {
-                p10waitingForResume = false;
-                const p10v = document.getElementById('p10-video');
-                if (p10v) {
-                    function p10pauseAt4fresh() {
-                        if (!p10v.paused && p10v.currentTime >= 4) {
-                            p10v.pause();
-                            p10waitingForResume = true;
-                            p10v.removeEventListener('timeupdate', p10pauseAt4fresh);
-                        }
-                    }
-                    p10v.removeEventListener('timeupdate', p10pauseAt4fresh);
-                    p10v.addEventListener('timeupdate', p10pauseAt4fresh);
-                }
-            }
-            // Re-arm page 6 pause-at-4s listener on each visit
+            // Re-hide page 6 video-timed divs and reset pause queue on each visit
             if (pageNum === SIN_SYMMETRY_PAGE) {
-                p6waitingForResume = false;
-                const p6v = document.getElementById('p6-video');
-                if (p6v) {
-                    function p6pauseAt4fresh() {
-                        if (!p6v.paused && p6v.currentTime >= 4) {
-                            p6v.pause();
-                            p6waitingForResume = true;
-                            p6v.removeEventListener('timeupdate', p6pauseAt4fresh);
-                        }
-                    }
-                    p6v.removeEventListener('timeupdate', p6pauseAt4fresh);
-                    p6v.addEventListener('timeupdate', p6pauseAt4fresh);
-                }
+                p6qWaitingForReveal = false;
+                p6qWaitingForResume = false;
+                p6qPendingAnswerId = null;
+                p6qRemainingPauses = p6qPauseConfig.slice();
+                p6videoEnded = false;
+                ['p6-ex1', 'p6-ans1', 'p6-ex2', 'p6-ans2', 'p6-ex3', 'p6-ans3'].forEach(function (id) {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.add('div-hidden');
+                });
             }
-            // Re-arm page 12 pause-at-14s listener on each visit
-            if (pageNum === COS_SYMM_EXT_PAGE) {
-                p12waitingForResume = false;
-                const p12v = document.getElementById('p12-video');
-                if (p12v) {
-                    function p12pauseAt14fresh() {
-                        if (!p12v.paused && p12v.currentTime >= 14) {
-                            p12v.pause();
-                            p12waitingForResume = true;
-                            p12v.removeEventListener('timeupdate', p12pauseAt14fresh);
-                        }
-                    }
-                    p12v.removeEventListener('timeupdate', p12pauseAt14fresh);
-                    p12v.addEventListener('timeupdate', p12pauseAt14fresh);
-                }
+            // Re-hide page 7 video-timed divs and reset pause queue on each visit
+            if (pageNum === COS_SYMMETRY_PAGE) {
+                p7qWaitingForReveal = false;
+                p7qWaitingForResume = false;
+                p7qPendingAnswerId = null;
+                p7qRemainingPauses = p7qPauseConfig.slice();
+                p7videoEnded = false;
+                ['p7-ex1', 'p7-ans1', 'p7-ex2', 'p7-ans2', 'p7-ex3', 'p7-ans3'].forEach(function (id) {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.add('div-hidden');
+                });
             }
             // Re-arm page 13 pause-at-4s listener on each visit
             if (pageNum === TAN_SYMMETRY_PAGE) {
@@ -988,23 +936,30 @@ document.addEventListener('DOMContentLoaded', function () {
     function syncNavPrompt() {
         const prompt = document.querySelector('.nav-prompt');
         if (!prompt) return;
-        const anyWaiting = p4waitingForReveal || p4waitingForResume ||
-            p3qWaitingForReveal || p3qWaitingForResume ||
+        const anyWaiting = p4waitingForReveal || p4waitingForResume || p4waitingAtEnd ||
+            p3qWaitingForReveal || p3qWaitingForResume || p3qWaitingAtEnd ||
             p5waitingAtPause || p5waitingAtEnd ||
-            p6waitingForResume || p10waitingForResume ||
-            p12waitingForResume || p13waitingForResume;
+            p6qWaitingForReveal || p6qWaitingForResume ||
+            p7qWaitingForReveal || p7qWaitingForResume ||
+            p13waitingForResume;
         // Mirror the exact blocking conditions in revealNextOrAdvance
         const p3pg = getPageEl('sin-graph');
         const p3Blocking = p3pg && p3pg.classList.contains('active') &&
-            p3qRemainingPauses.length > 0 && !p3qWaitingForReveal && !p3qWaitingForResume;
+            (p3qRemainingPauses.length > 0 || !p3videoEnded) && !p3qWaitingForReveal && !p3qWaitingForResume && !p3qWaitingAtEnd;
         const p4pg = getPageEl('cos-graph');
         const p4Blocking = p4pg && p4pg.classList.contains('active') &&
-            p4remainingPauses.length > 0 && !p4waitingForReveal && !p4waitingForResume;
+            (p4remainingPauses.length > 0 || !p4videoEnded) && !p4waitingForReveal && !p4waitingForResume && !p4waitingAtEnd;
         const p5pg = document.getElementById('page-5');
         const p5Blocking = p5pg && p5pg.classList.contains('active') &&
             (p5remainingPauses.length > 0 || !p5videoEnded) && !p5waitingAtPause && !p5waitingAtEnd;
+        const p6pg = getPageEl('sin-symmetry');
+        const p6Blocking = p6pg && p6pg.classList.contains('active') &&
+            (p6qRemainingPauses.length > 0 || !p6videoEnded) && !p6qWaitingForReveal && !p6qWaitingForResume;
+        const p7pg = getPageEl('cos-symmetry');
+        const p7Blocking = p7pg && p7pg.classList.contains('active') &&
+            (p7qRemainingPauses.length > 0 || !p7videoEnded) && !p7qWaitingForReveal && !p7qWaitingForResume;
         const hasAction = revealQueue.length > 0 || anyWaiting || currentPage < totalPages;
-        if (hasAction && !p3Blocking && !p4Blocking && !p5Blocking) {
+        if (hasAction && !p3Blocking && !p4Blocking && !p5Blocking && !p6Blocking && !p7Blocking) {
             prompt.classList.remove('nav-blocked');
         } else {
             prompt.classList.add('nav-blocked');

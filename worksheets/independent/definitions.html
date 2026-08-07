@@ -79,19 +79,6 @@
 
     <!-- Page 2: 60° and 30° (question + crossfade + answer combined) -->
     <div class="page" id="page-2">
-        <div class="teacher-note">
-            <p>This is a perfect introduction to the idea that your students can work together to figure things out without your direct help. Collaboration is the key here: they help each other along both with ideas and with motivation. They can achieve so much more together than they can alone.</p>
-            <p>They have to figure out:</p>
-            <ul>
-                <li>that they need to know the sides of the right-angled triangle</li>
-                <li>that the large triangle is equilateral and is divided exactly into two halves</li>
-                <li>that they can use Pythagoras to find the height</li>
-                <li>that they can then use the ratios that they already know to find the trig functions</li>
-            </ul>
-            <p>and these are all steps they can take without the help of their teacher.</p>
-        </div>
-
-
         <div class="exercise">
             <p>Use this diagram to find sin, cos, and tan of \(60°\) and \(30°\).</p>
         </div>
@@ -179,11 +166,6 @@
 
         <div class="crossfade-step" data-cf-to="cf-p6-after"></div>
 
-        <div class="teacher-note">
-            <p>Putting what they have just done into the context of a unit circle is the first step towards generalising the trigonometric ratios in right-angled triangles to circular functions of any real number (whether or not that number corresponds to an angle). It might take a while before your students figure out that they are dealing with exactly the same problem as before, but they will, if given the time, the space, the encouragement, and the confidence to do so.</p>
-            <p>Some might have the coordinates and the gradient as \((\cos 60°, \sin 60°)\) and \(\tan 60°\), others as \(\left(\dfrac{1}{2}, \dfrac{\sqrt{3}}{2}\right)\) and \(\sqrt{3}\), but in discussion, it is really important to be sure that all your students understand both ways of writing the coordinates and gradient as this is the clue to extending the domains of the circular (trigonometric) functions.</p>
-        </div>
-
         <div class="answer">
             <audio data-trigger="on-reveal" src="definitions_audio/audio7.mp3"></audio>
             <p>We know the base and the height of the triangle are cos and sin of \(60^\circ\) and these give us the coordinates of the pink point right away. The gradient is the height over the width, which is also \(\tan 60^\circ\).</p>
@@ -192,14 +174,6 @@
 
     <!-- Page 6: 120° green point (question + crossfade + answer combined) -->
     <div class="page" id="page-6">
-        <div class="teacher-note">
-            <p>The key word here is symmetry. It is the symmetry of the diagram that allows us to see right away that the coordinates of the green point are \(\left(-\dfrac{1}{2}, \dfrac{\sqrt{3}}{2}\right)\) and that the gradient is \(-\sqrt{3}\).</p>
-
-            <p>The sequence of questions is designed to suggest that cos is the \(x\) coordinate, sin is the \(y\) coordinate, and tan is the gradient; suggest so strongly, in fact, that this conclusion appears more or less inevitable. What it achieves is giving students an idea of why this way of defining cos, sin, and tan agrees with their earlier understanding of the functions for angles between \(0°\) and \(90°\), and hence why assigning the value \(-\dfrac{1}{2}\) to \(\cos 120°\), for example, is reasonable.</p>
-
-            <p>Again, following your class discussion of this page, your students should have a diagram that has both the exact values of the coordinates and gradient, and the values in terms of cos, sin, and tan.</p>
-        </div>
-
         <div class="exercise">
             <p>What are the coordinates of the green point and the gradient of the green radius?</p>
         </div>
@@ -248,13 +222,13 @@
             <p>Find the coordinates of the orange and blue points and the gradients of the two radiuses, and use these to suggest values for sin, cos, and tan of \(240°\) and \(300°\).</p>
         </div>
 
-        <div style="position: relative; max-width: 64%; margin: 30px auto; overflow: hidden; border-radius: 10px; border: 4px solid #2d5a27; padding: 16px 10px; background: white; box-shadow: 0 6px 20px rgba(0,0,0,0.18);">
+        <div id="cf-p10-box" style="position: relative; max-width: 64%; margin: 30px auto; overflow: hidden; border-radius: 10px; border: 4px solid #2d5a27; padding: 16px 10px; background: white; box-shadow: 0 6px 20px rgba(0,0,0,0.18);">
             <img id="cf-p10-before" src="definitions_images/image5.png" alt="Unit circle showing angles 60°, 120°, 240°, 300° with coloured radii" style="display:block; width:100%;">
             <img id="cf-p10-after" src="definitions_images/image13a.png" alt="Unit circle with 240° and 300° labelled"
                  style="position:absolute; top:50%; left:50%; transform:translate(-47%,-47%); width:80%; opacity:0; transition: opacity 1.5s ease;">
         </div>
 
-        <div class="crossfade-step" data-cf-to="cf-p10-after" data-cf-from="cf-p10-before" data-cf-duration="3s" data-cf-from-duration="1s" data-cf-from-scale="0.8"></div>
+        <div class="crossfade-step" data-cf-to="cf-p10-after" data-cf-from="cf-p10-before" data-cf-duration="2s" data-cf-from-duration="2s" data-cf-from-scale="0.8" data-cf-box="cf-p10-box" data-cf-box-width="82%" data-cf-box-duration="2s"></div>
 
         <div class="answer">
             <audio data-trigger="on-reveal" src="definitions_audio/audio13.mp3"></audio>
@@ -294,14 +268,6 @@
 
     <!-- Page 10: Negative angles -60° (question + crossfade + answer combined) -->
     <div class="page" id="page-10">
-        <div class="teacher-note">
-            <p>So far, all angles have been measured anticlockwise from the positive \(x\) axis. This has been so obvious from the start that it may well not even have been mentioned up to this point.</p>
-
-            <p>The time has come to make this more explicit and to discuss the appropriateness of using angles measured clockwise from the positive \(x\) axis as representative of negative angles.</p>
-
-            <p>This always raises the question of labelling on the diagram: should we label the blue angle here \(60°\) or \(-60°\)? There is no hard and fast rule here. I prefer to label the diagram with a positive number, because, for example here, the angle really is \(60°\) in the sense that your students have always understood it. But then I use \(-60°\) in my working.</p>
-        </div>
-
         <div class="intro">
             <audio src="definitions_audio/audio17.mp3"></audio>
             <p>We can even extend our definitions of sin cos and tan to "negative" angles.</p>
@@ -427,7 +393,7 @@
         <div class="intro">
             <p>Of course, all our examples on this journey have been angles for which the values of sin, cos, and tan are easy to write down in their exact forms. Most of the time, you will have to rely on your calculator for the values of the functions to a certain accuracy. I cannot overstate, though, the value of learning these standard values. Partly this is to save time, but mostly it is so that every time you retrieve them from your memory, you reinforce your understanding of the relationship between the unit circle and the circular functions. You reinforce your understanding of cos as an \(x\) coordinate, sin as a \(y\) coordinate, and tan as a gradient.</p>
         </div>
-        <div class="exercise">
+        <div class="exercise" data-scroll-top>
             <audio data-trigger="on-reveal" src="definitions_audio/audio26a.mp3"></audio>
             <p>With this in mind, complete this diagram now.</p>
         </div>
@@ -435,11 +401,6 @@
         <figure>
             <img style="max-width: 80%"; src="definitions_images/image12.png" alt="Unit circle with 16 points marked, partially labelled with angles and coordinates">
         </figure>
-
-        <div class="teacher-note">
-            <p>This diagram is absolutely fundamental to all understanding of the circular functions, and I want my students to know it intimately. To this end, I ask them to fill in a blank copy at the start of several lessons; I even set a timing goal. If they can do this fluently, they have a really strong understanding of what the circular functions are all about.</p>
-            <p>It's handy to know these without the calculator, but ultimately, knowing this diagram is about insight, not about practicality. Every time you use a calculator for one of these, you erode your understanding of the meaning of the circular functions.</p>
-        </div>
     </div>
 
     <!-- Page 15: Complete diagram answer -->
@@ -468,7 +429,7 @@
                         <li>The next stage focuses on <strong>solving equations</strong> involving circular functions</li>
                         <li>You'll apply your understanding of the unit circle to find solutions</li>
                         <li>Multiple solutions and general solutions will become clear and intuitive</li>
-                        <li>Your work with exact values will pay off as you solve equations without a calculator</li>
+                        
                     </ul>
                 </div>
 
@@ -507,6 +468,12 @@
 
     const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer, div.crossfade-step, div.figure-reveal';
 
+    // Remember each crossfade box's starting max-width so it can grow on reveal and reset on revisit
+    document.querySelectorAll('.crossfade-step[data-cf-box]').forEach(function(step) {
+        const boxEl = document.getElementById(step.dataset.cfBox);
+        if (boxEl) boxEl.dataset.cfBaseWidth = boxEl.style.maxWidth;
+    });
+
     let revealQueue = [];
     let goingBackward = false;
 
@@ -524,6 +491,8 @@
                 const fromEl = step.dataset.cfFrom ? document.getElementById(step.dataset.cfFrom) : null;
                 const fromScale = step.dataset.cfFromScale || '1';
                 if (fromEl) { fromEl.style.transition = 'none'; fromEl.style.opacity = '0'; fromEl.style.transform = `scale(${fromScale})`; }
+                const boxEl = step.dataset.cfBox ? document.getElementById(step.dataset.cfBox) : null;
+                if (boxEl && step.dataset.cfBoxWidth) { boxEl.style.transition = 'none'; boxEl.style.maxWidth = step.dataset.cfBoxWidth; }
             });
             return;
         }
@@ -533,6 +502,8 @@
             if (toEl) { toEl.style.transition = 'none'; toEl.style.opacity = '0'; }
             const fromEl = step.dataset.cfFrom ? document.getElementById(step.dataset.cfFrom) : null;
             if (fromEl) { fromEl.style.transition = 'none'; fromEl.style.opacity = '1'; fromEl.style.transform = 'scale(1)'; }
+            const boxEl = step.dataset.cfBox ? document.getElementById(step.dataset.cfBox) : null;
+            if (boxEl && boxEl.dataset.cfBaseWidth) { boxEl.style.transition = 'none'; boxEl.style.maxWidth = boxEl.dataset.cfBaseWidth; }
         });
         if (animatable.length > 0) {
             animatable[0].classList.remove('div-hidden');
@@ -551,6 +522,7 @@
             const toEl = div.dataset.cfTo ? document.getElementById(div.dataset.cfTo) : null;
             const fromEl = div.dataset.cfFrom ? document.getElementById(div.dataset.cfFrom) : null;
             const fromScale = div.dataset.cfFromScale || null;
+            const boxEl = div.dataset.cfBox ? document.getElementById(div.dataset.cfBox) : null;
             if (toEl) {
                 toEl.style.transition = `opacity ${duration} ease`;
                 toEl.offsetHeight; // force reflow so transition registers before opacity change
@@ -562,12 +534,18 @@
                 fromEl.style.opacity = '0';
                 if (fromScale) fromEl.style.transform = `scale(${fromScale})`;
             }
+            if (boxEl && div.dataset.cfBoxWidth) {
+                const boxDuration = div.dataset.cfBoxDuration || duration;
+                boxEl.style.transition = `max-width ${boxDuration} ease`;
+                boxEl.offsetHeight; // force reflow so transition registers before max-width change
+                boxEl.style.maxWidth = div.dataset.cfBoxWidth;
+            }
             return;
         }
         div.classList.remove('div-hidden');
         div.classList.add('div-revealed');
         setTimeout(() => div.classList.remove('div-revealed'), 400);
-        div.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        div.scrollIntoView({ behavior: 'smooth', block: div.hasAttribute('data-scroll-top') ? 'start' : 'center' });
         // If the revealed div contains an on-reveal audio, stop current audio and play it
         const onRevealAudio = div.querySelector('audio[data-trigger="on-reveal"]');
         if (onRevealAudio && audioEnabled) {
