@@ -40,11 +40,12 @@
     <style>
         video { cursor: pointer; }
 
-        /* Pages 3, 4, 6 & 7: video stays pinned, exercises scroll below */
+        /* Pages 3, 4, 6, 7 & 8: video stays pinned, exercises scroll below */
         #page-3.active,
         #page-4.active,
         #page-6.active,
-        #page-7.active {
+        #page-7.active,
+        #page-8.active {
             display: flex;
             flex-direction: column;
             height: calc(100vh - 40px);
@@ -56,7 +57,8 @@
         #page-4.active .intro,
         #page-4.active figure,
         #page-6.active figure,
-        #page-7.active figure {
+        #page-7.active figure,
+        #page-8.active figure {
             flex-shrink: 0;
         }
         .qa-exercises {
@@ -115,10 +117,10 @@
         </div>
 
         <figure>
-            <video src="graphs_images/graphsfromcircle.mp4" autoplay playsinline style="width:100%;"></video>
+            <video id="p2-video" src="graphs_images/graphsfromcircle.mp4" autoplay playsinline style="width:100%;"></video>
         </figure>
 
-        <div class="intro reveal-instant div-hidden" id="p2-second-intro">
+        <div class="intro reveal-instant" id="p2-second-intro">
             <p>and it looks very convincing, but it's easy to miss the details. The next few pages build up each graph very gradually to make the relationship crystal clear.</p>
         </div>
     </div>
@@ -290,29 +292,32 @@
 
     <!-- Page 8: tan symmetry -->
     <div class="page" id="page-8" data-page-name="tan-symmetry">
-        <div class="exercise">
-            <p>Draw the graph \(y=\tan x\) on a set of axes marked in degrees from \(-540^\circ\) to \(540^\circ\).</p>
-        </div>
         <figure>
-            <video id="p13-video" src="graphs_images/tantransformations.mp4" playsinline style="width:100%;"></video>
+            <video id="p8-video" src="graphs_images/tantransformations.mp4" playsinline style="max-width:84%;"></video>
         </figure>
-        <div class="exercise">
-            <p>On the same axes, draw the graphs \(y=\tan (-x)\) and \(y=-\tan x\).</p>
+        <div class="qa-exercises">
+            <div class="exercise reveal-instant div-hidden" id="p8-ex1">
+                <p>On the same axes, draw the graphs \(y=\tan x\) and \(y=-\tan x\).</p>
+            </div>
+            <div class="answer reveal-instant div-hidden" id="p8-ans1">
+                <p>
+                    The transformation from \(y=\tan x\) to \(y=-\tan x\) is a reflection in the \(x\) axis. Watch this happening in the video.
+                </p>
+            </div>
+            <div class="exercise reveal-instant div-hidden" id="p8-ex2">
+                <p>Now draw the graph \(y=\tan (-x)\).</p>
+            </div>
+            <div class="answer reveal-instant div-hidden" id="p8-ans2">
+                <p>
+                    The transformation from \(y=\tan x\) to \(y=\tan (-x)\) is a reflection in the \(y\) axis. Again, watch the video.
+                </p>
+            </div>
+            
         </div>
     </div>
 
-    <!-- Page 9: sin to cos -->
+    <!-- Page 9: Congratulations Page -->
     <div class="page" id="page-9">
-        <div class="exercise">
-            <p>On the same axes, draw the graphs \(y=\sin x\) and \(y=\cos x\).</p>
-            <p>Describe in as many ways as you can the transformations that take one graph to the other.</p>
-        </div>
-        <figure>
-            <video src="graphs_images/sintocos.mp4" autoplay playsinline style="width:100%;"></video>
-        </figure>
-    </div>
-    <!-- Page 10: Congratulations Page -->
-    <div class="page" id="page-10">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
@@ -346,12 +351,12 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="10" onchange="goToPage(this.value)"> of 10
+        Page <input type="number" id="pageInput" value="1" min="1" max="9" onchange="goToPage(this.value)"> of 9
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
 </div>
-
+ 
 <script src="navigation.js"></script>
 <script>
 document.querySelectorAll('video').forEach(function (v) {
@@ -361,8 +366,9 @@ document.querySelectorAll('video').forEach(function (v) {
     }, { once: true });
 });
 
+var p2videoEnded = false;
+
 // Page 3: flag set when video pauses at 13s, cleared on resume or page change
-var p2firstVisit = true;
 var p3qWaitingForReveal = false;
 var p3qWaitingForResume = false;
 var p3qWaitingAtEnd = false;
@@ -406,24 +412,24 @@ var p7qPauseConfig = [
 ];
 var p7qRemainingPauses = p7qPauseConfig.slice();
 var p7videoEnded = false;
-var p13waitingForResume = false;
+var p8qWaitingForReveal = false;
+var p8qWaitingForResume = false;
+var p8qPendingAnswerId = null;
+var p8qPauseConfig = [
+    { time: 6.8, exerciseId: 'p8-ex1', answerId: 'p8-ans1' },
+    { time: 14, exerciseId: 'p8-ex2', answerId: 'p8-ans2' }
+];
+var p8qRemainingPauses = p8qPauseConfig.slice();
+var p8videoEnded = false;
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Page 2: reveal second intro div at 19s into audio1
-    var p2page = document.querySelector('[data-page-name="overview"]');
-    if (p2page) {
-        var p2audio = p2page.querySelector('audio');
-        var p2intro = document.getElementById('p2-second-intro');
-        if (p2audio && p2intro) {
-            p2audio.addEventListener('timeupdate', function () {
-                if (p2audio.currentTime >= 19 && p2intro.classList.contains('div-hidden')) {
-                    p2intro.classList.remove('div-hidden');
-                    p2intro.classList.add('div-revealed');
-                    setTimeout(function () { p2intro.classList.remove('div-revealed'); }, 400);
-                    p2intro.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            });
-        }
+    // Page 2: block nav after the second intro is revealed until the video ends
+    var p2video = document.getElementById('p2-video');
+    if (p2video) {
+        p2video.addEventListener('ended', function () {
+            p2videoEnded = true;
+            if (window.syncNavPrompt) window.syncNavPrompt();
+        });
     }
 
     // Page 3: video-timed exercise reveals and pause-before-answer system
@@ -580,16 +586,30 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    var p13video = document.getElementById('p13-video');
-    if (p13video) {
-        function p13pauseAt4() {
-            if (!p13video.paused && p13video.currentTime >= 4) {
-                p13video.pause();
-                p13waitingForResume = true;
-                p13video.removeEventListener('timeupdate', p13pauseAt4);
+    var p8video = document.getElementById('p8-video');
+    if (p8video) {
+        p8video.addEventListener('timeupdate', function () {
+            if (!p8qWaitingForReveal && !p8qWaitingForResume && p8qRemainingPauses.length > 0 && p8video.currentTime >= p8qRemainingPauses[0].time) {
+                var pause = p8qRemainingPauses.shift();
+                p8video.pause();
+                p8qWaitingForReveal = true;
+                p8qPendingAnswerId = pause.answerId;
+                var exEl = document.getElementById(pause.exerciseId);
+                if (exEl && exEl.classList.contains('div-hidden')) {
+                    exEl.classList.remove('div-hidden');
+                    exEl.classList.add('div-revealed');
+                    setTimeout(function () { exEl.classList.remove('div-revealed'); }, 400);
+                    exEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                if (window.syncNavPrompt) window.syncNavPrompt();
             }
-        }
-        p13video.addEventListener('timeupdate', p13pauseAt4);
+            // No more Q&A left to pause for — stop the video at 23s rather than letting it run on
+            if (p8qRemainingPauses.length === 0 && !p8videoEnded && p8video.currentTime >= 23) {
+                p8video.pause();
+                p8videoEnded = true;
+                if (window.syncNavPrompt) window.syncNavPrompt();
+            }
+        });
     }
 });
 </script>
@@ -631,7 +651,8 @@ document.addEventListener('DOMContentLoaded', function () {
         p6qWaitingForResume = false;
         p7qWaitingForReveal = false;
         p7qWaitingForResume = false;
-        p13waitingForResume = false;
+        p8qWaitingForReveal = false;
+        p8qWaitingForResume = false;
         document.querySelectorAll('.page:not(.active) video').forEach(function (v) { v.pause(); });
         revealQueue = [];
         const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
@@ -790,11 +811,25 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Page 13 special case: resume video on nav press
-        if (p13waitingForResume) {
-            p13waitingForResume = false;
-            const p13video = document.getElementById('p13-video');
-            if (p13video) p13video.play().catch(() => {});
+        // Page 8 Q&A special case: first nav reveals answer, second nav resumes video
+        if (p8qWaitingForReveal) {
+            p8qWaitingForReveal = false;
+            p8qWaitingForResume = true;
+            const ans = document.getElementById(p8qPendingAnswerId);
+            if (ans) {
+                ans.classList.remove('div-hidden');
+                ans.classList.add('div-revealed');
+                setTimeout(() => ans.classList.remove('div-revealed'), 400);
+                ans.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            syncNavPrompt();
+            return;
+        }
+        if (p8qWaitingForResume) {
+            p8qWaitingForResume = false;
+            const p8video = document.getElementById('p8-video');
+            if (p8video) p8video.play().catch(() => {});
+            syncNavPrompt();
             return;
         }
 
@@ -815,6 +850,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 onRevealAudio.play().catch(() => {});
             }
         } else {
+            const p2page = getPageEl('overview');
+            if (p2page && p2page.classList.contains('active') && !p2videoEnded) return;
             const p3page = getPageEl('sin-graph');
             if (p3page && p3page.classList.contains('active') && (p3qRemainingPauses.length > 0 || !p3videoEnded)) return;
             const p4page = getPageEl('cos-graph');
@@ -825,6 +862,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (p6page && p6page.classList.contains('active') && (p6qRemainingPauses.length > 0 || !p6videoEnded)) return;
             const p7page = getPageEl('cos-symmetry');
             if (p7page && p7page.classList.contains('active') && (p7qRemainingPauses.length > 0 || !p7videoEnded)) return;
+            const p8page = getPageEl('tan-symmetry');
+            if (p8page && p8page.classList.contains('active') && (p8qRemainingPauses.length > 0 || !p8videoEnded)) return;
             _origChangePage(1);
         }
     }
@@ -833,17 +872,9 @@ document.addEventListener('DOMContentLoaded', function () {
         _origShowPage(pageNum);
         const page = document.getElementById('page-' + pageNum);
         if (page) {
-            // On first visit show immediately; on revisits re-hide so audio can reveal it
+            // Reset page 2's end-of-video nav block on each visit
             if (pageNum === OVERVIEW_PAGE) {
-                const p2intro = document.getElementById('p2-second-intro');
-                if (p2intro) {
-                    if (p2firstVisit) {
-                        p2intro.classList.remove('div-hidden');
-                        p2firstVisit = false;
-                    } else {
-                        p2intro.classList.add('div-hidden');
-                    }
-                }
+                p2videoEnded = false;
             }
             // Re-hide page 3 video-timed divs and reset pause queue on each visit
             if (pageNum === SIN_GRAPH_PAGE) {
@@ -906,21 +937,17 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (el) el.classList.add('div-hidden');
                 });
             }
-            // Re-arm page 13 pause-at-4s listener on each visit
+            // Re-hide page 8 video-timed divs and reset pause queue on each visit
             if (pageNum === TAN_SYMMETRY_PAGE) {
-                p13waitingForResume = false;
-                const p13v = document.getElementById('p13-video');
-                if (p13v) {
-                    function p13pauseAt4fresh() {
-                        if (!p13v.paused && p13v.currentTime >= 4) {
-                            p13v.pause();
-                            p13waitingForResume = true;
-                            p13v.removeEventListener('timeupdate', p13pauseAt4fresh);
-                        }
-                    }
-                    p13v.removeEventListener('timeupdate', p13pauseAt4fresh);
-                    p13v.addEventListener('timeupdate', p13pauseAt4fresh);
-                }
+                p8qWaitingForReveal = false;
+                p8qWaitingForResume = false;
+                p8qPendingAnswerId = null;
+                p8qRemainingPauses = p8qPauseConfig.slice();
+                p8videoEnded = false;
+                ['p8-ex1', 'p8-ans1', 'p8-ex2', 'p8-ans2'].forEach(function (id) {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.add('div-hidden');
+                });
             }
             initPageReveal(page, revealAll || goingBackward);
             syncNavPrompt();
@@ -941,8 +968,10 @@ document.addEventListener('DOMContentLoaded', function () {
             p5waitingAtPause || p5waitingAtEnd ||
             p6qWaitingForReveal || p6qWaitingForResume ||
             p7qWaitingForReveal || p7qWaitingForResume ||
-            p13waitingForResume;
+            p8qWaitingForReveal || p8qWaitingForResume;
         // Mirror the exact blocking conditions in revealNextOrAdvance
+        const p2pg = getPageEl('overview');
+        const p2Blocking = p2pg && p2pg.classList.contains('active') && !p2videoEnded;
         const p3pg = getPageEl('sin-graph');
         const p3Blocking = p3pg && p3pg.classList.contains('active') &&
             (p3qRemainingPauses.length > 0 || !p3videoEnded) && !p3qWaitingForReveal && !p3qWaitingForResume && !p3qWaitingAtEnd;
@@ -958,8 +987,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const p7pg = getPageEl('cos-symmetry');
         const p7Blocking = p7pg && p7pg.classList.contains('active') &&
             (p7qRemainingPauses.length > 0 || !p7videoEnded) && !p7qWaitingForReveal && !p7qWaitingForResume;
+        const p8pg = getPageEl('tan-symmetry');
+        const p8Blocking = p8pg && p8pg.classList.contains('active') &&
+            (p8qRemainingPauses.length > 0 || !p8videoEnded) && !p8qWaitingForReveal && !p8qWaitingForResume;
         const hasAction = revealQueue.length > 0 || anyWaiting || currentPage < totalPages;
-        if (hasAction && !p3Blocking && !p4Blocking && !p5Blocking && !p6Blocking && !p7Blocking) {
+        if (hasAction && !p2Blocking && !p3Blocking && !p4Blocking && !p5Blocking && !p6Blocking && !p7Blocking && !p8Blocking) {
             prompt.classList.remove('nav-blocked');
         } else {
             prompt.classList.add('nav-blocked');
