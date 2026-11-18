@@ -40,7 +40,7 @@
     <style>
         video { cursor: pointer; }
         .nav-prompt.nav-blocked { opacity: 0 !important; animation: none !important; pointer-events: none !important; }
-        #page-4.active, #page-5.active, #page-6.active {
+        #page-2.active, #page-4.active, #page-5.active, #page-6.active {
             display: flex;
             flex-direction: column;
             height: calc(100vh - 40px);
@@ -48,6 +48,27 @@
             padding-bottom: 0;
         }
         #page-4.active figure, #page-5.active figure, #page-6.active figure { flex-shrink: 0; }
+        /* Page 2: keep the heading and the whole video on screen; the
+           exercise/intro divs scroll in the area beneath it */
+        #page-2.active > h2, #page-2.active > figure { flex-shrink: 0; }
+        #page-2 video { max-height: 55vh; }
+        /* Page 2: when the intro appears, the title collapses away so the
+           video moves up to the top of the screen and stays there */
+        #page-2 > h2.chapter {
+            max-height: 3em;
+            overflow: hidden;
+            transition: max-height 0.5s ease, margin 0.5s ease, padding 0.5s ease,
+                        border-bottom-width 0.5s ease, opacity 0.4s ease;
+        }
+        #page-2.p2-title-collapsed > h2.chapter {
+            max-height: 0;
+            margin: 0;
+            padding: 0;
+            border-bottom-width: 0;
+            opacity: 0;
+        }
+        #page-2 > figure { transition: margin-top 0.5s ease; }
+        #page-2.p2-title-collapsed > figure { margin-top: 0; }
         .qa-scroll {
             flex: 1;
             overflow-y: auto;
@@ -101,17 +122,22 @@
         <figure>
             <video id="p2-video" src="reciprocals_images/seccsccot.mp4" autoplay playsinline style="width:100%;max-width:100%;"></video>
         </figure>
-        <div class="exercise reveal-instant div-hidden" id="p2-exercise">
-            <p>What are the lengths of the three coloured line segments (in terms of \(\theta\))?</p>
-        </div>
+        <div class="qa-scroll">
+            <div class="exercise reveal-instant div-hidden" id="p2-exercise">
+                <p>What are the lengths of the three coloured line segments (in terms of \(\theta\))?</p>
+            </div>
 
-        <div class="intro reveal-instant div-hidden" id="p2-second-intro">
-            <p>The functions \(\displaystyle{\frac{1}{\cos\theta},\;\frac{1}{\sin\theta},\;\frac{1}{\tan\theta}}\) are useful enough to merit having their own names:</p>
-            \[\begin{align*}
-            &\frac{1}{\cos\theta}=\sec\theta\\[6pt]
-            &\frac{1}{\sin\theta}=\mathrm{cosec}\,\theta\text{ or }\csc\theta\\[6pt]
-            &\frac{1}{\tan\theta}=\mathrm{cotan}\,\theta\text{ or }\cot\theta
-            \end{align*}\]
+            <div class="intro reveal-instant div-hidden" id="p2-second-intro">
+                <p>The functions \(\displaystyle{\frac{1}{\cos\theta},\;\frac{1}{\sin\theta},\;\frac{1}{\tan\theta}}\) are useful enough to merit having their own names:</p>
+                \[\begin{align*}
+                &\frac{1}{\cos\theta}=\sec\theta\\[6pt]
+                &\frac{1}{\sin\theta}=\mathrm{cosec}\,\theta\text{ or }\csc\theta\\[6pt]
+                &\frac{1}{\tan\theta}=\mathrm{cotan}\,\theta\text{ or }\cot\theta
+                \end{align*}\]
+            </div>
+            <div class="exercise reveal-instant div-hidden" id="p2-exercise2">
+                <p>What is the length of the white line segment (in terms of \(\theta\))?</p>
+            </div>
         </div>
     </div>
     <!-- Page 3: Pythagoras -->
@@ -250,7 +276,7 @@
                 </p>
                 <div class="sheet-nav">
                     <a href="graphs.html">← Graphs</a>
-                    <a href="/resources/videos/compound-angles">Compound Angles →</a>
+                    <a href="compound.html">Compound Angles →</a>
                 </div>
             </div>
         </div>
@@ -283,6 +309,23 @@ var p2waitingForResume = false;
 var p2waitingForFinalPlay = false;
 var p2pauseListener = null;
 var p2navReady = false;
+// Listeners for the 17s→end stages; kept so they can be removed when the
+// page is (re)entered, otherwise a stale one could fire on the next visit
+var p2segmentListener = null;
+var p2endedListener = null;
+function p2clearSegmentListeners() {
+    var v = document.getElementById('p2-video');
+    if (!v) return;
+    if (p2segmentListener) { v.removeEventListener('timeupdate', p2segmentListener); p2segmentListener = null; }
+    if (p2endedListener)   { v.removeEventListener('ended', p2endedListener); p2endedListener = null; }
+}
+function p2revealDiv(el) {
+    if (!el || !el.classList.contains('div-hidden')) return;
+    el.classList.remove('div-hidden');
+    el.classList.add('div-revealed');
+    setTimeout(function () { el.classList.remove('div-revealed'); }, 400);
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
 // Page 3: flag set when video pauses at 13s, cleared on resume or page change
 var p3waitingForResume = false;
 var p6waitingForResume = false;
@@ -430,55 +473,59 @@ document.addEventListener('DOMContentLoaded', function () {
         const p2pgEl = document.getElementById('page-2');
         if (p2pgEl && p2pgEl.classList.contains('active') && !p2navReady) return;
 
-        // Page 2: nav after 17s pause plays 17→27s; nav after 27s pause plays 43→54s
+        // Page 2, nav after the 17s pause: resume and play straight through,
+        // revealing the intro at 43s, then pause at 71s and reveal exercise 2
         if (p2waitingForResume) {
             p2waitingForResume = false;
             p2navReady = false;
             const p2v = document.getElementById('p2-video');
             if (p2v) {
-                if (p2pauseListener) {
-                    p2v.removeEventListener('timeupdate', p2pauseListener);
-                    p2pauseListener = null;
-                }
-                p2v.currentTime = 17;
-                function p2pauseAt27() {
-                    if (p2v.currentTime >= 27) {
+                p2clearSegmentListeners();
+                const p2intro = document.getElementById('p2-second-intro');
+                const p2ex2 = document.getElementById('p2-exercise2');
+                p2segmentListener = function () {
+                    // Left page 2 mid-play: stop, so this can't hijack another page's nav
+                    if (!document.getElementById('page-2').classList.contains('active')) {
                         p2v.pause();
-                        p2v.removeEventListener('timeupdate', p2pauseAt27);
+                        p2clearSegmentListeners();
+                        return;
+                    }
+                    if (p2v.currentTime >= 43) {
+                        document.getElementById('page-2').classList.add('p2-title-collapsed');
+                        p2revealDiv(p2intro);
+                    }
+                    if (p2v.currentTime >= 71) {
+                        p2v.pause();
+                        p2clearSegmentListeners();
+                        p2revealDiv(p2ex2);
                         p2waitingForFinalPlay = true;
                         p2navReady = true;
                         syncNavPrompt();
                     }
-                }
-                p2v.addEventListener('timeupdate', p2pauseAt27);
+                };
+                p2v.addEventListener('timeupdate', p2segmentListener);
                 p2v.play().catch(() => {});
             }
+            syncNavPrompt();
             return;
         }
+        // Page 2, nav after the 71s pause: play to the end, then allow nav on
         if (p2waitingForFinalPlay) {
             p2waitingForFinalPlay = false;
             p2navReady = false;
             const p2v = document.getElementById('p2-video');
             if (p2v) {
-                const p2intro = document.getElementById('p2-second-intro');
-                if (p2intro) {
-                    p2intro.classList.remove('div-hidden');
-                    p2intro.classList.add('div-revealed');
-                    setTimeout(() => p2intro.classList.remove('div-revealed'), 400);
-                    p2intro.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-                p2v.currentTime = 43;
-                function p2stopAt54() {
-                    if (p2v.currentTime >= 54) {
-                        p2v.pause();
-                        p2v.removeEventListener('timeupdate', p2stopAt54);
-                        p2navReady = true;
-                        syncNavPrompt();
-                    }
-                }
-                p2v.addEventListener('timeupdate', p2stopAt54);
+                p2clearSegmentListeners();
+                p2endedListener = function () {
+                    p2clearSegmentListeners();
+                    if (!document.getElementById('page-2').classList.contains('active')) return;
+                    p2navReady = true;
+                    syncNavPrompt();
+                };
+                p2v.addEventListener('ended', p2endedListener);
                 p2v.play().catch(() => {});
             }
+            syncNavPrompt();
             return;
         }
 
@@ -589,11 +636,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 p2waitingForFinalPlay = false;
                 const p2exDiv = document.getElementById('p2-exercise');
                 const p2intro = document.getElementById('p2-second-intro');
-                if (p2exDiv) p2exDiv.classList.add('div-hidden');
-                if (p2intro) p2intro.classList.add('div-hidden');
+                const p2ex2 = document.getElementById('p2-exercise2');
+                p2clearSegmentListeners();
+                [p2exDiv, p2intro, p2ex2].forEach(el => { if (el) el.classList.add('div-hidden'); });
+                page.classList.toggle('p2-title-collapsed', !!(revealAll || goingBackward));
                 if (revealAll || goingBackward) {
-                    if (p2exDiv) p2exDiv.classList.remove('div-hidden');
-                    if (p2intro) p2intro.classList.remove('div-hidden');
+                    [p2exDiv, p2intro, p2ex2].forEach(el => { if (el) el.classList.remove('div-hidden'); });
                     p2navReady = true;
                 } else {
                     p2navReady = false;

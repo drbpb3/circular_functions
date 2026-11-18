@@ -90,6 +90,18 @@
             min-height: 0;
             padding-bottom: 80px;
         }
+        /* Page 5: shrink the equations so the widest steps fit the window */
+        #page-5 .aligned-eq-block,
+        #page-5 .intro > mjx-container[display="true"] { font-size: 0.9em; }
+        /* Page 6: tighten the gap between each linking sentence and the
+           equation that follows it (paragraph margin + grid margin + the
+           1.5em step gap otherwise stack up) */
+        #page-6 .step > p { margin-bottom: 0; }
+        #page-6 .aligned-eq-block { margin-top: 1em; }
+        /* Extra room above a block whose first line is tall (e.g. a \lim
+           with a fraction underneath) */
+        #page-6 .aligned-eq-block.gap-before { margin-top: 2em; }
+        #page-6 .aligned-eq-block > .step:first-child:not(.step-hidden) > * { margin-top: 0; }
         .nav-prompt.nav-blocked { opacity: 0 !important; animation: none !important; pointer-events: none !important; }
     </style>
 </head>
@@ -211,36 +223,151 @@
     <!-- Page 5 -->
     <div class="page" id="page-5">
         <div class="intro">
-            \begin{align*}
-            \arcsin a-\arcsin b&=\arcsin\left(a\sqrt{1-b^2}-b\sqrt{1-a^2}\right)\\[15pt]
-            \implies \frac{1}{h}\left(\arcsin (x+h)-\arcsin x\right)&=\arcsin\left((x+h)\sqrt{1-x^2}-x\sqrt{1-(x+h)^2}\right)\\[15pt]
-            &=\frac{1}{h}\arcsin\left(x\left(\sqrt{1-x^2}-\sqrt{1-(x+h)^2}\right)+h\sqrt{1-x^2}\right)\\[15pt]
-            &=\frac{1}{h}\arcsin\left(x\frac{(1-x^2)-\left(1-(x+h)^2\right)}{\sqrt{1-x^2}+\sqrt{1-(x+h)^2}}+h\sqrt{1-x^2}\right)\\[15pt]
-            &=\frac{1}{h}\arcsin\left(x\frac{(x+h)^2-x^2}{\sqrt{1-x^2}+\sqrt{1-(x+h)^2}}+h\sqrt{1-x^2}\right)\\[15pt]
-            &=\frac{1}{h}\arcsin\left(x\frac{2xh+h^2}{\sqrt{1-x^2}+\sqrt{1-(x+h)^2}}+h\sqrt{1-x^2}\right)\\[15pt]
-            &\to \lim_{h\to0}\frac{1}{h}\arcsin \left( x\frac{2xh}{2\sqrt{1-x^2}}+h\sqrt{1-x^2}\right)\\[15pt]
-            &= \lim_{h\to0}\frac{1}{h}\arcsin\frac{h(x^2+(1-x^2))}{\sqrt{1-x^2}}\\[15pt]
-            &= \lim_{h\to0}\frac{1}{h}\arcsin\frac{h}{\sqrt{1-x^2}}\\[15pt]
-            &= \frac{1}{\sqrt{1-x^2}}\lim_{h\to0}\frac{\sqrt{1-x^2}}{h}\arcsin\frac{h}{\sqrt{1-x^2}}\\[15pt]
-            &= \frac{1}{\sqrt{1-x^2}}\lim_{\theta\to0}\frac{1}{\theta}\arcsin\theta\\[15pt]
-            &= \frac{1}{\sqrt{1-x^2}}
-            \end{align*}
+            <p>We can, if interested, even find the differential of arcsin from the fundamental formula for differentials. We'll need the formula</p>
+            \[\arcsin a-\arcsin b=\arcsin\left(a\sqrt{1-b^2}-b\sqrt{1-a^2}\right)\]
+            <div class="aligned-eq-block">
+                <div class="step">
+                    <span class="aeq-lhs">\(\displaystyle\frac{\arcsin (x+h)-\arcsin x}{h}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\frac{1}{h}\arcsin\Bigl((x+h)\sqrt{1-x^2}-x\sqrt{1-(x+h)^2}\Bigr)\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\frac{1}{h}\arcsin\left(x\left(\sqrt{1-x^2}-\sqrt{1-(x+h)^2}\right)+h\sqrt{1-x^2}\right)\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\frac{1}{h}\arcsin\left(x\frac{(1-x^2)-\left(1-(x+h)^2\right)}{\sqrt{1-x^2}+\sqrt{1-(x+h)^2}}+h\sqrt{1-x^2}\right)\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\frac{1}{h}\arcsin\left(x\frac{(x+h)^2-x^2}{\sqrt{1-x^2}+\sqrt{1-(x+h)^2}}+h\sqrt{1-x^2}\right)\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\frac{1}{h}\arcsin\left(x\frac{2xh+h^2}{\sqrt{1-x^2}+\sqrt{1-(x+h)^2}}+h\sqrt{1-x^2}\right)\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(\to\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to0}\frac{1}{h}\arcsin\left(x\frac{2xh}{2\sqrt{1-x^2}}+h\sqrt{1-x^2}\right)\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to0}\frac{1}{h}\arcsin\frac{h(x^2+(1-x^2))}{\sqrt{1-x^2}}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to0}\frac{1}{h}\arcsin\frac{h}{\sqrt{1-x^2}}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\displaystyle\text{Put }\sin\theta=\frac{h}{\sqrt{1-x^2}}\)</span>
+                    <span class="aeq-op">\(\implies\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\frac{1}{h}=\frac{1}{\sqrt{1-x^2}\sin\theta}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs">\(\displaystyle\frac{\arcsin (x+h)-\arcsin x}{h}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{\theta\to0}\frac{\arcsin(\sin\theta)}{\sqrt{1-x^2}\sin\theta}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\frac{1}{\sqrt{1-x^2}}\lim_{\theta\to 0} \frac{\theta}{\sin\theta}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\frac{1}{\sqrt{1-x^2}}\)</span>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Page 6 -->
     <div class="page" id="page-6">
         <div class="intro">
-        \begin{align*}
-        \text{Let }\varphi&=\arccos(x+h),\quad\theta=\arccos x\quad(\text{so }\cos\varphi=x+h,\ \cos\theta=x)\\[15pt]
-        \implies \cos\varphi-\cos\theta&=h\\[15pt]
-        \implies -2\sin\left(\frac{\varphi+\theta}{2}\right)\sin\left(\frac{\varphi-\theta}{2}\right)&=h\\[15pt]
-        \implies \frac{\varphi-\theta}{h}&=-\frac{1}{\sin\left(\dfrac{\varphi+\theta}{2}\right)}\cdot\frac{\left(\varphi-\theta\right)/2}{\sin\left(\dfrac{\varphi-\theta}{2}\right)}\\[15pt]
-        &\to -\frac{1}{\sin\theta}\lim_{u\to0}\frac{u}{\sin u}\quad\left(h\to0\implies\varphi\to\theta,\ u=\frac{\varphi-\theta}{2}\to0\right)\\[15pt]
-        &=-\frac{1}{\sin\theta}\\[15pt]
-        \implies \frac{\mathrm{d}}{\mathrm{d}x}\arccos x&=-\frac{1}{\sin\theta}=-\frac{1}{\sqrt{1-x^2}}\quad(\sin\theta\ge0\text{ since }\theta\in[0,\pi])
-        \end{align*}
-    </div>
+            <div class="aligned-eq-block">
+                <span class="aeq-lhs"></span>
+                <span class="aeq-op"></span>
+                <span class="aeq-rhs">\(\displaystyle\frac{\arcsin (x+h)-\arcsin x}{h}=\frac{\varphi-\theta}{h}\)</span>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op"></span>
+                    <span class="aeq-rhs">\(\text{where }\varphi=\arcsin (x+h)\qquad \theta=\arcsin x\)</span>
+                </div>
+            </div>
+            <div class="step"><p>Now we can put the following two things together:</p></div>
+            <div class="aligned-eq-block">
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op"></span>
+                    <span class="aeq-rhs">\(\sin\varphi-\sin\theta=x+h-x=h\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op"></span>
+                    <span class="aeq-rhs">\(\text{ and}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op"></span>
+                    <span class="aeq-rhs">\(\sin(\alpha+\beta)-\sin(\alpha-\beta) =2\cos\alpha\sin\beta\)</span>
+                </div>
+            </div>
+            <div class="step"><p>to get</p></div>
+            <div class="aligned-eq-block">
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op"></span>
+                    <span class="aeq-rhs">\(\displaystyle h=\sin\varphi-\sin\theta=2\cos\frac{\varphi+\theta}{2}\sin\frac{\varphi-\theta}{2}\)</span>
+                </div>
+            </div>
+            <div class="step"><p>Now we can find the differential:</p></div>
+            <div class="aligned-eq-block gap-before">
+                <div class="step">
+                    <span class="aeq-lhs">\(\displaystyle\lim_{h\to 0}\frac{\arcsin (x+h)-\arcsin x}{h}\)</span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\frac{\varphi-\theta}{h}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\frac{\varphi-\theta}{2\cos\frac{\varphi+\theta}{2}\sin\frac{\varphi-\theta}{2}}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{\substack{\varphi\to\theta\\ u\to0}}\frac{u}{\sin u}\frac{1}{\cos\frac{\varphi+\theta}{2}}\quad\text{ where }u=\frac{\varphi-\theta}{2}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\lim_{u\to 0}\frac{u}{\sin u}\lim_{\varphi\to\theta}\frac{1}{\cos\frac{\varphi+\theta}{2}}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle 1\times\frac{1}{\cos\theta}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\frac{1}{\cos\arcsin x}\)</span>
+                </div>
+                <div class="step">
+                    <span class="aeq-lhs"></span>
+                    <span class="aeq-op">\(=\)</span>
+                    <span class="aeq-rhs">\(\displaystyle\frac{1}{\sqrt{1-x^2}}\)</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Page 7 -->
@@ -398,7 +525,12 @@ document.querySelectorAll('video[data-stop]').forEach(function (video) {
             next.classList.add('div-revealed');
             setTimeout(() => next.classList.remove('div-revealed'), 400);
             if (next.hasAttribute('data-resume-video')) resumeVideo(next.getAttribute('data-resume-video'));
-            next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // .aligned-eq-block .step is display:contents (generates no box), so
+            // scrollIntoView on it directly is a no-op — scroll its last child instead.
+            const scrollTarget = window.getComputedStyle(next).display === 'contents'
+                ? (next.lastElementChild || next)
+                : next;
+            scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
             _origChangePage(1);
         }

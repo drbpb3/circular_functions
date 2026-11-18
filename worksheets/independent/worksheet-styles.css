@@ -608,6 +608,15 @@ li {
     z-index: 1001;
 }
 
+a.back-nav,
+a.back-nav:link,
+a.back-nav:visited,
+a.back-nav:hover,
+a.back-nav:focus,
+a.back-nav:active {
+    text-decoration: none;
+}
+
 .back-btn {
     display: flex;
     align-items: center;
@@ -619,7 +628,7 @@ li {
     border-radius: 50%;
     text-decoration: none;
     font-size: 1.2em;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    box-shadow: none;
     transition: background 0.2s, transform 0.2s;
 }
 

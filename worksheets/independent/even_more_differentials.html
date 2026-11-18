@@ -114,7 +114,7 @@
 
     <div class="page" id="page-3">
         <figure>
-            <video autoplay muted playsinline style="width: 100%;"><source src="even_more_differentials_images/video1.mp4" alt="difference triangle"></video>
+            <video muted playsinline preload="none" data-src="even_more_differentials_images/video1.mp4" style="width: 100%;"></video>
         </figure>
         <div class="page-scroll">
             <div class="exercise">
@@ -146,7 +146,7 @@
 
     <div class="page" id="page-4">
         <figure>
-            <video autoplay muted playsinline style="width: 100%;"><source src="even_more_differentials_images/video2.mp4" alt="difference triangle"></video>
+            <video muted playsinline preload="none" data-src="even_more_differentials_images/video2.mp4" style="width: 100%;"></video>
         </figure>
         <div class="page-scroll">
             <div class="exercise">
@@ -196,7 +196,7 @@
     <div class="page" id="page-5">
         <div style="position: sticky; top: 0; z-index: 10; background: #fafafa; padding-bottom: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin: 0 -20px; padding-left: 20px; padding-right: 20px;">
             <figure style="width: 144%; position: relative; left: 50%; transform: translateX(-50%); margin: 10px 0 0;">
-                <video autoplay muted playsinline style="width: 100%;"><source src="even_more_differentials_images/video3.mp4" alt="difference triangle"></video>
+                <video muted playsinline preload="none" data-src="even_more_differentials_images/video3.mp4" style="width: 100%;"></video>
             </figure>
         </div>
 
@@ -442,9 +442,12 @@
         applyState(video.currentTime);
     }
 
-    function setNavBlocked(blocked) {
+    function updateNavBlocked() {
         const prompt = document.querySelector('.nav-prompt');
         if (!prompt) return;
+        const activePage = document.querySelector('.page.active');
+        const blocked = !!activePage && Array.from(activePage.querySelectorAll('video'))
+            .some(video => !video.paused && !video.ended);
         prompt.classList.toggle('nav-blocked', blocked);
         if (!blocked) {
             prompt.style.opacity = '';
@@ -453,9 +456,9 @@
             prompt.style.pointerEvents = '';
         }
     }
-    document.addEventListener('play',  e => { if (e.target.tagName === 'VIDEO') setNavBlocked(true);  }, true);
-    document.addEventListener('pause', e => { if (e.target.tagName === 'VIDEO') setNavBlocked(false); }, true);
-    document.addEventListener('ended', e => { if (e.target.tagName === 'VIDEO') setNavBlocked(false); }, true);
+    document.addEventListener('play',  e => { if (e.target.tagName === 'VIDEO') updateNavBlocked(); }, true);
+    document.addEventListener('pause', e => { if (e.target.tagName === 'VIDEO') updateNavBlocked(); }, true);
+    document.addEventListener('ended', e => { if (e.target.tagName === 'VIDEO') updateNavBlocked(); }, true);
 
     const _origShowPage   = window.showPage;
     const _origChangePage = window.changePage;
@@ -511,7 +514,7 @@
             if (visibleVideo) {
                 visibleVideo.play().catch(() => {});
             } else {
-                setNavBlocked(false);
+                updateNavBlocked();
             }
             if (pageNum === 3 && !isBackward) {
                 setupPage3Timing(page, visibleVideo || videos[0]);

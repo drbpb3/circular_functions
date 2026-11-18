@@ -149,7 +149,7 @@
             <audio data-trigger="on-reveal" src="equations_audio/mp3s/audio5.mp3"></audio>
             <p>The \(y\) coordinate of the blue point is \(0.4\). Find another point on the circle with the same \(y\) coordinate as the blue point. Use this new point to find another solution to the equation \(\sin\theta=0.4\).</p>
         </div>
-        <div class="image-stack" style="max-width:64%; margin-left:auto; margin-right:auto;">
+        <div class="image-stack layout-preserve-hidden" data-reveal-with-prev style="max-width:64%; margin-left:auto; margin-right:auto;">
             <img src="equations_images/image1.png" class="stack-img stack-img--active" alt="Unit circle with point at angle θ showing y-coordinate 0.4 ">
             <img src="equations_images/image2.png" class="stack-img" alt="Unit circle showing θ = 23.58° and symmetric point">
             <img src="equations_images/image3.png" class="stack-img" alt="Unit circle showing angles 156.42° and 23.58°">
@@ -519,6 +519,13 @@
                 if (node.classList.contains('image-stack')) {
                     const imgs = Array.from(node.querySelectorAll('.stack-img'));
                     imgs.forEach(img => img.classList.remove('stack-img--active'));
+                    // data-reveal-with-prev: keep the stack hidden until the
+                    // item before it is revealed, then show both together
+                    if (node.hasAttribute('data-reveal-with-prev') && !revealAll && items.length > 0) {
+                        node.classList.add('div-hidden');
+                        const prev = items.pop();
+                        items.push((Array.isArray(prev) ? prev : [prev]).concat(node));
+                    }
                     if (imgs.length > 0) {
                         imgs[0].classList.add('stack-img--active');
                         // first crossfade fires at the stack position; rest are deferred
@@ -543,13 +550,19 @@
                     if (!el.classList.contains('reveal-instant')) el.classList.remove('div-hidden');
                 });
                 page.querySelectorAll('.image-stack').forEach(stack => {
+                    stack.classList.remove('div-hidden');
                     const imgs = Array.from(stack.querySelectorAll('.stack-img'));
                     imgs.forEach(img => img.classList.remove('stack-img--active'));
                     if (imgs.length > 0) imgs[imgs.length - 1].classList.add('stack-img--active');
                 });
             } else if (items.length > 0) {
                 const first = items[0];
-                if (!first._crossfade) { first.classList.remove('div-hidden'); playOnRevealAudio(first); }
+                if (!first._crossfade) {
+                    (Array.isArray(first) ? first : [first]).forEach(el => {
+                        el.classList.remove('div-hidden');
+                        playOnRevealAudio(el);
+                    });
+                }
                 revealQueue = items.slice(1);
             }
         }

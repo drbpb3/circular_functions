@@ -45,9 +45,12 @@ function showPage(pageNum) {
         currentAudio = null;
     }
 
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-
     const page = document.getElementById('page-' + pageNum);
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.page video').forEach(video => {
+        if (!page || !page.contains(video)) video.pause();
+    });
+
     if (page) {
         // Start at opacity 0 before making the page visible, so the fade-in begins cleanly
         page.style.opacity = '0';
@@ -150,6 +153,11 @@ function updateScrollIndicator() {
 
 // Handle video-page9 and video-page10 looping back to 11s instead of 0
 document.addEventListener('DOMContentLoaded', function() {
+    const backNav = document.querySelector('.back-nav');
+    if (backNav && window.location.protocol === 'file:') {
+        backNav.href = 'https://mathsinsight.co.uk/resources/insight-journeys/circular-functions';
+    }
+
     // Set total pages based on actual page count
     const pages = document.querySelectorAll('.page');
     if (pages.length > 0) {
@@ -189,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
     navPrompt = document.createElement('div');
     navPrompt.className = 'nav-prompt';
     var promptLogo = document.createElement('img');
-    promptLogo.src = '/darklogo_circle.png';
+    promptLogo.src = new URL('../../../darklogo_circle.png', window.location.href).href;
     promptLogo.className = 'nav-prompt__logo';
     promptLogo.alt = '';
     var promptArrow = document.createElement('span');
