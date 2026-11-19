@@ -447,7 +447,7 @@ if (nav) {
             var el = e.target;
             while (el && el !== document.body) {
                 if (el.tagName === 'IMG' || el.tagName === 'VIDEO') {
-                    if (!el.classList.contains('welcome-logo') && !el.closest('.back-nav')) {
+                    if (!el.classList.contains('welcome-logo') && !el.closest('.back-nav') && !el.closest('.nav-prompt')) {
                         openLightbox(el);
                     }
                     return;
