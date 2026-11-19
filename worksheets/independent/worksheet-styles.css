@@ -541,9 +541,11 @@ li {
     right: 0;
 }
 
+/* Side arrows are no longer shown on touch devices: swipe or tap the nav prompt instead
+   (the side "next" arrow also skipped step-by-step reveals) */
 .touch-device .side-nav-prev,
 .touch-device .side-nav-next {
-    display: flex;
+    display: none;
 }
 
 .side-nav-prev:disabled,
