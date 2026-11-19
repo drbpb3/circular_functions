@@ -96,7 +96,7 @@
                 <p class="welcome-tip">Take your time with each page. Work on the questions before moving to the answers!</p>
 
                 <p class="welcome-author">
-                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
                     <span>Dr Brian Brooks<br>
                     Mathematics InSight</span>
                 </p>
@@ -517,7 +517,7 @@
                 <p>You've now seen how the compound angle formulae arise naturally from rotating vectors in the unit circle.</p>
 
                 <p class="welcome-author">
-                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
                     <span>Dr Brian Brooks<br>
                     Mathematics InSight</span>
                 </p>
@@ -547,7 +547,7 @@
 // Override with a relative path so it works regardless of how the file is served.
 document.addEventListener('DOMContentLoaded', function () {
     var logo = document.querySelector('.nav-prompt__logo');
-    if (logo) logo.src = '../../../darklogo_circle.png';
+    if (logo) logo.src = 'inverse_images/darklogo_circle_small.png';
 });
 </script>
 <script>
@@ -1168,6 +1168,8 @@ document.addEventListener('DOMContentLoaded', function () {
         revealsUntilResume = 0;
         navBlocked = false;
         blockOnResume = false;
+        const navPromptEl = document.querySelector('.nav-prompt');
+        if (navPromptEl) navPromptEl.classList.remove('nav-blocked');
         if (activeTimeHandlerVid && activeTimeHandlerRef) {
             activeTimeHandlerVid.removeEventListener('timeupdate', activeTimeHandlerRef);
             activeTimeHandlerVid = null;

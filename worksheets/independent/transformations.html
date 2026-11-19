@@ -95,7 +95,7 @@
                 <p class="welcome-tip">Take your time with each page. Work on the questions before moving to the answers!</p>
 
                 <p class="welcome-author">
-                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
                     <span>Dr Brian Brooks<br>
                     Mathematics InSight</span>
                 </p>
@@ -150,10 +150,10 @@
         <div class="page-scroll">
             <div class="exercise">
                 <p>
-                    After the rotation, what is the sum of the two yellow vectors?</p>
+                    What is the equation of the graph that represents the resulting movement of the water molecule?</p>
             </div>
             <div class="answer">
-                <p>\[\binom{\cos(\theta+\varphi)}{\sin (\theta+\varphi)}\]</p>
+                <p>\[y=\cos x+\sin x\]</p>
             </div>
         </div>
     </div>
@@ -165,15 +165,14 @@
         </figure>
         <div class="page-scroll">
             <div class="intro">
-                <p>You already know perfectly well that the unit vector \(\displaystyle\binom{1}{0}\) when rotated through the angle \(\varphi\) is \(\displaystyle\binom{\cos\varphi}{\sin\varphi}\).</p>
+        
             </div>
             <div class="exercise">
-                <p>What is the rotated yellow vector?
+                <p>What pair of transformations takes the graph \(y=\sin x\) to the graph \(y=\sin x+\cos x\)?
                 </p>
             </div>
             <div class="answer">
-                <p>Here, the length of the vector is \(\cos\theta\), so the rotated vector is
-                    \[\cos\theta\binom{\cos\varphi}{\sin\varphi}\]
+                <p>A translation left by \(45^\circ\) followed by a stretch parallel to the \(y\) axis by scale factor \(\sqrt 2\)
                 </p>
             </div>
         </div>
@@ -357,7 +356,7 @@
                 <p>You've now seen how the transformations angle formulae arise naturally from rotating vectors in the unit circle.</p>
 
                 <p class="welcome-author">
-                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
                     <span>Dr Brian Brooks<br>
                     Mathematics InSight</span>
                 </p>
@@ -387,7 +386,7 @@
 // Override with a relative path so it works regardless of how the file is served.
 document.addEventListener('DOMContentLoaded', function () {
     var logo = document.querySelector('.nav-prompt__logo');
-    if (logo) logo.src = '../../../darklogo_circle.png';
+    if (logo) logo.src = 'inverse_images/darklogo_circle_small.png';
 });
 </script>
 <script>
@@ -999,6 +998,8 @@ document.addEventListener('DOMContentLoaded', function () {
         revealsUntilResume = 0;
         navBlocked = false;
         blockOnResume = false;
+        const navPromptEl = document.querySelector('.nav-prompt');
+        if (navPromptEl) navPromptEl.classList.remove('nav-blocked');
         if (activeTimeHandlerVid && activeTimeHandlerRef) {
             activeTimeHandlerVid.removeEventListener('timeupdate', activeTimeHandlerRef);
             activeTimeHandlerVid = null;

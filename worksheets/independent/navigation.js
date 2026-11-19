@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', function() {
     navPrompt = document.createElement('div');
     navPrompt.className = 'nav-prompt';
     var promptLogo = document.createElement('img');
-    promptLogo.src = new URL('../../../darklogo_circle.png', window.location.href).href;
+    promptLogo.src = new URL('inverse_images/darklogo_circle_small.png', window.location.href).href;
     promptLogo.className = 'nav-prompt__logo';
     promptLogo.alt = '';
     var promptArrow = document.createElement('span');

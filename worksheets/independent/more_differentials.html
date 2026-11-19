@@ -120,7 +120,7 @@
                 <p class="welcome-tip">Take your time with each video. Pause, rewind, and think before moving on!</p>
 
                 <p class="welcome-author">
-                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
                     <span>Dr Brian Brooks<br>
                     Mathematics InSight</span>
                 </p>
@@ -128,11 +128,105 @@
         </div>
     </div>
 
-    
-
     <!-- Page 2 -->
     <div class="page" id="page-2">
+        <div class="intro">
+            Before we start, we'll review the differential of sine and then extend this to the other circular functions.
+        </div>
+        <div class="page-scroll">
+            <div class="exercise">
+                <p>Expand the brackets in \(\sin(x+h)\) and use this to rewrite \(\sin(x+h)-\sin x\) in terms of \(\sin x\), \(\cos x\), \(\sin h\), and \(\cos h\).</p>
+            </div>
+            <div class="answer">
+                \[\sin(x+h)-\sin x=\sin x\cos h+\cos x\sin h-\sin x\]
+            </div>
+            <div class="exercise">
+                <p>Use this to find the differential of \(\sin x\).</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\lim_{h\to 0}\frac{\sin(x+h)-\sin x}{h}\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\frac{\sin x\cos h+\cos x\sin h-\sin x}{h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\frac{\cos x\sin h-\sin x(1-\cos h)}{h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\cos x\lim_{h\to 0}\frac{\sin h}{h}-\sin x\lim_{h\to 0}\frac{1-\cos h}{h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\cos x\times 1-\sin x\times 0\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\cos x\)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Page 3 -->
+    <div class="page" id="page-3">
+        <div class="intro">
+            Here's another totally unneccessary but moderatly diverting idea.
+        </div>
+        <div class="page-scroll">
+            <div class="exercise">
+                <p>Rewrite the identity
+                    \[\sin(\alpha+\beta)-\sin(\alpha-\beta)=2\cos\alpha\sin\beta\]
+                    using \(x+h\) for \(\alpha\) and \(h\) for \(\beta\).
+                </p>
+            </div>
+            <div class="answer">
+                \[\sin(x+2h)-\sin x=2\cos(x+h)\sin h\]
+            </div>
+            <div class="exercise">
+                <p>Use this to find the differential of \(\sin x\).</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\lim_{k\to 0}\frac{\sin(x+k)-\sin x}{k}\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\frac{\sin(x+2h)-\sin x}{2h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\frac{2\cos(x+h)\sin h}{2h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\cos(x+h)\times\lim_{h\to 0}\frac{\sin h}{h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\cos x\times 1\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\cos x\)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="page" id="page-4">
         <div class="intro">
             Watch this video to figure out the differential of \(\cos x\).
         </div>
@@ -157,8 +251,8 @@
         </div>
     </div>
 
-    <!-- Page 3 -->
-    <div class="page" id="page-3">
+    <!-- Page 5 -->
+    <div class="page" id="page-5">
         <div class="exercise">
             <p>Use the definition of a differential to find the differential of \(\cos x\):</p>
         </div>
@@ -204,13 +298,64 @@
         </div>
     </div>
 
-    <!-- Page 4 -->
-    <div class="page" id="page-4">
+    <!-- Page 6 -->
+    <div class="page" id="page-6">
+        <div class="intro">
+            Here again is my totally unneccessary but moderatly diverting idea.
+        </div>
+        <div class="page-scroll">
+            <div class="exercise">
+                <p>Rewrite the identity
+                    \[\cos(\alpha+\beta)-\cos(\alpha-\beta)=-2\sin\alpha\sin\beta\]
+                    using \(x+h\) for \(\alpha\) and \(h\) for \(\beta\).
+                </p>
+            </div>
+            <div class="answer">
+                \[\cos(x+2h)-\cos x=-2\sin(x+h)\sin h\]
+            </div>
+            <div class="exercise">
+                <p>Use this to find the differential of \(\cos x\).</p>
+            </div>
+            <div class="answer">
+                <div class="aligned-eq-block">
+                    <div class="step">
+                        <span class="aeq-lhs">\(\displaystyle\lim_{k\to 0}\frac{\cos(x+k)-\cos x}{k}\)</span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle\lim_{h\to 0}\frac{\cos(x+2h)-\cos x}{2h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle -\lim_{h\to 0}\frac{2\sin(x+h)\sin h}{2h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(\displaystyle -\lim_{h\to 0}\sin(x+h)\times\lim_{h\to 0}\frac{\sin h}{h}\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(-\sin x\times 1\)</span>
+                    </div>
+                    <div class="step">
+                        <span class="aeq-lhs"></span>
+                        <span class="aeq-op">\(=\)</span>
+                        <span class="aeq-rhs">\(-\sin x\)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Page 7 -->
+    <div class="page" id="page-7">
         <div class="exercise">
             This video demonstrates the differential of \(\tan x\).
         </div>
         <figure>
-            <video autoplay muted playsinline style="max-width: 60%"><source src="more_differentials_images/tanderiv.mp4" alt="animation of differential of tan"></video>
+            <video autoplay muted playsinline style="max-width: 80%"><source src="more_differentials_images/tanderiv.mp4" alt="animation of differential of tan"></video>
         </figure>
         <div class="page-scroll">
             <div class="exercise">
@@ -238,8 +383,8 @@
         </div>
     </div>
 
-    <!-- Page 5 -->
-    <div class="page" id="page-5">
+    <!-- Page 8 -->
+    <div class="page" id="page-8">
         <div class="page-scroll">
             <div class="exercise">
                 Have a go at a first-principles differential of \(\tan x\).
@@ -287,13 +432,13 @@
         </div>
     </div>
 
-    <!-- Page 6 -->
-    <div class="page" id="page-6">
+    <!-- Page 9 -->
+    <div class="page" id="page-9">
         <div class="exercise">
             And here is the differential of \(\sec x\).
         </div>
         <figure>
-            <video autoplay muted playsinline style="max-width:60%"><source src="more_differentials_images/secderiv.mp4" alt="animation of differential of cos"></video>
+            <video autoplay muted playsinline style="max-width:80%"><source src="more_differentials_images/secderiv.mp4" alt="animation of differential of cos"></video>
         </figure>
         <div class="page-scroll">
             <div class="exercise">
@@ -315,8 +460,8 @@
         </div>
     </div>
 
-    <!-- Page 7 -->
-    <div class="page" id="page-7">
+    <!-- Page 10 -->
+    <div class="page" id="page-10">
         <div class="page-scroll">
             <div class="exercise">
                 <p>or if you prefer to differentiate everything using only the essential definition of a differential:</p>
@@ -364,13 +509,13 @@
         </div>
     </div>
 
-    <!-- Page 8 -->
-    <div class="page" id="page-8">
+    <!-- Page 11 -->
+    <div class="page" id="page-11">
         <div class="exercise">
             Use the quotient rule to find the differential of \(\operatorname{cosec} x\).
         </div>
         <figure>
-            <video autoplay muted playsinline style="max-width:60%"><source src="more_differentials_images/cscderiv.mp4" alt="animation of differential of csc"></video>
+            <video autoplay muted playsinline style="max-width:80%"><source src="more_differentials_images/cscderiv.mp4" alt="animation of differential of csc"></video>
         </figure>
         <div class="page-scroll">
             <div class="answer">
@@ -389,13 +534,13 @@
         </div>
     </div>
 
-    <!-- Page 9 -->
-    <div class="page" id="page-9">
+    <!-- Page 12 -->
+    <div class="page" id="page-12">
         <div class="exercise">
             Use the quotient rule to find the differential of \(\cot x\).
         </div>
         <figure>
-            <video autoplay muted playsinline style="max-width:60%"><source src="more_differentials_images/cotderiv.mp4" alt="animation of differential of cot"></video>
+            <video autoplay muted playsinline style="max-width:80%"><source src="more_differentials_images/cotderiv.mp4" alt="animation of differential of cot"></video>
         </figure>
         <div class="page-scroll">
             <div class="answer">
@@ -419,8 +564,8 @@
         </div>
     </div>
 
-    <!-- Page 10: Closing Page -->
-    <div class="page" id="page-10">
+    <!-- Page 13: Closing Page -->
+    <div class="page" id="page-13">
         <div class="welcome-page">
             <h1>Well done!</h1>
             <div class="welcome-content">
@@ -435,7 +580,7 @@
                 </div>
 
                 <p class="welcome-author">
-                    <img src="../../../darklogo_circle.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
                     <span>Dr Brian Brooks<br>
                     Mathematics InSight</span>
                 </p>
@@ -453,7 +598,7 @@
     <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
     <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
     <span class="page-indicator">
-        Page <input type="number" id="pageInput" value="1" min="1" max="7" onchange="goToPage(this.value)"> of 7
+        Page <input type="number" id="pageInput" value="1" min="1" max="13" onchange="goToPage(this.value)"> of 13
     </span>
     <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
     <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
@@ -622,6 +767,10 @@ document.querySelectorAll('video').forEach(function (v) {
         // Clear any leftover video control state from a previous page
         videoResumeNode = null;
         revealsUntilResume = 0;
+        // Leaving a video page mid-playback (e.g. via the Next button) must not leave nav blocked
+        navBlocked = false;
+        const navPromptEl = document.querySelector('.nav-prompt');
+        if (navPromptEl) navPromptEl.classList.remove('nav-blocked');
         if (holdTimeoutId) { clearTimeout(holdTimeoutId); holdTimeoutId = null; }
         if (activeTimeHandlerVid && activeTimeHandlerRef) {
             activeTimeHandlerVid.removeEventListener('timeupdate', activeTimeHandlerRef);
@@ -642,21 +791,21 @@ document.querySelectorAll('video').forEach(function (v) {
             if (visibleVideo) {
                 visibleVideo.play().catch(() => {});
                 if (!(revealAll || goingBackward)) {
-                    if (pageNum === 2) {
+                    if (pageNum === 4) {
                         // whole video at 2×; pause at 43s; 3 reveals then resume
                         setupVideoControl(visibleVideo, 2, 9999, 9999, 9999, 43, 3);
-                    } else if (pageNum === 4) {
+                    } else if (pageNum === 7) {
                         // 0–12s at 2×; skip 25–33s; pause at 50s; auto-reveal exercise then resume on next reveal
                         const ex = page.querySelectorAll('.exercise')[1];
                         setupVideoControl(visibleVideo, 2, 12, 25, 33, 50, 0, ex);
-                    } else if (pageNum === 6) {
+                    } else if (pageNum === 9) {
                         // 0–11s at 1.5×; skip 25–35s; pause at 49s; auto-reveal exercise then resume on next reveal
                         const ex = page.querySelectorAll('.exercise')[1];
                         setupVideoControl(visibleVideo, 1.5, 11, 25, 35, 49, 0, ex);
-                    } else if (pageNum === 8) {
+                    } else if (pageNum === 11) {
                         // 0–12s at 2×; skip 25–35s; pause at 48s; resume on next reveal (answer)
                         setupVideoControl(visibleVideo, 2, 12, 25, 35, 48, 0);
-                    } else if (pageNum === 9) {
+                    } else if (pageNum === 12) {
                         // 0–12s at 2×; skip 25–35s; pause at 48s; resume on next reveal (answer)
                         setupVideoControl(visibleVideo, 2, 12, 25, 35, 48, 0);
                     }

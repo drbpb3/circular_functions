@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parametric curves</title>
+    <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['\\(', '\\)']],
+            displayMath: [['\\[', '\\]']],
+        },
+        svg: { fontCache: 'global' },
+        options: {
+            enableMenu: false,
+            renderActions: { addMenu: [] }
+        },
+        startup: {
+            // The tables make this sheet heavy to typeset, so don't do the whole document up front.
+            // Typeset one page at a time, always choosing the page being shown if it isn't done yet,
+            // then the rest in the background. MathJax 3 doesn't queue overlapping typeset calls,
+            // so typesetPromise is wrapped to run one job at a time (navigation.js calls it on every page change).
+            typeset: false,
+            pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+                const rawTypeset = MathJax.typesetPromise;
+                const pending = Array.from(document.querySelectorAll('.page'));
+                const waiters = new Map();          // page -> resolvers waiting for it
+                let busy = false;
+
+                function pump() {
+                    if (busy || pending.length === 0) return;
+                    const active = document.querySelector('.page.active');
+                    const page = pending.includes(active) ? active : pending[0];
+                    busy = true;
+                    rawTypeset([page]).catch(err => console.error(err)).then(() => {
+                        pending.splice(pending.indexOf(page), 1);
+                        (waiters.get(page) || []).forEach(r => r());
+                        waiters.delete(page);
+                        busy = false;
+                        setTimeout(pump, 0);        // let the browser paint between pages
+                    });
+                }
+
+                MathJax.typesetPromise = (elements) => {
+                    const page = elements && elements[0] && elements[0].closest && elements[0].closest('.page');
+                    if (page && !pending.includes(page)) return Promise.resolve();   // already typeset
+                    if (page) {
+                        const p = new Promise(r => waiters.set(page, [...(waiters.get(page) || []), r]));
+                        pump();
+                        return p;
+                    }
+                    // Anything else: run after the current job
+                    return new Promise(r => {
+                        const run = () => busy ? setTimeout(run, 20) : rawTypeset(elements).then(r, r);
+                        run();
+                    });
+                };
+
+                pump();
+            })
+        }
+    };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+    <link rel="stylesheet" href="worksheet-styles.css">
+    <style>
+        /* Pin the equations at the top; plot and table scroll below */
+        body { overflow: clip; }
+        .page.active {
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 80px);
+            overflow: clip;
+            padding-bottom: 0;
+            min-height: unset;
+        }
+        .page.active h2.chapter,
+        .page.active .intro,
+        .page.active .exercise { flex-shrink: 0; }
+        .page.active .page-scroll {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            padding-bottom: 80px;
+        }
+
+        .param-plot { display: block; width: 100%; max-width: 380px; margin: 0 auto; }
+        .param-plot .axis { stroke: #888; stroke-width: 1; }
+        .plot-box { position: relative; max-width: 380px; margin: 0 auto; }
+        .plabel { position: absolute; font-size: 0.75em; line-height: 1; color: #555; pointer-events: none; white-space: nowrap; }
+        .plabel.xt { transform: translate(-50%, -50%); }
+        .plabel.yt { transform: translate(-100%, -50%); }
+        .param-plot .curve { fill: none; stroke: #2d5a27; stroke-width: 2.5; stroke-linejoin: round; }
+        .param-plot .keypt { fill: #2c3e50; }
+        .param-plot .dot { fill: #c0392b; }
+        .tvals-scroll { overflow-x: auto; margin-top: 12px; }
+        table.tvals { border-collapse: collapse; margin: 0 auto 10px; font-size: 0.85em; }
+        table.tvals th, table.tvals td { border: 1px solid #ccc; padding: 6px 8px; text-align: center; }
+        table.tvals { table-layout: fixed; }
+        table.tvals th { width: 2.2em; }
+        table.tvals td { width: 3.6em; }
+        table.tvals.wide td { width: 4.6em; }
+        table.tvals th { background: #f4f9f4; }
+        table.tvals td { transition: background 0.2s; }
+        table.tvals td.cell-hidden > * { visibility: hidden; }
+        table.tvals td.cell-hidden { color: transparent; }
+        table.tvals td.col-active { background: #fff3c4; }
+            /* Hide nav prompt while a curve is being traced */
+        .nav-prompt.nav-blocked { opacity: 0 !important; animation: none !important; pointer-events: none !important; }
+        /* Welcome and closing pages scroll if they don't fit */
+        .page.active .welcome-page { flex: 1; min-height: 0; overflow-y: auto; }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+<a href="/resources/insight-journeys/circular-functions" class="back-nav">
+    <span class="back-btn">←</span>
+</a>
+
+<div class="container">
+
+    <!-- Page 1: Welcome Page -->
+    <div class="page" id="page-1">
+        <div class="welcome-page">
+            <h1>Parametric curves</h1>
+            <div class="welcome-content">
+                <p>In a parametric curve, \(x\) and \(y\) are both given in terms of a third variable, \(t\). As \(t\) changes, the point \((x, y)\) traces out a curve.</p>
+
+                <div class="navigation-box">
+                    <h2>How to Navigate:</h2>
+                    <ul>
+                        <li>Use the <strong>arrow keys</strong> on your keyboard to move between pages</li>
+                        <li>Use <strong>swiping</strong> gestures on touch devices</li>
+                        <li>Hover near the <strong>bottom of the page</strong> to reveal navigation buttons</li>
+                    </ul>
+                </div>
+
+                <button id="audio-enable-btn" onclick="toggleAudio(this)">🔇 Enable audio</button>
+
+                <p class="welcome-tip">On each curve page, move forward to fill in the table one column at a time and plot each point. When the table is complete, move forward once more to watch the curve being traced.</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="page" id="page-2">
+        <div class="intro">
+            \[\begin{align*}
+               x&=\cos t\\
+               y&=\sin 2t
+            \end{align*}\]
+        </div>
+        <div class="page-scroll param-page" data-fx="Math.cos(t)" data-fy="Math.sin(2 * t)">
+            <div class="plot-box">
+                <svg class="param-plot" viewBox="0 0 400 400" aria-label="Animated plot of x = cos t, y = sin 2t"></svg>
+            </div>
+            <div class="tvals-scroll">
+                <table class="tvals">
+                    <tr><th>\(t\)</th><td data-k="0">\(0\)</td><td data-k="1">\(\frac{\pi}{6}\)</td><td data-k="2">\(\frac{\pi}{4}\)</td><td data-k="3">\(\frac{\pi}{3}\)</td><td data-k="4">\(\frac{\pi}{2}\)</td><td data-k="5">\(\frac{2\pi}{3}\)</td><td data-k="6">\(\frac{3\pi}{4}\)</td><td data-k="7">\(\frac{5\pi}{6}\)</td><td data-k="8">\(\pi\)</td></tr>
+                    <tr><th>\(x\)</th><td data-k="0">\(1\)</td><td data-k="1">\(\frac{\sqrt{3}}{2}\)</td><td data-k="2">\(\frac{\sqrt{2}}{2}\)</td><td data-k="3">\(\frac{1}{2}\)</td><td data-k="4">\(0\)</td><td data-k="5">\(-\frac{1}{2}\)</td><td data-k="6">\(-\frac{\sqrt{2}}{2}\)</td><td data-k="7">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="8">\(-1\)</td></tr>
+                    <tr><th>\(y\)</th><td data-k="0">\(0\)</td><td data-k="1">\(\frac{\sqrt{3}}{2}\)</td><td data-k="2">\(1\)</td><td data-k="3">\(\frac{\sqrt{3}}{2}\)</td><td data-k="4">\(0\)</td><td data-k="5">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="6">\(-1\)</td><td data-k="7">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="8">\(0\)</td></tr>
+                </table>
+                <table class="tvals">
+                    <tr><th>\(t\)</th><td data-k="8">\(\pi\)</td><td data-k="9">\(\frac{7\pi}{6}\)</td><td data-k="10">\(\frac{5\pi}{4}\)</td><td data-k="11">\(\frac{4\pi}{3}\)</td><td data-k="12">\(\frac{3\pi}{2}\)</td><td data-k="13">\(\frac{5\pi}{3}\)</td><td data-k="14">\(\frac{7\pi}{4}\)</td><td data-k="15">\(\frac{11\pi}{6}\)</td><td data-k="16">\(2\pi\)</td></tr>
+                    <tr><th>\(x\)</th><td data-k="8">\(-1\)</td><td data-k="9">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="10">\(-\frac{\sqrt{2}}{2}\)</td><td data-k="11">\(-\frac{1}{2}\)</td><td data-k="12">\(0\)</td><td data-k="13">\(\frac{1}{2}\)</td><td data-k="14">\(\frac{\sqrt{2}}{2}\)</td><td data-k="15">\(\frac{\sqrt{3}}{2}\)</td><td data-k="16">\(1\)</td></tr>
+                    <tr><th>\(y\)</th><td data-k="8">\(0\)</td><td data-k="9">\(\frac{\sqrt{3}}{2}\)</td><td data-k="10">\(1\)</td><td data-k="11">\(\frac{\sqrt{3}}{2}\)</td><td data-k="12">\(0\)</td><td data-k="13">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="14">\(-1\)</td><td data-k="15">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="16">\(0\)</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="page" id="page-3">
+        <div class="intro">
+            \[\begin{align*}
+               x&=\cos t\\
+               y&=\sin 3t
+            \end{align*}\]
+        </div>
+        <div class="page-scroll param-page" data-fx="Math.cos(t)" data-fy="Math.sin(3 * t)">
+            <div class="plot-box">
+                <svg class="param-plot" viewBox="0 0 400 400" aria-label="Animated plot of x = cos t, y = sin 3t"></svg>
+            </div>
+            <div class="tvals-scroll">
+                <table class="tvals">
+                    <tr><th>\(t\)</th><td data-k="0">\(0\)</td><td data-k="1">\(\frac{\pi}{6}\)</td><td data-k="2">\(\frac{\pi}{4}\)</td><td data-k="3">\(\frac{\pi}{3}\)</td><td data-k="4">\(\frac{\pi}{2}\)</td><td data-k="5">\(\frac{2\pi}{3}\)</td><td data-k="6">\(\frac{3\pi}{4}\)</td><td data-k="7">\(\frac{5\pi}{6}\)</td><td data-k="8">\(\pi\)</td></tr>
+                    <tr><th>\(x\)</th><td data-k="0">\(1\)</td><td data-k="1">\(\frac{\sqrt{3}}{2}\)</td><td data-k="2">\(\frac{\sqrt{2}}{2}\)</td><td data-k="3">\(\frac{1}{2}\)</td><td data-k="4">\(0\)</td><td data-k="5">\(-\frac{1}{2}\)</td><td data-k="6">\(-\frac{\sqrt{2}}{2}\)</td><td data-k="7">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="8">\(-1\)</td></tr>
+                    <tr><th>\(y\)</th><td data-k="0">\(0\)</td><td data-k="1">\(1\)</td><td data-k="2">\(\frac{\sqrt{2}}{2}\)</td><td data-k="3">\(0\)</td><td data-k="4">\(-1\)</td><td data-k="5">\(0\)</td><td data-k="6">\(\frac{\sqrt{2}}{2}\)</td><td data-k="7">\(1\)</td><td data-k="8">\(0\)</td></tr>
+                </table>
+                <table class="tvals">
+                    <tr><th>\(t\)</th><td data-k="8">\(\pi\)</td><td data-k="9">\(\frac{7\pi}{6}\)</td><td data-k="10">\(\frac{5\pi}{4}\)</td><td data-k="11">\(\frac{4\pi}{3}\)</td><td data-k="12">\(\frac{3\pi}{2}\)</td><td data-k="13">\(\frac{5\pi}{3}\)</td><td data-k="14">\(\frac{7\pi}{4}\)</td><td data-k="15">\(\frac{11\pi}{6}\)</td><td data-k="16">\(2\pi\)</td></tr>
+                    <tr><th>\(x\)</th><td data-k="8">\(-1\)</td><td data-k="9">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="10">\(-\frac{\sqrt{2}}{2}\)</td><td data-k="11">\(-\frac{1}{2}\)</td><td data-k="12">\(0\)</td><td data-k="13">\(\frac{1}{2}\)</td><td data-k="14">\(\frac{\sqrt{2}}{2}\)</td><td data-k="15">\(\frac{\sqrt{3}}{2}\)</td><td data-k="16">\(1\)</td></tr>
+                    <tr><th>\(y\)</th><td data-k="8">\(0\)</td><td data-k="9">\(-1\)</td><td data-k="10">\(-\frac{\sqrt{2}}{2}\)</td><td data-k="11">\(0\)</td><td data-k="12">\(1\)</td><td data-k="13">\(0\)</td><td data-k="14">\(-\frac{\sqrt{2}}{2}\)</td><td data-k="15">\(-1\)</td><td data-k="16">\(0\)</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="page" id="page-4">
+        <div class="intro">
+            \[\begin{align*}
+               x&=\sin 2t\\
+               y&=\cos 3t
+            \end{align*}\]
+        </div>
+        <div class="page-scroll param-page" data-fx="Math.sin(2 * t)" data-fy="Math.cos(3 * t)">
+            <div class="plot-box">
+                <svg class="param-plot" viewBox="0 0 400 400" aria-label="Animated plot of x = sin 2t, y = cos 3t"></svg>
+            </div>
+            <div class="tvals-scroll">
+                <table class="tvals">
+                    <tr><th>\(t\)</th><td data-k="0">\(0\)</td><td data-k="1">\(\frac{\pi}{6}\)</td><td data-k="2">\(\frac{\pi}{4}\)</td><td data-k="3">\(\frac{\pi}{3}\)</td><td data-k="4">\(\frac{\pi}{2}\)</td><td data-k="5">\(\frac{2\pi}{3}\)</td><td data-k="6">\(\frac{3\pi}{4}\)</td><td data-k="7">\(\frac{5\pi}{6}\)</td><td data-k="8">\(\pi\)</td></tr>
+                    <tr><th>\(x\)</th><td data-k="0">\(0\)</td><td data-k="1">\(\frac{\sqrt{3}}{2}\)</td><td data-k="2">\(1\)</td><td data-k="3">\(\frac{\sqrt{3}}{2}\)</td><td data-k="4">\(0\)</td><td data-k="5">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="6">\(-1\)</td><td data-k="7">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="8">\(0\)</td></tr>
+                    <tr><th>\(y\)</th><td data-k="0">\(1\)</td><td data-k="1">\(0\)</td><td data-k="2">\(-\frac{\sqrt{2}}{2}\)</td><td data-k="3">\(-1\)</td><td data-k="4">\(0\)</td><td data-k="5">\(1\)</td><td data-k="6">\(\frac{\sqrt{2}}{2}\)</td><td data-k="7">\(0\)</td><td data-k="8">\(-1\)</td></tr>
+                </table>
+                <table class="tvals">
+                    <tr><th>\(t\)</th><td data-k="8">\(\pi\)</td><td data-k="9">\(\frac{7\pi}{6}\)</td><td data-k="10">\(\frac{5\pi}{4}\)</td><td data-k="11">\(\frac{4\pi}{3}\)</td><td data-k="12">\(\frac{3\pi}{2}\)</td><td data-k="13">\(\frac{5\pi}{3}\)</td><td data-k="14">\(\frac{7\pi}{4}\)</td><td data-k="15">\(\frac{11\pi}{6}\)</td><td data-k="16">\(2\pi\)</td></tr>
+                    <tr><th>\(x\)</th><td data-k="8">\(0\)</td><td data-k="9">\(\frac{\sqrt{3}}{2}\)</td><td data-k="10">\(1\)</td><td data-k="11">\(\frac{\sqrt{3}}{2}\)</td><td data-k="12">\(0\)</td><td data-k="13">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="14">\(-1\)</td><td data-k="15">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="16">\(0\)</td></tr>
+                    <tr><th>\(y\)</th><td data-k="8">\(-1\)</td><td data-k="9">\(0\)</td><td data-k="10">\(\frac{\sqrt{2}}{2}\)</td><td data-k="11">\(1\)</td><td data-k="12">\(0\)</td><td data-k="13">\(-1\)</td><td data-k="14">\(-\frac{\sqrt{2}}{2}\)</td><td data-k="15">\(0\)</td><td data-k="16">\(1\)</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 5 -->
+    <div class="page" id="page-5">
+        <div class="intro">
+            \[\begin{align*}
+               x&=\sin 5t\\
+               y&=\cos 7t
+            \end{align*}\]
+        </div>
+        <div class="page-scroll param-page" data-fx="Math.sin(5 * t)" data-fy="Math.cos(7 * t)">
+            <div class="plot-box">
+                <svg class="param-plot" viewBox="0 0 400 400" aria-label="Animated plot of x = sin 5t, y = cos 7t"></svg>
+            </div>
+            <div class="tvals-scroll">
+                <table class="tvals">
+                    <tr><th>\(t\)</th><td data-k="0">\(0\)</td><td data-k="1">\(\frac{\pi}{6}\)</td><td data-k="2">\(\frac{\pi}{4}\)</td><td data-k="3">\(\frac{\pi}{3}\)</td><td data-k="4">\(\frac{\pi}{2}\)</td><td data-k="5">\(\frac{2\pi}{3}\)</td><td data-k="6">\(\frac{3\pi}{4}\)</td><td data-k="7">\(\frac{5\pi}{6}\)</td><td data-k="8">\(\pi\)</td></tr>
+                    <tr><th>\(x\)</th><td data-k="0">\(0\)</td><td data-k="1">\(\frac{1}{2}\)</td><td data-k="2">\(-\frac{\sqrt{2}}{2}\)</td><td data-k="3">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="4">\(1\)</td><td data-k="5">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="6">\(-\frac{\sqrt{2}}{2}\)</td><td data-k="7">\(\frac{1}{2}\)</td><td data-k="8">\(0\)</td></tr>
+                    <tr><th>\(y\)</th><td data-k="0">\(1\)</td><td data-k="1">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="2">\(\frac{\sqrt{2}}{2}\)</td><td data-k="3">\(\frac{1}{2}\)</td><td data-k="4">\(0\)</td><td data-k="5">\(-\frac{1}{2}\)</td><td data-k="6">\(-\frac{\sqrt{2}}{2}\)</td><td data-k="7">\(\frac{\sqrt{3}}{2}\)</td><td data-k="8">\(-1\)</td></tr>
+                </table>
+                <table class="tvals">
+                    <tr><th>\(t\)</th><td data-k="8">\(\pi\)</td><td data-k="9">\(\frac{7\pi}{6}\)</td><td data-k="10">\(\frac{5\pi}{4}\)</td><td data-k="11">\(\frac{4\pi}{3}\)</td><td data-k="12">\(\frac{3\pi}{2}\)</td><td data-k="13">\(\frac{5\pi}{3}\)</td><td data-k="14">\(\frac{7\pi}{4}\)</td><td data-k="15">\(\frac{11\pi}{6}\)</td><td data-k="16">\(2\pi\)</td></tr>
+                    <tr><th>\(x\)</th><td data-k="8">\(0\)</td><td data-k="9">\(-\frac{1}{2}\)</td><td data-k="10">\(\frac{\sqrt{2}}{2}\)</td><td data-k="11">\(\frac{\sqrt{3}}{2}\)</td><td data-k="12">\(-1\)</td><td data-k="13">\(\frac{\sqrt{3}}{2}\)</td><td data-k="14">\(\frac{\sqrt{2}}{2}\)</td><td data-k="15">\(-\frac{1}{2}\)</td><td data-k="16">\(0\)</td></tr>
+                    <tr><th>\(y\)</th><td data-k="8">\(-1\)</td><td data-k="9">\(\frac{\sqrt{3}}{2}\)</td><td data-k="10">\(-\frac{\sqrt{2}}{2}\)</td><td data-k="11">\(-\frac{1}{2}\)</td><td data-k="12">\(0\)</td><td data-k="13">\(\frac{1}{2}\)</td><td data-k="14">\(\frac{\sqrt{2}}{2}\)</td><td data-k="15">\(-\frac{\sqrt{3}}{2}\)</td><td data-k="16">\(1\)</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 6: Closing Page -->
+    <div class="page" id="page-6">
+        <div class="welcome-page">
+            <h1>Well done!</h1>
+            <div class="welcome-content">
+                <p>You've traced four parametric curves from tables of values.</p>
+
+                <p class="welcome-author">
+                    <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
+                    <span>Dr Brian Brooks<br>
+                    Mathematics InSight</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="navigation">
+    <button class="nav-btn" id="firstBtn" onclick="showPage(1)">&#x25C0;&#x25C0;</button>
+    <button class="nav-btn" id="prevBtn" onclick="changePage(-1)">Previous</button>
+    <span class="page-indicator">
+        Page <input type="number" id="pageInput" value="1" min="1" max="6" onchange="goToPage(this.value)"> of 6
+    </span>
+    <button class="nav-btn" id="nextBtn" onclick="changePage(1)">Next</button>
+    <button class="nav-btn" id="lastBtn" onclick="showPage(totalPages)">&#x25B6;&#x25B6;</button>
+</div>
+
+<script src="navigation.js"></script>
+<script>
+// navigation.js sets the nav-prompt logo itself; set it again with a relative path so it works however the file is served.
+document.addEventListener('DOMContentLoaded', function () {
+    var logo = document.querySelector('.nav-prompt__logo');
+    if (logo) logo.src = 'inverse_images/darklogo_circle_small.png';
+});
+</script>
+<script>
+/* Parametric curve pages: each nav event fills in one table column and plots that point;
+   once the table is complete, the next nav event traces the curve. One instance per .param-page */
+const paramAnimations = (function () {
+    'use strict';
+    const TWO_PI = 2 * Math.PI;
+    const KEYS = [0, Math.PI/6, Math.PI/4, Math.PI/3, Math.PI/2, 2*Math.PI/3, 3*Math.PI/4, 5*Math.PI/6, Math.PI,
+                  7*Math.PI/6, 5*Math.PI/4, 4*Math.PI/3, 3*Math.PI/2, 5*Math.PI/3, 7*Math.PI/4, 11*Math.PI/6, 2*Math.PI];
+    const LOOP_SECONDS = 12;                      // time to trace the curve, excluding holds
+    const HOLD_SECONDS = 0.6;                     // pause at each table value
+    const SPEED = TWO_PI / LOOP_SECONDS;
+    const MAX_DT = 1 / 30;                        // cap per-frame time so a stalled frame can't swallow a pause
+    const NS = 'http://www.w3.org/2000/svg';
+
+    // Timeline: hold at KEYS[0], move to KEYS[1], hold at KEYS[1], ... hold at KEYS[last]
+    const PHASES = [];
+    KEYS.forEach((k, i) => {
+        PHASES.push({ hold: true, key: i, dur: HOLD_SECONDS });
+        if (i < KEYS.length - 1) PHASES.push({ hold: false, from: k, dur: (KEYS[i + 1] - k) / SPEED });
+    });
+
+    function create(root, onDone) {
+        // View window: "xmin xmax ymin ymax" (equal scales on both axes)
+        const [x0, x1, y0, y1] = (root.dataset.view || '-1.2 1.2 -1.2 1.2').split(/\s+/).map(Number);
+        const S = 400 / (x1 - x0), W = 400, H = (y1 - y0) * S;
+        const X = x => (x - x0) * S, Y = y => (y1 - y) * S;
+        const fx = new Function('t', 'return ' + root.dataset.fx);
+        const fy = new Function('t', 'return ' + root.dataset.fy);
+        const svg = root.querySelector('.param-plot');
+        const cells = Array.from(root.querySelectorAll('.tvals td'));
+        const valueCells = Array.from(root.querySelectorAll('.tvals tr:not(:first-child) td'));   // x and y rows
+
+        function el(tag, attrs, parent) {
+            const e = document.createElementNS(NS, tag);
+            for (const k in attrs) e.setAttribute(k, attrs[k]);
+            (parent || svg).appendChild(e);
+            return e;
+        }
+
+        svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+        const box = root.querySelector('.plot-box');
+        box.style.maxWidth = Math.min(380, 440 * W / H) + 'px';   // keep tall windows to a sensible height
+
+        // Axes, ticks and MathJax labels
+        el('line', { class: 'axis', x1: X(x0), y1: Y(0), x2: X(x1), y2: Y(0) });
+        el('line', { class: 'axis', x1: X(0), y1: Y(y0), x2: X(0), y2: Y(y1) });
+        function tickValues(lo, hi) {
+            const step = hi - lo > 3.5 ? 1 : 0.5, vals = [];
+            for (let v = Math.ceil(lo / step) * step; v <= hi + 1e-9; v += step) {
+                if (Math.abs(v) > 1e-9 && v - lo > 0.15 && hi - v > 0.15) vals.push(Math.round(v * 2) / 2);
+            }
+            return vals;
+        }
+        function tickTex(v) {
+            const sign = v < 0 ? '-' : '', a = Math.abs(v);
+            return sign + (Number.isInteger(a) ? String(a) : '\\tfrac{' + (2 * a) + '}{2}');
+        }
+        function label(cls, px, py, tex) {
+            const span = document.createElement('span');
+            span.className = 'plabel ' + cls;
+            span.style.left = (px / W * 100) + '%';
+            span.style.top = (py / H * 100) + '%';
+            span.textContent = '\\(' + tex + '\\)';
+            box.appendChild(span);
+        }
+        tickValues(x0, x1).forEach(v => {
+            el('line', { class: 'axis', x1: X(v), y1: Y(0) - 4, x2: X(v), y2: Y(0) + 4 });
+            label('xt', X(v), Y(0) + 18, tickTex(v));
+        });
+        tickValues(y0, y1).forEach(v => {
+            el('line', { class: 'axis', x1: X(0) - 4, y1: Y(v), x2: X(0) + 4, y2: Y(v) });
+            label('yt', X(0) - 8, Y(v), tickTex(v));
+        });
+        if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([box]);
+
+        const curve = el('path', { class: 'curve', d: '' });
+        const keyPts = KEYS.map(k => el('circle', { class: 'keypt', cx: X(fx(k)), cy: Y(fy(k)), r: 3.5, visibility: 'hidden' }));
+        const dot = el('circle', { class: 'dot', r: 6 });
+
+        let t = 0, playing = false, traced = false, revealed = -1, lastTs = null, rafId = null;
+        let phase = 0, phaseTime = 0;
+
+        function activeKey() {
+            if (playing) return PHASES[phase].hold ? PHASES[phase].key : -1;
+            return traced ? -1 : revealed;        // while filling in, highlight the newest column
+        }
+
+        function render() {
+            const showTrace = playing || traced;
+            let d = '';
+            if (showTrace) {
+                const n = Math.max(1, Math.ceil(t / TWO_PI * 400));
+                d = 'M' + X(fx(0)) + ' ' + Y(fy(0));
+                for (let i = 1; i <= n; i++) {
+                    const s = t * i / n;
+                    d += 'L' + X(fx(s)).toFixed(2) + ' ' + Y(fy(s)).toFixed(2);
+                }
+            }
+            curve.setAttribute('d', d);
+
+            const px = X(fx(t)), py = Y(fy(t));
+            dot.setAttribute('cx', px); dot.setAttribute('cy', py);
+            dot.setAttribute('visibility', showTrace ? 'visible' : 'hidden');
+            keyPts.forEach((p, i) => p.setAttribute('visibility', i <= revealed ? 'visible' : 'hidden'));
+
+            valueCells.forEach(c => c.classList.toggle('cell-hidden', Number(c.dataset.k) > revealed));
+            const k = activeKey();
+            cells.forEach(c => c.classList.toggle('col-active', Number(c.dataset.k) === k));
+        }
+
+        function frame() {
+            rafId = null;
+            if (!playing) return;
+            const now = performance.now();
+            const dt = lastTs === null ? 0 : Math.max(0, Math.min((now - lastTs) / 1000, MAX_DT));
+            lastTs = now;
+
+            phaseTime += dt;
+            // Advance at most one phase per frame, so every hold is always shown
+            if (phaseTime >= PHASES[phase].dur) {
+                const ph = PHASES[phase];
+                if (phase === PHASES.length - 1) {
+                    playing = false;
+                    traced = true;
+                    t = TWO_PI;
+                    render();
+                    onDone();
+                    return;
+                }
+                phaseTime = ph.hold ? phaseTime - ph.dur : 0;   // never carry time into a hold
+                phase++;
+            }
+            const ph = PHASES[phase];
+            t = ph.hold ? KEYS[ph.key] : ph.from + SPEED * phaseTime;
+            render();
+            rafId = requestAnimationFrame(frame);
+        }
+
+        function stop() {
+            if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
+            playing = false;
+        }
+
+        // One nav event's worth of progress; returns false when there is nothing left to do on this page
+        function step() {
+            if (playing) return true;
+            if (revealed < KEYS.length - 1) {
+                revealed++;
+                render();
+                const cell = root.querySelector('.tvals td[data-k="' + revealed + '"]');
+                if (cell) cell.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                return true;
+            }
+            if (!traced) {
+                box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                playing = true;
+                t = 0; phase = 0; phaseTime = 0; lastTs = null;
+                render();
+                rafId = requestAnimationFrame(frame);
+                return true;
+            }
+            return false;
+        }
+
+        function reset() { stop(); traced = false; revealed = -1; t = 0; render(); }
+        function showAll() { stop(); traced = true; revealed = KEYS.length - 1; t = TWO_PI; render(); }
+
+        reset();
+        return { page: root.closest('.page'), step, reset, showAll, busy: () => playing };
+    }
+
+    let doneCallback = () => {};
+    const anims = Array.from(document.querySelectorAll('.param-page')).map(root => create(root, () => doneCallback()));
+    anims.onDone = f => { doneCallback = f; };
+    return anims;
+}());
+</script>
+<script>
+/* Step-by-step reveal and page hooks (same protocol as the other worksheets) */
+(function () {
+    'use strict';
+
+    const ANIMATABLE = 'div.exercise, div.intro, div.key-concept, div.answer, div.nav-gated, div.step';
+    let revealQueue = [];
+    let goingBackward = false;
+    let navBlocked = false;
+    let currentAnim = null;
+
+    function setNavBlocked(b) {
+        navBlocked = b;
+        const prompt = document.querySelector('.nav-prompt');
+        if (prompt) prompt.classList.toggle('nav-blocked', b);
+    }
+    paramAnimations.onDone(() => setNavBlocked(false));
+
+    function initPageReveal(page, revealAll) {
+        revealQueue = [];
+        const animatable = Array.from(page.querySelectorAll(ANIMATABLE))
+            .filter(div => !div.classList.contains('reveal-instant'));
+        animatable.forEach(div => div.classList.add(div.classList.contains('step') ? 'step-hidden' : 'div-hidden'));
+        if (revealAll) {
+            animatable.forEach(div => { div.classList.remove('div-hidden'); div.classList.remove('step-hidden'); });
+            return;
+        }
+        if (animatable.length > 0) {
+            animatable[0].classList.remove('div-hidden');
+            animatable[0].classList.remove('step-hidden');
+            revealQueue = animatable.slice(1);
+        }
+    }
+
+    const _origShowPage   = window.showPage;
+    const _origChangePage = window.changePage;
+
+    function revealNextOrAdvance() {
+        if (revealQueue.length > 0) {
+            const next = revealQueue.shift();
+            next.classList.remove(next.classList.contains('step') ? 'step-hidden' : 'div-hidden');
+            next.classList.add('div-revealed');
+            setTimeout(() => next.classList.remove('div-revealed'), 400);
+            const pageScroll = next.closest('.page-scroll');
+            if (pageScroll) {
+                requestAnimationFrame(() => pageScroll.scrollTo({ top: pageScroll.scrollHeight, behavior: 'smooth' }));
+            } else {
+                next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        } else if (currentAnim && currentAnim.step()) {
+            if (currentAnim.busy()) setNavBlocked(true);   // wait for the trace to finish
+        } else {
+            _origChangePage(1);
+        }
+    }
+
+    window.showPage = function (pageNum, revealAll) {
+        // Rewind every curve page; unblock nav in case we left mid-trace (e.g. via the Next button)
+        paramAnimations.forEach(a => a.reset());
+        setNavBlocked(false);
+        _origShowPage(pageNum);
+        const page = document.getElementById('page-' + pageNum);
+        currentAnim = paramAnimations.find(a => a.page === page) || null;
+        if (page) {
+            const all = revealAll || goingBackward;
+            initPageReveal(page, all);
+            if (currentAnim && all) currentAnim.showAll();
+            requestAnimationFrame(() => {
+                page.querySelectorAll('.answer, .page-scroll').forEach(a => { a.scrollTop = 0; });
+            });
+        }
+        goingBackward = false;
+    };
+
+    window.changePage = function (delta) {
+        if (delta > 0) {
+            if (navBlocked) return;
+            revealNextOrAdvance();
+        } else {
+            setNavBlocked(false);
+            goingBackward = true;
+            _origChangePage(delta);
+        }
+    };
+}());
+</script>
+
+</body>
+</html>
