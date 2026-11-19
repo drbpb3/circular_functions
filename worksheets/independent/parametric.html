@@ -525,6 +525,37 @@ const paramAnimations = (function () {
         }
     }
 
+    // Scale a curve page down as one (like zooming out) if it is taller than the window, so it is
+    // all visible at once. Measured at full size each time, so it adapts to any screen and font.
+    function fitPage(page) {
+        if (!page) return;
+        page.style.transform = '';
+        page.style.height = '';
+        const scroll = page.querySelector('.param-page');
+        if (!scroll || !page.classList.contains('active')) return;
+        const pageRect = page.getBoundingClientRect();
+        const padBottom = parseFloat(getComputedStyle(scroll).paddingBottom) || 0;
+        const needed = (scroll.getBoundingClientRect().top - pageRect.top) + (scroll.scrollHeight - padBottom) + 8;
+        const avail = pageRect.height;
+        const s = Math.min(1, avail / needed);
+        if (s < 0.999) {
+            page.style.transformOrigin = 'top center';
+            page.style.transform = 'scale(' + s + ')';
+            page.style.height = 'calc((100vh - 80px) / ' + s + ')';
+        }
+    }
+    const activePage = () => document.querySelector('.page.active');
+    window.addEventListener('resize', () => fitPage(activePage()));
+    if (window.ResizeObserver) {
+        // Re-fit when a page's content changes height (e.g. once MathJax has typeset the table)
+        const ro = new ResizeObserver(entries => {
+            const page = activePage();
+            if (page && entries.some(e => page.contains(e.target))) fitPage(page);
+        });
+        document.querySelectorAll('.param-page .tvals-scroll, .param-page .plot-box').forEach(el => ro.observe(el));
+        document.querySelectorAll('.page .intro').forEach(el => ro.observe(el));
+    }
+
     window.showPage = function (pageNum, revealAll) {
         // Rewind every curve page; unblock nav in case we left mid-trace (e.g. via the Next button)
         paramAnimations.forEach(a => a.reset());
@@ -536,6 +567,8 @@ const paramAnimations = (function () {
             const all = revealAll || goingBackward;
             initPageReveal(page, all);
             if (currentAnim && all) currentAnim.showAll();
+            document.querySelectorAll('.page').forEach(p => { if (p !== page) fitPage(p); });   // clear old scaling
+            fitPage(page);
             requestAnimationFrame(() => {
                 page.querySelectorAll('.answer, .page-scroll').forEach(a => { a.scrollTop = 0; });
             });
