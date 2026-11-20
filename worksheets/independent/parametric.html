@@ -137,7 +137,7 @@
 
                 <button id="audio-enable-btn" onclick="toggleAudio(this)">🔇 Enable audio</button>
 
-                <p class="welcome-tip">On each curve page, move forward to fill in the table one column at a time and plot each point. When the table is complete, move forward once more to watch the curve being traced.</p>
+                <p class="welcome-tip">This sheet plays by itself: on each curve page the table fills in one column at a time, each point is plotted, and then the curve is traced. Use the arrow keys or swipe if you want to skip ahead or go back.</p>
 
                 <p class="welcome-author">
                     <img src="inverse_images/darklogo_circle_small.png" alt="Mathematics InSight Logo" class="welcome-logo">
@@ -485,7 +485,7 @@ const paramAnimations = (function () {
         const prompt = document.querySelector('.nav-prompt');
         if (prompt) prompt.classList.toggle('nav-blocked', b);
     }
-    paramAnimations.onDone(() => setNavBlocked(false));
+    paramAnimations.onDone(() => { setNavBlocked(false); autoSchedule(AUTO.afterTrace); });
 
     function initPageReveal(page, revealAll) {
         revealQueue = [];
@@ -518,10 +518,13 @@ const paramAnimations = (function () {
             } else {
                 next.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
+            return 'step';
         } else if (currentAnim && currentAnim.step()) {
-            if (currentAnim.busy()) setNavBlocked(true);   // wait for the trace to finish
+            if (currentAnim.busy()) { setNavBlocked(true); return 'trace'; }   // wait for the trace to finish
+            return 'step';
         } else {
             _origChangePage(1);
+            return 'page';
         }
     }
 
@@ -574,18 +577,41 @@ const paramAnimations = (function () {
             });
         }
         goingBackward = false;
+        autoSchedule(pageNum === 1 ? AUTO.welcome : AUTO.page);
     };
 
     window.changePage = function (delta) {
         if (delta > 0) {
             if (navBlocked) return;
-            revealNextOrAdvance();
+            if (revealNextOrAdvance() === 'step') autoSchedule(AUTO.column);   // carry on from here
         } else {
             setNavBlocked(false);
             goingBackward = true;
             _origChangePage(delta);
         }
     };
+
+    /* Autoplay: the sheet plays itself from start to finish, as if "next" were pressed on a timer.
+       Arrow keys / swipes still work to skip ahead or go back; autoplay carries on from there. */
+    const AUTO = {
+        welcome: 5000,      // ms on the welcome page before starting
+        page: 1500,         // ms after a new page appears before its first column
+        column: 900,        // ms between table columns
+        afterTrace: 2500    // ms to admire the finished curve before the next page
+    };
+    let autoTimer = null;
+    function autoSchedule(ms) {
+        clearTimeout(autoTimer);
+        autoTimer = setTimeout(autoTick, ms);
+    }
+    function autoTick() {
+        autoTimer = null;
+        if (currentPage >= totalPages) return;      // finished: stay on the closing page
+        if (navBlocked) return;                     // a trace is running; its onDone restarts the timer
+        const did = revealNextOrAdvance();
+        if (did === 'step') autoSchedule(AUTO.column);
+        // 'page': showPage restarts the timer; 'trace': onDone restarts it
+    }
 }());
 </script>
 
